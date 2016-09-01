@@ -1,7 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
+import {NotFoundComponent} from "./not-found/not-found.component";
+import {HomeComponent} from "./home/home.component";
 
 const appRoutes: Routes = [
-    // { path: 'crisis-center', component: CrisisCenterComponent },
+    { path: '/', component: HomeComponent},
     // {
     //     path: 'heroes',
     //     component: HeroListComponent,
@@ -10,7 +12,7 @@ const appRoutes: Routes = [
     //     }
     // },
     // { path: 'hero/:id', component: HeroDetailComponent },
-    // { path: '**', component: PageNotFoundComponent }
+     { path: '**', component: NotFoundComponent }
 ];
 
 export const appRoutingProviders: any[] = [
