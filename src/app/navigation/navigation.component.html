@@ -1,5 +1,10 @@
 <nav>
     <a routerLink="/" routerLinkActive="active">Projects</a>
     <a routerLink="/about" routerLinkActive="active">About</a>
-    <button>Login</button>
+
+    <button *ngIf="!loggedIn" (click)="login()">Login</button>
+
+    <a *ngIf="loggedIn" routerLink="/profile" routerLinkActive="active">
+        {{user.name}}
+    </a>
 </nav>

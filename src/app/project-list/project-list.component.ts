@@ -1,14 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ProjectService} from "../services/project.service";
 
 @Component({
-  selector: 'app-project-list',
-  templateUrl: './project-list.component.html'
+    selector: 'app-project-list',
+    templateUrl: './project-list.component.html'
 })
 export class ProjectListComponent implements OnInit {
+    errorMessage:string;
+    projects = [];
 
-  constructor() { }
+    constructor(private projectService:ProjectService) {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.getProjects();
+    }
+
+    getProjects() {
+        this.projectService.getProjects()
+            .subscribe(
+                projects => this.projects = projects,
+                error => this.errorMessage = <any>error);
+    }
 
 }
