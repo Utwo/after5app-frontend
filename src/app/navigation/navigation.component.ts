@@ -9,10 +9,11 @@ import {StateService} from "../services/state.service";
 export class NavigationComponent implements OnInit {
 
     constructor(private loginService:LoginService, private state:StateService) {
-        this.user = this.state.getUser();
     }
 
-    user = {};
+    get user(){
+        return this.state.getUser();
+    }
 
     get loggedIn() {
         return this.state.isLoggedIn();
@@ -25,4 +26,8 @@ export class NavigationComponent implements OnInit {
         this.loginService.login();
     }
 
+    logout(){
+        this.loginService.logout();
+    }
+    
 }

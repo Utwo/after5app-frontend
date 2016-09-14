@@ -1,0 +1,13 @@
+<section *ngIf="comments && comments.length > 0">
+    <h3>Comments</h3>
+    <ul>
+        <li *ngFor="let comment of comments">
+            <a routerLink="/profile/{{comment.user_id}}" routerLinkActive="active">
+                {{comment.user.name}}
+            </a>
+            <p>{{comment.text}}</p>
+        </li>
+    </ul>
+    <textarea #text></textarea>
+    <button (click)="addComment(text.value)">Add comment</button>
+</section>

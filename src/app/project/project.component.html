@@ -1,3 +1,21 @@
-<p>
-  project works!
-</p>
+<div *ngIf="project">
+    <h1>{{project.title}}</h1>
+    <h2> by <a routerLink="/profile/{{project.user_id}}" routerLinkActive="active">{{project.user.name}}</a></h2>
+    <section>
+        <h3>Description</h3>
+        <p>{{project.description}}</p>
+    </section>
+
+    <section *ngIf="project.position.length > 0">
+        <h3>Positions</h3>
+        <ul>
+            <li *ngFor="let position of project.position">
+                {{position.description}}
+                {{position.skill.name}}
+            </li>
+        </ul>
+    </section>
+
+    <button>Apply</button>
+    <app-comments [project_id]="project.id"></app-comments>
+</div>

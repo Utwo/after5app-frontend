@@ -12,12 +12,17 @@ export class LoginService {
     login() {
         var headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        //noinspection TypeScriptUnresolvedFunction
         this.http.post('http://startupper-utwo.rhcloud.com/token/1', '', {headers: headers})
             .map(res => res.json())
             .subscribe(
                 (data) => this.state.storeState(data['jwt-token'], data['user']),
                 (error) => this.handleError(error)
             );
+    }
+
+    logout(){
+        this.state.logout();
     }
 
     private handleError(error:any) {

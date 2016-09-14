@@ -8,7 +8,7 @@ import {ProjectService} from "../services/project.service";
 export class ProjectListComponent implements OnInit {
     errorMessage:string;
     projects = [];
-    page = {current_page: 0, prev: 0, next: 0};
+    page = {current_page: null, prev: null, next: null};
 
     constructor(private projectService:ProjectService) {
     }
