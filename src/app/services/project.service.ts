@@ -9,18 +9,18 @@ export class ProjectService {
     constructor(private state:StateService, private http:Http) {
     }
 
-    public getProjects(){
-        return this.http.get(this.state.getUrl()+'/project')
+    public getProjects(page) {
+        return this.http.get(this.state.getUrl() + '/project?with[]=user&page=' + page)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
-    private extractData(res: Response) {
+    private extractData(res:Response) {
         let body = res.json();
-        return body.data || { };
+        return body || {};
     }
 
-    private handleError (error: any) {
+    private handleError(error:any) {
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
         console.error(errMsg);
