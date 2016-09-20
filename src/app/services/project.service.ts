@@ -10,14 +10,12 @@ export class ProjectService {
     }
 
     public getProjects(page) {
-        //noinspection TypeScriptUnresolvedFunction,TypeScriptUnresolvedFunction
         return this.http.get(this.state.getUrl() + '/project?with[]=user&page=' + page)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
     public getProjectById(id) {
-        //noinspection TypeScriptUnresolvedFunction
         return this.http.get(this.state.getUrl() +
             '/project?with[]=user&with[]=position.skill&id=' + id)
             .map(this.extractData)
@@ -25,9 +23,30 @@ export class ProjectService {
     }
 
     public getProjectComments(id) {
-        //noinspection TypeScriptUnresolvedFunction
         return this.http.get(this.state.getUrl() +
             '/project?with[]=comment.user&id=' + id)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    public getApplications() {
+        let headers = new Headers({
+            'Authorization': 'Bearer ' + this.state.getToken()
+        });
+        return this.http.get(this.state.getUrl() + '/application/user', {headers: headers})
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    applyForProject(application){
+        let body = JSON.stringify(application);
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.state.getToken()
+        });
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.post(this.state.getUrl() + '/application', body, options)
             .map(this.extractData)
             .catch(this.handleError);
     }

@@ -15,20 +15,33 @@ export class SettingsComponent implements OnInit {
     }
 
     ngOnInit() {
-        let user = this.state.getUser();
-        this.user = {
-            name: user.name,
-            email: user.email,
-            picture: user.picture || "",
-            workplace: user.workplace || "",
-            website: user.website || "",
-            twitter: user.twitter || "",
-            skill: []
-        };
+        this.getUser();
+    }
+
+    getUser() {
+        this.profileService.getLoggedInUser()
+            .subscribe(
+                user => {
+                    let skills = [];
+                    for (let skill of user.skill) {
+                        skills.push(skill.name);
+                    }
+                    user.skill = skills;
+                    this.user = user;
+                    console.log(this.user);
+                },
+                error => this.errorMessage = <any>error);
+    }
+
+    addSkill(skill) {
+        this.user.skill.push(skill);
+    }
+
+    removeSkill(index) {
+        this.user.skill.splice(index, 1);
     }
 
     onSubmit() {
-        console.log(this.user);
         this.profileService.updateUser(this.user)
             .subscribe(
                 data => {

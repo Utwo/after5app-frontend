@@ -1,0 +1,19 @@
+<section>
+    <h3>Apply</h3>
+
+    <h4>Message</h4>
+    <textarea [(ngModel)]="application.message"></textarea>
+
+    <h4>Questions</h4>
+    <li *ngFor="let question of project.application_questions; let i = index">
+        {{question}}
+        <input type="text" [(ngModel)]="application.answers[i]">
+    </li>
+
+    <h4>Position</h4>
+    <select id="selectPosition">
+        <option *ngFor="let position of project.position" value={{position.id}}>{{position.description}}</option>
+    </select>
+
+    <button (click)="sendApplication()">Apply</button>
+</section>

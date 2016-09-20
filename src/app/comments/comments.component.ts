@@ -9,9 +9,9 @@ import {StateService} from "../services/state.service";
 export class CommentsComponent implements OnInit {
     @Input() project_id;
     private comments = [];
-    private errorMessage:string;
+    private errorMessage: string;
 
-    constructor(private projectService:ProjectService, private state:StateService) {
+    constructor(private projectService: ProjectService, private state: StateService) {
     }
 
     ngOnInit() {
@@ -35,8 +35,8 @@ export class CommentsComponent implements OnInit {
         this.projectService.addComment(comment)
             .subscribe(
                 data => {
-                    data.user.name = this.state.getUser().name;
-                    this.comments.push(data.comment)
+                    data.comment.user = {name: this.state.getUser().name};
+                    this.comments.push(data.comment);
                 },
                 error => this.errorMessage = <any>error);
     }

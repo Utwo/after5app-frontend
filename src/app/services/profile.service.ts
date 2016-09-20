@@ -15,6 +15,12 @@ export class ProfileService {
             .catch(this.handleError);
     }
 
+    public getLoggedInUser() {
+        return this.http.get(this.state.getUrl() + '/user/' + this.state.getUser().id + '?with[]=skill')
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     public updateUser(user) {
         let body = JSON.stringify(user);
         let headers = new Headers({

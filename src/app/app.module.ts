@@ -17,6 +17,7 @@ import {StateService} from "./services/state.service";
 import {ProjectService} from "./services/project.service";
 import {CommentsComponent} from './comments/comments.component';
 import {SettingsComponent} from './settings/settings.component';
+import { ApplicationComponent } from './application/application.component';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,7 @@ import {SettingsComponent} from './settings/settings.component';
         MyProjectsComponent,
         NavigationComponent, 
         CommentsComponent,
-        SettingsComponent
+        SettingsComponent, ApplicationComponent
     ],
     imports: [
         routing,
