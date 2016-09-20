@@ -4,8 +4,7 @@ import {StateService} from "../services/state.service";
 
 @Component({
     selector: 'app-comments',
-    templateUrl: './comments.component.html',
-    styleUrls: ['./comments.component.css']
+    templateUrl: './comments.component.html'
 })
 export class CommentsComponent implements OnInit {
     @Input() project_id;
@@ -36,7 +35,7 @@ export class CommentsComponent implements OnInit {
         this.projectService.addComment(comment)
             .subscribe(
                 data => {
-                    data.comment.user.name = this.state.getUser().name;
+                    data.user.name = this.state.getUser().name;
                     this.comments.push(data.comment)
                 },
                 error => this.errorMessage = <any>error);

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable}     from 'rxjs/Observable';
-import {Http} from '@angular/http';
+import {Http, Headers} from '@angular/http';
 import {StateService} from "./state.service";
 
 @Injectable()
@@ -10,9 +10,8 @@ export class LoginService {
     }
 
     login() {
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        //noinspection TypeScriptUnresolvedFunction
+        var headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+        
         this.http.post('http://startupper-utwo.rhcloud.com/token/1', '', {headers: headers})
             .map(res => res.json())
             .subscribe(

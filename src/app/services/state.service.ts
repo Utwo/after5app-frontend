@@ -19,6 +19,9 @@ export class StateService {
         return localStorage.getItem("token");
     }
 
+    setUser(user) {
+        localStorage.setItem("user", JSON.stringify(user));
+    }
     getUser() {
         return JSON.parse(localStorage.getItem("user"));
     }

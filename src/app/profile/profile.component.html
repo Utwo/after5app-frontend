@@ -1,3 +1,27 @@
-<p>
-  profile works!
-</p>
+<div *ngIf="user">
+    <h1>{{user.name}}</h1>
+    <img *ngIf="user.picture" src={{user.picture}}>
+    <ul>
+        <li *ngIf="user.website">Website: <a href={{user.website}}>{{user.website}}</a></li>
+        <li *ngIf="user.twitter">Twitter: {{user.twitter}}</li>
+        <li *ngIf="user.workplace">Workplace: {{user.workplace}}</li>
+    </ul>
+
+    <section *ngIf="user.skill.length > 0">
+        <h3>Skills</h3>
+        <ul>
+            <li *ngFor="let skill of user.skill">{{skill.name}}</li>
+        </ul>
+    </section>
+
+    <section *ngIf="user.project.length > 0">
+        <h3>Projects</h3>
+        <ul>
+            <li *ngFor="let project of user.project">
+                <a routerLink="/project/{{project.id}}" routerLinkActive="active">
+                    {{project.title}}
+                </a>
+            </li>
+        </ul>
+    </section>
+</div>

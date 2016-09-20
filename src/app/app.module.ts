@@ -15,8 +15,8 @@ import {NavigationComponent} from './navigation/navigation.component';
 import {LoginService} from "./services/login.service";
 import {StateService} from "./services/state.service";
 import {ProjectService} from "./services/project.service";
-import { CommentsComponent } from './comments/comments.component';
-import { UserNavComponent } from './user-nav/user-nav.component';
+import {CommentsComponent} from './comments/comments.component';
+import {SettingsComponent} from './settings/settings.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +28,9 @@ import { UserNavComponent } from './user-nav/user-nav.component';
         AboutComponent,
         ProfileComponent,
         MyProjectsComponent,
-        NavigationComponent, CommentsComponent, UserNavComponent
+        NavigationComponent, 
+        CommentsComponent,
+        SettingsComponent
     ],
     imports: [
         routing,

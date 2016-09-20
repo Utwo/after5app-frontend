@@ -1,13 +1,16 @@
-<section *ngIf="comments && comments.length > 0">
+<section>
     <h3>Comments</h3>
-    <ul>
+    <ul *ngIf="comments && comments.length > 0">
         <li *ngFor="let comment of comments">
+            <img *ngIf="comment.user.picture" src={{comment.user.picture}}>
             <a routerLink="/profile/{{comment.user_id}}" routerLinkActive="active">
                 {{comment.user.name}}
             </a>
             <p>{{comment.text}}</p>
+            <span> {{ comment.created_at | date:"dd/MM/yyyy" }} </span>
         </li>
     </ul>
+
     <textarea #text></textarea>
     <button (click)="addComment(text.value)">Add comment</button>
 </section>

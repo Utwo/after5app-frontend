@@ -4,8 +4,14 @@
 
     <button *ngIf="!loggedIn" (click)="login()">Login</button>
 
-    <a *ngIf="loggedIn" routerLink="/profile/{{user.id}}" routerLinkActive="active">
-        {{user.name}}
-    </a>
-    <button *ngIf="loggedIn" (click)="logout()">Logout</button>
+    <div *ngIf="loggedIn">
+        <a routerLink="/profile/{{user.id}}" routerLinkActive="active">
+            {{user.name}}
+        </a>
+        <a routerLink="/settings" routerLinkActive="active">
+            Settings
+        </a>
+        <button (click)="logout()">Logout</button>
+    </div>
+
 </nav>
