@@ -11,15 +11,10 @@ let sourcemaps = require('gulp-sourcemaps');
 // Configuration
 let configuration = {
   src: {
-    html: './src/*.html',
     cssFolder: [
       './src/scss/'
     ],
     cssMain: 'main.scss',
-    jsFolder: [
-      './src/js'
-    ],
-    jsMain: '/main.js',
     image: './src/img',
     dev: 'src'
   },
@@ -28,7 +23,7 @@ let configuration = {
 
 // Task css
 gulp.task('css', function () {
-  let mainCss = gulp.src([configuration.src.cssFolder + configuration.src.cssMain])
+  let mainCss = gulp.src(configuration.src.cssFolder + configuration.src.cssMain)
       .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
       .pipe(autoprefixer('last 2 version'))
       .pipe(sourcemaps.init())
@@ -39,7 +34,6 @@ gulp.task('css', function () {
 
 gulp.task('watch', function () {
   gulp.watch(configuration.src.cssFolder + '/**', ['css']);
-
 });
 
 // The default task (called when you run `gulp` from cli)

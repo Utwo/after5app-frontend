@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+// 1. Configuration and helpers
+@import 'abstracts/variables';
+
+// 2. Vendors
+// Core variables and mixins
+@import "vendor/bootstrap/variables";
+$enable-flex: true;
+@import "vendor/bootstrap/mixins";
+
+// Reset and dependencies
+@import "vendor/bootstrap/normalize";
+
+// Core CSS
+@import "vendor/bootstrap/reboot";
+@import "vendor/bootstrap/type";
+@import "vendor/bootstrap/images";
+@import "vendor/bootstrap/code";
+@import "vendor/bootstrap/grid";
+@import "vendor/bootstrap/tables";
+@import "vendor/bootstrap/forms";
+@import "vendor/bootstrap/buttons";
+
+@import "vendor/bootstrap/utilities";
+
+// 3. Base stuff
+@import "base/fonts";
+@import "base/base";
+@import "base/typography";
+@import "base/helpers";
+
+// 4. Layout-related sections
+@import  "layout/header";
+@import  "layout/footer";
+
+// 5. Components
+@import "components/button";
+@import "components/projects";
+
+// 6. Page-specific styles
+@import "pages/home";

@@ -1,9 +1,9 @@
-<ul *ngIf="projects">
-    <li *ngFor="let project of projects">
-        <a routerLink="/project/{{project.id}}" routerLinkActive="active">
+<ul *ngIf="projects" class="project-list">
+    <li *ngFor="let project of projects" class="project-item">
+        <h3><a routerLink="/project/{{project.id}}" routerLinkActive="active">
             {{project.title}}
-        </a>
-        by
+        </a></h3>
+        <p>{{project.description}}</p>
         <a routerLink="/profile/{{project.user_id}}" routerLinkActive="active">
             {{project.user.name}}
         </a>
@@ -11,6 +11,6 @@
     </li>
 </ul>
 
-<button (click)="prevPage()" *ngIf="page.prev">prev</button>
+<button (click)="prevPage()" *ngIf="page.prev" class="btn btn-default">prev</button>
 {{page.current_page}}
-<button (click)="nextPage()" *ngIf="page.next">next</button>
+<button (click)="nextPage()" *ngIf="page.next" class="btn btn-default">next</button>

@@ -1,17 +1,20 @@
-<nav class="navbar">
-    <a routerLink="/" routerLinkActive="active">Projects</a>
-    <a routerLink="/about" routerLinkActive="active">About</a>
-
-    <button *ngIf="!loggedIn" (click)="login()">Login</button>
-
-    <div *ngIf="loggedIn">
-        <a routerLink="/profile/{{user.id}}" routerLinkActive="active">
-            {{user.name}}
-        </a>
-        <a routerLink="/settings" routerLinkActive="active">
-            Settings
-        </a>
-        <button (click)="logout()">Logout</button>
+<nav class="row">
+    <div class="col-md-6">
+        <a routerLink="/" routerLinkActive="active">Projects</a>
+        <a routerLink="/about" routerLinkActive="active">About</a>
     </div>
 
+    <div class="col-md-6 text-xs-right">
+        <button *ngIf="!loggedIn" (click)="login()">Login</button>
+
+        <div *ngIf="loggedIn">
+            <a routerLink="/profile/{{user.id}}" routerLinkActive="active">
+                {{user.name}}
+            </a>
+            <a routerLink="/settings" routerLinkActive="active">
+                Settings
+            </a>
+            <button (click)="logout()">Logout</button>
+        </div>
+    </div>
 </nav>
