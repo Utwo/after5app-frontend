@@ -36,6 +36,8 @@ $enable-flex: true;
 
 // 5. Components
 @import "components/button";
+@import "components/navigation";
+@import "components/jumbotron";
 @import "components/projects";
 
 // 6. Page-specific styles

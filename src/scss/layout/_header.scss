@@ -1,3 +1,33 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the header of the site/application.
 // -----------------------------------------------------------------------------
+
+.header-site {
+  background: $brand-color;
+  padding: 1.2em 0;
+  color: #fff;
+}
+
+.header-site a {
+  color: #fff;
+}
+
+.header-logo {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 0;
+  padding: .2em;
+  position: relative;
+}
+
+.header-logo:after{
+  content:'';
+  display: inline;
+  position: absolute;
+  background: rgba(255,255,255, .4);
+  height: 100%;
+  width: 3px;
+  top: 0;
+  right: 0;
+  border-radius: 2px;
+}
