@@ -2,7 +2,7 @@
     <h1>{{user.name}}</h1>
     <img *ngIf="user.picture" src={{user.picture}}>
     <ul>
-        <li *ngIf="user.website">Website: <a href={{user.website}}>{{user.website}}</a></li>
+        <li *ngIf="user.website">Website: <a href={{user.website}} target="_blank">{{user.website}}</a></li>
         <li *ngIf="user.twitter">Twitter: {{user.twitter}}</li>
         <li *ngIf="user.workplace">Workplace: {{user.workplace}}</li>
     </ul>
@@ -15,7 +15,7 @@
     </section>
 
     <section *ngIf="user.project.length > 0">
-        <h3>Projects</h3>
+        <h3>{{user.name}}'s Projects</h3>
         <ul>
             <li *ngFor="let project of user.project">
                 <a routerLink="/project/{{project.id}}" routerLinkActive="active">

@@ -6,7 +6,7 @@ import {StateService} from "./state.service";
 @Injectable()
 export class ProjectService {
 
-    constructor(private state:StateService, private http:Http) {
+    constructor(private state: StateService, private http: Http) {
     }
 
     public getProjects(page) {
@@ -22,9 +22,29 @@ export class ProjectService {
             .catch(this.handleError);
     }
 
+    public searchByName(name) {
+        return this.http.get(this.state.getUrl() +
+            '/project?title=%' + name + '%&with[]=user')
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    public filterBySkill(skill) {
+        return this.http.get(this.state.getUrl() +
+            '/skill?name=%' + skill + '%&with[]=position.project.user')
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     public getProjectComments(id) {
         return this.http.get(this.state.getUrl() +
             '/project?with[]=comment.user&id=' + id)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    public getSkills() {
+        return this.http.get(this.state.getUrl() + '/skill')
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -38,7 +58,7 @@ export class ProjectService {
             .catch(this.handleError);
     }
 
-    applyForProject(application){
+    applyForProject(application) {
         let body = JSON.stringify(application);
         let headers = new Headers({
             'Content-Type': 'application/json',
@@ -64,12 +84,12 @@ export class ProjectService {
             .catch(this.handleError);
     }
 
-    private extractData(res:Response) {
+    private extractData(res: Response) {
         let body = res.json();
         return body || {};
     }
 
-    private handleError(error:any) {
+    private handleError(error: any) {
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
         console.error(errMsg);
