@@ -1,20 +1,28 @@
-<nav class="row">
-    <div class="col-md-6">
-        <a routerLink="/" routerLinkActive="active">Projects</a>
-        <a routerLink="/about" routerLinkActive="active">About</a>
-    </div>
+<header class="header-site">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <h1 class="header-logo"><strong>Startupper</strong></h1>
+            </div>
+            <div class="col-md-7">
+                <nav class="navigation">
+                    <a class="navigation-item" routerLink="/" routerLinkActive="active">Projects</a>
+                    <a class="navigation-item" routerLink="/about" routerLinkActive="active">About</a>
+                </nav>
+            </div>
+            <div class="col-md-3 text-xs-right">
+                <button class="btn btn-outline-secondary btn-sm" *ngIf="!loggedIn" (click)="login()">Login</button>
 
-    <div class="col-md-6 text-xs-right">
-        <button *ngIf="!loggedIn" (click)="login()">Login</button>
-
-        <div *ngIf="loggedIn">
-            <a routerLink="/profile/{{user.id}}" routerLinkActive="active">
-                {{user.name}}
-            </a>
-            <a routerLink="/settings" routerLinkActive="active">
-                Settings
-            </a>
-            <button (click)="logout()">Logout</button>
+                <div *ngIf="loggedIn">
+                    <a routerLink="/profile/{{user.id}}" routerLinkActive="active">
+                        {{user.name}}
+                    </a>
+                    <a routerLink="/settings" routerLinkActive="active">
+                        Settings
+                    </a>
+                    <button class="btn btn-outline-secondary btn-sm" (click)="logout()">Logout</button>
+                </div>
+            </div>
         </div>
     </div>
-</nav>
+</header>

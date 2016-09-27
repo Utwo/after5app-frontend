@@ -1,8 +1,12 @@
-<input #search type="text" placeholder="search" (keyup)="searchByName(search.value)">
-<!--<app-autocomplete [skills]="skills" (onSelected)="selectedSkill($event)"></app-autocomplete>-->
-
-<section *ngIf="projects && projects.length > 0">
-    <ul class="project-list">
+<div class="jumbotron-fluid">
+    <div class="container">
+        <h2 class="text-xs-center">Projects</h2>
+        <!--<app-autocomplete [skills]="skills" (onSelected)="selectedSkill($event)"></app-autocomplete>-->
+        <input #search type="text" placeholder="search" (keyup)="searchByName(search.value)">
+    </div>
+</div>
+<div class="container">
+    <ul *ngIf="projects" class="project-list">
         <li *ngFor="let project of projects" class="project-item">
             <h3><a routerLink="/project/{{project.id}}" routerLinkActive="active">
                 {{project.title}}
@@ -16,8 +20,6 @@
     </ul>
 
     <button (click)="prevPage()" *ngIf="page.prev" class="btn btn-default">prev</button>
-    <button (click)="prevPage()" *ngIf="!page.prev" disabled class="btn btn-default">prev</button>
     {{page.current_page}}
     <button (click)="nextPage()" *ngIf="page.next" class="btn btn-default">next</button>
-    <button (click)="nextPage()" *ngIf="!page.next" disabled class="btn btn-default">next</button>
-</section>
+</div>
