@@ -1,4 +1,4 @@
-<input title="filter" type="text" [(ngModel)]="query" (keyup)=filter()>
+<input type="text" [(ngModel)]="query" (keyup)=filter()>
 
 <div *ngIf="filteredList.length > 0">
     <ul *ngFor="let skill of filteredList">

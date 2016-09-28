@@ -49,6 +49,20 @@ export class ProjectListComponent implements OnInit {
                 error => this.errorMessage = <any>error);
     }
 
+    getRecommendedProjects(){
+        this.projectService.getRecommendedProjects()
+            .subscribe(
+                projects => this.extractData(projects),
+                error => this.errorMessage = <any>error);
+    }
+
+    getPopularProjects(){
+        this.projectService.getPopularProjects()
+            .subscribe(
+                projects => this.extractData(projects),
+                error => this.errorMessage = <any>error);
+    }
+
     extractData(projects) {
         this.projects = projects.data;
         this.page = {
@@ -58,8 +72,8 @@ export class ProjectListComponent implements OnInit {
         }
     }
 
-    selectedSkill(skill) {
-        console.log(skill);
+    onSelect(skill) {
+        this.filterProjects(skill.id);
     }
 
     private prevPage() {

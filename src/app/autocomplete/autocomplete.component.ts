@@ -1,4 +1,4 @@
-import {Component, Input, Output} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'app-autocomplete',
@@ -6,9 +6,10 @@ import {Component, Input, Output} from '@angular/core';
 })
 export class AutocompleteComponent {
     @Input() skills;
+    @Output() onSelect = new EventEmitter<string>();
     query = '';
     filteredList = [];
-    @Output() onSelected = new EventEmitter();
+
     constructor() {
     }
 
@@ -25,7 +26,7 @@ export class AutocompleteComponent {
     }
 
     select(skill) {
-        this.onSelected.emit(skill);
+        this.onSelect.emit(skill);
         this.query = skill.name;
         this.filteredList = [];
     }

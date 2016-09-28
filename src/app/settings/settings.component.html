@@ -43,10 +43,8 @@
         </label>
 
 
-        <label>Skills
-            <input type="text" name="skills" #skill>
-        </label>
-        <button type="button" (click)="addSkill(skill.value)">Add</button>
+        <label>Skills</label>
+        <app-autocomplete [skills]="skills" (onSelect)="onSelect($event)"></app-autocomplete>
         <ul>
             <li *ngFor="let skill of user.skill; let i = index">
                 {{skill}}

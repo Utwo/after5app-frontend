@@ -10,7 +10,7 @@ export class ProjectService {
     }
 
     public getProjects(page) {
-        return this.http.get(this.state.getUrl() + '/project?with[]=user&page=' + page)
+        return this.http.get(this.state.getUrl() + '/project?with[]=user&with[]=position.skill&page=' + page)
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -22,16 +22,34 @@ export class ProjectService {
             .catch(this.handleError);
     }
 
+    public getPopularProjects() {
+        return this.http.get(this.state.getUrl() + '/project?sort[]=favorite_count,desc&sort[]=created_at,desc&with[]=user&with[]=position.skill')
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    public getRecommendedProjects() {
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.state.getToken()
+        });
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.get(this.state.getUrl()  + '/project?recommended&with[]=user&with[]=position.skill', options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     public searchByName(name) {
         return this.http.get(this.state.getUrl() +
-            '/project?title=%' + name + '%&with[]=user')
+            '/project?title=%' + name + '%&with[]=user&with[]=position.skill')
             .map(this.extractData)
             .catch(this.handleError);
     }
 
     public filterBySkill(skill) {
         return this.http.get(this.state.getUrl() +
-            '/skill?name=%' + skill + '%&with[]=position.project.user')
+            '/project?position:skill_id=' + skill + '&with[]=user&with[]=position.skill')
             .map(this.extractData)
             .catch(this.handleError);
     }
