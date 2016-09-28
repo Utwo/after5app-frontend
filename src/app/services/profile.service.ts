@@ -34,6 +34,17 @@ export class ProfileService {
             .catch(this.handleError);
     }
 
+    public getMyApplications(){
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.state.getToken()
+        });
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.get(this.state.getUrl() + '/application/user?with[]=position.project', options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
     private extractData(res:Response) {
         let body = res.json();
         return body || {};

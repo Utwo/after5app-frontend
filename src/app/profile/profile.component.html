@@ -24,4 +24,31 @@
             </li>
         </ul>
     </section>
+
+    <section *ngIf="user.favorite.length > 0">
+        <h3>♥ Favorite Projects</h3>
+        <ul>
+            <li *ngFor="let project of user.favorite">
+                <a routerLink="/project/{{project.id}}" routerLinkActive="active">
+                    {{project.title}}
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <section *ngIf="isMe">
+        <h3>My Applications</h3>
+        <ul *ngIf="applications">
+            <li *ngFor="let application of applications">
+                <a routerLink="/project/{{application.position.project.id}}" routerLinkActive="active">
+                    {{application.position.project.title}}
+                </a>
+                <div>
+                    Status:
+                    <span *ngIf="application.position.status">Accepted</span>
+                    <span *ngIf="!application.position.status">Pending</span>
+                </div>
+            </li>
+        </ul>
+    </section>
 </div>

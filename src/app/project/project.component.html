@@ -1,6 +1,10 @@
 <div *ngIf="project">
     <h1>{{project.title}}</h1>
     <h2> by <a routerLink="/profile/{{project.user_id}}" routerLinkActive="active">{{project.user.name}}</a></h2>
+
+    <a *ngIf="!isFavorite" (click)="addFavorite()">♥ Add to Favorites</a>
+    <a *ngIf="isFavorite" (click)="addFavorite()">♥ Remove Favorite</a>
+
     <section>
         <h3>Description</h3>
         <p>{{project.description}}</p>

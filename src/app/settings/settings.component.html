@@ -20,16 +20,6 @@
             </div>
         </div>
 
-        <label>Email
-            <input type="text" required name="email" [(ngModel)]="user.email" #email="ngModel">
-        </label>
-
-        <div *ngIf="email.errors && (email.dirty || email.touched)">
-            <div [hidden]="!email.errors.required">
-                Email is required
-            </div>
-        </div>
-
         <label>Workplace
             <input type="text" name="workplace" [(ngModel)]="user.workplace">
         </label>

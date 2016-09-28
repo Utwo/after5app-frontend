@@ -7,10 +7,11 @@ export class TimeAgoPipe implements PipeTransform {
     transform(date: any): string {
         var result:string;
         // current time
+        var mydate = new Date(date);
         let d = new Date();
-        let now = d.getTime() + (d.getTimezoneOffset() * 60000);
+        let now = d.getTime() ;
         // time since message was sent in seconds
-        let delta = (now - date.getTime()) / 1000;
+        let delta = (now - mydate.getTime()) / 1000;
         // format string
         if (delta < 10)
         {
