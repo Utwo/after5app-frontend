@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "../services/project.service";
-import {AutocompleteComponent} from "../autocomplete/autocomplete.component";
 
 @Component({
     selector: 'app-project-list',
     templateUrl: './project-list.component.html',
-    directives: [AutocompleteComponent]
 })
 export class ProjectListComponent implements OnInit {
     errorMessage: string;
@@ -49,14 +47,14 @@ export class ProjectListComponent implements OnInit {
                 error => this.errorMessage = <any>error);
     }
 
-    getRecommendedProjects(){
+    getRecommendedProjects() {
         this.projectService.getRecommendedProjects()
             .subscribe(
                 projects => this.extractData(projects),
                 error => this.errorMessage = <any>error);
     }
 
-    getPopularProjects(){
+    getPopularProjects() {
         this.projectService.getPopularProjects()
             .subscribe(
                 projects => this.extractData(projects),

@@ -16,6 +16,8 @@
     <div *ngIf="projects && projects.length > 0" class="container">
         <ul class="project-list">
             <li *ngFor="let project of projects" class="project-item">
+                <img *ngIf="project.user.picture" src={{project.user.picture}}>
+
                 <h3><a routerLink="/project/{{project.id}}" routerLinkActive="active">
                     {{project.title}}
                 </a></h3>
@@ -29,7 +31,7 @@
                 <a routerLink="/profile/{{project.user_id}}" routerLinkActive="active">
                     {{project.user.name}}
                 </a>
-                <span> {{ project.created_at}} </span>
+                <span> {{ project.created_at | timeAgo}} </span>
                 <div>
                     <span>{{project.favorite_count}} Favorites</span>
                     <span>{{project.comment_count}} Comments</span>
