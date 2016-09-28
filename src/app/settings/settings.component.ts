@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProfileService} from "../services/profile.service";
 import {StateService} from "../services/state.service";
+import {ProjectService} from "../services/project.service";
 
 @Component({
     selector: 'app-settings',
@@ -10,12 +11,14 @@ import {StateService} from "../services/state.service";
 export class SettingsComponent implements OnInit {
     private errorMessage;
     private user;
+    private skills;
 
-    constructor(private profileService: ProfileService, private state: StateService) {
+    constructor(private profileService: ProfileService, private state: StateService, private projectService: ProjectService) {
     }
 
     ngOnInit() {
         this.getUser();
+        this.getSkills();
     }
 
     getUser() {
@@ -28,9 +31,19 @@ export class SettingsComponent implements OnInit {
                     }
                     user.skill = skills;
                     this.user = user;
-                    console.log(this.user);
                 },
                 error => this.errorMessage = <any>error);
+    }
+
+    getSkills() {
+        this.projectService.getSkills()
+            .subscribe(
+                skills => this.skills = skills,
+                error => this.errorMessage = <any>error);
+    }
+
+    onSelect(skill) {
+        this.addSkill(skill.name);
     }
 
     addSkill(skill) {

@@ -1,4 +1,6 @@
 <div *ngIf="project">
+    <a *ngIf="!isFavorite" (click)="addFavorite()">♥ Add to Favorites</a>
+    <a *ngIf="isFavorite" (click)="addFavorite()">♥ Remove Favorite</a>
     <div class="jumbotron-fluid">
         <div class="container">
             <h2 class="text-xs-center">{{project.title}}</h2>

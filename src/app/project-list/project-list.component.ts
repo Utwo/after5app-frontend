@@ -3,33 +3,75 @@ import {ProjectService} from "../services/project.service";
 
 @Component({
     selector: 'app-project-list',
-    templateUrl: './project-list.component.html'
+    templateUrl: './project-list.component.html',
 })
 export class ProjectListComponent implements OnInit {
-    errorMessage:string;
+    errorMessage: string;
     projects = [];
+    skills = [];
     page = {current_page: null, prev: null, next: null};
 
-    constructor(private projectService:ProjectService) {
+    constructor(private projectService: ProjectService) {
     }
 
     ngOnInit() {
         this.getProjects(1);
+        this.getSkills();
     }
 
     getProjects(page) {
         this.projectService.getProjects(page)
             .subscribe(
-                projects => {
-                    this.projects = projects.data;
-                    this.page = {
-                        current_page: projects.current_page,
-                        next: projects.next_page_url,
-                        prev: projects.prev_page_url
-                    }
-
-                },
+                projects => this.extractData(projects),
                 error => this.errorMessage = <any>error);
+    }
+
+    getSkills() {
+        this.projectService.getSkills()
+            .subscribe(
+                skills => this.skills = skills,
+                error => this.errorMessage = <any>error);
+    }
+
+    filterProjects(skill) {
+        this.projectService.filterBySkill(skill)
+            .subscribe(
+                projects => this.extractData(projects),
+                error => this.errorMessage = <any>error);
+    }
+
+    searchByName(name) {
+        this.projectService.searchByName(name)
+            .subscribe(
+                projects => this.extractData(projects),
+                error => this.errorMessage = <any>error);
+    }
+
+    getRecommendedProjects() {
+        this.projectService.getRecommendedProjects()
+            .subscribe(
+                projects => this.extractData(projects),
+                error => this.errorMessage = <any>error);
+    }
+
+    getPopularProjects() {
+        this.projectService.getPopularProjects()
+            .subscribe(
+                projects => this.extractData(projects),
+                error => this.errorMessage = <any>error);
+    }
+
+    extractData(projects) {
+        this.projects = projects.data;
+        this.page = {
+            current_page: projects.current_page,
+            next: projects.next_page_url,
+            prev: projects.prev_page_url
+        }
+    }
+
+    onSelect(skill) {
+        this.filterProjects(skill.id);
     }
 
     private prevPage() {

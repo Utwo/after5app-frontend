@@ -18,6 +18,8 @@ import {ProjectService} from "./services/project.service";
 import {CommentsComponent} from './comments/comments.component';
 import {SettingsComponent} from './settings/settings.component';
 import { ApplicationComponent } from './application/application.component';
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import { TimeAgoPipe } from './time-ago.pipe';
 
 @NgModule({
     declarations: [
@@ -31,7 +33,10 @@ import { ApplicationComponent } from './application/application.component';
         MyProjectsComponent,
         NavigationComponent, 
         CommentsComponent,
-        SettingsComponent, ApplicationComponent
+        SettingsComponent,
+        ApplicationComponent,
+        AutocompleteComponent,
+        TimeAgoPipe
     ],
     imports: [
         routing,

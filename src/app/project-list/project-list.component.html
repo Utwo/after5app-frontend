@@ -1,23 +1,50 @@
 <div class="jumbotron-fluid">
     <div class="container">
         <h2 class="text-xs-center">Projects</h2>
-    </div>
-</div>
-<div class="container container-small">
-    <ul *ngIf="projects" class="project-list">
-        <li *ngFor="let project of projects" class="project__item">
-            <h3><a routerLink="/project/{{project.id}}" routerLinkActive="active">
-                {{project.title}}
-            </a></h3>
-            <p>{{project.description}}</p>
-            <a routerLink="/profile/{{project.user_id}}" routerLinkActive="active">
-                {{project.user.name}}
-            </a>
-            <span> {{ project.created_at | date:"dd/MM/yyyy" }} </span>
-        </li>
-    </ul>
 
-    <button (click)="prevPage()" *ngIf="page.prev" class="btn btn-default">prev</button>
-    {{page.current_page}}
-    <button (click)="nextPage()" *ngIf="page.next" class="btn btn-default">next</button>
+        <label>Search
+        <input #search type="text" (keyup)="searchByName(search.value)">
+        </label>
+        <label>Filter
+        <app-autocomplete [skills]="skills" (onSelect)="onSelect($event)"></app-autocomplete>
+        </label>
+        <a (click)="getProjects(1)">Recent</a>
+        <a (click)="getPopularProjects()">Popular</a>
+        <a (click)="getRecommendedProjects()">Recommended</a>
+    </div>
+
+    <div *ngIf="projects && projects.length > 0" class="container">
+        <ul class="project-list">
+            <li *ngFor="let project of projects" class="project-item">
+                <img *ngIf="project.user.picture" src={{project.user.picture}}>
+
+                <h3><a routerLink="/project/{{project.id}}" routerLinkActive="active">
+                    {{project.title}}
+                </a></h3>
+                <p>{{project.description}}</p>
+                <ul *ngIf="project.position.length > 0">
+                    <li *ngFor="let position of project.position">
+                        {{position.skill.name}}
+                    </li>
+                </ul>
+
+                <a routerLink="/profile/{{project.user_id}}" routerLinkActive="active">
+                    {{project.user.name}}
+                </a>
+                <span> {{ project.created_at | timeAgo}} </span>
+                <div>
+                    <span>{{project.favorite_count}} Favorites</span>
+                    <span>{{project.comment_count}} Comments</span>
+                </div>
+            </li>
+        </ul>
+
+        <button (click)="prevPage()" [disabled]="!page.prev" class="btn btn-default">prev</button>
+        {{page.current_page}}
+        <button (click)="nextPage()" [disabled]="!page.next" class="btn btn-default">next</button>
+    </div>
+
+    <div *ngIf="projects.length === 0" class="container">
+        <p>No projects were found.</p>
+    </div>
 </div>

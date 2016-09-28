@@ -7,7 +7,7 @@
                 {{comment.user.name}}
             </a>
             <p>{{comment.text}}</p>
-            <span> {{ comment.created_at | date:"dd/MM/yyyy" }} </span>
+            <span> {{ comment.created_at | timeAgo}} </span>
         </li>
     </ul>
 

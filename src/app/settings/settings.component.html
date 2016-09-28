@@ -20,22 +20,12 @@
             </div>
         </div>
 
-        <label>Email
-            <input type="text" required name="email" [(ngModel)]="user.email" #email="ngModel">
-        </label>
-
-        <div *ngIf="email.errors && (email.dirty || email.touched)">
-            <div [hidden]="!email.errors.required">
-                Email is required
-            </div>
-        </div>
-
-        <label>Gravatar
-            <input type="text" name="picture" [(ngModel)]="user.picture">
+        <label>Workplace
+            <input type="text" name="workplace" [(ngModel)]="user.workplace">
         </label>
 
         <label>Website
-            <input type="text" name="website" [(ngModel)]="user.twitter">
+            <input type="text" name="website" [(ngModel)]="user.website">
         </label>
 
         <label>Twitter
@@ -43,10 +33,8 @@
         </label>
 
 
-        <label>Skills
-            <input type="text" name="skills" #skill>
-        </label>
-        <button type="button" (click)="addSkill(skill.value)">Add</button>
+        <label>Skills</label>
+        <app-autocomplete [skills]="skills" (onSelect)="onSelect($event)"></app-autocomplete>
         <ul>
             <li *ngFor="let skill of user.skill; let i = index">
                 {{skill}}

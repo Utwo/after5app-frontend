@@ -1,0 +1,9 @@
+<input type="text" [(ngModel)]="query" (keyup)=filter()>
+
+<div *ngIf="filteredList.length > 0">
+    <ul *ngFor="let skill of filteredList">
+        <li>
+            <a (click)="select(skill)">{{skill.name}}</a>
+        </li>
+    </ul>
+</div>
