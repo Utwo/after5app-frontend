@@ -1,9 +1,9 @@
 .project-list {
   list-style-type: none;
-  max-width: 600px;
   margin: 0 auto;
 }
 
-.project-item {
+.project__item {
   padding: 1.4em 0;
+  border-bottom: 2px solid $light-grey;
 }

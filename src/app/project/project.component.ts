@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "../services/project.service";
 import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from "rxjs";
 
 @Component({
     selector: 'app-project',
@@ -9,7 +10,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ProjectComponent implements OnInit {
     private project = null;
     private errorMessage:string;
-    //noinspection TypeScriptUnresolvedVariable
     private sub: Subscription;
 
     constructor(private route:ActivatedRoute, private projectService:ProjectService) {
@@ -32,7 +32,6 @@ export class ProjectComponent implements OnInit {
     }
 
     ngOnDestroy() {
-        //noinspection TypeScriptUnresolvedFunction
         this.sub.unsubscribe();
     }
 }

@@ -14,13 +14,52 @@
                 <button class="btn btn-outline-secondary btn-sm" *ngIf="!loggedIn" (click)="login()">Login</button>
 
                 <div *ngIf="loggedIn">
-                    <a routerLink="/profile/{{user.id}}" routerLinkActive="active">
-                        {{user.name}}
-                    </a>
-                    <a routerLink="/settings" routerLinkActive="active">
-                        Settings
-                    </a>
-                    <button class="btn btn-outline-secondary btn-sm" (click)="logout()">Logout</button>
+                    <div class="dropdown" [class.dropdown--activ]="isNotificationActiv">
+                        <span class="notification__icon"
+                              (click)="isNotificationActiv = !isNotificationActiv;">notif</span>
+                        <div class="dropdown__content container-fluid text-xs-left">
+                            <ol class="reset-list">
+                                <li class="notification__item row">
+                                    <div class="col-md-2"><img src="" width="25" height="25"/></div>
+                                    <div class="col-md-10">
+                                        <p>User1 a adaugat o aplicatie noua la proiectul <a href="#">Project1</a></p>
+                                        <small>one week ago</small>
+                                    </div>
+                                </li>
+                                <li class="notification__item row">
+                                    <div class="col-md-2"><img src="" width="25" height="25"/></div>
+                                    <div class="col-md-10">
+                                        <p>User1 a adaugat o aplicatie noua la proiectul <a href="#">Project1</a></p>
+                                        <small>one week ago</small>
+                                    </div>
+                                </li>
+                                <li class="notification__item row">
+                                    <div class="col-md-2"><img src="" width="25" height="25"/></div>
+                                    <div class="col-md-10">
+                                        <p>User1 a adaugat o aplicatie noua la proiectul <a href="#">Project1</a></p>
+                                        <small>one week ago</small>
+                                    </div>
+                                </li>
+                                <li class="notification__item row">
+                                    <div class="col-md-2"><img src="" width="25" height="25"/></div>
+                                    <div class="col-md-10">
+                                        <p>User1 a adaugat o aplicatie noua la proiectul <a href="#">Project1</a></p>
+                                        <small>one week ago</small>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="dropdown" [class.dropdown--activ]="isDropdownActiv">
+                        <span (click)="isDropdownActiv = !isDropdownActiv;">{{user.name}}</span>
+                        <div class="dropdown__content container-fluid text-xs-left">
+                            <ul class="row reset-list">
+                                <li class="col-md-12"><a routerLink="/profile/{{user.id}}">Profile</a></li>
+                                <li class="col-md-12"><a routerLink="/settings">Settings</a></li>
+                                <li class="col-md-12"><button class="btn btn-outline-secondary btn-sm" (click)="logout()">Logout</button></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
