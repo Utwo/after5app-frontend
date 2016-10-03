@@ -8,7 +8,6 @@ import {StateService} from "../services/state.service";
 })
 export class NavigationComponent implements OnInit {
 
-    private isNotificationActiv = false;
     private isDropDownActiv = false;
 
     constructor(private loginService: LoginService, private state: StateService) {

@@ -1,9 +1,35 @@
 .project-list {
-  list-style-type: none;
   margin: 0 auto;
 }
 
 .project__item {
-  padding: 1.4em 0;
-  border-bottom: 2px solid $light-grey;
+  padding: 3.6em 0;
+  //border-bottom: 2px solid $light-grey;
+  margin: 0 auto;
+  word-wrap: break-word;
+  max-width: 600px;
+}
+
+.project__title {
+  margin-bottom: 1.4em;
+}
+
+.project__date {
+  font-size: .9rem;
+}
+
+.project__item p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project__skill-item {
+  font-family: Consolas, monospace;
+  font-size: 1em;
+}
+
+.project__subinfo {
+  border-top: 2px solid $light-grey;
+  padding-top: .8em;
 }

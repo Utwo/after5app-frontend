@@ -1,3 +1,8 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
+
+.btn-gradient-primary {
+  background: linear-gradient(135deg, darken($brand-color, 5) 0%, darken($brand-color, 5) 53%, lighten($brand-color, 2) 56%, lighten($brand-color, 2) 100%);
+  border: #333;
+}

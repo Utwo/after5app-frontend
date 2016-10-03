@@ -1,50 +1,68 @@
 <div class="jumbotron-fluid">
     <div class="container">
-        <h2 class="text-xs-center">Projects</h2>
-
-        <label>Search
-        <input #search type="text" (keyup)="searchByName(search.value)">
-        </label>
-        <label>Filter
-        <app-autocomplete [skills]="skills" (onSelect)="onSelect($event)"></app-autocomplete>
-        </label>
-        <a (click)="getProjects(1)">Recent</a>
-        <a (click)="getPopularProjects()">Popular</a>
-        <a (click)="getRecommendedProjects()">Recommended</a>
+        <h2 class="text-xs-center m-y-3">Find your perfect project</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-inline">
+                    <app-autocomplete [skills]="skills" (onSelect)="onSelect($event)"></app-autocomplete>
+                </div>
+            </div>
+            <div class="col-md-6 text-md-right">
+                <a (click)="getProjects(1)">Recent</a>
+                <a (click)="getPopularProjects()">Popular</a>
+                <a (click)="getRecommendedProjects()">Recommended</a>
+            </div>
+        </div>
     </div>
-
-    <div *ngIf="projects && projects.length > 0" class="container">
-        <ul class="project-list">
-            <li *ngFor="let project of projects" class="project-item">
-                <img *ngIf="project.user.picture" src={{project.user.picture}}>
-
-                <h3><a routerLink="/project/{{project.id}}" routerLinkActive="active">
-                    {{project.title}}
-                </a></h3>
-                <p>{{project.description}}</p>
-                <ul *ngIf="project.position.length > 0">
-                    <li *ngFor="let position of project.position">
-                        {{position.skill.name}}
-                    </li>
-                </ul>
-
-                <a routerLink="/profile/{{project.user_id}}" routerLinkActive="active">
+</div>
+<div *ngIf="projects && projects.length > 0" class="container">
+    <ul class="project-list reset-list">
+        <li *ngFor="let project of projects" class="project__item">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="project__title title-border"><a routerLink="/project/{{project.id}}"
+                                                               routerLinkActive="active">
+                        {{project.title}}
+                    </a></h3>
+                </div>
+                <div class="col-md-4 text-md-right">
+                    <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
+                </div>
+            </div>
+            <p>{{project.description}}</p>
+            <ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
+                <li class="list-inline-item btn btn-sm btn-info btn-gradient-primary project__skill-item"
+                    *ngFor="let position of project.position">
+                    {{position.skill.name}}
+                </li>
+            </ul>
+            <br>
+            <div class="row project__subinfo">
+                <div class="col-md-6">
+                    <img class="profile-img" *ngIf="project.user.picture" src="{{project.user.picture+'?s=20'}}"><a
+                        routerLink="/profile/{{project.user_id}}" routerLinkActive="active">
                     {{project.user.name}}
                 </a>
-                <span> {{ project.created_at | timeAgo}} </span>
-                <div>
-                    <span>{{project.favorite_count}} Favorites</span>
-                    <span>{{project.comment_count}} Comments</span>
                 </div>
-            </li>
-        </ul>
+                <div class="col-md-6 text-xs-right">
+                    <span title="favorites" class="btn btn-outline-secondary btn-sm"><svg
+                            class="icon"><use xlink:href="#icon-favorite"></use></svg> {{project.favorite_count}}</span>
+                    <span title="comments" class="btn btn-outline-secondary btn-sm"><svg
+                            class="icon"><use
+                            xlink:href="#icon-pacman"></use></svg> {{project.comment_count}}</span>
+                </div>
+            </div>
+        </li>
+        <li class="text-xs-center">
+            <a class="btn btn-primary" href="">Start your project</a>
+        </li>
+    </ul>
 
-        <button (click)="prevPage()" [disabled]="!page.prev" class="btn btn-default">prev</button>
-        {{page.current_page}}
-        <button (click)="nextPage()" [disabled]="!page.next" class="btn btn-default">next</button>
-    </div>
+    <button (click)="prevPage()" [disabled]="!page.prev" class="btn btn-default">prev</button>
+    {{page.current_page}}
+    <button (click)="nextPage()" [disabled]="!page.next" class="btn btn-default">next</button>
+</div>
 
-    <div *ngIf="projects.length === 0" class="container">
-        <p>No projects were found.</p>
-    </div>
+<div *ngIf="projects.length === 0" class="container">
+    <p>No projects were found.</p>
 </div>

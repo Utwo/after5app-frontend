@@ -1,9 +1,12 @@
-<input type="text" [(ngModel)]="query" (keyup)=filter()>
+<label for="filter">Filter</label>
+<div class="select-suggestion">
+    <input class="form-control" id="filter" type="text" [(ngModel)]="query" (keyup)=filter()>
 
-<div *ngIf="filteredList.length > 0">
-    <ul *ngFor="let skill of filteredList">
-        <li>
-            <a (click)="select(skill)">{{skill.name}}</a>
-        </li>
-    </ul>
+    <div class="select-suggestion__list" *ngIf="filteredList.length > 0">
+        <ul class="reset-list">
+            <li *ngFor="let skill of filteredList">
+                <a (click)="select(skill)">{{skill.name}}</a>
+            </li>
+        </ul>
+    </div>
 </div>

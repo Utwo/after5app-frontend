@@ -1,0 +1,13 @@
+.select-suggestion {
+  position: relative;
+  display: inline-block;
+}
+
+.select-suggestion__list {
+  position: absolute;
+  z-index: 999;
+  background: $light-grey;
+  padding: .6em;
+  border-radius: 6px;
+  width: 100%;
+}

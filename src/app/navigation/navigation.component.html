@@ -5,20 +5,26 @@
                 <h1 class="header-logo"><strong>Startupper</strong></h1>
             </div>
             <div class="col-md-7">
-                <nav class="navigation">
+                <nav class="navigation form-inline">
                     <a class="navigation-item" routerLink="/" routerLinkActive="active">Projects</a>
                     <a class="navigation-item" routerLink="/about" routerLinkActive="active">About</a>
+                    <input class="form-control form-control-sm" #search type="text" (keyup)="searchByName(search.value)"
+                           placeholder="Search project">
                 </nav>
             </div>
             <div class="col-md-3 text-xs-right">
                 <button class="btn btn-outline-secondary btn-sm" *ngIf="!loggedIn" (click)="login()">Login</button>
-
                 <div *ngIf="loggedIn">
-                    <div class="dropdown" [class.dropdown--activ]="isNotificationActiv">
-                        <span class="notification__icon"
-                              (click)="isNotificationActiv = !isNotificationActiv;">notif</span>
+                    <div class="dropdown" [class.dropdown--activ]="isDropdownActiv">
+                        <span (click)="isDropdownActiv = !isDropdownActiv;"><svg class="icon"><use xlink:href="#icon-rocket22"></use></svg> {{user.name}}</span>
                         <div class="dropdown__content container-fluid text-xs-left">
-                            <ol class="reset-list">
+                            <ul class="row reset-list text-xs-center">
+                                <li class="col-md-12"><a routerLink="/profile/{{user.id}}">Profile</a></li>
+                                <li class="col-md-12"><a routerLink="/settings">Settings</a></li>
+                                <li class="col-md-12"><a href="#" (click)="logout()">Logout</a></li>
+                            </ul>
+                            <hr>
+                            <ol class="reset-list notification">
                                 <li class="notification__item row">
                                     <div class="col-md-2"><img src="" width="25" height="25"/></div>
                                     <div class="col-md-10">
@@ -48,16 +54,6 @@
                                     </div>
                                 </li>
                             </ol>
-                        </div>
-                    </div>
-                    <div class="dropdown" [class.dropdown--activ]="isDropdownActiv">
-                        <span (click)="isDropdownActiv = !isDropdownActiv;">{{user.name}}</span>
-                        <div class="dropdown__content container-fluid text-xs-left">
-                            <ul class="row reset-list">
-                                <li class="col-md-12"><a routerLink="/profile/{{user.id}}">Profile</a></li>
-                                <li class="col-md-12"><a routerLink="/settings">Settings</a></li>
-                                <li class="col-md-12"><button class="btn btn-outline-secondary btn-sm" (click)="logout()">Logout</button></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
