@@ -1,9 +1,9 @@
 <div *ngIf="project">
-    <a *ngIf="!isFavorite" (click)="addFavorite()">♥ Add to Favorites</a>
-    <a *ngIf="isFavorite" (click)="addFavorite()">♥ Remove Favorite</a>
     <div class="jumbotron-fluid">
         <div class="container">
             <h2 class="text-xs-center">{{project.title}}</h2>
+            <a *ngIf="!isFavorite" (click)="addFavorite()">♥ Add to Favorites</a>
+            <a *ngIf="isFavorite" (click)="addFavorite()">♥ Remove Favorite</a>
         </div>
     </div>
     <div class="container">
@@ -25,5 +25,16 @@
             <app-application [project]="project"></app-application>
         </div>
         <app-comments [project_id]="project.id"></app-comments>
+
+        <section *ngIf="related && related.length > 0">
+            <h3>Related Projects</h3>
+            <ul>
+                <li *ngFor="let project of related">
+                    <a routerLink="/project/{{project.id}}">
+                        {{project.title}}
+                    </a>
+                </li>
+            </ul>
+        </section>
     </div>
 </div>

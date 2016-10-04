@@ -42,6 +42,9 @@ $enable-flex: true;
 @import "components/projects";
 @import "components/notification";
 @import "components/dropdown";
+@import "components/profile-img";
+@import "components/icons";
+@import "components/select-suggestion";
 
 // 6. Page-specific styles
 @import "pages/home";

@@ -35,7 +35,7 @@ export class ProjectService {
         });
         let options = new RequestOptions({headers: headers});
 
-        return this.http.get(this.state.getUrl()  + '/project?recommended&with[]=user&with[]=position.skill', options)
+        return this.http.get(this.state.getUrl() + '/project?recommended&with[]=user&with[]=position.skill', options)
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -47,9 +47,10 @@ export class ProjectService {
             .catch(this.handleError);
     }
 
-    public filterBySkill(skill) {
+    public filterBySkill(skill, id = null) {
+        let project_id = id ? '&id=!' + id : '';
         return this.http.get(this.state.getUrl() +
-            '/project?position:skill_id=' + skill + '&with[]=user&with[]=position.skill')
+            `/project?position:skill_id=${skill}&with[]=user&with[]=position.skill${project_id}`)
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -109,7 +110,7 @@ export class ProjectService {
         });
         let options = new RequestOptions({headers: headers});
 
-        return this.http.post(this.state.getUrl() + '/project/'+project_id+'/favorite', "", options)
+        return this.http.post(this.state.getUrl() + '/project/' + project_id + '/favorite', "", options)
             .map(this.extractData)
             .catch(this.handleError);
     }
