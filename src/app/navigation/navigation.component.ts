@@ -8,10 +8,12 @@ import {StateService} from "../services/state.service";
 })
 export class NavigationComponent implements OnInit {
 
-    constructor(private loginService:LoginService, private state:StateService) {
+    private isDropDownActiv = false;
+
+    constructor(private loginService: LoginService, private state: StateService) {
     }
 
-    get user(){
+    get user() {
         return this.state.getUser();
     }
 
@@ -26,8 +28,8 @@ export class NavigationComponent implements OnInit {
         this.loginService.login();
     }
 
-    logout(){
+    logout() {
         this.loginService.logout();
     }
-    
+
 }
