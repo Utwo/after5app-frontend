@@ -1,16 +1,19 @@
 <section>
-    <h3>Comments</h3>
-    <ul *ngIf="comments && comments.length > 0">
-        <li *ngFor="let comment of comments">
-            <img *ngIf="comment.user.picture" src="{{comment.user.picture}}?s=20">
-            <a routerLink="/profile/{{comment.user_id}}" routerLinkActive="active">
-                {{comment.user.name}}
-            </a>
-            <p>{{comment.text}}</p>
-            <span> {{ comment.created_at | timeAgo}} </span>
-        </li>
-    </ul>
+	<ul *ngIf="comments && comments.length > 0" class="reset-list">
+		<li *ngFor="let comment of comments" class="comment">
+			<div class="comment__left-side p-r-1">
+				<img *ngIf="comment.user.picture" class="profile-img" src="{{comment.user.picture}}?s=30">
+			</div>
+			<div class="comment__content">
+				<a routerLink="/profile/{{comment.user_id}}" routerLinkActive="active">{{comment.user.name}}</a> &sdot; <span
+							class="text-muted"> {{ comment.created_at | timeAgo}} </span>
+				<p>{{comment.text}}</p>
+			</div>
+		</li>
+	</ul>
 
-    <textarea #text></textarea>
-    <button (click)="addComment(text.value)">Add comment</button>
+	<div class="form-inline">
+		<input class="form-control" type="text" #text>
+		<button (click)="addComment(text.value)" class="btn btn-info">Add comment</button>
+	</div>
 </section>

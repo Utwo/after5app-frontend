@@ -20,7 +20,7 @@
         <li *ngFor="let project of projects" class="project__item">
             <div class="row">
                 <div class="col-md-8">
-                    <h3 class="project__title title-border"><a routerLink="/project/{{project.id}}"
+                    <h3 class="project__title title-border m-b-2"><a routerLink="/project/{{project.id}}"
                                                                routerLinkActive="active">
                         {{project.title}}
                     </a></h3>
@@ -45,10 +45,10 @@
                 </a>
                 </div>
                 <div class="col-md-6 text-xs-right">
-                    <span title="favorites" class="btn btn-outline-secondary btn-sm"><svg
-                            class="icon"><use xlink:href="#icon-favorite"></use></svg> {{project.favorite_count}}</span>
-                    <span title="comments" class="btn btn-outline-secondary btn-sm"><svg
-                            class="icon"><use
+                    <span class="m-r-1" title="favorites"><svg
+                            class="icon text-danger"><use xlink:href="#icon-favorite"></use></svg> {{project.favorite_count}}</span>
+                    <span title="comments"><svg
+                            class="icon text-warning"><use
                             xlink:href="#icon-pacman"></use></svg> {{project.comment_count}}</span>
                 </div>
             </div>
