@@ -1,12 +1,14 @@
 @charset "UTF-8";
 
 // 1. Configuration and helpers
-@import 'abstracts/variables';
 
 // 2. Vendors
 // Core variables and mixins
 @import "vendor/bootstrap/variables";
+@import 'abstracts/variables';
+
 $enable-flex: true;
+
 @import "vendor/bootstrap/mixins";
 
 // Reset and dependencies
