@@ -5,7 +5,7 @@
 				<img *ngIf="comment.user.picture" class="profile-img" src="{{comment.user.picture}}?s=30">
 			</div>
 			<div class="comment__content">
-				<a routerLink="/profile/{{comment.user_id}}" routerLinkActive="active">{{comment.user.name}}</a> &sdot; <span
+				<a routerLink="/profile/{{comment.user_id}}">{{comment.user.name}}</a> &sdot; <span
 							class="text-muted"> {{ comment.created_at | timeAgo}} </span>
 				<p>{{comment.text}}</p>
 			</div>

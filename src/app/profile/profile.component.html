@@ -81,7 +81,7 @@
 					<h5 class="title-border p-b-1">My Applications</h5>
 					<ul *ngIf="applications">
 						<li *ngFor="let application of applications">
-							<a routerLink="/project/{{application.position.project.id}}" routerLinkActive="active">
+							<a routerLink="/project/{{application.position.project.id}}">
 								{{application.position.project.title}}
 							</a>
 							<div>
