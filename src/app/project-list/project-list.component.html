@@ -63,6 +63,9 @@
     <button (click)="nextPage()" [disabled]="!page.next" class="btn btn-default">next</button>
 </div>
 
-<div *ngIf="projects.length === 0" class="container">
-    <p>No projects were found.</p>
+<div *ngIf="projects.length === 0" class="container-small m-x-auto text-xs-center m-y-3">
+    <span class="text-primary display-3">&#9785;</span>
+    <h5 class="text-muted text-uppercase">No projects were found</h5>
+    <hr>
+    <a href="" class="btn btn-primary">Be the first to start a project</a>
 </div>
