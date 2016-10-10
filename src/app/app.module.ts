@@ -21,6 +21,8 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { TimeAgoPipe } from './time-ago.pipe';
 import { AddProjectComponent } from './add-project/add-project.component';
 import { SearchComponent } from './search/search.component';
+import { FooterComponent } from './footer/footer.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +39,7 @@ import { SearchComponent } from './search/search.component';
         ApplicationComponent,
         AutocompleteComponent,
         TimeAgoPipe,
-        AddProjectComponent, SearchComponent
+        AddProjectComponent, SearchComponent, FooterComponent, NotificationsComponent
     ],
     imports: [
         routing,
