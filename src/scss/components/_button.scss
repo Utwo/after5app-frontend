@@ -6,3 +6,11 @@
   background: linear-gradient(135deg, darken($brand-primary, 5) 0%, darken($brand-primary, 5) 53%, lighten($brand-primary, 2) 56%, lighten($brand-primary, 2) 100%);
   border: #333;
 }
+
+.btn-link-primary{
+  border-bottom: 4px solid $brand-primary;
+}
+
+.btn-link-info {
+  border-bottom: 4px solid $brand-info;
+}

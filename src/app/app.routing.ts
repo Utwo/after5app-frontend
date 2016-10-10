@@ -5,7 +5,6 @@ import { ModuleWithProviders } from '@angular/core';
 import {ProjectListComponent} from "./project-list/project-list.component";
 import {ProjectComponent} from "./project/project.component";
 import {AboutComponent} from "./about/about.component";
-import {MyProjectsComponent} from "./my-projects/my-projects.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {SettingsComponent} from "./settings/settings.component";
 import {AddProjectComponent} from "./add-project/add-project.component";
