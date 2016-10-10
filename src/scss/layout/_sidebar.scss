@@ -1,5 +1,7 @@
 .sidebar {
   background: $brand-info;
+  background: linear-gradient(to top, #1CD8D2 , #76e8ca);
+  background: linear-gradient(to top, darken($brand-info, 7%) , lighten($brand-info, 7%));
   color: #fff;
   border-radius: $border-radius-lg;
   margin-top: -4rem;
