@@ -4,7 +4,7 @@
 
     <div class="select-suggestion__list" *ngIf="filteredList.length > 0">
         <ul class="reset-list">
-            <li *ngFor="let skill of filteredList">
+            <li *ngFor="let skill of filteredList" class="select-suggestion__item">
                 <a (click)="select(skill)">{{skill.name}}</a>
             </li>
         </ul>

@@ -6,8 +6,27 @@
 .select-suggestion__list {
   position: absolute;
   z-index: 999;
-  background: $light-grey;
-  padding: .6em;
-  border-radius: 6px;
+  background: $brand-primary;
+  border-radius: $border-radius-lg;
   width: 100%;
+  color: #fff;
+  margin-top: .2rem;
+}
+
+.select-suggestion__list a{
+  color: #fff;
+}
+
+.select-suggestion__item{
+  transition: .3s all ease-in-out;
+  padding: .5rem .6rem;
+  border-bottom: 1px dashed lighten($brand-primary, 5%);
+}
+
+.select-suggestion__item:last-child{
+  border-bottom: 0 none;
+}
+
+.select-suggestion__item:hover{
+  background: $brand-info;
 }

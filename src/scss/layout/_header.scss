@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 
 .header-site {
-  background: $brand-color;
+  background: $brand-primary;
   padding: 1.4em 0;
   color: #fff;
 }
@@ -29,5 +29,14 @@
   width: 3px;
   top: 0;
   right: 0;
-  border-radius: 2px;
+  border-radius: $border-radius-sm;
+}
+
+.header__search-form{
+  border-radius: 12px;
+  background: darken($brand-primary, 6%);
+}
+
+.header__search-form::placeholder{
+  color: #fff;
 }

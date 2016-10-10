@@ -2,3 +2,83 @@
 //
 // Copy variables from `_variables.scss` to this file to override default values
 // without modifying source files.
+
+// Colors
+$turcoaz3: #6fffe9;
+$turcoaz: #84dcc6;
+$turcoaz4: #5bc0be;
+
+$turcoaz1: #a5ffd6;
+
+$rosu1: #e63946;
+$blue: #456990;
+$blue1: #1c2541;
+
+//Secondary
+$roz1: #ffa69e;
+$turcoaz: #84dcc6;
+$turcoaz2: #a8dadc;
+$roz: #f45b69;
+$rosu: #ff686b;
+
+$brand-primary:             #495fff;
+$brand-success:             #01FF70;
+$brand-info:                #8ee3ce;
+$brand-warning:             #ff851b;
+$brand-danger:              #ff4136;
+
+$gray-dark:                 #373a3c;
+$gray:                      #55595c;
+$gray-light:                #818a91;
+$gray-lighter:              #eceeef;
+$gray-lightest:             #f7f7f9;
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+$enable-flex:               true;
+$enable-rounded:            true;
+$enable-shadows:            false;
+$enable-gradients:          false;
+$enable-transitions:        true;
+$enable-hover-media-query:  false;
+$enable-grid-classes:       true;
+$enable-print-styles:       true;
+
+// Heading size
+$font-size-h1: 2.3rem;
+$font-size-h2: 1.7rem;
+$font-size-h3: 1.45rem;
+$font-size-h4: 1.2rem;
+$font-size-h5: 1.15rem;
+$font-size-h6: 1rem;
+
+// Body
+//
+// Settings for the `<body>` element.
+$font-size-base: 1.03rem;
+$body-bg: #fff;
+$body-color: $gray-dark;
+$font-family-sans-serif: 'Roboto';
+
+//font: normal1.2em/1.6 'Open Sans', sans-serif;
+//font: normal 1.03em/1.6 'Roboto', sans-serif;
+//font: normal 1.2em/1.6 'Lato', sans-serif;
+//font: normal 1.2em/1.6 'Source Sans Pro', sans-serif;
+//font: normal 1em/1.6 'Raleway', sans-serif;
+//font: normal 1.1em/1.6 'PT Sans', sans-serif;
+//font: normal 1.2em/1.6 'Noto Sans', sans-serif;
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+        sm: 576px,
+        md: 720px,
+        lg: 940px,
+        xl: 1240px
+);
+
+// Specify the gutters.
+//$grid-gutter-width: 30px;

@@ -4,10 +4,9 @@
 
 // 2. Vendors
 // Core variables and mixins
+@import "vendor/bootstrap/custom";
 @import "vendor/bootstrap/variables";
 @import 'abstracts/variables';
-
-$enable-flex: true;
 
 @import "vendor/bootstrap/mixins";
 
@@ -35,6 +34,7 @@ $enable-flex: true;
 // 4. Layout-related sections
 @import  "layout/header";
 @import  "layout/footer";
+@import  "layout/sidebar";
 @import  "layout/container";
 
 // 5. Components

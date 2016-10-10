@@ -1,7 +1,7 @@
 <div *ngIf="user">
 	<div class="jumbotron-fluid">
 		<div class="container">
-			<h3 class="m-y-0"><img *ngIf="user.picture" class="profile-img" src="{{user.picture}}?s=40"> {{user.name}}</h3>
+			<h2 class="m-y-0"><img *ngIf="user.picture" class="profile-img" src="{{user.picture}}?s=40"> {{user.name}}</h2>
 		</div>
 	</div>
 
@@ -10,13 +10,13 @@
 			<div class="col-md-8">
 
 				<section *ngIf="user.project.length > 0" class="m-y-3">
-					<h5 *ngIf="!isMe" class="title-border p-b-1">{{user.name}}'s projects</h5>
-					<h5 *ngIf="isMe" class="title-border p-b-1">My projects</h5>
+					<h3 *ngIf="!isMe" class="title-border title-border--green p-b-1">{{user.name}}'s projects</h3>
+					<h3 *ngIf="isMe" class="title-border title-border--green p-b-1">My projects</h3>
 					<ul class="row reset-list">
 						<li *ngFor="let project of user.project" class="col-md-6">
-							<h5 class="project__title"><a routerLink="/project/{{project.id}}">
+							<h4 class="project__title"><a routerLink="/project/{{project.id}}">
 								{{project.title}}
-							</a></h5>
+							</a></h4>
 							<i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
 							<p>{{project.description | slice:0:40 }}</p>
 							<!--<ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
@@ -30,12 +30,12 @@
 				</section>
 
 				<section *ngIf="user.favorite.length > 0" class="m-y-3">
-					<h5 class="title-border p-b-1">Favorite projects</h5>
+					<h3 class="title-border title-border--green p-b-1">Favorite projects</h3>
 					<ul class="row reset-list">
 						<li *ngFor="let project of user.favorite" class="col-md-4">
-							<h5 class="project__title"><a routerLink="/project/{{project.id}}">
+							<h4 class="project__title"><a routerLink="/project/{{project.id}}">
 								{{project.title}}
-							</a></h5>
+							</a></h4>
 							<i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
 							<p>{{project.description | slice:0:40 }}</p>
 							<!--<ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
@@ -56,42 +56,36 @@
 			</div>
 
 			<div class="col-md-4">
+				<div class="sidebar p-a-2">
+					<section *ngIf="user.skill.length > 0">
+							<h3 class="title-border p-b-1">About</h3>
+							<ol class="reset-list">
+								<li *ngIf="user.website"><a href={{user.website}} target="_blank">{{user.website}}</a></li>
+								<li *ngIf="user.twitter"><a href="https://twitter.com/{{user.twitter}}"
+																						target="_blank">@{{user.twitter}}</a></li>
+								<li *ngIf="user.workplace">{{user.workplace}}</li>
+							</ol>
+						<div class="m-t-2">
+							<h3 class="title-border p-b-1">Skills</h3>
+							<ul class="list-inline">
+								<li *ngFor="let skill of user.skill" class="list-inline-item btn btn-sm btn-info btn-gradient-primary">
+									<strong>{{skill.name}}</strong>
+								</li>
+							</ul>
+						</div>
+					</section>
 
-				<section *ngIf="user.skill.length > 0" class="m-y-3">
-					<div class="m-y-2">
-						<h5 class="title-border p-b-1">About</h5>
-						<ol class="reset-list">
-							<li *ngIf="user.website"><a href={{user.website}} target="_blank">{{user.website}}</a></li>
-							<li *ngIf="user.twitter"><a href="https://twitter.com/{{user.twitter}}"
-																					target="_blank">@{{user.twitter}}</a></li>
-							<li *ngIf="user.workplace">{{user.workplace}}</li>
-						</ol>
-					</div>
-					<div class="m-y-2">
-						<h5 class="title-border p-b-1">Skills</h5>
-						<ul class="list-inline">
-							<li *ngFor="let skill of user.skill" class="list-inline-item btn btn-sm btn-info btn-gradient-primary">
-								<strong>{{skill.name}}</strong>
+					<section *ngIf="isMe" class="m-t-2">
+						<h3 class="title-border p-b-1">My Applications</h3>
+						<ul *ngIf="applications">
+							<li *ngFor="let application of applications">
+								<a routerLink="/project/{{application.position.project.id}}">
+									{{application.position.project.title}}
+								</a> <span *ngIf="application.position.status">Accepted</span> <span *ngIf="!application.position.status">Pending</span>
 							</li>
 						</ul>
-					</div>
-				</section>
-
-				<section *ngIf="isMe" class="m-y-3">
-					<h5 class="title-border p-b-1">My Applications</h5>
-					<ul *ngIf="applications">
-						<li *ngFor="let application of applications">
-							<a routerLink="/project/{{application.position.project.id}}">
-								{{application.position.project.title}}
-							</a>
-							<div>
-								Status:
-								<span *ngIf="application.position.status">Accepted</span>
-								<span *ngIf="!application.position.status">Pending</span>
-							</div>
-						</li>
-					</ul>
-				</section>
+					</section>
+				</div>
 			</div>
 		</div>
 	</div>
