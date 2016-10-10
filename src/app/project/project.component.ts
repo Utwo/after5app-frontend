@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "../services/project.service";
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from "rxjs";
+import {StateService} from "../services/state.service";
 
 @Component({
     selector: 'app-project',
@@ -14,7 +15,7 @@ export class ProjectComponent implements OnInit {
     private sub: Subscription;
     private isFavorite = false;
 
-    constructor(private route: ActivatedRoute, private projectService: ProjectService) {
+    constructor(private route: ActivatedRoute, private projectService: ProjectService, private state: StateService) {
     }
 
     ngOnInit() {
@@ -29,7 +30,12 @@ export class ProjectComponent implements OnInit {
             .subscribe(
                 project => {
                     this.project = project.data[0];
-                    this.getRelatedProjects();
+                    for (let user of this.project.favorite) {
+                        if (user.id === this.state.getUser().id) {
+                            this.isFavorite = true;
+                            break;
+                        }
+                    }
                 },
                 error => this.errorMessage = <any>error);
     }
@@ -37,7 +43,7 @@ export class ProjectComponent implements OnInit {
     addFavorite() {
         this.projectService.addFavorite(this.project.id)
             .subscribe(
-                data => this.isFavorite = true,
+                data => this.isFavorite = !this.isFavorite,
                 error => this.errorMessage = <any>error);
     }
 

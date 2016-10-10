@@ -8,11 +8,14 @@ import {AboutComponent} from "./about/about.component";
 import {MyProjectsComponent} from "./my-projects/my-projects.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {SettingsComponent} from "./settings/settings.component";
+import {AddProjectComponent} from "./add-project/add-project.component";
 
 const appRoutes:Routes = [
     {path: '', component: ProjectListComponent},
     {path: 'about', component: AboutComponent},
+    {path: 'home', component: HomeComponent},
     {path: 'project/:id', component: ProjectComponent},
+    {path: 'add-project', component: AddProjectComponent},
     {path: 'profile/:id', component: ProfileComponent},
     {path: 'settings', component: SettingsComponent},
     {path: '**', component: NotFoundComponent}
