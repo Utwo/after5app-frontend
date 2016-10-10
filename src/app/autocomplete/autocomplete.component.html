@@ -1,11 +1,13 @@
-<label for="filter">Filter</label>
 <div class="select-suggestion">
-    <input class="form-control" id="filter" type="text" [(ngModel)]="query" (keyup)=filter()>
-
-    <div class="select-suggestion__list" *ngIf="filteredList.length > 0">
-        <ul class="reset-list">
+    <div class="form-inline">
+        <div class="form-group btn btn-primary btn-sm">
+            <label for="filter" class="m-x-1">Filter by skill </label>
+            <input class="form-control" id="filter" type="text" placeholder="javascript" [(ngModel)]="query"
+                   (keyup)=filter()>
+        </div>
+        <ul class="reset-list select-suggestion__list" *ngIf="filteredList.length > 0">
             <li *ngFor="let skill of filteredList" class="select-suggestion__item">
-                <a (click)="select(skill)">{{skill.name}}</a>
+                <a (click)="select(skill)" class="d-block">{{skill.name}}</a>
             </li>
         </ul>
     </div>

@@ -6,11 +6,16 @@
 .select-suggestion__list {
   position: absolute;
   z-index: 999;
-  background: $brand-primary;
+  //background: $brand-primary;
+  background: linear-gradient(to bottom, lighten($brand-primary, 5), darken($brand-primary, 5));
   border-radius: $border-radius-lg;
+  border: 1px solid $brand-primary;
   width: 100%;
   color: #fff;
   margin-top: .2rem;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, .3);
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .select-suggestion__list a{
@@ -20,11 +25,25 @@
 .select-suggestion__item{
   transition: .3s all ease-in-out;
   padding: .5rem .6rem;
-  border-bottom: 1px dashed lighten($brand-primary, 5%);
+  border-bottom: 1px dashed lighten($brand-primary, 3%);
 }
 
 .select-suggestion__item:last-child{
   border-bottom: 0 none;
+}
+
+.select-suggestion__list::-webkit-scrollbar {
+  width: 6px;
+  background-color: #f5f5f5;
+}
+
+.select-suggestion__list::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0, .4);
+}
+
+.select-suggestion__list::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
 }
 
 .select-suggestion__item:hover{

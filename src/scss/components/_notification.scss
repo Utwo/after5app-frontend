@@ -1,4 +1,9 @@
 .notification__icon {
+  border-radius: 16px;
+  font-size: 1.6rem;
+  background: #8ee3ce;
+  padding: .3rem;
+  box-shadow: -1px 1px 1px 1px darken($brand-primary, 5%);
 }
 
 .notification__item {
