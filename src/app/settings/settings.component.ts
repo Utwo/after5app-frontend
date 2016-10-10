@@ -29,8 +29,8 @@ export class SettingsComponent implements OnInit {
                     for (let skill of user.skill) {
                         skills.push(skill.name);
                     }
-                    user.skill = skills;
                     this.user = user;
+                    this.user.skill = skills;
                 },
                 error => this.errorMessage = <any>error);
     }
