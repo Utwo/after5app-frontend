@@ -8,9 +8,9 @@
                 </div>
             </div>
             <div class="col-md-6 text-md-right">
-                <a (click)="getProjects(1)">Recent</a>
-                <a (click)="getPopularProjects()">Popular</a>
-                <a (click)="getRecommendedProjects()">Recommended</a>
+                <a href="#" (click)="getProjects(1)" class="btn font-weight-bold btn-link-info">Recent</a>
+                <a href="#" (click)="getPopularProjects()" class="btn font-weight-bold m-l-1">Popular</a>
+                <a href="#" (click)="getRecommendedProjects()" class="btn font-weight-bold m-l-1">Recommended</a>
             </div>
         </div>
     </div>
@@ -53,9 +53,6 @@
                             xlink:href="#icon-pacman"></use></svg> {{project.comment_count}}</span>
                 </div>
             </div>
-        </li>
-        <li class="text-xs-center">
-            <a class="btn btn-primary" href="">Start your project</a>
         </li>
     </ul>
 

@@ -15,7 +15,7 @@
                 <button class="btn btn-outline-secondary btn-sm" *ngIf="!loggedIn" (click)="login()">Login</button>
                 <div *ngIf="loggedIn">
                     <div class="dropdown" [class.dropdown--activ]="isDropdownActiv">
-                        <span (click)="isDropdownActiv = !isDropdownActiv;"><svg class="icon"><use xlink:href="#icon-rocket22"></use></svg> {{user.name}}</span>
+                        <span (click)="isDropdownActiv = !isDropdownActiv;"><svg class="icon notification__icon"><use xlink:href="#icon-rocket22"></use></svg> {{user.name}}</span>
                         <div class="dropdown__content container-fluid text-xs-left">
                             <ul class="row reset-list text-xs-center">
                                 <li class="col-md-12"><a routerLink="/profile/{{user.id}}">Profile</a></li>
