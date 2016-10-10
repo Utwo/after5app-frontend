@@ -1,0 +1,18 @@
+<input class="form-control form-control-sm header__search-form" #search type="text"
+       (keyup)="searchByName(search.value)" placeholder="Search project">
+
+<div *ngIf="projects">
+    <p *ngIf="projects.length === 0">
+        No projects were found
+    </p>
+    <ul *ngIf="projects.length > 0">
+        <li *ngFor="let project of projects">
+            <a routerLink="/project/{{project.id}}" (click)="removeQuery(search)">
+                {{project.title}}
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+

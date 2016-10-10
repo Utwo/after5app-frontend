@@ -40,13 +40,6 @@ export class ProjectListComponent implements OnInit {
                 error => this.errorMessage = <any>error);
     }
 
-    searchByName(name) {
-        this.projectService.searchByName(name)
-            .subscribe(
-                projects => this.extractData(projects),
-                error => this.errorMessage = <any>error);
-    }
-
     getRecommendedProjects() {
         this.projectService.getRecommendedProjects()
             .subscribe(

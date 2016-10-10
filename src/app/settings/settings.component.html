@@ -4,7 +4,7 @@
 
     <form #updateForm="ngForm" (ngSubmit)="onSubmit()">
         <label>Name
-            <input type="text" required minlength="3" maxlength="25"
+            <input type="text" required minlength="3" maxlength="20"
                    name="username" [(ngModel)]="user.name" #name="ngModel">
         </label>
 
@@ -16,22 +16,50 @@
                 Name must be at least 3 characters long.
             </div>
             <div [hidden]="!name.errors.maxlength">
-                Name cannot be more than 25 characters long.
+                Name cannot be more than 20 characters long.
             </div>
         </div>
 
         <label>Workplace
-            <input type="text" name="workplace" [(ngModel)]="user.workplace">
+            <input type="text" minlength="3" maxlength="20" name="workplace" [(ngModel)]="user.workplace" #workplace="ngModel">
         </label>
+
+        <div *ngIf="workplace.errors && (workplace.dirty || workplace.touched)">
+            <div [hidden]="!workplace.errors.minlength">
+                Workplace must be at least 3 characters long.
+            </div>
+            <div [hidden]="!workplace.errors.maxlength">
+                Workplace cannot be more than 20 characters long.
+            </div>
+        </div>
 
         <label>Website
-            <input type="text" name="website" [(ngModel)]="user.website">
+            <input type="text" minlength="3" maxlength="20" pattern="^(http\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$" name="website" [(ngModel)]="user.website" #website="ngModel">
         </label>
 
+        <div *ngIf="website.errors && (website.dirty || website.touched)">
+            <div [hidden]="!website.errors.minlength">
+                Website must be at least 3 characters long.
+            </div>
+            <div [hidden]="!website.errors.maxlength">
+                Website cannot be more than 20 characters long.
+            </div>
+            <div [hidden]="!website.errors.pattern">
+                Website dosn't have the correct pattern.
+            </div>
+        </div>
         <label>Twitter
-            <input type="text" name="name" [(ngModel)]="user.twitter">
+            <input type="text" minlength="3" maxlength="20" name="name" [(ngModel)]="user.twitter" #twitter="ngModel">
         </label>
 
+        <div *ngIf="twitter.errors && (twitter.dirty || twitter.touched)">
+            <div [hidden]="!twitter.errors.minlength">
+                Twitter must be at least 3 characters long.
+            </div>
+            <div [hidden]="!twitter.errors.maxlength">
+                Twitter cannot be more than 20 characters long.
+            </div>
+        </div>
 
         <label>Skills</label>
         <app-autocomplete [skills]="skills" (onSelect)="onSelect($event)"></app-autocomplete>
