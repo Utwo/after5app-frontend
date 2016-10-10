@@ -1,3 +1,13 @@
+.site-wrap {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1 0 auto;
+}
+
 .container-small {
   max-width: 600px;
 }

@@ -20,10 +20,11 @@
         <li *ngFor="let project of projects" class="project__item">
             <div class="row">
                 <div class="col-md-8">
-                    <h3 class="project__title title-border"><a routerLink="/project/{{project.id}}"
-                                                               routerLinkActive="active">
-                        {{project.title}}
-                    </a></h3>
+                    <h3 class="project__title title-border title-border--green m-b-2">
+                        <a routerLink="/project/{{project.id}}">
+                            {{project.title}}
+                        </a>
+                    </h3>
                 </div>
                 <div class="col-md-4 text-md-right">
                     <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
@@ -40,15 +41,15 @@
             <div class="row project__subinfo">
                 <div class="col-md-6">
                     <img class="profile-img" *ngIf="project.user.picture" src="{{project.user.picture+'?s=20'}}"><a
-                        routerLink="/profile/{{project.user_id}}" routerLinkActive="active">
+                        routerLink="/profile/{{project.user_id}}">
                     {{project.user.name}}
                 </a>
                 </div>
                 <div class="col-md-6 text-xs-right">
-                    <span title="favorites" class="btn btn-outline-secondary btn-sm"><svg
-                            class="icon"><use xlink:href="#icon-favorite"></use></svg> {{project.favorite_count}}</span>
-                    <span title="comments" class="btn btn-outline-secondary btn-sm"><svg
-                            class="icon"><use
+                    <span class="m-r-1" title="favorites"><svg
+                            class="icon text-danger"><use xlink:href="#icon-favorite"></use></svg> {{project.favorite_count}}</span>
+                    <span title="comments"><svg
+                            class="icon text-warning"><use
                             xlink:href="#icon-pacman"></use></svg> {{project.comment_count}}</span>
                 </div>
             </div>
@@ -63,6 +64,9 @@
     <button (click)="nextPage()" [disabled]="!page.next" class="btn btn-default">next</button>
 </div>
 
-<div *ngIf="projects.length === 0" class="container">
-    <p>No projects were found.</p>
+<div *ngIf="projects && projects.length === 0" class="container-small m-x-auto text-xs-center m-y-3">
+    <span class="text-primary display-3">&#9785;</span>
+    <h5 class="text-muted text-uppercase">No projects were found</h5>
+    <hr>
+    <a href="" class="btn btn-primary">Be the first to start a project</a>
 </div>

@@ -1,12 +1,13 @@
 @charset "UTF-8";
 
 // 1. Configuration and helpers
-@import 'abstracts/variables';
 
 // 2. Vendors
 // Core variables and mixins
+@import "vendor/bootstrap/custom";
 @import "vendor/bootstrap/variables";
-$enable-flex: true;
+@import 'abstracts/variables';
+
 @import "vendor/bootstrap/mixins";
 
 // Reset and dependencies
@@ -33,6 +34,7 @@ $enable-flex: true;
 // 4. Layout-related sections
 @import  "layout/header";
 @import  "layout/footer";
+@import  "layout/sidebar";
 @import  "layout/container";
 
 // 5. Components
@@ -45,6 +47,7 @@ $enable-flex: true;
 @import "components/profile-img";
 @import "components/icons";
 @import "components/select-suggestion";
+@import "components/comments";
 
 // 6. Page-specific styles
 @import "pages/home";

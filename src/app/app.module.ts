@@ -10,7 +10,6 @@ import {ProjectListComponent} from './project-list/project-list.component';
 import {ProjectComponent} from './project/project.component';
 import {AboutComponent} from './about/about.component';
 import {ProfileComponent} from './profile/profile.component';
-import {MyProjectsComponent} from './my-projects/my-projects.component';
 import {NavigationComponent} from './navigation/navigation.component';
 import {LoginService} from "./services/login.service";
 import {StateService} from "./services/state.service";
@@ -30,8 +29,7 @@ import { TimeAgoPipe } from './time-ago.pipe';
         ProjectComponent,
         AboutComponent,
         ProfileComponent,
-        MyProjectsComponent,
-        NavigationComponent, 
+        NavigationComponent,
         CommentsComponent,
         SettingsComponent,
         ApplicationComponent,

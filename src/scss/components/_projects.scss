@@ -10,8 +10,8 @@
 }
 
 .project__item:nth-child(2n+2) {
-  background: $light-grey;
-  border-radius: 6px;
+  background: $gray-lightest;
+  border-radius: $border-radius-lg;
 }
 
 .project__item:nth-child(2n+2) .title-border:after{
@@ -19,7 +19,7 @@
 }
 
 .project__title {
-  margin-bottom: 1.4em;
+  font-size: 1.3rem;
 }
 
 .project__date {
@@ -38,7 +38,7 @@
 }
 
 .project__subinfo {
-  border-top: 2px solid $light-grey;
+  border-top: 2px solid $gray-lightest;
   padding-top: .8em;
 }
 

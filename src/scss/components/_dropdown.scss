@@ -11,11 +11,11 @@
   max-height: 400px;
   position: absolute;
   z-index: 999;
-  border-radius: 6px;
+  border-radius: $border-radius-lg;
   padding: .4em;
   top: 4em;
   left: -105px;
-  background: linear-gradient(to bottom, lighten($brand-color, 5), darken($brand-color, 5));
+  background: linear-gradient(to bottom, lighten($brand-primary, 5), darken($brand-primary, 5));
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, .3);
 }
 
@@ -27,7 +27,7 @@
   margin: -12px 0 0 -12px;
   width: 0;
   height: 0;
-  border-bottom: 12px solid lighten($brand-color, 5);
+  border-bottom: 12px solid lighten($brand-primary, 5);
   border-right: 12px solid transparent;
   border-left: 12px solid transparent;
 }

@@ -3,6 +3,6 @@
 // -----------------------------------------------------------------------------
 
 .btn-gradient-primary {
-  background: linear-gradient(135deg, darken($brand-color, 5) 0%, darken($brand-color, 5) 53%, lighten($brand-color, 2) 56%, lighten($brand-color, 2) 100%);
+  background: linear-gradient(135deg, darken($brand-primary, 5) 0%, darken($brand-primary, 5) 53%, lighten($brand-primary, 2) 56%, lighten($brand-primary, 2) 100%);
   border: #333;
 }
