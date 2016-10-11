@@ -39,7 +39,10 @@ import { NotificationsComponent } from './notifications/notifications.component'
         ApplicationComponent,
         AutocompleteComponent,
         TimeAgoPipe,
-        AddProjectComponent, SearchComponent, FooterComponent, NotificationsComponent
+        AddProjectComponent,
+        SearchComponent,
+        FooterComponent,
+        NotificationsComponent
     ],
     imports: [
         routing,
@@ -52,7 +55,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
         appRoutingProviders,
         StateService,
         LoginService,
-        ProjectService
+        ProjectService,
     ],
     bootstrap: [AppComponent]
 })

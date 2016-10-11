@@ -11,9 +11,9 @@
     </li>
 
     <h4>Position</h4>
-    <select id="selectPosition">
+    <select #positionSelect>
         <option *ngFor="let position of project.position" value={{position.id}}>{{position.description}}</option>
     </select>
 
-    <button (click)="sendApplication()">Apply</button>
+    <button (click)="sendApplication(positionSelect.value)">Apply</button>
 </section>

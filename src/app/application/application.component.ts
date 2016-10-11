@@ -16,9 +16,8 @@ export class ApplicationComponent implements OnInit {
     ngOnInit() {
     }
 
-    sendApplication() {
-        let select = document.getElementById("selectPosition");
-        this.application.position_id = select.value;
+    sendApplication(position) {
+        this.application.position_id = position;
         this.projectService.applyForProject(this.application)
             .subscribe(
                 data => {
