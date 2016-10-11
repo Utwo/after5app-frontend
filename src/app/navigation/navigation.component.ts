@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from "../services/login.service";
 import {StateService} from "../services/state.service";
+import {NotificationsService} from "../services/notifications.service";
 
 @Component({
     selector: 'app-navigation',
@@ -8,9 +9,9 @@ import {StateService} from "../services/state.service";
 })
 export class NavigationComponent implements OnInit {
 
-    private isDropDownActiv = false;
 
     constructor(private loginService: LoginService, private state: StateService) {
+
     }
 
     get user() {

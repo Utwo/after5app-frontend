@@ -23,6 +23,8 @@ import { AddProjectComponent } from './add-project/add-project.component';
 import { SearchComponent } from './search/search.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { UserNavComponent } from './user-nav/user-nav.component';
+import {NotificationsService} from "./services/notifications.service";
 
 @NgModule({
     declarations: [
@@ -42,7 +44,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
         AddProjectComponent,
         SearchComponent,
         FooterComponent,
-        NotificationsComponent
+        NotificationsComponent, UserNavComponent
     ],
     imports: [
         routing,
@@ -56,6 +58,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
         StateService,
         LoginService,
         ProjectService,
+        NotificationsService
     ],
     bootstrap: [AppComponent]
 })
