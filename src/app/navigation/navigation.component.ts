@@ -1,15 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from "../services/login.service";
 import {StateService} from "../services/state.service";
+import {NotificationsService} from "../services/notifications.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-navigation',
     templateUrl: './navigation.component.html'
 })
 export class NavigationComponent implements OnInit {
-
-    private isDropDownActiv = false;
-
     constructor(private loginService: LoginService, private state: StateService) {
     }
 
@@ -22,14 +21,10 @@ export class NavigationComponent implements OnInit {
     }
 
     ngOnInit() {
+
     }
 
     login() {
         this.loginService.login();
     }
-
-    logout() {
-        this.loginService.logout();
-    }
-
 }

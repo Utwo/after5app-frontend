@@ -13,6 +13,7 @@ export class ProjectComponent implements OnInit {
     private related = [];
     private errorMessage: string;
     private sub: Subscription;
+    private myProject = false;
     private isFavorite = false;
 
     constructor(private route: ActivatedRoute, private projectService: ProjectService, private state: StateService, private router: Router) {
@@ -34,10 +35,15 @@ export class ProjectComponent implements OnInit {
                     }
 
                     this.project = project.data[0];
-                    for (let user of this.project.favorite) {
-                        if (user.id === this.state.getUser().id) {
-                            this.isFavorite = true;
-                            break;
+                    if (this.state.isLoggedIn()) {
+                        if (this.state.getUser().id == this.project.user_id) {
+                            this.myProject = true;
+                        }
+                        for (let user of this.project.favorite) {
+                            if (user.id === this.state.getUser().id) {
+                                this.isFavorite = true;
+                                break;
+                            }
                         }
                     }
                     this.getRelatedProjects();
@@ -46,9 +52,20 @@ export class ProjectComponent implements OnInit {
     }
 
     addFavorite() {
+        if(this.myProject){
+            return;
+        }
         this.projectService.addFavorite(this.project.id)
             .subscribe(
-                data => this.isFavorite = !this.isFavorite,
+                data => {
+                    this.isFavorite = !this.isFavorite;
+                    if (this.isFavorite) {
+                        this.project.favorite_count++;
+                    }
+                    else {
+                        this.project.favorite_count--;
+                    }
+                },
                 error => this.errorMessage = <any>error);
     }
 
