@@ -40,6 +40,56 @@ export class ProjectService {
             .catch(this.handleError);
     }
 
+    addProject(project) {
+        let body = JSON.stringify(project);
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.state.getToken()
+        });
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.post(this.state.getUrl() + '/project', body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    addPosition(project) {
+        let body = JSON.stringify(project);
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.state.getToken()
+        });
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.post(this.state.getUrl() + '/position', body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    updateProject(project) {
+        let body = JSON.stringify(project);
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.state.getToken()
+        });
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.put(this.state.getUrl() + '/project/' + project.id, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    deleteProject(id) {
+        let headers = new Headers({
+            'Authorization': 'Bearer ' + this.state.getToken()
+        });
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.delete(this.state.getUrl() + '/project/' + id, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     public searchByName(name) {
         return this.http.get(this.state.getUrl() +
             '/project?title=%' + name + '%&with[]=user&with[]=position.skill')

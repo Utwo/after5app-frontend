@@ -1,6 +1,7 @@
-<form #updateForm="ngForm" (ngSubmit)="onSubmit()">
+<h2>Start project</h2>
+<form #updateForm="ngForm" (ngSubmit)="storeProject()">
     <label>Title
-        <input type="text" required minlength="3" maxlength="20"
+        <input type="text" required minlength="4" maxlength="20"
                name="title" [(ngModel)]="project.title" #title="ngModel">
     </label>
 
@@ -9,7 +10,7 @@
             title is required
         </div>
         <div [hidden]="!title.errors.minlength">
-            title must be at least 3 characters long.
+            title must be at least 4 characters long.
         </div>
         <div [hidden]="!title.errors.maxlength">
             title cannot be more than 20 characters long.
@@ -17,7 +18,7 @@
     </div>
 
     <label>Description
-        <input type="text" required minlength="3" maxlength="20"
+        <input type="text" required minlength="4"
                name="description" [(ngModel)]="project.description" #description="ngModel">
     </label>
 
@@ -26,10 +27,7 @@
             description is required
         </div>
         <div [hidden]="!description.errors.minlength">
-            description must be at least 3 characters long.
-        </div>
-        <div [hidden]="!description.errors.maxlength">
-            description cannot be more than 20 characters long.
+            description must be at least 4 characters long.
         </div>
     </div>
 
@@ -39,7 +37,7 @@
     <app-autocomplete [skills]="skills" (onSelect)="onSelect($event)"></app-autocomplete>
     <button type="button" (click)="addPosition(position.value)">Add Position</button>
     <ul>
-        <li *ngFor="let position of project.positions; let i = index">
+        <li *ngFor="let position of positions; let i = index">
             {{position.description}}
             {{position.skill}}
             <button type="button" (click)="removePosition(i)">X</button>
