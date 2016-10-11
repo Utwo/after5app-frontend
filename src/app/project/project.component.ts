@@ -48,7 +48,15 @@ export class ProjectComponent implements OnInit {
     addFavorite() {
         this.projectService.addFavorite(this.project.id)
             .subscribe(
-                data => this.isFavorite = !this.isFavorite,
+                data => {
+                    this.isFavorite = !this.isFavorite;
+                    if(this.isFavorite){
+                        this.project.favorite_count++;
+                    }
+                    else{
+                        this.project.favorite_count--;
+                    }
+                },
                 error => this.errorMessage = <any>error);
     }
 
