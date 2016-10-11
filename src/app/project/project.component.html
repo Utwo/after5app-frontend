@@ -37,14 +37,16 @@
 							<use xlink:href="#icon-favorite"></use>
 						</svg>
 						{{project.favorite_count}}</a>
-				</div>
-				<div class="text-xs-center m-t-2">
-					<a class="btn btn-warning" href=""><svg
-							class="icon"><use
-							xlink:href="#icon-pencil"></use></svg>Edit project</a>
-					<a class="btn btn-danger" href=""><svg
-							class="icon"><use
-							xlink:href="#icon-bin"></use></svg>Delete project</a>
+					<hr>
+					<div class="text-xs-center">
+						<button class="btn btn-outline-primary" (click)="updateProject()">
+							<svg class="icon"><use xlink:href="#icon-pencil"></use></svg>
+							Edit project</button>
+
+						<button class="btn btn-danger" (click)="deleteProject()">
+							<svg class="icon"><use xlink:href="#icon-bin"></use></svg>
+							Delete project</button>
+					</div>
 				</div>
 			</section>
 		</div>

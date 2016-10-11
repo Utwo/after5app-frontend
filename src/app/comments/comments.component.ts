@@ -28,13 +28,14 @@ export class CommentsComponent implements OnInit {
     }
 
     addComment(text) {
-        if (!text) {
+        if (!text.value) {
             return;
         }
-        let comment = {text: text, project_id: this.project_id};
+        let comment = {text: text.value, project_id: this.project_id};
         this.projectService.addComment(comment)
             .subscribe(
                 data => {
+                    text.value='';
                     this.getComments();
                 },
                 error => this.errorMessage = <any>error);

@@ -18,6 +18,7 @@ export class SearchComponent implements OnInit {
 
     searchByName(name) {
         if (name.length === 0) {
+            this.projects = null;
             return;
         }
         this.projectService.searchByName(name)

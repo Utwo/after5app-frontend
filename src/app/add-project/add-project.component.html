@@ -1,3 +1,58 @@
-<p>
-  add-project works!
-</p>
+<h2>Start project</h2>
+<form #updateForm="ngForm" (ngSubmit)="storeProject()">
+    <label>Title
+        <input type="text" required minlength="4" maxlength="20"
+               name="title" [(ngModel)]="project.title" #title="ngModel">
+    </label>
+
+    <div *ngIf="title.errors && (title.dirty || title.touched)">
+        <div [hidden]="!title.errors.required">
+            title is required
+        </div>
+        <div [hidden]="!title.errors.minlength">
+            title must be at least 4 characters long.
+        </div>
+        <div [hidden]="!title.errors.maxlength">
+            title cannot be more than 20 characters long.
+        </div>
+    </div>
+
+    <label>Description
+        <input type="text" required minlength="4"
+               name="description" [(ngModel)]="project.description" #description="ngModel">
+    </label>
+
+    <div *ngIf="description.errors && (description.dirty || description.touched)">
+        <div [hidden]="!description.errors.required">
+            description is required
+        </div>
+        <div [hidden]="!description.errors.minlength">
+            description must be at least 4 characters long.
+        </div>
+    </div>
+
+
+    <label>Positions</label>
+    <input type="text" placeholder="position" #position>
+    <app-autocomplete [skills]="skills" (onSelect)="onSelect($event)"></app-autocomplete>
+    <button type="button" (click)="addPosition(position.value)">Add Position</button>
+    <ul>
+        <li *ngFor="let position of positions; let i = index">
+            {{position.description}}
+            {{position.skill}}
+            <button type="button" (click)="removePosition(i)">X</button>
+        </li>
+    </ul>
+
+    <label>Questions</label>
+    <input type="text" #question>
+    <button type="button" (click)="addQuestion(question.value)">Add Question</button>
+    <ul>
+        <li *ngFor="let question of project.questions; let i = index">
+            {{question}}
+            <button type="button" (click)="removeQuestion(i)">X</button>
+        </li>
+    </ul>
+
+    <button type="submit" [disabled]="!updateForm.form.valid">Add project</button>
+</form>

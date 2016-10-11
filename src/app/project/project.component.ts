@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "../services/project.service";
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from "rxjs";
 import {StateService} from "../services/state.service";
 
@@ -15,7 +15,7 @@ export class ProjectComponent implements OnInit {
     private sub: Subscription;
     private isFavorite = false;
 
-    constructor(private route: ActivatedRoute, private projectService: ProjectService, private state: StateService) {
+    constructor(private route: ActivatedRoute, private projectService: ProjectService, private state: StateService, private router: Router) {
     }
 
     ngOnInit() {
@@ -29,6 +29,10 @@ export class ProjectComponent implements OnInit {
         this.projectService.getProjectById(id)
             .subscribe(
                 project => {
+                    if (project.data.length === 0) {
+                        this.router.navigate(['/']);
+                    }
+
                     this.project = project.data[0];
                     for (let user of this.project.favorite) {
                         if (user.id === this.state.getUser().id) {
@@ -36,6 +40,7 @@ export class ProjectComponent implements OnInit {
                             break;
                         }
                     }
+                    this.getRelatedProjects();
                 },
                 error => this.errorMessage = <any>error);
     }
@@ -55,11 +60,22 @@ export class ProjectComponent implements OnInit {
         this.projectService.filterBySkill(skills.join(","), this.project.id)
             .subscribe(
                 project => {
-                    
-                    //shuffle the array
                     this.related = project.data.sort(() => {
                         return 0.5 - Math.random()
                     }).splice(0, 3);
+                },
+                error => this.errorMessage = <any>error);
+    }
+
+    updateProject() {
+
+    }
+
+    deleteProject() {
+        this.projectService.deleteProject(this.project.id)
+            .subscribe(
+                project => {
+                    this.router.navigate(['/']);
                 },
                 error => this.errorMessage = <any>error);
     }
