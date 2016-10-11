@@ -1,9 +1,51 @@
+.notification {
+  position: relative;
+}
+
 .notification__icon {
   border-radius: 16px;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   background: #8ee3ce;
   padding: .3rem;
   box-shadow: -1px 1px 1px 1px darken($brand-primary, 5%);
+  position: relative;
+  z-index: map-get($zindex, high);
+}
+
+.notification__icon::before {
+  content: '';
+  position: absolute;
+  animation: 10s pulse infinite 2s ease-in-out;
+  background: $brand_info;
+  display: block;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  z-index: map-get($zindex, low);
+}
+
+.notification__count {
+  display: flex;
+  position: absolute;
+  top: -.6rem;
+  left: -.9rem;
+  background: darken($brand-primary, 5%);
+  border-radius: 50%;
+  width: 1.2rem;
+  height: 1.2rem;
+  justify-content: center;
+  align-items: center;
+  font-size: .8rem;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, .4);
+  z-index: map-get($zindex, higher);
+}
+
+.dropdown--activ .notification__icon .icon {
+  transform: rotate(-90deg);
+  transition: .3s all ease-in-out;
 }
 
 .notification__item {
@@ -18,4 +60,15 @@
 
 .notification__item img {
   border-radius: $border-radius-lg;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: .6;
+    padding: 0;
+  }
+  10%, 100% {
+    padding: 2rem;
+    opacity: 0;
+  }
 }
