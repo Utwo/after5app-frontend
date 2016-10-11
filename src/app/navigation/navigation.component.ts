@@ -8,10 +8,7 @@ import {NotificationsService} from "../services/notifications.service";
     templateUrl: './navigation.component.html'
 })
 export class NavigationComponent implements OnInit {
-
-
     constructor(private loginService: LoginService, private state: StateService) {
-
     }
 
     get user() {
@@ -28,9 +25,4 @@ export class NavigationComponent implements OnInit {
     login() {
         this.loginService.login();
     }
-
-    logout() {
-        this.loginService.logout();
-    }
-
 }

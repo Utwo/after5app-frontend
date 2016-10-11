@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {NotificationsService} from "../services/notifications.service";
+import {LoginService} from "../services/login.service";
 
 @Component({
     selector: 'app-user-nav',
@@ -12,7 +13,7 @@ export class UserNavComponent implements OnInit {
     notifications = null;
     errorMessage = '';
 
-    constructor(private notificationsService: NotificationsService) {
+    constructor(private notificationsService: NotificationsService, private loginService: LoginService) {
     }
 
     ngOnInit() {
@@ -43,4 +44,7 @@ export class UserNavComponent implements OnInit {
         }
     }
 
+    logout() {
+        this.loginService.logout();
+    }
 }
