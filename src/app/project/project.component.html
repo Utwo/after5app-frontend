@@ -26,7 +26,7 @@
 
 			<section class="col-md-4">
 				<div class="sidebar p-a-2">
-					<button class="btn btn-primary btn-block" href="">Help this project become reality</button>
+					<button *ngIf="!myProject" class="btn btn-primary btn-block" href="">Help this project become reality</button>
 					<a (click)="addFavorite()" class="btn btn-outline-info btn-block m-t-2">
 						<svg *ngIf="isFavorite" class="icon text-danger">
 							<use xlink:href="#icon-favorite"></use>
