@@ -27,12 +27,12 @@
 			<section class="col-md-4">
 				<div class="sidebar p-a-2">
 					<a class="btn btn-primary btn-block" href="">Help this project become reality</a>
-					<a *ngIf="!isFavorite" (click)="addFavorite()" class="btn btn-outline-secondary btn-block">
+					<a *ngIf="!isFavorite" (click)="addFavorite()" class="btn btn-outline-info btn-block m-t-2">
 						<svg class="icon text-danger">
 							<use xlink:href="#icon-favorite"></use>
 						</svg>
 						{{project.favorite_count}}</a>
-					<a *ngIf="isFavorite" (click)="addFavorite()" class="btn btn-secondary">
+					<a *ngIf="isFavorite" (click)="addFavorite()" class="btn btn-outline-info btn-block m-t-2">
 						<svg class="icon text-danger">
 							<use xlink:href="#icon-favorite"></use>
 						</svg>
@@ -54,7 +54,7 @@
 	</article>
 
 	<div class="container m-y-3">
-		<app-comments [project_id]="project.id"></app-comments>
+		<app-comments [project_id]="project.id" class="row comment"></app-comments>
 	</div>
 
 	<aside *ngIf="related && related.length > 0" class="m-y-3">

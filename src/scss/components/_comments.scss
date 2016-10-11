@@ -1,5 +1,21 @@
 .comment {
+  box-shadow: -5px 0 0 0 $brand-info, -10px 0 0 0 $brand-primary;
+}
+
+.comment-item {
   display: flex;
+}
+
+.comment__content {
+  background: #f5f5f5;
+  padding: .4rem .6rem;
+  margin: .6rem 0;
+  border-radius: $border-radius-lg;
+  box-shadow: 0 1px 1px 0px rgba(0, 0, 0, .15);
+}
+
+.comment-item__mine .comment__content {
+  background: $brand-info;
 }
 
 .comment__left-side {
