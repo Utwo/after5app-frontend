@@ -14,10 +14,6 @@
   border-radius: $border-radius-lg;
 }
 
-.project__item:nth-child(2n+2) .title-border:after{
-  background: #fff;
-}
-
 .project__title {
   font-size: 1.3rem;
 }
@@ -26,11 +22,11 @@
   font-size: .9rem;
 }
 
-.project__item p {
+/*.project__item p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
+}*/
 
 .project__skill-item {
   font-family: Consolas, monospace;

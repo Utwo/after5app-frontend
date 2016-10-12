@@ -5,9 +5,9 @@
     <p *ngIf="projects.length === 0">
         No projects were found
     </p>
-    <ul *ngIf="projects.length > 0">
-        <li *ngFor="let project of projects">
-            <a routerLink="/project/{{project.id}}" (click)="removeQuery(search)">
+    <ul *ngIf="projects.length > 0" class="reset-list select-suggestion__list">
+        <li *ngFor="let project of projects" class="select-suggestion__item">
+            <a routerLink="/project/{{project.id}}" (click)="removeQuery(search)" class="d-block">
                 {{project.title}}
             </a>
         </li>

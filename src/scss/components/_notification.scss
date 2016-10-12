@@ -44,7 +44,7 @@
 }
 
 .dropdown--activ .notification__icon .icon {
-  transform: rotate(-90deg);
+  transform: rotate(-90deg) translate(-1px, 2px);
   transition: .3s all ease-in-out;
 }
 
