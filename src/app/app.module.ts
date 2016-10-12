@@ -25,6 +25,7 @@ import {NavigationComponent} from "./navigation/navigation.component";
 import {SearchComponent} from "./navigation/search/search.component";
 import {UserNavComponent} from "./navigation/user-nav/user-nav.component";
 import {NotificationsService} from "./navigation/user-nav/shared/notifications.service";
+import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 @NgModule({
     declarations: [
@@ -51,7 +52,8 @@ import {NotificationsService} from "./navigation/user-nav/shared/notifications.s
         BrowserModule,
         FormsModule,
         HttpModule,
-        JsonpModule
+        JsonpModule,
+        ModalModule
     ],
     providers: [
         appRoutingProviders,

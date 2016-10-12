@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from "rxjs";
-import {StateService} from "../../shared/state.service";
+import {ModalDirective} from 'ng2-bootstrap/ng2-bootstrap';
 import {ProjectService} from "../shared/project.service";
+import {StateService} from "../../shared/state.service";
+
 
 @Component({
     selector: 'app-project',
@@ -17,6 +19,12 @@ export class ProjectComponent implements OnInit {
     private isFavorite = false;
 
     constructor(private route: ActivatedRoute, private projectService: ProjectService, private state: StateService, private router: Router) {
+    }
+
+    @ViewChild('editModal') public editModal: ModalDirective;
+
+    public showEditdModal(): void {
+        this.editModal.show();
     }
 
     ngOnInit() {
