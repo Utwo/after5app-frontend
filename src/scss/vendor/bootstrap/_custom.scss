@@ -82,3 +82,7 @@ $container-max-widths: (
 
 // Specify the gutters.
 //$grid-gutter-width: 30px;
+
+//Modal
+$modal-backdrop-bg: linear-gradient(to top, #ff00cc , #333399);
+$modal-backdrop-opacity: .6;
