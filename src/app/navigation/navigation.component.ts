@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginService} from "../services/login.service";
-import {StateService} from "../services/state.service";
-import {NotificationsService} from "../services/notifications.service";
-import {Router} from "@angular/router";
+import {StateService} from "../shared/state.service";
+import {LoginService} from "../core/login.service";
 
 @Component({
     selector: 'app-navigation',

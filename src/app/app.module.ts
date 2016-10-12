@@ -1,3 +1,4 @@
+///<reference path="projects/project-list/project-list.component.ts"/>
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -5,26 +6,25 @@ import {HttpModule, JsonpModule} from '@angular/http';
 import {routing, appRoutingProviders} from './app.routing';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
-import {NotFoundComponent} from './not-found/not-found.component';
-import {ProjectListComponent} from './project-list/project-list.component';
-import {ProjectComponent} from './project/project.component';
-import {AboutComponent} from './about/about.component';
-import {ProfileComponent} from './profile/profile.component';
-import {NavigationComponent} from './navigation/navigation.component';
-import {LoginService} from "./services/login.service";
-import {StateService} from "./services/state.service";
-import {ProjectService} from "./services/project.service";
-import {CommentsComponent} from './comments/comments.component';
-import {SettingsComponent} from './settings/settings.component';
-import { ApplicationComponent } from './application/application.component';
-import { AutocompleteComponent } from './autocomplete/autocomplete.component';
-import { TimeAgoPipe } from './time-ago.pipe';
-import { AddProjectComponent } from './add-project/add-project.component';
-import { SearchComponent } from './search/search.component';
-import { FooterComponent } from './footer/footer.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { UserNavComponent } from './user-nav/user-nav.component';
-import {NotificationsService} from "./services/notifications.service";
+import {NotFoundComponent} from "./core/not-found/not-found.component";
+import {ProjectListComponent} from "./projects/project-list/project-list.component";
+import {ProjectComponent} from "./projects/project/project.component";
+import {AboutComponent} from "./about/about.component";
+import {ProfileComponent} from "./profile/profile.component";
+import {CommentsComponent} from "./projects/project/comments/comments.component";
+import {SettingsComponent} from "./profile/settings/settings.component";
+import {ApplicationComponent} from "./projects/project/application/application.component";
+import {AutocompleteComponent} from "./shared/autocomplete/autocomplete.component";
+import {TimeAgoPipe} from "./time-ago.pipe";
+import {AddProjectComponent} from "./projects/add-project/add-project.component";
+import {FooterComponent} from "./footer/footer.component";
+import {StateService} from "./shared/state.service";
+import {LoginService} from "./core/login.service";
+import {ProjectService} from "./projects/shared/project.service";
+import {NavigationComponent} from "./navigation/navigation.component";
+import {SearchComponent} from "./navigation/search/search.component";
+import {UserNavComponent} from "./navigation/user-nav/user-nav.component";
+import {NotificationsService} from "./navigation/user-nav/shared/notifications.service";
 
 @NgModule({
     declarations: [
@@ -44,7 +44,7 @@ import {NotificationsService} from "./services/notifications.service";
         AddProjectComponent,
         SearchComponent,
         FooterComponent,
-        NotificationsComponent, UserNavComponent
+        UserNavComponent
     ],
     imports: [
         routing,
