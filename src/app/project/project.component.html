@@ -25,26 +25,31 @@
 			</section>
 
 			<section class="col-md-4">
-				<div class="sidebar p-a-2">
-					<button *ngIf="!myProject" class="btn btn-primary btn-block" href="">Help this project become reality</button>
-					<a (click)="addFavorite()" class="btn btn-outline-info btn-block m-t-2">
+				<div *ngIf="!myProject" class="sidebar p-a-2">
+					<button class="btn btn-primary btn-block">Help this project become reality</button>
+					<a (click)="addFavorite()" class="btn btn-outline-primary btn-block m-t-2">
 						<svg *ngIf="isFavorite" class="icon text-danger">
 							<use xlink:href="#icon-favorite"></use>
 						</svg>
-                        <svg *ngIf="!isFavorite" class="icon text-danger">
+						<svg *ngIf="!isFavorite" class="icon text-danger">
 							<use xlink:href="#icon-favorite"></use>
 						</svg>
 						{{project.favorite_count}}</a>
-					<hr>
-					<div *ngIf="myProject" class="text-xs-center">
-						<button class="btn btn-outline-primary" (click)="updateProject()">
-							<svg class="icon"><use xlink:href="#icon-pencil"></use></svg>
-							Edit project</button>
+				</div>
+				<div *ngIf="myProject" class="text-xs-center m-t-2">
+					<button class="btn btn-outline-primary" (click)="showEditdModal()">
+						<svg class="icon">
+							<use xlink:href="#icon-pencil"></use>
+						</svg>
+						Edit project
+					</button>
 
-						<button class="btn btn-danger" (click)="deleteProject()">
-							<svg class="icon"><use xlink:href="#icon-bin"></use></svg>
-							Delete project</button>
-					</div>
+					<button class="btn btn-danger" (click)="deleteProject()">
+						<svg class="icon">
+							<use xlink:href="#icon-bin"></use>
+						</svg>
+						Delete project
+					</button>
 				</div>
 			</section>
 		</div>
@@ -84,4 +89,21 @@
 
 <div class="modal hidden-xs-up">
 	<app-application [project]="project"></app-application>
+</div>
+
+<div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Edit project"
+		 aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" (click)="editModal.hide()" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Large modal</h4>
+			</div>
+			<div class="modal-body">
+				<p>Hey babe!</p>
+			</div>
+		</div>
+	</div>
 </div>

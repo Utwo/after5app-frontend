@@ -25,6 +25,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UserNavComponent } from './user-nav/user-nav.component';
 import {NotificationsService} from "./services/notifications.service";
+import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 @NgModule({
     declarations: [
@@ -44,14 +45,16 @@ import {NotificationsService} from "./services/notifications.service";
         AddProjectComponent,
         SearchComponent,
         FooterComponent,
-        NotificationsComponent, UserNavComponent
+        NotificationsComponent,
+        UserNavComponent,
     ],
     imports: [
         routing,
         BrowserModule,
         FormsModule,
         HttpModule,
-        JsonpModule
+        JsonpModule,
+        ModalModule
     ],
     providers: [
         appRoutingProviders,
