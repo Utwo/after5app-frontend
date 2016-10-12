@@ -87,11 +87,24 @@
 	</aside>
 </div>
 
-<div class="modal hidden-xs-up">
-	<app-application [project]="project"></app-application>
+<div *ngIf="!myProject" bsModal #applyModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Apply for this project"
+		 aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" (click)="applyModal.hide()" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Apply for this project</h4>
+			</div>
+			<div class="modal-body">
+				<app-application [project]="project"></app-application>
+			</div>
+		</div>
+	</div>
 </div>
 
-<div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Edit project"
+<div *ngIf="myProject" bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Edit project"
 		 aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -99,7 +112,7 @@
 				<button type="button" class="close" (click)="editModal.hide()" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title">Large modal</h4>
+				<h4 class="modal-title text-xs-center">Large modal</h4>
 			</div>
 			<div class="modal-body">
 				<p>Hey babe!</p>
