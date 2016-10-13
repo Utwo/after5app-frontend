@@ -2,13 +2,28 @@
     <div class="form-inline">
         <div class="form-group btn btn-primary btn-sm">
             <label for="filter" class="m-x-1">Filter by skill </label>
-            <input class="form-control" id="filter" type="text" placeholder="javascript" [(ngModel)]="query"
-                   (keyup)=filter()>
+            <input [(ngModel)]="asyncSelected"
+                   [typeahead]="dataSource"
+                   (typeaheadLoading)="changeTypeaheadLoading($event)"
+                   (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+                   (typeaheadOnSelect)="typeaheadOnSelect($event)"
+                   [typeaheadOptionsLimit]="7"
+                   [typeaheadItemTemplate]="skillItemTemplate"
+                   placeholder="Filter skill"
+                   class="form-control"
+                   id="filter">
         </div>
-        <ul class="reset-list select-suggestion__list" *ngIf="filteredList.length > 0">
-            <li *ngFor="let skill of filteredList" class="select-suggestion__item">
-                <a (click)="select(skill)" class="d-block">{{skill.name}}</a>
-            </li>
-        </ul>
     </div>
+    <div *ngIf="typeaheadLoading===true">
+        <i>loading</i>
+    </div>
+    <div *ngIf="typeaheadNoResults===true" class="" style="">
+        <i>No Results Found</i>
+    </div>
+
+    <template #skillItemTemplate let-skill="item" let-index="index">
+        <a routerLink="/project/{{skill.id}}" class="d-block">
+            {{skill.name}}
+        </a>
+    </template>
 </div>

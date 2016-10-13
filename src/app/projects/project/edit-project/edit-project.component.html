@@ -1,57 +1,66 @@
 <form *ngIf="project" #updateForm="ngForm" (ngSubmit)="editProject()">
-  <label>Title
-    <input type="text" required minlength="4" maxlength="20"
-           name="title" [(ngModel)]="project.title" #title="ngModel">
-  </label>
+    <div class="container">
+        <div class="form-group row">
+            <label for="title" class="col-sm-2 col-form-label">Title</label>
+            <input class="form-control col-sm-10" type="text" id="text" required minlength="4" maxlength="20"
+                   name="title"
+                   [(ngModel)]="project.title"
+                   #title="ngModel">
+            <div *ngIf="title.errors && (title.dirty || title.touched)">
+                <i [hidden]="!title.errors.required">Title is required</i>
+                <i [hidden]="!title.errors.minlength">Title must be at least 4 characters long.</i>
+                <i [hidden]="!title.errors.maxlength">Title cannot be more than 20 characters long.</i>
+            </div>
+        </div>
 
-  <div *ngIf="title.errors && (title.dirty || title.touched)">
-    <div [hidden]="!title.errors.required">
-      title is required
+        <div class="form-group row">
+            <label for="description" class="col-sm-2 col-form-label">Description</label>
+            <textarea class="form-control col-sm-10" id="description" required minlength="4" name="description"
+                      rows="6"
+                      [(ngModel)]="project.description"
+                      #description="ngModel"></textarea>
+            <div *ngIf="description.errors && (description.dirty || description.touched)">
+                <i [hidden]="!description.errors.required">Description is required</i>
+                <i [hidden]="!description.errors.minlength">Description must be at least 4 characters long.</i>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="position" class="col-sm-2 col-form-label">Positions</label>
+            <input class="form-control col-sm-7" type="text" id="position" placeholder="position" #position>
+            <div class="col-sm-3">
+                <button class="btn btn-info" type="button" (click)="addPosition(position.value)">Add Position</button>
+            </div>
+        </div>
+        <app-autocomplete (onSelect)="onSelect($event)"></app-autocomplete>
+        <ul>
+            <li *ngFor="let position of positions; let i = index">
+                {{position.description}}
+                {{position.skill}}
+                <button class="btn btn-sm btn-danger" type="button" (click)="removePosition(i)"><span
+                        aria-hidden="true">&times;</span></button>
+            </li>
+        </ul>
+
+        <div class="form-group row">
+            <label for="question" class="col-sm-2 col-form-label">Questions</label>
+            <input class="form-control col-sm-7" type="text" id="question" placeholder="Application question" #question>
+            <div class="col-sm-3">
+                <button class="btn btn-info" type="button" (click)="addQuestion(question.value)">Add Question</button>
+            </div>
+        </div>
+
+
+        <ul>
+            <li *ngFor="let question of project.application_questions; let i = index">
+                {{question}}
+                <button class="btn btn-sm btn-danger" type="button" (click)="removeQuestion(i)"><span
+                        aria-hidden="true">&times;</span></button>
+            </li>
+        </ul>
+
+        <div class="text-xs-center">
+            <button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid">Add project</button>
+        </div>
     </div>
-    <div [hidden]="!title.errors.minlength">
-      title must be at least 4 characters long.
-    </div>
-    <div [hidden]="!title.errors.maxlength">
-      title cannot be more than 20 characters long.
-    </div>
-  </div>
-
-  <label>Description
-    <input type="text" required minlength="4"
-           name="description" [(ngModel)]="project.description" #description="ngModel">
-  </label>
-
-  <div *ngIf="description.errors && (description.dirty || description.touched)">
-    <div [hidden]="!description.errors.required">
-      description is required
-    </div>
-    <div [hidden]="!description.errors.minlength">
-      description must be at least 4 characters long.
-    </div>
-  </div>
-
-
-  <label>Positions</label>
-  <input type="text" placeholder="position" #position>
-  <app-autocomplete (onSelect)="onSelect($event)"></app-autocomplete>
-  <button type="button" (click)="addPosition(position.value)">Add Position</button>
-  <ul>
-    <li *ngFor="let position of positions; let i = index">
-      {{position.description}}
-      {{position.skill}}
-      <button type="button" (click)="removePosition(i)">X</button>
-    </li>
-  </ul>
-
-  <label>Questions</label>
-  <input type="text" #question>
-  <button type="button" (click)="addQuestion(question.value)">Add Question</button>
-  <ul>
-    <li *ngFor="let question of project.application_questions; let i = index">
-      {{question}}
-      <button type="button" (click)="removeQuestion(i)">X</button>
-    </li>
-  </ul>
-
-  <button type="submit" [disabled]="!updateForm.form.valid">Add project</button>
 </form>

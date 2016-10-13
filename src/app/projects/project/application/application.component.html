@@ -1,17 +1,26 @@
 <section *ngIf="project">
-    <h4>Message</h4>
-    <textarea [(ngModel)]="application.message"></textarea>
+    <div class="form-inline">
+        <div class="form-group m-b-2">
+            <label class="col-form-label" for="position">Position</label>
+            <select class="form-control" id="position" #positionSelect>
+                <option *ngFor="let position of project.position" value={{position.id}}>{{position.skill.name}}</option>
+            </select>
+        </div>
+    </div>
 
-    <h4>Questions</h4>
-    <li *ngFor="let question of project.application_questions; let i = index">
-        {{question}}
-        <input type="text" [(ngModel)]="application.answers[i]">
-    </li>
+    <ol class="m-b-2">
+        <li *ngFor="let question of project.application_questions; let i = index">
+            <label for="question">{{question}}</label>
+            <input class="form-control" id="question" type="text" [(ngModel)]="application.answers[i]">
+        </li>
+    </ol>
 
-    <h4>Position</h4>
-    <select #positionSelect>
-        <option *ngFor="let position of project.position" value={{position.id}}>{{position.description}}</option>
-    </select>
+    <div class="form-group">
+        <label for="message">Optional message</label>
+        <textarea class="form-control" rows="6" id="message" [(ngModel)]="application.message"></textarea>
+    </div>
 
-    <button (click)="sendApplication(positionSelect.value)">Apply</button>
+    <div class="text-xs-center">
+        <button class="btn btn-primary" (click)="sendApplication(positionSelect.value)">Apply</button>
+    </div>
 </section>
