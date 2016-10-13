@@ -18,13 +18,11 @@ export class ProjectComponent implements OnInit {
     private myProject = false;
     private isFavorite = false;
 
-    constructor(private route: ActivatedRoute, private projectService: ProjectService, private state: StateService, private router: Router) {
-    }
-
     @ViewChild('editModal') public editModal: ModalDirective;
+    @ViewChild('deleteModal') public deleteModal: ModalDirective;
+    @ViewChild('applyModal') public applyModal: ModalDirective;
 
-    public showEditdModal(): void {
-        this.editModal.show();
+    constructor(private route: ActivatedRoute, private projectService: ProjectService, private state: StateService, private router: Router) {
     }
 
     ngOnInit() {
@@ -92,8 +90,18 @@ export class ProjectComponent implements OnInit {
                 error => this.errorMessage = <any>error);
     }
 
-    updateProject() {
+    sendApplication(code){
+        this.applyModal.hide();
+        if(code){
+            //application was sent
+        }
+        else{
+            this.errorMessage='Application not sent';
+        }
+    }
 
+    editProject() {
+        this.editModal.hide();
     }
 
     deleteProject() {
@@ -103,6 +111,18 @@ export class ProjectComponent implements OnInit {
                     this.router.navigate(['/']);
                 },
                 error => this.errorMessage = <any>error);
+    }
+
+    public showEditdModal(): void {
+        this.editModal.show();
+    }
+
+    public showDeleteModal(): void {
+        this.deleteModal.show();
+    }
+
+    public showApplydModal(): void {
+        this.applyModal.show();
     }
 
     ngOnDestroy() {

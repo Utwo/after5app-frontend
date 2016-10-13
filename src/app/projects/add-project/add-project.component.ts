@@ -7,7 +7,7 @@ import {ProjectService} from "../shared/project.service";
     templateUrl: './add-project.component.html',
 })
 export class AddProjectComponent implements OnInit {
-    project = {title: '', descripton: '', questions: []};
+    project = {title: '', descripton: '', application_questions: []};
     positions = [];
     selectedSkill = '';
     errorMessage = '';
@@ -53,7 +53,7 @@ export class AddProjectComponent implements OnInit {
     }
 
     addQuestion(question) {
-        this.project.questions.push(question);
+        this.project.application_questions.push(question);
     }
 
     removePosition(index) {
@@ -61,6 +61,6 @@ export class AddProjectComponent implements OnInit {
     }
 
     removeQuestion(index) {
-        this.project.questions.splice(index, 1);
+        this.project.application_questions.splice(index, 1);
     }
 }
