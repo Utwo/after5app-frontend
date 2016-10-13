@@ -26,7 +26,7 @@
 
 			<section class="col-md-4">
 				<div class="sidebar p-a-2">
-					<button *ngIf="!myProject" class="btn btn-primary btn-block m-b-2">Help this project become reality</button>
+					<button *ngIf="!myProject"  (click)="showApplydModal()" class="btn btn-primary btn-block m-b-2">Help this project become reality</button>
 					<button (click)="addFavorite()" class="btn btn-outline-primary btn-block">
 						<svg *ngIf="isFavorite" class="icon text-danger">
 							<use xlink:href="#icon-favorite"></use>
@@ -44,7 +44,7 @@
 						Edit project
 					</button>
 
-					<button class="btn btn-danger" (click)="deleteProject()">
+					<button class="btn btn-danger" (click)="showDeleteModal()">
 						<svg class="icon">
 							<use xlink:href="#icon-bin"></use>
 						</svg>
@@ -99,10 +99,47 @@
 				<button type="button" class="close" (click)="editModal.hide()" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title">Large modal</h4>
+				<h4 class="modal-title">Edit project</h4>
 			</div>
 			<div class="modal-body">
-				<p>Hey babe!</p>
+				<app-edit-project (onEdit)="editProject()" [project]="project"></app-edit-project>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div bsModal #applyModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Apply for project"
+		 aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" (click)="applyModal.hide()" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Apply for project</h4>
+			</div>
+			<div class="modal-body">
+				<app-application (onApply)="sendApplication()" [project]="project"></app-application>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div bsModal #deleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Delete modal"
+		 aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" (click)="deleteModal.hide()" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title"></h4>
+			</div>
+			<div class="modal-body">
+				Are you sure you want to delete your project?
+				<button (click)="deleteProject()">Yes</button>
+				<button (click)="deleteModal.hide()">No</button>
 			</div>
 		</div>
 	</div>

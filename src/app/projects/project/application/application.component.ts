@@ -1,5 +1,6 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Output, Input} from '@angular/core';
 import {ProjectService} from "../../shared/project.service";
+import {EventEmitter} from "@angular/common/src/facade/async";
 
 @Component({
     selector: 'app-application',
@@ -7,6 +8,7 @@ import {ProjectService} from "../../shared/project.service";
 })
 export class ApplicationComponent implements OnInit {
     @Input() project;
+    @Output() onApply = new EventEmitter<number>();
     application = {message: null, position_id: null, answers: []};
     errorMessage;
 
@@ -20,9 +22,11 @@ export class ApplicationComponent implements OnInit {
         this.application.position_id = position;
         this.projectService.applyForProject(this.application)
             .subscribe(
-                data => {
-                },
-                error => this.errorMessage = <any>error);
+                data => this.onApply.emit(1),
+                error => {
+                    this.onApply.emit(0);
+                    this.errorMessage = <any>error;
+                });
     }
 
 }
