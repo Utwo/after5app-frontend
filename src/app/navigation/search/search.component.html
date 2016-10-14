@@ -1,23 +1,32 @@
 <input [(ngModel)]="asyncSelected"
-       [typeahead]="dataSource"
-       (typeaheadLoading)="changeTypeaheadLoading($event)"
-       (typeaheadNoResults)="changeTypeaheadNoResults($event)"
-       (typeaheadOnSelect)="typeaheadOnSelect($event)"
-       [typeaheadOptionsLimit]="7"
-       [typeaheadItemTemplate]="projectItemTemplate"
-       placeholder="Search project"
-       class="form-control form-control-sm header__search-form">
+			 [typeahead]="dataSource"
+			 (typeaheadLoading)="changeTypeaheadLoading($event)"
+			 (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+			 (typeaheadOnSelect)="typeaheadOnSelect($event)"
+			 [typeaheadWaitMs]="400"
+			 [typeaheadItemTemplate]="projectItemTemplate"
+			 placeholder="Search project"
+			 typeaheadMinLength="3"
+			 class="form-control form-control-sm header__search-form">
 
-<div *ngIf="typeaheadLoading===true">
-    <i>loading</i>
-</div>
-<div *ngIf="typeaheadNoResults===true" class="" style="">
-    <i>No Results Found</i>
+<i *ngIf="typeaheadLoading===true" class="dropdown-loading">
+	<span class="spinner">
+		<span class="double-bounce1"></span>
+		<span class="double-bounce2"></span>
+	</span>
+</i>
+
+<div *ngIf="typeaheadNoResults===true" class="dropdown-menu text-xs-center">
+	<i>No Results Found</i>
 </div>
 
 <template #projectItemTemplate let-project="item" let-index="index">
-    <a routerLink="/project/{{project.id}}" class="d-block">
-        <h5>{{project.title}}</h5>
-        <p>{{project.description}}</p>
-    </a>
+	<h5 class="text-primary">{{project.title}}</h5>
+	<p class="text-truncate text-muted">{{project.description}}</p>
+	<ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
+		<li class="list-inline-item btn btn-sm btn-info btn-gradient-primary project__skill-item"
+				*ngFor="let position of project.position">
+			{{position.skill.name}}
+		</li>
+	</ul>
 </template>

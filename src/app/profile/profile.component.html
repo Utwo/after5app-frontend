@@ -12,7 +12,7 @@
 				<section *ngIf="user.project.length > 0" class="m-y-3">
 					<h3 *ngIf="!isMe" class="title-border title-border--green p-b-1">{{user.name}}'s projects</h3>
 					<h3 *ngIf="isMe" class="title-border title-border--green p-b-1">My projects</h3>
-					<ul class="row reset-list">
+					<ul class="row list-unstyled">
 						<li *ngFor="let project of user.project" class="col-md-6">
 							<h4 class="project__title"><a routerLink="/project/{{project.id}}">
 								{{project.title}}
@@ -31,7 +31,7 @@
 
 				<section *ngIf="user.favorite.length > 0" class="m-y-3">
 					<h3 class="title-border title-border--green p-b-1">Favorite projects</h3>
-					<ul class="row reset-list">
+					<ul class="row list-unstyled">
 						<li *ngFor="let project of user.favorite" class="col-md-4">
 							<h4 class="project__title"><a routerLink="/project/{{project.id}}">
 								{{project.title}}
@@ -59,7 +59,7 @@
 				<div class="sidebar p-a-2">
 					<section *ngIf="user.skill.length > 0">
 							<h3 class="title-border p-b-1">About</h3>
-							<ol class="reset-list">
+							<ol class="list-unstyled">
 								<li *ngIf="user.website"><a href={{user.website}} target="_blank">{{user.website}}</a></li>
 								<li *ngIf="user.twitter"><a href="https://twitter.com/{{user.twitter}}"
 																						target="_blank">@{{user.twitter}}</a></li>

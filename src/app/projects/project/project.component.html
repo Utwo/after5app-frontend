@@ -65,7 +65,7 @@
 
     <aside *ngIf="related && related.length > 0" class="m-y-3">
         <div class="container">
-            <ul class="row reset-list flex-items-xs-center">
+            <ul class="row list-unstyled flex-items-xs-center">
                 <li *ngFor="let project of related" class="col-md-4">
                     <h4 class="project__title"><a routerLink="/project/{{project.id}}">
                         {{project.title}}
