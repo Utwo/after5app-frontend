@@ -1,11 +1,13 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {ProjectService} from "../../projects/shared/project.service";
+import {Input} from "@angular/core/src/metadata/directives";
 
 @Component({
     selector: 'app-autocomplete',
     templateUrl: './autocomplete.component.html'
 })
 export class AutocompleteComponent implements OnInit {
+    @Input() type;
     @Output() onSelect = new EventEmitter<string>();
     skills = null;
     query = '';

@@ -9,6 +9,8 @@ export class ProjectListComponent implements OnInit {
     errorMessage: string;
     projects = null;
     page = {current_page: null, prev: null, next: null};
+    autocompleteType = 'list';
+    maxDescriptionLength = 210;
 
     constructor(private projectService: ProjectService) {
     }
@@ -51,6 +53,11 @@ export class ProjectListComponent implements OnInit {
             current_page: projects.current_page,
             next: projects.next_page_url,
             prev: projects.prev_page_url
+        };
+        for (let project of this.projects) {
+            if(project.description.length > this.maxDescriptionLength){
+                project.description = project.description.substring(0, this.maxDescriptionLength) + '...';
+            }
         }
     }
 

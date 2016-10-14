@@ -57,7 +57,7 @@
 	</article>
 
 	<div class="container m-y-3">
-		<app-comments [project_id]="project.id" class="row comment"></app-comments>
+		<app-comments [project_id]="project.id" [comments]="project.comment" class="row comment"></app-comments>
 	</div>
 
 	<aside *ngIf="related && related.length > 0" class="m-y-3">

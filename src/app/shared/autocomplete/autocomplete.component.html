@@ -1,8 +1,8 @@
 <div class="select-suggestion">
     <div class="form-inline">
-        <div class="form-group btn btn-primary btn-sm">
-            <label for="filter" class="m-x-1">Filter by skill </label>
-            <input class="form-control" id="filter" type="text" placeholder="javascript" [(ngModel)]="query"
+        <div class='form-group btn btn-primary btn-sm'>
+            <label *ngIf="type === 'list'" for="filter" class="m-x-1">Filter by skill </label>
+            <input class="form-control" id="filter" type="text" placeholder="skill" [(ngModel)]="query"
                    (keyup)=filter()>
         </div>
         <ul class="reset-list select-suggestion__list" *ngIf="filteredList.length > 0">
