@@ -1,4 +1,3 @@
-///<reference path="projects/project-list/project-list.component.ts"/>
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -26,7 +25,7 @@ import {SearchComponent} from "./navigation/search/search.component";
 import {UserNavComponent} from "./navigation/user-nav/user-nav.component";
 import {NotificationsService} from "./navigation/user-nav/shared/notifications.service";
 import { EditProjectComponent } from './projects/project/edit-project/edit-project.component';
-import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { ModalModule, TypeaheadModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 
 @NgModule({
@@ -55,7 +54,8 @@ import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
         FormsModule,
         HttpModule,
         JsonpModule,
-        ModalModule
+        ModalModule,
+        TypeaheadModule
     ],
     providers: [
         appRoutingProviders,

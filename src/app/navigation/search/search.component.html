@@ -1,15 +1,32 @@
-<input class="form-control form-control-sm header__search-form" #search type="text"
-       (keyup)="searchByName(search.value)" placeholder="Search project">
+<input [(ngModel)]="asyncSelected"
+			 [typeahead]="dataSource"
+			 (typeaheadLoading)="changeTypeaheadLoading($event)"
+			 (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+			 (typeaheadOnSelect)="typeaheadOnSelect($event)"
+			 [typeaheadWaitMs]="400"
+			 [typeaheadItemTemplate]="projectItemTemplate"
+			 placeholder="Search project"
+			 typeaheadMinLength="3"
+			 class="form-control form-control-sm header__search-form">
 
-<div *ngIf="projects">
-    <p *ngIf="projects.length === 0">
-        No projects were found
-    </p>
-    <ul *ngIf="projects.length > 0" class="reset-list select-suggestion__list">
-        <li *ngFor="let project of projects" class="select-suggestion__item">
-            <a routerLink="/project/{{project.id}}" (click)="removeQuery(search)" class="d-block">
-                {{project.title}}
-            </a>
-        </li>
-    </ul>
+<i *ngIf="typeaheadLoading===true" class="dropdown-loading">
+	<span class="spinner">
+		<span class="double-bounce1"></span>
+		<span class="double-bounce2"></span>
+	</span>
+</i>
+
+<div *ngIf="typeaheadNoResults===true" class="dropdown-menu text-xs-center">
+	<i>No Results Found</i>
 </div>
+
+<template #projectItemTemplate let-project="item" let-index="index">
+	<h5 class="text-primary">{{project.title}}</h5>
+	<p class="text-truncate text-muted">{{project.description}}</p>
+	<ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
+		<li class="list-inline-item btn btn-sm btn-info btn-gradient-primary project__skill-item"
+				*ngFor="let position of project.position">
+			{{position.skill.name}}
+		</li>
+	</ul>
+</template>

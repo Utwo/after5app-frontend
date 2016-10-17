@@ -1,51 +1,81 @@
-.select-suggestion {
+.dropdown {
   position: relative;
   display: inline-block;
 }
 
-.select-suggestion__list {
+.dropdown--lg .dropdown-menu {
+  width: 300%;
+}
+
+.dropdown-menu {
   position: absolute;
+  left: 0 !important;
   z-index: 999;
-  //background: $brand-primary;
-  background: linear-gradient(to bottom, lighten($brand-primary, 5), darken($brand-primary, 5));
+  //background: linear-gradient(to bottom, lighten($brand-primary, 5), darken($brand-primary, 5));
+  background: $gray-lightest;
   border-radius: $border-radius-lg;
   border: 1px solid $brand-primary;
   width: 100%;
-  color: #fff;
   margin-top: .2rem;
+  font-size: 1rem;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, .3);
   max-height: 400px;
   overflow-y: auto;
+  list-style-type: none;
+  padding: 0;
+  color: $gray-dark;
 }
 
-.select-suggestion__list a{
-  color: #fff;
+.dropdown-menu a {
+  color: $gray-dark;
 }
 
-.select-suggestion__item{
+.dropdown-menu > li {
   transition: .3s all ease-in-out;
-  padding: .5rem .6rem;
-  border-bottom: 1px dashed lighten($brand-primary, 3%);
+  padding: .6rem;
+  border-bottom: 1px dashed darken($gray-lightest, 20%);
 }
 
-.select-suggestion__item:last-child{
+.dropdown-menu > li:last-child {
   border-bottom: 0 none;
 }
 
-.select-suggestion__list::-webkit-scrollbar {
+.dropdown-menu::-webkit-scrollbar {
   width: 6px;
   background-color: #f5f5f5;
 }
 
-.select-suggestion__list::-webkit-scrollbar-thumb {
-  background-color: rgba(0,0,0, .4);
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, .4);
 }
 
-.select-suggestion__list::-webkit-scrollbar-track {
+.dropdown-menu::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #f5f5f5;
 }
 
-.select-suggestion__item:hover{
+.dropdown-menu > li:hover {
   background: $brand-info;
+}
+
+.dropdown-menu > li:hover a {
+  text-decoration: none;
+}
+
+.dropdown-menu .active {
+  color: $gray-lightest;
+  background: $brand-info;
+}
+
+.dropdown-loading {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: map-get($zindex, higher);
+}
+
+.dropdown-loading .spinner {
+  top: 0;
+  right: 0;
+  transform: translate(-50%, -50%);
 }

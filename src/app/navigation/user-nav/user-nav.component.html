@@ -7,13 +7,13 @@
         {{user.name}}
     </span>
     <div class="dropdown__content container-fluid text-xs-left">
-        <ul class="row reset-list text-xs-center">
-            <li class="col-md-12"><a routerLink="/profile/{{user.id}}">Profile</a></li>
-            <li class="col-md-12"><a routerLink="/settings">Settings</a></li>
-            <li class="col-md-12"><a href="#" (click)="logout()">Logout</a></li>
+        <ul class="list-unstyled text-xs-center">
+            <li class="d-block"><a routerLink="/profile/{{user.id}}">Profile</a></li>
+            <li class="d-block"><a routerLink="/settings">Settings</a></li>
+            <li class="d-block"><a href="#" (click)="logout()">Logout</a></li>
         </ul>
         <hr>
-        <ol class="reset-list">
+        <ol class="list-unstyled">
             <li class="notification__item row">
                 <div class="col-md-2"><img class="profile-img" src="" width="25" height="25"/></div>
                 <div class="col-md-10">

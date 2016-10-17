@@ -13,7 +13,7 @@ export class LoginService {
     login() {
         var headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
 
-        this.http.post(environment.URL_API, '', {headers: headers})
+        this.http.post(environment.URL_API + 'token/1', '', {headers: headers})
             .map(res => res.json())
             .subscribe(
                 (data) => this.state.storeState(data['jwt-token'], data['user']),
