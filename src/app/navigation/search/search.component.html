@@ -24,7 +24,7 @@
 	<h5 class="text-primary">{{project.title}}</h5>
 	<p class="text-truncate text-muted">{{project.description}}</p>
 	<ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
-		<li class="list-inline-item btn btn-sm btn-info btn-gradient-primary project__skill-item"
+		<li class="list-inline-item btn btn-sm btn-gradient-primary project__skill-item"
 				*ngFor="let position of project.position">
 			{{position.skill.name}}
 		</li>

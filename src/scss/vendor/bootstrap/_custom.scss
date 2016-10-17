@@ -87,4 +87,7 @@ $container-max-widths: (
 $modal-backdrop-bg: linear-gradient(to top, $brand-primary, $brand-info);
 //$modal-backdrop-bg: linear-gradient(to top, #00C9FF , #92FE9D)
 $modal-backdrop-opacity: .7;
-$modal-dialog-sm-up-margin-y: 100px !default;
+$modal-dialog-sm-up-margin-y: 100px;
+
+//Form
+$input-border-color: $brand-primary;

@@ -2,15 +2,28 @@
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
 
+.form-control {
+  box-shadow: inset 0 0 0 1px transparentize($brand-primary, .8);
+}
+
 .btn-gradient-primary {
   background: linear-gradient(135deg, darken($brand-primary, 5) 0%, darken($brand-primary, 5) 53%, lighten($brand-primary, 2) 56%, lighten($brand-primary, 2) 100%);
   border: #333;
+  color: #fff;
 }
 
-.btn-link-primary{
+.btn-link-primary {
   border-bottom: 4px solid $brand-primary;
 }
 
 .btn-link-info {
   border-bottom: 4px solid $brand-info;
+}
+
+.btn-primary {
+  box-shadow: 1px 1px 1px 0 darken($brand-primary, 10), inset 1px 1px 1px 0 rgba(255, 255, 255, .28), inset -1px -1px 10px 0 rgba(255, 255, 255, .18);
+}
+
+.btn-info {
+  box-shadow: 1px 2px 1px 0 $brand-primary, inset 1px 1px 2px 0 rgba(255, 255, 255, .68);
 }

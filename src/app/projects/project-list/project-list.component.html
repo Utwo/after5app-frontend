@@ -32,7 +32,7 @@
             </div>
             <p>{{project.description}}</p>
             <ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
-                <li class="list-inline-item btn btn-sm btn-info btn-gradient-primary project__skill-item"
+                <li class="list-inline-item btn btn-sm btn-gradient-primary project__skill-item"
                     *ngFor="let position of project.position">
                     {{position.skill.name}}
                 </li>
@@ -55,10 +55,11 @@
             </div>
         </li>
     </ul>
-
-    <button (click)="prevPage()" [disabled]="!page.prev" class="btn btn-default">prev</button>
-    {{page.current_page}}
-    <button (click)="nextPage()" [disabled]="!page.next" class="btn btn-default">next</button>
+		<div class="m-x-auto">
+				<button (click)="prevPage()" [disabled]="!page.prev" class="btn btn-secondary">&#10096;</button>
+				{{page.current_page}}
+				<button (click)="nextPage()" [disabled]="!page.next" class="btn btn-secondary">&#10097;</button>
+		</div>
 </div>
 
 <div *ngIf="projects && projects.length === 0" class="container-small m-x-auto text-xs-center m-y-3">

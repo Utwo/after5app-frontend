@@ -16,7 +16,7 @@
                 <div *ngIf="project.position.length > 0">
                     <h3 class="title-border title-border--green p-b-1">I need help with:</h3>
                     <dl *ngFor="let position of project.position">
-                        <dt class="btn btn-sm btn-info btn-gradient-primary">
+                        <dt class="btn btn-sm btn-gradient-primary">
                             <strong>{{position.skill.name}}</strong>
                         </dt>
                         <dd>{{position.description}}</dd>
@@ -73,7 +73,7 @@
                     <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
                     <p>{{project.description | slice:0:40 }}</p>
                     <ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
-                        <li class="list-inline-item btn btn-sm btn-info btn-gradient-primary project__skill-item"
+                        <li class="list-inline-item btn btn-sm btn-gradient-primary project__skill-item"
                             *ngFor="let position of project.position">
                             {{position.skill.name}}
                         </li>
