@@ -7,10 +7,10 @@
         {{user.name}}
     </span>
     <div class="dropdown__content container-fluid text-xs-left">
-        <ul class="row list-unstyled text-xs-center">
-            <li class="col-md-12"><a routerLink="/profile/{{user.id}}">Profile</a></li>
-            <li class="col-md-12"><a routerLink="/settings">Settings</a></li>
-            <li class="col-md-12"><a href="#" (click)="logout()">Logout</a></li>
+        <ul class="list-unstyled text-xs-center">
+            <li class="d-block"><a routerLink="/profile/{{user.id}}">Profile</a></li>
+            <li class="d-block"><a routerLink="/settings">Settings</a></li>
+            <li class="d-block"><a href="#" (click)="logout()">Logout</a></li>
         </ul>
         <hr>
         <ol class="list-unstyled">
