@@ -17,7 +17,7 @@ export class ProjectService {
 
     public getProjectById(id) {
         return this.http.get(this.state.getUrl() +
-            '/project?with[]=user&with[]=favorite&with[]=position.skill&id=' + id)
+            '/project?with[]=user&with[]=favorite&with[]=position.skill&with[]=comment.user&id=' + id)
             .map(this.extractData)
             .catch(this.handleError);
     }

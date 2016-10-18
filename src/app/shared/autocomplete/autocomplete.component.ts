@@ -1,23 +1,23 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, Output, EventEmitter} from '@angular/core';
 import {ProjectService} from "../../projects/shared/project.service";
 import {Observable} from "rxjs";
-import {FormGroup, FormControl} from "@angular/forms";
 import {TypeaheadMatch} from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
     selector: 'app-autocomplete',
     templateUrl: './autocomplete.component.html'
 })
+
 export class AutocompleteComponent {
-    errorMessage = '';
+    @Output() onSelect = new EventEmitter<Object>();
     public dataSource: Observable<any>;
     public asyncSelected: string = '';
     public typeaheadLoading: boolean = false;
     public typeaheadNoResults: boolean = false;
+    errorMessage = '';
 
     constructor(private projectService: ProjectService) {
         this.dataSource = Observable.create((observer: any) => {
-            // Runs on every search
             observer.next(this.asyncSelected);
         }).mergeMap((token: string) => this.getSkillsAsObservable(token));
     }
@@ -42,6 +42,7 @@ export class AutocompleteComponent {
     }
 
     public typeaheadOnSelect(e: TypeaheadMatch): void {
-        console.log('Selected value: ', e.value);
+        this.asyncSelected = e.item.name;
+        this.onSelect.emit(e.item);
     }
 }
