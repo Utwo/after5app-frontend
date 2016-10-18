@@ -55,10 +55,16 @@
             </div>
         </li>
     </ul>
-		<div class="m-x-auto">
-				<button (click)="prevPage()" [disabled]="!page.prev" class="btn btn-secondary">&#10096;</button>
-				{{page.current_page}}
-				<button (click)="nextPage()" [disabled]="!page.next" class="btn btn-secondary">&#10097;</button>
+		<div class="text-xs-center row m-y-1">
+        <div class="col-md-4">
+						<button (click)="prevPage()" *ngIf="page.prev" class="btn btn-info">&#10096;</button>
+        </div>
+        <div class="col-md-4">
+						<span class="btn">{{page.current_page}}</span>
+        </div>
+				<div class="col-md-4">
+						<button (click)="nextPage()" *ngIf="page.next" class="btn btn-info">&#10097;</button>
+				</div>
 		</div>
 </div>
 
