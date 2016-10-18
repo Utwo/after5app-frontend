@@ -1,10 +1,10 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from "rxjs";
 import {ModalDirective} from 'ng2-bootstrap/ng2-bootstrap';
 import {ProjectService} from "../shared/project.service";
 import {StateService} from "../../shared/state.service";
-
+import * as mo from 'mo-js';
 
 @Component({
     selector: 'app-project',
@@ -21,6 +21,8 @@ export class ProjectComponent implements OnInit {
     @ViewChild('editModal') public editModal: ModalDirective;
     @ViewChild('deleteModal') public deleteModal: ModalDirective;
     @ViewChild('applyModal') public applyModal: ModalDirective;
+    @ViewChild("favorite") favorite;
+    //@ViewChild("span") span;
 
     constructor(private route: ActivatedRoute, private projectService: ProjectService, private state: StateService, private router: Router) {
     }
@@ -58,6 +60,55 @@ export class ProjectComponent implements OnInit {
     }
 
     addFavorite() {
+        console.dir(this.favorite.nativeElement);
+        let scaleCurve = mo.easing.path('M0,100 L25,99.9999983 C26.2328835,75.0708847 19.7847843,0 100,0');
+        var el = this.favorite.nativeElement,
+            //elSpan = this.span.nativeElement,
+            // mo.js timeline obj
+            timeline = new mo.Timeline(),
+
+            // tweens for the animation:
+
+            // burst animation
+            tween1 = new mo.Burst({
+                parent: el,
+                duration: 1500,
+                shape : 'circle',
+                fill : [ '#988ADE', '#DE8AA0', '#8AAEDE', '#8ADEAD', '#DEC58A', '#8AD1DE' ],
+                opacity: 0.6,
+                childOptions: { radius: {20:0} },
+                radius: {40:120},
+                count: 6,
+                isSwirl: true,
+                easing: mo.easing.bezier(0.1, 1, 0.3, 1)
+            }),
+            // ring animation
+            tween2 = new mo.Transit({
+                parent: el,
+                duration: 750,
+                type: 'circle',
+                radius: {0: 50},
+                fill: 'transparent',
+                stroke: '#988ADE',
+                strokeWidth: {15:0},
+                opacity: 0.6,
+                easing: mo.easing.bezier(0, 1, 0.5, 1)
+            }),
+            // icon scale animation
+            tween3 = new mo.Tween({
+                duration : 900,
+                onUpdate: function(progress) {
+                    let scaleProgress = scaleCurve(progress);
+                    //elSpan.style.WebkitTransform = elSpan.style.transform = 'scale3d(' + scaleProgress + ',' + scaleProgress + ',1)';
+                }
+            });
+
+        // add tweens to timeline:
+        timeline.add(tween1, tween2, tween3);
+
+        timeline.replay();
+
+
         if(this.myProject){
             return;
         }

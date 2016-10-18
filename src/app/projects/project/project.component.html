@@ -29,7 +29,7 @@
                     <button *ngIf="!myProject" (click)="showApplydModal()" class="btn btn-primary btn-block m-b-2">Help
                         this project become reality
                     </button>
-                    <button (click)="addFavorite()" class="btn btn-outline-primary btn-block">
+                    <button #favorite (click)="addFavorite()" class="btn btn-outline-primary btn-block">
                         <svg *ngIf="isFavorite" class="icon text-danger">
                             <use xlink:href="#icon-favorite"></use>
                         </svg>
@@ -38,7 +38,8 @@
                         </svg>
                         {{project.favorite_count}}
                     </button>
-                </div>
+
+								</div>
                 <div *ngIf="myProject" class="text-xs-center m-t-2">
                     <button class="btn btn-outline-primary" (click)="showEditdModal()">
                         <svg class="icon">
