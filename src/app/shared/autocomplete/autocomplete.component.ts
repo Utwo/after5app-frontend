@@ -1,6 +1,9 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {ProjectService} from "../../projects/shared/project.service";
 import {Input} from "@angular/core/src/metadata/directives";
+import {Observable} from "rxjs";
+import {FormGroup, FormControl} from "@angular/forms";
+import {TypeaheadMatch} from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
     selector: 'app-autocomplete',
@@ -12,37 +15,40 @@ export class AutocompleteComponent implements OnInit {
     skills = null;
     query = '';
     filteredList = [];
+export class AutocompleteComponent {
     errorMessage = '';
+    public dataSource: Observable<any>;
+    public asyncSelected: string = '';
+    public typeaheadLoading: boolean = false;
+    public typeaheadNoResults: boolean = false;
 
     constructor(private projectService: ProjectService) {
+        this.dataSource = Observable.create((observer: any) => {
+            // Runs on every search
+            observer.next(this.asyncSelected);
+        }).mergeMap((token: string) => this.getSkillsAsObservable(token));
     }
 
-    ngOnInit() {
-        this.getSkills();
+    public getSkillsAsObservable(token: string): Observable<any> {
+        return this.projectService.getSkills()
+            .map(
+                skills => {
+                    return skills.filter(item => {
+                        return item.name.toLowerCase().indexOf(token.toLowerCase()) > -1
+                    });
+                },
+                error => this.errorMessage = <any>error)
     }
 
-    getSkills() {
-        this.projectService.getSkills()
-            .subscribe(
-                skills => this.skills = skills,
-                error => this.errorMessage = <any>error);
+    public changeTypeaheadLoading(e: boolean): void {
+        this.typeaheadLoading = e;
     }
 
-    filter() {
-        this.filteredList = [];
-        if (this.query === "") {
-            return;
-        }
-        for (let skill of this.skills) {
-            if (skill.name.toLowerCase().indexOf(this.query.toLowerCase()) > -1) {
-                this.filteredList.push(skill);
-            }
-        }
+    public changeTypeaheadNoResults(e: boolean): void {
+        this.typeaheadNoResults = e;
     }
 
-    select(skill) {
-        this.onSelect.emit(skill);
-        this.query = skill.name;
-        this.filteredList = [];
+    public typeaheadOnSelect(e: TypeaheadMatch): void {
+        console.log('Selected value: ', e.value);
     }
 }
