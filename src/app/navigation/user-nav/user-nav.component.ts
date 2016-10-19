@@ -12,6 +12,11 @@ export class UserNavComponent implements OnInit {
     notificationCount = 0;
     notifications = null;
     errorMessage = '';
+    notificationTypes = {
+        comment: 'App\\Notifications\\AddCommentNotification',
+        application: 'App\\Notifications\\AddApplicationNotification',
+        accept: 'App\\Notifications\\AcceptNotification'
+    };
 
     constructor(private notificationsService: NotificationsService, private loginService: LoginService) {
     }
@@ -31,7 +36,7 @@ export class UserNavComponent implements OnInit {
         this.notificationsService.getNotifications()
             .subscribe(
                 data => {
-                    this.notifications = data;
+                    this.notifications = data.notification;
                     this.notificationCount = 0;
                 },
                 error => this.errorMessage = <any>error);

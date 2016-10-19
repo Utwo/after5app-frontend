@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {ProjectService} from "../../projects/shared/project.service";
 import {TypeaheadMatch} from 'ng2-bootstrap/ng2-bootstrap';
 import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-search',
@@ -14,7 +15,7 @@ export class SearchComponent {
     public typeaheadLoading: boolean = false;
     public typeaheadNoResults: boolean = false;
 
-    public constructor(private projectService: ProjectService) {
+    public constructor(private projectService: ProjectService, private router: Router) {
         this.dataSource = Observable.create((observer: any) => {
             // Runs on every search
             observer.next(this.asyncSelected);
@@ -37,7 +38,8 @@ export class SearchComponent {
     }
 
     public typeaheadOnSelect(e: TypeaheadMatch): void {
-        console.log('Selected value: ', e.value);
+        this.asyncSelected = e.item.title;
+        this.router.navigate(['/project/',e.item.id]);
     }
 
 }

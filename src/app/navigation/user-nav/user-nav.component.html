@@ -14,32 +14,47 @@
         </ul>
         <hr>
         <ol class="list-unstyled">
-            <li class="notification__item row">
-                <div class="col-md-2"><img class="profile-img" src="" width="25" height="25"/></div>
-                <div class="col-md-10">
-                    <p>User1 a adaugat o aplicatie noua la proiectul <a href="#">Project1</a></p>
-                    <small>one week ago</small>
-                </div>
-            </li>
-            <li class="notification__item row">
-                <div class="col-md-2"><img class="profile-img" src="" width="25" height="25"/></div>
-                <div class="col-md-10">
-                    <p>User1 a adaugat o aplicatie noua la proiectul <a href="#">Project1</a></p>
-                    <small>one week ago</small>
-                </div>
-            </li>
-            <li class="notification__item row">
-                <div class="col-md-2"><img class="profile-img" src="" width="25" height="25"/></div>
-                <div class="col-md-10">
-                    <p>User1 a adaugat o aplicatie noua la proiectul <a href="#">Project1</a></p>
-                    <small>one week ago</small>
-                </div>
-            </li>
-            <li class="notification__item row">
-                <div class="col-md-2"><img class="profile-img" src="" width="25" height="25"/></div>
-                <div class="col-md-10">
-                    <p>User1 a adaugat o aplicatie noua la proiectul <a href="#">Project1</a></p>
-                    <small>one week ago</small>
+            <li *ngFor="let notification of notifications" class="notification__item row">
+                <div [ngSwitch]="notification.type">
+                    <div *ngSwitchCase="notificationTypes.comment">
+                        <div class="col-md-2"><img class="profile-img" src="{{notification.data.user.picture}}"
+                                                   width="25" height="25"/></div>
+                        <div class="col-md-10">
+                            <p>
+                                <a routerLink="/profile/{{notification.data.user.id}}">
+                                    {{notification.data.user.name}}
+                                </a>
+                                left a comment for your project
+                                <a routerLink="/project/{{notification.data.project.id}}">
+                                    {{notification.data.project.title}}</a>
+                            </p>
+                            <small>{{notification.created_at | timeAgo}}</small>
+                        </div>
+                    </div>
+                    <div *ngSwitchCase="notificationTypes.accept">
+                        <div class="col-md-10">
+                            <p>Your application for
+                                <a routerLink="/project/{{notification.data.project.id}}">
+                                    {{notification.data.project.title}}</a>
+                                was accepted! </p>
+                            <small>{{notification.created_at | timeAgo}}</small>
+                        </div>
+                    </div>
+                    <div *ngSwitchCase="notificationTypes.application">
+                        <div class="col-md-2"><img class="profile-img" src="{{notification.data.user.picture}}"
+                                                   width="25" height="25"/></div>
+                        <div class="col-md-10">
+                            <p>
+                                <a routerLink="/profile/{{notification.data.user.id}}">
+                                    {{notification.data.user.name}}
+                                </a>
+                                applied for your project
+                                <a routerLink="/project/{{notification.data.project.id}}">
+                                    {{notification.data.project.title}}</a>
+                            </p>
+                            <small>{{notification.created_at | timeAgo}}</small>
+                        </div>
+                    </div>
                 </div>
             </li>
         </ol>
