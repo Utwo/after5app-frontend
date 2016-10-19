@@ -26,6 +26,7 @@ import {UserNavComponent} from "./navigation/user-nav/user-nav.component";
 import {NotificationsService} from "./navigation/user-nav/shared/notifications.service";
 import { EditProjectComponent } from './projects/project/edit-project/edit-project.component';
 import { ModalModule, TypeaheadModule } from 'ng2-bootstrap/ng2-bootstrap';
+import {UserApplicationsComponent} from "./projects/project/user-applications/user-applications.component";
 
 
 @NgModule({
@@ -46,7 +47,9 @@ import { ModalModule, TypeaheadModule } from 'ng2-bootstrap/ng2-bootstrap';
         AddProjectComponent,
         SearchComponent,
         FooterComponent,
-        UserNavComponent, EditProjectComponent
+        UserNavComponent,
+        EditProjectComponent,
+        UserApplicationsComponent
     ],
     imports: [
         routing,
