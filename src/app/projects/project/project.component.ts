@@ -22,6 +22,7 @@ export class ProjectComponent implements OnInit {
     @ViewChild('deleteModal') public deleteModal: ModalDirective;
     @ViewChild('applyModal') public applyModal: ModalDirective;
     @ViewChild("favorite") favorite;
+    @ViewChild("favoriteSpan") favoriteSpan;
     //@ViewChild("span") span;
 
     constructor(private route: ActivatedRoute, private projectService: ProjectService, private state: StateService, private router: Router) {
@@ -60,55 +61,7 @@ export class ProjectComponent implements OnInit {
     }
 
     addFavorite() {
-        console.dir(this.favorite.nativeElement);
-        let scaleCurve = mo.easing.path('M0,100 L25,99.9999983 C26.2328835,75.0708847 19.7847843,0 100,0');
-        var el = this.favorite.nativeElement,
-            //elSpan = this.span.nativeElement,
-            // mo.js timeline obj
-            timeline = new mo.Timeline(),
-
-            // tweens for the animation:
-
-            // burst animation
-            tween1 = new mo.Burst({
-                parent: el,
-                duration: 1500,
-                shape : 'circle',
-                fill : [ '#988ADE', '#DE8AA0', '#8AAEDE', '#8ADEAD', '#DEC58A', '#8AD1DE' ],
-                opacity: 0.6,
-                childOptions: { radius: {20:0} },
-                radius: {40:120},
-                count: 6,
-                isSwirl: true,
-                easing: mo.easing.bezier(0.1, 1, 0.3, 1)
-            }),
-            // ring animation
-            tween2 = new mo.Transit({
-                parent: el,
-                duration: 750,
-                type: 'circle',
-                radius: {0: 50},
-                fill: 'transparent',
-                stroke: '#988ADE',
-                strokeWidth: {15:0},
-                opacity: 0.6,
-                easing: mo.easing.bezier(0, 1, 0.5, 1)
-            }),
-            // icon scale animation
-            tween3 = new mo.Tween({
-                duration : 900,
-                onUpdate: function(progress) {
-                    let scaleProgress = scaleCurve(progress);
-                    //elSpan.style.WebkitTransform = elSpan.style.transform = 'scale3d(' + scaleProgress + ',' + scaleProgress + ',1)';
-                }
-            });
-
-        // add tweens to timeline:
-        timeline.add(tween1, tween2, tween3);
-
-        timeline.replay();
-
-
+        this.showAnimation(this.favorite.nativeElement, this.favoriteSpan.nativeElement);
         if(this.myProject){
             return;
         }
@@ -124,6 +77,139 @@ export class ProjectComponent implements OnInit {
                     }
                 },
                 error => this.errorMessage = <any>error);
+    }
+
+    showAnimation(el, elSpan){
+        let timeline = new mojs.Timeline();
+        let tweens = [
+                // ring animation
+                new mo.Shape({
+                    parent: el,
+                    duration: 750,
+                    type: 'circle',
+                    radius: {0: 40},
+                    fill: 'transparent',
+                    stroke: '#F35186',
+                    strokeWidth: {35:0},
+                    opacity: 0.2,
+                    top: '45%',
+                    easing: mo.easing.bezier(0, 1, 0.5, 1)
+                }),
+                new mo.Shape({
+                    parent: el,
+                    duration: 500,
+                    delay: 100,
+                    type: 'circle',
+                    radius: {0: 20},
+                    fill: 'transparent',
+                    stroke: '#F35186',
+                    strokeWidth: {5:0},
+                    opacity: 0.2,
+                    x : 40,
+                    y : -60,
+                    easing: mo.easing.sin.out
+                }),
+                new mo.Shape({
+                    parent: el,
+                    duration: 500,
+                    delay: 180,
+                    type: 'circle',
+                    radius: {0: 10},
+                    fill: 'transparent',
+                    stroke: '#F35186',
+                    strokeWidth: {5:0},
+                    opacity: 0.5,
+                    x: -10,
+                    y: -80,
+                    isRunLess: true,
+                    easing: mo.easing.sin.out
+                }),
+                new mo.Shape({
+                    parent: el,
+                    duration: 800,
+                    delay: 240,
+                    type: 'circle',
+                    radius: {0: 20},
+                    fill: 'transparent',
+                    stroke: '#F35186',
+                    strokeWidth: {5:0},
+                    opacity: 0.3,
+                    x: -70,
+                    y: -10,
+                    easing: mo.easing.sin.out
+                }),
+                new mo.Shape({
+                    parent: el,
+                    duration: 800,
+                    delay: 240,
+                    type: 'circle',
+                    radius: {0: 20},
+                    fill: 'transparent',
+                    stroke: '#F35186',
+                    strokeWidth: {5:0},
+                    opacity: 0.4,
+                    x: 80,
+                    y: -50,
+                    easing: mo.easing.sin.out
+                }),
+                new mo.Shape({
+                    parent: el,
+                    duration: 1000,
+                    delay: 300,
+                    type: 'circle',
+                    radius: {0: 15},
+                    fill: 'transparent',
+                    stroke: '#F35186',
+                    strokeWidth: {5:0},
+                    opacity: 0.2,
+                    x: 20,
+                    y: -100,
+                    easing: mo.easing.sin.out
+                }),
+                new mo.Shape({
+                    parent: el,
+                    duration: 600,
+                    delay: 330,
+                    type: 'circle',
+                    radius: {0: 25},
+                    fill: 'transparent',
+                    stroke: '#F35186',
+                    strokeWidth: {5:0},
+                    opacity: 0.4,
+                    x: -40,
+                    y: -90,
+                    easing: mo.easing.sin.out
+                }),
+                // icon scale animation
+                new mo.Tween({
+                    duration : 1200,
+                    easing: mo.easing.ease.out,
+                    onStart: function(){
+                        el.style.overflow = "visible";
+                    },
+                    onUpdate: function(progress) {
+                        if(progress > 0.3) {
+                            let elasticOutProgress = mo.easing.elastic.out(1.43*progress-0.43);
+                            elSpan.style.WebkitTransform = elSpan.style.transform = 'scale3d(' + elasticOutProgress + ',' + elasticOutProgress + ',1)';
+                        }
+                        else {
+                            elSpan.style.WebkitTransform = elSpan.style.transform = 'scale3d(0,0,1)';
+                        }
+                    },
+                    onComplete: function(){
+                        el.style.overflow = "hidden";
+                    }
+                })
+            ];
+            timeline.add(tweens);
+            timeline.replay();
+            /*onCheck : function() {
+                el.style.color = '#F35186';
+            }
+            onUnCheck : function() {
+                el.style.color = '#C0C1C3';
+            }*/
+
     }
 
     getRelatedProjects() {

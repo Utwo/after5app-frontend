@@ -25,32 +25,39 @@
             </section>
 
             <section class="col-md-4">
-                <div class="sidebar p-a-2">
-                    <button *ngIf="!myProject" (click)="showApplydModal()" class="btn btn-primary btn-block m-b-2">Help
-                        this project become reality
-                    </button>
-                    <button #favorite (click)="addFavorite()" class="btn btn-outline-primary btn-block">
-                        <svg *ngIf="isFavorite" class="icon text-danger">
-                            <use xlink:href="#icon-favorite"></use>
-                        </svg>
-                        <svg *ngIf="!isFavorite" class="icon text-danger">
-                            <use xlink:href="#icon-favorite"></use>
-                        </svg>
-                        {{project.favorite_count}}
-                    </button>
-
-								</div>
+								<div class="sidebar p-a-1">
+										<div *ngIf="!myProject" class="m-b-1">
+												<button (click)="showApplydModal()" class="btn btn-primary m-r-1">
+														<svg class="icon">
+																<use xlink:href="assets/icons.svg#icon-rocket-color"></use>
+														</svg>
+												</button>
+												<span>Help this project become reality!</span>
+										</div>
+										<hr *ngIf="!myProject">
+										<div>
+											<button #favorite (click)="addFavorite()" class="btn m-r-1 btn-circle" [class.btn-danger]="isFavorite" [class.btn-primary]="!isFavorite">
+													<svg *ngIf="isFavorite" class="icon">
+															<use xlink:href="assets/icons.svg#icon-heart"></use>
+													</svg>
+													<svg *ngIf="!isFavorite" class="icon text-info">
+															<use xlink:href="assets/icons.svg#icon-heart-o"></use>
+													</svg>
+											</button>
+											<span #favoriteSpan>{{project.favorite_count}} favorites</span>
+										</div>
+									</div>
                 <div *ngIf="myProject" class="text-xs-center m-t-2">
                     <button class="btn btn-outline-primary" (click)="showEditdModal()">
                         <svg class="icon">
-                            <use xlink:href="" xlink:href="" [attr.xlink:href]="icon-pencil"></use>
+                            <use xlink:href="assets/icons.svg#icon-pencil"></use>
                         </svg>
                         Edit project
                     </button>
 
                     <button class="btn btn-danger" (click)="showDeleteModal()">
                         <svg class="icon">
-                            <use xlink:href="#icon-bin"></use>
+                            <use xlink:href="assets/icons.svg#icon-bin"></use>
                         </svg>
                         Delete project
                     </button>
