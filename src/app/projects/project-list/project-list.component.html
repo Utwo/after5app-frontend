@@ -32,7 +32,7 @@
             </div>
             <p>{{project.description}}</p>
             <ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
-                <li class="list-inline-item btn btn-sm btn-info btn-gradient-primary project__skill-item"
+                <li class="list-inline-item btn btn-sm btn-gradient-primary project__skill-item"
                     *ngFor="let position of project.position">
                     {{position.skill.name}}
                 </li>
@@ -47,18 +47,25 @@
                 </div>
                 <div class="col-md-6 text-xs-right">
                     <span class="m-r-1" title="favorites"><svg
-                            class="icon text-danger"><use xlink:href="#icon-favorite"></use></svg> {{project.favorite_count}}</span>
+                            class="icon text-danger"><use xlink:href="assets/icons.svg#icon-favorite"></use></svg> {{project.favorite_count}}</span>
                     <span title="comments"><svg
                             class="icon text-warning"><use
-                            xlink:href="#icon-pacman"></use></svg> {{project.comment_count}}</span>
+                            xlink:href="assets/icons.svg#icon-pacman"></use></svg> {{project.comment_count}}</span>
                 </div>
             </div>
         </li>
     </ul>
-
-    <button (click)="prevPage()" [disabled]="!page.prev" class="btn btn-default">prev</button>
-    {{page.current_page}}
-    <button (click)="nextPage()" [disabled]="!page.next" class="btn btn-default">next</button>
+		<div class="text-xs-center row m-y-1">
+        <div class="col-md-4">
+						<button (click)="prevPage()" *ngIf="page.prev" class="btn btn-info">&#10096;</button>
+        </div>
+        <div class="col-md-4">
+						<span class="btn">{{page.current_page}}</span>
+        </div>
+				<div class="col-md-4">
+						<button (click)="nextPage()" *ngIf="page.next" class="btn btn-info">&#10097;</button>
+				</div>
+		</div>
 </div>
 
 <div *ngIf="projects && projects.length === 0" class="container-small m-x-auto text-xs-center m-y-3">

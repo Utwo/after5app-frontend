@@ -46,7 +46,8 @@ import { ModalModule, TypeaheadModule } from 'ng2-bootstrap/ng2-bootstrap';
         AddProjectComponent,
         SearchComponent,
         FooterComponent,
-        UserNavComponent, EditProjectComponent
+        UserNavComponent,
+        EditProjectComponent,
     ],
     imports: [
         routing,
