@@ -3,14 +3,10 @@
 }
 
 .project__item {
-  padding: 1.6em;
-  margin: 3em auto;
   word-wrap: break-word;
   max-width: 600px;
-}
-
-.project__item:nth-child(2n+2) {
   background: $gray-lightest;
+  border: 1px solid $gray-lighter;
   border-radius: $border-radius-lg;
 }
 
@@ -34,10 +30,6 @@
 }
 
 .project__subinfo {
-  border-top: 2px solid $gray-lightest;
+  border-top: 2px solid #fff;
   padding-top: .8em;
-}
-
-.project__item:nth-child(2n+2) .project__subinfo{
-  border-color: #fff;
 }
