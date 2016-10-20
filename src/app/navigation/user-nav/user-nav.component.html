@@ -14,9 +14,9 @@
         </ul>
         <hr>
         <ol class="list-unstyled">
-            <li *ngFor="let notification of notifications" class="notification__item row">
+            <li *ngFor="let notification of notifications">
                 <div [ngSwitch]="notification.type">
-                    <div *ngSwitchCase="notificationTypes.comment">
+                    <div *ngSwitchCase="notificationTypes.comment" class="notification__item row">
                         <div class="col-md-2"><img class="profile-img" src="{{notification.data.user.picture}}"
                                                    width="25" height="25"/></div>
                         <div class="col-md-10">
@@ -31,8 +31,8 @@
                             <small>{{notification.created_at | timeAgo}}</small>
                         </div>
                     </div>
-                    <div *ngSwitchCase="notificationTypes.accept">
-                        <div class="col-md-10">
+                    <div *ngSwitchCase="notificationTypes.accept" class="notification__item row">
+                        <div class="col-md-10 offset-md-2">
                             <p>Your application for
                                 <a routerLink="/project/{{notification.data.project.id}}">
                                     {{notification.data.project.title}}</a>
@@ -40,7 +40,7 @@
                             <small>{{notification.created_at | timeAgo}}</small>
                         </div>
                     </div>
-                    <div *ngSwitchCase="notificationTypes.application">
+                    <div *ngSwitchCase="notificationTypes.application" class="notification__item row">
                         <div class="col-md-2"><img class="profile-img" src="{{notification.data.user.picture}}"
                                                    width="25" height="25"/></div>
                         <div class="col-md-10">
