@@ -1,66 +1,70 @@
 <div class="jumbotron-fluid">
-	<div class="container">
-		<h2>Start a new project</h2>
-	</div>
+    <div class="container">
+        <h2>Start a new project
+            <svg class="icon">
+                <use xlink:href="assets/icons.svg#icon-rocket-color"></use>
+            </svg>
+        </h2>
+    </div>
 </div>
-<section class="container m-y-3">
-	<form #updateForm="ngForm" (ngSubmit)="storeProject()">
-		<div class="form-group row">
-			<label class="col-sm-2 col-form-label" for="title">Title</label>
-			<input class="form-control col-sm-10" id="title" type="text" required minlength="4" maxlength="20" name="title"
-						 placeholder="Project title"
-						 [(ngModel)]="project.title" #title="ngModel">
+<section class="container-small m-x-auto m-y-3">
+    <form #updateForm="ngForm" (ngSubmit)="storeProject()">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input class="form-control" id="title" type="text" required minlength="4" maxlength="20" name="title"
+                   placeholder="Project title"
+                   [(ngModel)]="project.title" #title="ngModel">
 
-			<div *ngIf="title.errors && (title.dirty || title.touched)">
-				<i [hidden]="!title.errors.required">title is required</i>
-				<i [hidden]="!title.errors.minlength">title must be at least 4 characters long.</i>
-				<i [hidden]="!title.errors.maxlength">title cannot be more than 20 characters long.</i>
-			</div>
-		</div>
+            <div *ngIf="title.errors && (title.dirty || title.touched)">
+                <i [hidden]="!title.errors.required">title is required</i>
+                <i [hidden]="!title.errors.minlength">title must be at least 4 characters long.</i>
+                <i [hidden]="!title.errors.maxlength">title cannot be more than 20 characters long.</i>
+            </div>
+        </div>
 
-		<div class="form-group row">
-			<label class="col-sm-2 col-form-label" for="description">Description</label>
-			<textarea class="form-control col-sm-10" id="description" required minlength="4" name="description"
-								placeholder="Project description"
-								[(ngModel)]="project.description" #description="ngModel" rows="6"></textarea>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" required minlength="4" name="description"
+                      placeholder="Project description"
+                      [(ngModel)]="project.description" #description="ngModel" rows="6"></textarea>
 
-			<div *ngIf="description.errors && (description.dirty || description.touched)">
-				<i [hidden]="!description.errors.required">description is required</i>
-				<i [hidden]="!description.errors.minlength">description must be at least 4 characters long.</i>
-			</div>
-		</div>
+            <div *ngIf="description.errors && (description.dirty || description.touched)">
+                <i [hidden]="!description.errors.required">description is required</i>
+                <i [hidden]="!description.errors.minlength">description must be at least 4 characters long.</i>
+            </div>
+        </div>
 
-		<div class="form-group row">
-			<label class="col-sm-2 col-form-label" for="position">Positions</label>
-			<div class="col-sm-10">
-				<app-autocomplete (onSelect)="onSelect($event)"></app-autocomplete>
-				<textarea class="form-control" type="text" id="position" placeholder="position" #position rows="4"></textarea>
-				<button class="btn btn-info" type="button" (click)="addPosition(position.value)">Add Position</button>
-				<ul>
-					<li *ngFor="let position of positions; let i = index">
-						<h5>{{position.skill}}</h5>
-						<p>{{position.description}}</p>
-						<button class="btn btn-outline-danger btn-sm" type="button" (click)="removePosition(i)">&times;</button>
-					</li>
-				</ul>
-			</div>
-		</div>
+        <div class="form-group">
+            <label for="position">Positions</label>
+            <app-autocomplete (onSelect)="onSelect($event)"></app-autocomplete>
+            <textarea class="form-control" type="text" id="position" placeholder="Position description" #position
+                      rows="4"></textarea>
+            <button class="btn btn-info" type="button" (click)="addPosition(position.value)">Add Position</button>
+            <ul>
+                <li *ngFor="let position of positions; let i = index">
+                    <h5>{{position.skill}}</h5>
+                    <p>{{position.description}}</p>
+                    <button class="btn btn-outline-danger btn-sm" type="button"
+                            (click)="removePosition(i)">&times;</button>
+                </li>
+            </ul>
+        </div>
 
-		<div class="form-group row">
-			<label class="col-sm-2 col-form-label" for="question">Questions</label>
-			<input class="form-control col-sm-7" id="question" type="text" #question>
-			<div class="col-sm-3">
-				<button class="btn btn-info" type="button" (click)="addQuestion(question.value)">Add Question</button>
-			</div>
-		</div>
-		<ul>
-			<li *ngFor="let question of project.application_questions; let i = index">
-				{{question}}
-				<button class="btn btn-outline-danger btn-sm" type="button" (click)="removeQuestion(i)">&times;</button>
-			</li>
-		</ul>
-		<div class="text-xs-center">
-			<button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid">Add project</button>
-		</div>
-	</form>
+        <div class="form-group">
+            <label for="question">Questions</label>
+            <div class="form-inline">
+                <input class="form-control" id="question" type="text" #question>
+                <button class="btn btn-info" type="button" (click)="addQuestion(question.value)">Add Question</button>
+            </div>
+        </div>
+        <ul>
+            <li *ngFor="let question of project.application_questions; let i = index">
+                {{question}}
+                <button class="btn btn-outline-danger btn-sm" type="button" (click)="removeQuestion(i)">&times;</button>
+            </li>
+        </ul>
+        <div class="text-xs-center">
+            <button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid">Add project</button>
+        </div>
+    </form>
 </section>
