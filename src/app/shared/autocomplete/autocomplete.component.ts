@@ -38,6 +38,7 @@ export class AutocompleteComponent {
     }
 
     public changeTypeaheadNoResults(e: boolean): void {
+        this.onSelect.emit({id: 0, name: this.asyncSelected});
         this.typeaheadNoResults = e;
     }
 
