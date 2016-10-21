@@ -20,6 +20,7 @@ export class ProjectListComponent implements OnInit {
     }
 
     getProjects(page) {
+        this.setActiveLink(document.getElementById("all-projects"));
         this.projectService.getProjects(page)
             .subscribe(
                 projects => this.extractData(projects),
@@ -33,7 +34,14 @@ export class ProjectListComponent implements OnInit {
                 error => this.errorMessage = <any>error);
     }
 
+    setActiveLink(elem){
+        var active_link = document.getElementsByClassName("btn-link-info");
+        active_link[0].className="btn font-weight-bold m-l-1";
+        elem.className ="btn font-weight-bold m-l-1 btn-link-info";
+    }
+
     getRecommendedProjects() {
+        this.setActiveLink(document.getElementById("recommended-projects"));
         this.projectService.getRecommendedProjects()
             .subscribe(
                 projects => this.extractData(projects),
@@ -41,6 +49,7 @@ export class ProjectListComponent implements OnInit {
     }
 
     getPopularProjects() {
+        this.setActiveLink(document.getElementById("popular-projects"));
         this.projectService.getPopularProjects()
             .subscribe(
                 projects => this.extractData(projects),
