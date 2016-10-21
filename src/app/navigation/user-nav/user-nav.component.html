@@ -8,9 +8,9 @@
     </span>
     <div class="dropdown__content container-fluid text-xs-left">
         <ul class="list-unstyled text-xs-center">
-            <li class="d-block"><a routerLink="/profile/{{user.id}}">Profile</a></li>
-            <li class="d-block"><a routerLink="/settings">Settings</a></li>
-            <li class="d-block"><a href="#" (click)="logout()">Logout</a></li>
+            <li><a class="d-block user-nav__item" routerLink="/profile/{{user.id}}">Profile</a></li>
+            <li><a class="d-block user-nav__item" routerLink="/settings">Settings</a></li>
+            <li><a class="d-block user-nav__item" href="#" (click)="logout()">Logout</a></li>
         </ul>
         <hr>
         <ol class="list-unstyled">
@@ -58,5 +58,11 @@
                 </div>
             </li>
         </ol>
+        <div *ngIf="!notifications" class="row flex-items-xs-center">
+            	<span class="spinner spinner-lg p-a-1 m-b-1">
+							<span class="double-bounce1"></span>
+							<span class="double-bounce2"></span>
+						</span>
+        </div>
     </div>
 </div>

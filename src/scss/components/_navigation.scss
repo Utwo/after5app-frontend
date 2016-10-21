@@ -1,5 +1,17 @@
-.navigation-item{
+.navigation-item {
   margin: 0 .8em;
   padding-top: .3rem;
   padding-bottom: .3rem;
+}
+
+.user-nav__item {
+  padding: .4rem;
+  background: rgba(0, 0, 0, .08);
+  margin: .4rem;
+  border-radius: $border-radius;
+  transition: .3s all ease-in-out
+}
+
+.user-nav__item:hover {
+  background: #8ee3ce;
 }
