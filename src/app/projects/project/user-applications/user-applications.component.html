@@ -1,0 +1,24 @@
+<div *ngIf="applications && applications.length > 0" class="row">
+  <section class="col-md-8">
+    <div class="m-b-3">
+      <h3 class="title-border title-border--green p-b-1">User applications:</h3>
+      <ul>
+        <li *ngFor="let application of applications">
+          <div *ngIf="application.accepted == 0">
+            <p>Applicant: {{application.user.name}}</p>
+            <p>Position: {{application.position.skill.name}}</p>
+            <p>Message: {{application.message}}</p>
+            <p>Answers:</p>
+            <ol>
+              <li *ngFor="let answer of application.answers; let i = index">
+                <p>{{project.application_questions[i]}} <br>
+                  {{answer}}</p>
+              </li>
+            </ol>
+            <button (click)="acceptApplication(application.id)">Accept application</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>

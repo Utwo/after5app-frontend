@@ -26,18 +26,12 @@
         </div>
 
         <div class="form-group row">
-            <label for="position" class="col-sm-2 col-form-label">Positions</label>
-            <input class="form-control col-sm-7" type="text" id="position" placeholder="position" #position>
-            <div class="col-sm-3">
-                <button class="btn btn-info" type="button" (click)="addPosition(position.value)">Add Position</button>
-            </div>
+            <label class="col-sm-2 col-form-label">Positions</label>
         </div>
-        <app-autocomplete (onSelect)="onSelect($event)"></app-autocomplete>
         <ul>
-            <li *ngFor="let position of positions; let i = index">
-                {{position.description}}
-                {{position.skill}}
-                <button class="btn btn-sm btn-danger" type="button" (click)="removePosition(i)"><span
+            <li *ngFor="let position of project.position; let i = index">
+                {{position.skill.name}} : {{position.description}}
+                <button class="btn btn-sm btn-danger" type="button" (click)="removePosition(position.id, i)"><span
                         aria-hidden="true">&times;</span></button>
             </li>
         </ul>
@@ -60,7 +54,7 @@
         </ul>
 
         <div class="text-xs-center">
-            <button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid">Add project</button>
+            <button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid">Save changes</button>
         </div>
     </div>
 </form>

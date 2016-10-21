@@ -9,26 +9,26 @@ export class ProjectService {
     constructor(private state: StateService, private http: Http) {
     }
 
-    public getProjects(page) {
+    getProjects(page) {
         return this.http.get(this.state.getUrl() + '/project?with[]=user&with[]=position.skill&page=' + page)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
-    public getProjectById(id) {
+    getProjectById(id) {
         return this.http.get(this.state.getUrl() +
             '/project?with[]=user&with[]=favorite&with[]=position.skill&with[]=comment.user&id=' + id)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
-    public getPopularProjects() {
+    getPopularProjects() {
         return this.http.get(this.state.getUrl() + '/project?sort[]=favorite_count,desc&sort[]=created_at,desc&with[]=user&with[]=position.skill')
             .map(this.extractData)
             .catch(this.handleError);
     }
 
-    public getRecommendedProjects() {
+    getRecommendedProjects() {
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + this.state.getToken()
@@ -105,37 +105,15 @@ export class ProjectService {
             .catch(this.handleError);
     }
 
-    public getProjectComments(id) {
-        return this.http.get(this.state.getUrl() +
-            '/project?with[]=comment.user&id=' + id)
-            .map(this.extractData)
-            .catch(this.handleError);
-    }
-
     public getSkills() {
         return this.http.get(this.state.getUrl() + '/skill')
             .map(this.extractData)
             .catch(this.handleError);
     }
 
-    public getApplications() {
-        let headers = new Headers({
-            'Authorization': 'Bearer ' + this.state.getToken()
-        });
-        return this.http.get(this.state.getUrl() + '/application/user', {headers: headers})
-            .map(this.extractData)
-            .catch(this.handleError);
-    }
-
-    applyForProject(application) {
-        let body = JSON.stringify(application);
-        let headers = new Headers({
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + this.state.getToken()
-        });
-        let options = new RequestOptions({headers: headers});
-
-        return this.http.post(this.state.getUrl() + '/application', body, options)
+    public getProjectComments(id) {
+        return this.http.get(this.state.getUrl() +
+            '/project?with[]=comment.user&id=' + id)
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -153,6 +131,41 @@ export class ProjectService {
             .catch(this.handleError);
     }
 
+    public getApplications(project_id) {
+        let headers = new Headers({
+            'Authorization': 'Bearer ' + this.state.getToken()
+        });
+        return this.http.get(this.state.getUrl() + '/project/' + project_id + '/application?with[]=user&with[]=position.skill', {headers: headers})
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    applyForProject(application) {
+        let body = JSON.stringify(application);
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.state.getToken()
+        });
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.post(this.state.getUrl() + '/application', body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    public acceptApplication(application_id) {
+        let body = JSON.stringify({accepted: 1});
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.state.getToken()
+        });
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.put(this.state.getUrl() + '/application/' + application_id, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     public addFavorite(project_id) {
         let headers = new Headers({
             'Content-Type': 'application/json',
@@ -161,6 +174,18 @@ export class ProjectService {
         let options = new RequestOptions({headers: headers});
 
         return this.http.post(this.state.getUrl() + '/project/' + project_id + '/favorite', "", options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    public deletePosition(position_id) {
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.state.getToken()
+        });
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.delete(this.state.getUrl() + '/position/' + position_id, options)
             .map(this.extractData)
             .catch(this.handleError);
     }

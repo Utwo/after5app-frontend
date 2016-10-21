@@ -1,154 +1,158 @@
 <div *ngIf="project">
-    <div class="jumbotron-fluid">
-        <div class="container">
-            <h2>{{project.title}}</h2>
-            by <a routerLink="/profile/{{project.user_id}}">{{project.user.name}}</a> &sdot;
-            <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
-        </div>
+  <div class="jumbotron-fluid">
+    <div class="container">
+      <h2>{{project.title}}</h2>
+      by <a routerLink="/profile/{{project.user_id}}">{{project.user.name}}</a> &sdot;
+      <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
     </div>
-    <article class="container m-y-3">
-        <div class="row">
-            <section class="col-md-8">
-                <div class="m-b-3">
-                    <h3 class="title-border title-border--green p-b-1">Project description:</h3>
-                    <p>{{project.description}}</p>
-                </div>
-                <div *ngIf="project.position.length > 0">
-                    <h3 class="title-border title-border--green p-b-1">I need help with:</h3>
-                    <dl *ngFor="let position of project.position">
-                        <dt class="btn btn-sm btn-gradient-primary">
-                            <strong>{{position.skill.name}}</strong>
-                        </dt>
-                        <dd>{{position.description}}</dd>
-                    </dl>
-                </div>
-            </section>
-
-            <section class="col-md-4">
-								<div class="sidebar p-a-1">
-										<div *ngIf="!myProject" class="m-b-1">
-												<button (click)="showApplydModal()" class="btn btn-primary m-r-1">
-														<svg class="icon">
-																<use xlink:href="assets/icons.svg#icon-rocket-color"></use>
-														</svg>
-												</button>
-												<span>Help this project become reality!</span>
-										</div>
-										<hr *ngIf="!myProject">
-										<div>
-											<button #favorite (click)="addFavorite()" class="btn m-r-1 btn-circle" [class.btn-danger]="isFavorite" [class.btn-primary]="!isFavorite">
-													<svg *ngIf="isFavorite" class="icon">
-															<use xlink:href="assets/icons.svg#icon-heart"></use>
-													</svg>
-													<svg *ngIf="!isFavorite" class="icon text-info">
-															<use xlink:href="assets/icons.svg#icon-heart-o"></use>
-													</svg>
-											</button>
-											<span #favoriteSpan>{{project.favorite_count}} favorites</span>
-										</div>
-									</div>
-                <div *ngIf="myProject" class="text-xs-center m-t-2">
-                    <button class="btn btn-outline-primary" (click)="showEditdModal()">
-                        <svg class="icon">
-                            <use xlink:href="assets/icons.svg#icon-pencil"></use>
-                        </svg>
-                        Edit project
-                    </button>
-
-                    <button class="btn btn-danger" (click)="showDeleteModal()">
-                        <svg class="icon">
-                            <use xlink:href="assets/icons.svg#icon-bin"></use>
-                        </svg>
-                        Delete project
-                    </button>
-                </div>
-            </section>
+  </div>
+  <article class="container m-y-3">
+    <div class="row">
+      <section class="col-md-8">
+        <div class="m-b-3">
+          <h3 class="title-border title-border--green p-b-1">Project description:</h3>
+          <p>{{project.description}}</p>
         </div>
-
-    </article>
-
-	<div class="container m-y-3">
-		<app-comments [project_id]="project.id" [comments]="project.comment" class="row comment"></app-comments>
-	</div>
-
-    <aside *ngIf="related && related.length > 0" class="m-y-3">
-        <div class="container">
-            <ul class="row list-unstyled flex-items-xs-center">
-                <li *ngFor="let project of related" class="col-md-4">
-                    <h4 class="project__title"><a routerLink="/project/{{project.id}}">
-                        {{project.title}}
-                    </a></h4>
-                    <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
-                    <p>{{project.description | slice:0:40 }}</p>
-                    <ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
-                        <li class="list-inline-item btn btn-sm btn-gradient-primary project__skill-item"
-                            *ngFor="let position of project.position">
-                            {{position.skill.name}}
-                        </li>
-                    </ul>
-                    <br>
-                    <div class="project__subinfo">
-                        <img class="profile-img" *ngIf="project.user.picture" src="{{project.user.picture+'?s=20'}}"><a
-                            routerLink="/profile/{{project.user_id}}">
-                        {{project.user.name}}</a>
-                    </div>
-                </li>
-            </ul>
+        <div *ngIf="project.position.length > 0">
+          <h3 class="title-border title-border--green p-b-1">I need help with:</h3>
+          <dl *ngFor="let position of project.position">
+            <dt class="btn btn-sm btn-gradient-primary">
+              <strong>{{position.skill.name}}</strong>
+            </dt>
+            <dd>{{position.description}}</dd>
+          </dl>
         </div>
-    </aside>
+      </section>
+
+      <section class="col-md-4">
+        <div class="sidebar p-a-1">
+          <div *ngIf="!myProject" class="m-b-1">
+            <button (click)="showApplydModal()" class="btn btn-primary m-r-1">
+              <svg class="icon">
+                <use xlink:href="assets/icons.svg#icon-rocket-color"></use>
+              </svg>
+            </button>
+            <span>Help this project become reality!</span>
+          </div>
+          <hr *ngIf="!myProject">
+          <div>
+            <button #favorite (click)="addFavorite()" class="btn m-r-1 btn-circle" [class.btn-danger]="isFavorite" [class.btn-primary]="!isFavorite">
+              <svg *ngIf="isFavorite" class="icon">
+                <use xlink:href="assets/icons.svg#icon-heart"></use>
+              </svg>
+              <svg *ngIf="!isFavorite" class="icon text-info">
+                <use xlink:href="assets/icons.svg#icon-heart-o"></use>
+              </svg>
+            </button>
+            <span #favoriteSpan>{{project.favorite_count}} favorites</span>
+          </div>
+        </div>
+        <div *ngIf="myProject" class="text-xs-center m-t-2">
+          <button class="btn btn-outline-primary" (click)="showEditdModal()">
+            <svg class="icon">
+              <use xlink:href="assets/icons.svg#icon-pencil"></use>
+            </svg>
+            Edit project
+          </button>
+
+          <button class="btn btn-danger" (click)="showDeleteModal()">
+            <svg class="icon">
+              <use xlink:href="assets/icons.svg#icon-bin"></use>
+            </svg>
+            Delete project
+          </button>
+        </div>
+      </section>
+    </div>
+
+  </article>
+
+  <div *ngIf="myProject" class="container m-y-3">
+    <app-user-applications [project]="project"></app-user-applications>
+  </div>
+
+  <div class="container m-y-3">
+    <app-comments [project_id]="project.id" [comments]="project.comment" class="row comment"></app-comments>
+  </div>
+
+  <aside *ngIf="related && related.length > 0" class="m-y-3">
+    <div class="container">
+      <ul class="row list-unstyled flex-items-xs-center">
+        <li *ngFor="let project of related" class="col-md-4">
+          <h4 class="project__title"><a routerLink="/project/{{project.id}}">
+            {{project.title}}
+          </a></h4>
+          <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
+          <p>{{project.description | slice:0:40 }}</p>
+          <ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
+            <li class="list-inline-item btn btn-sm btn-gradient-primary project__skill-item"
+                *ngFor="let position of project.position">
+              {{position.skill.name}}
+            </li>
+          </ul>
+          <br>
+          <div class="project__subinfo">
+            <img class="profile-img" *ngIf="project.user.picture" src="{{project.user.picture+'?s=20'}}"><a
+              routerLink="/profile/{{project.user_id}}">
+            {{project.user.name}}</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </aside>
 </div>
 
 <div *ngIf="!myProject" bsModal #applyModal="bs-modal" class="modal grow" tabindex="-1" role="dialog"
      aria-labelledby="Apply for this project"
      aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="modal__close btn" (click)="applyModal.hide()" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title text-xs-center">Apply for this project</h4>
-            </div>
-            <div class="modal-body">
-                <app-application [project]="project"></app-application>
-            </div>
-        </div>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="modal__close btn" (click)="applyModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title text-xs-center">Apply for this project</h4>
+      </div>
+      <div class="modal-body">
+        <app-application (onApply)="applicationSent($event)" [project]="project"></app-application>
+      </div>
     </div>
+  </div>
 </div>
 
 <div *ngIf="myProject" bsModal #editModal="bs-modal" class="modal grow" tabindex="-1" role="dialog"
      aria-labelledby="Edit project"
      aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="modal__close btn" (click)="editModal.hide()" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title text-xs-center">Edit project</h4>
-            </div>
-            <div class="modal-body">
-                <app-edit-project (onEdit)="editProject()" [project]="project"></app-edit-project>
-            </div>
-        </div>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="modal__close btn" (click)="editModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title text-xs-center">Edit project</h4>
+      </div>
+      <div class="modal-body">
+        <app-edit-project (onEdit)="editProject()" [project]="project"></app-edit-project>
+      </div>
     </div>
+  </div>
 </div>
 
 <div *ngIf="myProject" bsModal #deleteModal="bs-modal" class="modal grow" tabindex="-1" role="dialog"
      aria-labelledby="Delete modal"
      aria-hidden="true">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="modal__close btn" (click)="deleteModal.hide()" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title text-xs-center">Are you sure you want to delete your project?</h4>
-            </div>
-            <div class="modal-body text-xs-center">
-                <button (click)="deleteProject()" class="btn btn-danger">Yes</button>
-                <button (click)="deleteModal.hide()" class="btn btn-info">No</button>
-            </div>
-        </div>
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="modal__close btn" (click)="deleteModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title text-xs-center">Are you sure you want to delete your project?</h4>
+      </div>
+      <div class="modal-body text-xs-center">
+        <button (click)="deleteProject()" class="btn btn-danger">Yes</button>
+        <button (click)="deleteModal.hide()" class="btn btn-info">No</button>
+      </div>
     </div>
+  </div>
 </div>

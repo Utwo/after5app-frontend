@@ -15,7 +15,7 @@ export class UserNavComponent implements OnInit {
     notificationTypes = {
         comment: 'App\\Notifications\\AddCommentNotification',
         application: 'App\\Notifications\\AddApplicationNotification',
-        accept: 'App\\Notifications\\AcceptNotification'
+        accept: 'App\\Notifications\\AcceptApplicationNotification'
     };
 
     constructor(private notificationsService: NotificationsService, private loginService: LoginService) {

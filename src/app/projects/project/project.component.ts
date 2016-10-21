@@ -79,6 +79,61 @@ export class ProjectComponent implements OnInit {
                 error => this.errorMessage = <any>error);
     }
 
+    getRelatedProjects() {
+        let skills = [];
+        this.project.position.map(item => {
+            skills.push(item.skill.id)
+        });
+        this.projectService.filterBySkill(skills.join(","), this.project.id)
+            .subscribe(
+                project => {
+                    this.related = project.data.sort(() => {
+                        return 0.5 - Math.random()
+                    }).splice(0, 3);
+                },
+                error => this.errorMessage = <any>error);
+    }
+
+    applicationSent(code) {
+        this.applyModal.hide();
+        if (code) {
+            this.applyModal.hide();
+        }
+        else {
+            this.errorMessage = 'Application not sent';
+        }
+    }
+
+    deleteProject() {
+        this.projectService.deleteProject(this.project.id)
+            .subscribe(
+                project => {
+                    this.router.navigate(['/']);
+                },
+                error => this.errorMessage = <any>error);
+    }
+
+    editProject() {
+        this.editModal.hide();
+        this.getProject(this.project.id);
+    }
+
+    public showEditdModal(): void {
+        this.editModal.show();
+    }
+
+    public showDeleteModal(): void {
+        this.deleteModal.show();
+    }
+
+    public showApplydModal(): void {
+        this.applyModal.show();
+    }
+
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+    }
+
     showAnimation(el, elSpan) {
         let timeline = new mo.Timeline();
         let tweens = [
@@ -212,57 +267,4 @@ export class ProjectComponent implements OnInit {
 
     }
 
-    getRelatedProjects() {
-        let skills = [];
-        this.project.position.map(item => {
-            skills.push(item.skill.id)
-        });
-        this.projectService.filterBySkill(skills.join(","), this.project.id)
-            .subscribe(
-                project => {
-                    this.related = project.data.sort(() => {
-                        return 0.5 - Math.random()
-                    }).splice(0, 3);
-                },
-                error => this.errorMessage = <any>error);
-    }
-
-    sendApplication(code) {
-        this.applyModal.hide();
-        if (code) {
-            //application was sent
-        }
-        else {
-            this.errorMessage = 'Application not sent';
-        }
-    }
-
-    editProject() {
-        this.editModal.hide();
-    }
-
-    deleteProject() {
-        this.projectService.deleteProject(this.project.id)
-            .subscribe(
-                project => {
-                    this.router.navigate(['/']);
-                },
-                error => this.errorMessage = <any>error);
-    }
-
-    public showEditdModal(): void {
-        this.editModal.show();
-    }
-
-    public showDeleteModal(): void {
-        this.deleteModal.show();
-    }
-
-    public showApplydModal(): void {
-        this.applyModal.show();
-    }
-
-    ngOnDestroy() {
-        this.sub.unsubscribe();
-    }
 }
