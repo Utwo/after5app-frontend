@@ -8,9 +8,9 @@
                 </div>
             </div>
             <div class="col-md-6 text-md-right">
-                <a href="#" (click)="getProjects(1)" class="btn font-weight-bold btn-link-info">Recent</a>
-                <a href="#" (click)="getPopularProjects()" class="btn font-weight-bold m-l-1">Popular</a>
-                <a href="#" (click)="getRecommendedProjects()" class="btn font-weight-bold m-l-1">Recommended</a>
+                <a id="all-projects" href="#" (click)="getProjects(1)" class="btn font-weight-bold m-l-1 btn-link-info">Recent</a>
+                <a id="popular-projects" href="#" (click)="getPopularProjects()" class="btn font-weight-bold m-l-1">Popular</a>
+                <a id="recommended-projects" href="#" (click)="getRecommendedProjects()" class="btn font-weight-bold m-l-1">Recommended</a>
             </div>
         </div>
     </div>
@@ -32,7 +32,7 @@
             </div>
             <p>{{project.description}}</p>
             <ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
-                <li class="list-inline-item btn btn-sm btn-gradient-primary project__skill-item"
+                <li (click)="filterProjects(position.skill.id)" class="list-inline-item btn btn-sm btn-gradient-primary project__skill-item"
                     *ngFor="let position of project.position">
                     {{position.skill.name}}
                 </li>
