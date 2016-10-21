@@ -131,11 +131,11 @@ export class ProjectService {
             .catch(this.handleError);
     }
 
-    public getApplications() {
+    public getApplications(project_id) {
         let headers = new Headers({
             'Authorization': 'Bearer ' + this.state.getToken()
         });
-        return this.http.get(this.state.getUrl() + '/', {headers: headers})
+        return this.http.get(this.state.getUrl() + '/project/' + project_id + '/application?with[]=user&with[]=position.skill', {headers: headers})
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -161,7 +161,7 @@ export class ProjectService {
         });
         let options = new RequestOptions({headers: headers});
 
-        return this.http.put(this.state.getUrl() + '/application' + application_id, body, options)
+        return this.http.put(this.state.getUrl() + '/application/' + application_id, body, options)
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -174,6 +174,18 @@ export class ProjectService {
         let options = new RequestOptions({headers: headers});
 
         return this.http.post(this.state.getUrl() + '/project/' + project_id + '/favorite', "", options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    public deletePosition(position_id) {
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.state.getToken()
+        });
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.delete(this.state.getUrl() + '/position/' + position_id, options)
             .map(this.extractData)
             .catch(this.handleError);
     }

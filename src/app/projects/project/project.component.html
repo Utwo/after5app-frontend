@@ -67,6 +67,10 @@
 
   </article>
 
+  <div *ngIf="myProject" class="container m-y-3">
+    <app-user-applications [project]="project"></app-user-applications>
+  </div>
+
   <div class="container m-y-3">
     <app-comments [project_id]="project.id" [comments]="project.comment" class="row comment"></app-comments>
   </div>
@@ -110,7 +114,7 @@
         <h4 class="modal-title text-xs-center">Apply for this project</h4>
       </div>
       <div class="modal-body">
-        <app-application [project]="project"></app-application>
+        <app-application (onApply)="applicationSent($event)" [project]="project"></app-application>
       </div>
     </div>
   </div>

@@ -6,7 +6,7 @@ import {ProjectService} from "../../shared/project.service";
     templateUrl: './user-applications.component.html'
 })
 export class UserApplicationsComponent implements OnInit {
-    @Input() project_id;
+    @Input() project;
     applications = null;
     errorMessage = '';
 
@@ -14,11 +14,11 @@ export class UserApplicationsComponent implements OnInit {
     }
 
     ngOnInit() {
-        //this.getApplications();
+        this.getApplications();
     }
 
     getApplications() {
-        this.projectService.getApplications()
+        this.projectService.getApplications(this.project.id)
             .subscribe(
                 data => {
                     this.applications = data;

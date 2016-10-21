@@ -81,7 +81,9 @@
 							<li *ngFor="let application of applications">
 								<a routerLink="/project/{{application.position.project.id}}">
 									{{application.position.project.title}}
-								</a> <span *ngIf="application.position.status">Accepted</span> <span *ngIf="!application.position.status">Pending</span>
+								</a> -
+								<span *ngIf="application.accepted == 1">Accepted</span>
+								<span *ngIf="application.accepted == 0">Pending</span>
 							</li>
 						</ul>
 					</section>

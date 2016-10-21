@@ -7,8 +7,7 @@ import {ProjectService} from "../shared/project.service";
     templateUrl: './add-project.component.html',
 })
 export class AddProjectComponent implements OnInit {
-    project = {title: '', descripton: '', application_questions: []};
-    positions = [];
+    project = {title: '', descripton: '', application_questions: [], position: []};
     selectedSkill = '';
     errorMessage = '';
 
@@ -22,26 +21,9 @@ export class AddProjectComponent implements OnInit {
         this.projectService.addProject(this.project)
             .subscribe(
                 data => {
-                    this.storePositions(data.project.id);
-                    //this.router.navigate(['/project', data.project.id])
+                    this.router.navigate(['/project', data.project.id])
                 },
                 error => this.errorMessage = <any>error);
-    }
-
-    storePositions(project_id) {
-        for (let position of this.positions) {
-            let pos = {
-                description: position.description,
-                project_id: project_id,
-                position_name: position.skill,
-                status: 1
-            };
-            this.projectService.addPosition(pos)
-                .subscribe(
-                    data => {
-                    },
-                    error => this.errorMessage = <any>error);
-        }
     }
 
     onSelect(skill) {
@@ -49,15 +31,16 @@ export class AddProjectComponent implements OnInit {
     }
 
     addPosition(position) {
-        this.positions.push({description: position, skill: this.selectedSkill})
+        this.project.position.push({description: position, name: this.selectedSkill, status: 0})
+        this.selectedSkill = '';
+    }
+
+    removePosition(index) {
+        this.project.position.splice(index, 1);
     }
 
     addQuestion(question) {
         this.project.application_questions.push(question);
-    }
-
-    removePosition(index) {
-        this.positions.splice(index, 1);
     }
 
     removeQuestion(index) {

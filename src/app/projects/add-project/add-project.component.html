@@ -37,9 +37,9 @@
     <app-autocomplete (onSelect)="onSelect($event)"></app-autocomplete>
     <button type="button" (click)="addPosition(position.value)">Add Position</button>
     <ul>
-        <li *ngFor="let position of positions; let i = index">
-            {{position.description}}
-            {{position.skill}}
+        <li *ngFor="let position of project.position; let i = index">
+            {{position.name}} : {{position.description}}
+
             <button type="button" (click)="removePosition(i)">X</button>
         </li>
     </ul>
@@ -48,7 +48,7 @@
     <input type="text" #question>
     <button type="button" (click)="addQuestion(question.value)">Add Question</button>
     <ul>
-        <li *ngFor="let question of project.questions; let i = index">
+        <li *ngFor="let question of project.application_questions; let i = index">
             {{question}}
             <button type="button" (click)="removeQuestion(i)">X</button>
         </li>
