@@ -31,6 +31,9 @@ export class AddProjectComponent implements OnInit {
     }
 
     addPosition(position) {
+        if (this.selectedSkill.length === 0 || position.length === 0) {
+            return;
+        }
         this.project.position.push({description: position, name: this.selectedSkill, status: 0})
         this.selectedSkill = '';
     }
