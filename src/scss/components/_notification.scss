@@ -54,7 +54,7 @@
   padding: .4em 0;
 }
 
-.notification__item:last-child {
+li:last-child .notification__item{
   border: 0;
 }
 
