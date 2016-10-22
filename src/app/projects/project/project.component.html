@@ -36,7 +36,8 @@
           </div>
           <hr *ngIf="!myProject">
           <div>
-            <button #favorite (click)="addFavorite()" class="btn m-r-1 btn-circle" [class.btn-danger]="isFavorite" [class.btn-primary]="!isFavorite">
+            <button #favorite (click)="addFavorite()" class="btn m-r-1 btn-circle" [class.btn-danger]="isFavorite"
+                    [class.btn-primary]="!isFavorite">
               <svg *ngIf="isFavorite" class="icon">
                 <use xlink:href="assets/icons.svg#icon-heart"></use>
               </svg>
@@ -75,26 +76,28 @@
     <app-comments [project_id]="project.id" [comments]="project.comment" class="row comment"></app-comments>
   </div>
 
-  <aside *ngIf="related && related.length > 0" class="m-y-3">
+  <aside *ngIf="related && related.length > 0" class="p-y-3 jumbotron-fluid">
     <div class="container">
       <ul class="row list-unstyled flex-items-xs-center">
         <li *ngFor="let project of related" class="col-md-4">
-          <h4 class="project__title"><a routerLink="/project/{{project.id}}">
-            {{project.title}}
-          </a></h4>
-          <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
-          <p>{{project.description | slice:0:40 }}</p>
-          <ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
-            <li class="list-inline-item btn btn-sm btn-gradient-primary project__skill-item"
-                *ngFor="let position of project.position">
-              {{position.skill.name}}
-            </li>
-          </ul>
-          <br>
-          <div class="project__subinfo">
-            <img class="profile-img" *ngIf="project.user.picture" src="{{project.user.picture+'?s=20'}}"><a
+          <div class="project__item p-a-1">
+            <h4 class="project__title"><a routerLink="/project/{{project.id}}">
+              {{project.title}}
+            </a></h4>
+            <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
+            <p>{{project.description | slice:0:40 }}</p>
+            <ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
+              <li class="list-inline-item btn btn-sm btn-gradient-primary project__skill-item"
+                  *ngFor="let position of project.position">
+                {{position.skill.name}}
+              </li>
+            </ul>
+            <br>
+            <div class="project__subinfo">
+              <img class="profile-img" *ngIf="project.user.picture" src="{{project.user.picture+'?s=20'}}"><a
               routerLink="/profile/{{project.user_id}}">
-            {{project.user.name}}</a>
+              {{project.user.name}}</a>
+            </div>
           </div>
         </li>
       </ul>
