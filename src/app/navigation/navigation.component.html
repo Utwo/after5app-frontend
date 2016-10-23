@@ -1,23 +1,33 @@
 <header class="header-site">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                <h1 class="header-logo"><strong><a routerLink="/">Startupper</a></strong></h1>
-            </div>
-            <div class="col-md-7">
-                <nav class="navigation form-inline">
-                    <a class="navigation-item" routerLink="/" routerLinkActive="active">Projects</a>
-                    <a class="navigation-item" routerLink="/about" routerLinkActive="active">About</a>
-                    <a class="navigation-item btn btn-info m-r-2 btn-sm" routerLink="/add-project">Start a project</a>
-                    <app-search class="dropdown dropdown--lg"></app-search>
-                </nav>
-            </div>
-            <div class="col-md-3 text-xs-right">
-                <button class="btn btn-outline-secondary btn-sm" *ngIf="!loggedIn" (click)="login()">Login</button>
-                <div *ngIf="loggedIn">
-                    <app-user-nav [user]="user"></app-user-nav>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <h1 class="header-logo"><strong><a routerLink="/">Startupper</a></strong></h1>
+      </div>
+      <div class="col-md-7">
+        <nav class="navigation form-inline">
+          <a class="navigation-item" routerLink="/" routerLinkActive="active">Projects</a>
+          <a class="navigation-item" routerLink="/about" routerLinkActive="active">About</a>
+          <a class="navigation-item btn btn-info m-r-2 btn-sm" routerLink="/add-project">Start a project</a>
+          <app-search class="dropdown dropdown--lg"></app-search>
+        </nav>
+      </div>
+      <div class="col-md-3 text-xs-right">
+        <div *ngIf="loggedIn">
+          <app-user-nav [user]="user"></app-user-nav>
         </div>
+        <div *ngIf="!loggedIn" class="dropdown" [class.dropdown--activ]="isDropdownActiv">
+          <span (click)="dropdown()">Login</span>
+          <div class="dropdown__content container-fluid text-xs-left">
+            <input #email title="email" type="email" placeholder="email">
+            <button class="btn btn-outline-secondary btn-sm" (click)="loginByEmail(email.value)">Login with email</button>
+            <button class="btn btn-outline-secondary btn-sm" (click)="login()">Login with Facebook</button>
+            <button class="btn btn-outline-secondary btn-sm" (click)="login()">Login with GitHub</button>
+            <button class="btn btn-outline-secondary btn-sm" (click)="login()">Login</button>
+          </div>
+        </div>
+
+      </div>
     </div>
+  </div>
 </header>

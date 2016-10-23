@@ -71,7 +71,7 @@
 					<app-autocomplete (onSelect)="onSelect($event)"></app-autocomplete>
 					<ul class="m-t-1 list-inline">
 						<li *ngFor="let skill of user.skill; let i = index" class="list-inline-item">
-							<a href="#" class="btn btn-gradient-primary btn-sm">{{skill}} <button class="btn btn-link btn-sm text-info" type="button" (click)="removeSkill(i)">&times;</button></a>
+							<a class="btn btn-gradient-primary btn-sm">{{skill}} <button class="btn btn-link btn-sm text-info" type="button" (click)="removeSkill(i)">&times;</button></a>
 						</li>
 					</ul>
 				</section>
