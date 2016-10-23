@@ -8,6 +8,7 @@ import {ProjectComponent} from "./projects/project/project.component";
 import {AddProjectComponent} from "./projects/add-project/add-project.component";
 import {SettingsComponent} from "./profile/settings/settings.component";
 import {NotFoundComponent} from "./core/not-found/not-found.component";
+import {LoginComponent} from "./login/login.component";
 
 
 const appRoutes:Routes = [
@@ -18,6 +19,7 @@ const appRoutes:Routes = [
     {path: 'add-project', component: AddProjectComponent},
     {path: 'profile/:id', component: ProfileComponent},
     {path: 'settings', component: SettingsComponent},
+    {path: 'auth/:type', component: LoginComponent},
     {path: '**', component: NotFoundComponent}
 ];
 

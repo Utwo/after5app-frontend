@@ -24,50 +24,52 @@ import {NavigationComponent} from "./navigation/navigation.component";
 import {SearchComponent} from "./navigation/search/search.component";
 import {UserNavComponent} from "./navigation/user-nav/user-nav.component";
 import {NotificationsService} from "./navigation/user-nav/shared/notifications.service";
-import { EditProjectComponent } from './projects/project/edit-project/edit-project.component';
-import { ModalModule, TypeaheadModule } from 'ng2-bootstrap/ng2-bootstrap';
+import {EditProjectComponent} from './projects/project/edit-project/edit-project.component';
+import {ModalModule, TypeaheadModule} from 'ng2-bootstrap/ng2-bootstrap';
 import {UserApplicationsComponent} from "./projects/project/user-applications/user-applications.component";
+import {LoginComponent} from './login/login.component';
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HomeComponent,
-        NotFoundComponent,
-        ProjectListComponent,
-        ProjectComponent,
-        AboutComponent,
-        ProfileComponent,
-        NavigationComponent,
-        CommentsComponent,
-        SettingsComponent,
-        ApplicationComponent,
-        AutocompleteComponent,
-        TimeAgoPipe,
-        AddProjectComponent,
-        SearchComponent,
-        FooterComponent,
-        UserNavComponent,
-        EditProjectComponent,
-        UserApplicationsComponent
-    ],
-    imports: [
-        routing,
-        BrowserModule,
-        FormsModule,
-        HttpModule,
-        JsonpModule,
-        ModalModule,
-        TypeaheadModule
-    ],
-    providers: [
-        appRoutingProviders,
-        StateService,
-        LoginService,
-        ProjectService,
-        NotificationsService
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    NotFoundComponent,
+    ProjectListComponent,
+    ProjectComponent,
+    AboutComponent,
+    ProfileComponent,
+    NavigationComponent,
+    CommentsComponent,
+    SettingsComponent,
+    ApplicationComponent,
+    AutocompleteComponent,
+    TimeAgoPipe,
+    AddProjectComponent,
+    SearchComponent,
+    FooterComponent,
+    UserNavComponent,
+    EditProjectComponent,
+    UserApplicationsComponent,
+    LoginComponent
+  ],
+  imports: [
+    routing,
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    JsonpModule,
+    ModalModule,
+    TypeaheadModule
+  ],
+  providers: [
+    appRoutingProviders,
+    StateService,
+    LoginService,
+    ProjectService,
+    NotificationsService
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
