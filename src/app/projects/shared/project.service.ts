@@ -139,6 +139,11 @@ export class ProjectService {
             .map(this.extractData)
             .catch(this.handleError);
     }
+    public getMembers(project_id) {
+        return this.http.get(this.state.getUrl() + '/project/' + project_id + '/members')
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
 
     applyForProject(application) {
         let body = JSON.stringify(application);

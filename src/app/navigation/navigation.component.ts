@@ -3,40 +3,40 @@ import {StateService} from "../shared/state.service";
 import {LoginService} from "../core/login.service";
 
 @Component({
-  selector: 'app-navigation',
-  templateUrl: './navigation.component.html'
+    selector: 'app-navigation',
+    templateUrl: './navigation.component.html'
 })
 export class NavigationComponent implements OnInit {
-  isDropdownActiv = false;
-  errorMessage = '';
+    isDropdownActiv = false;
+    errorMessage = '';
 
-  constructor(private loginService: LoginService, private state: StateService) {
-  }
+    constructor(private loginService: LoginService, private state: StateService) {
+    }
 
-  get user() {
-    return this.state.getUser();
-  }
+    get user() {
+        return this.state.getUser();
+    }
 
-  get loggedIn() {
-    return this.state.isLoggedIn();
-  }
+    get loggedIn() {
+        return this.state.isLoggedIn();
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  login() {
-    this.loginService.login();
-  }
+    login() {
+        this.loginService.login();
+    }
 
-  loginByEmail(email) {
-    this.loginService.loginEmail(email).subscribe(
-      data => console.log(data),
-      error => this.errorMessage = error);
+    loginByEmail(email) {
+        this.loginService.loginEmail(email).subscribe(
+            data => console.log(data),
+            error => this.errorMessage = error);
 
-    this.isDropdownActiv = false;
-  }
+        this.isDropdownActiv = false;
+    }
 
-  dropdown() {
-    this.isDropdownActiv = !this.isDropdownActiv;
-  }
+    dropdown() {
+        this.isDropdownActiv = !this.isDropdownActiv;
+    }
 }

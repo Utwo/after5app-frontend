@@ -63,6 +63,15 @@
             Delete project
           </button>
         </div>
+
+        <div *ngIf="members && members.length > 0">
+          <h3>Members</h3>
+          <ol>
+            <li *ngFor="let member of members">
+              <a routerLink="/profile/{{member.id}}">{{member.name}}</a>
+            </li>
+          </ol>
+        </div>
       </section>
     </div>
 
