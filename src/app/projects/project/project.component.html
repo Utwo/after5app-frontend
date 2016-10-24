@@ -80,13 +80,24 @@
   <div *ngIf="myProject" class="container m-y-3">
     <app-user-applications [project]="project"></app-user-applications>
   </div>
-
   <div class="container m-y-3">
-    <app-comments [project_id]="project.id" [comments]="project.comment" class="row comment"></app-comments>
-  </div>
 
-  <div class="container m-y-3">
-    <app-messages [project_id]="project.id" class="row comment"></app-messages>
+    <tabset>
+      <tab [heading]="Comments"
+           [active]="true">
+        <template tabHeading>
+          Comments
+        </template>
+        <app-comments [project_id]="project.id" [comments]="project.comment" class="row comment"></app-comments>
+      </tab>
+      <tab [heading]="Messages">
+        <template tabHeading>
+          Messages
+        </template>
+        <app-messages [project_id]="project.id" class="row comment"></app-messages>
+      </tab>
+    </tabset>
+
   </div>
 
   <aside *ngIf="related && related.length > 0" class="p-y-3 jumbotron-fluid">
