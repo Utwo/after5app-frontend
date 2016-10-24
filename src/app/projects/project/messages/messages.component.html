@@ -1,0 +1,19 @@
+<section class="col-md-8">
+  <hr>
+  <h3 class="title-border title-border--green p-b-1">Messages</h3>
+  <ul *ngIf="messages && messages.length > 0" class="list-unstyled">
+    <li *ngFor="let message of messages" class="comment-item" [class.comment-item__mine]="message.user_id == 1">
+      <div class="comment__content">
+        <a routerLink="/profile/{{message.message.user_id}}">{{message.message.user_name}}</a> &sdot; <span
+        class="text-muted">  {{message.created_at | timeAgo}} </span>
+        <p>{{message.message.text}}</p>
+      </div>
+    </li>
+  </ul>
+
+  <div class="form-inline">
+    <input class="form-control" type="text" #text>
+    <button (click)="addMessage(text)" class="btn btn-info">Add message</button>
+  </div>
+
+</section>

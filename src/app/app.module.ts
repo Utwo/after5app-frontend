@@ -28,7 +28,7 @@ import {EditProjectComponent} from './projects/project/edit-project/edit-project
 import {ModalModule, TypeaheadModule} from 'ng2-bootstrap/ng2-bootstrap';
 import {UserApplicationsComponent} from "./projects/project/user-applications/user-applications.component";
 import {LoginComponent} from './login/login.component';
-
+import {MessagesComponent} from "./projects/project/messages/messages.component";
 
 @NgModule({
   declarations: [
@@ -51,7 +51,8 @@ import {LoginComponent} from './login/login.component';
     UserNavComponent,
     EditProjectComponent,
     UserApplicationsComponent,
-    LoginComponent
+    LoginComponent,
+    MessagesComponent
   ],
   imports: [
     routing,

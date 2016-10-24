@@ -1,30 +1,31 @@
 <div class="form-inline dropdown">
-	<div class="form-group btn btn-primary btn-sm">
-		<label for="filter" class="m-x-1">Filter by skill </label>
-		<input [(ngModel)]="asyncSelected"
-					 [typeahead]="dataSource"
-					 (typeaheadLoading)="changeTypeaheadLoading($event)"
-					 (typeaheadNoResults)="changeTypeaheadNoResults($event)"
-					 (typeaheadOnSelect)="typeaheadOnSelect($event)"
-					 [typeaheadWaitMs]="400"
-					 [typeaheadItemTemplate]="skillItemTemplate"
-					 placeholder="javascript"
-					 class="form-control"
-					 id="filter">
-	</div>
+  <div class="form-group btn btn-primary btn-sm">
+    <label for="filter" class="m-x-1">Filter by skill </label>
+    <input [(ngModel)]="asyncSelected"
+           [typeahead]="dataSource"
+           (typeaheadLoading)="changeTypeaheadLoading($event)"
+           (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+           (typeaheadOnSelect)="typeaheadOnSelect($event)"
+           [typeaheadWaitMs]="200"
+           [typeaheadItemTemplate]="skillItemTemplate"
+           placeholder="javascript"
+           class="form-control"
+           id="filter"
+           autocomplete="off">
+  </div>
 
-	<i *ngIf="typeaheadLoading===true" class="dropdown-loading">
+  <i *ngIf="typeaheadLoading===true" class="dropdown-loading">
 				<span class="spinner">
 					<span class="double-bounce1"></span>
 					<span class="double-bounce2"></span>
 				</span>
-	</i>
+  </i>
 
-	<div *ngIf="typeaheadNoResults===true" class="dropdown-menu text-xs-center">
-		<i class="text-muted">No Results Found</i>
-	</div>
+  <!--<div *ngIf="typeaheadNoResults===true" class="dropdown-menu text-xs-center">-->
+    <!--<i class="text-muted">No Results Found</i>-->
+  <!--</div>-->
 
-	<template #skillItemTemplate let-skill="item" let-index="index">
-		{{skill.name}}
-	</template>
+  <template #skillItemTemplate let-skill="item" let-index="index">
+    {{skill.name}}
+  </template>
 </div>

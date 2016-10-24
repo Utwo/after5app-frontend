@@ -1,81 +1,85 @@
 <div *ngIf="user">
-	<div class="jumbotron-fluid">
-		<div class="container">
-			<h2 class="m-y-0">{{user.name}} setting's page</h2>
-		</div>
-	</div>
-	<div class="container">
-		<div class="row">
-			<section class="col-md-8 m-y-3">
-				<form #updateForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="jumbotron-fluid">
+    <div class="container">
+      <h2 class="m-y-0">My profile settings</h2>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <section class="col-md-8 m-y-3">
+        <form #updateForm="ngForm" (ngSubmit)="onSubmit()">
 
-					<div class="form-group">
-						<label for="name">Name</label>
-						<input class="form-control" id="name" type="text" required minlength="3" maxlength="20"
-									 placeholder="Darth Vader"
-									 name="username" [(ngModel)]="user.name" #name="ngModel">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input class="form-control" id="name" type="text" required minlength="3" maxlength="20"
+                   placeholder="Darth Vader" autocomplete="off"
+                   name="username" [(ngModel)]="user.name" #name="ngModel">
 
-						<div *ngIf="name.errors && (name.dirty || name.touched)">
-							<i [hidden]="!name.errors.required">Name is required</i>
-							<i [hidden]="!name.errors.minlength">Name must be at least 3 characters long.</i>
-							<i [hidden]="!name.errors.maxlength">Name cannot be more than 20 characters long.</i>
-						</div>
-					</div>
+            <div *ngIf="name.errors && (name.dirty || name.touched)">
+              <i [hidden]="!name.errors.required">Name is required</i>
+              <i [hidden]="!name.errors.minlength">Name must be at least 3 characters long.</i>
+              <i [hidden]="!name.errors.maxlength">Name cannot be more than 20 characters long.</i>
+            </div>
+          </div>
 
-					<div class="form-group">
-						<label for="workplace">Workplace</label>
-						<input class="form-control" id="workplace" type="text" minlength="3" maxlength="20" name="workplace"
-									 placeholder="Google Inc"
-									 [(ngModel)]="user.workplace"
-									 #workplace="ngModel">
+          <div class="form-group">
+            <label for="workplace">Workplace</label>
+            <input class="form-control" id="workplace" type="text" minlength="3" maxlength="20" name="workplace"
+                   placeholder="Google Inc" autocomplete="off"
+                   [(ngModel)]="user.workplace"
+                   #workplace="ngModel">
 
-						<div *ngIf="workplace.errors && (workplace.dirty || workplace.touched)">
-							<i [hidden]="!workplace.errors.minlength">Workplace must be at least 3 characters long.</i>
-							<i [hidden]="!workplace.errors.maxlength">Workplace cannot be more than 20 characters long.</i>
-						</div>
-					</div>
+            <div *ngIf="workplace.errors && (workplace.dirty || workplace.touched)">
+              <i [hidden]="!workplace.errors.minlength">Workplace must be at least 3 characters long.</i>
+              <i [hidden]="!workplace.errors.maxlength">Workplace cannot be more than 20 characters long.</i>
+            </div>
+          </div>
 
-					<div class="form-group">
-						<label for="website">Website</label>
-						<input class="form-control" id="website" type="url" minlength="3" maxlength="20"
-									 pattern="^(http\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$" name="website"
-									 placeholder="http://example.com"
-									 [(ngModel)]="user.website" #website="ngModel">
+          <div class="form-group">
+            <label for="website">Website</label>
+            <input class="form-control" id="website" type="url" minlength="3" maxlength="20"
+                   pattern="(^(http\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$)*" name="website"
+                   placeholder="http://example.com" autocomplete="off"
+                   [(ngModel)]="user.website" #website="ngModel">
 
-						<div *ngIf="website.errors && (website.dirty || website.touched)">
-							<i [hidden]="!website.errors.minlength">Website must be at least 3 characters long.</i>
-							<i [hidden]="!website.errors.maxlength">Website cannot be more than 20 characters long.</i>
-							<i [hidden]="!website.errors.pattern">Website dosn't have the correct pattern.</i>
-						</div>
-					</div>
+            <div *ngIf="website.errors && (website.dirty || website.touched)">
+              <i [hidden]="!website.errors.minlength">Website must be at least 3 characters long.</i>
+              <i [hidden]="!website.errors.maxlength">Website cannot be more than 20 characters long.</i>
+              <i [hidden]="!website.errors.pattern">Website dosn't have the correct pattern.</i>
+            </div>
+          </div>
 
-					<div class="form-group">
-						<label for="twitter">Twitter</label>
-						<input class="form-control" id="twitter" type="text" minlength="3" maxlength="20" name="name"
-									 placeholder="utwo"
-									 [(ngModel)]="user.twitter"
-									 #twitter="ngModel">
+          <div class="form-group">
+            <label for="twitter">Twitter</label>
+            <input class="form-control" id="twitter" type="text" minlength="3" maxlength="20" name="name"
+                   placeholder="twitter" autocomplete="off"
+                   [(ngModel)]="user.twitter"
+                   #twitter="ngModel">
 
-						<div *ngIf="twitter.errors && (twitter.dirty || twitter.touched)">
-							<i [hidden]="!twitter.errors.minlength">Twitter must be at least 3 characters long.</i>
-							<i [hidden]="!twitter.errors.maxlength">Twitter cannot be more than 20 characters long.</i>
-						</div>
-					</div>
+            <div *ngIf="twitter.errors && (twitter.dirty || twitter.touched)">
+              <i [hidden]="!twitter.errors.minlength">Twitter must be at least 3 characters long.</i>
+              <i [hidden]="!twitter.errors.maxlength">Twitter cannot be more than 20 characters long.</i>
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid">Save changes</button>
+          <button class="btn btn-primary" type="button" routerLink="/">Cancel</button>
+        </form>
+      </section>
+      <div class="col-md-4">
+        <section class="sidebar p-a-1">
+          <label>Skills</label>
+          <app-autocomplete (onSelect)="onSelect($event)"></app-autocomplete>
+          <button (click)="addSkill()">Add skill</button>
 
-					<button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid">Save changes</button>
-				</form>
-			</section>
-			<div class="col-md-4">
-				<section class="sidebar p-a-1">
-					<label for="filter">Skills</label>
-					<app-autocomplete (onSelect)="onSelect($event)"></app-autocomplete>
-					<ul class="m-t-1 list-inline">
-						<li *ngFor="let skill of user.skill; let i = index" class="list-inline-item">
-							<a class="btn btn-gradient-primary btn-sm">{{skill}} <button class="btn btn-link btn-sm text-info" type="button" (click)="removeSkill(i)">&times;</button></a>
-						</li>
-					</ul>
-				</section>
-			</div>
-		</div>
-	</div>
+          <ul class="m-t-1 list-inline">
+            <li *ngFor="let skill of user.skill; let i = index" class="list-inline-item">
+              <a class="btn btn-gradient-primary btn-sm">{{skill}}
+                <button class="btn btn-link btn-sm text-info" type="button" (click)="removeSkill(i)">&times;</button>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
 </div>
