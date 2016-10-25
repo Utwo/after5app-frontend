@@ -9,7 +9,7 @@ import {LoginService} from "../core/login.service";
 })
 export class LoginComponent implements OnInit {
   private type;
-  private token;
+  private code;
 
   constructor(private route: ActivatedRoute, private loginService: LoginService) {
     this.route.params.subscribe(params => {
@@ -17,17 +17,19 @@ export class LoginComponent implements OnInit {
     });
 
     this.route.queryParams.subscribe(params => {
-      this.token = params['token'];
+      this.code = params['code'];
     });
   }
 
   ngOnInit() {
     if (this.type === 'email') {
-      this.loginService.authEmail(this.token);
+      this.loginService.authEmail(this.code);
     }
     else if (this.type === 'facebook') {
+      this.loginService.authFacebook(this.code)
     }
     else if (this.type === 'github') {
+      this.loginService.authGitHub(this.code)
     }
   }
 }
