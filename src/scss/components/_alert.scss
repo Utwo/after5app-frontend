@@ -1,0 +1,33 @@
+.alert {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  border-radius: $border-radius;
+  padding: .2rem .6rem;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .2);
+  z-index: map-get($zindex, highest);
+  overflow: hidden;
+}
+
+.alert--show {
+  animation: show 1s alternate ease-in-out;
+}
+
+.alert--hide {
+  //animation: bounceInUp 1s alternate ease-in-out;
+}
+
+@keyframes show {
+  0% {
+    width: 2rem;
+  }
+  10% {
+    width: auto;
+  }
+  90%{
+    width: auto;
+  }
+  100%{
+    width: 2rem;
+  }
+}
