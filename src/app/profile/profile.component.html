@@ -74,11 +74,8 @@
                                           target="_blank">@{{user.twitter}}</a></li>
               <li *ngIf="user.workplace">{{user.workplace}}</li>
             </ol>
-            <div class="m-t-2">
+            <div *ngIf="isMe && user.skill.length > 0" class="m-t-2">
               <h3 class="title-border p-b-1">Skills</h3>
-              <div *ngIf="user.skill.length === 0">
-                <p>Add your skills from the <a routerLink="/settings">Settings</a> page</p>
-              </div>
               <ul class="list-inline">
                 <li *ngFor="let skill of user.skill" class="list-inline-item btn btn-sm btn-gradient-primary">
                   <strong>{{skill.name}}</strong>

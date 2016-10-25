@@ -45,7 +45,7 @@ export class ProfileComponent implements OnInit {
   getMyApplications() {
     this.profileService.getMyApplications()
       .subscribe(
-        applications => this.applications = applications.data,
+        applications => this.applications = applications,
         error => this.errorMessage = <any>error);
   }
 
