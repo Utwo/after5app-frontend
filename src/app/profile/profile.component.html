@@ -1,104 +1,106 @@
 <div *ngIf="user">
-	<div class="jumbotron-fluid">
-		<div class="container">
-			<h2 class="m-y-0"><img *ngIf="user.picture" class="profile-img" src="{{user.picture}}?s=40"> {{user.name}}</h2>
-		</div>
-	</div>
+  <div class="jumbotron-fluid">
+    <div class="container">
+      <h2 class="m-y-0"><img *ngIf="user.picture" class="profile-img" src="{{user.picture}}?s=40"> {{user.name}}</h2>
+    </div>
+  </div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <section *ngIf="user.project.length > 0" class="m-y-3">
+          <h3 *ngIf="!isMe" class="title-border title-border--green p-b-1">{{user.name}}'s projects</h3>
+          <h3 *ngIf="isMe" class="title-border title-border--green p-b-1">My projects</h3>
+          <ul class="row list-unstyled">
+            <li *ngFor="let project of user.project" class="project__item p-a-1 col-xs-12 m-b-1">
+              <div class="row">
+                <div class="col-md-8">
+                  <h4 class="project__title title-border title-border--green m-b-2">
+                    <a routerLink="/project/{{project.id}}">
+                      {{project.title}}
+                    </a>
+                  </h4>
+                </div>
+                <div class="col-md-4 text-md-right">
+                  <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
+                </div>
+              </div>
+              <p>{{project.description | slice:0:80 }}</p>
+              <!--<ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
+                                <li class="list-inline-item btn btn-sm btn-info btn-gradient-primary project__skill-item"
+                                        *ngFor="let position of project.position">
+                                    {{position.skill.name}}
+                                </li>
+                            </ul>-->
+            </li>
+          </ul>
+        </section>
 
-				<section *ngIf="user.project.length > 0" class="m-y-3">
-					<h3 *ngIf="!isMe" class="title-border title-border--green p-b-1">{{user.name}}'s projects</h3>
-					<h3 *ngIf="isMe" class="title-border title-border--green p-b-1">My projects</h3>
-					<ul class="row list-unstyled">
-						<li *ngFor="let project of user.project" class="project__item p-a-1 col-xs-12 m-b-1">
-							<div class="row">
-								<div class="col-md-8">
-									<h4 class="project__title title-border title-border--green m-b-2">
-										<a routerLink="/project/{{project.id}}">
-											{{project.title}}
-										</a>
-									</h4>
-								</div>
-								<div class="col-md-4 text-md-right">
-									<i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
-								</div>
-							</div>
-							<p>{{project.description | slice:0:80 }}</p>
-							<!--<ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
-								<li class="list-inline-item btn btn-sm btn-info btn-gradient-primary project__skill-item"
-										*ngFor="let position of project.position">
-									{{position.skill.name}}
-								</li>
-							</ul>-->
-						</li>
-					</ul>
-				</section>
+        <section *ngIf="user.favorite.length > 0" class="m-y-3">
+          <h3 class="title-border title-border--green p-b-1">Favorite projects</h3>
+          <ul class="row list-unstyled">
+            <li *ngFor="let project of user.favorite" class="col-md-4">
+              <div class="project__item p-a-1">
+                <h4 class="project__title"><a routerLink="/project/{{project.id}}">
+                  {{project.title}}
+                </a></h4>
+                <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
+                <p>{{project.description | slice:0:40 }}</p>
+                <!--<ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
+                                    <li class="list-inline-item btn btn-sm btn-info btn-gradient-primary project__skill-item"
+                                            *ngFor="let position of project.position">
+                                        {{position.skill.name}}
+                                    </li>
+                                </ul>-->
+                <br>
+                <div class="project__subinfo">
+                  <!--<img class="profile-img" *ngIf="project.user.picture" src="{{project.user.picture+'?s=20'}}"><a
+                                                routerLink="/profile/{{project.user_id}}">
+                                    {{project.user.name}}</a>-->
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </div>
 
-				<section *ngIf="user.favorite.length > 0" class="m-y-3">
-					<h3 class="title-border title-border--green p-b-1">Favorite projects</h3>
-					<ul class="row list-unstyled">
-						<li *ngFor="let project of user.favorite" class="col-md-4">
-							<div class="project__item p-a-1">
-								<h4 class="project__title"><a routerLink="/project/{{project.id}}">
-									{{project.title}}
-								</a></h4>
-								<i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
-								<p>{{project.description | slice:0:40 }}</p>
-								<!--<ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
-									<li class="list-inline-item btn btn-sm btn-info btn-gradient-primary project__skill-item"
-											*ngFor="let position of project.position">
-										{{position.skill.name}}
-									</li>
-								</ul>-->
-								<br>
-								<div class="project__subinfo">
-									<!--<img class="profile-img" *ngIf="project.user.picture" src="{{project.user.picture+'?s=20'}}"><a
-												routerLink="/profile/{{project.user_id}}">
-									{{project.user.name}}</a>-->
-								</div>
-							</div>
-						</li>
-					</ul>
-				</section>
-			</div>
+      <div class="col-md-4">
+        <div class="sidebar p-a-1">
+          <section>
+            <h3 class="title-border p-b-1">About</h3>
+            <ol class="list-unstyled">
+              <li *ngIf="user.website"><a href={{user.website}} target="_blank">{{user.website}}</a></li>
+              <li *ngIf="user.twitter"><a href="https://twitter.com/{{user.twitter}}"
+                                          target="_blank">@{{user.twitter}}</a></li>
+              <li *ngIf="user.workplace">{{user.workplace}}</li>
+            </ol>
+            <div class="m-t-2">
+              <h3 class="title-border p-b-1">Skills</h3>
+              <div *ngIf="user.skill.length === 0">
+                <p>Add your skills from the <a routerLink="/settings">Settings</a> page</p>
+              </div>
+              <ul class="list-inline">
+                <li *ngFor="let skill of user.skill" class="list-inline-item btn btn-sm btn-gradient-primary">
+                  <strong>{{skill.name}}</strong>
+                </li>
+              </ul>
+            </div>
+          </section>
 
-			<div class="col-md-4">
-				<div class="sidebar p-a-1">
-					<section *ngIf="user.skill.length > 0">
-						<h3 class="title-border p-b-1">About</h3>
-						<ol class="list-unstyled">
-							<li *ngIf="user.website"><a href={{user.website}} target="_blank">{{user.website}}</a></li>
-							<li *ngIf="user.twitter"><a href="https://twitter.com/{{user.twitter}}"
-																					target="_blank">@{{user.twitter}}</a></li>
-							<li *ngIf="user.workplace">{{user.workplace}}</li>
-						</ol>
-						<div class="m-t-2">
-							<h3 class="title-border p-b-1">Skills</h3>
-							<ul class="list-inline">
-								<li *ngFor="let skill of user.skill" class="list-inline-item btn btn-sm btn-gradient-primary">
-									<strong>{{skill.name}}</strong>
-								</li>
-							</ul>
-						</div>
-					</section>
-
-					<section *ngIf="isMe" class="m-t-2">
-						<h3 class="title-border p-b-1">My Applications</h3>
-						<ul *ngIf="applications">
-							<li *ngFor="let application of applications">
-								<a routerLink="/project/{{application.position.project.id}}">
-									{{application.position.project.title}}
-								</a> -
-								<span *ngIf="application.accepted == 1">Accepted</span>
-								<span *ngIf="application.accepted == 0">Pending</span>
-							</li>
-						</ul>
-					</section>
-				</div>
-			</div>
-		</div>
-	</div>
+          <section *ngIf="isMe && applications && applications.length > 0" class="m-t-2">
+            <h3 class="title-border p-b-1">My Applications</h3>
+            <ul *ngIf="applications">
+              <li *ngFor="let application of applications">
+                <a routerLink="/project/{{application.position.project.id}}">
+                  {{application.position.project.title}}
+                </a> -
+                <span *ngIf="application.accepted == 1">Accepted</span>
+                <span *ngIf="application.accepted == 0">Pending</span>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

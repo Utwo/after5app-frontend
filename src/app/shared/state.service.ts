@@ -6,10 +6,6 @@ export class StateService {
     constructor() {
     }
 
-    getUrl() {
-        return 'http://startupper-utwo.rhcloud.com/api/v1';
-    }
-
     storeState(token, user) {
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(user));
