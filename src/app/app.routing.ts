@@ -19,7 +19,7 @@ const appRoutes:Routes = [
     {path: 'add-project', component: AddProjectComponent},
     {path: 'profile/:id', component: ProfileComponent},
     {path: 'settings', component: SettingsComponent},
-    {path: 'auth/:type', component: LoginComponent},
+    {path: 'auth/:type/callback', component: LoginComponent},
     {path: '**', component: NotFoundComponent}
 ];
 
