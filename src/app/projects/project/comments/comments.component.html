@@ -14,7 +14,7 @@
 		</li>
 	</ul>
 
-	<div class="form-inline">
+	<div *ngIf="state.isLoggedIn()" class="form-inline">
 		<input class="form-control" type="text" #text placeholder="Add your comment">
 		<button (click)="addComment(text)" class="btn btn-info">Add comment</button>
 	</div>

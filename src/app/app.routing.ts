@@ -9,6 +9,7 @@ import {AddProjectComponent} from "./projects/add-project/add-project.component"
 import {SettingsComponent} from "./profile/settings/settings.component";
 import {NotFoundComponent} from "./core/not-found/not-found.component";
 import {LoginComponent} from "./login/login.component";
+import {AuthGuard} from "./core/auth-guard.service";
 
 
 const appRoutes:Routes = [
@@ -16,9 +17,9 @@ const appRoutes:Routes = [
     {path: 'about', component: AboutComponent},
     {path: 'home', component: HomeComponent},
     {path: 'project/:id', component: ProjectComponent},
-    {path: 'add-project', component: AddProjectComponent},
+    {path: 'add-project', component: AddProjectComponent, canActivate: [AuthGuard]},
     {path: 'profile/:id', component: ProfileComponent},
-    {path: 'settings', component: SettingsComponent},
+    {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
     {path: 'auth/:type/callback', component: LoginComponent},
     {path: '**', component: NotFoundComponent}
 ];

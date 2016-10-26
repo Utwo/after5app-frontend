@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "../shared/project.service";
+import {StateService} from "../../shared/state.service";
 
 @Component({
   selector: 'app-project-list',
@@ -11,7 +12,7 @@ export class ProjectListComponent implements OnInit {
   page = {current_page: null, prev: null, next: null};
   maxDescriptionLength = 210;
 
-  constructor(private projectService: ProjectService) {
+  constructor(private projectService: ProjectService, private state: StateService) {
 
   }
 

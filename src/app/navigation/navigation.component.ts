@@ -38,12 +38,12 @@ export class NavigationComponent implements OnInit {
   }
 
   facebookLogin() {
-    var url = 'https://www.facebook.com/v2.6/dialog/oauth?client_id=' + environment.FACEBOOK_ID + '&redirect_uri=' + environment.URL + 'auth/facebook/callback';
+    var url = 'https://www.facebook.com/v2.6/dialog/oauth?client_id=' + environment.FACEBOOK_ID + '&redirect_uri=' + environment.URL + 'auth/facebook/callback&scope=email&response_type=code';
     window.open(url, "_self");
   }
 
   gitHubLogin() {
-    var url = 'https://github.com/login/oauth/authorize?client_id=' + environment.GITHUB_ID + '&redirect_uri=' + environment.URL + 'auth/github/callback';
+    var url = 'https://github.com/login/oauth/authorize?client_id=' + environment.GITHUB_ID + '&redirect_uri=' + environment.URL + 'auth/github/callback&scope=user&response_type=code';
     window.open(url, "_self");
   }
 
