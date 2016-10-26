@@ -100,9 +100,11 @@ export class ProjectComponent implements OnInit {
       .subscribe(
         members => {
           this.members = members;
-          for (let member of members) {
-            if (member.id === this.state.getUser().id) {
-              this.isMember = true;
+          if(this.state.isLoggedIn()){
+            for (let member of members) {
+              if (member.id === this.state.getUser().id) {
+                this.isMember = true;
+              }
             }
           }
         },
