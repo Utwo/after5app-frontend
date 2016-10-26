@@ -140,9 +140,7 @@
         </button>
         <h4 class="modal-title text-xs-center">Apply for this project</h4>
       </div>
-      <div class="modal-body">
         <app-application (onApply)="applicationSent($event)" [project]="project"></app-application>
-      </div>
     </div>
   </div>
 </div>
@@ -158,9 +156,7 @@
         </button>
         <h4 class="modal-title text-xs-center">Edit project</h4>
       </div>
-      <div class="modal-body">
         <app-edit-project (onEdit)="editProject()" [project]="project"></app-edit-project>
-      </div>
     </div>
   </div>
 </div>

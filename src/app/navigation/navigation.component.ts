@@ -1,42 +1,44 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {StateService} from "../shared/state.service";
 import {LoginService} from "../core/login.service";
+import {ModalDirective} from "ng2-bootstrap";
 
 @Component({
-    selector: 'app-navigation',
-    templateUrl: './navigation.component.html'
+  selector: 'app-navigation',
+  templateUrl: './navigation.component.html'
 })
 export class NavigationComponent implements OnInit {
-    isDropdownActiv = false;
-    errorMessage = '';
+  @ViewChild('loginModal') public loginModal: ModalDirective;
+  isDropdownActive = false;
+  errorMessage = '';
 
-    constructor(private loginService: LoginService, private state: StateService) {
-    }
+  constructor(private loginService: LoginService, private state: StateService) {
+  }
 
-    get user() {
-        return this.state.getUser();
-    }
+  get user() {
+    return this.state.getUser();
+  }
 
-    get loggedIn() {
-        return this.state.isLoggedIn();
-    }
+  get loggedIn() {
+    return this.state.isLoggedIn();
+  }
 
-    ngOnInit() {
-    }
+  ngOnInit() {
+  }
 
-    login() {
-        this.loginService.login();
-    }
+  login() {
+    this.loginService.login();
+  }
 
-    loginByEmail(email) {
-        this.loginService.loginEmail(email).subscribe(
-            data => console.log(data),
-            error => this.errorMessage = error);
+  loginByEmail(email) {
+    this.loginService.loginEmail(email).subscribe(
+      data => console.log(data),
+      error => this.errorMessage = error);
 
-        this.isDropdownActiv = false;
-    }
+    this.isDropdownActive = false;
+  }
 
-    dropdown() {
-        this.isDropdownActiv = !this.isDropdownActiv;
-    }
+  dropdown() {
+    this.isDropdownActive = !this.isDropdownActive;
+  }
 }
