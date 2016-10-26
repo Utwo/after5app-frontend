@@ -10,7 +10,7 @@
             <div class="col-md-6 text-md-right">
                 <a id="all-projects" href="#" (click)="getProjects(1)" class="btn font-weight-bold m-l-1 btn-link-info">Recent</a>
                 <a id="popular-projects" href="#" (click)="getPopularProjects()" class="btn font-weight-bold m-l-1">Popular</a>
-                <a id="recommended-projects" href="#" (click)="getRecommendedProjects()" class="btn font-weight-bold m-l-1">Recommended</a>
+                <a *ngIf="state.isLoggedIn()" id="recommended-projects" href="#" (click)="getRecommendedProjects()" class="btn font-weight-bold m-l-1">Recommended</a>
             </div>
         </div>
     </div>

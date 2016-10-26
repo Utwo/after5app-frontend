@@ -62,7 +62,7 @@ export class ProjectComponent implements OnInit {
   }
 
   addFavorite() {
-    if (this.myProject) {
+    if (this.myProject || !this.state.isLoggedIn()) {
       return;
     }
     this.projectService.addFavorite(this.project.id)
@@ -100,6 +100,7 @@ export class ProjectComponent implements OnInit {
       .subscribe(
         members => {
           this.members = members;
+
           if(this.state.isLoggedIn()){
             for (let member of members) {
               if (member.id === this.state.getUser().id) {
@@ -123,6 +124,9 @@ export class ProjectComponent implements OnInit {
   }
 
   deleteProject() {
+    if(!this.myProject){
+      return;
+    }
     this.projectService.deleteProject(this.project.id)
       .subscribe(
         project => {

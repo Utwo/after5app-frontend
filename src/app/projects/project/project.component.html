@@ -26,7 +26,7 @@
 
       <section class="col-md-4">
         <div class="sidebar p-a-1">
-          <div *ngIf="!myProject" class="m-b-1">
+          <div  *ngIf="!myProject && state.isLoggedIn()" class="m-b-1">
             <button (click)="applyModal.show()" class="btn btn-primary m-r-1">
               <svg class="icon">
                 <use xlink:href="assets/icons.svg#icon-rocket-color"></use>
@@ -34,9 +34,9 @@
             </button>
             <span>Help this project become reality!</span>
           </div>
-          <hr *ngIf="!myProject">
+          <hr>
           <div>
-            <button #favorite (click)="addFavorite()" class="btn m-r-1 btn-circle" [class.btn-danger]="isFavorite"
+            <button *ngIf="!myProject && state.isLoggedIn()" #favorite (click)="addFavorite()" class="btn m-r-1 btn-circle" [class.btn-danger]="isFavorite"
                     [class.btn-primary]="!isFavorite">
               <svg *ngIf="isFavorite" class="icon">
                 <use xlink:href="assets/icons.svg#icon-heart"></use>

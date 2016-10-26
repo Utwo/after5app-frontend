@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {ProjectService} from "../../shared/project.service";
+import {StateService} from "../../../shared/state.service";
 
 @Component({
     selector: 'app-comments',
@@ -11,7 +12,7 @@ export class CommentsComponent implements OnInit {
     private errorMessage: string;
     page = {current_page: null, prev: null, next: null};
 
-    constructor(private projectService: ProjectService) {
+    constructor(private projectService: ProjectService, private state: StateService) {
     }
 
     ngOnInit() {
@@ -27,7 +28,7 @@ export class CommentsComponent implements OnInit {
     }
 
     addComment(text) {
-        if (!text.value) {
+        if (!text.value || !this.state.isLoggedIn()) {
             return;
         }
         let comment = {text: text.value, project_id: this.project_id};
