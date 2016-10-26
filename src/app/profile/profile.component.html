@@ -1,16 +1,22 @@
 <div *ngIf="user">
   <div class="jumbotron-fluid">
     <div class="container">
-      <h2 class="m-y-0"><img *ngIf="user.picture" class="profile-img" src="{{user.picture}}?s=40"> {{user.name}}</h2>
+      <h2 class="m-y-0"><img *ngIf="user.picture" class="profile-img" src="{{user.picture}}?s=70"> {{user.name}}</h2>
     </div>
   </div>
 
   <div class="container">
     <div class="row">
       <div class="col-md-8">
-        <section *ngIf="user.project.length > 0" class="m-y-3">
+        <section class="m-y-3">
           <h3 *ngIf="!isMe" class="title-border title-border--green p-b-1">{{user.name}}'s projects</h3>
           <h3 *ngIf="isMe" class="title-border title-border--green p-b-1">My projects</h3>
+          <div *ngIf="user.project.length === 0">
+            <p *ngIf="isMe">You don't have any projects.
+              <a routerLink="/add-project">Start a project</a>
+            </p>
+            <p *ngIf="!isMe">{{user.name}} didn't start any projects.</p>
+          </div>
           <ul class="row list-unstyled">
             <li *ngFor="let project of user.project" class="project__item p-a-1 col-xs-12 m-b-1">
               <div class="row">
@@ -36,8 +42,12 @@
           </ul>
         </section>
 
-        <section *ngIf="user.favorite.length > 0" class="m-y-3">
+        <section class="m-y-3">
           <h3 class="title-border title-border--green p-b-1">Favorite projects</h3>
+          <div *ngIf="user.favorite.length === 0">
+            <p *ngIf="!isMe">{{user.name}} has no favorite projects :( (broken heart)</p>
+            <p *ngIf="isMe">You have no favorite projects :(</p>
+          </div>
           <ul class="row list-unstyled">
             <li *ngFor="let project of user.favorite" class="col-md-4">
               <div class="project__item p-a-1">
@@ -68,13 +78,14 @@
         <div class="sidebar p-a-1">
           <section>
             <h3 class="title-border p-b-1">About</h3>
+            <button *ngIf="isMe" routerLink="/settings" class="btn">Edit</button>
             <ol class="list-unstyled">
               <li *ngIf="user.website"><a href={{user.website}} target="_blank">{{user.website}}</a></li>
               <li *ngIf="user.twitter"><a href="https://twitter.com/{{user.twitter}}"
                                           target="_blank">@{{user.twitter}}</a></li>
               <li *ngIf="user.workplace">{{user.workplace}}</li>
             </ol>
-            <div *ngIf="isMe && user.skill.length > 0" class="m-t-2">
+            <div *ngIf="user.skill.length > 0" class="m-t-2">
               <h3 class="title-border p-b-1">Skills</h3>
               <ul class="list-inline">
                 <li *ngFor="let skill of user.skill" class="list-inline-item btn btn-sm btn-gradient-primary">

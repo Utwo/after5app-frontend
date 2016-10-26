@@ -15,23 +15,22 @@ export class ProjectComponent implements OnInit {
   private related = null;
   private members = null;
   private errorMessage: string;
-  private sub: Subscription;
   private myProject = false;
   private isFavorite = false;
+  private isMember = false;
 
   @ViewChild('editModal') public editModal: ModalDirective;
   @ViewChild('deleteModal') public deleteModal: ModalDirective;
   @ViewChild('applyModal') public applyModal: ModalDirective;
   @ViewChild("favorite") favorite;
   @ViewChild("favoriteSpan") favoriteSpan;
-  //@ViewChild("span") span;
 
   constructor(private route: ActivatedRoute, private projectService: ProjectService, private state: StateService, private router: Router) {
   }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-      let id = +params['id'];
+    this.route.params.subscribe(params => {
+      let id = params['id'];
       this.getProject(id);
     });
   }
@@ -101,6 +100,11 @@ export class ProjectComponent implements OnInit {
       .subscribe(
         members => {
           this.members = members;
+          for (let member of members) {
+            if (member.id === this.state.getUser().id) {
+              this.isMember = true;
+            }
+          }
         },
         error => this.errorMessage = <any>error);
   }
@@ -108,6 +112,7 @@ export class ProjectComponent implements OnInit {
   applicationSent(code) {
     this.applyModal.hide();
     if (code) {
+      //mesaj de succes
       this.applyModal.hide();
     }
     else {
@@ -127,22 +132,6 @@ export class ProjectComponent implements OnInit {
   editProject() {
     this.editModal.hide();
     this.getProject(this.project.id);
-  }
-
-  public showEditdModal(): void {
-    this.editModal.show();
-  }
-
-  public showDeleteModal(): void {
-    this.deleteModal.show();
-  }
-
-  public showApplydModal(): void {
-    this.applyModal.show();
-  }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
   }
 
   showAnimation(el, elSpan) {
