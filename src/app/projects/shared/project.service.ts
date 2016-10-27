@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable}     from 'rxjs/Observable';
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
 import {StateService} from "../../shared/state.service";
+import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class ProjectService {
@@ -10,20 +11,20 @@ export class ProjectService {
   }
 
   getProjects(page) {
-    return this.http.get(this.state.getUrl() + '/project?with[]=user&with[]=position.skill&page=' + page)
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'project?with[]=user&with[]=position.skill&page=' + page)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   getProjectById(id) {
-    return this.http.get(this.state.getUrl() +
-      '/project?with[]=user&with[]=favorite&with[]=position.skill&with[]=comment.user&id=' + id)
+    return this.http.get(environment.URL_API + environment.API_VERSION +
+      'project?with[]=user&with[]=favorite&with[]=position.skill&with[]=comment.user&id=' + id)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   getPopularProjects() {
-    return this.http.get(this.state.getUrl() + '/project?sort[]=favorite_count,desc&sort[]=created_at,desc&with[]=user&with[]=position.skill')
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'project?sort[]=favorite_count,desc&sort[]=created_at,desc&with[]=user&with[]=position.skill')
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -35,7 +36,7 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(this.state.getUrl() + '/project?recommended&with[]=user&with[]=position.skill', options)
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'project?recommended&with[]=user&with[]=position.skill', options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -48,7 +49,7 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.post(this.state.getUrl() + '/project', body, options)
+    return this.http.post(environment.URL_API + environment.API_VERSION + 'project', body, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -61,7 +62,7 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.post(this.state.getUrl() + '/position', body, options)
+    return this.http.post(environment.URL_API + environment.API_VERSION + 'position', body, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -74,7 +75,7 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.put(this.state.getUrl() + '/project/' + project.id, body, options)
+    return this.http.put(environment.URL_API + environment.API_VERSION + 'project/' + project.id, body, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -85,28 +86,28 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.delete(this.state.getUrl() + '/project/' + id, options)
+    return this.http.delete(environment.URL_API + environment.API_VERSION + 'project/' + id, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   public searchByName(name) {
-    return this.http.get(this.state.getUrl() +
-      '/project?title=%' + name + '%&with[]=user&with[]=position.skill')
+    return this.http.get(environment.URL_API + environment.API_VERSION +
+      'project?title=%' + name + '%&with[]=user&with[]=position.skill')
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   public filterBySkill(skill, id = null) {
     let project_id = id ? '&id=!' + id : '';
-    return this.http.get(this.state.getUrl() +
-      `/project?position:skill_id=${skill}&with[]=user&with[]=position.skill${project_id}`)
+    return this.http.get(environment.URL_API + environment.API_VERSION +
+      `project?position:skill_id=${skill}&with[]=user&with[]=position.skill${project_id}`)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   public getSkills() {
-    return this.http.get(this.state.getUrl() + '/skill')
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'skill')
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -117,7 +118,7 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(this.state.getUrl() + '/project/' + project_id + '/messenger', options)
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'project/' + project_id + '/messenger', options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -130,14 +131,14 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.post(this.state.getUrl() + '/messenger', body, options)
+    return this.http.post(environment.URL_API + environment.API_VERSION + 'messenger', body, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   public getProjectComments(id) {
-    return this.http.get(this.state.getUrl() +
-      '/project?with[]=comment.user&id=' + id)
+    return this.http.get(environment.URL_API + environment.API_VERSION +
+      'project?with[]=comment.user&id=' + id)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -150,7 +151,7 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.post(this.state.getUrl() + '/comment', body, options)
+    return this.http.post(environment.URL_API + environment.API_VERSION + 'comment', body, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -159,13 +160,13 @@ export class ProjectService {
     let headers = new Headers({
       'Authorization': 'Bearer ' + this.state.getToken()
     });
-    return this.http.get(this.state.getUrl() + '/project/' + project_id + '/application?with[]=user&with[]=position.skill', {headers: headers})
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'project/' + project_id + '/application?with[]=user&with[]=position.skill', {headers: headers})
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   public getMembers(project_id) {
-    return this.http.get(this.state.getUrl() + '/project/' + project_id + '/members')
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'project/' + project_id + '/members')
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -178,7 +179,7 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.post(this.state.getUrl() + '/application', body, options)
+    return this.http.post(environment.URL_API + environment.API_VERSION + 'application', body, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -191,7 +192,7 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.put(this.state.getUrl() + '/application/' + application_id, body, options)
+    return this.http.put(environment.URL_API + environment.API_VERSION + 'application/' + application_id, body, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -203,7 +204,7 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.post(this.state.getUrl() + '/project/' + project_id + '/favorite', "", options)
+    return this.http.post(environment.URL_API + environment.API_VERSION + 'project/' + project_id + '/favorite', "", options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -215,7 +216,7 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.delete(this.state.getUrl() + '/position/' + position_id, options)
+    return this.http.delete(environment.URL_API + environment.API_VERSION + 'position/' + position_id, options)
       .map(this.extractData)
       .catch(this.handleError);
   }

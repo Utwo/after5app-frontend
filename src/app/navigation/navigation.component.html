@@ -21,7 +21,6 @@
     </div>
   </div>
 </header>
-
 <div bsModal #loginModal="bs-modal" class="modal grow" tabindex="-1" role="dialog"
      aria-labelledby="Login"
      aria-hidden="true">
@@ -37,7 +36,7 @@
         <div class="container-fluid">
           <div class="row flex-items-xs-center m-y-2">
             <div class="col-lg-3 col-md-6">
-              <button class="btn btn-block btn-facebook btn-lg" (click)="login()">
+              <button class="btn btn-block btn-facebook btn-lg" (click)="facebookLogin()">
                 <svg class="icon icon-lg">
                   <use xlink:href="assets/icons.svg#icon-facebook2"></use>
                 </svg>
@@ -45,7 +44,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button class="btn btn-block btn-github btn-lg" (click)="login()">
+              <button class="btn btn-block btn-github btn-lg" (click)="gitHubLogin()">
                 <svg class="icon icon-lg">
                   <use xlink:href="assets/icons.svg#icon-github"></use>
                 </svg>

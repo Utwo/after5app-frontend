@@ -41,6 +41,26 @@ export class LoginService {
       );
   }
 
+  authFacebook(code){
+    this.http.post(environment.URL_API + 'auth/facebook/callback?code=' + code, '')
+      .map(res => res.json())
+      .subscribe(
+        (data) => this.state.storeState(data['token'], data['user']),
+        (error) => this.handleError(error),
+        () => this.router.navigate(['/'])
+      );
+  }
+
+  authGitHub(code){
+    this.http.post(environment.URL_API + 'auth/github/callback?code=' + code, '')
+      .map(res => res.json())
+      .subscribe(
+        (data) => this.state.storeState(data['token'], data['user']),
+        (error) => this.handleError(error),
+        () => this.router.navigate(['/'])
+      );
+  }
+
   logout() {
     this.state.logout();
   }
