@@ -11,6 +11,7 @@ import {TypeaheadMatch} from 'ng2-bootstrap/ng2-bootstrap';
 export class AutocompleteComponent {
   @Input('wrap_class') wrap_class;
   @Input('label_message') label_message;
+  @Input('label_show') label_show;
   @Input('type') type;
   @Output() onSelect = new EventEmitter<Object>();
 
@@ -27,6 +28,7 @@ export class AutocompleteComponent {
 
     this.wrap_class = this.wrap_class || 'form-group btn btn-primary btn-sm';
     this.label_message = this.label_message || 'Filter by skill ';
+    this.label_show = this.label_show || false;
   }
 
   public getSkillsAsObservable(token: string): Observable<any> {

@@ -18,5 +18,5 @@
 		<input class="form-control" type="text" #text placeholder="Add your comment">
 		<button (click)="addComment(text)" class="btn btn-info">Add comment</button>
 	</div>
-
+  <i *ngIf="!state.isLoggedIn()" class="text-muted">Login in order to post comments.</i>
 </section>

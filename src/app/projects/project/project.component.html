@@ -26,7 +26,7 @@
 
       <section class="col-md-4">
         <div class="sidebar p-a-1">
-          <div  *ngIf="!myProject && state.isLoggedIn()" class="m-b-1">
+          <div *ngIf="!myProject && state.isLoggedIn()" class="m-b-1">
             <button (click)="applyModal.show()" class="btn btn-primary m-r-1">
               <svg class="icon">
                 <use xlink:href="assets/icons.svg#icon-rocket-color"></use>
@@ -34,9 +34,10 @@
             </button>
             <span>Help this project become reality!</span>
           </div>
-          <hr>
+          <hr *ngIf="!myProject && state.isLoggedIn()">
           <div>
-            <button *ngIf="!myProject && state.isLoggedIn()" #favorite (click)="addFavorite()" class="btn m-r-1 btn-circle" [class.btn-danger]="isFavorite"
+            <button *ngIf="!myProject && state.isLoggedIn()" #favorite (click)="addFavorite()"
+                    class="btn m-r-1 btn-circle" [class.btn-danger]="isFavorite"
                     [class.btn-primary]="!isFavorite">
               <svg *ngIf="isFavorite" class="icon">
                 <use xlink:href="assets/icons.svg#icon-heart"></use>
@@ -65,12 +66,12 @@
         </div>
 
         <div *ngIf="members && members.length > 0">
-          <h3>Members</h3>
-          <ol>
-            <li *ngFor="let member of members">
-              <a routerLink="/profile/{{member.id}}">{{member.name}}</a>
+          <h3 class="title-border title-border--green p-b-1 m-t-2">Members</h3>
+          <ul>
+            <li *ngFor="let member of members" class="m-b-1">
+              <a routerLink="/profile/{{member.id}}"><img class="profile-img m-r-1" src="{{member.picture+'?s=30'}}">{{member.name}}</a>
             </li>
-          </ol>
+          </ul>
         </div>
       </section>
     </div>
@@ -90,7 +91,7 @@
         </template>
         <app-comments [project_id]="project.id" [comments]="project.comment" class="row comment"></app-comments>
       </tab>
-      <tab ngIf="isMember || myProject" [heading]="Messages">
+      <tab *ngIf="isMember || myProject" [heading]="Messages">
         <template tabHeading>
           Messages
         </template>
@@ -140,7 +141,7 @@
         </button>
         <h4 class="modal-title text-xs-center">Apply for this project</h4>
       </div>
-        <app-application (onApply)="applicationSent($event)" [project]="project"></app-application>
+      <app-application (onApply)="applicationSent($event)" [project]="project"></app-application>
     </div>
   </div>
 </div>
@@ -156,7 +157,7 @@
         </button>
         <h4 class="modal-title text-xs-center">Edit project</h4>
       </div>
-        <app-edit-project (onEdit)="editProject()" [project]="project"></app-edit-project>
+      <app-edit-project (onEdit)="editProject()" [project]="project"></app-edit-project>
     </div>
   </div>
 </div>

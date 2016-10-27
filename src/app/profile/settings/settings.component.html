@@ -62,22 +62,28 @@
             </div>
           </div>
           <button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid">Save changes</button>
-          <button class="btn btn-primary" type="button" routerLink="/">Cancel</button>
+          <button class="btn btn-danger" type="button" routerLink="/">Cancel</button>
         </form>
       </section>
       <div class="col-md-4">
         <section class="sidebar p-a-1">
-          <label>Skills</label>
-          <app-autocomplete (onSelect)="onSelect($event)"></app-autocomplete>
-          <button (click)="addSkill()">Add skill</button>
-
+          <h3 class="project__title title-border title-border--primary m-b-2">Skills</h3>
+          <div class="form-inline">
+            <app-autocomplete (onSelect)="onSelect($event)" label_message="" wrap_class="form-group"></app-autocomplete>
+            <button (click)="addSkill()" type="submit" class="btn btn-primary">Add skill</button>
+          </div>
           <ul class="m-t-1 list-inline">
-            <li *ngFor="let skill of user.skill; let i = index" class="list-inline-item">
+            <li *ngFor="let skill of user.skill; let i = index" class="list-inline-item m-t-1">
               <a class="btn btn-gradient-primary btn-sm">{{skill}}
                 <button class="btn btn-link btn-sm text-info" type="button" (click)="removeSkill(i)">&times;</button>
               </a>
             </li>
           </ul>
+          <div class="text-xs-center sidebar-icon">
+            <svg class="icon icon-lg">
+              <use xlink:href="assets/icons.svg#icon-space-invaders"></use>
+            </svg>
+          </div>
         </section>
       </div>
     </div>
