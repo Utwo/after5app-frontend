@@ -10,7 +10,9 @@ import {environment} from "../../environments/environment";
 })
 export class NavigationComponent implements OnInit {
   @ViewChild('loginModal') public loginModal: ModalDirective;
-  errorMessage = '';
+  email = '';
+  emailMessage = '';
+  showEmailInput = true;
 
   constructor(private loginService: LoginService, private state: StateService) {
   }
@@ -26,14 +28,21 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
   }
 
-  login() {
-    this.loginService.login();
-  }
-
   loginByEmail(email) {
-    this.loginService.loginEmail(email).subscribe(
-      data => console.log(data),
-      error => this.errorMessage = error);
+    var regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!regEx.test(this.email)) {
+      this.emailMessage = 'Please enter a valid email address.';
+      return;
+    }
+    this.emailMessage = '';
+
+    this.loginService.loginEmail(this.email).subscribe(
+      () => {
+        this.emailMessage = 'We sent an email to ' + this.email + '. Please check your email and follow the link.';
+        this.showEmailInput = false;
+      },
+      error => this.emailMessage = 'A problem occured while sending the email. We are sorry for the inconvenience. Try...',
+      () => this.email = '');
   }
 
   facebookLogin() {
@@ -44,5 +53,11 @@ export class NavigationComponent implements OnInit {
   gitHubLogin() {
     var url = 'https://github.com/login/oauth/authorize?client_id=' + environment.GITHUB_ID + '&redirect_uri=' + environment.URL + 'auth/github/callback&scope=user&response_type=code';
     window.open(url, "_self");
+  }
+
+  closeLoginModal() {
+    this.loginModal.hide();
+    this.emailMessage = '';
+    this.showEmailInput = true;
   }
 }

@@ -90,7 +90,7 @@
         </template>
         <app-comments [project_id]="project.id" [comments]="project.comment" class="row comment"></app-comments>
       </tab>
-      <tab ngIf="isMember || myProject" [heading]="Messages">
+      <tab *ngIf="isMember || myProject" [heading]="Messages">
         <template tabHeading>
           Messages
         </template>
