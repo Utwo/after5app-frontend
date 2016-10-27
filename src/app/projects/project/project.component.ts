@@ -40,7 +40,8 @@ export class ProjectComponent implements OnInit {
       .subscribe(
         project => {
           if (project.data.length === 0) {
-            this.router.navigate(['/']);
+            this.router.navigate(['/not-found']);
+            return;
           }
 
           this.project = project.data[0];

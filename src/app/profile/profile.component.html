@@ -13,7 +13,7 @@
           <h3 *ngIf="isMe" class="title-border title-border--green p-b-1">My projects</h3>
           <div *ngIf="user.project.length === 0">
             <p *ngIf="isMe">You don't have any projects.
-              <a routerLink="/add-project">Start a project</a>
+              <a routerLink="/start-project">Start a project!</a>
             </p>
             <p *ngIf="!isMe">{{user.name}} didn't start any projects.</p>
           </div>

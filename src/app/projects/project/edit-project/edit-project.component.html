@@ -54,8 +54,9 @@
         </li>
       </ul>
     </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid">Save changes</button>
+    </div>
   </form>
 </div>
-<div class="modal-footer">
-  <button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid">Save changes</button>
-</div>
+
