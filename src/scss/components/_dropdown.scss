@@ -10,7 +10,7 @@
   width: 240px;
   max-height: 450px;
   position: absolute;
-  z-index: 999;
+  z-index: map-get($zindex, max);;
   border-radius: $border-radius-lg;
   padding: .4em;
   top: 4em;

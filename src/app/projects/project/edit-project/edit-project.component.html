@@ -1,60 +1,61 @@
-<form *ngIf="project" #updateForm="ngForm" (ngSubmit)="editProject()">
+<div class="modal-body">
+  <form *ngIf="project" #updateForm="ngForm" (ngSubmit)="editProject()">
     <div class="container">
-        <div class="form-group row">
-            <label for="title" class="col-sm-2 col-form-label">Title</label>
-            <input class="form-control col-sm-10" type="text" id="text" required minlength="4" maxlength="20"
-                   name="title"
-                   [(ngModel)]="project.title"
-                   #title="ngModel">
-            <div *ngIf="title.errors && (title.dirty || title.touched)">
-                <i [hidden]="!title.errors.required">Title is required</i>
-                <i [hidden]="!title.errors.minlength">Title must be at least 4 characters long.</i>
-                <i [hidden]="!title.errors.maxlength">Title cannot be more than 20 characters long.</i>
-            </div>
+      <div class="form-group row">
+        <label for="title" class="col-sm-2 col-form-label">Title</label>
+        <input class="form-control col-sm-10" type="text" id="text" required minlength="4" maxlength="20"
+               name="title"
+               [(ngModel)]="project.title"
+               #title="ngModel">
+        <div *ngIf="title.errors && (title.dirty || title.touched)">
+          <i [hidden]="!title.errors.required">Title is required</i>
+          <i [hidden]="!title.errors.minlength">Title must be at least 4 characters long.</i>
+          <i [hidden]="!title.errors.maxlength">Title cannot be more than 20 characters long.</i>
         </div>
+      </div>
 
-        <div class="form-group row">
-            <label for="description" class="col-sm-2 col-form-label">Description</label>
-            <textarea class="form-control col-sm-10" id="description" required minlength="4" name="description"
-                      rows="6"
-                      [(ngModel)]="project.description"
-                      #description="ngModel"></textarea>
-            <div *ngIf="description.errors && (description.dirty || description.touched)">
-                <i [hidden]="!description.errors.required">Description is required</i>
-                <i [hidden]="!description.errors.minlength">Description must be at least 4 characters long.</i>
-            </div>
+      <div class="form-group row">
+        <label for="description" class="col-sm-2 col-form-label">Description</label>
+        <textarea class="form-control col-sm-10" id="description" required minlength="4" name="description"
+                  rows="6"
+                  [(ngModel)]="project.description"
+                  #description="ngModel"></textarea>
+        <div *ngIf="description.errors && (description.dirty || description.touched)">
+          <i [hidden]="!description.errors.required">Description is required</i>
+          <i [hidden]="!description.errors.minlength">Description must be at least 4 characters long.</i>
         </div>
+      </div>
 
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Positions</label>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Positions</label>
+      </div>
+      <ul>
+        <li *ngFor="let position of project.position; let i = index">
+          {{position.skill.name}} : {{position.description}}
+          <button class="btn btn-sm btn-danger" type="button" (click)="removePosition(position.id, i)"><span
+            aria-hidden="true">&times;</span></button>
+        </li>
+      </ul>
+
+      <div class="form-group row">
+        <label for="question" class="col-sm-2 col-form-label">Questions</label>
+        <input class="form-control col-sm-7" type="text" id="question" placeholder="Application question" #question>
+        <div class="col-sm-3">
+          <button class="btn btn-info" type="button" (click)="addQuestion(question.value)">Add Question</button>
         </div>
-        <ul>
-            <li *ngFor="let position of project.position; let i = index">
-                {{position.skill.name}} : {{position.description}}
-                <button class="btn btn-sm btn-danger" type="button" (click)="removePosition(position.id, i)"><span
-                        aria-hidden="true">&times;</span></button>
-            </li>
-        </ul>
-
-        <div class="form-group row">
-            <label for="question" class="col-sm-2 col-form-label">Questions</label>
-            <input class="form-control col-sm-7" type="text" id="question" placeholder="Application question" #question>
-            <div class="col-sm-3">
-                <button class="btn btn-info" type="button" (click)="addQuestion(question.value)">Add Question</button>
-            </div>
-        </div>
+      </div>
 
 
-        <ul>
-            <li *ngFor="let question of project.application_questions; let i = index">
-                {{question}}
-                <button class="btn btn-sm btn-danger" type="button" (click)="removeQuestion(i)"><span
-                        aria-hidden="true">&times;</span></button>
-            </li>
-        </ul>
-
-        <div class="text-xs-center">
-            <button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid">Save changes</button>
-        </div>
+      <ul>
+        <li *ngFor="let question of project.application_questions; let i = index">
+          {{question}}
+          <button class="btn btn-sm btn-danger" type="button" (click)="removeQuestion(i)"><span
+            aria-hidden="true">&times;</span></button>
+        </li>
+      </ul>
     </div>
-</form>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid">Save changes</button>
+</div>

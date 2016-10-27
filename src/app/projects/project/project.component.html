@@ -14,7 +14,7 @@
           <p>{{project.description}}</p>
         </div>
         <div *ngIf="project.position.length > 0">
-          <h3 class="title-border title-border--green p-b-1">I need help with:</h3>
+          <h3 class="title-border title-border--green p-b-1">I need help with</h3>
           <dl *ngFor="let position of project.position">
             <dt class="btn btn-sm btn-gradient-primary">
               <strong>{{position.skill.name}}</strong>
@@ -80,13 +80,24 @@
   <div *ngIf="myProject" class="container m-y-3">
     <app-user-applications [project]="project" (onAccept)="getMembers()"></app-user-applications>
   </div>
-
   <div class="container m-y-3">
-    <app-comments [project_id]="project.id" [comments]="project.comment" class="row comment"></app-comments>
-  </div>
 
-  <div *ngIf="isMember" class="container m-y-3">
-    <app-messages [project_id]="project.id" class="row comment"></app-messages>
+    <tabset>
+      <tab [heading]="Comments"
+           [active]="true">
+        <template tabHeading>
+          Comments
+        </template>
+        <app-comments [project_id]="project.id" [comments]="project.comment" class="row comment"></app-comments>
+      </tab>
+      <tab ngIf="isMember || myProject" [heading]="Messages">
+        <template tabHeading>
+          Messages
+        </template>
+        <app-messages [project_id]="project.id" class="row comment"></app-messages>
+      </tab>
+    </tabset>
+
   </div>
 
   <aside *ngIf="related && related.length > 0" class="p-y-3 jumbotron-fluid">
@@ -129,9 +140,7 @@
         </button>
         <h4 class="modal-title text-xs-center">Apply for this project</h4>
       </div>
-      <div class="modal-body">
         <app-application (onApply)="applicationSent($event)" [project]="project"></app-application>
-      </div>
     </div>
   </div>
 </div>
@@ -147,9 +156,7 @@
         </button>
         <h4 class="modal-title text-xs-center">Edit project</h4>
       </div>
-      <div class="modal-body">
         <app-edit-project (onEdit)="editProject()" [project]="project"></app-edit-project>
-      </div>
     </div>
   </div>
 </div>

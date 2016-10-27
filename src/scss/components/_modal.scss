@@ -2,15 +2,30 @@
   background: $modal-backdrop-bg;
 }
 
+.modal-fluid {
+  max-width: 100%;
+  margin-top: 18%;
+}
+
 .modal-content {
   border-radius: $border-radius-lg;
   border: 20px solid lighten($brand-primary, 5);
   box-shadow: 0 0 20px 3px transparentize($brand-primary, .5);
 }
 
+.modal-fluid .modal-content {
+  border-radius: 0;
+  border-left: 0 none;
+  border-right: 0 none;
+}
+
+.modal-fluid .modal__close {
+  right: 0;
+}
+
 .modal__close {
   position: absolute;
-  top: -2rem;
+  top: -2.2rem;
   right: -2rem;
   border-radius: 50%;
   font-size: 1.4rem;
