@@ -1,5 +1,4 @@
 <section class="col-md-8">
-	<hr>
 	<h3 class="title-border title-border--green p-b-1">Comments</h3>
 	<ul *ngIf="comments && comments.length > 0" class="list-unstyled">
 		<li *ngFor="let comment of comments" class="comment-item" [class.comment-item__mine]="comment.user_id == 1">

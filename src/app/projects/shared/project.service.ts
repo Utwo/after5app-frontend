@@ -136,12 +136,12 @@ export class ProjectService {
       .catch(this.handleError);
   }
 
-  public getProjectComments(id) {
-    return this.http.get(environment.URL_API + environment.API_VERSION +
-      'project?with[]=comment.user&id=' + id)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
+  // public getProjectComments(id) {
+  //   return this.http.get(environment.URL_API + environment.API_VERSION +
+  //     'project?with[]=comment.user&id=' + id)
+  //     .map(this.extractData)
+  //     .catch(this.handleError);
+  // }
 
   public addComment(comment) {
     let body = JSON.stringify(comment);
