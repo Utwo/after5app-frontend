@@ -32,12 +32,6 @@
                 </div>
               </div>
               <p>{{project.description | slice:0:80 }}</p>
-              <!--<ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
-                                <li class="list-inline-item btn btn-sm btn-info btn-gradient-primary project__skill-item"
-                                        *ngFor="let position of project.position">
-                                    {{position.skill.name}}
-                                </li>
-                            </ul>-->
             </li>
           </ul>
         </section>
@@ -45,8 +39,18 @@
         <section class="m-y-3">
           <h3 class="title-border title-border--green p-b-1">Favorite projects</h3>
           <div *ngIf="user.favorite.length === 0">
-            <p *ngIf="!isMe">{{user.name}} has no favorite projects :( (broken heart)</p>
-            <p *ngIf="isMe">You have no favorite projects :(</p>
+            <p *ngIf="!isMe">{{user.name}} has no favorite projects
+              <svg
+                class="icon text-danger">
+                <use xlink:href="assets/icons.svg#icon-heart-o"></use>
+              </svg>
+            </p>
+            <p *ngIf="isMe">You have no favorite projects
+              <svg
+                class="icon text-danger">
+                <use xlink:href="assets/icons.svg#icon-heart-o"></use>
+              </svg>
+            </p>
           </div>
           <ul class="row list-unstyled">
             <li *ngFor="let project of user.favorite" class="col-md-4">
@@ -56,18 +60,6 @@
                 </a></h4>
                 <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
                 <p>{{project.description | slice:0:40 }}</p>
-                <!--<ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
-                                    <li class="list-inline-item btn btn-sm btn-info btn-gradient-primary project__skill-item"
-                                            *ngFor="let position of project.position">
-                                        {{position.skill.name}}
-                                    </li>
-                                </ul>-->
-                <br>
-                <div class="project__subinfo">
-                  <!--<img class="profile-img" *ngIf="project.user.picture" src="{{project.user.picture+'?s=20'}}"><a
-                                                routerLink="/profile/{{project.user_id}}">
-                                    {{project.user.name}}</a>-->
-                </div>
               </div>
             </li>
           </ul>
@@ -77,21 +69,29 @@
       <div class="col-md-4">
         <div class="sidebar p-a-1">
           <section>
-            <h3 class="title-border p-b-1">About</h3>
-            <button *ngIf="isMe" routerLink="/settings" class="btn">Edit</button>
+            <h3 class="title-border p-b-1">About
+              <a *ngIf="isMe" routerLink="/settings" class="btn btn-outline-primary btn-sm pull-xs-right">
+                <svg class="icon">
+                  <use xlink:href="assets/icons.svg#icon-pencil"></use>
+                </svg>
+              </a>
+            </h3>
             <ol class="list-unstyled">
               <li *ngIf="user.website"><a href={{user.website}} target="_blank">{{user.website}}</a></li>
               <li *ngIf="user.twitter"><a href="https://twitter.com/{{user.twitter}}"
                                           target="_blank">@{{user.twitter}}</a></li>
               <li *ngIf="user.workplace">{{user.workplace}}</li>
             </ol>
-            <div *ngIf="user.skill.length > 0" class="m-t-2">
-              <h3 class="title-border p-b-1">Skills</h3>
-              <ul class="list-inline">
-                <li *ngFor="let skill of user.skill" class="list-inline-item btn btn-sm btn-gradient-primary">
-                  <strong>{{skill.name}}</strong>
-                </li>
-              </ul>
+            <h3 class="title-border p-b-1 m-t-2">Skills</h3>
+            <ul class="list-inline" *ngIf="user.skill.length > 0">
+              <li *ngFor="let skill of user.skill" class="list-inline-item btn btn-sm btn-gradient-primary">
+                <strong>{{skill.name}}</strong>
+              </li>
+            </ul>
+            <div class="text-xs-center sidebar-icon">
+              <svg class="icon icon-lg">
+                <use xlink:href="assets/icons.svg#icon-space-invaders"></use>
+              </svg>
             </div>
           </section>
 

@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-inline">
-                    <app-autocomplete [type]="'list'" (onSelect)="onSelect($event)"></app-autocomplete>
+                    <app-autocomplete [type]="'list'" (onSelect)="onSelect($event)" label_show="true"></app-autocomplete>
                 </div>
             </div>
             <div class="col-md-6 text-md-right">
@@ -49,7 +49,7 @@
                     <span class="m-r-1" title="favorites"><svg
                             class="icon text-danger"><use xlink:href="assets/icons.svg#icon-favorite"></use></svg> {{project.favorite_count}}</span>
                     <span title="comments"><svg
-                            class="icon text-warning"><use
+                            class="icon text-info"><use
                             xlink:href="assets/icons.svg#icon-pacman"></use></svg> {{project.comment_count}}</span>
                 </div>
             </div>

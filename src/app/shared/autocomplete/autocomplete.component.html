@@ -1,6 +1,6 @@
 <div class="form-inline dropdown">
   <div class="{{wrap_class}}">
-    <label for="filter" class="m-x-1">{{label_message}}</label>
+    <label *ngIf="label_show" for="filter" class="m-x-1">{{label_message}}</label>
     <input [(ngModel)]="asyncSelected"
            [typeahead]="dataSource"
            (typeaheadLoading)="changeTypeaheadLoading($event)"
