@@ -26,14 +26,16 @@
         </div>
       </div>
 
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Positions</label>
+      <div class="form-group m-t-3">
+        <label>Positions</label>
       </div>
-      <ul>
-        <li *ngFor="let position of project.position; let i = index">
-          {{position.skill.name}} : {{position.description}}
-          <button class="btn btn-sm btn-danger" type="button" (click)="removePosition(position.id, i)"><span
-            aria-hidden="true">&times;</span></button>
+      <ul class="list-unstyled m-b-3">
+        <li *ngFor="let position of project.position; let i = index" class="panel m-b-1 p-a-1">
+          <h5>{{position.skill.name}}
+            <button class="btn btn-outline-danger btn-sm pull-xs-right btn-circle-sm font-weight-bold" type="button"
+                    (click)="removePosition(position.id, i)">&times;</button>
+          </h5>
+          <p>{{position.description}}</p>
         </li>
       </ul>
 

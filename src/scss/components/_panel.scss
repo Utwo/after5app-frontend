@@ -1,0 +1,14 @@
+.panel{
+  word-wrap: break-word;
+  background: #fff;
+  border: 1px solid $gray-lighter;
+  border-radius: $border-radius-lg;
+}
+
+.panel--top--bottom {
+  box-shadow: 0 -5px 0 0 #8ee3ce, 0 5px 0 0 #6476f9;
+}
+
+.panel--left {
+  box-shadow: -5px 0 0 0 #8ee3ce, -10px 0 0 0 #6476f9;
+}

@@ -18,7 +18,7 @@
             <p *ngIf="!isMe">{{user.name}} didn't start any projects.</p>
           </div>
           <ul class="row list-unstyled">
-            <li *ngFor="let project of user.project" class="project__item p-a-1 col-xs-12 m-b-1">
+            <li *ngFor="let project of user.project" class="panel p-a-1 col-xs-12 m-b-1">
               <div class="row">
                 <div class="col-md-8">
                   <h4 class="project__title title-border title-border--green m-b-2">
@@ -54,7 +54,7 @@
           </div>
           <ul class="row list-unstyled">
             <li *ngFor="let project of user.favorite" class="col-md-4">
-              <div class="project__item p-a-1">
+              <div class="panel p-a-1">
                 <h4 class="project__title"><a routerLink="/project/{{project.id}}">
                   {{project.title}}
                 </a></h4>
@@ -76,11 +76,16 @@
                 </svg>
               </a>
             </h3>
-            <ol class="list-unstyled">
-              <li *ngIf="user.website"><a href={{user.website}} target="_blank">{{user.website}}</a></li>
-              <li *ngIf="user.twitter"><a href="https://twitter.com/{{user.twitter}}"
-                                          target="_blank">@{{user.twitter}}</a></li>
-              <li *ngIf="user.workplace">{{user.workplace}}</li>
+            <ol class="list-unstyled font-weight-bold">
+              <li *ngIf="user.website" class="user-nav__item">
+                <a href={{user.website}} target="_blank" class="d-block">{{user.website}}</a>
+              </li>
+              <li *ngIf="user.twitter" class="user-nav__item">
+                <a href="https://twitter.com/{{user.twitter}}" target="_blank" class="d-block">@{{user.twitter}}</a>
+              </li>
+              <li *ngIf="user.workplace" class="user-nav__item">
+                <span class="font-weight-normal">Workplace: </span>{{user.workplace}}
+              </li>
             </ol>
             <h3 class="title-border p-b-1 m-t-2">Skills</h3>
             <ul class="list-inline" *ngIf="user.skill.length > 0">

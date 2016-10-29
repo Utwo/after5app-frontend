@@ -47,7 +47,7 @@
       </div>
     </fieldset>
     <ul class="list-unstyled">
-      <li *ngFor="let position of project.position; let i = index" class="project__item m-b-1 p-a-1">
+      <li *ngFor="let position of project.position; let i = index" class="panel m-b-1 p-a-1">
         <h5>{{position.name}}
           <button class="btn btn-outline-danger btn-sm pull-xs-right btn-circle-sm font-weight-bold" type="button"
                   (click)="removePosition(i)">&times;</button>
@@ -71,7 +71,7 @@
     <ol>
       <li *ngFor="let question of project.application_questions; let i = index">
         {{question}}
-        <button class="btn btn-sm btn-secondary text-danger" type="button" (click)="removeQuestion(i)">&times;</button>
+        <button class="btn btn-sm btn-danger" type="button" (click)="removeQuestion(i)">&times;</button>
       </li>
     </ol>
     <hr>

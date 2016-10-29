@@ -81,31 +81,33 @@
   <div *ngIf="myProject" class="container m-y-3">
     <app-user-applications [project]="project" (onAccept)="getMembers()"></app-user-applications>
   </div>
+
   <div class="container m-y-3">
-
-    <tabset>
-      <tab [heading]="Comments"
-           [active]="true">
-        <template tabHeading>
-          Comments
-        </template>
-        <app-comments [project_id]="project.id" [comments]="project.comment" class="row comment"></app-comments>
-      </tab>
-      <tab *ngIf="isMember || myProject" [heading]="Messages">
-        <template tabHeading>
-          Messages
-        </template>
-        <app-messages [project_id]="project.id" [owner_id]="project.user_id" class="row comment"></app-messages>
-      </tab>
-    </tabset>
-
+    <div class="row">
+      <tabset class="col-md-8">
+        <tab [heading]="Comments" [active]="true">
+          <template tabHeading>
+            Comments
+          </template>
+          <app-comments [project_id]="project.id" [comments]="project.comment"
+                        class="row comment panel--left"></app-comments>
+        </tab>
+        <tab *ngIf="isMember || myProject" [heading]="Messages">
+          <template tabHeading>
+            <span title="only visible to project members">Messages</span>
+          </template>
+          <app-messages [project_id]="project.id" [owner_id]="project.user_id"
+                        class="row comment panel--left"></app-messages>
+        </tab>
+      </tabset>
+    </div>
   </div>
 
   <aside *ngIf="related && related.length > 0" class="p-y-3 jumbotron-fluid">
     <div class="container">
       <ul class="row list-unstyled flex-items-xs-center">
         <li *ngFor="let project of related" class="col-md-4">
-          <div class="project__item p-a-1">
+          <div class="panel p-a-1">
             <h4 class="project__title"><a routerLink="/project/{{project.id}}">
               {{project.title}}
             </a></h4>

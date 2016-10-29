@@ -1,18 +1,23 @@
-<section class="col-md-8">
-  <h3 class="title-border title-border--green p-b-1">Messages</h3>
-
-  <div class="form-inline">
-    <input class="form-control" type="text" #text>
-    <button (click)="addMessage(text)" class="btn btn-info">Add message</button>
-  </div>
-
+<section class="col-md-12 m-t-2">
   <ul *ngIf="messages && messages.length > 0" class="list-unstyled">
-    <li *ngFor="let message of messages" class="comment-item" [class.comment-item__mine]="message.message.user_id == owner_id">
-      <div class="comment__content">
+    <li *ngFor="let message of messages" class="comment-item clearfix"
+        [class.comment-item__mine]="message.message.user_id == owner_id"
+        [class.d-block]="message.message.user_id == owner_id">
+      <div class="comment__content" [class.pull-xs-right]="message.message.user_id == owner_id">
         <a routerLink="/profile/{{message.message.user_id}}">{{message.message.user_name}}</a> &sdot; <span
         class="text-muted">  {{message.created_at | timeAgo}} </span>
         <p>{{message.message.text}}</p>
       </div>
     </li>
   </ul>
+  <p *ngIf="messages && messages.length == 0" class="text-muted">Add a message to start a conversation between project
+    members</p>
+  <div class="form-group row p-x-1">
+    <input class="form-control col-xs-10" type="text" #text placeholder="Add your message (only visible to project members)">
+    <button (click)="addMessage(text)" class="btn btn-info text-primary col-xs-2">
+      <svg class="icon">
+        <use xlink:href="assets/icons.svg#icon-paperplane"></use>
+      </svg>
+    </button>
+  </div>
 </section>
