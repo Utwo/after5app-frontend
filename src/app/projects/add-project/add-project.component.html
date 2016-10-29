@@ -71,7 +71,7 @@
     <ol>
       <li *ngFor="let question of project.application_questions; let i = index">
         {{question}}
-        <button class="btn btn-sm btn-secondary text-danger" type="button" (click)="removeQuestion(i)">&times;</button>
+        <button class="btn btn-sm btn-danger" type="button" (click)="removeQuestion(i)">&times;</button>
       </li>
     </ol>
     <hr>

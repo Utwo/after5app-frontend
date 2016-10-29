@@ -10,7 +10,6 @@ export class CommentsComponent implements OnInit {
   @Input('project_id') project_id;
   @Input('comments') comments;
   private errorMessage: string;
-  page = {current_page: null, prev: null, next: null};
 
   constructor(private projectService: ProjectService, private state: StateService) {
   }
