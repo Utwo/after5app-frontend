@@ -3,11 +3,11 @@
 }
 
 .project__title {
-  font-size: 1.3rem;
+  font-size: $font-size-lg;
 }
 
 .project__date {
-  font-size: .9rem;
+  font-size: $font-size-sm;
 }
 
 /*.project__item p {
@@ -18,7 +18,7 @@
 
 .project__skill-item {
   font-family: Consolas, monospace;
-  font-size: 1em;
+  font-size: $font-size-base;
 }
 
 .project__subinfo {

@@ -9,11 +9,11 @@
 }
 
 .dropdown-menu {
-  left: 0 !important;
+  left: 0;
   background: $gray-lightest;
   width: 100%;
   margin-top: .2rem;
-  font-size: 1rem;
+  font-size: $font-size-base;
   list-style-type: none;
   padding: 0;
   color: $gray-dark;
@@ -62,8 +62,9 @@ ul.dropdown-menu > li {
   left: -105px;
   background: linear-gradient(to bottom, lighten($brand-primary, 5), darken($brand-primary, 5));
   width: 240px;
-  font-size: .9rem;
+  font-size: $font-size-sm;
   padding: .4em;
+  color: #fff;
 }
 
 .dropdown__content a {

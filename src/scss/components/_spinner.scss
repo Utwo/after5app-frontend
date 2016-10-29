@@ -11,9 +11,10 @@
   background: $brand-info;
   opacity: .6;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -100% 0 0 -100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  transform-origin: 50%;
   animation: sk-bounce 2s infinite ease-in-out;
 }
 
