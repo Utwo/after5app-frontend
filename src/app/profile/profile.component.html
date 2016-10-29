@@ -18,7 +18,7 @@
             <p *ngIf="!isMe">{{user.name}} didn't start any projects.</p>
           </div>
           <ul class="row list-unstyled">
-            <li *ngFor="let project of user.project" class="project__item p-a-1 col-xs-12 m-b-1">
+            <li *ngFor="let project of user.project" class="panel p-a-1 col-xs-12 m-b-1">
               <div class="row">
                 <div class="col-md-8">
                   <h4 class="project__title title-border title-border--green m-b-2">
@@ -54,7 +54,7 @@
           </div>
           <ul class="row list-unstyled">
             <li *ngFor="let project of user.favorite" class="col-md-4">
-              <div class="project__item p-a-1">
+              <div class="panel p-a-1">
                 <h4 class="project__title"><a routerLink="/project/{{project.id}}">
                   {{project.title}}
                 </a></h4>

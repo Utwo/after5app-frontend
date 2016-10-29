@@ -11,8 +11,9 @@
   background: $brand-info;
   opacity: .6;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  margin: -100% 0 0 -100%;
   animation: sk-bounce 2s infinite ease-in-out;
 }
 
