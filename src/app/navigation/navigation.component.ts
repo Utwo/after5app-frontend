@@ -51,7 +51,7 @@ export class NavigationComponent implements OnInit {
   }
 
   gitHubLogin() {
-    var url = 'https://github.com/login/oauth/authorize?client_id=' + environment.GITHUB_ID + '&redirect_uri=' + environment.URL + 'auth/github/callback&scope=user&response_type=code';
+    var url = 'https://github.com/login/oauth/authorize?client_id=' + environment.GITHUB_ID + '&redirect_uri=' + environment.URL + 'auth/github/callback&scope=user:email&response_type=code';
     window.open(url, "_self");
   }
 
