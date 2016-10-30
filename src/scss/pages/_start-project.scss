@@ -1,0 +1,14 @@
+.is-start-project {
+  background: url(/assets/spaceship.svg) no-repeat 120% 150%;
+  background-size: 23rem;
+  animation: slide-up-background 2s ease-in-out forwards;
+}
+
+@keyframes slide-up-background {
+  0% {
+    background-position: 120% 150%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}

@@ -15,7 +15,7 @@
 .notification__icon::before {
   content: '';
   position: absolute;
-  animation: 10s pulse infinite 2s ease-in-out;
+  animation: 10s pulse infinite 2s ease-in-out forwards;
   background: $brand_info;
   display: block;
   border-radius: 50%;

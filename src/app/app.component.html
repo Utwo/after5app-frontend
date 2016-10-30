@@ -1,15 +1,17 @@
-<app-navigation></app-navigation>
-<main class="site-content">
-  <router-outlet></router-outlet>
-  <div class="alert bg-info p-a-2 alert--show">
-    <svg class="icon text-primary">
-      <use xlink:href="assets/icons.svg#icon-space-invaders"></use>
-    </svg>
-    <span class="m-x-1">Project created.</span>
-    <svg class="icon text-primary">
-      <use xlink:href="assets/icons.svg#icon-space-invaders"></use>
-    </svg>
-  </div>
-</main>
+<div class="site-content-wrap" [class.is-home]="url == '/home'" [class.is-settings]="url == '/settings'"
+     [class.is-start-project]="url == '/start-project'" [class.is-about]="url == '/about'">
+  <app-navigation></app-navigation>
+  <main>
+    <router-outlet></router-outlet>
+    <!-- <div class="alert bg-info p-a-2 alert&#45;&#45;show">
+       <svg class="icon text-primary">
+         <use xlink:href="assets/icons.svg#icon-space-invaders"></use>
+       </svg>
+       <span class="m-x-1">Project created.</span>
+       <svg class="icon text-primary">
+         <use xlink:href="assets/icons.svg#icon-space-invaders"></use>
+       </svg>
+     </div>-->
+  </main>
+</div>
 <app-footer></app-footer>
-

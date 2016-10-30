@@ -3,10 +3,18 @@
     <div class="row">
       <div class="col-md-8">
         <nav>
-          <a routerLink="/home">Home</a>
-          &sdot; <a routerLink="/">Projects</a>
-          &sdot; <a routerLink="/about">About</a>
-          <span *ngIf="state.isLoggedIn()"> &sdot; <a routerLink="/start-project">Start project</a></span>
+          <a routerLink="/home">
+            <small>Home</small>
+          </a>
+          &sdot; <a routerLink="/">
+          <small>Projects</small>
+        </a>
+          &sdot; <a routerLink="/about">
+          <small>About</small>
+        </a>
+          &sdot; <a *ngIf="state.isLoggedIn()" routerLink="/start-project">
+          <small>Start project</small>
+        </a>
         </nav>
       </div>
       <div class="col-md-4 text-xs-right">
