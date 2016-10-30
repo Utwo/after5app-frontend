@@ -1,6 +1,7 @@
-<div [class.is-home]="url == '/home'">
+<div class="site-content-wrap" [class.is-home]="url == '/home'" [class.is-settings]="url == '/settings'"
+     [class.is-start-project]="url == '/start-project'" [class.is-about]="url == '/about'">
   <app-navigation></app-navigation>
-  <main class="site-content">
+  <main>
     <router-outlet></router-outlet>
     <!-- <div class="alert bg-info p-a-2 alert&#45;&#45;show">
        <svg class="icon text-primary">
@@ -12,5 +13,5 @@
        </svg>
      </div>-->
   </main>
-  <app-footer></app-footer>
 </div>
+<app-footer></app-footer>
