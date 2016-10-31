@@ -13,13 +13,13 @@ export class ResponseHandlerService {
   }
 
   errorMessage(message, error) {
-    if (error == 401) {
+    if (error.status == 401 && JSON.parse(error._body).error == 'token_expired') {
       this.state.logout();
       this.router.navigate(['/']);
       return;
     }
 
-    message = (error == 0) ? message : message + " (" + error + ")";
+    message = (error === 0) ? message : message + " (" + error.statusText + ")";
     this.showMessage(message);
     //document.getElementById("status-message").classList.add("error", "info-message-activate");
   }

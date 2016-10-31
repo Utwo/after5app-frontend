@@ -10,6 +10,7 @@ export class ApplicationComponent implements OnInit {
   @Input() project;
   @Output() onApply = new EventEmitter<number>();
   application = {message: null, position_id: null, answers: []};
+  position = null;
 
   constructor(private projectService: ProjectService) {
   }
@@ -21,9 +22,9 @@ export class ApplicationComponent implements OnInit {
     this.application.position_id = position;
     this.projectService.applyForProject(this.application)
       .subscribe(
-        data => this.onApply.emit(1),
+        data => this.onApply.emit(0),
         error => {
-          this.onApply.emit(0);
+          this.onApply.emit(error);
         });
   }
 

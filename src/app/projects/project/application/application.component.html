@@ -21,7 +21,7 @@
     <label for="message">Optional message</label>
     <textarea class="form-control" rows="6" id="message" [(ngModel)]="application.message"></textarea>
   </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" (click)="sendApplication(positionSelect.value)">Apply</button>
+  </div>
 </section>
-<div class="modal-footer">
-  <button class="btn btn-primary" (click)="sendApplication(positionSelect.value)">Apply</button>
-</div>

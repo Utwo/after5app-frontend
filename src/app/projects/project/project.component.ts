@@ -113,14 +113,13 @@ export class ProjectComponent implements OnInit {
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
-  applicationSent(code) {
+  applicationSent(error) {
     this.applyModal.hide();
-    if (code) {
-      this.responseHandler.successMessage('Your application was sent!');
-      this.applyModal.hide();
+    if (error) {
+      this.responseHandler.errorMessage('An error occured!', error);
     }
     else {
-      this.responseHandler.errorMessage('An error occured!', 0);
+      this.responseHandler.successMessage('Your application was sent!');
     }
   }
 
