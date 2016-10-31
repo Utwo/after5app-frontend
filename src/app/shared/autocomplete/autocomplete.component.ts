@@ -2,6 +2,7 @@ import {Component, Output, EventEmitter, Input} from '@angular/core';
 import {ProjectService} from "../../projects/shared/project.service";
 import {Observable} from "rxjs";
 import {TypeaheadMatch} from 'ng2-bootstrap/ng2-bootstrap';
+import {ResponseHandlerService} from "../response-handler.service";
 
 @Component({
   selector: 'app-autocomplete',
@@ -19,9 +20,8 @@ export class AutocompleteComponent {
   public asyncSelected: string = '';
   public typeaheadLoading: boolean = false;
   public typeaheadNoResults: boolean = false;
-  errorMessage = '';
 
-  constructor(private projectService: ProjectService) {
+  constructor(private projectService: ProjectService, private responseHandler: ResponseHandlerService) {
     this.dataSource = Observable.create((observer: any) => {
       observer.next(this.asyncSelected);
     }).mergeMap((token: string) => this.getSkillsAsObservable(token));
@@ -39,7 +39,7 @@ export class AutocompleteComponent {
             return item.name.toLowerCase().indexOf(token.toLowerCase()) > -1
           });
         },
-        error => this.errorMessage = <any>error)
+        error => this.responseHandler.errorMessage('An error occured!', error))
   }
 
   public changeTypeaheadLoading(e: boolean): void {

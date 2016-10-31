@@ -30,6 +30,7 @@ import {UserApplicationsComponent} from "./projects/project/user-applications/us
 import {LoginComponent} from './login/login.component';
 import {MessagesComponent} from "./projects/project/messages/messages.component";
 import {AuthGuard} from "./core/auth-guard.service";
+import {ResponseHandlerService} from "./shared/response-handler.service";
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import {AuthGuard} from "./core/auth-guard.service";
     LoginService,
     ProjectService,
     NotificationsService,
+    ResponseHandlerService,
     AuthGuard
   ],
   bootstrap: [AppComponent]

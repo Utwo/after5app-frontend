@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProfileService} from "./shared/profile.service";
 import {StateService} from "../shared/state.service";
+import {ResponseHandlerService} from "../shared/response-handler.service";
 
 @Component({
   selector: 'app-profile',
@@ -11,11 +12,10 @@ import {StateService} from "../shared/state.service";
 export class ProfileComponent implements OnInit {
   private sub;
   private user = null;
-  private errorMessage: string;
   private isMe = false;
   private applications = [];
 
-  constructor(private route: ActivatedRoute, private profileService: ProfileService, private state: StateService) {
+  constructor(private route: ActivatedRoute, private profileService: ProfileService, private state: StateService, private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
         user => {
           this.user = user;
         },
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   verifyIfMe(id) {
@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit {
     this.profileService.getMyApplications()
       .subscribe(
         applications => this.applications = applications,
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   ngOnDestroy() {

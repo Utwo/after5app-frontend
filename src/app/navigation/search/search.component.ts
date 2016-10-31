@@ -3,19 +3,19 @@ import {ProjectService} from "../../projects/shared/project.service";
 import {TypeaheadMatch} from 'ng2-bootstrap/ng2-bootstrap';
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
+import {ResponseHandlerService} from "../../shared/response-handler.service";
 
 @Component({
     selector: 'app-search',
     templateUrl: './search.component.html'
 })
 export class SearchComponent {
-    errorMessage: string;
     public dataSource: Observable<any>;
     public asyncSelected: string = '';
     public typeaheadLoading: boolean = false;
     public typeaheadNoResults: boolean = false;
 
-    public constructor(private projectService: ProjectService, private router: Router) {
+    public constructor(private projectService: ProjectService, private router: Router, private responseHandler: ResponseHandlerService) {
         this.dataSource = Observable.create((observer: any) => {
             // Runs on every search
             observer.next(this.asyncSelected);
@@ -26,7 +26,7 @@ export class SearchComponent {
         return this.projectService.searchByName(token)
             .map(
                 projects => projects.data,
-                error => this.errorMessage = <any>error)
+                error => this.responseHandler.errorMessage('An error occured!', error))
     }
 
     public changeTypeaheadLoading(e: boolean): void {

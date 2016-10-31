@@ -3,30 +3,29 @@ import {ProjectService} from "../../shared/project.service";
 import {EventEmitter} from "@angular/common/src/facade/async";
 
 @Component({
-    selector: 'app-application',
-    templateUrl: './application.component.html',
+  selector: 'app-application',
+  templateUrl: './application.component.html',
 })
 export class ApplicationComponent implements OnInit {
-    @Input() project;
-    @Output() onApply = new EventEmitter<number>();
-    application = {message: null, position_id: null, answers: []};
-    errorMessage;
+  @Input() project;
+  @Output() onApply = new EventEmitter<number>();
+  application = {message: null, position_id: null, answers: []};
+  position = null;
 
-    constructor(private projectService: ProjectService) {
-    }
+  constructor(private projectService: ProjectService) {
+  }
 
-    ngOnInit() {
-    }
+  ngOnInit() {
+  }
 
-    sendApplication(position) {
-        this.application.position_id = position;
-        this.projectService.applyForProject(this.application)
-            .subscribe(
-                data => this.onApply.emit(1),
-                error => {
-                    this.onApply.emit(0);
-                    this.errorMessage = <any>error;
-                });
-    }
+  sendApplication(position) {
+    this.application.position_id = position;
+    this.projectService.applyForProject(this.application)
+      .subscribe(
+        data => this.onApply.emit(0),
+        error => {
+          this.onApply.emit(error);
+        });
+  }
 
 }

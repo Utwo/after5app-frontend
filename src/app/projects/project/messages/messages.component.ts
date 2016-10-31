@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {ProjectService} from "../../shared/project.service";
 import {StateService} from "../../../shared/state.service";
+import {ResponseHandlerService} from "../../../shared/response-handler.service";
 
 @Component({
   selector: 'app-messages',
@@ -10,9 +11,8 @@ export class MessagesComponent implements OnInit {
   @Input('project_id') project_id;
   @Input('owner_id') owner_id;
   messages = null;
-  errorMessage = '';
 
-  constructor(private projectService: ProjectService, private state: StateService) {
+  constructor(private projectService: ProjectService, private state: StateService, private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
@@ -25,7 +25,7 @@ export class MessagesComponent implements OnInit {
         res => {
           this.messages = res.messenger.data;
         },
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   addMessage(message) {
@@ -37,7 +37,7 @@ export class MessagesComponent implements OnInit {
         messsage => {
           this.getMessages();
         },
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
     message.value = '';
   }
 

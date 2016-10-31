@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {ProjectService} from "../../shared/project.service";
+import {ResponseHandlerService} from "../../../shared/response-handler.service";
 
 @Component({
   selector: 'app-user-applications',
@@ -9,9 +10,8 @@ export class UserApplicationsComponent implements OnInit {
   @Input() project;
   @Output() onAccept = new EventEmitter<number>();
   applications = null;
-  errorMessage = '';
 
-  constructor(private projectService: ProjectService) {
+  constructor(private projectService: ProjectService, private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class UserApplicationsComponent implements OnInit {
             }
           }
         },
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   acceptApplication(application_id) {
@@ -39,6 +39,6 @@ export class UserApplicationsComponent implements OnInit {
           this.getApplications();
           this.onAccept.emit();
         },
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 }
