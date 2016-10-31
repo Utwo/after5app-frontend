@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output} from '@angular/core';
 import {ProjectService} from "../../shared/project.service";
 import {EventEmitter} from "@angular/common/src/facade/async";
+import {ResponseHandlerService} from "../../../shared/response-handler.service";
 
 @Component({
     selector: 'app-edit-project',
@@ -9,9 +10,8 @@ import {EventEmitter} from "@angular/common/src/facade/async";
 export class EditProjectComponent implements OnInit {
     @Input() project;
     @Output() onEdit = new EventEmitter<string>();
-    errorMessage = '';
 
-    constructor(private projectService: ProjectService) {
+    constructor(private projectService: ProjectService, private responseHandler: ResponseHandlerService) {
     }
 
     ngOnInit() {
@@ -23,7 +23,7 @@ export class EditProjectComponent implements OnInit {
                 data => {
                     this.onEdit.emit(data);
                 },
-                error => this.errorMessage=error)
+                error => this.responseHandler.errorMessage('An error occured!', error))
     }
 
     removePosition(position_id, index) {
@@ -32,7 +32,7 @@ export class EditProjectComponent implements OnInit {
                 data => {
                     this.project.position.splice(index,1);
                 },
-                error => this.errorMessage=error)
+                error => this.responseHandler.errorMessage('An error occured!', error))
     }
 
     addQuestion(question){

@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {ProjectService} from "../../shared/project.service";
 import {StateService} from "../../../shared/state.service";
+import {ResponseHandlerService} from "../../../shared/response-handler.service";
 
 @Component({
   selector: 'app-comments',
@@ -9,9 +10,8 @@ import {StateService} from "../../../shared/state.service";
 export class CommentsComponent implements OnInit {
   @Input('project_id') project_id;
   @Input('comments') comments;
-  private errorMessage: string;
 
-  constructor(private projectService: ProjectService, private state: StateService) {
+  constructor(private projectService: ProjectService, private state: StateService, private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class CommentsComponent implements OnInit {
           data.comment.user = this.state.getUser();
           this.comments.push(data.comment);
         },
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
 }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StateService} from "../../shared/state.service";
 import {ProfileService} from "../shared/profile.service";
+import {ResponseHandlerService} from "../../shared/response-handler.service";
 
 @Component({
   selector: 'app-settings',
@@ -8,11 +9,10 @@ import {ProfileService} from "../shared/profile.service";
   providers: [ProfileService]
 })
 export class SettingsComponent implements OnInit {
-  private errorMessage;
-  private user = {name:'', workplace:'', website:'', twitter:'', skill:[]};
+  private user = {name: '', workplace: '', website: '', twitter: '', skill: []};
   private selectedSkill;
 
-  constructor(private state: StateService, private profileService: ProfileService) {
+  constructor(private state: StateService, private profileService: ProfileService, private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
@@ -33,7 +33,7 @@ export class SettingsComponent implements OnInit {
             this.user.website = '';
           }
         },
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   onSelect(skill) {
@@ -53,7 +53,8 @@ export class SettingsComponent implements OnInit {
       .subscribe(
         data => {
           this.state.setUser(data.user);
+          this.responseHandler.successMessage('The changes were saved!');
         },
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 }

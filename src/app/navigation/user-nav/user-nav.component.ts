@@ -2,6 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {NotificationsService} from "./shared/notifications.service";
 import {LoginService} from "../../core/login.service";
 import {Router} from "@angular/router";
+import {ResponseHandlerService} from "../../shared/response-handler.service";
 
 @Component({
   selector: 'app-user-nav',
@@ -12,14 +13,13 @@ export class UserNavComponent implements OnInit {
   isDropdownActiv = false;
   notificationCount = 0;
   notifications = null;
-  errorMessage = '';
   notificationTypes = {
     comment: 'App\\Notifications\\AddCommentNotification',
     application: 'App\\Notifications\\AddApplicationNotification',
     accept: 'App\\Notifications\\AcceptApplicationNotification'
   };
 
-  constructor(private notificationsService: NotificationsService, private loginService: LoginService, private router: Router) {
+  constructor(private notificationsService: NotificationsService, private loginService: LoginService, private router: Router, private responseHandler:ResponseHandlerService) {
   }
 
   ngOnInit() {
@@ -30,7 +30,7 @@ export class UserNavComponent implements OnInit {
     this.notificationsService.getNotificationsCount()
       .subscribe(
         data => this.notificationCount = data.notification_count,
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   getNotifications() {
@@ -40,7 +40,7 @@ export class UserNavComponent implements OnInit {
           this.notifications = data.notification;
           this.notificationCount = 0;
         },
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   dropdown() {

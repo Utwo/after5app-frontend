@@ -5,6 +5,7 @@ import {ModalDirective} from 'ng2-bootstrap/ng2-bootstrap';
 import {ProjectService} from "../shared/project.service";
 import {StateService} from "../../shared/state.service";
 import * as mo from 'mo-js';
+import {ResponseHandlerService} from "../../shared/response-handler.service";
 
 @Component({
   selector: 'app-project',
@@ -14,7 +15,6 @@ export class ProjectComponent implements OnInit {
   private project = null;
   private related = null;
   private members = null;
-  private errorMessage: string;
   private myProject = false;
   private isFavorite = false;
   private isMember = false;
@@ -25,7 +25,7 @@ export class ProjectComponent implements OnInit {
   @ViewChild("favorite") favorite;
   @ViewChild("favoriteSpan") favoriteSpan;
 
-  constructor(private route: ActivatedRoute, private projectService: ProjectService, private state: StateService, private router: Router) {
+  constructor(private route: ActivatedRoute, private projectService: ProjectService, private state: StateService, private router: Router, private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
@@ -59,7 +59,7 @@ export class ProjectComponent implements OnInit {
           this.getRelatedProjects();
           this.getMembers();
         },
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   addFavorite() {
@@ -78,7 +78,7 @@ export class ProjectComponent implements OnInit {
             this.project.favorite_count--;
           }
         },
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   getRelatedProjects() {
@@ -93,7 +93,7 @@ export class ProjectComponent implements OnInit {
             return 0.5 - Math.random()
           }).splice(0, 3);
         },
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   getMembers() {
@@ -102,7 +102,7 @@ export class ProjectComponent implements OnInit {
         members => {
           this.members = members;
 
-          if(this.state.isLoggedIn()){
+          if (this.state.isLoggedIn()) {
             for (let member of members) {
               if (member.id === this.state.getUser().id) {
                 this.isMember = true;
@@ -110,22 +110,22 @@ export class ProjectComponent implements OnInit {
             }
           }
         },
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   applicationSent(code) {
     this.applyModal.hide();
     if (code) {
-      //mesaj de succes
+      this.responseHandler.successMessage('Your application was sent!');
       this.applyModal.hide();
     }
     else {
-      this.errorMessage = 'Application not sent';
+      this.responseHandler.errorMessage('An error occured!', 0);
     }
   }
 
   deleteProject() {
-    if(!this.myProject){
+    if (!this.myProject) {
       return;
     }
     this.projectService.deleteProject(this.project.id)
@@ -133,7 +133,7 @@ export class ProjectComponent implements OnInit {
         project => {
           this.router.navigate(['/']);
         },
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   editProject() {

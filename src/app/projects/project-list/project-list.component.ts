@@ -1,24 +1,23 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "../shared/project.service";
 import {StateService} from "../../shared/state.service";
+import {ResponseHandlerService} from "../../shared/response-handler.service";
 
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
 })
 export class ProjectListComponent implements OnInit {
-  errorMessage: string;
   projects = null;
   page = {current_page: null, prev: null, next: null};
   maxDescriptionLength = 210;
 
-  constructor(private projectService: ProjectService, private state: StateService) {
+  constructor(private projectService: ProjectService, private state: StateService, private responseHandler: ResponseHandlerService) {
 
   }
 
   ngOnInit() {
     this.getProjects(1);
-
   }
 
   getProjects(page) {
@@ -26,14 +25,14 @@ export class ProjectListComponent implements OnInit {
     this.projectService.getProjects(page)
       .subscribe(
         projects => this.extractData(projects),
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   filterProjects(skill) {
     this.projectService.filterBySkill(skill)
       .subscribe(
         projects => this.extractData(projects),
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   setActiveLink(elem) {
@@ -47,7 +46,7 @@ export class ProjectListComponent implements OnInit {
     this.projectService.getRecommendedProjects()
       .subscribe(
         projects => this.extractData(projects),
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   getPopularProjects() {
@@ -55,7 +54,7 @@ export class ProjectListComponent implements OnInit {
     this.projectService.getPopularProjects()
       .subscribe(
         projects => this.extractData(projects),
-        error => this.errorMessage = <any>error);
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   extractData(projects) {
