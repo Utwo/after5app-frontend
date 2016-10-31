@@ -1,7 +1,7 @@
 .is-start-project {
   background: url(/assets/spaceship.svg) no-repeat 120% 150%;
   background-size: 23rem;
-  animation: slide-up-background 2s ease-in-out forwards;
+  animation: slide-up-background 1.2s cubic-bezier(.23, 1, .32, 1) forwards;
 }
 
 @keyframes slide-up-background {
