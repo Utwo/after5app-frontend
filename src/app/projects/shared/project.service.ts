@@ -112,14 +112,14 @@ export class ProjectService {
       .catch(this.handleError);
   }
 
-  public getProjectMessages(project_id) {
+  public getProjectMessages(project_id, page) {
     let headers = new Headers({
       'Authorization': 'Bearer ' + this.state.getToken()
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'project/' + project_id + '/messenger', options)
-      .map(this.extractData)
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'project/' + project_id + '/messenger?page=' + page, options)
+      .map(res => res.json().messenger)
       .catch(this.handleError);
   }
 
@@ -132,7 +132,7 @@ export class ProjectService {
     let options = new RequestOptions({headers: headers});
 
     return this.http.post(environment.URL_API + environment.API_VERSION + 'messenger', body, options)
-      .map(this.extractData)
+      .map(res => res.json().messenger)
       .catch(this.handleError);
   }
 

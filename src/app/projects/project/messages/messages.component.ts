@@ -11,19 +11,28 @@ export class MessagesComponent implements OnInit {
   @Input('project_id') project_id;
   @Input('owner_id') owner_id;
   messages = null;
+  page = {current_page: null, prev: null, next: null};
 
   constructor(private projectService: ProjectService, private state: StateService, private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
-    this.getMessages();
+    this.getMessages(1);
   }
 
-  getMessages() {
-    this.projectService.getProjectMessages(this.project_id)
+  getMessages(page) {
+    this.projectService.getProjectMessages(this.project_id, page)
       .subscribe(
-        res => {
-          this.messages = res.messenger.data;
+        data => {
+          if (this.messages === null) {
+            this.messages = [];
+          }
+          this.messages.push.apply(this.messages, data.data);
+          this.page = {
+            current_page: data.current_page,
+            next: data.next_page_url,
+            prev: data.prev_page_url
+          };
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
@@ -34,11 +43,15 @@ export class MessagesComponent implements OnInit {
     }
     this.projectService.addMessage(this.project_id, message.value)
       .subscribe(
-        messsage => {
-          this.getMessages();
+        message => {
+          this.messages.push(message);
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
     message.value = '';
+  }
+
+  loadMore() {
+    this.getMessages(this.page.current_page + 1);
   }
 
 }
