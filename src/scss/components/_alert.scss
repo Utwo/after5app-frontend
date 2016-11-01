@@ -1,33 +1,48 @@
 .alert {
   position: fixed;
-  right: 0;
-  bottom: 0;
+  left: 1em;
+  bottom: -1em;
   border-radius: $border-radius;
   padding: .2rem .6rem;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .2);
   z-index: map-get($zindex, highest);
   overflow: hidden;
+  width: auto;
+  height: 4em;
+}
+
+.alert span {
+  width: 0;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.alert--show span{
+  animation: show-span 1s alternate ease-in-out forwards 1s;
 }
 
 .alert--show {
-  animation: show 1s alternate ease-in-out;
+  animation: show-alert 1s alternate ease-in-out forwards;
 }
 
 .alert--hide {
   //animation: bounceInUp 1s alternate ease-in-out;
 }
 
-@keyframes show {
+@keyframes show-alert {
   0% {
-    width: 2rem;
+    bottom: -1em;
   }
-  10% {
-    width: auto;
+  100% {
+    bottom: 1em;
   }
-  90%{
-    width: auto;
+}
+
+@keyframes show-span {
+  0% {
+    width: 0;
   }
-  100%{
-    width: 2rem;
+  100% {
+    width: 100%;
   }
 }
