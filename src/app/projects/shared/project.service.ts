@@ -118,7 +118,7 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'project/' + project_id + '/messenger?page=' + page, options)
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'project/' + project_id + '/messenger?sort[]=created_at,desc&page=' + page, options)
       .map(res => res.json().messenger)
       .catch(this.handleError);
   }
@@ -184,8 +184,8 @@ export class ProjectService {
       .catch(this.handleError);
   }
 
-  public acceptApplication(application_id) {
-    let body = JSON.stringify({accepted: 1});
+  public respondToApplication(application_id, code) {
+    let body = JSON.stringify({accepted: code});
     let headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.state.getToken()

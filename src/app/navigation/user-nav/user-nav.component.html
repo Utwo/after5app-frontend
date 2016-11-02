@@ -31,6 +31,23 @@
                             <small>{{notification.created_at | timeAgo}}</small>
                         </div>
                     </div>
+
+                  <div *ngSwitchCase="notificationTypes.message" class="notification__item row">
+                    <div class="col-md-2"><img class="profile-img" src="{{notification.data.user.picture}}"
+                                               width="25" height="25"/></div>
+                    <div class="col-md-10">
+                      <p>
+                        <a routerLink="/profile/{{notification.data.user.id}}">
+                          {{notification.data.user.name}}
+                        </a>
+                        left a message for the members of
+                        <a routerLink="/project/{{notification.data.project.id}}">
+                          {{notification.data.project.title}}</a>
+                      </p>
+                      <small>{{notification.created_at | timeAgo}}</small>
+                    </div>
+                  </div>
+
                     <div *ngSwitchCase="notificationTypes.accept" class="notification__item row">
                         <div class="col-md-10 offset-md-2">
                             <p>Your application for
@@ -40,6 +57,17 @@
                             <small>{{notification.created_at | timeAgo}}</small>
                         </div>
                     </div>
+
+                  <div *ngSwitchCase="notificationTypes.decline" class="notification__item row">
+                    <div class="col-md-10 offset-md-2">
+                      <p>Your application for
+                        <a routerLink="/project/{{notification.data.project.id}}">
+                          {{notification.data.project.title}}</a>
+                        was declined</p>
+                      <small>{{notification.created_at | timeAgo}}</small>
+                    </div>
+                  </div>
+
                     <div *ngSwitchCase="notificationTypes.application" class="notification__item row">
                         <div class="col-md-2"><img class="profile-img" src="{{notification.data.user.picture}}"
                                                    width="25" height="25"/></div>

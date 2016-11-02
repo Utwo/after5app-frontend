@@ -68,8 +68,9 @@
         <div *ngIf="members && members.length > 0">
           <h3 class="title-border title-border--green p-b-1 m-t-2">Members</h3>
           <ul>
-            <li *ngFor="let member of members" class="m-b-1">
+            <li *ngFor="let member of members; let i = index" class="m-b-1">
               <a routerLink="/profile/{{member.id}}"><img class="profile-img m-r-1" src="{{member.picture+'?s=30'}}">{{member.name}}</a>
+              <button *ngIf="myProject" (click)="removeMember(i)">x</button>
             </li>
           </ul>
         </div>
@@ -78,8 +79,9 @@
 
   </article>
 
-  <div *ngIf="myProject" class="container m-y-3">
-    <app-user-applications [project]="project" (onAccept)="getMembers()"></app-user-applications>
+  <div *ngIf="myProject && applications" class="container m-y-3">
+    <app-user-applications [project]="project" [user_applications]="applications"
+                           (onAccept)="getMembers()"></app-user-applications>
   </div>
 
   <div class="container m-y-3">

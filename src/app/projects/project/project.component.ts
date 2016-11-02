@@ -13,6 +13,7 @@ import {ResponseHandlerService} from "../../shared/response-handler.service";
 })
 export class ProjectComponent implements OnInit {
   private project = null;
+  private applications = null;
   private related = null;
   private members = null;
   private myProject = false;
@@ -48,6 +49,7 @@ export class ProjectComponent implements OnInit {
           if (this.state.isLoggedIn()) {
             if (this.state.getUser().id == this.project.user_id) {
               this.myProject = true;
+              this.getApplications();
             }
             for (let user of this.project.favorite) {
               if (user.id === this.state.getUser().id) {
@@ -109,6 +111,30 @@ export class ProjectComponent implements OnInit {
               }
             }
           }
+        },
+        error => this.responseHandler.errorMessage('An error occured!', error));
+  }
+
+  removeMember(index) {
+    let application_id;
+    let member = this.members[index];
+
+    for (let application of this.applications) {
+      if (application.user_id == member.id) {
+        application_id = application.id;
+      }
+    }
+    this.projectService.respondToApplication(application_id, 2)
+      .subscribe(
+        data => this.getMembers(),
+        error => this.responseHandler.errorMessage('An error occured!', error));
+  }
+
+  getApplications() {
+    this.projectService.getApplications(this.project.id)
+      .subscribe(
+        data => {
+          this.applications = data;
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
