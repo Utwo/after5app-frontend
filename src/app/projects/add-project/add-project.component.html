@@ -12,13 +12,13 @@
     <div class="form-group">
       <label for="title">Title <span class="text-danger font-weight-bold">*</span></label>
       <input class="form-control" id="title" type="text" required minlength="4" maxlength="20" name="title"
-             placeholder="Project title"
+             placeholder="Project title" autocomplete="off"
              [(ngModel)]="project.title" #title="ngModel">
 
       <div *ngIf="title.errors && (title.dirty || title.touched)">
-        <i [hidden]="!title.errors.required">title is required</i>
-        <i [hidden]="!title.errors.minlength">title must be at least 4 characters long.</i>
-        <i [hidden]="!title.errors.maxlength">title cannot be more than 20 characters long.</i>
+        <i [hidden]="!title.errors.required">The title is required</i>
+        <i [hidden]="!title.errors.minlength">The title must be at least 4 characters long.</i>
+        <i [hidden]="!title.errors.maxlength">The title cannot be more than 20 characters long.</i>
       </div>
     </div>
 
@@ -29,8 +29,8 @@
                 [(ngModel)]="project.description" #description="ngModel" rows="6"></textarea>
 
       <div *ngIf="description.errors && (description.dirty || description.touched)">
-        <i [hidden]="!description.errors.required">description is required</i>
-        <i [hidden]="!description.errors.minlength">description must be at least 4 characters long.</i>
+        <i [hidden]="!description.errors.required">The Description is required</i>
+        <i [hidden]="!description.errors.minlength">The Description must be at least 4 characters long.</i>
       </div>
     </div>
 
@@ -43,8 +43,9 @@
                   rows="4"></textarea>
       </div>
       <div class="text-xs-right">
-        <button class="btn btn-info" type="button" (click)="addPosition(position.value)">Add Position</button>
+        <button class="btn btn-info" type="button" (click)="addPosition(position)">Add Position</button>
       </div>
+      <i [hidden]="!positionError">{{positionError}}</i>
     </fieldset>
     <ul class="list-unstyled">
       <li *ngFor="let position of project.position; let i = index" class="panel m-b-1 p-a-1">
@@ -66,6 +67,7 @@
         <div class="col-md-2">
           <button class="btn btn-info" type="button" (click)="addQuestion(question.value)">Add</button>
         </div>
+        <i [hidden]="!questionError">{{questionError}}</i>
       </div>
     </div>
     <ol>
@@ -76,7 +78,7 @@
     </ol>
     <hr>
     <div class="text-xs-center">
-      <button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid">Add project</button>
+      <button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid || project.position.length < 1">Add project</button>
     </div>
   </form>
 </section>

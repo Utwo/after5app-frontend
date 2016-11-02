@@ -14,8 +14,8 @@
                 {{answer}}</p>
             </li>
           </ol>
-          <button (click)="acceptApplication(application.id)">Accept application</button>
-
+          <button (click)="respondToApplication(application.id, i, 1)">Accept</button>
+          <button (click)="respondToApplication(application.id, i, 2)">Decline</button>
         </li>
       </ul>
     </div>

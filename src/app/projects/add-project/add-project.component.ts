@@ -10,6 +10,8 @@ import {ResponseHandlerService} from "../../shared/response-handler.service";
 export class AddProjectComponent implements OnInit {
   project = {title: '', descripton: '', application_questions: [], position: []};
   selectedSkill = '';
+  questionError = null;
+  positionError = null;
 
   constructor(private projectService: ProjectService, private router: Router, private responseHandler: ResponseHandlerService) {
   }
@@ -18,6 +20,10 @@ export class AddProjectComponent implements OnInit {
   }
 
   storeProject() {
+    if (this.project.position.length < 1) {
+      this.positionError = 'You have to add at least one position!';
+      return;
+    }
     this.projectService.addProject(this.project)
       .subscribe(
         data => {
@@ -31,11 +37,17 @@ export class AddProjectComponent implements OnInit {
   }
 
   addPosition(position) {
-    if (this.selectedSkill.length === 0 || position.length === 0) {
+    if (this.selectedSkill.length === 0 || position.value.length === 0) {
       return;
     }
-    this.project.position.push({description: position, name: this.selectedSkill, status: 0})
+    if (position.value.length < 4) {
+      this.positionError = 'The position description must be at least 4 characters long.';
+      return;
+    }
+    this.project.position.push({description: position.value, name: this.selectedSkill, status: 0});
     this.selectedSkill = '';
+    this.positionError = null;
+    position.value='';
   }
 
   removePosition(index) {
@@ -43,7 +55,13 @@ export class AddProjectComponent implements OnInit {
   }
 
   addQuestion(question) {
+    if (question.length < 2) {
+      this.questionError = "A question must be at least 2 characters long.";
+      return;
+    }
     this.project.application_questions.push(question);
+    this.questionError = null;
+
   }
 
   removeQuestion(index) {

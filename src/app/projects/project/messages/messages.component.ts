@@ -27,7 +27,7 @@ export class MessagesComponent implements OnInit {
           if (this.messages === null) {
             this.messages = [];
           }
-          this.messages.push.apply(this.messages, data.data);
+          this.messages.unshift.apply(this.messages, data.data.reverse());
           this.page = {
             current_page: data.current_page,
             next: data.next_page_url,
