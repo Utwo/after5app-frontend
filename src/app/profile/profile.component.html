@@ -93,11 +93,6 @@
                 <strong>{{skill.name}}</strong>
               </li>
             </ul>
-            <div class="text-xs-center sidebar-icon">
-              <svg class="icon icon-lg">
-                <use xlink:href="assets/icons.svg#icon-space-invaders"></use>
-              </svg>
-            </div>
           </section>
 
           <section *ngIf="isMe && applications && applications.length > 0" class="m-t-2">
@@ -114,6 +109,11 @@
             <p *ngIf="!applications">No application yet. After you help a project, your applications will appear
               here.</p>
           </section>
+          <div class="text-xs-center sidebar-icon">
+            <svg class="icon icon-lg">
+              <use xlink:href="assets/icons.svg#icon-space-invaders"></use>
+            </svg>
+          </div>
         </div>
       </div>
     </div>

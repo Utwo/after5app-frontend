@@ -13,6 +13,7 @@ export class SettingsComponent implements OnInit {
   private selectedSkill;
 
   constructor(private state: StateService, private profileService: ProfileService, private responseHandler: ResponseHandlerService) {
+
   }
 
   ngOnInit() {
