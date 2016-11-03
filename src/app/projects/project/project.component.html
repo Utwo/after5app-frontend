@@ -71,7 +71,7 @@
           <ul>
             <li *ngFor="let member of members; let i = index" class="m-b-1">
               <a routerLink="/profile/{{member.id}}"><img class="profile-img m-r-1" src="{{member.picture+'?s=30'}}">{{member.name}}</a>
-              <button *ngIf="myProject" (click)="removeMember(i)">x</button>
+              <button class="btn btn-sm btn-outline-danger m-l-1" title="remove member" *ngIf="myProject" (click)="removeMember(i)">&times;</button>
             </li>
           </ul>
         </div>

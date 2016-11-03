@@ -8,10 +8,9 @@ import {ResponseHandlerService} from "./shared/response-handler.service";
   selector: 'app-root',
   templateUrl: './app.component.html',
 })
-export class AppComponent{
+export class AppComponent {
   private viewContainerRef: ViewContainerRef;
   private url = null;
-  private value;
 
   constructor(private router: Router, viewContainerRef: ViewContainerRef, private toastyService: ToastyService, private toastyConfig: ToastyConfig, private responseHandler: ResponseHandlerService) {
     // You need this small hack in order to catch application root view container ref
@@ -25,7 +24,7 @@ export class AppComponent{
     });
 
     this.responseHandler.message.subscribe(message => {
-      if(message){
+      if (message) {
         this.addToast(message);
       }
     });
@@ -37,14 +36,27 @@ export class AppComponent{
       msg: mes.message,
       showClose: true,
       timeout: 5000,
+      sound: false,
+      html: true,
+      shake: false,
     };
 
     switch (mes.type) {
-      case 'info': this.toastyService.info(toastOptions); break;
-      case 'success': this.toastyService.success(toastOptions); break;
-      case 'wait': this.toastyService.wait(toastOptions); break;
-      case 'error': this.toastyService.error(toastOptions); break;
-      case 'warning': this.toastyService.warning(toastOptions); break;
+      case 'info':
+        this.toastyService.info(toastOptions);
+        break;
+      case 'success':
+        this.toastyService.success(toastOptions);
+        break;
+      case 'wait':
+        this.toastyService.wait(toastOptions);
+        break;
+      case 'error':
+        this.toastyService.error(toastOptions);
+        break;
+      case 'warning':
+        this.toastyService.warning(toastOptions);
+        break;
     }
   }
 }

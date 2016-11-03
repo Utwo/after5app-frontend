@@ -1,24 +1,20 @@
-<ng2-toasty></ng2-toasty>
-
 <div class="site-content-wrap" [class.is-home]="url == '/home'" [class.is-settings]="url == '/settings'"
      [class.is-start-project]="url == '/start-project'" [class.is-about]="url == '/about'">
   <app-navigation></app-navigation>
   <main>
     <router-outlet></router-outlet>
-    <div class="alert alert--show">
+    <!--<div class="alert alert&#45;&#45;show">
       <div class="p-a-1 btn-gradient-primary alert-icon">
         <svg class="icon">
           <use xlink:href="assets/icons.svg#icon-space-invaders"></use>
         </svg>
       </div>
-      <div class="p-y-1 bg-success alert__text">
+      <div class="p-y-1 bg-danger alert__text">
         <span>Project created.</span>
       </div>
-      <!-- <svg class="icon text-primary">
-				 <use xlink:href="assets/icons.svg#icon-space-invaders"></use>
-			 </svg>-->
-    </div>
+    </div>-->
   </main>
 </div>
+<ng2-toasty></ng2-toasty>
 <app-footer></app-footer>
 

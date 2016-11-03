@@ -14,7 +14,8 @@
   <p *ngIf="messages && messages.length == 0" class="text-muted">Add a message to start a conversation between project
     members</p>
   <div class="form-group row p-x-1">
-    <input class="form-control col-xs-10" type="text" #text placeholder="Add your message (only visible to project members)">
+    <input class="form-control col-xs-10" type="text" #text
+           placeholder="Add your message (only visible to project members)">
     <button (click)="addMessage(text)" class="btn btn-info text-primary col-xs-2">
       <svg class="icon">
         <use xlink:href="assets/icons.svg#icon-paperplane"></use>
