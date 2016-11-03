@@ -17,7 +17,8 @@
           <h3 class="title-border title-border--green p-b-1">I need help with</h3>
           <dl *ngFor="let position of project.position">
             <dt class="btn btn-sm btn-gradient-primary">
-              <strong>{{position.skill.name}}</strong>
+              <strong *ngIf="position.status">{{position.skill.name}}</strong>
+              <span *ngIf="!position.status">{{position.skill.name}}</span>
             </dt>
             <dd>{{position.description}}</dd>
           </dl>

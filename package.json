@@ -24,6 +24,7 @@
     "core-js": "^2.4.0",
     "mo-js": "^0.288.1",
     "ng2-bootstrap": "^1.1.13",
+    "ng2-toasty": "^2.1.0",
     "rxjs": "5.0.0-beta.12",
     "ts-helpers": "^1.1.1",
     "zone.js": "0.6.25"

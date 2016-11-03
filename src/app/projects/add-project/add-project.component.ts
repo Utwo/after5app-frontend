@@ -37,17 +37,25 @@ export class AddProjectComponent implements OnInit {
   }
 
   addPosition(position) {
-    if (this.selectedSkill.length === 0 || position.value.length === 0) {
+    if (this.selectedSkill.length === 0) {
+      this.positionError = 'Please choose a skill.';
       return;
     }
+
+    for (let position of this.project.position) {
+      if (this.selectedSkill == position.name) {
+        this.positionError = 'Please choose a new skill.';
+        return;
+      }
+    }
+
     if (position.value.length < 4) {
       this.positionError = 'The position description must be at least 4 characters long.';
       return;
     }
     this.project.position.push({description: position.value, name: this.selectedSkill, status: 0});
-    this.selectedSkill = '';
     this.positionError = null;
-    position.value='';
+    position.value = '';
   }
 
   removePosition(index) {
@@ -55,13 +63,13 @@ export class AddProjectComponent implements OnInit {
   }
 
   addQuestion(question) {
-    if (question.length < 2) {
+    if (question.value.length < 2) {
       this.questionError = "A question must be at least 2 characters long.";
       return;
     }
-    this.project.application_questions.push(question);
+    this.project.application_questions.push(question.value);
     this.questionError = null;
-
+    question.value = '';
   }
 
   removeQuestion(index) {

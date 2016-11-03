@@ -31,6 +31,7 @@ import {LoginComponent} from './login/login.component';
 import {MessagesComponent} from "./projects/project/messages/messages.component";
 import {AuthGuard} from "./core/auth-guard.service";
 import {ResponseHandlerService} from "./shared/response-handler.service";
+import {ToastyModule} from "ng2-toasty";
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import {ResponseHandlerService} from "./shared/response-handler.service";
     EditProjectComponent,
     UserApplicationsComponent,
     LoginComponent,
-    MessagesComponent
+    MessagesComponent,
   ],
   imports: [
     routing,
@@ -64,7 +65,8 @@ import {ResponseHandlerService} from "./shared/response-handler.service";
     JsonpModule,
     ModalModule,
     TypeaheadModule,
-    TabsModule
+    TabsModule,
+    ToastyModule.forRoot()
   ],
   providers: [
     appRoutingProviders,
