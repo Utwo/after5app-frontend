@@ -1,5 +1,7 @@
 <section class="col-md-12 m-t-2">
-  <button *ngIf="page.next" (click)="loadMore()">Load more</button>
+  <div class="text-xs-center">
+    <button *ngIf="page.next" (click)="loadMore()" class="btn btn-secondary btn-link-primary">load more</button>
+  </div>
   <ul *ngIf="messages && messages.length > 0" class="list-unstyled">
     <li *ngFor="let message of messages" class="comment-item clearfix"
         [class.comment-item__mine]="message.message.user_id == owner_id"
