@@ -1,23 +1,23 @@
-<div *ngIf="applications && applications.length > 0" class="row">
-  <section class="col-md-8">
-    <div class="m-b-3">
-      <h3 class="title-border title-border--green p-b-1">User applications:</h3>
-      <ul>
-        <li *ngFor="let application of applications">
-          <p>Applicant: {{application.user.name}}</p>
-          <p>Position: {{application.position.skill.name}}</p>
-          <p>Message: {{application.message}}</p>
-          <p>Answers:</p>
-          <ol>
-            <li *ngFor="let answer of application.answers; let i = index">
-              <p>{{project.application_questions[i]}} <br>
-                {{answer}}</p>
-            </li>
-          </ol>
-          <button (click)="respondToApplication(application.id, i, 1)">Accept</button>
-          <button (click)="respondToApplication(application.id, i, 2)">Decline</button>
-        </li>
-      </ul>
-    </div>
-  </section>
-</div>
+<section *ngIf="applications && applications.length > 0">
+  <ul class="list-unstyled">
+    <li *ngFor="let application of applications" class="m-t-1 m-b-3 panel panel--top--bottom w-100">
+      <h4 class="p-a-1 bg-primary"><strong>{{application.user.name}}</strong> for <strong>{{application.position.skill.name}}</strong>
+        position</h4>
+      <div class="p-a-1">
+        <ol>
+          <li *ngFor="let answer of application.answers; let i = index">
+            <p>{{project.application_questions[i]}}</p>
+            <p>{{answer}}</p>
+          </li>
+        </ol>
+        <hr *ngIf="application.message">
+        <p *ngIf="application.message">{{application.message}}</p>
+        <hr>
+        <div class="text-xs-right">
+          <button (click)="respondToApplication(application.id, i, 1)" class="btn btn-primary">Accept</button>
+          <button (click)="respondToApplication(application.id, i, 2)" class="btn btn-danger">Decline</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>

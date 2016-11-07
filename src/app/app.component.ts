@@ -1,8 +1,9 @@
-import {Component, ViewContainerRef} from '@angular/core';
+import {Component, ViewContainerRef, Inject} from '@angular/core';
 import './rxjs-operators';
 import {Router, NavigationEnd} from "@angular/router";
 import {ToastyService, ToastyConfig, ToastOptions, ToastData} from "ng2-toasty"
 import {ResponseHandlerService} from "./shared/response-handler.service";
+declare var ga: Function;
 
 @Component({
   selector: 'app-root',
@@ -18,8 +19,9 @@ export class AppComponent {
     this.toastyConfig.theme = 'bootstrap';
 
     this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
+      if (event.url !== this.url && event instanceof NavigationEnd) {
         this.url = event.url
+        ga('send', 'pageview', {page: event.url});
       }
     });
 
@@ -36,9 +38,7 @@ export class AppComponent {
       msg: mes.message,
       showClose: true,
       timeout: 5000,
-      sound: false,
       html: true,
-      shake: false,
     };
 
     switch (mes.type) {

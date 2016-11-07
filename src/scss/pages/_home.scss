@@ -70,15 +70,15 @@
   background: $brand-info;
   display: block;
   width: 60%;
-  height: 34px;
+  height: 25px;
   position: absolute;
-  top: 4.3rem;
+  top: 3.8rem;
   left: 20%;
   z-index: -5;
 }
 
 .home-section__2__icon {
-  font-size: 3rem;
+  font-size: 2rem;
   background: lighten($brand-info, 20%);
   border-radius: 50%;
   box-shadow: 1px 1px 1px $brand-primary;
