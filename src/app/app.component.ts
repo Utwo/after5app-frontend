@@ -37,8 +37,7 @@ export class AppComponent {
       title: "",
       msg: mes.message,
       showClose: true,
-      timeout: 5000,
-      html: true,
+      timeout: 5000
     };
 
     switch (mes.type) {

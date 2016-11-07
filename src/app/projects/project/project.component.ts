@@ -1,10 +1,10 @@
-import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Subscription} from "rxjs";
 import {ModalDirective} from 'ng2-bootstrap/ng2-bootstrap';
 import {ProjectService} from "../shared/project.service";
 import {StateService} from "../../shared/state.service";
-import * as mo from 'mo-js';
+//import * as mo from 'mo-js/build/mo.min.js';
+var mo = require('mo-js/build/mo.min.js');
 import {ResponseHandlerService} from "../../shared/response-handler.service";
 
 @Component({
