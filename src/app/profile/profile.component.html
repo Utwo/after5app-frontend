@@ -104,6 +104,7 @@
                 </a> -
                 <span *ngIf="application.accepted == 1">Accepted</span>
                 <span *ngIf="application.accepted == 0">Pending</span>
+                <span *ngIf="application.accepted == 2">Declined</span>
               </li>
             </ul>
             <p *ngIf="!applications">No application yet. After you help a project, your applications will appear

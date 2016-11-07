@@ -156,7 +156,7 @@ export class ProjectComponent implements OnInit {
     this.projectService.deleteProject(this.project.id)
       .subscribe(
         project => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/projects']);
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }

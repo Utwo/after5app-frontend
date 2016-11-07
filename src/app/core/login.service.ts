@@ -37,7 +37,7 @@ export class LoginService {
       .subscribe(
         (data) => this.state.storeState(data['token'], data['user']),
         (error) => this.handleError(error),
-        () => this.router.navigate(['/'])
+        () => this.router.navigate(['/projects'])
       );
   }
 
@@ -47,7 +47,7 @@ export class LoginService {
       .subscribe(
         (data) => this.state.storeState(data['token'], data['user']),
         (error) => this.handleError(error),
-        () => this.router.navigate(['/'])
+        () => this.router.navigate(['/projects'])
       );
   }
 
@@ -57,7 +57,7 @@ export class LoginService {
       .subscribe(
         (data) => this.state.storeState(data['token'], data['user']),
         (error) => this.handleError(error),
-        () => this.router.navigate(['/'])
+        () => this.router.navigate(['/projects'])
       );
   }
 
