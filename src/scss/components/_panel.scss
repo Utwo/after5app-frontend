@@ -6,9 +6,11 @@
 }
 
 .panel--top--bottom {
-  box-shadow: 0 -5px 0 0 #8ee3ce, 0 5px 0 0 #6476f9;
+  box-shadow: 0 -5px 0 0 $brand-info, 0 5px 0 0 $brand-primary;
+  border-top-color: $brand-info;
+  border-bottom-color: $brand-primary;
 }
 
 .panel--left {
-  box-shadow: -5px 0 0 0 #8ee3ce, -10px 0 0 0 #6476f9;
+  box-shadow: -5px 0 0 0 $brand-info, -10px 0 0 0 $brand-primary;
 }

@@ -40,7 +40,7 @@
             <br>
             <div class="row project__subinfo">
                 <div class="col-md-6">
-                    <img class="profile-img" *ngIf="project.user.picture" src="{{project.user.picture+'?s=20'}}"><a
+                    <img class="profile-img" *ngIf="project.user.picture" src="{{project.user.picture+'?s=20&width=20&height=20'}}"><a
                         routerLink="/profile/{{project.user_id}}">
                     {{project.user.name}}
                 </a>

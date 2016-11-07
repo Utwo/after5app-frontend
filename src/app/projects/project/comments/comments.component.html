@@ -2,7 +2,7 @@
   <ul *ngIf="comments && comments.length > 0" class="list-unstyled">
     <li *ngFor="let comment of comments" class="comment-item">
       <div class="comment__left-side p-r-1">
-        <img *ngIf="comment.user.picture" class="profile-img" src="{{comment.user.picture}}?s=30">
+        <img *ngIf="comment.user.picture" class="profile-img" src="{{comment.user.picture}}?s=30&width=30&height=30">
       </div>
       <div class="comment__content">
         <a routerLink="/profile/{{comment.user_id}}">{{comment.user.name}}</a> &sdot; <span
