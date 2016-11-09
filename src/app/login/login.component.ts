@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 import 'rxjs/add/operator/map';
-import {LoginService} from "../core/login.service";
+import {LoginService} from '../core/login.service';
 
 @Component({
   selector: 'app-login',
@@ -24,12 +24,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     if (this.type === 'email') {
       this.loginService.authEmail(this.code);
-    }
-    else if (this.type === 'facebook') {
-      this.loginService.authFacebook(this.code)
-    }
-    else if (this.type === 'github') {
-      this.loginService.authGitHub(this.code)
+    } else if (this.type === 'facebook') {
+      this.loginService.authFacebook(this.code);
+    } else if (this.type === 'github') {
+      this.loginService.authGitHub(this.code);
     }
   }
 }

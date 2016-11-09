@@ -1,15 +1,15 @@
 import {Routes, RouterModule} from '@angular/router';
-import {HomeComponent} from "./home/home.component";
+import {HomeComponent} from './home/home.component';
 import {ModuleWithProviders} from '@angular/core';
-import {AboutComponent} from "./about/about.component";
-import {ProfileComponent} from "./profile/profile.component";
-import {ProjectListComponent} from "./projects/project-list/project-list.component";
-import {ProjectComponent} from "./projects/project/project.component";
-import {AddProjectComponent} from "./projects/add-project/add-project.component";
-import {SettingsComponent} from "./profile/settings/settings.component";
-import {NotFoundComponent} from "./core/not-found/not-found.component";
-import {LoginComponent} from "./login/login.component";
-import {AuthGuard} from "./core/auth-guard.service";
+import {AboutComponent} from './about/about.component';
+import {ProfileComponent} from './profile/profile.component';
+import {ProjectListComponent} from './projects/project-list/project-list.component';
+import {ProjectComponent} from './projects/project/project.component';
+import {AddProjectComponent} from './projects/add-project/add-project.component';
+import {SettingsComponent} from './profile/settings/settings.component';
+import {NotFoundComponent} from './core/not-found/not-found.component';
+import {LoginComponent} from './login/login.component';
+import {AuthGuard} from './core/auth-guard.service';
 
 
 const appRoutes: Routes = [

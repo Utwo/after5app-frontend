@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Observable}     from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
-import {StateService} from "../../shared/state.service";
-import {environment} from "../../../environments/environment";
+import {StateService} from '../../shared/state.service';
+import {environment} from '../../../environments/environment';
 
 @Injectable()
 export class ProfileService {
@@ -53,7 +53,6 @@ export class ProfileService {
   }
 
   private handleError(error: any) {
-    let errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     return Observable.throw(error);
   }
 }

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {StateService} from "./state.service";
-import {Router} from "@angular/router";
-import {BehaviorSubject} from "rxjs";
+import {StateService} from './state.service';
+import {Router} from '@angular/router';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable()
 export class ResponseHandlerService {
@@ -19,12 +19,12 @@ export class ResponseHandlerService {
   }
 
   errorMessage(message, error) {
-    if (error.status == 401 && JSON.parse(error._body).error == 'token_expired') {
+    if (error.status === 401 && JSON.parse(error._body).error === 'token_expired') {
       this.state.logout();
       this.router.navigate(['/']);
       return;
     }
-    message = (error === 0) ? message : message + " (" + error.statusText + ")";
+    message = (error === 0) ? message : message + ' (' + error.statusText + ')';
 
     this.response = {type: 'error', message: message};
   }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {StateService} from "../../shared/state.service";
-import {ProfileService} from "../shared/profile.service";
-import {ResponseHandlerService} from "../../shared/response-handler.service";
+import {StateService} from '../../shared/state.service';
+import {ProfileService} from '../shared/profile.service';
+import {ResponseHandlerService} from '../../shared/response-handler.service';
 
 @Component({
   selector: 'app-settings',

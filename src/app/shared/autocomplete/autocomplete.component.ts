@@ -1,8 +1,8 @@
 import {Component, Output, EventEmitter, Input} from '@angular/core';
-import {ProjectService} from "../../projects/shared/project.service";
-import {Observable} from "rxjs";
+import {ProjectService} from '../../projects/shared/project.service';
+import {Observable} from 'rxjs';
 import {TypeaheadMatch} from 'ng2-bootstrap/ng2-bootstrap';
-import {ResponseHandlerService} from "../response-handler.service";
+import {ResponseHandlerService} from '../response-handler.service';
 
 @Component({
   selector: 'app-autocomplete',
@@ -36,10 +36,10 @@ export class AutocompleteComponent {
       .map(
         skills => {
           return skills.filter(item => {
-            return item.name.toLowerCase().indexOf(token.toLowerCase()) > -1
+            return item.name.toLowerCase().indexOf(token.toLowerCase()) > -1;
           });
         },
-        error => this.responseHandler.errorMessage('An error occured!', error))
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   public changeTypeaheadLoading(e: boolean): void {

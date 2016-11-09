@@ -1,30 +1,19 @@
 import {Injectable} from '@angular/core';
-import {Observable}     from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';
 import {Http, Headers} from '@angular/http';
-import {environment} from "../../environments/environment";
-import {StateService} from "../shared/state.service";
-import {Router} from "@angular/router";
+import {environment} from '../../environments/environment';
+import {StateService} from '../shared/state.service';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class LoginService {
 
-  constructor(private state: StateService, private http: Http, private router:Router) {
-  }
-
-  login() {
-    var headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-
-    this.http.post(environment.URL_API + 'token/1', '', {headers: headers})
-      .map(res => res.json())
-      .subscribe(
-        (data) => this.state.storeState(data['jwt-token'], data['user']),
-        (error) => this.handleError(error)
-      );
+  constructor(private state: StateService, private http: Http, private router: Router) {
   }
 
   loginEmail(email) {
     let body = JSON.stringify({email: email});
-    var headers = new Headers({'Content-Type': 'application/json'});
+    let headers = new Headers({'Content-Type': 'application/json'});
 
     return this.http.post(environment.URL_API + 'auth/login', body, {headers: headers})
       .map(res => res.json())
@@ -41,7 +30,7 @@ export class LoginService {
       );
   }
 
-  authFacebook(code){
+  authFacebook(code) {
     this.http.post(environment.URL_API + 'auth/facebook/callback?code=' + code, '')
       .map(res => res.json())
       .subscribe(
@@ -51,7 +40,7 @@ export class LoginService {
       );
   }
 
-  authGitHub(code){
+  authGitHub(code) {
     this.http.post(environment.URL_API + 'auth/github/callback?code=' + code, '')
       .map(res => res.json())
       .subscribe(

@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {ProjectService} from "../../shared/project.service";
-import {StateService} from "../../../shared/state.service";
-import {ResponseHandlerService} from "../../../shared/response-handler.service";
+import {ProjectService} from '../../shared/project.service';
+import {StateService} from '../../../shared/state.service';
+import {ResponseHandlerService} from '../../../shared/response-handler.service';
 
 @Component({
   selector: 'app-messages',
@@ -43,8 +43,8 @@ export class MessagesComponent implements OnInit {
     }
     this.projectService.addMessage(this.project_id, message.value)
       .subscribe(
-        message => {
-          this.messages.push(message);
+        new_message => {
+          this.messages.push(new_message);
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
     message.value = '';

@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Observable}     from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
-import {StateService} from "../../shared/state.service";
-import {environment} from "../../../environments/environment";
+import {StateService} from '../../shared/state.service';
+import {environment} from '../../../environments/environment';
 
 @Injectable()
 export class ProjectService {
@@ -24,7 +24,8 @@ export class ProjectService {
   }
 
   getPopularProjects() {
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'project?sort[]=favorite_count,desc&sort[]=created_at,desc&with[]=user&with[]=position.skill')
+    return this.http.get(environment.URL_API + environment.API_VERSION +
+      'project?sort[]=favorite_count,desc&sort[]=created_at,desc&with[]=user&with[]=position.skill')
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -36,7 +37,8 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'project?recommended&with[]=user&with[]=position.skill&user_id=!' + this.state.getUser().id, options)
+    return this.http.get(environment.URL_API + environment.API_VERSION +
+      'project?recommended&with[]=user&with[]=position.skill&user_id=!' + this.state.getUser().id, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -50,19 +52,6 @@ export class ProjectService {
     let options = new RequestOptions({headers: headers});
 
     return this.http.post(environment.URL_API + environment.API_VERSION + 'project', body, options)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-  addPosition(project) {
-    let body = JSON.stringify(project);
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.post(environment.URL_API + environment.API_VERSION + 'position', body, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -118,7 +107,8 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'project/' + project_id + '/messenger?sort[]=created_at,desc&page=' + page, options)
+    return this.http.get(environment.URL_API + environment.API_VERSION +
+      'project/' + project_id + '/messenger?sort[]=created_at,desc&page=' + page, options)
       .map(res => res.json().messenger)
       .catch(this.handleError);
   }
@@ -160,7 +150,8 @@ export class ProjectService {
     let headers = new Headers({
       'Authorization': 'Bearer ' + this.state.getToken()
     });
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'project/' + project_id + '/application?with[]=user&with[]=position.skill', {headers: headers})
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'project/' + project_id +
+      '/application?with[]=user&with[]=position.skill', {headers: headers})
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -204,7 +195,7 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.post(environment.URL_API + environment.API_VERSION + 'project/' + project_id + '/favorite', "", options)
+    return this.http.post(environment.URL_API + environment.API_VERSION + 'project/' + project_id + '/favorite', '', options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -227,8 +218,6 @@ export class ProjectService {
   }
 
   private handleError(error: any) {
-    let errMsg = (error.message) ? error.message :
-      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     return Observable.throw(error);
   }
 }

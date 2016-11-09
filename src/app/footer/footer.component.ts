@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {StateService} from "../shared/state.service";
+import {StateService} from '../shared/state.service';
 
 @Component({
   selector: 'app-footer',

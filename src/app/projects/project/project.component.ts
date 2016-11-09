@@ -1,11 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ModalDirective} from 'ng2-bootstrap/ng2-bootstrap';
-import {ProjectService} from "../shared/project.service";
-import {StateService} from "../../shared/state.service";
-//import * as mo from 'mo-js/build/mo.min.js';
-var mo = require('mo-js/build/mo.min.js');
-import {ResponseHandlerService} from "../../shared/response-handler.service";
+import {ProjectService} from '../shared/project.service';
+import {StateService} from '../../shared/state.service';
+import {ResponseHandlerService} from '../../shared/response-handler.service';
+const mo = require('mo-js/build/mo.min.js');
 
 @Component({
   selector: 'app-project',
@@ -23,10 +22,11 @@ export class ProjectComponent implements OnInit {
   @ViewChild('editModal') public editModal: ModalDirective;
   @ViewChild('deleteModal') public deleteModal: ModalDirective;
   @ViewChild('applyModal') public applyModal: ModalDirective;
-  @ViewChild("favorite") favorite;
-  @ViewChild("favoriteSpan") favoriteSpan;
+  @ViewChild('favorite') favorite;
+  @ViewChild('favoriteSpan') favoriteSpan;
 
-  constructor(private route: ActivatedRoute, private projectService: ProjectService, private state: StateService, private router: Router, private responseHandler: ResponseHandlerService) {
+  constructor(private route: ActivatedRoute, private projectService: ProjectService, private state: StateService,
+              private router: Router, private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
@@ -47,7 +47,7 @@ export class ProjectComponent implements OnInit {
 
           this.project = project.data[0];
           if (this.state.isLoggedIn()) {
-            if (this.state.getUser().id == this.project.user_id) {
+            if (this.state.getUser().id === this.project.user_id) {
               this.myProject = true;
               this.getApplications();
             }
@@ -70,13 +70,12 @@ export class ProjectComponent implements OnInit {
     }
     this.projectService.addFavorite(this.project.id)
       .subscribe(
-        data => {
+        () => {
           this.isFavorite = !this.isFavorite;
           if (this.isFavorite) {
             this.project.favorite_count++;
             this.showAnimation(this.favorite.nativeElement, this.favoriteSpan.nativeElement);
-          }
-          else {
+          } else {
             this.project.favorite_count--;
           }
         },
@@ -86,13 +85,13 @@ export class ProjectComponent implements OnInit {
   getRelatedProjects() {
     let skills = [];
     this.project.position.map(item => {
-      skills.push(item.skill.id)
+      skills.push(item.skill.id);
     });
-    this.projectService.filterBySkill(skills.join(","), this.project.id)
+    this.projectService.filterBySkill(skills.join(','), this.project.id)
       .subscribe(
         project => {
           this.related = project.data.sort(() => {
-            return 0.5 - Math.random()
+            return 0.5 - Math.random();
           }).splice(0, 3);
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
@@ -120,7 +119,7 @@ export class ProjectComponent implements OnInit {
     let member = this.members[index];
 
     for (let application of this.applications) {
-      if (application.user_id == member.id) {
+      if (application.user_id === member.id) {
         application_id = application.id;
       }
     }
@@ -143,8 +142,7 @@ export class ProjectComponent implements OnInit {
     this.applyModal.hide();
     if (error) {
       this.responseHandler.errorMessage('An error occured!', error);
-    }
-    else {
+    } else {
       this.responseHandler.successMessage('Your application was sent!');
     }
   }
@@ -272,19 +270,18 @@ export class ProjectComponent implements OnInit {
         duration: 1200,
         easing: mo.easing.ease.out,
         onStart: function () {
-          el.style.overflow = "visible";
+          el.style.overflow = 'visible';
         },
         onUpdate: function (progress) {
           if (progress > 0.3) {
             let elasticOutProgress = mo.easing.elastic.out(1.43 * progress - 0.43);
             elSpan.style.WebkitTransform = elSpan.style.transform = 'scale3d(' + elasticOutProgress + ',' + elasticOutProgress + ',1)';
-          }
-          else {
+          } else {
             elSpan.style.WebkitTransform = elSpan.style.transform = 'scale3d(0,0,1)';
           }
         },
         onComplete: function () {
-          el.style.overflow = "hidden";
+          el.style.overflow = 'hidden';
         }
       })
     ];

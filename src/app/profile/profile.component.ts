@@ -1,21 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {ProfileService} from "./shared/profile.service";
-import {StateService} from "../shared/state.service";
-import {ResponseHandlerService} from "../shared/response-handler.service";
+import {ProfileService} from './shared/profile.service';
+import {StateService} from '../shared/state.service';
+import {ResponseHandlerService} from '../shared/response-handler.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   providers: [ProfileService]
 })
-export class ProfileComponent implements OnInit {
+
+export class ProfileComponent implements OnInit, OnDestroy {
   private sub;
   private user = null;
   private isMe = false;
   private applications = [];
 
-  constructor(private route: ActivatedRoute, private profileService: ProfileService, private state: StateService, private responseHandler: ResponseHandlerService) {
+  constructor(private route: ActivatedRoute, private profileService: ProfileService, private state: StateService,
+              private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {

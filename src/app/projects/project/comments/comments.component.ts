@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {ProjectService} from "../../shared/project.service";
-import {StateService} from "../../../shared/state.service";
-import {ResponseHandlerService} from "../../../shared/response-handler.service";
+import {ProjectService} from '../../shared/project.service';
+import {StateService} from '../../../shared/state.service';
+import {ResponseHandlerService} from '../../../shared/response-handler.service';
 
 @Component({
   selector: 'app-comments',

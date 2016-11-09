@@ -6,91 +6,91 @@
         </span>
         {{user.name}}
     </span>
-    <div class="dropdown-menu dropdown__content container-fluid text-xs-left">
-        <ul class="list-unstyled text-xs-center">
-            <li><a class="d-block user-nav__item" routerLink="/profile/{{user.id}}">Profile</a></li>
-            <li><a class="d-block user-nav__item" routerLink="/settings">Settings</a></li>
-            <li><a class="d-block user-nav__item" href="javascript:;" (click)="logout()">Logout</a></li>
-        </ul>
-        <hr>
-        <ol class="list-unstyled">
-            <li *ngFor="let notification of notifications">
-                <div [ngSwitch]="notification.type">
-                    <div *ngSwitchCase="notificationTypes.comment" class="notification__item row">
-                        <div class="col-md-2"><img class="profile-img" src="{{notification.data.user.picture}}"
-                                                   width="25" height="25"/></div>
-                        <div class="col-md-10">
-                            <p>
-                                <a routerLink="/profile/{{notification.data.user.id}}">
-                                    {{notification.data.user.name}}
-                                </a>
-                                left a comment for your project
-                                <a routerLink="/project/{{notification.data.project.id}}">
-                                    {{notification.data.project.title}}</a>
-                            </p>
-                            <small>{{notification.created_at | timeAgo}}</small>
-                        </div>
-                    </div>
+  <div class="dropdown-menu dropdown__content container-fluid text-xs-left">
+    <ul class="list-unstyled text-xs-center">
+      <li><a class="d-block user-nav__item" routerLink="/profile/{{user.id}}">Profile</a></li>
+      <li><a class="d-block user-nav__item" routerLink="/settings">Settings</a></li>
+      <li><a class="d-block user-nav__item" href="javascript:;" (click)="logout()">Logout</a></li>
+    </ul>
+    <hr>
+    <ol class="list-unstyled">
+      <li *ngFor="let notification of notifications">
+        <div [ngSwitch]="notification.type">
+          <div *ngSwitchCase="notificationTypes.comment" class="notification__item row">
+            <div class="col-md-2"><img class="profile-img" src="{{notification.data.user.picture}}"
+                                       width="25" height="25"/></div>
+            <div class="col-md-10">
+              <p>
+                <a routerLink="/profile/{{notification.data.user.id}}">
+                  {{notification.data.user.name}}
+                </a>
+                left a comment for your project
+                <a routerLink="/project/{{notification.data.project.id}}">
+                  {{notification.data.project.title}}</a>
+              </p>
+              <small>{{notification.created_at | timeAgo}}</small>
+            </div>
+          </div>
 
-                  <div *ngSwitchCase="notificationTypes.message" class="notification__item row">
-                    <div class="col-md-2"><img class="profile-img" src="{{notification.data.user.picture}}"
-                                               width="25" height="25"/></div>
-                    <div class="col-md-10">
-                      <p>
-                        <a routerLink="/profile/{{notification.data.user.id}}">
-                          {{notification.data.user.name}}
-                        </a>
-                        left a message for the members of
-                        <a routerLink="/project/{{notification.data.project.id}}">
-                          {{notification.data.project.title}}</a>
-                      </p>
-                      <small>{{notification.created_at | timeAgo}}</small>
-                    </div>
-                  </div>
+          <div *ngSwitchCase="notificationTypes.message" class="notification__item row">
+            <div class="col-md-2"><img class="profile-img" src="{{notification.data.user.picture}}"
+                                       width="25" height="25"/></div>
+            <div class="col-md-10">
+              <p>
+                <a routerLink="/profile/{{notification.data.user.id}}">
+                  {{notification.data.user.name}}
+                </a>
+                left a message for the members of
+                <a routerLink="/project/{{notification.data.project.id}}">
+                  {{notification.data.project.title}}</a>
+              </p>
+              <small>{{notification.created_at | timeAgo}}</small>
+            </div>
+          </div>
 
-                    <div *ngSwitchCase="notificationTypes.accept" class="notification__item row">
-                        <div class="col-md-10 offset-md-2">
-                            <p>Your application for
-                                <a routerLink="/project/{{notification.data.project.id}}">
-                                    {{notification.data.project.title}}</a>
-                                was accepted! </p>
-                            <small>{{notification.created_at | timeAgo}}</small>
-                        </div>
-                    </div>
+          <div *ngSwitchCase="notificationTypes.accept" class="notification__item row">
+            <div class="col-md-10 offset-md-2">
+              <p>Your application for
+                <a routerLink="/project/{{notification.data.project.id}}">
+                  {{notification.data.project.title}}</a>
+                was accepted! </p>
+              <small>{{notification.created_at | timeAgo}}</small>
+            </div>
+          </div>
 
-                  <div *ngSwitchCase="notificationTypes.decline" class="notification__item row">
-                    <div class="col-md-10 offset-md-2">
-                      <p>Your application for
-                        <a routerLink="/project/{{notification.data.project.id}}">
-                          {{notification.data.project.title}}</a>
-                        was declined</p>
-                      <small>{{notification.created_at | timeAgo}}</small>
-                    </div>
-                  </div>
+          <div *ngSwitchCase="notificationTypes.decline" class="notification__item row">
+            <div class="col-md-10 offset-md-2">
+              <p>Your application for
+                <a routerLink="/project/{{notification.data.project.id}}">
+                  {{notification.data.project.title}}</a>
+                was declined</p>
+              <small>{{notification.created_at | timeAgo}}</small>
+            </div>
+          </div>
 
-                    <div *ngSwitchCase="notificationTypes.application" class="notification__item row">
-                        <div class="col-md-2"><img class="profile-img" src="{{notification.data.user.picture}}"
-                                                   width="25" height="25"/></div>
-                        <div class="col-md-10">
-                            <p>
-                                <a routerLink="/profile/{{notification.data.user.id}}">
-                                    {{notification.data.user.name}}
-                                </a>
-                                applied for your project
-                                <a routerLink="/project/{{notification.data.project.id}}">
-                                    {{notification.data.project.title}}</a>
-                            </p>
-                            <small>{{notification.created_at | timeAgo}}</small>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ol>
-        <div *ngIf="!notifications" class="row flex-items-xs-center p-b-3">
+          <div *ngSwitchCase="notificationTypes.application" class="notification__item row">
+            <div class="col-md-2"><img class="profile-img" src="{{notification.data.user.picture}}"
+                                       width="25" height="25"/></div>
+            <div class="col-md-10">
+              <p>
+                <a routerLink="/profile/{{notification.data.user.id}}">
+                  {{notification.data.user.name}}
+                </a>
+                applied for your project
+                <a routerLink="/project/{{notification.data.project.id}}">
+                  {{notification.data.project.title}}</a>
+              </p>
+              <small>{{notification.created_at | timeAgo}}</small>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+    <div *ngIf="!notifications" class="row flex-items-xs-center p-b-3">
             	<span class="spinner p-a-1 m-b-1">
 							<span class="double-bounce1"></span>
 							<span class="double-bounce2"></span>
 						</span>
-        </div>
     </div>
+  </div>
 </div>

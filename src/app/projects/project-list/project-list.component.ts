@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ProjectService} from "../shared/project.service";
-import {StateService} from "../../shared/state.service";
-import {ResponseHandlerService} from "../../shared/response-handler.service";
+import {ProjectService} from '../shared/project.service';
+import {StateService} from '../../shared/state.service';
+import {ResponseHandlerService} from '../../shared/response-handler.service';
 
 @Component({
   selector: 'app-project-list',
@@ -11,6 +11,9 @@ export class ProjectListComponent implements OnInit {
   projects = null;
   page = {current_page: null, prev: null, next: null};
   maxDescriptionLength = 210;
+  private isRecentActive = true;
+  private isPopularActive = false;
+  private isRecommendedActive = false;
 
   constructor(private projectService: ProjectService, private state: StateService, private responseHandler: ResponseHandlerService) {
 
@@ -21,7 +24,8 @@ export class ProjectListComponent implements OnInit {
   }
 
   getProjects(page) {
-    this.setActiveLink(document.getElementById("all-projects"));
+    this.isPopularActive = this.isRecommendedActive = false;
+    this.isRecentActive = true;
     this.projectService.getProjects(page)
       .subscribe(
         projects => this.extractData(projects),
@@ -29,20 +33,17 @@ export class ProjectListComponent implements OnInit {
   }
 
   filterProjects(skill) {
+    this.isPopularActive = this.isRecommendedActive = false;
+    this.isRecentActive = true;
     this.projectService.filterBySkill(skill)
       .subscribe(
         projects => this.extractData(projects),
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
-  setActiveLink(elem) {
-    var active_link = document.getElementsByClassName("btn-link-info");
-    active_link[0].className = "btn font-weight-bold m-l-1";
-    elem.className = "btn font-weight-bold m-l-1 btn-link-info";
-  }
-
   getRecommendedProjects() {
-    this.setActiveLink(document.getElementById("recommended-projects"));
+    this.isPopularActive = this.isRecentActive = false;
+    this.isRecommendedActive = true;
     this.projectService.getRecommendedProjects()
       .subscribe(
         projects => this.extractData(projects),
@@ -50,7 +51,8 @@ export class ProjectListComponent implements OnInit {
   }
 
   getPopularProjects() {
-    this.setActiveLink(document.getElementById("popular-projects"));
+    this.isRecommendedActive = this.isRecentActive = false;
+    this.isPopularActive = true;
     this.projectService.getPopularProjects()
       .subscribe(
         projects => this.extractData(projects),
@@ -77,13 +79,13 @@ export class ProjectListComponent implements OnInit {
 
   private prevPage() {
     if (this.page.prev) {
-      this.getProjects(this.page.current_page - 1)
+      this.getProjects(this.page.current_page - 1);
     }
   }
 
   private nextPage() {
     if (this.page.next) {
-      this.getProjects(this.page.current_page + 1)
+      this.getProjects(this.page.current_page + 1);
     }
   }
 

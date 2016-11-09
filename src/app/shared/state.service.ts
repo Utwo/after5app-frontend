@@ -3,34 +3,32 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class StateService {
 
-    constructor() {
-    }
+  constructor() {
+  }
 
-    storeState(token, user) {
-        localStorage.setItem("token", token);
-        localStorage.setItem("user", JSON.stringify(user));
-    }
+  storeState(token, user) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+  }
 
-    getToken() {
-        return localStorage.getItem("token");
-    }
+  getToken() {
+    return localStorage.getItem('token');
+  }
 
-    setUser(user) {
-        localStorage.setItem("user", JSON.stringify(user));
-    }
-    getUser() {
-        return JSON.parse(localStorage.getItem("user"));
-    }
+  setUser(user) {
+    localStorage.setItem('user', JSON.stringify(user));
+  }
 
-    logout() {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-    }
+  getUser() {
+    return JSON.parse(localStorage.getItem('user'));
+  }
 
-    isLoggedIn() {
-        if (localStorage["token"]) {
-            return true;
-        }
-        return false;
-    }
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+  }
+
+  isLoggedIn() {
+    return !!localStorage['token'];
+  }
 }

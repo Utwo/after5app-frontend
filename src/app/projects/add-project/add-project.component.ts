@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {ProjectService} from "../shared/project.service";
-import {ResponseHandlerService} from "../../shared/response-handler.service";
+import {Router} from '@angular/router';
+import {ProjectService} from '../shared/project.service';
+import {ResponseHandlerService} from '../../shared/response-handler.service';
 
 @Component({
   selector: 'app-add-project',
@@ -27,7 +27,7 @@ export class AddProjectComponent implements OnInit {
     this.projectService.addProject(this.project)
       .subscribe(
         data => {
-          this.router.navigate(['/project', data.project.id])
+          this.router.navigate(['/project', data.project.id]);
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
@@ -42,8 +42,8 @@ export class AddProjectComponent implements OnInit {
       return;
     }
 
-    for (let position of this.project.position) {
-      if (this.selectedSkill == position.name) {
+    for (let project_position of this.project.position) {
+      if (this.selectedSkill === project_position.name) {
         this.positionError = 'Please choose a new skill.';
         return;
       }
@@ -64,7 +64,7 @@ export class AddProjectComponent implements OnInit {
 
   addQuestion(question) {
     if (question.value.length < 2) {
-      this.questionError = "A question must be at least 2 characters long.";
+      this.questionError = 'A question must be at least 2 characters long.';
       return;
     }
     this.project.application_questions.push(question.value);

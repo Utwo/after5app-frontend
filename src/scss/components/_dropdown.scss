@@ -17,7 +17,6 @@
   list-style-type: none;
   padding: 0;
   color: $gray-dark;
-
   position: absolute;
   z-index: map-get($zindex, max);
   border-radius: $border-radius-lg;

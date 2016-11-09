@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {ProjectService} from "../../shared/project.service";
-import {ResponseHandlerService} from "../../../shared/response-handler.service";
+import {ProjectService} from '../../shared/project.service';
+import {ResponseHandlerService} from '../../../shared/response-handler.service';
 
 @Component({
   selector: 'app-user-applications',
@@ -18,7 +18,7 @@ export class UserApplicationsComponent implements OnInit {
   ngOnInit() {
     this.applications = [];
     for (let application of this.user_applications) {
-      if (application.accepted == 0) {
+      if (application.accepted === 0) {
         this.applications.push(application);
       }
     }
@@ -41,7 +41,7 @@ export class UserApplicationsComponent implements OnInit {
   respondToApplication(application_id, index, code) {
     this.projectService.respondToApplication(application_id, code)
       .subscribe(
-        data => {
+        () => {
           this.applications.splice(index, 1);
           if (code === 1) {
             this.onAccept.emit();

@@ -47,7 +47,9 @@
                 <use xlink:href="assets/icons.svg#icon-heart-o"></use>
               </svg>
             </button>
-            <span #favoriteSpan>{{project.favorite_count}} favorites</span>
+            <span #favoriteSpan title="Login to favorite a project"><svg *ngIf="!state.isLoggedIn()" class="icon text-primary icon-lg m-r-1">
+                <use xlink:href="assets/icons.svg#icon-heart"></use>
+              </svg> {{project.favorite_count}} favorites</span>
           </div>
         </div>
         <div *ngIf="myProject" class="text-xs-center m-t-2">

@@ -1,6 +1,6 @@
 import {Component, OnInit, Output, Input} from '@angular/core';
-import {ProjectService} from "../../shared/project.service";
-import {EventEmitter} from "@angular/common/src/facade/async";
+import {ProjectService} from '../../shared/project.service';
+import {EventEmitter} from '@angular/common/src/facade/async';
 
 @Component({
   selector: 'app-application',
