@@ -1,5 +1,5 @@
 .is-start-project {
-  background: url(/assets/spaceship.svg) no-repeat 120% 150%;
+  background: url(/assets/spaceship.svg) no-repeat 120% 150% fixed;
   background-size: 23rem;
   animation: slide-up-background 1.2s cubic-bezier(.23, 1, .32, 1) forwards;
 }

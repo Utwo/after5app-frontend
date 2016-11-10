@@ -97,15 +97,20 @@
           </section>
 
           <section *ngIf="isMe && applications && applications.length > 0" class="m-t-2">
-            <h3 class="title-border p-b-1">My Applications</h3>
-            <ul *ngIf="applications">
-              <li *ngFor="let application of applications">
-                <a routerLink="/project/{{application.position.project.id}}">
-                  {{application.position.project.title}}
-                </a> -
-                <span *ngIf="application.accepted == 1">Accepted</span>
-                <span *ngIf="application.accepted == 0">Pending</span>
-                <span *ngIf="application.accepted == 2">Declined</span>
+            <h3 class="title-border p-b-1">Projects I applied for</h3>
+            <ul *ngIf="applications" class="list-unstyled text-primary">
+              <li *ngFor="let application of applications" class="panel m-b-1">
+                <span *ngIf="application.accepted == 1" title="Accepted">&nbsp;<svg class="icon icon-lg">
+                  <use xlink:href="assets/icons.svg#icon-checkmark"></use>
+                </svg><a routerLink="/project/{{application.position.project.id}}" class="text-primary">
+                  {{application.position.project.title}}</a> - accepted
+                </span>
+                <span *ngIf="application.accepted == 0" title="Pending">&nbsp;<svg class="icon icon-lg">
+                  <use xlink:href="assets/icons.svg#icon-clock2"></use>
+                </svg>
+                <a routerLink="/project/{{application.position.project.id}}" class="text-primary">
+                  {{application.position.project.title}}</a> - pending
+                </span>
               </li>
             </ul>
             <p *ngIf="!applications">No application yet. After you help a project, your applications will appear

@@ -123,7 +123,7 @@ export class ProjectComponent implements OnInit {
         application_id = application.id;
       }
     }
-    this.projectService.respondToApplication(application_id, 2)
+    this.projectService.respondToApplication(application_id, false)
       .subscribe(
         data => this.getMembers(),
         error => this.responseHandler.errorMessage('An error occured!', error));

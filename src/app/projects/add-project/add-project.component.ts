@@ -53,7 +53,7 @@ export class AddProjectComponent implements OnInit {
       this.positionError = 'The position description must be at least 4 characters long.';
       return;
     }
-    this.project.position.push({description: position.value, name: this.selectedSkill, status: 0});
+    this.project.position.push({description: position.value, name: this.selectedSkill, status: 1});
     this.positionError = null;
     position.value = '';
   }

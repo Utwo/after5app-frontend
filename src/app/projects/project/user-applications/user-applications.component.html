@@ -14,8 +14,8 @@
         <p *ngIf="application.message">{{application.message}}</p>
         <hr>
         <div class="text-xs-right">
-          <button (click)="respondToApplication(application.id, i, 1)" class="btn btn-primary">Accept</button>
-          <button (click)="respondToApplication(application.id, i, 2)" class="btn btn-danger">Decline</button>
+          <button (click)="respondToApplication(application.id, i, true)" class="btn btn-primary">Accept</button>
+          <button (click)="respondToApplication(application.id, i, false)" class="btn btn-danger">Decline</button>
         </div>
       </div>
     </li>

@@ -9,7 +9,7 @@ import {EventEmitter} from '@angular/common/src/facade/async';
 export class ApplicationComponent implements OnInit {
   @Input() project;
   @Output() onApply = new EventEmitter<number>();
-  application = {message: null, position_id: null, answers: []};
+  application = {message: '', position_id: null, answers: []};
   position = null;
 
   constructor(private projectService: ProjectService) {
