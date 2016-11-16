@@ -4,7 +4,7 @@
     </h2>
   </div>
 </div>
-<section class="container-small m-x-auto m-y-3">
+<section class="container container-small m-x-auto m-y-3">
   <form #updateForm="ngForm" (ngSubmit)="storeProject()">
     <div class="form-group">
       <label for="title">Title <span class="text-danger font-weight-bold">*</span></label>
@@ -61,11 +61,11 @@
     <div class="form-group">
       <label for="question">Questions</label>
       <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-10 col-xs-9">
           <input class="form-control" id="question" type="text" #question
                  placeholder="How much time can you spend on this project?">
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-xs-3">
           <button class="btn btn-info" type="button" (click)="addQuestion(question)">Add</button>
         </div>
         <i [hidden]="!questionError" class="form-text text-danger">{{questionError}}</i>

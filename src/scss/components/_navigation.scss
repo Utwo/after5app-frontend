@@ -15,3 +15,14 @@
 .user-nav__item:hover {
   background: #8ee3ce;
 }
+
+.show-navigation .navigation {
+  display: block !important;
+}
+
+@media (max-width: map-get($grid-breakpoints, md)) {
+  .navigation {
+    position: absolute;
+    top: 5rem;
+  }
+}

@@ -2,12 +2,12 @@
   <div class="container">
     <h2 class="text-xs-center m-y-3">Find the perfect project</h2>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-lg-6 text-lg-left text-xs-center">
         <div class="form-inline">
           <app-autocomplete [type]="'list'" (onSelect)="onSelect($event)" label_show="true"></app-autocomplete>
         </div>
       </div>
-      <div class="col-md-6 text-md-right">
+      <div class="col-lg-6 text-lg-right text-xs-center">
         <a id="all-projects" href="javascript:;" (click)="getProjects(1)"
            class="btn font-weight-bold m-l-1" [class.btn-link-info]="isRecentActive">Recent</a>
         <a id="popular-projects" href="javascript:;" (click)="getPopularProjects()" class="btn font-weight-bold m-l-1" [class.btn-link-info]="isPopularActive">Popular</a>
@@ -42,14 +42,14 @@
       </ul>
       <br>
       <div class="row project__subinfo">
-        <div class="col-md-6">
+        <div class="col-xs">
           <img class="profile-img" *ngIf="project.user.picture"
                src="{{project.user.picture+'?s=20&width=20&height=20'}}"><a
           routerLink="/profile/{{project.user_id}}">
           {{project.user.name}}
         </a>
         </div>
-        <div class="col-md-6 text-xs-right">
+        <div class="col-xs text-xs-right">
                     <span class="m-r-1" title="favorites"><svg
                       class="icon text-danger"><use xlink:href="assets/icons.svg#icon-favorite"></use></svg> {{project.favorite_count}}</span>
           <span title="comments"><svg
@@ -60,13 +60,13 @@
     </li>
   </ul>
   <div class="text-xs-center row m-y-1">
-    <div class="col-md-4">
+    <div class="col-xs">
       <button (click)="prevPage()" *ngIf="page.prev" class="btn btn-info">&#10096;</button>
     </div>
-    <div class="col-md-4">
+    <div class="col-xs">
       <span class="btn">{{page.current_page}}</span>
     </div>
-    <div class="col-md-4">
+    <div class="col-xs">
       <button (click)="nextPage()" *ngIf="page.next" class="btn btn-info">&#10097;</button>
     </div>
   </div>

@@ -6,7 +6,7 @@
   </div>
   <div class="container">
     <div class="row">
-      <section class="col-md-8 m-y-3">
+      <section class="col-lg-8 col-md-7 m-y-3">
         <form #updateForm="ngForm" (ngSubmit)="onSubmit()" class="container container-small">
 
           <div class="form-group">
@@ -17,8 +17,10 @@
 
             <div *ngIf="name.errors && (name.dirty || name.touched)">
               <i [hidden]="!name.errors.required" class="form-text text-danger">Name is required</i>
-              <i [hidden]="!name.errors.minlength" class="form-text text-danger">Name must be at least 3 characters long.</i>
-              <i [hidden]="!name.errors.maxlength" class="form-text text-danger">Name cannot be more than 20 characters long.</i>
+              <i [hidden]="!name.errors.minlength" class="form-text text-danger">Name must be at least 3 characters
+                long.</i>
+              <i [hidden]="!name.errors.maxlength" class="form-text text-danger">Name cannot be more than 20 characters
+                long.</i>
             </div>
           </div>
 
@@ -30,8 +32,10 @@
                    #workplace="ngModel">
 
             <div *ngIf="workplace.errors && (workplace.dirty || workplace.touched)">
-              <i [hidden]="!workplace.errors.minlength" class="form-text text-danger">Workplace must be at least 3 characters long.</i>
-              <i [hidden]="!workplace.errors.maxlength" class="form-text text-danger">Workplace cannot be more than 20 characters long.</i>
+              <i [hidden]="!workplace.errors.minlength" class="form-text text-danger">Workplace must be at least 3
+                characters long.</i>
+              <i [hidden]="!workplace.errors.maxlength" class="form-text text-danger">Workplace cannot be more than 20
+                characters long.</i>
             </div>
           </div>
 
@@ -43,8 +47,10 @@
                    [(ngModel)]="user.website" #website="ngModel">
 
             <div *ngIf="website.errors && (website.dirty || website.touched)">
-              <i [hidden]="!website.errors.maxlength" class="form-text text-danger">Website cannot be more than 20 characters long.</i>
-              <i [hidden]="!website.errors.pattern" class="form-text text-danger">Website doesn't have the correct pattern.</i>
+              <i [hidden]="!website.errors.maxlength" class="form-text text-danger">Website cannot be more than 20
+                characters long.</i>
+              <i [hidden]="!website.errors.pattern" class="form-text text-danger">Website doesn't have the correct
+                pattern.</i>
             </div>
           </div>
 
@@ -56,16 +62,20 @@
                    #twitter="ngModel">
 
             <div *ngIf="twitter.errors && (twitter.dirty || twitter.touched)">
-              <i [hidden]="!twitter.errors.minlength" class="form-text text-danger">Twitter name must be at least 3 characters long.</i>
-              <i [hidden]="!twitter.errors.maxlength" class="form-text text-danger">Twitter name cannot be more than 20 characters long.</i>
+              <i [hidden]="!twitter.errors.minlength" class="form-text text-danger">Twitter name must be at least 3
+                characters long.</i>
+              <i [hidden]="!twitter.errors.maxlength" class="form-text text-danger">Twitter name cannot be more than 20
+                characters long.</i>
             </div>
           </div>
-          <button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid">Save changes</button>
-          <button class="btn btn-danger" type="button" routerLink="/">Cancel</button>
+          <div class="text-md-left text-xs-center">
+            <button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid">Save changes</button>
+            <button class="btn btn-danger" type="button" routerLink="/">Cancel</button>
+          </div>
         </form>
       </section>
-      <div class="col-md-4">
-        <section class="sidebar p-a-1">
+      <div class="col-lg-4 col-md-5">
+        <section class="sidebar p-a-1 m-b-3">
           <h3 class="project__title title-border title-border--primary m-b-2">Skills</h3>
           <div class="form-inline">
             <app-autocomplete (onSelect)="onSelect($event)" label_message="" wrap_class="form-group"></app-autocomplete>

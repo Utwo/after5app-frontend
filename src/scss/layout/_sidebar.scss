@@ -1,5 +1,5 @@
 .sidebar {
-  background: $brand-info;
+  //background: $brand-info;
   //background: linear-gradient(to top, #1CD8D2, #76e8ca);
   background: linear-gradient(to top, darken($brand-info, 7%), lighten($brand-info, 7%));
   color: #fff;
@@ -16,4 +16,10 @@
   font-size: 3.5rem;
   margin: 0 0 -3rem;
   color: $gray-lightest;
+}
+
+@media (max-width: map-get($grid-breakpoints, md)) {
+  .sidebar {
+    margin-top: 0;
+  }
 }

@@ -8,7 +8,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-lg-8 col-md-7">
         <section class="m-y-3">
           <h3 *ngIf="!isMe" class="title-border title-border--green p-b-1">{{user.name}}'s projects</h3>
           <h3 *ngIf="isMe" class="title-border title-border--green p-b-1">My projects</h3>
@@ -67,8 +67,8 @@
         </section>
       </div>
 
-      <div class="col-md-4">
-        <div class="sidebar p-a-1">
+      <div class="col-lg-4 col-md-5">
+        <div class="sidebar p-a-1 m-b-3">
           <section>
             <h3 class="title-border p-b-1">About
               <a *ngIf="isMe" routerLink="/settings" class="btn btn-outline-primary btn-sm pull-xs-right">
@@ -97,7 +97,7 @@
           </section>
 
           <section *ngIf="isMe && applications && applications.length > 0" class="m-t-2">
-            <h3 class="title-border p-b-1">Projects I applied for</h3>
+            <h3 class="title-border p-b-1">Applied projects</h3>
             <ul *ngIf="applications" class="list-unstyled text-primary">
               <li *ngFor="let application of applications" class="panel m-b-1">
                 <span *ngIf="application.accepted == 1" title="Accepted">&nbsp;<svg class="icon icon-lg">
