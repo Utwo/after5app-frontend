@@ -3,7 +3,9 @@
     <div class="form-inline m-b-2 btn btn-primary">
       <label class="col-form-label" for="position">For</label>
       <select class="form-control m-x-1" id="position" #positionSelect>
-        <option *ngFor="let position of project.position" [disabled]="!position.status" [selected]="position.status" value={{position.id}}>{{position.skill.name}}</option>
+        <option *ngFor="let position of project.position" [disabled]="!position.status" [selected]="position.status"
+                value={{position.id}}>{{position.skill.name}}
+        </option>
       </select>
       <label class="col-form-label" for="position">position</label>
     </div>

@@ -47,7 +47,7 @@ export class ProjectComponent implements OnInit {
 
           this.project = project.data[0];
           if (this.state.isLoggedIn()) {
-            if (this.state.getUser().id === this.project.user_id) {
+            if (this.state.getUser().id == this.project.user_id) {
               this.myProject = true;
               this.getApplications();
             }

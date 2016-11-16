@@ -3,14 +3,14 @@
     <div class="container">
       <div class="form-group row">
         <label for="title" class="col-sm-2 col-form-label">Title</label>
-        <input class="form-control col-sm-10" type="text" id="text" required minlength="4" maxlength="20"
+        <input class="form-control col-sm-10" type="text" id="title" required minlength="4" maxlength="20"
                name="title"
                [(ngModel)]="project.title"
                #title="ngModel">
         <div *ngIf="title.errors && (title.dirty || title.touched)">
-          <i [hidden]="!title.errors.required">Title is required</i>
-          <i [hidden]="!title.errors.minlength">Title must be at least 4 characters long.</i>
-          <i [hidden]="!title.errors.maxlength">Title cannot be more than 20 characters long.</i>
+          <i [hidden]="!title.errors.required" class="form-text text-danger">Title is required</i>
+          <i [hidden]="!title.errors.minlength" class="form-text text-danger">Title must be at least 4 characters long.</i>
+          <i [hidden]="!title.errors.maxlength" class="form-text text-danger">Title cannot be more than 20 characters long.</i>
         </div>
       </div>
 
@@ -21,8 +21,8 @@
                   [(ngModel)]="project.description"
                   #description="ngModel"></textarea>
         <div *ngIf="description.errors && (description.dirty || description.touched)">
-          <i [hidden]="!description.errors.required">Description is required</i>
-          <i [hidden]="!description.errors.minlength">Description must be at least 4 characters long.</i>
+          <i [hidden]="!description.errors.required" class="form-text text-danger">Description is required</i>
+          <i [hidden]="!description.errors.minlength" class="form-text text-danger">Description must be at least 4 characters long.</i>
         </div>
       </div>
 

@@ -151,7 +151,7 @@ export class ProjectService {
       'Authorization': 'Bearer ' + this.state.getToken()
     });
     return this.http.get(environment.URL_API + environment.API_VERSION + 'project/' + project_id +
-      '/application?with[]=user&with[]=position.skill', {headers: headers})
+      '/application?with[]=user&with[]=position.skill&accepted=0', {headers: headers})
       .map(this.extractData)
       .catch(this.handleError);
   }

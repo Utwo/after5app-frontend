@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {ProjectService} from '../../shared/project.service';
 import {ResponseHandlerService} from '../../../shared/response-handler.service';
 
@@ -6,43 +6,19 @@ import {ResponseHandlerService} from '../../../shared/response-handler.service';
   selector: 'app-user-applications',
   templateUrl: './user-applications.component.html'
 })
-export class UserApplicationsComponent implements OnInit {
+export class UserApplicationsComponent {
   @Input('project') project;
   @Input('user_applications') user_applications;
   @Output() onAccept = new EventEmitter<number>();
-  applications = null;
 
   constructor(private projectService: ProjectService, private responseHandler: ResponseHandlerService) {
   }
-
-  ngOnInit() {
-    this.applications = [];
-    for (let application of this.user_applications) {
-      if (application.accepted === 0) {
-        this.applications.push(application);
-      }
-    }
-  }
-
-  // getApplications() {
-  //   this.projectService.getApplications(this.project.id)
-  //     .subscribe(
-  //       data => {
-  //         this.applications = [];
-  //         for (let application of data) {
-  //           if (application.accepted == 0) {
-  //             this.applications.push(application);
-  //           }
-  //         }
-  //       },
-  //       error => this.responseHandler.errorMessage('An error occured!', error));
-  // }
 
   respondToApplication(application_id, index, code) {
     this.projectService.respondToApplication(application_id, code)
       .subscribe(
         () => {
-          this.applications.splice(index, 1);
+          this.user_applications.splice(index, 1);
           if (code === 1) {
             this.onAccept.emit();
           }

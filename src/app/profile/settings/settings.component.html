@@ -16,9 +16,9 @@
                    name="username" [(ngModel)]="user.name" #name="ngModel">
 
             <div *ngIf="name.errors && (name.dirty || name.touched)">
-              <i [hidden]="!name.errors.required">The name is required</i>
-              <i [hidden]="!name.errors.minlength">The name must be at least 3 characters long.</i>
-              <i [hidden]="!name.errors.maxlength">The name cannot be more than 20 characters long.</i>
+              <i [hidden]="!name.errors.required" class="form-text text-danger">Name is required</i>
+              <i [hidden]="!name.errors.minlength" class="form-text text-danger">Name must be at least 3 characters long.</i>
+              <i [hidden]="!name.errors.maxlength" class="form-text text-danger">Name cannot be more than 20 characters long.</i>
             </div>
           </div>
 
@@ -30,8 +30,8 @@
                    #workplace="ngModel">
 
             <div *ngIf="workplace.errors && (workplace.dirty || workplace.touched)">
-              <i [hidden]="!workplace.errors.minlength">The workplace must be at least 3 characters long.</i>
-              <i [hidden]="!workplace.errors.maxlength">The workplace cannot be more than 20 characters long.</i>
+              <i [hidden]="!workplace.errors.minlength" class="form-text text-danger">Workplace must be at least 3 characters long.</i>
+              <i [hidden]="!workplace.errors.maxlength" class="form-text text-danger">Workplace cannot be more than 20 characters long.</i>
             </div>
           </div>
 
@@ -43,9 +43,8 @@
                    [(ngModel)]="user.website" #website="ngModel">
 
             <div *ngIf="website.errors && (website.dirty || website.touched)">
-              <i [hidden]="!website.errors.minlength">The website must be at least 3 characters long.</i>
-              <i [hidden]="!website.errors.maxlength">The website cannot be more than 20 characters long.</i>
-              <i [hidden]="!website.errors.pattern">The website dosn't have the correct pattern.</i>
+              <i [hidden]="!website.errors.maxlength" class="form-text text-danger">Website cannot be more than 20 characters long.</i>
+              <i [hidden]="!website.errors.pattern" class="form-text text-danger">Website doesn't have the correct pattern.</i>
             </div>
           </div>
 
@@ -57,8 +56,8 @@
                    #twitter="ngModel">
 
             <div *ngIf="twitter.errors && (twitter.dirty || twitter.touched)">
-              <i [hidden]="!twitter.errors.minlength">The twitter name must be at least 3 characters long.</i>
-              <i [hidden]="!twitter.errors.maxlength">The twitter name cannot be more than 20 characters long.</i>
+              <i [hidden]="!twitter.errors.minlength" class="form-text text-danger">Twitter name must be at least 3 characters long.</i>
+              <i [hidden]="!twitter.errors.maxlength" class="form-text text-danger">Twitter name cannot be more than 20 characters long.</i>
             </div>
           </div>
           <button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid">Save changes</button>

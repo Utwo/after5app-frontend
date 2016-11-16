@@ -13,9 +13,11 @@
              [(ngModel)]="project.title" #title="ngModel">
 
       <div *ngIf="title.errors && (title.dirty || title.touched)">
-        <i [hidden]="!title.errors.required">The title is required</i>
-        <i [hidden]="!title.errors.minlength">The title must be at least 4 characters long.</i>
-        <i [hidden]="!title.errors.maxlength">The title cannot be more than 20 characters long.</i>
+        <i [hidden]="!title.errors.required" class="form-text text-danger">Title is required</i>
+        <i [hidden]="!title.errors.minlength" class="form-text text-danger">Title must be at least 4 characters
+          long.</i>
+        <i [hidden]="!title.errors.maxlength" class="form-text text-danger">Title cannot be more than 20 characters
+          long.</i>
       </div>
     </div>
 
@@ -26,8 +28,9 @@
                 [(ngModel)]="project.description" #description="ngModel" rows="6"></textarea>
 
       <div *ngIf="description.errors && (description.dirty || description.touched)">
-        <i [hidden]="!description.errors.required">The Description is required</i>
-        <i [hidden]="!description.errors.minlength">The Description must be at least 4 characters long.</i>
+        <i [hidden]="!description.errors.required" class="form-text text-danger">Description is required</i>
+        <i [hidden]="!description.errors.minlength" class="form-text text-danger">Description must be at least 4
+          characters long.</i>
       </div>
     </div>
 
@@ -42,8 +45,9 @@
       <div class="text-xs-right">
         <button class="btn btn-info" type="button" (click)="addPosition(position)">Add Position</button>
       </div>
-      <i [hidden]="!positionError">{{positionError}}</i>
+      <i [hidden]="!positionError" class="form-text text-danger">{{positionError}}</i>
     </fieldset>
+
     <ul class="list-unstyled">
       <li *ngFor="let position of project.position; let i = index" class="panel m-b-1 p-a-1">
         <h5>{{position.name}}
@@ -64,7 +68,7 @@
         <div class="col-md-2">
           <button class="btn btn-info" type="button" (click)="addQuestion(question)">Add</button>
         </div>
-        <i [hidden]="!questionError">{{questionError}}</i>
+        <i [hidden]="!questionError" class="form-text text-danger">{{questionError}}</i>
       </div>
     </div>
     <ol>

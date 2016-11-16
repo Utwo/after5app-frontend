@@ -1,6 +1,6 @@
-<section *ngIf="applications && applications.length > 0">
-  <ul class="list-unstyled">
-    <li *ngFor="let application of applications" class="m-t-1 m-b-3 panel panel--top--bottom w-100">
+<section class="col-md-12 m-t-2">
+  <ul *ngIf="user_applications && user_applications.length > 0" class="list-unstyled">
+    <li *ngFor="let application of user_applications" class="m-t-1 m-b-3 panel panel--top--bottom w-100">
       <h4 class="p-a-1 bg-primary"><strong>{{application.user.name}}</strong> for <strong>{{application.position.skill.name}}</strong>
         position</h4>
       <div class="p-a-1">
@@ -20,4 +20,5 @@
       </div>
     </li>
   </ul>
+  <i *ngIf="!user_applications || user_applications.length === 0" class="text-muted">No new applications for this project.</i>
 </section>
