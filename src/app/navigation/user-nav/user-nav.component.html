@@ -1,11 +1,11 @@
 <div class="dropdown" [class.dropdown--activ]="isDropdownActiv">
-    <span (click)="dropdown();" class="notification">
+  <div (click)="dropdown();" class="notification">
         <span class="notification__icon m-r-1">
             <svg class="icon icon-lg"><use xlink:href="assets/icons.svg#icon-rocket22"></use></svg>
             <i *ngIf="notificationCount != 0" class="notification__count">{{notificationCount}}</i>
         </span>
-        {{user.name}}
-    </span>
+    <span class="hidden-xs-down">{{user.name}}</span>
+  </div>
   <div class="dropdown-menu dropdown__content container-fluid text-xs-left">
     <ul class="list-unstyled text-xs-center">
       <li><a class="d-block user-nav__item" routerLink="/profile/{{user.id}}">Profile</a></li>
@@ -17,9 +17,9 @@
       <li *ngFor="let notification of notifications">
         <div [ngSwitch]="notification.type">
           <div *ngSwitchCase="notificationTypes.comment" class="notification__item row">
-            <div class="col-md-2"><img class="profile-img" src="{{notification.data.user.picture}}"
+            <div class="col-xs-2"><img class="profile-img" src="{{notification.data.user.picture}}"
                                        width="25" height="25"/></div>
-            <div class="col-md-10">
+            <div class="col-xs-10">
               <p>
                 <a routerLink="/profile/{{notification.data.user.id}}">
                   {{notification.data.user.name}}
@@ -33,9 +33,9 @@
           </div>
 
           <div *ngSwitchCase="notificationTypes.message" class="notification__item row">
-            <div class="col-md-2"><img class="profile-img" src="{{notification.data.user.picture}}"
+            <div class="col-xs-2"><img class="profile-img" src="{{notification.data.user.picture}}"
                                        width="25" height="25"/></div>
-            <div class="col-md-10">
+            <div class="col-xs-10">
               <p>
                 <a routerLink="/profile/{{notification.data.user.id}}">
                   {{notification.data.user.name}}
@@ -49,7 +49,7 @@
           </div>
 
           <div *ngSwitchCase="notificationTypes.accept" class="notification__item row">
-            <div class="col-md-10 offset-md-2">
+            <div class="col-md-10 offset-md-2 col-xs-12">
               <p>Your application for
                 <a routerLink="/project/{{notification.data.project.id}}">
                   {{notification.data.project.title}}</a>
@@ -59,7 +59,7 @@
           </div>
 
           <div *ngSwitchCase="notificationTypes.decline" class="notification__item row">
-            <div class="col-md-10 offset-md-2">
+            <div class="col-md-10 offset-md-2 col-xs-12">
               <p>Your application for
                 <a routerLink="/project/{{notification.data.project.id}}">
                   {{notification.data.project.title}}</a>
@@ -69,9 +69,9 @@
           </div>
 
           <div *ngSwitchCase="notificationTypes.application" class="notification__item row">
-            <div class="col-md-2"><img class="profile-img" src="{{notification.data.user.picture}}"
+            <div class="col-xs-2"><img class="profile-img" src="{{notification.data.user.picture}}"
                                        width="25" height="25"/></div>
-            <div class="col-md-10">
+            <div class="col-xs-10">
               <p>
                 <a routerLink="/profile/{{notification.data.user.id}}">
                   {{notification.data.user.name}}

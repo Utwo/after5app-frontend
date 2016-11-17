@@ -13,6 +13,7 @@ export class NavigationComponent implements OnInit {
   email = '';
   emailMessage = '';
   showEmailInput = true;
+  showNavigation = false;
 
   constructor(private loginService: LoginService, private state: StateService) {
   }
@@ -61,5 +62,9 @@ export class NavigationComponent implements OnInit {
     this.loginModal.hide();
     this.emailMessage = '';
     this.showEmailInput = true;
+  }
+
+  toggleNavigation() {
+    this.showNavigation = !this.showNavigation;
   }
 }
