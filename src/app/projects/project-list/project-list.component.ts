@@ -24,7 +24,8 @@ export class ProjectListComponent implements OnInit {
   }
 
   getProjects(page) {
-    this.isPopularActive = this.isRecommendedActive = false;
+    this.isPopularActive = false;
+    this.isRecommendedActive = false;
     this.isRecentActive = true;
     this.projectService.getProjects(page)
       .subscribe(
@@ -33,8 +34,9 @@ export class ProjectListComponent implements OnInit {
   }
 
   filterProjects(skill) {
-    this.isPopularActive = this.isRecommendedActive = false;
-    this.isRecentActive = true;
+    this.isPopularActive = false;
+    this.isRecommendedActive = false;
+    this.isRecentActive = false;
     this.projectService.filterBySkill(skill)
       .subscribe(
         projects => this.extractData(projects),

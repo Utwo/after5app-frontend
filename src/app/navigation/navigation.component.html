@@ -62,7 +62,7 @@
           <div class="form-inline text-xs-center m-y-2">
             <div *ngIf="showEmailInput" class="form-group">
               <input class="form-control form-control-lg" title="email" type="email" placeholder="Login with email"
-                     [(ngModel)]="email">
+                     [(ngModel)]="email" (keyup.enter)="loginByEmail()">
               <button [disabled]="email.length===0" class="btn btn-info btn-lg" (click)="loginByEmail()">
                 Send
               </button>

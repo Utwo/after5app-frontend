@@ -1,4 +1,4 @@
-<div class="dropdown" [class.dropdown--activ]="isDropdownActiv">
+<div class="dropdown" #container [class.dropdown--activ]="isDropdownActiv">
   <div (click)="dropdown();" class="notification">
         <span class="notification__icon m-r-1">
             <svg class="icon icon-lg"><use xlink:href="assets/icons.svg#icon-rocket22"></use></svg>

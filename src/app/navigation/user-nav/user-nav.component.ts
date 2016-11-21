@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, ViewChild} from '@angular/core';
 import {NotificationsService} from './shared/notifications.service';
 import {LoginService} from '../../core/login.service';
 import {Router} from '@angular/router';
@@ -10,6 +10,8 @@ import {ResponseHandlerService} from '../../shared/response-handler.service';
 })
 export class UserNavComponent implements OnInit {
   @Input() user;
+  @ViewChild('container') container;
+
   isDropdownActiv = false;
   notificationCount = 0;
   notifications = null;
@@ -23,10 +25,17 @@ export class UserNavComponent implements OnInit {
 
   constructor(private notificationsService: NotificationsService, private loginService: LoginService,
               private router: Router, private responseHandler: ResponseHandlerService) {
+    document.addEventListener('click', this.onClickOutside.bind(this));
   }
 
   ngOnInit() {
     this.getNotificationCount();
+  }
+
+  onClickOutside(event) {
+    if (!this.container.nativeElement.contains(event.target)) {
+      this.isDropdownActiv = false;
+    }
   }
 
   getNotificationCount() {

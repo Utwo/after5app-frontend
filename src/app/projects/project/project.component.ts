@@ -44,7 +44,6 @@ export class ProjectComponent implements OnInit {
             this.router.navigate(['/not-found']);
             return;
           }
-
           this.project = project.data[0];
           if (this.state.isLoggedIn()) {
             if (this.state.getUser().id == this.project.user_id) {

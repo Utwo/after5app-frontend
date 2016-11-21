@@ -13,7 +13,7 @@
   </ul>
   <p *ngIf="comments && comments.length == 0" class="text-muted">Add a comment to start a conversation</p>
   <div *ngIf="state.isLoggedIn()" class="form-group row p-x-1">
-    <input class="form-control col-xs-10" type="text" #text placeholder="Add your comment">
+    <input class="form-control col-xs-10" type="text" #text placeholder="Add your comment" (keyup.enter)="addComment(text)">
     <button (click)="addComment(text)" class="btn btn-info text-primary col-xs-2">
       <svg class="icon">
         <use xlink:href="assets/icons.svg#icon-paperplane"></use>
