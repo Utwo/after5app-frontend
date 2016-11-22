@@ -82,7 +82,7 @@
             <button (click)="addSkill()" type="submit" class="btn btn-primary">Add skill</button>
           </div>
           <ul class="m-t-1 list-inline">
-            <li *ngFor="let skill of user.skill; let i = index" class="list-inline-item m-t-1">
+            <li *ngFor="let skill of skills; let i = index" class="list-inline-item m-t-1">
               <a class="btn btn-gradient-primary btn-sm">{{skill}}
                 <button class="btn btn-link btn-sm text-info" type="button" (click)="removeSkill(i)">&times;</button>
               </a>

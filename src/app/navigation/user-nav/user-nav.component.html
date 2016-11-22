@@ -12,7 +12,7 @@
       <li><a class="d-block user-nav__item" routerLink="/settings">Settings</a></li>
       <li><a class="d-block user-nav__item" href="javascript:;" (click)="logout()">Logout</a></li>
     </ul>
-    <hr>
+    <hr *ngIf="notifications && notifications.length > 0">
     <ol class="list-unstyled">
       <li *ngFor="let notification of notifications">
         <div [ngSwitch]="notification.type">

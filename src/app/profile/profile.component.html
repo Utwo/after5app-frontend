@@ -77,6 +77,7 @@
                 </svg>
               </a>
             </h3>
+            <p *ngIf="user && !user.website && !user.twitter && !user.workplace">No info was added.</p>
             <ol class="list-unstyled font-weight-bold">
               <li *ngIf="user.website" class="user-nav__item">
                 <a href={{user.website}} target="_blank" class="d-block">{{user.website}}</a>
@@ -89,6 +90,7 @@
               </li>
             </ol>
             <h3 class="title-border p-b-1 m-t-2">Skills</h3>
+            <p *ngIf="user.skill && user.skill.length < 1">No skills were added.</p>
             <ul class="list-inline" *ngIf="user.skill.length > 0">
               <li *ngFor="let skill of user.skill" class="list-inline-item btn btn-sm btn-gradient-primary">
                 <strong>{{skill.name}}</strong>
