@@ -9,12 +9,14 @@ import {ResponseHandlerService} from '../../shared/response-handler.service';
   providers: [ProfileService]
 })
 export class SettingsComponent implements OnInit {
-  private user = {name: '', workplace: '', website: '', twitter: '', skill: []};
+  private user = {name: '', workplace: '', website: '', twitter: ''};
+  private skills = [];
   private selectedSkill;
 
-  constructor(private state: StateService, private profileService: ProfileService, private responseHandler: ResponseHandlerService) {
-
-  }
+  constructor(
+    private state: StateService,
+    private profileService: ProfileService,
+    private responseHandler: ResponseHandlerService) {}
 
   ngOnInit() {
     this.getUser();
@@ -24,12 +26,11 @@ export class SettingsComponent implements OnInit {
     this.profileService.getLoggedInUser()
       .subscribe(
         user => {
-          let skills = [];
           for (let skill of user.skill) {
-            skills.push(skill.name);
+            this.skills.push(skill.name);
           }
+          delete user.skill;
           this.user = user;
-          this.user.skill = skills;
           if (!this.user.website) {
             this.user.website = '';
           }
@@ -42,11 +43,20 @@ export class SettingsComponent implements OnInit {
   }
 
   addSkill() {
-    this.user.skill.push(this.selectedSkill);
+    this.skills.push(this.selectedSkill);
+    this.profileService.updateUser({skill: this.skills})
+      .subscribe(
+        () => this.responseHandler.successMessage(`The skill ${this.selectedSkill} was added.`),
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   removeSkill(index) {
-    this.user.skill.splice(index, 1);
+    const skill = this.skills[index];
+    this.skills.splice(index, 1);
+    this.profileService.updateUser({skill: this.skills})
+      .subscribe(
+        () => this.responseHandler.successMessage(`The skill ${skill} was removed.`),
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   onSubmit() {
