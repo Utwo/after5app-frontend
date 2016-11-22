@@ -26,7 +26,7 @@
                 </a>
                 left a comment for your project
                 <a routerLink="/project/{{notification.data.project.id}}">
-                  {{notification.data.project.title}}</a>
+                  <strong>{{notification.data.project.title}}</strong></a>
               </p>
               <small>{{notification.created_at | timeAgo}}</small>
             </div>
@@ -42,7 +42,7 @@
                 </a>
                 left a message for the members of
                 <a routerLink="/project/{{notification.data.project.id}}">
-                  {{notification.data.project.title}}</a>
+                  <strong>{{notification.data.project.title}}</strong></a>
               </p>
               <small>{{notification.created_at | timeAgo}}</small>
             </div>
@@ -52,7 +52,7 @@
             <div class="col-md-10 offset-md-2 col-xs-12">
               <p>Your application for
                 <a routerLink="/project/{{notification.data.project.id}}">
-                  {{notification.data.project.title}}</a>
+                  <strong>{{notification.data.project.title}}</strong></a>
                 was accepted! </p>
               <small>{{notification.created_at | timeAgo}}</small>
             </div>
@@ -62,7 +62,7 @@
             <div class="col-md-10 offset-md-2 col-xs-12">
               <p>Your application for
                 <a routerLink="/project/{{notification.data.project.id}}">
-                  {{notification.data.project.title}}</a>
+                  <strong>{{notification.data.project.title}}</strong></a>
                 was declined</p>
               <small>{{notification.created_at | timeAgo}}</small>
             </div>
@@ -78,7 +78,7 @@
                 </a>
                 applied for your project
                 <a routerLink="/project/{{notification.data.project.id}}">
-                  {{notification.data.project.title}}</a>
+                  <strong>{{notification.data.project.title}}</strong></a>
               </p>
               <small>{{notification.created_at | timeAgo}}</small>
             </div>
