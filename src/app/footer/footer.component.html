@@ -12,14 +12,13 @@
           &sdot; <a routerLink="/about">
           <small>About</small>
         </a>
-          &sdot; <a *ngIf="state.isLoggedIn()" routerLink="/start-project">
+          <span *ngIf="state.isLoggedIn()">&sdot; <a routerLink="/start-project">
           <small>Start project</small>
-        </a>
+        </a></span>
         </nav>
       </div>
       <div class="col-md-4 text-md-right text-xs-center">
-        <small>&#10100; &#10101; with &#10084; by <a href="http://utwo.ro" target="_blank">Utwo</a> and Oana
-        </small>
+        <small>&#10100; &#10101; with &#10084; by <a href="http://utwo.ro" target="_blank">Utwo</a> and Oana</small>
       </div>
     </div>
   </div>
