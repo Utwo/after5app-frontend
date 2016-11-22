@@ -64,7 +64,7 @@
       <button (click)="prevPage()" *ngIf="page.prev" class="btn btn-info">&#10096;</button>
     </div>
     <div class="col-xs">
-      <span class="btn">{{page.current_page}}</span>
+      <span *ngIf="page.prev || page.next" class="btn">{{page.current_page}}</span>
     </div>
     <div class="col-xs">
       <button (click)="nextPage()" *ngIf="page.next" class="btn btn-info">&#10097;</button>
