@@ -71,7 +71,7 @@
         <div class="sidebar p-a-1 m-b-3">
           <section>
             <h3 class="title-border p-b-1">About
-              <a *ngIf="isMe" routerLink="/settings" class="btn btn-outline-primary btn-sm pull-xs-right">
+              <a *ngIf="isMe" routerLink="/settings" class="btn btn-primary btn-sm pull-xs-right">
                 <svg class="icon">
                   <use xlink:href="assets/icons.svg#icon-pencil"></use>
                 </svg>
@@ -101,7 +101,7 @@
           <section *ngIf="isMe && applications && applications.length > 0" class="m-t-2">
             <h3 class="title-border p-b-1">Applied projects</h3>
             <ul *ngIf="applications" class="list-unstyled text-primary">
-              <li *ngFor="let application of applications" class="panel m-b-1">
+              <li *ngFor="let application of applications" class="panel m-b-1 p-y-1">
                 <span *ngIf="application.accepted == 1" title="Accepted">&nbsp;<svg class="icon icon-lg">
                   <use xlink:href="assets/icons.svg#icon-checkmark"></use>
                 </svg><a routerLink="/project/{{application.position.project.id}}" class="text-primary">

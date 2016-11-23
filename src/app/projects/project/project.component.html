@@ -1,14 +1,33 @@
 <div *ngIf="project">
   <div class="jumbotron-fluid">
     <div class="container">
-      <h2>{{project.title}}</h2>
-      by <a routerLink="/profile/{{project.user_id}}">{{project.user.name}}</a> &sdot;
-      <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
+      <div class="row">
+        <div class="col-md-8">
+          <h2>{{project.title}}</h2>
+          by <a routerLink="/profile/{{project.user_id}}">{{project.user.name}}</a> &sdot;
+          <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
+        </div>
+        <div class="col-md-4 text-xs-right" *ngIf="myProject">
+          <button class="btn btn-sm btn-primary" title="edit project" (click)="editModal.show()">
+            <svg class="icon">
+              <use xlink:href="assets/icons.svg#icon-pencil"></use>
+            </svg>
+            <span class="hidden-sm-down">Edit</span>
+          </button>
+
+          <button class="btn btn-sm btn-danger" title="delete project" (click)="deleteModal.show()">
+            <svg class="icon">
+              <use xlink:href="assets/icons.svg#icon-bin"></use>
+            </svg>
+            <span class="hidden-sm-down"></span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
   <article class="container m-y-3">
     <div class="row">
-      <section class="col-md-7">
+      <section class="col-lg-8 col-md-7">
         <div class="m-b-3">
           <h3 class="title-border title-border--green p-b-1">Project description</h3>
           <p>{{project.description}}</p>
@@ -24,18 +43,18 @@
         </div>
       </section>
 
-      <section class="col-md-5">
-        <div class="sidebar p-a-1">
-          <div *ngIf="!myProject && state.isLoggedIn()" class="m-b-1">
-            <button (click)="applyModal.show()" class="btn btn-primary m-r-1">
-              <svg class="icon">
-                <use xlink:href="assets/icons.svg#icon-rocket-color"></use>
-              </svg>
-            </button>
-            <span>Help this project become reality!</span>
-          </div>
-          <hr *ngIf="!myProject && state.isLoggedIn()">
-          <div>
+      <section class="col-lg-4 col-md-5">
+        <div class="sidebar">
+          <div class="p-a-1">
+            <div *ngIf="!myProject && state.isLoggedIn()" class="m-b-1">
+              <button (click)="applyModal.show()" class="btn btn-primary m-r-1">
+                <svg class="icon">
+                  <use xlink:href="assets/icons.svg#icon-rocket-color"></use>
+                </svg>
+              </button>
+              <span>Help this project!</span>
+            </div>
+            <hr *ngIf="!myProject && state.isLoggedIn()">
             <button *ngIf="!myProject && state.isLoggedIn()" #favorite (click)="addFavorite()"
                     class="btn m-r-1 btn-circle" [class.btn-danger]="isFavorite"
                     [class.btn-primary]="!isFavorite">
@@ -51,22 +70,22 @@
                 <use xlink:href="assets/icons.svg#icon-heart"></use>
               </svg> {{project.favorite_count}} favorites</span>
           </div>
-        </div>
-        <div *ngIf="myProject" class="text-xs-center m-t-2">
-          <button class="btn btn-primary" (click)="editModal.show()">
-            <svg class="icon">
-              <use xlink:href="assets/icons.svg#icon-pencil"></use>
-            </svg>
-            <span class="hidden-sm-down">Edit project</span>
-          </button>
-
-          <button class="btn btn-danger" (click)="deleteModal.show()">
-            <svg class="icon">
-              <use xlink:href="assets/icons.svg#icon-bin"></use>
-            </svg>
-            <span class="hidden-sm-down">Delete project</span>
-          </button>
-          <hr>
+          <div class="sidebar__footer text-xs-center bg-primary-gradient p-y-1">
+            <a
+              href="https://www.facebook.com/dialog/share?app_id={{environment.FACEBOOK_ID}}&display=popup&href={{href}}&redirect_uri={{href}}&quote=Check%20out%20this%20project%20and%20help%20it%20become%20a%20reality"
+              class="btn btn-primary btn-facebook m-r-1" target="_blank">
+              <svg class="icon icon-lg">
+                <use xlink:href="assets/icons.svg#icon-facebook2"></use>
+              </svg>
+              Share</a>
+            <a
+              href="https://twitter.com/share?url={{href}}&hashtags=after5app&text=Check%20out%20this%20project%20and%20help%20it%20become%20a%20reality"
+              class="btn btn-info btn-twitter m-l-1" target="_blank">
+              <svg class="icon icon-lg">
+                <use xlink:href="assets/icons.svg#icon-twitter"></use>
+              </svg>
+              Tweet</a>
+          </div>
         </div>
 
         <div *ngIf="members && members.length > 0">
@@ -87,7 +106,7 @@
 
   <div class="container m-y-3">
     <div class="row">
-      <tabset class="col-md-7">
+      <tabset class="col-lg-8 col-md-7">
         <tab [heading]="Comments" [active]="true">
           <template tabHeading>
             Comments

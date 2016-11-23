@@ -4,6 +4,7 @@ import {ModalDirective} from 'ng2-bootstrap/ng2-bootstrap';
 import {ProjectService} from '../shared/project.service';
 import {StateService} from '../../shared/state.service';
 import {ResponseHandlerService} from '../../shared/response-handler.service';
+import {environment} from '../../../environments/environment';
 const mo = require('mo-js/build/mo.min.js');
 
 @Component({
@@ -18,6 +19,8 @@ export class ProjectComponent implements OnInit {
   private myProject = false;
   private isFavorite = false;
   private isMember = false;
+  private environment = environment;
+  private href = encodeURIComponent(window.location.href);
 
   @ViewChild('editModal') public editModal: ModalDirective;
   @ViewChild('deleteModal') public deleteModal: ModalDirective;
