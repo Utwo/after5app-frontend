@@ -11,7 +11,7 @@ import {ResponseHandlerService} from '../../shared/response-handler.service';
 export class SettingsComponent implements OnInit {
   private user = {name: '', workplace: '', website: '', twitter: ''};
   private skills = [];
-  private selectedSkill;
+  private selectedSkill = '';
 
   constructor(
     private state: StateService,
@@ -43,6 +43,9 @@ export class SettingsComponent implements OnInit {
   }
 
   addSkill() {
+    if(this.selectedSkill.length < 1 || this.skills.indexOf(this.selectedSkill) >= 0){
+      return;
+    }
     this.skills.push(this.selectedSkill);
     this.profileService.updateUser({skill: this.skills})
       .subscribe(

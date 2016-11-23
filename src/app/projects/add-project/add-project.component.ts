@@ -36,26 +36,38 @@ export class AddProjectComponent implements OnInit {
     this.selectedSkill = skill.name;
   }
 
-  addPosition(position) {
-    if (this.selectedSkill.length === 0) {
-      this.positionError = 'Please choose a skill.';
+  addPosition(pos) {
+    const position = { description: pos.value, name: this.selectedSkill, status: 1 };
+
+    if (this.validatePosition(position)) {
       return;
     }
 
+    this.project.position.push(position);
+    this.positionError = null;
+    pos.value = '';
+  }
+
+  validatePosition(position){
     for (let project_position of this.project.position) {
-      if (this.selectedSkill === project_position.name) {
+      if (position.name === project_position.name) {
         this.positionError = 'Please choose a new skill.';
-        return;
+        return true;
       }
     }
-
-    if (position.value.length < 4) {
+    if (position.description.length < 4) {
       this.positionError = 'The position description must be at least 4 characters long.';
-      return;
+      return true;
     }
-    this.project.position.push({description: position.value, name: this.selectedSkill, status: 1});
-    this.positionError = null;
-    position.value = '';
+    if (position.name.length < 1) {
+      this.positionError = 'Please choose a skill.';
+      return true;
+    }
+    if (position.name.length > 15) {
+      this.positionError = 'The skill can be maximum 15 characters long.';
+      return true;
+    }
+    return false;
   }
 
   removePosition(index) {
@@ -65,6 +77,10 @@ export class AddProjectComponent implements OnInit {
   addQuestion(question) {
     if (question.value.length < 2) {
       this.questionError = 'A question must be at least 2 characters long.';
+      return;
+    }
+    if (question.value.length > 250) {
+      this.questionError = 'A question can be maximum 250 characters long.';
       return;
     }
     this.project.application_questions.push(question.value);
