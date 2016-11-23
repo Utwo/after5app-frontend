@@ -20,7 +20,7 @@ export class ProjectComponent implements OnInit {
   private isFavorite = false;
   private isMember = false;
   private environment = environment;
-  private window = window;
+  private href = encodeURIComponent(window.location.href);
 
   @ViewChild('editModal') public editModal: ModalDirective;
   @ViewChild('deleteModal') public deleteModal: ModalDirective;

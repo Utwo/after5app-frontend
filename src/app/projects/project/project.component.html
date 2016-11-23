@@ -44,42 +44,43 @@
       </section>
 
       <section class="col-lg-4 col-md-5">
-        <div class="sidebar p-a-1">
-          <div *ngIf="!myProject && state.isLoggedIn()" class="m-b-1">
-            <button (click)="applyModal.show()" class="btn btn-primary m-r-1">
-              <svg class="icon">
-                <use xlink:href="assets/icons.svg#icon-rocket-color"></use>
+        <div class="sidebar">
+          <div class="p-a-1">
+            <div *ngIf="!myProject && state.isLoggedIn()" class="m-b-1">
+              <button (click)="applyModal.show()" class="btn btn-primary m-r-1">
+                <svg class="icon">
+                  <use xlink:href="assets/icons.svg#icon-rocket-color"></use>
+                </svg>
+              </button>
+              <span>Help this project!</span>
+            </div>
+            <hr *ngIf="!myProject && state.isLoggedIn()">
+            <button *ngIf="!myProject && state.isLoggedIn()" #favorite (click)="addFavorite()"
+                    class="btn m-r-1 btn-circle" [class.btn-danger]="isFavorite"
+                    [class.btn-primary]="!isFavorite">
+              <svg *ngIf="isFavorite" class="icon">
+                <use xlink:href="assets/icons.svg#icon-heart"></use>
+              </svg>
+              <svg *ngIf="!isFavorite" class="icon text-info">
+                <use xlink:href="assets/icons.svg#icon-heart-o"></use>
               </svg>
             </button>
-            <span>Help this project become reality!</span>
-          </div>
-          <hr *ngIf="!myProject && state.isLoggedIn()">
-          <button *ngIf="!myProject && state.isLoggedIn()" #favorite (click)="addFavorite()"
-                  class="btn m-r-1 btn-circle" [class.btn-danger]="isFavorite"
-                  [class.btn-primary]="!isFavorite">
-            <svg *ngIf="isFavorite" class="icon">
-              <use xlink:href="assets/icons.svg#icon-heart"></use>
-            </svg>
-            <svg *ngIf="!isFavorite" class="icon text-info">
-              <use xlink:href="assets/icons.svg#icon-heart-o"></use>
-            </svg>
-          </button>
-          <span #favoriteSpan title="Login to favorite a project"><svg *ngIf="!state.isLoggedIn() || myProject"
-                                                                       class="icon text-primary icon-lg m-r-1">
+            <span #favoriteSpan title="Login to favorite a project"><svg *ngIf="!state.isLoggedIn() || myProject"
+                                                                         class="icon text-primary icon-lg m-r-1">
                 <use xlink:href="assets/icons.svg#icon-heart"></use>
               </svg> {{project.favorite_count}} favorites</span>
-          <hr>
-          <div class="text-xs-center">
+          </div>
+          <div class="sidebar__footer text-xs-center bg-primary-gradient p-y-1">
             <a
-              href="https://www.facebook.com/dialog/share?app_id={{environment.FACEBOOK_ID}}&display=popup&href={{window.location.href}}&redirect_uri={{window.location.href}}"
-              class="btn btn-facebook" target="_blank">
+              href="https://www.facebook.com/dialog/share?app_id={{environment.FACEBOOK_ID}}&display=popup&href={{href}}&redirect_uri={{href}}&quote=Check%20out%20this%20project%20and%20help%20it%20become%20a%20reality"
+              class="btn btn-primary btn-facebook m-r-1" target="_blank">
               <svg class="icon icon-lg">
                 <use xlink:href="assets/icons.svg#icon-facebook2"></use>
               </svg>
               Share</a>
             <a
-              href="https://twitter.com/share?url={{window.location.href}}&via=twitterdev&related=twitterapi%2Ctwitter&hashtags=example%2Cdemo&text=custom%20share%20text"
-              class="btn btn-twitter" target="_blank">
+              href="https://twitter.com/share?url={{href}}&hashtags=after5app&text=Check%20out%20this%20project%20and%20help%20it%20become%20a%20reality"
+              class="btn btn-info btn-twitter m-l-1" target="_blank">
               <svg class="icon icon-lg">
                 <use xlink:href="assets/icons.svg#icon-twitter"></use>
               </svg>
