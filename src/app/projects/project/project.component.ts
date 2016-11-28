@@ -29,8 +29,11 @@ export class ProjectComponent implements OnInit {
   @ViewChild('favorite') favorite;
   @ViewChild('favoriteSpan') favoriteSpan;
 
-  constructor(private route: ActivatedRoute, private projectService: ProjectService, private state: StateService,
-              private router: Router, private responseHandler: ResponseHandlerService) {
+  constructor(private route: ActivatedRoute,
+              private projectService: ProjectService,
+              private state: StateService,
+              private router: Router,
+              private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
@@ -72,9 +75,6 @@ export class ProjectComponent implements OnInit {
   }
 
   addFavorite() {
-    if (this.myProject || !this.state.isLoggedIn()) {
-      return;
-    }
     this.projectService.addFavorite(this.project.id)
       .subscribe(
         () => {
@@ -153,13 +153,14 @@ export class ProjectComponent implements OnInit {
     }
   }
 
+  pendingApplicationsCount() {
+    return this.applications.filter((item) => item.accepted == 0).length;
+  }
+
   deleteProject() {
-    if (!this.myProject) {
-      return;
-    }
     this.projectService.deleteProject(this.project.id)
       .subscribe(
-        project => {
+        () => {
           this.router.navigate(['/projects']);
         },
         error => this.responseHandler.errorMessage('An error occured!', error));

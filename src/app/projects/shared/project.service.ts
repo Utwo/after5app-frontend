@@ -11,7 +11,8 @@ export class ProjectService {
   }
 
   getProjects(page) {
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'project?sort[]=created_at,desc&with[]=user&with[]=position.skill&page=' + page)
+    return this.http.get(environment.URL_API + environment.API_VERSION +
+      'project?sort[]=created_at,desc&with[]=user&with[]=position.skill&page=' + page)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -151,7 +152,7 @@ export class ProjectService {
       'Authorization': 'Bearer ' + this.state.getToken()
     });
     return this.http.get(environment.URL_API + environment.API_VERSION + 'project/' + project_id +
-      '/application?with[]=user&with[]=position.skill&accepted=0', {headers: headers})
+      '/application?with[]=user&with[]=position.skill', {headers: headers})
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -183,7 +184,8 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.put(environment.URL_API + environment.API_VERSION + 'application/' + application_id, body, options)
+    return this.http.put(environment.URL_API + environment.API_VERSION +
+      'application/' + application_id, body, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -195,7 +197,22 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.post(environment.URL_API + environment.API_VERSION + 'project/' + project_id + '/favorite', '', options)
+    return this.http.post(environment.URL_API + environment.API_VERSION +
+      'project/' + project_id + '/favorite', '', options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  public addPosition(position) {
+    let body = JSON.stringify(position);
+
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.state.getToken()
+    });
+    const options = new RequestOptions({headers: headers});
+
+    return this.http.post(environment.URL_API + environment.API_VERSION + 'position', body, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
