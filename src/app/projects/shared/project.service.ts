@@ -11,7 +11,8 @@ export class ProjectService {
   }
 
   getProjects(page) {
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'project?sort[]=created_at,desc&with[]=user&with[]=position.skill&page=' + page)
+    return this.http.get(environment.URL_API + environment.API_VERSION +
+      'project?sort[]=created_at,desc&with[]=user&with[]=position.skill&page=' + page)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -183,7 +184,8 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.put(environment.URL_API + environment.API_VERSION + 'application/' + application_id, body, options)
+    return this.http.put(environment.URL_API + environment.API_VERSION +
+      'application/' + application_id, body, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -195,19 +197,20 @@ export class ProjectService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.post(environment.URL_API + environment.API_VERSION + 'project/' + project_id + '/favorite', '', options)
+    return this.http.post(environment.URL_API + environment.API_VERSION +
+      'project/' + project_id + '/favorite', '', options)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   public addPosition(position) {
-    let body = JSON.stringify({position});
+    let body = JSON.stringify(position);
 
-    let headers = new Headers({
+    const headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.state.getToken()
     });
-    let options = new RequestOptions({headers: headers});
+    const options = new RequestOptions({headers: headers});
 
     return this.http.post(environment.URL_API + environment.API_VERSION + 'position', body, options)
       .map(this.extractData)

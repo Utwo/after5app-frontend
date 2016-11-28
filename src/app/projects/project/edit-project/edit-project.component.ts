@@ -47,8 +47,13 @@ export class EditProjectComponent implements OnInit {
 
     this.projectService.addPosition(position)
       .subscribe(
-        () => {
-          this.project.position.push(position);
+        (data) => {
+          this.project.position.push({
+            id: data.position.id,
+            description: data.position.description,
+            skill: {name: data.position.name},
+            status: true
+          });
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
