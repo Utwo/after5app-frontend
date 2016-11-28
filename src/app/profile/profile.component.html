@@ -103,18 +103,18 @@
             <ul *ngIf="applications" class="list-unstyled text-primary">
               <li *ngFor="let application of applications">
                 <div *ngIf="application.accepted == 1" class="panel m-b-1 p-y-1">
-                <span title="Accepted">&nbsp;<svg class="icon icon-lg">
+                <span>&nbsp;<svg class="icon icon-lg">
                   <use xlink:href="assets/icons.svg#icon-checkmark"></use>
                 </svg><a routerLink="/project/{{application.position.project.id}}" class="text-primary">
-                  {{application.position.project.title}}</a> - accepted
+                  {{application.position.project.title}}</a> - <i>accepted</i>
                 </span>
                 </div>
                 <div *ngIf="application.accepted == 0" class="panel__item m-b-1">
-                <span title="Pending">&nbsp;<svg class="icon icon-lg">
+                <span>&nbsp;<svg class="icon icon-lg">
                   <use xlink:href="assets/icons.svg#icon-clock2"></use>
                 </svg>
                 <a routerLink="/project/{{application.position.project.id}}" class="text-primary">
-                  {{application.position.project.title}}</a> - pending
+                  {{application.position.project.title}}</a> - <i>pending</i>
                 </span>
                 </div>
               </li>
