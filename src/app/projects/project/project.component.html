@@ -124,7 +124,7 @@
         <tab *ngIf="myProject && applications" [heading]="Applications">
           <template tabHeading>
             <span>Applications
-              <strong *ngIf="applications && applications.length > 0" class="btn btn-primary btn-sm btn-circle-sm">{{applications.length}}</strong>
+              <strong *ngIf="applications && pendingApplicationsCount() > 0" class="btn btn-primary btn-sm btn-circle-sm">{{applications.length}}</strong>
             </span>
           </template>
           <app-user-applications [project]="project" [user_applications]="applications"
