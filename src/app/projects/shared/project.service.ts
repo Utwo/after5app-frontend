@@ -200,6 +200,20 @@ export class ProjectService {
       .catch(this.handleError);
   }
 
+  public addPosition(position) {
+    let body = JSON.stringify({position});
+
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.state.getToken()
+    });
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.post(environment.URL_API + environment.API_VERSION + 'position', body, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   public deletePosition(position_id) {
     let headers = new Headers({
       'Content-Type': 'application/json',

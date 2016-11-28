@@ -10,6 +10,8 @@ import {ResponseHandlerService} from '../../../shared/response-handler.service';
 export class EditProjectComponent implements OnInit {
   @Input() project;
   @Output() onEdit = new EventEmitter<string>();
+  selectedSkill = '';
+  positionError = null;
 
   constructor(private projectService: ProjectService, private responseHandler: ResponseHandlerService) {
   }
@@ -29,10 +31,30 @@ export class EditProjectComponent implements OnInit {
   removePosition(position_id, index) {
     this.projectService.deletePosition(position_id)
       .subscribe(
-        data => {
+        () => {
           this.project.position.splice(index, 1);
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
+  }
+
+  addPosition(pos) {
+    const position = {description: pos.value, name: this.selectedSkill, status: 1, project_id: this.project.id};
+
+    if (this.validatePosition(position)) {
+      return;
+    }
+    this.positionError = null;
+
+    this.projectService.addPosition(position)
+      .subscribe(
+        () => {
+          this.project.position.push(position);
+        },
+        error => this.responseHandler.errorMessage('An error occured!', error));
+  }
+
+  onSelect(skill) {
+    this.selectedSkill = skill.name;
   }
 
   addQuestion(question) {
@@ -41,5 +63,27 @@ export class EditProjectComponent implements OnInit {
 
   removeQuestion(index) {
     this.project.application_questions.splice(index, 1);
+  }
+
+  validatePosition(position) {
+    for (let project_position of this.project.position) {
+      if (position.name === project_position.skill.name) {
+        this.positionError = 'Please choose a new skill.';
+        return true;
+      }
+    }
+    if (position.description.length < 4) {
+      this.positionError = 'The position description must be at least 4 characters long.';
+      return true;
+    }
+    if (position.name.length < 1) {
+      this.positionError = 'Please choose a skill.';
+      return true;
+    }
+    if (position.name.length > 15) {
+      this.positionError = 'The skill can be maximum 15 characters long.';
+      return true;
+    }
+    return false;
   }
 }
