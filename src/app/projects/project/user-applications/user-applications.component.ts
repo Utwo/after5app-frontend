@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import {ProjectService} from '../../shared/project.service';
 import {ResponseHandlerService} from '../../../shared/response-handler.service';
 
@@ -6,12 +6,18 @@ import {ResponseHandlerService} from '../../../shared/response-handler.service';
   selector: 'app-user-applications',
   templateUrl: './user-applications.component.html'
 })
-export class UserApplicationsComponent {
+export class UserApplicationsComponent implements OnInit{
   @Input('project') project;
   @Input('user_applications') user_applications;
+  applications;
   @Output() onAccept = new EventEmitter<number>();
 
-  constructor(private projectService: ProjectService, private responseHandler: ResponseHandlerService) {
+  constructor(private projectService: ProjectService,
+              private responseHandler: ResponseHandlerService) {
+  }
+
+  ngOnInit() {
+    this.applications = this.user_applications.filter((item) => item.accepted == 0);
   }
 
   respondToApplication(application_id, index, code) {
