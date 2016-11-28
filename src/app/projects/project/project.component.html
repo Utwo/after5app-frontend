@@ -145,7 +145,7 @@
               {{project.title}}
             </a></h4>
             <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
-            <p>{{project.description}}</p>
+            <p>{{project.description | slice:0:40 }}</p>
             <ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
               <li class="list-inline-item btn btn-sm btn-gradient-primary project__skill-item"
                   *ngFor="let position of project.position">
