@@ -118,7 +118,7 @@
           <template tabHeading>
             <span title="only visible to project members">Messages</span>
           </template>
-          <app-messages [project_id]="project.id" [owner_id]="project.user_id"
+          <app-messages [owner_id]="project.user_id"
                         class="row comment panel--left"></app-messages>
         </tab>
         <tab *ngIf="myProject && applications" [heading]="Applications">
@@ -144,7 +144,7 @@
               {{project.title}}
             </a></h4>
             <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
-            <p>{{project.description | slice:0:40 }}</p>
+            <p>{{project.description}}</p>
             <ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
               <li class="list-inline-item btn btn-sm btn-gradient-primary project__skill-item"
                   *ngFor="let position of project.position">

@@ -13,6 +13,7 @@ const mo = require('mo-js/build/mo.min.js');
 })
 export class ProjectComponent implements OnInit {
   private project = null;
+  private project_id = null;
   private applications = null;
   private related = null;
   private members = null;
@@ -34,13 +35,17 @@ export class ProjectComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      let id = params['id'];
-      this.getProject(id);
+      if (this.project_id !== params['id']) {
+        this.myProject = false;
+        this.isMember = false;
+        this.project_id = params['id'];
+        this.getProject();
+      }
     });
   }
 
-  getProject(id) {
-    this.projectService.getProjectById(id)
+  getProject() {
+    this.projectService.getProjectById(this.project_id)
       .subscribe(
         project => {
           if (project.data.length === 0) {
@@ -119,7 +124,6 @@ export class ProjectComponent implements OnInit {
   removeMember(index) {
     let application_id;
     let member = this.members[index];
-
     for (let application of this.applications) {
       if (application.user_id === member.id) {
         application_id = application.id;
@@ -163,7 +167,7 @@ export class ProjectComponent implements OnInit {
 
   editProject() {
     this.editModal.hide();
-    this.getProject(this.project.id);
+    this.getProject();
   }
 
   showAnimation(el, elSpan) {

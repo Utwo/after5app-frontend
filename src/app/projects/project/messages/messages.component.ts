@@ -1,23 +1,31 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {ProjectService} from '../../shared/project.service';
-import {StateService} from '../../../shared/state.service';
 import {ResponseHandlerService} from '../../../shared/response-handler.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html'
 })
 export class MessagesComponent implements OnInit {
-  @Input('project_id') project_id;
   @Input('owner_id') owner_id;
   messages = null;
+  project_id;
   page = {current_page: null, prev: null, next: null};
 
-  constructor(private projectService: ProjectService, private state: StateService, private responseHandler: ResponseHandlerService) {
+  constructor(private route: ActivatedRoute,
+              private projectService: ProjectService,
+              private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
-    this.getMessages(1);
+    this.route.params.subscribe(params => {
+      if (this.project_id !== params['id']) {
+        this.messages = null;
+        this.project_id = params['id'];
+      }
+      this.getMessages(1);
+    });
   }
 
   getMessages(page) {
@@ -27,14 +35,18 @@ export class MessagesComponent implements OnInit {
           if (this.messages === null) {
             this.messages = [];
           }
-          this.messages.unshift.apply(this.messages, data.data.reverse());
-          this.page = {
-            current_page: data.current_page,
-            next: data.next_page_url,
-            prev: data.prev_page_url
-          };
+          this.pushMessages(data);
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
+  }
+
+  pushMessages(data) {
+    this.messages.unshift.apply(this.messages, data.data.reverse());
+    this.page = {
+      current_page: data.current_page,
+      next: data.next_page_url,
+      prev: data.prev_page_url
+    };
   }
 
   addMessage(message) {
@@ -53,5 +65,4 @@ export class MessagesComponent implements OnInit {
   loadMore() {
     this.getMessages(this.page.current_page + 1);
   }
-
 }
