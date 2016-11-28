@@ -30,15 +30,16 @@
       <section class="col-lg-8 col-md-7">
         <div class="m-b-3">
           <h3 class="title-border title-border--green p-b-1">Project description</h3>
-          <p>{{project.description}}</p>
+          <p class="project-description">{{project.description}}</p>
         </div>
         <div *ngIf="project.position.length > 0">
           <h3 class="title-border title-border--green p-b-1">I need help with</h3>
           <dl *ngFor="let position of project.position">
             <dt class="btn btn-sm btn-gradient-primary">
-              <strong>{{position.skill.name}}</strong>
+              <strong *ngIf="position.status">{{position.skill.name}}</strong>
+              <span *ngIf="!position.status">{{position.skill.name}}</span>
             </dt>
-            <dd [class.text-muted]="!position.status">{{position.description}}</dd>
+            <dd class="position-description" [class.text-muted]="!position.status">{{position.description}}</dd>
           </dl>
         </div>
       </section>

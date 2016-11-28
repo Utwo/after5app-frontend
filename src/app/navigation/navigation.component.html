@@ -1,13 +1,13 @@
 <header class="header-site" [class.show-navigation]="showNavigation">
   <div class="container">
     <div class="row">
-      <div class="col-md-2 col-sm-6 col-xs-8">
+      <div class="col-lg-2 col-md-2 col-sm-6 col-xs-8">
         <h1 class="header-logo"><strong><a routerLink="/">After5app</a></strong>
           <a href="javascript:;" (click)="toggleNavigation()"
              class="hidden-md-up toggle-burger btn btn-sm btn-circle-sm">&#x2261;</a>
         </h1>
       </div>
-      <div class="col-md-8 col-sm-12 col-xs-12 navigation-wrap hidden-sm-down">
+      <div class="col-lg-7 col-md-8 col-sm-12 col-xs-12 navigation-wrap hidden-sm-down">
         <nav class="navigation form-inline">
           <a class="navigation-item text-xs-center text-md-left" routerLink="/projects" routerLinkActive="active">Projects</a>
           <a class="navigation-item text-xs-center text-md-left" routerLink="/about" routerLinkActive="active">About</a>
@@ -20,7 +20,7 @@
           <app-search class="dropdown dropdown--lg"></app-search>
         </nav>
       </div>
-      <div class="col-md-2 col-sm-6 col-xs-4 text-xs-right">
+      <div class="col-lg-3 col-md-2 col-sm-6 col-xs-4 text-xs-right">
         <app-user-nav [user]="user" *ngIf="loggedIn"></app-user-nav>
         <span *ngIf="!loggedIn" (click)="loginModal.show()" class="btn btn-link-info btn-sm">Login</span>
       </div>

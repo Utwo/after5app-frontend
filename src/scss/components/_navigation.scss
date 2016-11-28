@@ -4,18 +4,6 @@
   padding-bottom: .3rem;
 }
 
-.user-nav__item {
-  padding: .4rem;
-  background: rgba(0, 0, 0, .08);
-  margin: .4rem;
-  border-radius: $border-radius;
-  transition: .3s all ease-in-out
-}
-
-.user-nav__item:hover {
-  background: #8ee3ce;
-}
-
 .toggle-burger {
   font-size: 1.6rem;
   vertical-align: middle;
@@ -36,7 +24,6 @@
 
 @media (max-width: map-get($grid-breakpoints, md)) {
   .navigation-wrap {
-    overflow: hidden;
     position: absolute;
     top: 5.3rem;
     left: 0;
@@ -74,6 +61,7 @@
     border-radius: 0;
     padding: 1em;
     width: 100%;
+    color: #fff;
   }
 }
 
