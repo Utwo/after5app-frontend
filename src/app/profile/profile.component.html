@@ -79,13 +79,13 @@
             </h3>
             <p *ngIf="user && !user.website && !user.twitter && !user.workplace">No info was added.</p>
             <ol class="list-unstyled font-weight-bold">
-              <li *ngIf="user.website" class="user-nav__item">
+              <li *ngIf="user.website" class="panel__item">
                 <a href={{user.website}} target="_blank" class="d-block">{{user.website}}</a>
               </li>
-              <li *ngIf="user.twitter" class="user-nav__item">
+              <li *ngIf="user.twitter" class="panel__item">
                 <a href="https://twitter.com/{{user.twitter}}" target="_blank" class="d-block">@{{user.twitter}}</a>
               </li>
-              <li *ngIf="user.workplace" class="user-nav__item">
+              <li *ngIf="user.workplace" class="panel__item">
                 <span class="font-weight-normal">Workplace: </span>{{user.workplace}}
               </li>
             </ol>
@@ -101,18 +101,22 @@
           <section *ngIf="isMe && applications && applications.length > 0" class="m-t-2">
             <h3 class="title-border p-b-1">Applied projects</h3>
             <ul *ngIf="applications" class="list-unstyled text-primary">
-              <li *ngFor="let application of applications" class="panel m-b-1 p-y-1">
-                <span *ngIf="application.accepted == 1" title="Accepted">&nbsp;<svg class="icon icon-lg">
+              <li *ngFor="let application of applications">
+                <div *ngIf="application.accepted == 1" class="panel m-b-1 p-y-1">
+                <span title="Accepted">&nbsp;<svg class="icon icon-lg">
                   <use xlink:href="assets/icons.svg#icon-checkmark"></use>
                 </svg><a routerLink="/project/{{application.position.project.id}}" class="text-primary">
                   {{application.position.project.title}}</a> - accepted
                 </span>
-                <span *ngIf="application.accepted == 0" title="Pending">&nbsp;<svg class="icon icon-lg">
+                </div>
+                <div *ngIf="application.accepted == 0" class="panel__item m-b-1">
+                <span title="Pending">&nbsp;<svg class="icon icon-lg">
                   <use xlink:href="assets/icons.svg#icon-clock2"></use>
                 </svg>
                 <a routerLink="/project/{{application.position.project.id}}" class="text-primary">
                   {{application.position.project.title}}</a> - pending
                 </span>
+                </div>
               </li>
             </ul>
             <p *ngIf="!applications">No application yet. After you help a project, your applications will appear

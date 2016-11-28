@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.notification:hover {
+  cursor: pointer;
+}
+
 .notification__icon {
   border-radius: 50%;
   font-size: $font-size-lg;
