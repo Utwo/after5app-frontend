@@ -31,7 +31,7 @@
   background: $brand-info;
   border-radius: $border-radius;
   display: block;
-  top: 2em;
+  top: 115%;
   left: 50%;
   transform: translate(-50%, 0);
 }
@@ -52,7 +52,7 @@
 }
 
 .home-section__1__container {
-  max-width: 1100px;
+  max-width: 1120px;
 }
 
 //Section 2
@@ -83,4 +83,18 @@
   border-radius: 50%;
   box-shadow: 1px 1px 1px $brand-primary;
   line-height: 1.39;
+}
+
+@media (max-width: map-get($grid-breakpoints, md)) {
+  .home-section__1 h1 {
+    font-size: 1.6rem;
+  }
+
+  .home-section__1 h2 {
+    font-size: 1.3rem;
+  }
+
+  .home-section__2 {
+    margin: 3rem auto;
+  }
 }
