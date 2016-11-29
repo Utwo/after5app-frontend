@@ -18,9 +18,13 @@ fieldset {
   border: $gray-lighter 1px solid;
 }
 
+legend {
+  fonst-size: 1.3rem;
+}
+
 // Small devices (landscape phones, 544px and up)
 @media (max-width: map-get($grid-breakpoints, sm)) {
-  html{
+  html {
     font-size: 15px;
   }
 }

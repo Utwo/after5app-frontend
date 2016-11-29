@@ -1,8 +1,10 @@
 <section class="container-fluid home-section home-section__1">
   <div class="row flex-items-xs-center flex-items-xs-middle text-xs-center">
     <div class="home-section__1__container">
-      <h1 class="home-title__border font-weight-bold p-b-2">After5app is the place where big ideas come to life</h1>
-      <h2 class="m-t-3">We encourage creativity and collaboration between people in order to achieve great things</h2>
+      <div class="col-xs">
+        <h1 class="home-title__border font-weight-bold p-b-2">After5app is the place where big ideas come to life</h1>
+        <h2 class="m-t-3">We encourage creativity and collaboration between people in order to achieve great things</h2>
+      </div>
     </div>
   </div>
 </section>
@@ -12,22 +14,22 @@
     <div class="col-md-4">
       <span class="home-section__2__icon d-inline-block m-b-1 p-a-3">🚀</span>
       <h4>Start a project</h4>
-      <p>Do you have a great idea of a project or an app, but you need some help with the implementation? We’re here to
-        help you. Just let us know what is it about and what you’re looking for. All you have to do next is choosing the
-        right ninja coders for your team.</p>
+      <p>Do you have a great idea of a project, but need some help with the implementation? We're here to help you. Just
+        write a short description and tell us what you’re looking for. All you have to do next is choosing the right
+        ninja coders for your team.</p>
     </div>
     <div class="col-md-4">
       <span class="home-section__2__icon d-inline-block m-b-1 p-a-3">💙</span>
       <h4>Help a project</h4>
-      <p>Are you a talented coder, tired of working for someone else? Do you also want to work on something else that
-        will end up being your own product? All you have to do is finding one of the existing ideas, cooperate and help
-        it become a reality.</p>
+      <p>Are you a talented coder, tired of working for someone else and willing to create a brand new product? Find one
+        of the existing ideas that needs your skills, get in touch with the owner and convince him you are the right
+        pick for his team!</p>
     </div>
     <div class="col-md-4">
       <span class="home-section__2__icon d-inline-block m-b-1 p-a-3">🦄</span>
       <h4>Make it happen</h4>
       <p>After setting up your team, project and your mind, it’s time to start working on it. Don’t rush, take it one
-        step at a time. We know that you can make it! And please let us know how it ended up :)</p>
+        step at a time. We know that you can make it! And please let us know how it all worked out for you! :)</p>
     </div>
   </div>
 </section>
@@ -38,8 +40,14 @@
       <div class="col-md-12 text-xs-center">
         <h3>Dream it. Start it. Support it. Make it happen.</h3>
         <h4 class="m-y-3">This is the place to begin!</h4>
-        <a class="btn btn-info btn-lg m-r-2" routerLink="/projects">Support a project</a>
-        <a class="btn btn-info btn-lg m-l-2" routerLink="/start-project">Start a project</a>
+        <div class="row">
+          <div class="col-sm-6 text-md-right">
+            <a class="btn btn-info btn-lg" routerLink="/projects">Support a project</a>
+          </div>
+          <div class="col-sm-6 text-md-left">
+            <a class="btn btn-info btn-lg" routerLink="/start-project">Start a project</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
