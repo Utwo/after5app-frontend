@@ -189,6 +189,7 @@ export class ProjectComponent implements OnInit {
   editProject() {
     this.editModal.hide();
     this.getProject();
+    this.responseHandler.successMessage('Changes were saved');
   }
 
   showAnimation(el, elSpan) {
