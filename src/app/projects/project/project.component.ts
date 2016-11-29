@@ -109,7 +109,6 @@ export class ProjectComponent implements OnInit {
       .subscribe(
         members => {
           this.members = members;
-
           if (this.state.isLoggedIn()) {
             for (let member of members) {
               if (member.id === this.state.getUser().id) {
@@ -129,7 +128,7 @@ export class ProjectComponent implements OnInit {
         application_id = application.id;
       }
     }
-    this.projectService.respondToApplication(application_id, false)
+    this.projectService.declineApplication(application_id)
       .subscribe(
         data => this.getMembers(),
         error => this.responseHandler.errorMessage('An error occured!', error));
@@ -154,7 +153,12 @@ export class ProjectComponent implements OnInit {
   }
 
   pendingApplicationsCount() {
-    return this.applications.filter((item) => item.accepted == 0).length;
+    return this.applications.filter((item) => item.accepted === false).length;
+  }
+
+  applicationAccepted(application_id) {
+    this.applications = this.applications.filter((item) => item.id !== application_id);
+    this.getMembers();
   }
 
   deleteProject() {

@@ -6,7 +6,7 @@
       <div class="p-a-1">
         <ol>
           <li *ngFor="let answer of application.answers; let i = index">
-            <p>{{project.application_questions[i]}}</p>
+            <p>{{questions[i]}}</p>
             <p>{{answer}}</p>
           </li>
         </ol>
@@ -14,8 +14,8 @@
         <p *ngIf="application.message">{{application.message}}</p>
         <hr>
         <div class="text-xs-right">
-          <button (click)="respondToApplication(application.id, i, true)" class="btn btn-primary">Accept</button>
-          <button (click)="respondToApplication(application.id, i, false)" class="btn btn-danger">Decline</button>
+          <button (click)="acceptApplication(application.id, i)" class="btn btn-primary">Accept</button>
+          <button (click)="declineApplication(application.id, i)" class="btn btn-danger">Decline</button>
         </div>
       </div>
     </li>

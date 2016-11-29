@@ -176,8 +176,7 @@ export class ProjectService {
       .catch(this.handleError);
   }
 
-  public respondToApplication(application_id, code) {
-    let body = JSON.stringify({accepted: code});
+  public acceptApplication(application_id) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.state.getToken()
@@ -185,7 +184,20 @@ export class ProjectService {
     let options = new RequestOptions({headers: headers});
 
     return this.http.put(environment.URL_API + environment.API_VERSION +
-      'application/' + application_id, body, options)
+      'application/' + application_id, {}, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  public declineApplication(application_id) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.state.getToken()
+    });
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.delete(environment.URL_API + environment.API_VERSION +
+      'application/' + application_id, options)
       .map(this.extractData)
       .catch(this.handleError);
   }

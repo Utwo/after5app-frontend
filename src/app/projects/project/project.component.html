@@ -125,11 +125,11 @@
         <tab *ngIf="myProject && applications" [heading]="Applications">
           <template tabHeading>
             <span>Applications
-              <strong *ngIf="applications && pendingApplicationsCount() > 0" class="btn btn-primary btn-sm btn-circle-sm">{{applications.length}}</strong>
+              <strong *ngIf="applications && pendingApplicationsCount() > 0" class="btn btn-primary btn-sm btn-circle-sm">{{pendingApplicationsCount()}}</strong>
             </span>
           </template>
-          <app-user-applications [project]="project" [user_applications]="applications"
-                                 (onAccept)="getMembers()"></app-user-applications>
+          <app-user-applications [questions]="project.application_questions"
+                                 (onAccept)="applicationAccepted($event)"></app-user-applications>
         </tab>
       </tabset>
     </div>
