@@ -90,8 +90,9 @@ export class ProjectService {
 
   public filterBySkill(skill, id = null) {
     let project_id = id ? '&id=!' + id : '';
+    const user_id = this.state.isLoggedIn() ? this.state.getUser().id : '';
     return this.http.get(environment.URL_API + environment.API_VERSION +
-      `project?position:skill_id=${skill}&with[]=user&with[]=position.skill${project_id}`)
+      `project?position:skill_id=${skill}&user_id=!${user_id}&with[]=user&with[]=position.skill${project_id}`)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -126,13 +127,6 @@ export class ProjectService {
       .map(res => res.json().messenger)
       .catch(this.handleError);
   }
-
-  // public getProjectComments(id) {
-  //   return this.http.get(environment.URL_API + environment.API_VERSION +
-  //     'project?with[]=comment.user&id=' + id)
-  //     .map(this.extractData)
-  //     .catch(this.handleError);
-  // }
 
   public addComment(comment) {
     let body = JSON.stringify(comment);
@@ -176,8 +170,7 @@ export class ProjectService {
       .catch(this.handleError);
   }
 
-  public respondToApplication(application_id, code) {
-    let body = JSON.stringify({accepted: code});
+  public acceptApplication(application_id) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.state.getToken()
@@ -185,7 +178,20 @@ export class ProjectService {
     let options = new RequestOptions({headers: headers});
 
     return this.http.put(environment.URL_API + environment.API_VERSION +
-      'application/' + application_id, body, options)
+      'application/' + application_id, {}, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  public declineApplication(application_id) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.state.getToken()
+    });
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.delete(environment.URL_API + environment.API_VERSION +
+      'application/' + application_id, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
