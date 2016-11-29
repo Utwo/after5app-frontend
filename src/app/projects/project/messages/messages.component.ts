@@ -8,24 +8,17 @@ import {ActivatedRoute} from '@angular/router';
   templateUrl: './messages.component.html'
 })
 export class MessagesComponent implements OnInit {
+  @Input('project_id') project_id;
   @Input('owner_id') owner_id;
   messages = null;
-  project_id;
   page = {current_page: null, prev: null, next: null};
 
-  constructor(private route: ActivatedRoute,
-              private projectService: ProjectService,
+  constructor(private projectService: ProjectService,
               private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      if (this.project_id !== params['id']) {
-        this.messages = null;
-        this.project_id = params['id'];
-      }
-      this.getMessages(1);
-    });
+    this.getMessages(1);
   }
 
   getMessages(page) {

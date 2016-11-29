@@ -8,14 +8,18 @@
           <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
         </div>
         <div class="col-md-4 text-xs-right" *ngIf="myProject">
-          <button class="btn btn-sm btn-primary" title="edit project" (click)="editModal.show()">
+          <button class="btn btn-sm btn-primary"
+                  title="edit project"
+                  (click)="editModal.show()">
             <svg class="icon">
               <use xlink:href="assets/icons.svg#icon-pencil"></use>
             </svg>
             <span class="hidden-sm-down">Edit</span>
           </button>
 
-          <button class="btn btn-sm btn-danger" title="delete project" (click)="deleteModal.show()">
+          <button class="btn btn-sm btn-danger"
+                  title="delete project"
+                  (click)="deleteModal.show()">
             <svg class="icon">
               <use xlink:href="assets/icons.svg#icon-bin"></use>
             </svg>
@@ -39,7 +43,9 @@
               <strong *ngIf="position.status">{{position.skill.name}}</strong>
               <span *ngIf="!position.status">{{position.skill.name}}</span>
             </dt>
-            <dd class="position-description" [class.text-muted]="!position.status">{{position.description}}</dd>
+            <dd class="position-description" [class.text-muted]="!position.status">
+              {{position.description}}
+            </dd>
           </dl>
         </div>
       </section>
@@ -56,7 +62,9 @@
               <span>Help this project!</span>
             </div>
             <hr *ngIf="!myProject && state.isLoggedIn()">
-            <button *ngIf="!myProject && state.isLoggedIn()" #favorite (click)="addFavorite()"
+            <button *ngIf="!myProject && state.isLoggedIn()"
+                    #favorite
+                    (click)="addFavorite()"
                     class="btn m-r-1 btn-circle" [class.btn-danger]="isFavorite"
                     [class.btn-primary]="!isFavorite">
               <svg *ngIf="isFavorite" class="icon">
@@ -66,8 +74,9 @@
                 <use xlink:href="assets/icons.svg#icon-heart-o"></use>
               </svg>
             </button>
-            <span #favoriteSpan title="Login to favorite a project"><svg *ngIf="!state.isLoggedIn() || myProject"
-                                                                         class="icon text-primary icon-lg m-r-1">
+            <span #favoriteSpan title="Login to favorite a project">
+              <svg *ngIf="!state.isLoggedIn() || myProject"
+                   class="icon text-primary icon-lg m-r-1">
                 <use xlink:href="assets/icons.svg#icon-heart"></use>
               </svg> {{project.favorite_count}} favorites</span>
           </div>
@@ -93,10 +102,18 @@
           <h3 class="title-border title-border--green p-b-1 m-t-2">Members</h3>
           <ul class="list-unstyled">
             <li *ngFor="let member of members; let i = index" class="panel m-b-1">
-              <a routerLink="/profile/{{member.id}}"><img class="profile-img m-r-1"
-                                                          src="{{member.picture+'?s=30&width=30&height=30'}}">{{member.name}}</a>
-              <button class="btn btn-sm btn-outline-danger m-l-1" title="remove member" *ngIf="myProject"
-                      (click)="removeMember(i)">&times;</button>
+              <a routerLink="/profile/{{member.id}}">
+                <img class="profile-img m-r-1"
+                     src="{{member.picture+'?s=30&width=30&height=30'}}">
+                {{member.name}}
+              </a>
+
+              <button class="btn btn-sm btn-outline-danger m-l-1"
+                      title="remove member"
+                      *ngIf="myProject"
+                      (click)="removeMember(i)">
+                &times;
+              </button>
             </li>
           </ul>
         </div>
@@ -112,29 +129,39 @@
           <template tabHeading>
             Comments
           </template>
-          <app-comments [project_id]="project.id" [comments]="project.comment"
-                        class="row comment panel--left"></app-comments>
+          <app-comments [project_id]="project.id"
+                        [comments]="project.comment"
+                        class="row comment panel--left">
+          </app-comments>
         </tab>
+
         <tab *ngIf="isMember || myProject" [heading]="Messages">
           <template tabHeading>
             <span title="only visible to project members">Messages</span>
           </template>
           <app-messages [owner_id]="project.user_id"
-                        class="row comment panel--left"></app-messages>
+                        [project_id]="project.id"
+                        class="row comment panel--left">
+          </app-messages>
         </tab>
-        <tab *ngIf="myProject && applications" [heading]="Applications">
+
+        <tab *ngIf="myProject" [heading]="Applications">
           <template tabHeading>
             <span>Applications
-              <strong *ngIf="applications && pendingApplicationsCount() > 0" class="btn btn-primary btn-sm btn-circle-sm">{{pendingApplicationsCount()}}</strong>
+              <strong *ngIf="applications && pendingApplicationsCount() > 0"
+                      class="btn btn-primary btn-sm btn-circle-sm">
+                {{pendingApplicationsCount()}}
+              </strong>
             </span>
           </template>
           <app-user-applications [questions]="project.application_questions"
-                                 (onAccept)="applicationAccepted($event)"></app-user-applications>
+                                 [project_id]="project.id"
+                                 (onResponse)="applicationResponse($event)">
+          </app-user-applications>
         </tab>
       </tabset>
     </div>
   </div>
-
   <aside *ngIf="related && related.length > 0" class="p-y-3 jumbotron-fluid">
     <div class="container">
       <h3 class="p-b-1 text-xs-center">Related projects</h3>
@@ -166,13 +193,17 @@
   </aside>
 </div>
 
-<div *ngIf="!myProject" bsModal #applyModal="bs-modal" class="modal grow" tabindex="-1" role="dialog"
+<div *ngIf="!myProject" bsModal #applyModal="bs-modal" class="modal grow"
+     tabindex="-1" role="dialog"
      aria-labelledby="Apply for this project"
      aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="modal__close btn" (click)="applyModal.hide()" aria-label="Close">
+        <button type="button"
+                class="modal__close btn"
+                (click)="applyModal.hide()"
+                aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <h4 class="modal-title text-xs-center">Apply for this project</h4>
@@ -182,13 +213,18 @@
   </div>
 </div>
 
-<div *ngIf="myProject" bsModal #editModal="bs-modal" class="modal grow" tabindex="-1" role="dialog"
+<div *ngIf="myProject" bsModal #editModal="bs-modal" class="modal grow"
+     tabindex="-1"
+     role="dialog"
      aria-labelledby="Edit project"
      aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="modal__close btn" (click)="editModal.hide()" aria-label="Close">
+        <button type="button"
+                class="modal__close btn"
+                (click)="editModal.hide()"
+                aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <h4 class="modal-title text-xs-center">Edit project</h4>
@@ -198,13 +234,18 @@
   </div>
 </div>
 
-<div *ngIf="myProject" bsModal #deleteModal="bs-modal" class="modal grow" tabindex="-1" role="dialog"
+<div *ngIf="myProject" bsModal #deleteModal="bs-modal" class="modal grow"
+     tabindex="-1"
+     role="dialog"
      aria-labelledby="Delete modal"
      aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="modal__close btn" (click)="deleteModal.hide()" aria-label="Close">
+        <button type="button"
+                class="modal__close btn"
+                (click)="deleteModal.hide()"
+                aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <h4 class="modal-title text-xs-center">Are you sure you want to delete your project?</h4>

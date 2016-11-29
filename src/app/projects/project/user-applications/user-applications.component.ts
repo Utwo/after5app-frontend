@@ -9,22 +9,16 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class UserApplicationsComponent implements OnInit {
   @Input('questions') questions;
-  @Output() onAccept = new EventEmitter<number>();
+  @Input('project_id') project_id;
+  @Output() onResponse = new EventEmitter<number>();
   applications = [];
-  project_id = null;
 
   constructor(private projectService: ProjectService,
-              private route: ActivatedRoute,
               private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
-      if (this.project_id !== params['id']) {
-        this.project_id = params['id'];
-        this.getApplications();
-      }
-    });
+    this.getApplications();
   }
 
   getApplications() {
@@ -42,7 +36,7 @@ export class UserApplicationsComponent implements OnInit {
       .subscribe(
         () => {
           this.applications.splice(index, 1);
-          this.onAccept.emit(application_id);
+          this.onResponse.emit(application_id);
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
@@ -50,7 +44,10 @@ export class UserApplicationsComponent implements OnInit {
   declineApplication(application_id, index) {
     this.projectService.declineApplication(application_id)
       .subscribe(
-        () => this.applications.splice(index, 1),
+        () => {
+          this.applications.splice(index, 1);
+          this.onResponse.emit(application_id);
+        },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 }
