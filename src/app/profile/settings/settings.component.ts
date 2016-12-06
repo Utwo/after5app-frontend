@@ -13,10 +13,10 @@ export class SettingsComponent implements OnInit {
   private skills = [];
   private selectedSkill = '';
 
-  constructor(
-    private state: StateService,
-    private profileService: ProfileService,
-    private responseHandler: ResponseHandlerService) {}
+  constructor(private state: StateService,
+              private profileService: ProfileService,
+              private responseHandler: ResponseHandlerService) {
+  }
 
   ngOnInit() {
     this.getUser();
@@ -42,11 +42,12 @@ export class SettingsComponent implements OnInit {
     this.selectedSkill = skill.name;
   }
 
-  addSkill() {
-    if(this.selectedSkill.length < 1 || this.skills.indexOf(this.selectedSkill) >= 0){
+  addSkill(autocomplete) {
+    if (this.selectedSkill.length < 1 || this.skills.indexOf(this.selectedSkill) >= 0) {
       return;
     }
     this.skills.push(this.selectedSkill);
+    autocomplete.resetValue();
     this.profileService.updateUser({skill: this.skills})
       .subscribe(
         () => this.responseHandler.successMessage(`The skill ${this.selectedSkill} was added.`),

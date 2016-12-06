@@ -21,7 +21,8 @@ export class AutocompleteComponent {
   public typeaheadLoading: boolean = false;
   public typeaheadNoResults: boolean = false;
 
-  constructor(private projectService: ProjectService, private responseHandler: ResponseHandlerService) {
+  constructor(private projectService: ProjectService,
+              private responseHandler: ResponseHandlerService) {
     this.dataSource = Observable.create((observer: any) => {
       observer.next(this.asyncSelected);
     }).mergeMap((token: string) => this.getSkillsAsObservable(token));
@@ -57,5 +58,13 @@ export class AutocompleteComponent {
   public typeaheadOnSelect(e: TypeaheadMatch): void {
     this.asyncSelected = e.item.name;
     this.onSelect.emit(e.item);
+  }
+
+  public setValue(value) {
+    this.asyncSelected = value;
+  }
+
+  public resetValue() {
+    this.asyncSelected = '';
   }
 }

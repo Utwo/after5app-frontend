@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output} from '@angular/core';
+import {Component, Input, Output} from '@angular/core';
 import {ProjectService} from '../../shared/project.service';
 import {EventEmitter} from '@angular/common/src/facade/async';
 import {ResponseHandlerService} from '../../../shared/response-handler.service';
@@ -7,38 +7,37 @@ import {ResponseHandlerService} from '../../../shared/response-handler.service';
   selector: 'app-edit-project',
   templateUrl: './edit-project.component.html',
 })
-export class EditProjectComponent implements OnInit {
+export class EditProjectComponent{
   @Input() project;
   @Output() onEdit = new EventEmitter<string>();
   selectedSkill = '';
   positionError = null;
 
-  constructor(private projectService: ProjectService, private responseHandler: ResponseHandlerService) {
-  }
-
-  ngOnInit() {
+  constructor(private projectService: ProjectService,
+              private responseHandler: ResponseHandlerService) {
   }
 
   editProject() {
     this.projectService.updateProject(this.project)
       .subscribe(
-        data => {
-          this.onEdit.emit(data);
-        },
+        data => this.onEdit.emit(data),
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   removePosition(position_id, index) {
     this.projectService.deletePosition(position_id)
       .subscribe(
-        () => {
-          this.project.position.splice(index, 1);
-        },
+        () => this.project.position.splice(index, 1),
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
-  addPosition(pos) {
-    const position = {description: pos.value, name: this.selectedSkill, status: 1, project_id: this.project.id};
+  addPosition(pos, autocomplete) {
+    const position = {
+      description: pos.value,
+      name: this.selectedSkill,
+      status: 1,
+      project_id: this.project.id
+    };
 
     if (this.validatePosition(position)) {
       return;
@@ -54,6 +53,8 @@ export class EditProjectComponent implements OnInit {
             skill: {name: data.position.name},
             status: true
           });
+          pos.value = '';
+          autocomplete.resetValue();
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }

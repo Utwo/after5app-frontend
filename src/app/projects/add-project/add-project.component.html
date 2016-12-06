@@ -1,9 +1,9 @@
 <div class="jumbotron-fluid">
   <div class="container">
-    <h2>Start a new project
-    </h2>
+    <h2>Start a new project</h2>
   </div>
 </div>
+
 <section class="container container-small m-x-auto m-y-3">
   <form #updateForm="ngForm" (ngSubmit)="storeProject()">
     <div class="form-group">
@@ -36,16 +36,16 @@
 
     <fieldset class="form-group p-a-1">
       <legend class="text-xs-center">Positions <span class="text-danger font-weight-bold">*</span></legend>
-      <app-autocomplete (onSelect)="onSelect($event)" wrap_class="form-group" label_message="Required skill"
+      <app-autocomplete #autocomplete (onSelect)="onSelect($event)" wrap_class="form-group" label_message="Required skill"
                         label_show="true"></app-autocomplete>
       <div class="form-group">
         <textarea class="form-control m-t-1" type="text" id="position-desc" placeholder="Position description" #position
                   rows="4"></textarea>
+        <i [hidden]="!positionError" class="form-text text-danger">{{positionError}}</i>
       </div>
       <div class="text-xs-right">
-        <button class="btn btn-info" type="button" (click)="addPosition(position)">Add Position</button>
+        <button class="btn btn-info" type="button" (click)="addPosition(position, autocomplete)">Add Position</button>
       </div>
-      <i [hidden]="!positionError" class="form-text text-danger">{{positionError}}</i>
     </fieldset>
 
     <ul class="list-unstyled">

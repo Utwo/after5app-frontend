@@ -22,7 +22,10 @@ export class ApplicationComponent implements OnInit {
     this.application.position_id = position;
     this.projectService.applyForProject(this.application)
       .subscribe(
-        data => this.onApply.emit(0),
+        () => {
+          this.application = {message: '', position_id: null, answers: []};
+          this.onApply.emit(0);
+        },
         error => {
           this.onApply.emit(error);
         });

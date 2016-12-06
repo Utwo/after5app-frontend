@@ -4,15 +4,36 @@
     <div class="row">
       <div class="col-lg-6 text-lg-left text-xs-center">
         <div class="form-inline">
-          <app-autocomplete [type]="'list'" (onSelect)="onSelect($event)" label_show="true"></app-autocomplete>
+          <app-autocomplete #autocomplete
+                            [type]="'list'"
+                            (onSelect)="onSelect($event)"
+                            label_show="true">
+          </app-autocomplete>
         </div>
       </div>
       <div class="col-lg-6 text-lg-right text-xs-center">
-        <a id="all-projects" href="javascript:;" (click)="getProjects(1)"
-           class="btn font-weight-bold m-l-1" [class.btn-link-info]="isRecentActive">Recent</a>
-        <a id="popular-projects" href="javascript:;" (click)="getPopularProjects()" class="btn font-weight-bold m-l-1" [class.btn-link-info]="isPopularActive">Popular</a>
-        <a *ngIf="state.isLoggedIn()" id="recommended-projects" href="javascript:;" (click)="getRecommendedProjects()"
-           class="btn font-weight-bold m-l-1" [class.btn-link-info]="isRecommendedActive">Recommended</a>
+        <a id="all-projects"
+           href="javascript:;"
+           (click)="getProjects(1); autocomplete.resetValue();"
+           class="btn font-weight-bold m-l-1"
+           [class.btn-link-info]="isRecentActive">
+          Recent
+        </a>
+        <a id="popular-projects"
+           href="javascript:;"
+           (click)="getPopularProjects(); autocomplete.resetValue();"
+           class="btn font-weight-bold m-l-1"
+           [class.btn-link-info]="isPopularActive">
+          Popular
+        </a>
+        <a *ngIf="state.isLoggedIn()"
+           id="recommended-projects"
+           href="javascript:;"
+           (click)="getRecommendedProjects(); autocomplete.resetValue();"
+           class="btn font-weight-bold m-l-1"
+           [class.btn-link-info]="isRecommendedActive">
+          Recommended
+        </a>
       </div>
     </div>
   </div>
@@ -34,7 +55,7 @@
       </div>
       <p>{{project.description}}</p>
       <ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
-        <li (click)="filterProjects(position.skill.id)"
+        <li (click)="filterProjects(position.skill.id); autocomplete.setValue(position.skill.name)"
             class="list-inline-item btn btn-sm btn-gradient-primary project__skill-item"
             *ngFor="let position of project.position">
           {{position.skill.name}}
