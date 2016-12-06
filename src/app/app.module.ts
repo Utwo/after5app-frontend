@@ -32,6 +32,7 @@ import {MessagesComponent} from './projects/project/messages/messages.component'
 import {AuthGuard} from './core/auth-guard.service';
 import {ResponseHandlerService} from './shared/response-handler.service';
 import {ToastyModule} from 'ng2-toasty';
+import {LoginModalComponent} from './shared/login-modal/login-modal.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import {ToastyModule} from 'ng2-toasty';
     UserApplicationsComponent,
     LoginComponent,
     MessagesComponent,
+    LoginModalComponent,
   ],
   imports: [
     routing,
