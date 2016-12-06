@@ -36,14 +36,14 @@ export class AddProjectComponent implements OnInit {
     this.selectedSkill = skill.name;
   }
 
-  addPosition(pos) {
+  addPosition(pos, autocomplete) {
     const position = { description: pos.value, name: this.selectedSkill, status: 1 };
 
     if (this.validatePosition(position)) {
       return;
     }
-
     this.project.position.push(position);
+    autocomplete.resetValue();
     this.positionError = null;
     pos.value = '';
   }
