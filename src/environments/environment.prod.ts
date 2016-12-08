@@ -4,5 +4,6 @@ export const environment = {
   URL_API: 'http://api.after5app.co/',
   API_VERSION: 'api/v1/',
   FACEBOOK_ID: '1614649558855314',
-  GITHUB_ID: '4b122575498973d10891'
+  GITHUB_ID: '4b122575498973d10891',
+  hmr: false
 };

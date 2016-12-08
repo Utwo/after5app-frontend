@@ -1,7 +1,7 @@
 {
   "project": {
-    "version": "1.0.0-beta.11-webpack.8",
-    "name": "ttt"
+    "version": "1.0.0-beta.22-1",
+    "name": "After5app"
   },
   "apps": [
     {
@@ -48,6 +48,17 @@
   "defaults": {
     "styleExt": "css",
     "prefixInterfaces": false,
-    "lazyRoutePrefix": "+"
+    "inline": {
+      "style": false,
+      "template": false
+    },
+    "spec": {
+      "class": false,
+      "component": true,
+      "directive": true,
+      "module": false,
+      "pipe": true,
+      "service": true
+    }
   }
 }
