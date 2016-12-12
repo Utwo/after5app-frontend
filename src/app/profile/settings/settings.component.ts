@@ -12,6 +12,7 @@ export class SettingsComponent implements OnInit {
   private user = {name: '', workplace: '', website: '', twitter: ''};
   private skills = [];
   private selectedSkill = '';
+  private skillError = null;
 
   constructor(private state: StateService,
               private profileService: ProfileService,
@@ -43,7 +44,12 @@ export class SettingsComponent implements OnInit {
   }
 
   addSkill(autocomplete) {
+    this.skillError = null;
     if (this.selectedSkill.length < 1 || this.skills.indexOf(this.selectedSkill) >= 0) {
+      return;
+    }
+    if (this.selectedSkill.length > 15) {
+      this.skillError = 'A skill cannot be more that 15 characters';
       return;
     }
     this.skills.push(this.selectedSkill);

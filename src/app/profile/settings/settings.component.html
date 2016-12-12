@@ -16,7 +16,8 @@
             <input class="form-control"
                    id="name"
                    type="text"
-                   required minlength="3"
+                   required
+                   minlength="3"
                    maxlength="20"
                    placeholder="Darth Vader"
                    autocomplete="off"
@@ -24,6 +25,8 @@
                    [(ngModel)]="user.name"
                    #name="ngModel"
             >
+            <i *ngIf="user.name.length >= 20" class="form-text text-danger">
+              Name cannot be more than 20 characters long.</i>
             <div *ngIf="name.errors && (name.dirty || name.touched)">
               <i [hidden]="!name.errors.required" class="form-text text-danger">
                 Name is required
@@ -31,8 +34,6 @@
               <i [hidden]="!name.errors.minlength" class="form-text text-danger">
                 Name must be at least 3 characters long.
               </i>
-              <i [hidden]="!name.errors.maxlength" class="form-text text-danger">
-                Name cannot be more than 20 characters long.</i>
             </div>
           </div>
 
@@ -42,7 +43,6 @@
                    id="workplace"
                    type="text"
                    minlength="3"
-                   maxlength="20"
                    name="workplace"
                    placeholder="Google Inc" autocomplete="off"
                    [(ngModel)]="user.workplace"
@@ -51,8 +51,6 @@
             <div *ngIf="workplace.errors && (workplace.dirty || workplace.touched)">
               <i [hidden]="!workplace.errors.minlength" class="form-text text-danger">
                 Workplace must be at least 3 characters long.</i>
-              <i [hidden]="!workplace.errors.maxlength" class="form-text text-danger">
-                Workplace cannot be more than 20 characters long.</i>
             </div>
           </div>
 
@@ -62,15 +60,14 @@
                    id="website"
                    type="url"
                    minlength="3"
-                   maxlength="20"
-                   pattern="(^(http\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$)*"
+                   pattern="(^(http|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$)*"
                    name="website"
                    placeholder="http://example.com" autocomplete="off"
                    [(ngModel)]="user.website" #website="ngModel"
             >
             <div *ngIf="website.errors && (website.dirty || website.touched)">
-              <i [hidden]="!website.errors.maxlength" class="form-text text-danger">
-                Website cannot be more than 20 characters long.
+              <i [hidden]="!website.errors.minlength" class="form-text text-danger">
+                Website name must be at least 3 characters long.
               </i>
               <i [hidden]="!website.errors.pattern" class="form-text text-danger">
                 Website doesn't have the correct pattern.</i>
@@ -83,7 +80,6 @@
                    id="twitter"
                    type="text"
                    minlength="3"
-                   maxlength="20"
                    name="name"
                    placeholder="twitter username"
                    autocomplete="off"
@@ -93,8 +89,6 @@
             <div *ngIf="twitter.errors && (twitter.dirty || twitter.touched)">
               <i [hidden]="!twitter.errors.minlength" class="form-text text-danger">
                 Twitter name must be at least 3 characters long.</i>
-              <i [hidden]="!twitter.errors.maxlength" class="form-text text-danger">
-                Twitter name cannot be more than 20 characters long.</i>
             </div>
           </div>
 
@@ -123,6 +117,9 @@
             <button (click)="addSkill(autocomplete)" type="submit" class="btn btn-primary">
               Add skill
             </button>
+            <i [hidden]="!skillError" class="form-text text-danger">
+              {{skillError}}
+            </i>
           </div>
           <ul class="m-t-1 list-inline">
             <li *ngFor="let skill of skills; let i = index" class="list-inline-item m-t-1">

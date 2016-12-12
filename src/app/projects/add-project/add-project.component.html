@@ -11,12 +11,11 @@
       <input class="form-control" id="title" type="text" required minlength="4" maxlength="20" name="title"
              placeholder="Project title" autocomplete="off"
              [(ngModel)]="project.title" #title="ngModel">
-
+      <i *ngIf="project.title.length >= 20" class="form-text text-danger">
+        Title cannot be more than 20 characters long.</i>
       <div *ngIf="title.errors && (title.dirty || title.touched)">
         <i [hidden]="!title.errors.required" class="form-text text-danger">Title is required</i>
         <i [hidden]="!title.errors.minlength" class="form-text text-danger">Title must be at least 4 characters
-          long.</i>
-        <i [hidden]="!title.errors.maxlength" class="form-text text-danger">Title cannot be more than 20 characters
           long.</i>
       </div>
     </div>
