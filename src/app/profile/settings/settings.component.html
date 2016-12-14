@@ -60,7 +60,7 @@
                    id="website"
                    type="url"
                    minlength="3"
-                   pattern="(^(http|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$)*"
+                   pattern="(^((http|https)\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$)*"
                    name="website"
                    placeholder="http://example.com" autocomplete="off"
                    [(ngModel)]="user.website" #website="ngModel"

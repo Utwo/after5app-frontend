@@ -1,5 +1,5 @@
 <header class="header-site" [class.show-navigation]="showNavigation">
-  <div class="container">
+  <div class="container-fluid p-x-3">
     <div class="row">
       <div class="col-lg-2 col-md-2 col-sm-6 col-xs-8">
         <h1 class="header-logo"><strong><a routerLink="/">After5app</a></strong>
@@ -11,6 +11,9 @@
         <nav class="navigation form-inline">
           <a class="navigation-item text-xs-center text-md-left" routerLink="/projects" routerLinkActive="active">Projects</a>
           <a class="navigation-item text-xs-center text-md-left" routerLink="/about" routerLinkActive="active">About</a>
+          <a class="navigation-item text-xs-center text-md-left"
+             href="https://docs.google.com/forms/d/e/1FAIpQLSe0yjar47og45W-FQ4GJLvW6umIqrVpvzk3J45qkl93iHg0Vg/formResponse"
+             target="_blank">Feedback</a>
           <a *ngIf="loggedIn" class="navigation-item btn btn-info m-r-2 btn-sm text-xs-center text-md-left"
              routerLink="/start-project">Start a
             project</a>
