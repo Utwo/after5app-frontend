@@ -3,6 +3,7 @@
 # compiled output
 /dist
 /tmp
+npm-debug.log.*
 
 # dependencies
 /node_modules
