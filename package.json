@@ -4,11 +4,10 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "ng serve",
-    "hmr": "ng serve --hmr -e=dev",
+    "start": "ng serve --hmr -e=dev",
+    "build": "ng build --prod --aot",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
-    "build": "ng build --prod --aot",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor"
   },
@@ -31,7 +30,7 @@
     "zone.js": "0.7.2"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "2.2.3",
+    "@angular/compiler-cli": "2.4.0",
     "@angularclass/hmr": "^1.2.2",
     "@types/jasmine": "2.5.38",
     "@types/node": "^6.0.42",
