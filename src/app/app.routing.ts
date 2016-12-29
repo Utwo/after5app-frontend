@@ -13,7 +13,7 @@ import {AuthGuard} from './core/auth-guard.service';
 
 
 const appRoutes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: HomeComponent, pathMatch: 'full'},
   {path: 'about', component: AboutComponent},
   {path: 'projects', component: ProjectListComponent},
   {path: 'project/:id', component: ProjectComponent},
