@@ -9,10 +9,10 @@ import {ResponseHandlerService} from '../../shared/response-handler.service';
   providers: [ProfileService]
 })
 export class SettingsComponent implements OnInit {
-  private user = {name: '', workplace: '', website: '', twitter: ''};
-  private skills = [];
+  public user = {name: '', workplace: '', website: '', twitter: ''};
+  public skills = [];
   private selectedSkill = '';
-  private skillError = null;
+  public skillError = null;
 
   constructor(private state: StateService,
               private profileService: ProfileService,

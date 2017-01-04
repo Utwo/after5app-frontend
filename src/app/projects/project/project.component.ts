@@ -12,16 +12,16 @@ const mo = require('mo-js/build/mo.min.js');
   templateUrl: './project.component.html'
 })
 export class ProjectComponent implements OnInit {
-  private project = null;
-  private project_id = null;
-  private applications = null;
-  private related = null;
-  private members = null;
-  private myProject = false;
-  private isFavorite = false;
-  private isMember = false;
-  private environment = environment;
-  private href = encodeURIComponent(window.location.href);
+  public project = null;
+  public project_id = null;
+  public applications = null;
+  public related = null;
+  public members = null;
+  public myProject = false;
+  public isFavorite = false;
+  public isMember = false;
+  public environment = environment;
+  public href = encodeURIComponent(window.location.href);
 
   @ViewChild('editModal') public editModal: ModalDirective;
   @ViewChild('deleteModal') public deleteModal: ModalDirective;

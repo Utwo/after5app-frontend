@@ -37,7 +37,7 @@ export class AddProjectComponent implements OnInit {
   }
 
   addPosition(pos, autocomplete) {
-    const position = { description: pos.value, name: this.selectedSkill, status: 1 };
+    const position = {description: pos.value, name: this.selectedSkill, status: 1};
 
     if (this.validatePosition(position)) {
       return;
@@ -48,7 +48,7 @@ export class AddProjectComponent implements OnInit {
     pos.value = '';
   }
 
-  validatePosition(position){
+  validatePosition(position) {
     for (let project_position of this.project.position) {
       if (position.name === project_position.name) {
         this.positionError = 'Please choose a new skill.';

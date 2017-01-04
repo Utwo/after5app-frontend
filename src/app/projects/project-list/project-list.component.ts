@@ -11,9 +11,9 @@ export class ProjectListComponent implements OnInit {
   projects = null;
   page = {current_page: null, prev: null, next: null};
   maxDescriptionLength = 210;
-  private isRecentActive = true;
-  private isPopularActive = false;
-  private isRecommendedActive = false;
+  public isRecentActive = true;
+  public isPopularActive = false;
+  public isRecommendedActive = false;
 
   constructor(private projectService: ProjectService, private state: StateService, private responseHandler: ResponseHandlerService) {
 
@@ -23,7 +23,7 @@ export class ProjectListComponent implements OnInit {
     this.getProjects(1);
   }
 
-  getProjects(page) {
+  public getProjects(page) {
     this.isPopularActive = false;
     this.isRecommendedActive = false;
     this.isRecentActive = true;
@@ -79,13 +79,13 @@ export class ProjectListComponent implements OnInit {
     this.filterProjects(skill.id);
   }
 
-  private prevPage() {
+  public prevPage() {
     if (this.page.prev) {
       this.getProjects(this.page.current_page - 1);
     }
   }
 
-  private nextPage() {
+  public nextPage() {
     if (this.page.next) {
       this.getProjects(this.page.current_page + 1);
     }

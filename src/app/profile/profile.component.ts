@@ -12,9 +12,9 @@ import {ResponseHandlerService} from '../shared/response-handler.service';
 
 export class ProfileComponent implements OnInit, OnDestroy {
   private sub;
-  private user = null;
-  private isMe = false;
-  private applications = [];
+  public user = null;
+  public isMe = false;
+  public applications = [];
 
   constructor(private route: ActivatedRoute, private profileService: ProfileService, private state: StateService,
               private responseHandler: ResponseHandlerService) {

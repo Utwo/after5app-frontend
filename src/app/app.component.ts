@@ -11,7 +11,7 @@ declare var ga: Function;
 })
 export class AppComponent {
   private viewContainerRef: ViewContainerRef;
-  private url = null;
+  public url = null;
 
   constructor(private router: Router, viewContainerRef: ViewContainerRef, private toastyService: ToastyService,
               private toastyConfig: ToastyConfig, private responseHandler: ResponseHandlerService) {

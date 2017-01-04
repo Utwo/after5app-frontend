@@ -7,7 +7,7 @@ import {ResponseHandlerService} from '../../../shared/response-handler.service';
   selector: 'app-edit-project',
   templateUrl: './edit-project.component.html',
 })
-export class EditProjectComponent{
+export class EditProjectComponent {
   @Input() project;
   @Output() onEdit = new EventEmitter<string>();
   selectedSkill = '';
