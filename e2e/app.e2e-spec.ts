@@ -7,8 +7,8 @@ describe('ttt App', function() {
     page = new TttPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display after5app text', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('After5app');
   });
 });
