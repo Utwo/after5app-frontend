@@ -65,9 +65,9 @@ import {LoginModalComponent} from './shared/login-modal/login-modal.component';
     FormsModule,
     HttpModule,
     JsonpModule,
-    ModalModule.forRoot(),
-    TypeaheadModule.forRoot(),
-    TabsModule.forRoot(),
+    ModalModule,
+    TypeaheadModule,
+    TabsModule,
     ToastyModule.forRoot()
   ],
   providers: [

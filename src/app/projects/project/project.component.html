@@ -31,19 +31,19 @@
   </div>
   <article class="container m-y-3">
     <div class="row">
-      <section class="col-lg-8 col-md-7">
-        <div class="m-b-3">
+      <section class="col-lg-8 col-md-7 panel panel--top--bottom p-a-2 m-b-2">
+        <div class="m-y-1">
           <h3 class="title-border title-border--green p-b-1">Project description</h3>
           <p class="project-description">{{project.description}}</p>
         </div>
         <div *ngIf="project.position.length > 0">
           <h3 class="title-border title-border--green p-b-1">I need help with</h3>
           <dl *ngFor="let position of project.position">
-            <dt class="btn btn-sm btn-gradient-primary">
+            <dt class="btn btn-gradient-primary m-b-1">
               <strong *ngIf="position.status">{{position.skill.name}}</strong>
               <span *ngIf="!position.status">{{position.skill.name}}</span>
             </dt>
-            <dd class="position-description" [class.text-muted]="!position.status">{{position.description}}</dd>
+            <dd class="position-description m-b-2" [class.text-muted]="!position.status">{{position.description}}</dd>
           </dl>
         </div>
       </section>
