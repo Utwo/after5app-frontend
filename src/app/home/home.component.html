@@ -62,13 +62,13 @@
         <h4 class="m-y-3">This is the place to begin!</h4>
         <div class="row">
           <div class="col-sm-6 text-md-right">
-            <a class="btn btn-info btn-lg m-r-2" routerLink="/projects">Support
+            <a class="btn btn-info btn-lg" routerLink="/projects">Support
               a project</a>
           </div>
           <div class="col-sm-6 text-md-left">
-            <a class="btn btn-info btn-lg m-l-2" *ngIf="state.isLoggedIn()"
+            <a class="btn btn-info btn-lg" *ngIf="state.isLoggedIn()"
                routerLink="/start-project">Start a project</a>
-            <a class="btn btn-info btn-lg m-l-2" *ngIf="!state.isLoggedIn()"
+            <a class="btn btn-info btn-lg" *ngIf="!state.isLoggedIn()"
                (click)="modal.open()">Start a project</a>
           </div>
         </div>
