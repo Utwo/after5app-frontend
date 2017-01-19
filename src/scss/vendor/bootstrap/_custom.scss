@@ -43,7 +43,7 @@ $enable-gradients:          false;
 $enable-transitions:        true;
 $enable-hover-media-query:  false;
 $enable-grid-classes:       true;
-$enable-print-styles:       true;
+$enable-print-styles:       false;
 
 // Heading size
 $font-size-h1: 2.3rem;
@@ -56,7 +56,7 @@ $font-size-h6: 1rem;
 // Body
 //
 // Settings for the `<body>` element.
-$font-size-base: 1.06rem;
+$font-size-base: 1.05rem;
 $line-height-base: 1.6;
 $body-bg: #fafafa;
 $body-color: $gray-dark;
