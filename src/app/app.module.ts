@@ -33,6 +33,7 @@ import {AuthGuard} from './core/auth-guard.service';
 import {ResponseHandlerService} from './shared/response-handler.service';
 import {ToastyModule} from 'ng2-toasty';
 import {LoginModalComponent} from './shared/login-modal/login-modal.component';
+import {ProjectCardComponent} from './shared/project-card/project-card.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import {LoginModalComponent} from './shared/login-modal/login-modal.component';
     LoginComponent,
     MessagesComponent,
     LoginModalComponent,
+    ProjectCardComponent,
   ],
   imports: [
     routing,

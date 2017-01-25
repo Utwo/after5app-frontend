@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-8">
+    <h3 class="project__title title-border title-border--green m-b-1 p-b-1">
+      <div class="col-xs">
+        <img class="profile-img" *ngIf="project.user.picture"
+             src="{{project.user.picture+'?s=20&width=40&height=40'}}">
+        <a routerLink="/project/{{project.id}}">
+          {{project.title}}
+        </a>
+        <div>
+          <i class="text-muted project__date"> Posted: {{ project.created_at | timeAgo}} </i>
+        </div>
+      </div>
+    </h3>
+  </div>
+  <div>
+    <span> Follow Project? </span>
+  </div>
+</div>
+<div>
+  <div> I want to create: </div>
+  <p>{{project.description}}</p>
+</div>
+<div>
+  <div>
+    Skills needed:
+  </div>
+  <div>
+    <ul class="list-inline text-xs-center" *ngIf="project.position.length > 0">
+      <li (click)="filterProjects(position.skill.id); autocomplete.setValue(position.skill.name)"
+          class="list-inline-item btn btn-sm btn-gradient-primary project__skill-item"
+          *ngFor="let position of project.position">
+        {{position.skill.name}}
+      </li>
+    </ul>
+  </div>
+</div>
+<br>
+<div class="row project__subinfo">
+  <div> Created by
+    <a
+    routerLink="/profile/{{project.user_id}}">
+          {{project.user.name}}
+    </a>
+    <span> {{footerStatement}}</span>
+  </div>
+</div>
