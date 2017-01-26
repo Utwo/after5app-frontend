@@ -28,7 +28,7 @@ export class AutocompleteComponent {
     }).mergeMap((token: string) => this.getSkillsAsObservable(token));
 
     this.wrap_class = this.wrap_class || 'form-group btn btn-primary btn-sm';
-    this.label_message = this.label_message || 'Filter by skill ';
+    this.label_message = this.label_message || 'FILTER BY SKILL';
     this.label_show = this.label_show || false;
   }
 

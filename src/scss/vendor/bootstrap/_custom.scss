@@ -4,6 +4,14 @@
 // without modifying source files.
 
 // Colors
+
+$dark-iris: #574fac;
+$iris: #706ec2;
+$perrywinkle: #8c8add;
+$light-periwinkle: #bfbeff;
+$greyish-brown: #484848;
+$dirty-white: #f6f6f6;
+
 $turcoaz3: #6fffe9;
 $turcoaz: #84dcc6;
 $turcoaz4: #5bc0be;
@@ -21,29 +29,29 @@ $turcoaz2: #a8dadc;
 $roz: #f45b69;
 $rosu: #ff686b;
 
-$brand-primary:             #6476f9; //495fff
-$brand-success:             #00cd5a;
-$brand-info:                #8ee3ce;
-$brand-warning:             #ff851b;
-$brand-danger:              #ff1654;
+$brand-primary: #6476f9; //495fff
+$brand-success: #00cd5a;
+$brand-info: #8ee3ce;
+$brand-warning: #ff851b;
+$brand-danger: #ff1654;
 
-$gray-dark:                 #373a3c;
-$gray:                      #55595c;
-$gray-light:                #818a91;
-$gray-lighter:              #e9ebec;
-$gray-lightest:             #f0f0f2;
+$gray-dark: #373a3c;
+$gray: #55595c;
+$gray-light: #818a91;
+$gray-lighter: #e9ebec;
+$gray-lightest: #f0f0f2;
 
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
-$enable-flex:               true;
-$enable-rounded:            true;
-$enable-shadows:            false;
-$enable-gradients:          false;
-$enable-transitions:        true;
-$enable-hover-media-query:  false;
-$enable-grid-classes:       true;
-$enable-print-styles:       false;
+$enable-flex: true;
+$enable-rounded: true;
+$enable-shadows: false;
+$enable-gradients: false;
+$enable-transitions: true;
+$enable-hover-media-query: false;
+$enable-grid-classes: true;
+$enable-print-styles: false;
 
 // Heading size
 $font-size-h1: 2.3rem;
@@ -60,9 +68,9 @@ $font-size-base: 1.05rem;
 $line-height-base: 1.6;
 $body-bg: #fafafa;
 $body-color: $gray-dark;
-$font-family-sans-serif: 'Roboto';
+$font-family-sans-serif: 'Muli';
 $font-family-monospace: Consolas, "Liberation Mono", "Courier New", monospace;
-$headings-font-family: $font-family-monospace;
+$headings-font-family: $font-family-sans-serif;
 
 //font: normal1.2em/1.6 'Open Sans', sans-serif;
 //font: normal 1.03em/1.6 'Roboto', sans-serif;
@@ -77,10 +85,10 @@ $headings-font-family: $font-family-monospace;
 // Define the maximum width of `.container` for different screen sizes.
 
 $container-max-widths: (
-        sm: 576px,
-        md: 820px,
-        lg: 940px,
-        xl: 1050px
+  sm: 576px,
+  md: 820px,
+  lg: 940px,
+  xl: 1050px
 );
 
 // Specify the gutters.
