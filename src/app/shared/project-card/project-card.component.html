@@ -47,7 +47,9 @@
     routerLink="/profile/{{project.user_id}}">
           {{project.user.name}}
     </a>
-    <span> {{footerStatement}}</span>
+    <span> This project has <b> {{project.favorite_count}} </b></span>
+    <span *ngIf="project.favorite_count == 1"><b> follower </b> </span>
+    <span *ngIf="project.favorite_count != 1"><b> followers </b> </span>
   </div>
 </div>
 <app-login-modal #modal></app-login-modal>
