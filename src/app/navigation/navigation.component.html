@@ -2,24 +2,36 @@
   <div class="container-fluid p-x-3">
     <div class="row">
       <div class="col-lg-2 col-md-2 col-sm-6 col-xs-8">
-        <h1 class="header-logo"><strong><a routerLink="/">After5app</a></strong>
+        <h1 class="header-logo"><a routerLink="/">
+          <svg class="logo">
+            <use xlink:href="assets/logo.svg#logo"></use>
+          </svg>
+        </a>
           <a href="javascript:;" (click)="toggleNavigation()"
              class="hidden-md-up toggle-burger btn btn-sm btn-circle-sm">&#x2261;</a>
         </h1>
       </div>
       <div class="col-lg-7 col-md-8 col-sm-12 col-xs-12 navigation-wrap hidden-sm-down">
         <nav class="navigation form-inline">
-          <a class="navigation-item text-xs-center text-md-left" routerLink="/projects" routerLinkActive="active">Projects</a>
-          <a class="navigation-item text-xs-center text-md-left" routerLink="/about" routerLinkActive="active">About</a>
-          <a class="navigation-item text-xs-center text-md-left"
+          <a *ngIf="loggedIn" class="navigation-item text-xs-center text-md-right"
+             routerLink="/start-project">
+            Start a project
+          </a>
+          <a *ngIf="!loggedIn" class="navigation-item text-xs-center text-md-right"
+             (click)="modal.open()">
+            Start a project
+          </a>
+          <a class="navigation-item text-xs-center text-md-right" routerLink="/projects" routerLinkActive="active">
+            Browse Projects
+          </a>
+          <a class="navigation-item text-xs-center text-md-right" routerLink="/about" routerLinkActive="active">
+            About
+          </a>
+          <a class="navigation-item text-xs-center text-md-right"
              href="https://docs.google.com/forms/d/e/1FAIpQLSe0yjar47og45W-FQ4GJLvW6umIqrVpvzk3J45qkl93iHg0Vg/formResponse"
-             target="_blank">Feedback</a>
-          <a *ngIf="loggedIn" class="navigation-item btn btn-info m-r-2 btn-sm text-xs-center text-md-left"
-             routerLink="/start-project">Start a
-            project</a>
-          <a *ngIf="!loggedIn" class="navigation-item btn btn-info m-r-2 btn-sm text-xs-center text-md-left"
-             (click)="modal.open()">Start a
-            project</a>
+             target="_blank">
+            Feedback
+          </a>
           <app-search class="dropdown dropdown--lg"></app-search>
         </nav>
       </div>
