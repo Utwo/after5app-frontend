@@ -62,4 +62,8 @@ export class ProjectCardComponent implements OnInit {
       modal.open();
     }
   }
+
+  unfollow() {
+
+  }
 }

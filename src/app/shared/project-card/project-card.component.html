@@ -15,8 +15,10 @@
   </div>
   <div class="col-xs text-xs-right">
     <span class="m-r-1" title="follow"> Follow Project?
-        <a (click)="follow(modal)"><svg *ngIf="!isFollowed && !myProject" class="icon icon-star"><use xlink:href="assets/icons.svg#icon-star"></use></svg></a>
-        <svg *ngIf="isFollowed && !myProject" class="icon icon-star-full"><use xlink:href="assets/icons.svg#icon-star-full"></use></svg>
+        <a (click)="follow(modal)">
+          <svg *ngIf="!isFollowed && !myProject" class="icon icon-star"><use xlink:href="assets/icons.svg#icon-star"></use></svg>
+          <svg *ngIf="isFollowed && !myProject" class="icon icon-star-full"><use xlink:href="assets/icons.svg#icon-star-full"></use></svg>
+        </a>
     </span>
   </div>
 </div>
