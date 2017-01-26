@@ -43,13 +43,18 @@ export class ProjectListComponent implements OnInit {
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
-  getRecommendedProjects() {
-    this.isPopularActive = this.isRecentActive = false;
-    this.isRecommendedActive = true;
-    this.projectService.getRecommendedProjects()
-      .subscribe(
-        projects => this.extractData(projects),
-        error => this.responseHandler.errorMessage('An error occured!', error));
+  getRecommendedProjects(modal) {
+    if(this.state.isLoggedIn()) {
+      this.isPopularActive = this.isRecentActive = false;
+      this.isRecommendedActive = true;
+      this.projectService.getRecommendedProjects()
+        .subscribe(
+          projects => this.extractData(projects),
+          error => this.responseHandler.errorMessage('An error occured!', error));
+    }
+    else {
+        modal.open();
+    }
   }
 
   getPopularProjects() {

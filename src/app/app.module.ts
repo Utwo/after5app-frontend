@@ -39,6 +39,7 @@ import {AutocompleteComponent} from './shared/autocomplete/autocomplete.componen
 import {LoginModalComponent} from './shared/login-modal/login-modal.component';
 // pipes
 import {TimeAgoPipe} from './time-ago.pipe';
+import {ProjectCardComponent} from './shared/project-card/project-card.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import {TimeAgoPipe} from './time-ago.pipe';
     LoginComponent,
     MessagesComponent,
     LoginModalComponent,
+    ProjectCardComponent,
   ],
   imports: [
     routing,
