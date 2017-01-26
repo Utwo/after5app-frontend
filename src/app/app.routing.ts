@@ -4,7 +4,7 @@ import {ModuleWithProviders} from '@angular/core';
 import {AboutComponent} from './about/about.component';
 import {ProfileComponent} from './profile/profile.component';
 import {ProjectListComponent} from './projects/project-list/project-list.component';
-import {ProjectComponent} from './projects/project/project.component';
+import {ProjectComponent} from './projects/project-details/project.component';
 import {AddProjectComponent} from './projects/add-project/add-project.component';
 import {SettingsComponent} from './profile/settings/settings.component';
 import {NotFoundComponent} from './core/not-found/not-found.component';
