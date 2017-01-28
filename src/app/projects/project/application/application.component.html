@@ -1,8 +1,8 @@
 <section *ngIf="project" class="modal-body">
-  <div class="text-xs-center">
-    <div class="form-inline m-b-2 btn btn-primary">
+  <div class="text-center">
+    <div class="form-inline mb-2 btn btn-primary">
       <label class="col-form-label" for="position">For</label>
-      <select class="form-control m-x-1" id="position" #positionSelect>
+      <select class="form-control mx-1" id="position" #positionSelect>
         <option *ngFor="let position of project.position" [disabled]="!position.status" [selected]="position.status"
                 value={{position.id}}>{{position.skill.name}}
         </option>
@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <ol class="m-b-2">
+  <ol class="mb-2">
     <li *ngFor="let question of project.application_questions; let i = index" class="form-group">
       <label for="question">{{question}}</label>
       <input class="form-control" id="question" type="text" [(ngModel)]="application.answers[i]"

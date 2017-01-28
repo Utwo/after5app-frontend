@@ -13,19 +13,21 @@
 }
 
 .btn-link-primary {
-  border-bottom: 4px solid $brand-primary;
+  border-bottom: 3px solid $brand-primary;
 }
 
 .btn-link-info {
-  border-bottom: 4px solid $brand-info;
+  position: relative;
+  //border-bottom: 3px solid $brand-info;
 }
 
-.btn-primary {
-  //box-shadow: 1px 1px 1px 0 darken($brand-primary, 10), inset 1px 1px 1px 0 rgba(255, 255, 255, .28), inset -1px -1px 10px 0 rgba(255, 255, 255, .18);
-}
-
-.btn-info {
-  //box-shadow: 1px 2px 1px 0 $brand-primary, inset 1px 1px 2px 0 rgba(255, 255, 255, .68);
+.btn-link-info::after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  border-bottom: 3px solid $brand-info;
+  bottom: 0;
+  left: 25%;
 }
 
 .btn-danger {

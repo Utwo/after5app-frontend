@@ -2,27 +2,14 @@
  * Basic typography style for copy text
  */
 
-.title-border {
-  margin-bottom: .8em;
-  position: relative;
+.filter-link {
+  color: $perrywinkle;
 }
 
-.title-border:after {
-  content: '';
-  position: absolute;
-  width: 3em;
-  height: 5px;
-  //background: linear-gradient(to right, $light-grey, rgba(255, 255, 255, 0));
-  background: $brand-primary;
-  border-radius: $border-radius;
-  display: block;
-  bottom: 0;
+.filter-link:hover {
+  color: $light-periwinkle;
 }
 
-.title-border--green:after {
-  background: $brand-info;
-}
-
-.title-border--primary:after {
-  background: $brand-primary;
+.small-text {
+  font-size: $font-size-sm;
 }

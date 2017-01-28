@@ -12,7 +12,7 @@ export class ProjectService {
 
   getProjects(page) {
     return this.http.get(environment.URL_API + environment.API_VERSION +
-      'project?sort[]=created_at,desc&with[]=user&with[]=position.skill&page=' + page)
+      'project?sort[]=created_at,desc&with[]=user&with[]=favorite&with[]=position.skill&page=' + page)
       .map(this.extractData)
       .catch(this.handleError);
   }

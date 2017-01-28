@@ -10,19 +10,20 @@
   font-size: $font-size-sm;
 }
 
-/*.project__item p {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}*/
-
 .project__skill-item {
-  font-family: Consolas, monospace;
   font-size: $font-size-base;
-  margin-bottom: .2rem;
+  padding: .2em 1em;
 }
 
 .project__subinfo {
   border-top: 2px solid #fff;
   padding-top: .8em;
+}
+
+.project__card-label{
+  color: $gray;
+}
+
+.project__card-line{
+  border-color: $gray-lightest;
 }

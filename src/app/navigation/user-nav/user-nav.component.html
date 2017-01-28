@@ -1,13 +1,16 @@
 <div class="dropdown" #container [class.dropdown--activ]="isDropdownActiv">
   <div (click)="dropdown();" class="notification">
-        <span class="notification__icon m-r-1">
-            <svg class="icon icon-lg"><use xlink:href="assets/icons.svg#icon-rocket22"></use></svg>
-            <i *ngIf="notificationCount != 0" class="notification__count">{{notificationCount}}</i>
-        </span>
-    <span class="hidden-xs-down">{{user.name}}</span>
+
+    <span class="mr-1">
+      <svg class="icon icon-lg"><use xlink:href="assets/icons.svg#notification"></use></svg>
+      <i *ngIf="notificationCount != 0" class="notification__count">{{notificationCount}}</i>
+    </span>
+    <img class="profile-img"
+         *ngIf="user.picture"
+         src="{{user.picture+'?s=35&width=35&height=35'}}">
   </div>
-  <div class="dropdown-menu dropdown__content container-fluid text-xs-left">
-    <ul class="list-unstyled text-xs-center">
+  <div class="dropdown-menu dropdown__content container-fluid text-left">
+    <ul class="list-unstyled text-center">
       <li><a class="d-block panel__item" routerLink="/profile/{{user.id}}">Profile</a></li>
       <li><a class="d-block panel__item" routerLink="/settings">Settings</a></li>
       <li><a class="d-block panel__item" href="javascript:;" (click)="logout()">Logout</a></li>
@@ -17,9 +20,10 @@
       <li *ngFor="let notification of notifications">
         <div [ngSwitch]="notification.type">
           <div *ngSwitchCase="notificationTypes.comment" class="notification__item row">
-            <div class="col-xs-2"><img class="profile-img" src="{{notification.data.user.picture}}"
-                                       width="25" height="25"/></div>
-            <div class="col-xs-10">
+            <div class="col-4">
+              <img class="profile-img" src="{{notification.data.user.picture}}"
+                   width="25" height="25"/></div>
+            <div class="col-8">
               <p>
                 <a routerLink="/profile/{{notification.data.user.id}}">
                   {{notification.data.user.name}}
@@ -33,9 +37,9 @@
           </div>
 
           <div *ngSwitchCase="notificationTypes.message" class="notification__item row">
-            <div class="col-xs-2"><img class="profile-img" src="{{notification.data.user.picture}}"
-                                       width="25" height="25"/></div>
-            <div class="col-xs-10">
+            <div class="col-2"><img class="profile-img" src="{{notification.data.user.picture}}"
+                                    width="25" height="25"/></div>
+            <div class="col-10">
               <p>
                 <a routerLink="/profile/{{notification.data.user.id}}">
                   {{notification.data.user.name}}
@@ -49,7 +53,7 @@
           </div>
 
           <div *ngSwitchCase="notificationTypes.accept" class="notification__item row">
-            <div class="col-md-10 offset-md-2 col-xs-12">
+            <div class="col-md-10 offset-md-2 col-12">
               <p>Your application for
                 <a routerLink="/project/{{notification.data.project.id}}">
                   <strong>{{notification.data.project.title}}</strong></a>
@@ -59,7 +63,7 @@
           </div>
 
           <div *ngSwitchCase="notificationTypes.decline" class="notification__item row">
-            <div class="col-md-10 offset-md-2 col-xs-12">
+            <div class="col-md-10 offset-md-2 col-12">
               <p>Your application for
                 <a routerLink="/project/{{notification.data.project.id}}">
                   <strong>{{notification.data.project.title}}</strong></a>
@@ -69,9 +73,9 @@
           </div>
 
           <div *ngSwitchCase="notificationTypes.application" class="notification__item row">
-            <div class="col-xs-2"><img class="profile-img" src="{{notification.data.user.picture}}"
-                                       width="25" height="25"/></div>
-            <div class="col-xs-10">
+            <div class="col-2"><img class="profile-img" src="{{notification.data.user.picture}}"
+                                    width="25" height="25"/></div>
+            <div class="col-10">
               <p>
                 <a routerLink="/profile/{{notification.data.user.id}}">
                   {{notification.data.user.name}}
@@ -86,8 +90,8 @@
         </div>
       </li>
     </ol>
-    <div *ngIf="!notifications" class="row flex-items-xs-center p-b-3">
-            	<span class="spinner p-a-1 m-b-1">
+    <div *ngIf="!notifications" class="row flex-items-xs-center pb-3">
+            	<span class="spinner p-1 mb-1">
 							<span class="double-bounce1"></span>
 							<span class="double-bounce2"></span>
 						</span>
