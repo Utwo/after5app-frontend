@@ -1,0 +1,51 @@
+<div *ngIf="user">
+
+  <div class="jumbotron-fluid">
+    <div class="container">
+      <h2 class="m-y-0">
+        <img *ngIf="user.picture" class="profile-img" src="{{user.picture}}?s=120&width=120&height=120">
+        {{user.name}}
+        <br/>
+        Joined {{user.created_at | date: 'dd of MMMM, yyyy'}}
+      </h2>
+    </div>
+    <div class="col-lg-10 text-lg-right text-xs-center">
+      <a id="personal"
+         href="javascript:;"
+         class="btn font-weight-bold m-l-1"
+         [class.btn-link-info]="isPersonalActive">
+        PERSONAL
+      </a>
+      <a id="badges"
+         href="javascript:;"
+         class="btn font-weight-bold m-l-1"
+         [class.btn-link-info]="isBadgesActive">
+        BADGES
+      </a>
+    </div>
+  </div>
+  <div class="container">
+    <h2 class="m-y-0">
+      <svg class="icon icon-message"><use xlink:href="assets/icons.svg#icon-message"></use></svg>
+      SEND MESSAGE
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-7">
+        <section class="m-y-3">
+          <h3 class="title-border title-border--green p-b-1">
+            PERSONAL INFO
+            <a *ngIf="isMe"  class="pull-xs-right">
+              <svg class="icon icon-message"><use xlink:href="assets/icons.svg#icon-write"></use></svg>
+            </a>
+          </h3>
+          <h2> About me: </h2>
+          <p> EU SUNT CEL MAI TARE DIN PARCARE DE LA FSEGAAAA </p>
+        </section>
+      </div>
+
+  </div>
+
+</div>
