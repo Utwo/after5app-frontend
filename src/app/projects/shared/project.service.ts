@@ -26,7 +26,7 @@ export class ProjectService {
 
   getPopularProjects() {
     return this.http.get(environment.URL_API + environment.API_VERSION +
-      'project?sort[]=favorite_count,desc&sort[]=created_at,desc&with[]=user&with[]=position.skill')
+      'project?sort[]=favorite_count,desc&sort[]=created_at,desc&with[]=user&with[]=favorite&with[]=position.skill')
       .map(this.extractData)
       .catch(this.handleError);
   }

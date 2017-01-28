@@ -70,8 +70,8 @@
       <b *ngIf="project.favorite_count == 0 && !myProject"> Be the first to follow this project! </b>
       <span *ngIf="project.favorite_count > 0">
       This project has <b> {{project.favorite_count}}</b>
-      <b *ngIf="project.favorite_count === 1"> follower </b>
-      <b *ngIf="project.favorite_count !== 1"> followers </b>
+      <b *ngIf="project.favorite_count == 1"> follower </b>
+      <b *ngIf="project.favorite_count != 1"> followers </b>
     </span>
     </span>
   </div>
