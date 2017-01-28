@@ -1,3 +1,4 @@
+<!--header-->
 <div class="jumbotron-fluid">
   <div class="container">
     <app-section-header [header]="'We think you are going to have'"
@@ -5,7 +6,10 @@
     </app-section-header>
   </div>
 </div>
-<div class="row">
+
+<!--filter options-->
+<div class="container container-medium">
+<div class="row m-t-3">
   <div class="col-lg-6 text-lg-left text-xs-center">
     <div class="form-inline">
       <app-autocomplete #autocomplete
@@ -19,14 +23,14 @@
     <a id="all-projects"
        href="javascript:;"
        (click)="getProjects(1); autocomplete.resetValue();"
-       class="btn font-weight-bold m-l-1"
+       class="btn font-weight-bold m-l-1  filter-link"
        [class.btn-link-info]="isRecentActive">
       RECENT
     </a>
     <a id="popular-projects"
        href="javascript:;"
        (click)="getPopularProjects(); autocomplete.resetValue();"
-       class="btn font-weight-bold m-l-1"
+       class="btn font-weight-bold m-l-1 filter-link"
        [class.btn-link-info]="isPopularActive">
       POPULAR
     </a>
@@ -34,13 +38,14 @@
       id="recommended-projects"
       href="javascript:;"
       (click)="getRecommendedProjects(modal); autocomplete.resetValue();"
-      class="btn font-weight-bold m-l-1"
+      class="btn font-weight-bold m-l-1 filter-link"
       [class.btn-link-info]="isRecommendedActive">
       RECOMMENDED
     </a>
   </div>
 </div>
-
+</div>
+<!--project list-->
 <div *ngIf="projects && projects.length > 0" class="container container-small">
   <ul class="project-list list-unstyled">
     <li *ngFor="let project of projects" class="panel p-a-2 m-x-auto m-y-3">

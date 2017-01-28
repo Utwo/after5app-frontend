@@ -5,42 +5,31 @@
 
 // Colors
 
+$dark-purple: #3a3584;
+$purple: #4a459c;
 $dark-iris: #574fac;
 $iris: #706ec2;
 $perrywinkle: #8c8add;
 $light-periwinkle: #bfbeff;
-$greyish-brown: #484848;
-$dirty-white: #f6f6f6;
+$turquoise: #50e3c2;
+$yellow: #ffed4b;
 
-$turcoaz3: #6fffe9;
-$turcoaz: #84dcc6;
-$turcoaz4: #5bc0be;
-
-$turcoaz1: #a5ffd6;
-
-$rosu1: #e63946;
-$blue: #456990;
-$blue1: #1c2541;
-
-//Secondary
-$roz1: #ffa69e;
-$turcoaz: #84dcc6;
-$turcoaz2: #a8dadc;
-$roz: #f45b69;
-$rosu: #ff686b;
-
-$brand-primary: #6476f9; //495fff
+$brand-primary: #6476f9;
 $brand-success: #00cd5a;
-$brand-info: #8ee3ce;
+$brand-info: #8c8add;
 $brand-warning: #ff851b;
 $brand-danger: #ff1654;
 
-$gray-dark: #373a3c;
-$gray: #55595c;
-$gray-light: #818a91;
-$gray-lighter: #e9ebec;
-$gray-lightest: #f0f0f2;
+$gray-darkest: #484848;
+$gray-dark: #55595c;
+$gray: #85879e;
+$gray-light: #a1acb5;
+$gray-lighter: #c8c8c8;
+$gray-lightest: #f6f6f6;
 
+$text-muted: $gray-lighter;
+
+$btn-secondary-border: $perrywinkle;
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
@@ -64,21 +53,19 @@ $font-size-h6: 1rem;
 // Body
 //
 // Settings for the `<body>` element.
-$font-size-base: 1.05rem;
+$font-size-base: 0.9rem;
 $line-height-base: 1.6;
-$body-bg: #fafafa;
-$body-color: $gray-dark;
+$font-size-sm:   .8rem;
+
+$body-bg: $gray-lightest;
+$body-color: $gray-darkest;
+
 $font-family-sans-serif: 'Muli';
 $font-family-monospace: Consolas, "Liberation Mono", "Courier New", monospace;
 $headings-font-family: $font-family-sans-serif;
 
-//font: normal1.2em/1.6 'Open Sans', sans-serif;
-//font: normal 1.03em/1.6 'Roboto', sans-serif;
-//font: normal 1.2em/1.6 'Lato', sans-serif;
-//font: normal 1.2em/1.6 'Source Sans Pro', sans-serif;
-//font: normal 1em/1.6 'Raleway', sans-serif;
-//font: normal 1.1em/1.6 'PT Sans', sans-serif;
-//font: normal 1.2em/1.6 'Noto Sans', sans-serif;
+// Links
+$link-color: $turquoise;
 
 // Grid containers
 //
@@ -91,12 +78,12 @@ $container-max-widths: (
   xl: 1050px
 );
 
-// Specify the gutters.
-//$grid-gutter-width: 30px;
+// Components
+
+$border-radius: 6px;
 
 //Modal
 $modal-backdrop-bg: linear-gradient(to top, $brand-primary, $brand-info);
-//$modal-backdrop-bg: linear-gradient(to top, #00C9FF , #92FE9D)
 $modal-backdrop-opacity: .7;
 $modal-dialog-sm-up-margin-y: 100px;
 

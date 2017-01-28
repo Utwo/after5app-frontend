@@ -16,3 +16,12 @@
 .logo {
   height: 2em;
 }
+
+.icon.icon-star{
+  stroke: $gray-lighter;
+}
+
+.icon.icon-star.full{
+  stroke: $yellow;
+  fill: $yellow;
+}
