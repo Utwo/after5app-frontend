@@ -1,7 +1,7 @@
-<section class="col-md-12 m-t-2">
+<section class="col-md-12 mt-2">
   <ul *ngIf="comments && comments.length > 0" class="list-unstyled">
     <li *ngFor="let comment of comments" class="comment-item">
-      <div class="comment__left-side p-r-1">
+      <div class="comment__left-side pr-1">
         <img *ngIf="comment.user.picture" class="profile-img" src="{{comment.user.picture}}?s=30&width=30&height=30">
       </div>
       <div class="comment__content">
@@ -12,9 +12,9 @@
     </li>
   </ul>
   <p *ngIf="comments && comments.length == 0" class="text-muted">Add a comment to start a conversation</p>
-  <div *ngIf="state.isLoggedIn()" class="form-group row p-x-1">
-    <input class="form-control col-xs-10" type="text" #text placeholder="Add your comment" (keyup.enter)="addComment(text)">
-    <button (click)="addComment(text)" class="btn btn-info text-primary col-xs-2">
+  <div *ngIf="state.isLoggedIn()" class="form-group row px-1">
+    <input class="form-control col-10" type="text" #text placeholder="Add your comment" (keyup.enter)="addComment(text)">
+    <button (click)="addComment(text)" class="btn btn-info text-primary col-2">
       <svg class="icon">
         <use xlink:href="assets/icons.svg#icon-paperplane"></use>
       </svg>

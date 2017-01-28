@@ -1,7 +1,7 @@
 <header class="header-site" [class.show-navigation]="showNavigation">
-  <div class="container-fluid p-x-3">
+  <div class="container-fluid px-5">
     <div class="row">
-      <div class="col-lg-2 col-md-2 col-sm-6 col-xs-8">
+      <div class="col-lg-2 col-md-2 col-sm-6 col-8">
         <h1 class="header-logo">
           <a routerLink="/">
             <svg class="logo">
@@ -13,33 +13,29 @@
           </a>
         </h1>
       </div>
-      <div class="col-lg-7 col-md-8 col-sm-12 col-xs-12 navigation-wrap hidden-sm-down">
-        <nav class="navigation form-inline">
-          <a *ngIf="loggedIn" class="navigation-item text-xs-center text-md-right"
+      <div class="col-lg-10 col-md-10 col-sm-12 col-12 navigation-wrap hidden-sm-down">
+        <nav class="nav justify-content-end">
+           <a *ngIf="loggedIn" class="nav-item mx-3"
              routerLink="/start-project">
-            Start a project
+            <b>Start a project</b>
           </a>
-          <a *ngIf="!loggedIn" class="navigation-item text-xs-center text-md-right"
+          <a *ngIf="!loggedIn" class="nav-item mx-3"
              (click)="modal.open()">
-            Start a project
+            <b>Start a project</b>
           </a>
-          <a class="navigation-item text-xs-center text-md-right" routerLink="/projects" routerLinkActive="active">
-            Browse Projects
+          <a class="nav-item mx-3" routerLink="/projects" routerLinkActive="active">
+            <b>Browse Projects</b>
           </a>
-          <a class="navigation-item text-xs-center text-md-right" routerLink="/about" routerLinkActive="active">
-            About
-          </a>
-          <a class="navigation-item text-xs-center text-md-right"
-             href="https://docs.google.com/forms/d/e/1FAIpQLSe0yjar47og45W-FQ4GJLvW6umIqrVpvzk3J45qkl93iHg0Vg/formResponse"
-             target="_blank">
-            Feedback
-          </a>
-          <app-search class="dropdown dropdown--lg"></app-search>
+          <div class="nav-item  mx-3">
+            <app-user-nav [user]="user" *ngIf="loggedIn"></app-user-nav>
+            <span *ngIf="!loggedIn" (click)="modal.open()" class="btn btn-link-info btn-sm">Login</span>
+          </div>
+          <div class="nav-item mx-3">
+            <svg class="icon icon-circle">
+              <use xlink:href="assets/icons.svg#search"></use>
+            </svg>
+          </div>
         </nav>
-      </div>
-      <div class="col-lg-3 col-md-2 col-sm-6 col-xs-4 text-xs-right">
-        <app-user-nav [user]="user" *ngIf="loggedIn"></app-user-nav>
-        <span *ngIf="!loggedIn" (click)="modal.open()" class="btn btn-link-info btn-sm">Login</span>
       </div>
     </div>
   </div>

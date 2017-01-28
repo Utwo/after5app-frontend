@@ -1,13 +1,13 @@
 <div *ngIf="user">
   <div class="jumbotron-fluid">
     <div class="container">
-      <h2 class="m-y-0">My profile settings</h2>
+      <h2 class="my-0">My profile settings</h2>
     </div>
   </div>
 
   <div class="container">
     <div class="row">
-      <section class="col-md-7 m-y-3">
+      <section class="col-md-7 my-3">
         <form #updateForm="ngForm"
               (ngSubmit)="onSubmit()"
               class="container container-small">
@@ -92,7 +92,7 @@
             </div>
           </div>
 
-          <div class="text-md-left text-xs-center">
+          <div class="text-md-left text-center">
             <button class="btn btn-primary"
                     type="submit"
                     [disabled]="!updateForm.form.valid">
@@ -104,8 +104,8 @@
 
       </section>
       <div class="col-md-5">
-        <section class="sidebar p-a-1 m-b-3">
-          <h3 class="project__title title-border title-border--primary m-b-1 p-b-1">
+        <section class="sidebar p-1 mb-3">
+          <h3 class="project__title title-border title-border--primary mb-1 pb-1">
             Skills
           </h3>
           <div class="form-inline">
@@ -121,8 +121,8 @@
               {{skillError}}
             </i>
           </div>
-          <ul class="m-t-1 list-inline">
-            <li *ngFor="let skill of skills; let i = index" class="list-inline-item m-t-1">
+          <ul class="mt-1 list-inline">
+            <li *ngFor="let skill of skills; let i = index" class="list-inline-item mt-1">
               <a class="btn btn-gradient-primary btn-sm">{{skill}}
                 <button class="btn btn-link btn-sm text-info"
                         type="button"
@@ -131,7 +131,7 @@
               </a>
             </li>
           </ul>
-          <div class="text-xs-center sidebar-icon">
+          <div class="text-center sidebar-icon">
             <svg class="icon icon-lg">
               <use xlink:href="assets/icons.svg#icon-space-invaders"></use>
             </svg>
