@@ -12,3 +12,16 @@
   width: 1.2em;
   height: 1.2em;
 }
+
+.logo {
+  height: 2em;
+}
+
+.icon.icon-star{
+  stroke: $gray-lighter;
+}
+
+.icon.icon-star.full{
+  stroke: $yellow;
+  fill: $yellow;
+}

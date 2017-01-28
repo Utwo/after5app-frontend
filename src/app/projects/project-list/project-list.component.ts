@@ -44,16 +44,15 @@ export class ProjectListComponent implements OnInit {
   }
 
   getRecommendedProjects(modal) {
-    if(this.state.isLoggedIn()) {
+    if (this.state.isLoggedIn()) {
       this.isPopularActive = this.isRecentActive = false;
       this.isRecommendedActive = true;
       this.projectService.getRecommendedProjects()
         .subscribe(
           projects => this.extractData(projects),
           error => this.responseHandler.errorMessage('An error occured!', error));
-    }
-    else {
-        modal.open();
+    } else {
+      modal.open();
     }
   }
 
