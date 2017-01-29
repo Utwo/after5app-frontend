@@ -15,13 +15,8 @@
       </div>
       <div class="col-lg-10 col-md-10 col-sm-12 col-12 navigation-wrap hidden-sm-down">
         <nav class="nav justify-content-end">
-           <a *ngIf="loggedIn" class="nav-item mx-3"
-             routerLink="/start-project">
-            <b>Start a project</b>
-          </a>
-          <a *ngIf="!loggedIn" class="nav-item mx-3"
-             (click)="modal.open()">
-            <b>Start a project</b>
+           <a class="nav-item mx-3" routerLink="/start-project">
+            <b class="text-success">Start a project</b>
           </a>
           <a class="nav-item mx-3" routerLink="/projects" routerLinkActive="active">
             <b>Browse Projects</b>

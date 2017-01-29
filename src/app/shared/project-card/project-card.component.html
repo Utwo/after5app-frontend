@@ -46,7 +46,7 @@
       <div class="col-md-9">
         <ul class="list-inline" *ngIf="project.position.length > 0">
           <li (click)="filterProjects(position.skill.id); autocomplete.setValue(position.skill.name)"
-              class="list-inline-item btn btn-sm btn btn-outline-secondary project__skill-item"
+              class="list-inline-item btn btn-sm btn btn-outline-secondary project__skill-item mr-3 mb-1"
               *ngFor="let position of project.position">
             {{position.skill.name}}
           </li>

@@ -1,24 +1,31 @@
-<footer class="py-2 bg-faded">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 text-md-left text-center">
-        <nav>
-          <a routerLink="/">
-            <small>Home</small>
-          </a>
-          &sdot; <a routerLink="/projects">
-          <small>Projects</small>
-        </a>
-          &sdot; <a routerLink="/about">
-          <small>About</small>
-        </a>
-          <span *ngIf="state.isLoggedIn()">&sdot; <a routerLink="/start-project">
-          <small>Start project</small>
-        </a></span>
-        </nav>
+<footer class="pt-2 bg-faded">
+  <div class="jumbotron-fluid">
+    <div class="container">
+      <div class="mb-3">
+        <ul class="nav justify-content-center">
+          <li class="nav-item mx-4">
+            <a routerLink="/">Home</a>
+          </li>
+          <li class="nav-item mx-4">
+            <a routerLink="/about">About Us</a>
+          </li>
+          <li class="nav-item mx-4">
+            <a routerLink="/">Contact Us</a>
+          </li>
+          <li class="nav-item mx-4">
+            <a routerLink="/start-project">Start Project</a>
+          </li>
+          <li class="nav-item mx-4">
+            <a routerLink="/projects">Projects</a>
+          </li>
+        </ul>
       </div>
-      <div class="col-md-4 text-md-right text-center">
-        <small>&#10100; &#10101; with &#10084; by <a href="http://utwo.ro" target="_blank">Utwo</a> and Oana</small>
+      <div class="text-center">
+        <small>
+          Copyright &copy; After5app Team - 2017
+          <br>
+          All Rights Reserved
+        </small>
       </div>
     </div>
   </div>

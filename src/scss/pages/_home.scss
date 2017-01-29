@@ -18,31 +18,10 @@
 .home-section h1, .home-section h2, .home-section h3 {
   font-family: $font-family-sans-serif;
 }
-
-.home-title__border {
-  position: relative;
-}
-
-.home-title__border:after {
-  content: '';
-  position: absolute;
-  width: 6em;
-  height: 5px;
-  background: $brand-info;
-  border-radius: $border-radius;
-  display: block;
-  top: 115%;
-  left: 50%;
-  transform: translate(-50%, 0);
-}
-
 // Section 1
 
 .home-section__1 {
-  background: linear-gradient(45deg, rgba(71, 118, 230, .78) 10%, rgba(142, 84, 233, .78) 90%) fixed,
-  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWMwNjb+z0AUwKkSAIu4AzGjI0s9AAAAAElFTkSuQmCC') repeat top left,
-  url('assets/2.jpg') no-repeat top fixed;
-  background-size: auto, auto, cover;
+  background: radial-gradient(at 60% bottom, #706ec2, #433a8e, #433a8e);
   color: #fff;
 }
 

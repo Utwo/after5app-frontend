@@ -1,8 +1,9 @@
 <!--header-->
 <div class="jumbotron-fluid">
   <div class="container">
-    <app-section-header [header]="'We think you are going to have'"
-                        [subheader]="'A great collaboration'">
+    <app-section-header
+      [header]="'We think you are going to have'"
+      [subheader]="'A great collaboration'">
     </app-section-header>
   </div>
 </div>
@@ -45,24 +46,26 @@
     </div>
   </div>
 </div>
-<!--project list-->
+
 <div *ngIf="projects && projects.length > 0" class="container container-small">
+  <!--project list-->
   <ul class="project-list list-unstyled">
     <li *ngFor="let project of projects">
       <app-project-card [project]=project></app-project-card>
     </li>
   </ul>
-  <div class="text-center row my-1">
+  <!--pagination-->
+  <div class="row mb-3">
     <div class="col">
-      <button (click)="prevPage()" *ngIf="page.prev" class="btn btn-info">
+      <button (click)="prevPage()" [disabled]="!page.prev" class="btn btn-info">
         &#10096;</button>
     </div>
-    <div class="col">
+    <div class="col text-center">
       <span *ngIf="page.prev || page.next"
             class="btn">{{page.current_page}}</span>
     </div>
-    <div class="col">
-      <button (click)="nextPage()" *ngIf="page.next" class="btn btn-info">
+    <div class="col text-right">
+      <button (click)="nextPage()" [disabled]="!page.next" class="btn btn-info">
         &#10097;</button>
     </div>
   </div>

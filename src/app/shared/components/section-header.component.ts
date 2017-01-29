@@ -3,11 +3,14 @@ import {Component, Input} from '@angular/core';
 @Component({
   selector: 'app-section-header',
   template: `
-    <h2 class="text-center">
-    {{header}}
-    <br>
-    {{subheader}}
-    </h2>
+    <div class="text-center">
+      <h2 class="font-weight-bold">
+        {{header}}
+      </h2>
+      <h3>
+        {{subheader}}
+      </h3>
+    </div>
   `
 })
 
