@@ -39,6 +39,7 @@
 @import "base/typography";
 @import "base/helpers";
 @import "base/forms";
+@import "base/sprite";
 
 // 4. Layout-related sections
 @import  "layout/header";
@@ -60,6 +61,7 @@
 @import "components/spinner";
 @import "components/panel";
 @import "components/tabs";
+@import "components/card";
 
 // 6. Page-specific styles
 @import "pages/home";

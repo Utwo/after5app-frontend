@@ -3,7 +3,7 @@ import {Component, Input} from '@angular/core';
 @Component({
   selector: 'app-section-header',
   template: `
-    <div class="text-center">
+    <div class="text-center text-white">
       <h2 class="font-weight-bold">
         {{header}}
       </h2>

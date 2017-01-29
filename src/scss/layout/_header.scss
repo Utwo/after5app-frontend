@@ -18,6 +18,8 @@
   line-height: 1.4;
   margin: 0;
   padding: .2em;
+  z-index: map-get($zindex, highest);;
+  position: relative;
 }
 
 //.header-logo:after {

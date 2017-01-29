@@ -6,16 +6,24 @@
           [header]="'Got an idea for a project?'"
           [subheader]="'You are not alone'">
         </app-section-header>
-        <div class="row mt-3">
-          <div class="col-sm-6 text-md-left">
-            <a class="btn btn-info btn-lg" routerLink="/start-project">
-              Start your own project
-            </a>
+        <div class="row my-4">
+          <div class="col-sm-6">
+            <app-home-card
+              [main_text]="'The Path of the Terraformer'"
+              [secondary_text]="'The Settlers. The Craftsmen. The Artists. The ones who want to change the world'"
+              [image_name]="'terraformer'"
+              [button_text]="'START YOUR OWN PROJECT'"
+              [link]="'/start-project'"
+            ></app-home-card>
           </div>
-          <div class="col-sm-6 text-md-right">
-            <a class="btn btn-primary btn-lg" routerLink="/projects">
-              Browse existing projects
-            </a>
+          <div class="col-sm-6">
+            <app-home-card
+              [main_text]="'The Path of the Space Wanderer'"
+              [secondary_text]="'The Rebels. The Misfits. The Pirates. The ones who find a way in the impossible.'"
+              [image_name]="'space_wanderer'"
+              [button_text]="'BROWSE EXISTING PROJECTS'"
+              [link]="'/projects'"
+            ></app-home-card>
           </div>
         </div>
       </div>
