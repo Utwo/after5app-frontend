@@ -43,6 +43,19 @@
           </h3>
           <h2> About me: </h2>
           <p> EU SUNT CEL MAI TARE DIN PARCARE DE LA FSEGAAAA </p>
+          <div>
+            <p> <span> Name: </span> <span> {{user.name}}</span></p>
+            <p> <span> Country: </span> <span> {{user.name}}</span></p>
+            <p> <span> City: </span> <span> {{user.name}}</span></p>
+            <p> <span> Hobbies: </span> <span> {{user.name}}</span></p>
+          </div>
+          <div>
+            <span> Social: </span>
+            <a *ngIf = 'user.facebook_id != null' href = 'http://facebook.com/{{user.facebook_id}}'> <span> Facebook </span></a>
+            <a *ngIf = 'user.twitter != null' href = 'https://twitter.com/{{user.twitter}}'> <p> Twitter </p></a>
+            <a *ngIf = 'user.github_id != null' href = 'http://gihub/{{user.github_id}}'> <p> Github </p></a>
+            <a *ngIf = 'user.website != null' href = '{{user.website}}'> <p> Website </p></a>
+          </div>
         </section>
       </div>
 
