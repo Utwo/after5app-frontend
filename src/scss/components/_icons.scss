@@ -9,6 +9,28 @@
 }
 
 .icon-lg {
-  width: 1.2em;
-  height: 1.2em;
+  width: 2em;
+  height: 2em;
+}
+
+.icon-circle{
+  background: $purple;
+  border-radius: 35px;
+  color: $gray-lightest;
+  width: 3em;
+  height: 3em;
+}
+
+.logo {
+  height: 2em;
+}
+
+.icon.icon-star{
+  font-size: 1.5em;
+  stroke: $gray-lighter;
+}
+
+.icon.icon-star.full{
+  stroke: $yellow;
+  fill: $yellow;
 }

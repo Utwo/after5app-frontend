@@ -1,5 +1,5 @@
-<section class="col-md-12 m-t-2">
-  <div class="text-xs-center">
+<section class="col-md-12 mt-2">
+  <div class="text-center">
     <button *ngIf="page.next" (click)="loadMore()" class="btn btn-secondary btn-link-primary">load more</button>
   </div>
   <ul *ngIf="messages && messages.length > 0" class="list-unstyled">
@@ -15,11 +15,11 @@
   </ul>
   <p *ngIf="messages && messages.length == 0" class="text-muted">Add a message to start a conversation between project
     members</p>
-  <div class="form-group row p-x-1">
-    <input class="form-control col-xs-10" type="text" #text
+  <div class="form-group row px-1">
+    <input class="form-control col-10" type="text" #text
            placeholder="Add your message (only visible to project members)"
            (keyup.enter)="addMessage(text)">
-    <button (click)="addMessage(text)" class="btn btn-info text-primary col-xs-2">
+    <button (click)="addMessage(text)" class="btn btn-info text-primary col-2">
       <svg class="icon">
         <use xlink:href="assets/icons.svg#icon-paperplane"></use>
       </svg>

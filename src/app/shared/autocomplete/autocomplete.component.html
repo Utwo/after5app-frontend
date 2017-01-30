@@ -1,6 +1,6 @@
 <div class="form-inline dropdown">
-  <div class="{{wrap_class}}">
-    <label *ngIf="label_show" for="filter" class="m-x-1">{{label_message}}</label>
+  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+    <div *ngIf="label_message" class={{label_class}}>{{label_message}}</div>
     <input [(ngModel)]="asyncSelected"
            [typeahead]="dataSource"
            (typeaheadLoading)="changeTypeaheadLoading($event)"
@@ -9,11 +9,11 @@
            [typeaheadWaitMs]="200"
            [typeaheadItemTemplate]="skillItemTemplate"
            placeholder="javascript"
-           class="form-control"
+           class={{input_class}}
            id="filter"
-           autocomplete="off">
+           autocomplete="off"
+    >
   </div>
-
   <i *ngIf="typeaheadLoading===true" class="dropdown-loading">
 				<span class="spinner">
 					<span class="double-bounce1"></span>
@@ -21,7 +21,7 @@
 				</span>
   </i>
 
-  <div *ngIf="typeaheadNoResults===true && type=='list'" class="dropdown-menu text-xs-center">
+  <div *ngIf="typeaheadNoResults===true && type=='list'" class="dropdown-menu text-center">
     <i class="text-muted">No Results Found</i>
   </div>
 
@@ -29,3 +29,4 @@
     {{skill.name}}
   </template>
 </div>
+

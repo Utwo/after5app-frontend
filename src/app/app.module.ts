@@ -36,11 +36,13 @@ import {ProjectApplicationsComponent} from './projects/project-details/project-a
 import {LoginComponent} from './login/login.component';
 import {MessagesComponent} from './projects/project-details/messages/messages.component';
 import {AutocompleteComponent} from './shared/autocomplete/autocomplete.component';
+import {SectionHeaderComponent} from './shared/components/section-header.component';
 import {LoginModalComponent} from './shared/login-modal/login-modal.component';
 import {PersonalInfoComponent } from './profile/personal-info/personal-info.component';
 
 // pipes
 import {TimeAgoPipe} from './time-ago.pipe';
+import {ProjectCardComponent} from './shared/project-card/project-card.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import {TimeAgoPipe} from './time-ago.pipe';
     LoginComponent,
     MessagesComponent,
     LoginModalComponent,
+    ProjectCardComponent,
+    SectionHeaderComponent
     PersonalInfoComponent,
   ],
   imports: [
