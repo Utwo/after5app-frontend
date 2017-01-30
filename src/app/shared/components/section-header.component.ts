@@ -4,7 +4,7 @@ import {Component, Input} from '@angular/core';
   selector: 'app-section-header',
   template: `
     <div class="text-center">
-      <h1 class="font-weight-bold">
+      <h1 class="font-weight-bold mb-3">
         {{header}}
       </h1>
       <h2>

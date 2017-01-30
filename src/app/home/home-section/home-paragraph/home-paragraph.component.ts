@@ -1,9 +1,8 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-home-paragraph',
-  templateUrl: 'home-paragraph.component.html',
-  styles: []
+  templateUrl: 'home-paragraph.component.html'
 })
 export class HomeParagraphComponent {
   @Input('header') header;

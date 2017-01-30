@@ -111,7 +111,7 @@
                 </div>
                 <div *ngIf="application.accepted == 0" class="panel__item mb-1">
                 <span>&nbsp;<svg class="icon icon-lg">
-                  <use xlink:href="assets/svg/icons.svg#icon-clock2"></use>
+                  <use xlink:href="assets/svg/icons.svg#icon-clock"></use>
                 </svg>
                 <a routerLink="/project/{{application.position.project.id}}" class="text-primary">
                   {{application.position.project.title}}</a> - <i>pending</i>
@@ -122,11 +122,6 @@
             <p *ngIf="!applications">No application yet. After you help a project, your applications will appear
               here.</p>
           </section>
-          <div class="text-center sidebar-icon">
-            <svg class="icon icon-lg">
-              <use xlink:href="assets/svg/icons.svg#icon-space-invaders"></use>
-            </svg>
-          </div>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ import {Component, Input} from '@angular/core';
   templateUrl: 'home-section.component.html',
   styles: []
 })
-export class HomeSectionComponent {
+export class HomeSectionComponent{
   @Input('main_text') main_text;
   @Input('secondary_text') secondary_text;
 

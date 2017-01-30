@@ -13,7 +13,19 @@
   height: 2em;
 }
 
-.icon-circle{
+.icon-xl {
+  width: 3em;
+  height: 3em;
+}
+
+.icon-shadow {
+  height: 3em;
+  width: 3em;
+  background: $brand-info;
+  border-radius: 50%;
+}
+
+.icon-circle {
   background: $purple;
   border-radius: 35px;
   color: $gray-lightest;
@@ -27,12 +39,12 @@
   vertical-align: middle;
 }
 
-.icon.icon-star{
+.icon.icon-star {
   font-size: 1.5em;
   stroke: $gray-lighter;
 }
 
-.icon.icon-star.full{
+.icon.icon-star.full {
   stroke: $yellow;
   fill: $yellow;
 }
