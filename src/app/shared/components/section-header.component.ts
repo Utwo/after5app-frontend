@@ -4,12 +4,12 @@ import {Component, Input} from '@angular/core';
   selector: 'app-section-header',
   template: `
     <div class="text-center text-white">
-      <h2 class="font-weight-bold">
+      <h1 class="font-weight-bold">
         {{header}}
-      </h2>
-      <h3>
+      </h1>
+      <h2>
         {{subheader}}
-      </h3>
+      </h2>
     </div>
   `
 })

@@ -3,13 +3,13 @@
     <div class="row">
       <div class="col-lg-2 col-md-2 col-sm-6 col-8">
         <h1 class="header-logo">
+          <a href="javascript:;" (click)="toggleNavigation()"
+             class="hidden-md-up toggle-burger btn btn-sm btn-circle-sm mr-2">&#x2261;
+          </a>
           <a routerLink="/">
             <svg class="logo">
               <use xlink:href="assets/svg/logo.svg#logo"></use>
             </svg>
-          </a>
-          <a href="javascript:;" (click)="toggleNavigation()"
-             class="hidden-md-up toggle-burger btn btn-sm btn-circle-sm">&#x2261;
           </a>
         </h1>
       </div>
