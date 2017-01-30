@@ -15,17 +15,17 @@
       </div>
       <div class="col-lg-10 col-md-10 col-sm-12 col-12 navigation-wrap hidden-sm-down">
         <nav class="nav justify-content-end">
-           <a class="nav-item mx-3" routerLink="/start-project">
+           <a class="nav-item mx-md-3 mx-1" routerLink="/start-project">
             <b class="text-success">Start a project</b>
           </a>
-          <a class="nav-item mx-3" routerLink="/projects" routerLinkActive="active">
+          <a class="nav-item mx-md-3 mx-1" routerLink="/projects" routerLinkActive="active">
             <b>Browse Projects</b>
           </a>
-          <div class="nav-item  mx-3">
+          <div class="nav-item mx-md-3 mx-1">
             <app-user-nav [user]="user" *ngIf="loggedIn"></app-user-nav>
             <span *ngIf="!loggedIn" (click)="modal.open()" class="btn btn-link-info btn-sm">Login</span>
           </div>
-          <div class="nav-item mx-3">
+          <div class="nav-item mx-md-3 mx-1">
             <svg class="icon icon-circle">
               <use xlink:href="assets/svg/icons.svg#search"></use>
             </svg>

@@ -1,3 +1,34 @@
-<p>
-  home-section works!
-</p>
+<section class="container home-section home-section__2 py-3">
+  <div class="row text-center home-section__container">
+    <div class="col-12">
+      <app-section-header
+        [header]="main_text"
+        [subheader]="secondary_text">
+      </app-section-header>
+    </div>
+
+    <div class="col-md-6 col-12">
+      <app-home-paragraph
+        [header]="first_header"
+        [text]="first_text"
+        [image_name]="first_image"
+      ></app-home-paragraph>
+    </div>
+    <div class="col-md-6 col-12">
+      <app-home-paragraph
+        [header]="second_header"
+        [text]="second_text"
+        [image_name]="second_image"
+      ></app-home-paragraph>
+    </div>
+
+    <div class="col-12">
+      <a *ngIf="read_more" class="btn btn-info mx-md-3" routerLink='/'>
+        READ MORE &#9661;
+      </a>
+      <a class="btn btn-success mx-md-3" routerLink='/'>
+        GET STARTED
+      </a>
+    </div>
+  </div>
+</section>

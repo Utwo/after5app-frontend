@@ -1,7 +1,7 @@
 <section
-  class="d-flex container-fluid justify-content-center align-items-center mx-auto home-main-section pt-5">
+  class="d-flex container-fluid justify-content-center align-items-center mx-auto home-main pt-5">
   <div class="row my-5">
-    <div class="col my-sm-4">
+    <div class="col my-sm-4 text-white">
       <app-section-header
         [header]="'Got an idea for a project?'"
         [subheader]="'You are not alone'">
@@ -32,33 +32,45 @@
   <div class="sprite sprite-home-planet-2"></div>
 </section>
 
-<section class="container home-section home-section__2 py-3">
-  <div class="row text-center home-section__2__container">
-    <div class="col-md-4">
-      <span class="home-section__2__icon d-inline-block mb-1 p-3">🚀</span>
-      <h4>Start a project</h4>
-      <p>Do you have a great idea of a project, but need some help with the
-        implementation? We're here to help you. Just
-        write a short description and tell us what you’re looking for. All you
-        have to do next is choosing the right
-        ninja coders for your team.</p>
-    </div>
-    <div class="col-md-4">
-      <span class="home-section__2__icon d-inline-block mb-1 p-3">💙</span>
-      <h4>Help a project</h4>
-      <p>Are you a talented coder, tired of working for someone else and willing
-        to create a brand new product? Find one
-        of the existing ideas that needs your skills, get in touch with the
-        owner and convince him you are the right
-        pick for his team!</p>
-    </div>
-    <div class="col-md-4">
-      <span class="home-section__2__icon d-inline-block mb-1 p-3">🦄</span>
-      <h4>Make it happen</h4>
-      <p>After setting up your team, project and your mind, it’s time to start
-        working on it. Don’t rush, take it one
-        step at a time. We know that you can make it! And please let us know how
-        it all worked out for you! :)</p>
-    </div>
-  </div>
-</section>
+<!--section 1-->
+<app-home-section
+  [main_text]="'Start a Project or Join One'"
+  [secondary_text]="'Totally free and easy'"
+  [first_header]="'ONE SMALL STEP, ONE GIANT LEAP'"
+  [first_text]="'You’ve had this great idea for a while but it’s hard to meet like-minded people to do it with, right? If it sounds familiar to you, it does to us too, which is why we thought we could help connect the dots between you and your future team.'"
+  [second_header]="'GREAT MINDS THINK ALIKE'"
+  [second_text]="'After5App is a platform where People meet People that are of like-mind, to create, to discuss, to expand and - preferably - to meet! Post your own projects to attract attention or browse and approach others who have already done this. We think you have potential.'"
+  [first_image]="''"
+  [second_image]="''"
+  [read_more]="'true'"
+>
+</app-home-section>
+
+<!--section 2-->
+<app-home-section
+  [main_text]="'All Types Welcome'"
+  [secondary_text]="'Rebel, Misfits and Advernture Seekers'"
+  [first_header]="'THE NUMBER CRUNCHERS'"
+  [first_text]="'You’re probably interested in Code crunching, right? You can find a talented designer to work that magical code you wrote and bring that marvelous idea to life. That’s how we work here at After5App, together. We realised that if we combined forces, we could create so much more.'"
+  [second_header]="'THE ARTSY OR VARIED TYPES'"
+  [second_text]="'You’re an artsy one? That means you could be a designer or a Social Media Specialist, doesn’t matter, you can find a talented coder to back your projects up and together you could be the next Facebook or Google, doesn’t that sound exciting? Just try it out!'"
+  [first_image]="''"
+  [second_image]="''"
+  [read_more]="'true'"
+>
+</app-home-section>
+
+<!--section 3-->
+<app-home-section
+  [main_text]="'Make it Happen!'"
+  [secondary_text]="'Become Part of the Oddisey'"
+  [first_header]="'DON’T RUSH IT!'"
+  [first_text]="'After setting up your team, project and your mind, it’s time to start working on it. Don’t rush, take it one step at a time. We also love hearing from you, be it success or a try, we’re gonna help get you where you want! '"
+  [second_header]="'TALK TO FEEBE (PLEASE?)'"
+  [second_text]="'We’ve set Feebe and Buggy up so you can talk to them and tell us what else you would like implemented around here. Click on them and leave some feedback. It helps us a bunch! (and maybe we’ll even give you cookies)'"
+  [first_image]="''"
+  [second_image]="''"
+  [read_more]="'false'"
+>
+</app-home-section>
+
