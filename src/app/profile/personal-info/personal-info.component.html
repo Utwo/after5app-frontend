@@ -1,56 +1,38 @@
-<div *ngIf="user">
-
-  <div class="jumbotron-fluid">
-    <div class="container">
-      <h2 class="m-y-0">
-        <img *ngIf="user.picture" class="profile-img" src="{{user.picture}}?s=120&width=120&height=120">
-        {{user.name}}
-        <br/>
-        Joined {{user.created_at | date: 'dd of MMMM, yyyy'}}
-      </h2>
-    </div>
-    <div class="col-lg-10 text-lg-right text-xs-center">
-      <a id="personal"
-         href="javascript:;"
-         class="btn font-weight-bold m-l-1"
-         [class.btn-link-info]="isPersonalActive">
-        PERSONAL
-      </a>
-      <a id="badges"
-         href="javascript:;"
-         class="btn font-weight-bold m-l-1"
-         [class.btn-link-info]="isBadgesActive">
-        BADGES
-      </a>
-    </div>
-  </div>
-  <div class="container">
-    <h2 class="m-y-0">
-      <svg class="icon icon-message"><use xlink:href="assets/icons.svg#icon-message"></use></svg>
-      SEND MESSAGE
-    </h2>
-  </div>
-
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-7">
         <section class="m-y-3">
           <h3 class="title-border title-border--green p-b-1">
             PERSONAL INFO
-            <a *ngIf="isMe"  class="pull-xs-right">
-              <svg class="icon icon-message"><use xlink:href="assets/icons.svg#icon-write"></use></svg>
+            <a *ngIf="isMe"  (click)="toggleEditing()" class="pull-xs-right">
+              <svg *ngIf = '!editing' class="icon icon-message"><use xlink:href="assets/icons.svg#icon-write"></use></svg>
+              <a *ngIf = 'editing' class="btn btn-info btn-lg">APPLY CHANGES</a>
             </a>
           </h3>
           <h2> About me: </h2>
-          <p> EU SUNT CEL MAI TARE DIN PARCARE DE LA FSEGAAAA </p>
+          <p *ngIf="!editing" > EU SUNT CEL MAI TARE DIN PARCARE DE LA FSEGAAAA </p>
+          <input *ngIf="editing" type="textarea" [(ngModel)]="description" title="description" />
           <div>
-            <p> <span> Name: </span> <span> {{user.name}}</span></p>
-            <p> <span> Country: </span> <span> {{user.name}}</span></p>
-            <p> <span> City: </span> <span> {{user.name}}</span></p>
-            <p> <span> Hobbies: </span> <span> {{user.name}}</span></p>
+            <p>  Name:
+              <span *ngIf="!editing" > {{user.name}} </span>
+              <input *ngIf="editing" type="text" [(ngModel)]="name" title="name" />
+            </p>
+            <p>  Country:
+              <span *ngIf="!editing" > {{user.name}} </span>
+              <input *ngIf="editing" type="text" [(ngModel)]="country" title="country" />
+            </p>
+            <p>  City:
+              <span *ngIf="!editing" > {{user.name}} </span>
+              <input *ngIf="editing" type="text" [(ngModel)]="city" title="city" />
+            </p>
+            <p> Hobbies:
+              <input *ngIf="editing" type="text" [(ngModel)]="hobbie" title="hobbie" />
+              <svg *ngIf="editing" class="icon icon-plus"><use xlink:href="./assets/icons.svg#icon-plus"></use></svg>
+              <span *ngIf="!editing"> {{user.name}} </span>
+              <p *ngIf="editing"> <a> x </a>{{user.name}} </p>
           </div>
           <div>
-            <span> Social: </span>
+            Social:
             <a *ngIf = 'user.facebook_id != null' href = 'http://facebook.com/{{user.facebook_id}}'> <span> Facebook </span></a>
             <a *ngIf = 'user.twitter != null' href = 'https://twitter.com/{{user.twitter}}'> <p> Twitter </p></a>
             <a *ngIf = 'user.github_id != null' href = 'http://gihub/{{user.github_id}}'> <p> Github </p></a>
@@ -58,7 +40,5 @@
           </div>
         </section>
       </div>
-
   </div>
-
 </div>

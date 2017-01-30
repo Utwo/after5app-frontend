@@ -43,6 +43,7 @@ import {PersonalInfoComponent } from './profile/personal-info/personal-info.comp
 // pipes
 import {TimeAgoPipe} from './time-ago.pipe';
 import {ProjectCardComponent} from './shared/project-card/project-card.component';
+import { SkillsComponentComponent } from './profile/skills-component/skills-component.component';
 
 @NgModule({
   declarations: [
@@ -69,8 +70,9 @@ import {ProjectCardComponent} from './shared/project-card/project-card.component
     MessagesComponent,
     LoginModalComponent,
     ProjectCardComponent,
-    SectionHeaderComponent
+    SectionHeaderComponent,
     PersonalInfoComponent,
+    SkillsComponentComponent,
   ],
   imports: [
     routing,
@@ -81,7 +83,7 @@ import {ProjectCardComponent} from './shared/project-card/project-card.component
     ModalModule.forRoot(),
     TypeaheadModule.forRoot(),
     TabsModule.forRoot(),
-    ToastyModule.forRoot()
+    ToastyModule.forRoot(),
   ],
   providers: [
     appRoutingProviders,
