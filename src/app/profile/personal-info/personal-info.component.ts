@@ -22,6 +22,7 @@ export class PersonalInfoComponent implements OnInit {
   private workplace: String = "";
   private description: String = "";
   private hobbie: String = "";
+  private hobbies: String[] = ['sport', 'reading'];
 
 
   constructor(private route: ActivatedRoute, private profileService: ProfileService, private state: StateService,
@@ -47,4 +48,7 @@ export class PersonalInfoComponent implements OnInit {
     this.editing = !this.editing;
   }
 
+  saveChanges() {
+
+  }
 }

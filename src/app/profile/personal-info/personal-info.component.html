@@ -6,12 +6,12 @@
             PERSONAL INFO
             <a *ngIf="isMe"  (click)="toggleEditing()" class="pull-xs-right">
               <svg *ngIf = '!editing' class="icon icon-message"><use xlink:href="assets/icons.svg#icon-write"></use></svg>
-              <a *ngIf = 'editing' class="btn btn-info btn-lg">APPLY CHANGES</a>
+              <a *ngIf = 'editing' (click)="saveChanges()" class="btn btn-info btn-lg">APPLY CHANGES</a>
             </a>
           </h3>
           <h2> About me: </h2>
           <p *ngIf="!editing" > EU SUNT CEL MAI TARE DIN PARCARE DE LA FSEGAAAA </p>
-          <input *ngIf="editing" type="textarea" [(ngModel)]="description" title="description" />
+          <input *ngIf="editing" type="text" [(ngModel)]="description" title="description" />
           <div>
             <p>  Name:
               <span *ngIf="!editing" > {{user.name}} </span>
@@ -25,11 +25,15 @@
               <span *ngIf="!editing" > {{user.name}} </span>
               <input *ngIf="editing" type="text" [(ngModel)]="city" title="city" />
             </p>
-            <p> Hobbies:
+            <div> Hobbies:
               <input *ngIf="editing" type="text" [(ngModel)]="hobbie" title="hobbie" />
               <svg *ngIf="editing" class="icon icon-plus"><use xlink:href="./assets/icons.svg#icon-plus"></use></svg>
-              <span *ngIf="!editing"> {{user.name}} </span>
-              <p *ngIf="editing"> <a> x </a>{{user.name}} </p>
+              <ul class="project-list list-unstyled">
+                <li *ngFor="let hobbie of hobbies">
+                  <p><a *ngIf="editing"> x </a> {{hobbie}} </p>
+                </li>
+              </ul>
+          </div>
           </div>
           <div>
             Social:

@@ -13,12 +13,14 @@
     <div class="col-lg-10 text-lg-right text-xs-center">
       <a id="personal"
          href="javascript:;"
+         (click) = 'setPersonalInfoPage()'
          class="btn font-weight-bold m-l-1"
          [class.btn-link-info]="isPersonalActive">
         PERSONAL
       </a>
       <a id="badges"
          href="javascript:;"
+         (click) = 'setBadgesPage()'
          class="btn font-weight-bold m-l-1"
          [class.btn-link-info]="isBadgesActive">
         BADGES
@@ -31,5 +33,6 @@
       SEND MESSAGE
     </h2>
   </div>
-  <app-personal-info [user]=user></app-personal-info>
+  <app-personal-info *ngIf="isPersonalActive" [user]=user></app-personal-info>
+  <app-badges *ngIf="isBadgesActive"></app-badges>
 </div>

@@ -53,6 +53,16 @@ export class ProfileComponent implements OnInit, OnDestroy {
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
+  setBadgesPage() {
+    this.isPersonalActive = false;
+    this.isBadgesActive = true;
+  }
+
+  setPersonalInfoPage() {
+    this.isPersonalActive = true;
+    this.isBadgesActive = false;
+  }
+
   ngOnDestroy() {
     this.sub.unsubscribe();
   }

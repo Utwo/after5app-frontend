@@ -44,6 +44,7 @@ import {PersonalInfoComponent } from './profile/personal-info/personal-info.comp
 import {TimeAgoPipe} from './time-ago.pipe';
 import {ProjectCardComponent} from './shared/project-card/project-card.component';
 import { SkillsComponentComponent } from './profile/skills-component/skills-component.component';
+import { BadgesComponent } from './profile/badges/badges.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { SkillsComponentComponent } from './profile/skills-component/skills-comp
     SectionHeaderComponent,
     PersonalInfoComponent,
     SkillsComponentComponent,
+    BadgesComponent,
   ],
   imports: [
     routing,
