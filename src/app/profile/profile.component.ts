@@ -26,6 +26,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe(params => {
       let id = +params['id'];
       this.getUser(id);
+      //console.log(this.state.getToken())
       this.verifyIfMe(id);
     });
   }

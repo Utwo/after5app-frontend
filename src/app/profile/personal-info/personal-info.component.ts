@@ -12,17 +12,15 @@ import {ResponseHandlerService} from '../../shared/response-handler.service';
 export class PersonalInfoComponent implements OnInit {
   @Input() user;
 
-  private sub;
   public applications = [];
   private isMe = false;
   private editing = false;
   private name: String = "";
-  private country: String = "";
   private city: String = "";
   private workplace: String = "";
   private description: String = "";
-  private hobbie: String = "";
-  private hobbies: String[] = ['sport', 'reading'];
+  private hobby: String = "";
+  private hobbies: String[] = [];
 
 
   constructor(private route: ActivatedRoute, private profileService: ProfileService, private state: StateService,
@@ -32,10 +30,9 @@ export class PersonalInfoComponent implements OnInit {
   ngOnInit() {
     this.verifyIfMe(this.user.id);
     this.name = this.user.name;
-    this.country = this.user.name;
-    this.city = this.user.name;
+    this.city = this.user.city;
     this.workplace = this.user.workplace;
-    this.description = this.user.name;
+    this.description = this.user.description;
   }
 
   verifyIfMe(id) {
@@ -49,6 +46,31 @@ export class PersonalInfoComponent implements OnInit {
   }
 
   saveChanges() {
+    let body = {
+      name: this.name,
+      city: this.city,
+      description: this.description,
+      workplace: this.workplace,
+      hobbies: this.hobbies
+    };
+    this.profileService.updateUser(body)
+      .subscribe(
+        (data) => {
+          this.responseHandler.successMessage(`Changes have been saved`);
+          this.state.setUser(data.user);
+          this.user = data.user;
+        },
+        error => {this.responseHandler.errorMessage('An error occured!', error); console.log("Error", error)});
+  }
 
+  addHobby() {
+    this.hobbies.push(this.hobby);
+    this.hobby = "";
+  }
+
+  removeHobby(hobby) {
+    this.user.hobbies.map(elem => this.hobbies.push(elem));
+    console.log(this.hobbies);
+    this.hobbies.splice(this.hobbies.findIndex(hobby),1);
   }
 }

@@ -6,31 +6,31 @@
             PERSONAL INFO
             <a *ngIf="isMe"  (click)="toggleEditing()" class="pull-xs-right">
               <svg *ngIf = '!editing' class="icon icon-message"><use xlink:href="assets/icons.svg#icon-write"></use></svg>
-              <a *ngIf = 'editing' (click)="saveChanges()" class="btn btn-info btn-lg">APPLY CHANGES</a>
+              <a *ngIf = 'editing'  (click)="saveChanges()" class="btn btn-info btn-lg">APPLY CHANGES</a>
             </a>
           </h3>
           <h2> About me: </h2>
-          <p *ngIf="!editing" > EU SUNT CEL MAI TARE DIN PARCARE DE LA FSEGAAAA </p>
+          <p *ngIf="!editing" > {{user.description}} </p>
           <input *ngIf="editing" type="text" [(ngModel)]="description" title="description" />
           <div>
             <p>  Name:
               <span *ngIf="!editing" > {{user.name}} </span>
               <input *ngIf="editing" type="text" [(ngModel)]="name" title="name" />
             </p>
-            <p>  Country:
-              <span *ngIf="!editing" > {{user.name}} </span>
-              <input *ngIf="editing" type="text" [(ngModel)]="country" title="country" />
-            </p>
             <p>  City:
-              <span *ngIf="!editing" > {{user.name}} </span>
+              <span *ngIf="!editing" > {{user.city}} </span>
               <input *ngIf="editing" type="text" [(ngModel)]="city" title="city" />
             </p>
+            <p>  Workplace:
+              <span *ngIf="!editing" > {{user.workplace}} </span>
+              <input *ngIf="editing" type="text" [(ngModel)]="workplace" title="workplace" />
+            </p>
             <div> Hobbies:
-              <input *ngIf="editing" type="text" [(ngModel)]="hobbie" title="hobbie" />
-              <svg *ngIf="editing" class="icon icon-plus"><use xlink:href="./assets/icons.svg#icon-plus"></use></svg>
+              <input *ngIf="editing" type="text" [(ngModel)]="hobby" title="hobby" />
+              <a *ngIf="editing" (click)="addHobby()" ><svg class="icon icon-plus"><use xlink:href="./assets/icons.svg#icon-plus"></use></svg></a>
               <ul class="project-list list-unstyled">
-                <li *ngFor="let hobbie of hobbies">
-                  <p><a *ngIf="editing"> x </a> {{hobbie}} </p>
+                <li *ngFor="let hobby of user.hobbies && hobbies">
+                  <a *ngIf="editing" (click)="removeHobby(hobby)"> x </a> {{hobby}}
                 </li>
               </ul>
           </div>
