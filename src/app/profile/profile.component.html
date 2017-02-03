@@ -43,13 +43,13 @@
             <p *ngIf="!isMe">{{user.name}} has no favorite projects
               <svg
                 class="icon text-danger">
-                <use xlink:href="assets/icons.svg#icon-heart-o"></use>
+                <use xlink:href="assets/svg/icons.svg#icon-heart-o"></use>
               </svg>
             </p>
             <p *ngIf="isMe">You have no favorite projects
               <svg
                 class="icon text-danger">
-                <use xlink:href="assets/icons.svg#icon-heart-o"></use>
+                <use xlink:href="assets/svg/icons.svg#icon-heart-o"></use>
               </svg>
             </p>
           </div>
@@ -73,7 +73,7 @@
             <h3 class="title-border pb-1">About
               <a *ngIf="isMe" routerLink="/settings" class="btn btn-primary btn-sm pull-xs-right">
                 <svg class="icon">
-                  <use xlink:href="assets/icons.svg#icon-pencil"></use>
+                  <use xlink:href="assets/svg/icons.svg#icon-pencil"></use>
                 </svg>
               </a>
             </h3>
@@ -104,14 +104,14 @@
               <li *ngFor="let application of applications">
                 <div *ngIf="application.accepted == 1" class="panel mb-1 py-1">
                 <span>&nbsp;<svg class="icon icon-lg">
-                  <use xlink:href="assets/icons.svg#icon-checkmark"></use>
+                  <use xlink:href="assets/svg/icons.svg#icon-checkmark"></use>
                 </svg><a routerLink="/project/{{application.position.project.id}}" class="text-primary">
                   {{application.position.project.title}}</a> - <i>accepted</i>
                 </span>
                 </div>
                 <div *ngIf="application.accepted == 0" class="panel__item mb-1">
                 <span>&nbsp;<svg class="icon icon-lg">
-                  <use xlink:href="assets/icons.svg#icon-clock2"></use>
+                  <use xlink:href="assets/svg/icons.svg#icon-clock"></use>
                 </svg>
                 <a routerLink="/project/{{application.position.project.id}}" class="text-primary">
                   {{application.position.project.title}}</a> - <i>pending</i>
@@ -122,11 +122,6 @@
             <p *ngIf="!applications">No application yet. After you help a project, your applications will appear
               here.</p>
           </section>
-          <div class="text-center sidebar-icon">
-            <svg class="icon icon-lg">
-              <use xlink:href="assets/icons.svg#icon-space-invaders"></use>
-            </svg>
-          </div>
         </div>
       </div>
     </div>

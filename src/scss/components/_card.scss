@@ -1,0 +1,9 @@
+.home-card{
+  max-width: 350px;
+  background: #fff;
+  z-index: map-get($zindex, higher);
+}
+
+.home-card__title{
+  color: $gray;
+}

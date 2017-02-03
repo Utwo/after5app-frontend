@@ -43,6 +43,9 @@ import {TimeAgoPipe} from './time-ago.pipe';
 import {ProjectCardComponent} from './shared/project-card/project-card.component';
 import { ProjectsOverviewComponent } from './profile/projects-overview/projects-overview.component';
 import { FebeeInfoComponent } from './shared/febee-info/febee-info.component';
+import { HomeCardComponent } from './home/home-card/home-card.component';
+import { HomeSectionComponent } from './home/home-section/home-section.component';
+import { HomeParagraphComponent } from './home/home-section/home-paragraph/home-paragraph.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +73,9 @@ import { FebeeInfoComponent } from './shared/febee-info/febee-info.component';
     LoginModalComponent,
     ProjectCardComponent,
     SectionHeaderComponent,
+    HomeCardComponent,
+    HomeSectionComponent,
+    HomeParagraphComponent
     ProjectsOverviewComponent,
     FebeeInfoComponent
   ],

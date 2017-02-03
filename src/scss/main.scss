@@ -23,6 +23,8 @@
 @import "../../node_modules/bootstrap/scss/forms";
 @import "../../node_modules/bootstrap/scss/input-group";
 @import "../../node_modules/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/card";
+
 
 @import "../../node_modules/bootstrap/scss/modal";
 @import "../../node_modules/bootstrap/scss/nav";
@@ -37,6 +39,7 @@
 @import "base/typography";
 @import "base/helpers";
 @import "base/forms";
+@import "base/sprite";
 
 // 4. Layout-related sections
 @import  "layout/header";
@@ -58,6 +61,7 @@
 @import "components/spinner";
 @import "components/panel";
 @import "components/tabs";
+@import "components/card";
 
 // 6. Page-specific styles
 @import "pages/home";
