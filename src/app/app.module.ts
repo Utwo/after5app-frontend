@@ -41,6 +41,8 @@ import {LoginModalComponent} from './shared/login-modal/login-modal.component';
 // pipes
 import {TimeAgoPipe} from './time-ago.pipe';
 import {ProjectCardComponent} from './shared/project-card/project-card.component';
+import { ProjectsOverviewComponent } from './profile/projects-overview/projects-overview.component';
+import { FebeeInfoComponent } from './shared/febee-info/febee-info.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import {ProjectCardComponent} from './shared/project-card/project-card.component
     MessagesComponent,
     LoginModalComponent,
     ProjectCardComponent,
-    SectionHeaderComponent
+    SectionHeaderComponent,
+    ProjectsOverviewComponent,
+    FebeeInfoComponent
   ],
   imports: [
     routing,

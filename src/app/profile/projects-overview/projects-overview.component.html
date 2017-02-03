@@ -1,0 +1,37 @@
+<div class="jumbotron-fluid">
+  <div class="container">
+    <h2> Projects <b> Overview </b></h2>
+  </div>
+
+<!--filter options-->
+  <div class="container container-medium">
+    <div class="row mt-5">
+      <div class="col-lg-6 text-lg-right text-center">
+        <a id="my-projects"
+           href="javascript:;"
+           (click)="getMyProjects(); autocomplete.resetValue();"
+           class="btn font-weight-bold ml-1  filter-link"
+           [class.btn-link-info]="isProjectsActive">
+          PROJECTS
+        </a>
+        <a id="following-projects"
+           href="javascript:;"
+           (click)="getFollowingProjects(); autocomplete.resetValue();"
+           class="btn font-weight-bold ml-1 filter-link"
+           [class.btn-link-info]="isFollowingActive">
+          FOLLOWING
+        </a>
+        <a
+          id="appliedFor-projects"
+          href="javascript:;"
+          (click)="getAppliedForProjects(modal); autocomplete.resetValue();"
+          class="btn font-weight-bold ml-1 filter-link"
+          [class.btn-link-info]="isAppliedForActive">
+          APPLIED FOR
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
