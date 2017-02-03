@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {ProjectService} from "../../projects/shared/project.service"
 import {StateService} from "../../shared/state.service"
 import {ResponseHandlerService} from "../../shared/response-handler.service"
 import {ProfileService} from "../shared/profile.service"

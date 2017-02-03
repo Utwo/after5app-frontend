@@ -75,7 +75,7 @@ import { HomeParagraphComponent } from './home/home-section/home-paragraph/home-
     SectionHeaderComponent,
     HomeCardComponent,
     HomeSectionComponent,
-    HomeParagraphComponent
+    HomeParagraphComponent,
     ProjectsOverviewComponent,
     FebeeInfoComponent
   ],
