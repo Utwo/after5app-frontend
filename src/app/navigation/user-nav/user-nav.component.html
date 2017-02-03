@@ -11,9 +11,9 @@
   </div>
   <div class="dropdown-menu dropdown__content container-fluid text-left">
     <ul class="list-unstyled text-center">
-      <li><a class="d-block panel__item" routerLink="/profile/{{user.id}}">PROFILE</a></li>
-      <li><a class="d-block panel__item" routerLink="/settings">SETTINGS</a></li>
-      <li><a class="d-block panel__item" href="javascript:;" (click)="logout()">SIGN OUT</a></li>
+      <li><a class="d-block panel__item" routerLink="/profile/{{user.id}}">Profile</a></li>
+      <li><a class="d-block panel__item" routerLink="/projects/overview">PROJECTS</a></li>
+      <li><a class="d-block panel__item" href="javascript:;" (click)="logout()">Logout</a></li>
     </ul>
     <hr *ngIf="notifications && notifications.length > 0">
     <ol class="list-unstyled">

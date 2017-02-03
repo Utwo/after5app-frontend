@@ -10,6 +10,7 @@ import {SettingsComponent} from './profile/settings/settings.component';
 import {NotFoundComponent} from './core/not-found/not-found.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './core/auth-guard.service';
+import {ProjectsOverviewComponent} from "./profile/projects-overview/projects-overview.component"
 
 
 const appRoutes: Routes = [
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
   {path: 'project/:id', component: ProjectComponent},
   {path: 'start-project', component: AddProjectComponent},
   {path: 'profile/:id', component: ProfileComponent},
+  {path: 'projects/overview', component: ProjectsOverviewComponent},
   {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
   {path: 'auth/:type/callback', component: LoginComponent},
   {path: '**', component: NotFoundComponent}
