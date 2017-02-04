@@ -9,59 +9,59 @@
 
 <!--filter options-->
 <div class="container container-medium">
-<div class="row m-t-3">
-  <div class="col-lg-6 text-lg-left text-xs-center">
-    <div class="form-inline">
-      <app-autocomplete #autocomplete
-                        [type]="'list'"
-                        (onSelect)="onSelect($event)"
-                        label_show="true">
+  <div class="row mt-5">
+    <div class="col-lg-6 text-lg-left text-center">
+      <app-autocomplete
+        #autocomplete
+        [type]="'filter-list'"
+        [label_message]="'FILTER BY SKILL'"
+        (onSelect)="onSelect($event)"
+      >
       </app-autocomplete>
     </div>
+    <div class="col-lg-6 text-lg-right text-center">
+      <a id="all-projects"
+         href="javascript:;"
+         (click)="getProjects(1); autocomplete.resetValue();"
+         class="btn font-weight-bold ml-1  filter-link"
+         [class.btn-link-info]="isRecentActive">
+        RECENT
+      </a>
+      <a id="popular-projects"
+         href="javascript:;"
+         (click)="getPopularProjects(); autocomplete.resetValue();"
+         class="btn font-weight-bold ml-1 filter-link"
+         [class.btn-link-info]="isPopularActive">
+        POPULAR
+      </a>
+      <a
+        id="recommended-projects"
+        href="javascript:;"
+        (click)="getRecommendedProjects(modal); autocomplete.resetValue();"
+        class="btn font-weight-bold ml-1 filter-link"
+        [class.btn-link-info]="isRecommendedActive">
+        RECOMMENDED
+      </a>
+    </div>
   </div>
-  <div class="col-lg-6 text-lg-right text-xs-center">
-    <a id="all-projects"
-       href="javascript:;"
-       (click)="getProjects(1); autocomplete.resetValue();"
-       class="btn font-weight-bold m-l-1  filter-link"
-       [class.btn-link-info]="isRecentActive">
-      RECENT
-    </a>
-    <a id="popular-projects"
-       href="javascript:;"
-       (click)="getPopularProjects(); autocomplete.resetValue();"
-       class="btn font-weight-bold m-l-1 filter-link"
-       [class.btn-link-info]="isPopularActive">
-      POPULAR
-    </a>
-    <a
-      id="recommended-projects"
-      href="javascript:;"
-      (click)="getRecommendedProjects(modal); autocomplete.resetValue();"
-      class="btn font-weight-bold m-l-1 filter-link"
-      [class.btn-link-info]="isRecommendedActive">
-      RECOMMENDED
-    </a>
-  </div>
-</div>
 </div>
 <!--project list-->
 <div *ngIf="projects && projects.length > 0" class="container container-small">
   <ul class="project-list list-unstyled">
-    <li *ngFor="let project of projects" class="panel p-a-2 m-x-auto m-y-3">
+    <li *ngFor="let project of projects">
       <app-project-card [project]=project></app-project-card>
     </li>
   </ul>
-  <div class="text-xs-center row m-y-1">
-    <div class="col-xs">
+  <div class="text-center row my-1">
+    <div class="col">
       <button (click)="prevPage()" *ngIf="page.prev" class="btn btn-info">
         &#10096;</button>
     </div>
-    <div class="col-xs">
+    <div class="col">
       <span *ngIf="page.prev || page.next"
             class="btn">{{page.current_page}}</span>
     </div>
-    <div class="col-xs">
+    <div class="col">
       <button (click)="nextPage()" *ngIf="page.next" class="btn btn-info">
         &#10097;</button>
     </div>
@@ -69,7 +69,7 @@
 </div>
 
 <div *ngIf="projects && projects.length === 0"
-     class="container container-small text-xs-center m-y-3">
+     class="container container-small text-center my-3">
   <span class="text-primary display-3">&#9785;</span>
   <h5 class="text-muted text-uppercase">No projects were found</h5>
   <hr>
