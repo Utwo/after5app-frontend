@@ -11,7 +11,7 @@
           </h3>
           <h2> About me: </h2>
           <p *ngIf="!editing" > {{user.description}} </p>
-          <input *ngIf="editing" type="text" [(ngModel)]="description" title="description" />
+          <textarea *ngIf="editing" type="text" [(ngModel)]="description" title="description" > {{description}} </textarea>
           <div>
             <p>  Name:
               <span *ngIf="!editing" > {{user.name}} </span>
@@ -29,7 +29,7 @@
               <input *ngIf="editing" type="text" [(ngModel)]="hobby" title="hobby" />
               <a *ngIf="editing" (click)="addHobby()" ><svg class="icon icon-plus"><use xlink:href="./assets/icons.svg#icon-plus"></use></svg></a>
               <ul class="project-list list-unstyled">
-                <li *ngFor="let hobby of user.hobbies && hobbies">
+                <li *ngFor="let hobby of hobbies">
                   <a *ngIf="editing" (click)="removeHobby(hobby)"> x </a> {{hobby}}
                 </li>
               </ul>
@@ -37,7 +37,12 @@
           </div>
           <div>
             Social:
-            <a *ngIf = 'user.facebook_id != null' href = 'http://facebook.com/{{user.facebook_id}}'> <span> Facebook </span></a>
+            <select *ngIf="editing" [(ngModel)]="socialInput" title="social"> // value is a string or number
+              <option *ngFor="let obj of socialOptions">{{obj}}</option>
+            </select>
+            <input *ngIf="socialInput != null && editing" type = "text" title="link" [(ngModel)]="link">
+            <a *ngIf="editing" (click)="addSocial()" ><svg class="icon icon-plus"><use xlink:href="./assets/icons.svg#icon-plus"></use></svg></a>
+            <a *ngIf = 'user.facebook_id != null' href = 'http://facebook.com/{{user.facebook_id}}'> <p> Facebook </p></a>
             <a *ngIf = 'user.twitter != null' href = 'https://twitter.com/{{user.twitter}}'> <p> Twitter </p></a>
             <a *ngIf = 'user.github_id != null' href = 'http://gihub/{{user.github_id}}'> <p> Github </p></a>
             <a *ngIf = 'user.website != null' href = '{{user.website}}'> <p> Website </p></a>

@@ -21,7 +21,10 @@ export class PersonalInfoComponent implements OnInit {
   private description: String = "";
   private hobby: String = "";
   private hobbies: String[] = [];
-
+  private socialInput: String = null;
+  private socialOptions: String[] = ["Facebook, LinkedIn, Twitter, GitHub, Medium"];
+  private link: String = "";
+  private socialLinks: String[];
 
   constructor(private route: ActivatedRoute, private profileService: ProfileService, private state: StateService,
               private responseHandler: ResponseHandlerService) {
@@ -33,6 +36,7 @@ export class PersonalInfoComponent implements OnInit {
     this.city = this.user.city;
     this.workplace = this.user.workplace;
     this.description = this.user.description;
+    this.hobbies = this.user.hobbies;
   }
 
   verifyIfMe(id) {
@@ -69,8 +73,11 @@ export class PersonalInfoComponent implements OnInit {
   }
 
   removeHobby(hobby) {
-    this.user.hobbies.map(elem => this.hobbies.push(elem));
-    console.log(this.hobbies);
-    this.hobbies.splice(this.hobbies.findIndex(hobby),1);
+    this.hobbies.splice(this.hobbies.findIndex(elem => elem == hobby),1);
+    console.log(this.hobbies)
+  }
+
+  addSocial() {
+
   }
 }
