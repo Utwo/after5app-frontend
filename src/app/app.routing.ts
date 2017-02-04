@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   {path: 'project/:id', component: ProjectComponent},
   {path: 'start-project', component: AddProjectComponent},
   {path: 'profile/:id', component: ProfileComponent},
-  {path: 'projects/overview', component: ProjectsOverviewComponent},
+  {path: 'projects-overview', component: ProjectsOverviewComponent},
   {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
   {path: 'auth/:type/callback', component: LoginComponent},
   {path: '**', component: NotFoundComponent}

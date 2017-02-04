@@ -29,7 +29,6 @@ export class ProfileService {
       'Authorization': 'Bearer ' + this.state.getToken()
     });
     let options = new RequestOptions({headers: headers});
-
     return this.http.put(environment.URL_API + environment.API_VERSION + 'user', body, options)
       .map(this.extractData)
       .catch(this.handleError);
@@ -42,7 +41,7 @@ export class ProfileService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'application/user/'+ this.state.getUser().id + '?with[]=position.project', options)
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'user/'+ this.state.getUser().id + '?with[]=position.project', options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -54,7 +53,7 @@ export class ProfileService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'application/user/'+ this.state.getUser().id + '?with[]=project', options)
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'user/'+ this.state.getUser().id + '?with[]=project', options)
       .map(this.extractData)
       .catch(this.handleError);
   }

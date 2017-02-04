@@ -6,6 +6,7 @@ import {ProfileService} from "../shared/profile.service"
 @Component({
   selector: 'app-projects-overview',
   templateUrl: './projects-overview.component.html',
+  providers: [ProfileService],
   styles: []
 })
 export class ProjectsOverviewComponent implements OnInit {
@@ -31,7 +32,6 @@ export class ProjectsOverviewComponent implements OnInit {
       .subscribe(
         data => this.myProjects = data,
         error => this.responseHandler.errorMessage('An error occured!', error));
-    console.log(this.myProjects);
   }
 
   getFollowingProjects() {
@@ -39,7 +39,6 @@ export class ProjectsOverviewComponent implements OnInit {
   }
 
   getAppliedForProjects() {
-
   }
 
 }

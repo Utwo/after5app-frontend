@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       let id = +params['id'];
       this.getUser(id);
       this.verifyIfMe(id);
+      console.log(this.state.getToken());
     });
   }
 
