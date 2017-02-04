@@ -22,7 +22,7 @@ export class PersonalInfoComponent implements OnInit {
   private hobby: String = "";
   private hobbies: String[] = [];
   private socialInput: String = null;
-  private socialOptions: String[] = ["Facebook, LinkedIn, Twitter, GitHub, Medium"];
+  private socialOptions: String[] = ['Facebook', 'LinkedIn', 'Twitter', 'GitHub', 'Medium'];
   private link: String = "";
   private socialLinks: String[];
 
