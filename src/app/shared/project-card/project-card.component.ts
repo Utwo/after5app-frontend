@@ -36,7 +36,6 @@ export class ProjectCardComponent implements OnInit {
   }
 
   verifyIfFavorite() {
-    console.log(this.project.favorite,this.project, "favorites")
     for (let user of this.project.favorite) {
       if (user.id === this.state.getUser().id) {
         this.isFollowed = true;
