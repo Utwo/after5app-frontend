@@ -5,10 +5,23 @@
       <section class="m-y-3">
         <h3 class="title-border title-border--green p-b-1">
            CRAFTS & SKILLS
-          <a *ngIf="isMe"  class="pull-xs-right">
-            <svg class="icon icon-message"><use xlink:href="assets/icons.svg#icon-write"></use></svg>
+          <a *ngIf="isMe"  (click)="toggleEditing()" class="pull-xs-right">
+            <svg *ngIf = '!editing' class="icon icon-message"><use xlink:href="assets/icons.svg#icon-write"></use></svg>
+            <a *ngIf = 'editing'  (click)="saveChanges()" class="btn btn-info btn-lg">APPLY CHANGES</a>
           </a>
         </h3>
+        <div>
+          <input *ngIf=" editing" type = "text" placeholder="Add Skill" title="newSkill" [(ngModel)]="newSkill.name">
+          <a *ngIf="editing" (click)="addNewSkill()" ><svg class="icon icon-plus"><use xlink:href="./assets/icons.svg#icon-plus"></use></svg></a>
+          <ul>
+            <li *ngFor="let skill of skills">
+              <p>{{skill.name}}
+                <a *ngIf="editing" (click)="removeSkill(skill.id)"><svg class="icon icon-delete_forever"><use xlink:href="assets/icons.svg#icon-delete_forever"></use></svg></a>
+              </p>
+              {{skill.pivot.skill_level}}
+            </li>
+          </ul>
+        </div>
       </section>
     </div>
   </div>

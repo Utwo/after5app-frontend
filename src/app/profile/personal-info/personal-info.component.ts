@@ -74,7 +74,6 @@ export class PersonalInfoComponent implements OnInit {
 
   removeHobby(hobby) {
     this.hobbies.splice(this.hobbies.findIndex(elem => elem == hobby),1);
-    console.log(this.hobbies)
   }
 
   addSocial() {

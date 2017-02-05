@@ -26,7 +26,7 @@
               <input *ngIf="editing" type="text" [(ngModel)]="workplace" title="workplace" />
             </p>
             <div> Hobbies:
-              <input *ngIf="editing" type="text" [(ngModel)]="hobby" title="hobby" />
+              <input *ngIf="editing" placeholder="Add Hobby" type="text" [(ngModel)]="hobby" title="hobby" />
               <a *ngIf="editing" (click)="addHobby()" ><svg class="icon icon-plus"><use xlink:href="./assets/icons.svg#icon-plus"></use></svg></a>
               <ul class="project-list list-unstyled">
                 <li *ngFor="let hobby of hobbies">
@@ -40,7 +40,7 @@
             <select *ngIf="editing" [(ngModel)]="socialInput" title="social"> // value is a string or number
               <option *ngFor="let obj of socialOptions">{{obj}}</option>
             </select>
-            <input *ngIf="socialInput != null && editing" type = "text" title="link" [(ngModel)]="link">
+            <input *ngIf="socialInput != null && editing" type = "text" placeholder="Add Link" title="link" [(ngModel)]="link">
             <a *ngIf="editing" (click)="addSocial()" ><svg class="icon icon-plus"><use xlink:href="./assets/icons.svg#icon-plus"></use></svg></a>
             <a *ngIf = 'user.facebook_id != null' href = 'http://facebook.com/{{user.facebook_id}}'> <p> Facebook </p></a>
             <a *ngIf = 'user.twitter != null' href = 'https://twitter.com/{{user.twitter}}'> <p> Twitter </p></a>
@@ -49,5 +49,6 @@
           </div>
         </section>
       </div>
+      <app-skills-component [user]=user></app-skills-component>
   </div>
 </div>
