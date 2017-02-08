@@ -11,17 +11,18 @@
           </a>
         </h3>
         <div>
-          <input *ngIf=" editing" type = "text" placeholder="Add Skill" title="newSkill" [(ngModel)]="newSkill.name">
+          <input *ngIf=" editing" type = "text" placeholder="Add Skill" title="newSkill" [(ngModel)]="newSkill">
           <a *ngIf="editing" (click)="addNewSkill()" ><svg class="icon icon-plus"><use xlink:href="./assets/icons.svg#icon-plus"></use></svg></a>
           <ul>
-            <li *ngFor="let skill of skills">
+            <li *ngFor="let skill of newSkills">
               <p>{{skill.name}}
-                <a *ngIf="editing" (click)="removeSkill(skill.id)"><svg class="icon icon-delete_forever"><use xlink:href="assets/icons.svg#icon-delete_forever"></use></svg></a>
+                <a *ngIf="editing" (click)="removeSkill(skill)"><svg class="icon icon-delete_forever"><use xlink:href="assets/icons.svg#icon-delete_forever"></use></svg></a>
               </p>
-              {{skill.pivot.skill_level}}
+              {{skill.skill_level}}
             </li>
           </ul>
         </div>
       </section>
     </div>
   </div>
+</div>
