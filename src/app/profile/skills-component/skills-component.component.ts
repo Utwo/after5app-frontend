@@ -15,6 +15,7 @@ export class SkillsComponentComponent implements OnInit {
   @Input() user;
   private editing = false;
   private newSkill;
+  private newSkillLevel;
   private newSkills = [];
   private isMe = false;
 
@@ -24,7 +25,6 @@ export class SkillsComponentComponent implements OnInit {
 
   ngOnInit() {
     this.verifyIfMe(this.user.id);
-    console.log(this.state.getToken())
     this.user.skill.map(elem => this.newSkills.push({name: elem.name, skill_level: elem.pivot.skill_level}));
   }
 
@@ -48,7 +48,7 @@ export class SkillsComponentComponent implements OnInit {
 
   addNewSkill() {
     if(this.newSkill != "") {
-      this.newSkills.push({name: this.newSkill, skill_level: 80});
+      this.newSkills.push({name: this.newSkill, skill_level: this.newSkillLevel});
       this.newSkill = null;
     }
   }

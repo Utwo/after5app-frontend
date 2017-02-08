@@ -12,6 +12,7 @@
         </h3>
         <div>
           <input *ngIf=" editing" type = "text" placeholder="Add Skill" title="newSkill" [(ngModel)]="newSkill">
+          <input *ngIf=" editing" type = "text" placeholder="Skill Level" title="newSkillLevel" [(ngModel)]="newSkillLevel">
           <a *ngIf="editing" (click)="addNewSkill()" ><svg class="icon icon-plus"><use xlink:href="./assets/icons.svg#icon-plus"></use></svg></a>
           <ul>
             <li *ngFor="let skill of newSkills">
