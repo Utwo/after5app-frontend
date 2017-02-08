@@ -3,36 +3,31 @@
     <div class="row">
       <div class="col-lg-2 col-md-2 col-sm-6 col-8">
         <h1 class="header-logo">
+          <a href="javascript:;" (click)="toggleNavigation()"
+             class="hidden-md-up toggle-burger btn btn-sm btn-circle-sm mr-2">&#x2261;
+          </a>
           <a routerLink="/">
             <svg class="logo">
-              <use xlink:href="assets/logo.svg#logo"></use>
+              <use xlink:href="assets/svg/logo.svg#logo"></use>
             </svg>
-          </a>
-          <a href="javascript:;" (click)="toggleNavigation()"
-             class="hidden-md-up toggle-burger btn btn-sm btn-circle-sm">&#x2261;
           </a>
         </h1>
       </div>
       <div class="col-lg-10 col-md-10 col-sm-12 col-12 navigation-wrap hidden-sm-down">
         <nav class="nav justify-content-end">
-           <a *ngIf="loggedIn" class="nav-item mx-3"
-             routerLink="/start-project">
-            <b>Start a project</b>
+           <a class="nav-item mx-md-3 mx-1" routerLink="/start-project">
+            <b class="text-success">Start a project</b>
           </a>
-          <a *ngIf="!loggedIn" class="nav-item mx-3"
-             (click)="modal.open()">
-            <b>Start a project</b>
-          </a>
-          <a class="nav-item mx-3" routerLink="/projects" routerLinkActive="active">
+          <a class="nav-item mx-md-3 mx-1" routerLink="/projects" routerLinkActive="active">
             <b>Browse Projects</b>
           </a>
-          <div class="nav-item  mx-3">
+          <div class="nav-item mx-md-3 mx-1">
             <app-user-nav [user]="user" *ngIf="loggedIn"></app-user-nav>
             <span *ngIf="!loggedIn" (click)="modal.open()" class="btn btn-link-info btn-sm">Login</span>
           </div>
-          <div class="nav-item mx-3">
+          <div class="nav-item mx-md-3 mx-1">
             <svg class="icon icon-circle">
-              <use xlink:href="assets/icons.svg#search"></use>
+              <use xlink:href="assets/svg/icons.svg#icon-search"></use>
             </svg>
           </div>
         </nav>

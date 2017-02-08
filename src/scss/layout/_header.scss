@@ -6,6 +6,7 @@
   background: $dark-iris;
   padding: 1.4em 0;
   color: #fff;
+  z-index: 100;
 }
 
 .header-site a {
@@ -17,6 +18,8 @@
   line-height: 1.4;
   margin: 0;
   padding: .2em;
+  z-index: map-get($zindex, highest);;
+  position: relative;
 }
 
 //.header-logo:after {

@@ -41,6 +41,9 @@ import {LoginModalComponent} from './shared/login-modal/login-modal.component';
 // pipes
 import {TimeAgoPipe} from './time-ago.pipe';
 import {ProjectCardComponent} from './shared/project-card/project-card.component';
+import { HomeCardComponent } from './home/home-card/home-card.component';
+import { HomeSectionComponent } from './home/home-section/home-section.component';
+import { HomeParagraphComponent } from './home/home-section/home-paragraph/home-paragraph.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +70,10 @@ import {ProjectCardComponent} from './shared/project-card/project-card.component
     MessagesComponent,
     LoginModalComponent,
     ProjectCardComponent,
-    SectionHeaderComponent
+    SectionHeaderComponent,
+    HomeCardComponent,
+    HomeSectionComponent,
+    HomeParagraphComponent
   ],
   imports: [
     routing,

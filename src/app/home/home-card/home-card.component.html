@@ -1,0 +1,15 @@
+<div class="card text-center mx-lg-5 my-3 home-card">
+  <div class="card-block">
+    <h3 class="card-title home-card__title">{{main_text}}</h3>
+    <h6 class="card-subtitle my-2 mx-2 text-muted">
+      {{secondary_text}}
+    </h6>
+    <div class="my-5">
+      <div *ngIf="image_name == 'terraformer'" class="mx-auto sprite sprite-terraformer"></div>
+      <div *ngIf="image_name == 'space_wanderer'" class="mx-auto sprite sprite-space_wanderer"></div>
+    </div>
+    <a class="btn btn-success" routerLink={{link}}>
+      {{button_text}}
+    </a>
+  </div>
+</div>

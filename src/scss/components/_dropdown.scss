@@ -20,8 +20,7 @@
   position: absolute;
   z-index: map-get($zindex, max);
   border-radius: $border-radius-lg;
-  border: 1px solid $brand-primary;
-  box-shadow: 0 0 4px 1px rgba(0, 0, 0, .3);
+  box-shadow: 0 0 10px 1px rgba(231, 231, 231, 0.37);
   max-height: 400px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -60,15 +59,15 @@ ul.dropdown-menu > li {
   display: none;
   top: 4em;
   left: -105px;
-  background: linear-gradient(to bottom, lighten($brand-primary, 5), darken($brand-primary, 5));
-  width: 255px;
+  width: 200px;
   font-size: $font-size-sm;
   padding: .4em;
   color: #fff;
+  font-weight: bold;
 }
 
 .dropdown__content a {
-  color: #fff;
+  color: $gray;
 }
 
 .dropdown--activ .dropdown__content {
