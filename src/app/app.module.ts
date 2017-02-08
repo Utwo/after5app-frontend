@@ -39,12 +39,15 @@ import {AutocompleteComponent} from './shared/autocomplete/autocomplete.componen
 import {SectionHeaderComponent} from './shared/components/section-header.component';
 import {LoginModalComponent} from './shared/login-modal/login-modal.component';
 import {PersonalInfoComponent } from './profile/personal-info/personal-info.component';
-
-// pipes
-import {TimeAgoPipe} from './time-ago.pipe';
 import {ProjectCardComponent} from './shared/project-card/project-card.component';
 import { SkillsComponentComponent } from './profile/skills-component/skills-component.component';
 import { BadgesComponent } from './profile/badges/badges.component';
+import { HomeCardComponent } from './home/home-card/home-card.component';
+import { HomeSectionComponent } from './home/home-section/home-section.component';
+import { HomeParagraphComponent } from './home/home-section/home-paragraph/home-paragraph.component';
+
+// pipes
+import {TimeAgoPipe} from './time-ago.pipe';
 
 @NgModule({
   declarations: [
@@ -72,9 +75,12 @@ import { BadgesComponent } from './profile/badges/badges.component';
     LoginModalComponent,
     ProjectCardComponent,
     SectionHeaderComponent,
-    PersonalInfoComponent,
-    SkillsComponentComponent,
+    HomeCardComponent,
+    HomeSectionComponent,
+    HomeParagraphComponent,
     BadgesComponent,
+    SkillsComponentComponent,
+    PersonalInfoComponent,
   ],
   imports: [
     routing,

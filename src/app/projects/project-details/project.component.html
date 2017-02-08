@@ -12,7 +12,7 @@
                   title="edit project"
                   (click)="editModal.show()">
             <svg class="icon">
-              <use xlink:href="assets/icons.svg#icon-pencil"></use>
+              <use xlink:href="assets/svg/icons.svg#icon-pencil"></use>
             </svg>
             <span class="hidden-sm-down">Edit</span>
           </button>
@@ -21,7 +21,7 @@
                   title="delete project"
                   (click)="deleteModal.show()">
             <svg class="icon">
-              <use xlink:href="assets/icons.svg#icon-bin"></use>
+              <use xlink:href="assets/svg/icons.svg#icon-bin"></use>
             </svg>
             <span class="hidden-sm-down"></span>
           </button>
@@ -55,7 +55,7 @@
             <div *ngIf="!myProject && state.isLoggedIn()" class="mb-1">
               <button (click)="applyModal.show()" class="btn btn-primary mr-1">
                 <svg class="icon">
-                  <use xlink:href="assets/icons.svg#icon-rocket-color"></use>
+                  <use xlink:href="assets/svg/icons.svg#icon-rocket-color"></use>
                 </svg>
               </button>
               <span>Help this project!</span>
@@ -67,16 +67,16 @@
                     class="btn mr-1 btn-circle" [class.btn-danger]="isFavorite"
                     [class.btn-primary]="!isFavorite">
               <svg *ngIf="isFavorite" class="icon">
-                <use xlink:href="assets/icons.svg#icon-heart"></use>
+                <use xlink:href="assets/svg/icons.svg#icon-heart"></use>
               </svg>
               <svg *ngIf="!isFavorite" class="icon text-info">
-                <use xlink:href="assets/icons.svg#icon-heart-o"></use>
+                <use xlink:href="assets/svg/icons.svg#icon-heart-o"></use>
               </svg>
             </button>
             <span #favoriteSpan title="Login to favorite a project">
               <svg *ngIf="!state.isLoggedIn() || myProject"
                    class="icon text-primary icon-lg mr-1">
-                <use xlink:href="assets/icons.svg#icon-heart"></use>
+                <use xlink:href="assets/svg/icons.svg#icon-heart"></use>
               </svg> {{project.favorite_count}} favorites</span>
           </div>
           <div class="sidebar__footer text-center bg-primary-gradient py-1">
@@ -84,14 +84,14 @@
               href="https://www.facebook.com/dialog/share?app_id={{environment.FACEBOOK_ID}}&display=popup&href={{href}}&redirect_uri={{href}}&quote=Check%20out%20this%20project%20and%20help%20it%20become%20a%20reality"
               class="btn btn-primary btn-facebook mr-1" target="_blank">
               <svg class="icon icon-lg">
-                <use xlink:href="assets/icons.svg#icon-facebook2"></use>
+                <use xlink:href="assets/svg/icons.svg#icon-facebook2"></use>
               </svg>
               Share</a>
             <a
               href="https://twitter.com/share?url={{href}}&hashtags=after5app&text=Check%20out%20this%20project%20and%20help%20it%20become%20a%20reality"
               class="btn btn-info btn-twitter ml-1" target="_blank">
               <svg class="icon icon-lg">
-                <use xlink:href="assets/icons.svg#icon-twitter"></use>
+                <use xlink:href="assets/svg/icons.svg#icon-twitter"></use>
               </svg>
               Tweet</a>
           </div>

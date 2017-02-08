@@ -1,80 +1,78 @@
-<section class="container-fluid home-section home-section__1">
-  <div class="row flex-items-xs-center flex-items-xs-middle text-center">
-    <div class="home-section__1__container">
-      <div class="col-xs">
-        <h1 class="home-title__border font-weight-bold pb-2">After5app is the place where the best project teams are
-          created</h1>
-        <h2 class="mt-3">We encourage creativity and collaboration between
-          people in order to achieve great things</h2>
-        <div class="row mt-3">
-          <div class="col-sm-6 text-md-right">
-            <a class="btn btn-primary btn-lg" routerLink="/projects">Support
-              a project</a>
-          </div>
-          <div class="col-sm-6 text-md-left">
-            <a class="btn btn-info btn-lg" *ngIf="state.isLoggedIn()"
-               routerLink="/start-project">Start a project</a>
-            <a class="btn btn-info btn-lg" *ngIf="!state.isLoggedIn()"
-               (click)="modal.open()">Start a project</a>
-          </div>
-        </div>
-      </div>
+<section
+  class="d-flex container-fluid justify-content-center align-items-center mx-auto home-main pt-5">
+  <div class="row my-5">
+    <div class="col my-sm-4 text-white">
+      <app-section-header
+        [header]="'Got an idea for a project?'"
+        [subheader]="'You are not alone'">
+      </app-section-header>
     </div>
   </div>
-</section>
-
-<section class="container home-section home-section__2 py-3">
-  <div class="row text-center home-section__2__container">
-    <div class="col-md-4">
-      <span class="home-section__2__icon d-inline-block mb-1 p-3">🚀</span>
-      <h4>Start a project</h4>
-      <p>Do you have a great idea of a project, but need some help with the
-        implementation? We're here to help you. Just
-        write a short description and tell us what you’re looking for. All you
-        have to do next is choosing the right
-        ninja coders for your team.</p>
+  <div class="row">
+    <div class="col-sm-6">
+      <app-home-card
+        [main_text]="'The Path of the Terraformer'"
+        [secondary_text]="'The Settlers. The Craftsmen. The Artists. The ones who want to change the world'"
+        [image_name]="'terraformer'"
+        [button_text]="'START YOUR OWN PROJECT'"
+        [link]="'/start-project'"
+      ></app-home-card>
     </div>
-    <div class="col-md-4">
-      <span class="home-section__2__icon d-inline-block mb-1 p-3">💙</span>
-      <h4>Help a project</h4>
-      <p>Are you a talented coder, tired of working for someone else and willing
-        to create a brand new product? Find one
-        of the existing ideas that needs your skills, get in touch with the
-        owner and convince him you are the right
-        pick for his team!</p>
-    </div>
-    <div class="col-md-4">
-      <span class="home-section__2__icon d-inline-block mb-1 p-3">🦄</span>
-      <h4>Make it happen</h4>
-      <p>After setting up your team, project and your mind, it’s time to start
-        working on it. Don’t rush, take it one
-        step at a time. We know that you can make it! And please let us know how
-        it all worked out for you! :)</p>
+    <div class="col-sm-6">
+      <app-home-card
+        [main_text]="'The Path of the Space Wanderer'"
+        [secondary_text]="'The Rebels. The Misfits. The Pirates. The ones who find a way in the impossible.'"
+        [image_name]="'space_wanderer'"
+        [button_text]="'BROWSE EXISTING PROJECTS'"
+        [link]="'/projects'"
+      ></app-home-card>
     </div>
   </div>
+  <div class="sprite sprite-home-planet-1"></div>
+  <div class="sprite sprite-home-planet-2"></div>
+  <div class="moon-sprite sprite-moon-above"></div>
+
 </section>
 
-<section class="py-3 home-section bg-primary bg-primary-gradient">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <h3>Dream it. Start it. Support it. Make it happen.</h3>
-        <h4 class="my-3">This is the place to begin!</h4>
-        <div class="row">
-          <div class="col-sm-6 text-md-right">
-            <a class="btn btn-info btn-lg" routerLink="/projects">Support
-              a project</a>
-          </div>
-          <div class="col-sm-6 text-md-left">
-            <a class="btn btn-info btn-lg" *ngIf="state.isLoggedIn()"
-               routerLink="/start-project">Start a project</a>
-            <a class="btn btn-info btn-lg" *ngIf="!state.isLoggedIn()"
-               (click)="modal.open()">Start a project</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!--section 1-->
+<app-home-section
+  [main_text]="'Start a Project or Join One'"
+  [secondary_text]="'Totally free and easy'"
+  [first_header]="'ONE SMALL STEP, ONE GIANT LEAP'"
+  [first_text]="'You’ve had this great idea for a while but it’s hard to meet like-minded people to do it with, right? If it sounds familiar to you, it does to us too, which is why we thought we could help connect the dots between you and your future team.'"
+  [first_image]="'rocket'"
+  [second_header]="'GREAT MINDS THINK ALIKE'"
+  [second_text]="'After5App is a platform where People meet People that are of like-mind, to create, to discuss, to expand and - preferably - to meet! Post your own projects to attract attention or browse and approach others who have already done this. We think you have potential.'"
+  [second_image]="'brain'"
+  [read_more]="true"
+>
+</app-home-section>
 
-<app-login-modal #modal></app-login-modal>
+<!--section 2-->
+<app-home-section
+  [main_text]="'All Types Welcome'"
+  [secondary_text]="'Rebel, Misfits and Advernture Seekers'"
+  [first_header]="'THE NUMBER CRUNCHERS'"
+  [first_text]="'You’re probably interested in Code crunching, right? You can find a talented designer to work that magical code you wrote and bring that marvelous idea to life. That’s how we work here at After5App, together. We realised that if we combined forces, we could create so much more.'"
+  [first_image]="'coding'"
+  [second_header]="'THE ARTSY OR VARIED TYPES'"
+  [second_text]="'You’re an artsy one? That means you could be a designer or a Social Media Specialist, doesn’t matter, you can find a talented coder to back your projects up and together you could be the next Facebook or Google, doesn’t that sound exciting? Just try it out!'"
+  [second_image]="'paint-brush'"
+  [read_more]="true"
+>
+</app-home-section>
+
+<!--section 3-->
+<app-home-section
+  [main_text]="'Make it Happen!'"
+  [secondary_text]="'Become Part of the Oddisey'"
+  [first_header]="'DON’T RUSH IT!'"
+  [first_text]="'After setting up your team, project and your mind, it’s time to start working on it. Don’t rush, take it one step at a time. We also love hearing from you, be it success or a try, we’re gonna help get you where you want! '"
+  [first_image]="'letter'"
+  [second_header]="'TALK TO FEEBE (PLEASE?)'"
+  [second_text]="'We’ve set Feebe and Buggy up so you can talk to them and tell us what else you would like implemented around here. Click on them and leave some feedback. It helps us a bunch! (and maybe we’ll even give you cookies)'"
+  [second_image]="'feebe-buggy'"
+  [read_more]="false"
+>
+</app-home-section>
+
