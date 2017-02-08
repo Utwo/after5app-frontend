@@ -1,29 +1,34 @@
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-7">
-      <section class="m-y-3">
-        <h3 class="title-border title-border--green p-b-1">
-           CRAFTS & SKILLS
-          <a *ngIf="isMe"  (click)="toggleEditing()" class="pull-xs-right">
-            <svg *ngIf = '!editing' class="icon icon-message"><use xlink:href="assets/icons.svg#icon-write"></use></svg>
-            <a *ngIf = 'editing'  (click)="saveChanges()" class="btn btn-info btn-lg">APPLY CHANGES</a>
-          </a>
-        </h3>
-        <div>
-          <input *ngIf=" editing" type = "text" placeholder="Add Skill" title="newSkill" [(ngModel)]="newSkill">
-          <input *ngIf=" editing" type = "text" placeholder="Skill Level" title="newSkillLevel" [(ngModel)]="newSkillLevel">
-          <a *ngIf="editing" (click)="addNewSkill()" ><svg class="icon icon-plus"><use xlink:href="./assets/icons.svg#icon-plus"></use></svg></a>
-          <ul>
-            <li *ngFor="let skill of newSkills">
-              <p>{{skill.name}}
-                <a *ngIf="editing" (click)="removeSkill(skill)"><svg class="icon icon-delete_forever"><use xlink:href="assets/icons.svg#icon-delete_forever"></use></svg></a>
-              </p>
-              {{skill.skill_level}}
-            </li>
-          </ul>
-        </div>
-      </section>
+<div class="card m-3">
+  <div class="card-block">
+    <h4 class="title-border title-border--green p-b-1">
+      CRAFTS & SKILLS
+      <a *ngIf="isMe" (click)="toggleEditing()" class="pull-xs-right">
+        <svg *ngIf='!editing' class="icon icon-message">
+          <use xlink:href="assets/icons.svg#icon-write"></use>
+        </svg>
+        <a *ngIf='editing' (click)="saveChanges()" class="btn btn-info btn-lg">APPLY CHANGES</a>
+      </a>
+    </h4>
+    <div>
+      <input *ngIf=" editing" type="text" placeholder="Add Skill" title="newSkill" [(ngModel)]="newSkill">
+      <input *ngIf=" editing" type="text" placeholder="Skill Level" title="newSkillLevel" [(ngModel)]="newSkillLevel">
+      <a *ngIf="editing" (click)="addNewSkill()">
+        <svg class="icon icon-plus">
+          <use xlink:href="./assets/icons.svg#icon-plus"></use>
+        </svg>
+      </a>
+      <ul>
+        <li *ngFor="let skill of newSkills">
+          <p>{{skill.name}}
+            <a *ngIf="editing" (click)="removeSkill(skill)">
+              <svg class="icon icon-delete_forever">
+                <use xlink:href="assets/icons.svg#icon-delete_forever"></use>
+              </svg>
+            </a>
+          </p>
+          {{skill.skill_level}}
+        </li>
+      </ul>
     </div>
   </div>
 </div>

@@ -15,10 +15,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public user = null;
   public isMe = false;
   public applications = [];
-  public isPersonalActive = true;
-  public isBadgesActive = false;
 
-  constructor(private route: ActivatedRoute, private profileService: ProfileService, private state: StateService,
+  constructor(private route: ActivatedRoute,
+              private profileService: ProfileService,
+              private state: StateService,
               private responseHandler: ResponseHandlerService) {
   }
 
@@ -26,7 +26,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe(params => {
       let id = +params['id'];
       this.getUser(id);
-      //console.log(this.state.getToken())
       this.verifyIfMe(id);
     });
   }
@@ -52,16 +51,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
       .subscribe(
         applications => this.applications = applications,
         error => this.responseHandler.errorMessage('An error occured!', error));
-  }
-
-  setBadgesPage() {
-    this.isPersonalActive = false;
-    this.isBadgesActive = true;
-  }
-
-  setPersonalInfoPage() {
-    this.isPersonalActive = true;
-    this.isBadgesActive = false;
   }
 
   ngOnDestroy() {

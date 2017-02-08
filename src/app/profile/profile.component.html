@@ -1,38 +1,39 @@
-
 <div *ngIf="user">
-
-  <div class="jumbotron-fluid">
+  <div class="jumbotron-white">
     <div class="container">
-      <h2 class="m-y-0">
-        <img *ngIf="user.picture" class="profile-img" src="{{user.picture}}?s=120&width=120&height=120">
-        {{user.name}}
-        <br/>
-        Joined {{user.created_at | date: 'dd of MMMM, yyyy'}}
-      </h2>
-    </div>
-    <div class="col-lg-10 text-lg-right text-xs-center">
-      <a id="personal"
-         href="javascript:;"
-         (click) = 'setPersonalInfoPage()'
-         class="btn font-weight-bold m-l-1"
-         [class.btn-link-info]="isPersonalActive">
-        PERSONAL
-      </a>
-      <a id="badges"
-         href="javascript:;"
-         (click) = 'setBadgesPage()'
-         class="btn font-weight-bold m-l-1"
-         [class.btn-link-info]="isBadgesActive">
-        BADGES
-      </a>
+      <div class="row">
+        <div class="col-2">
+          <img *ngIf="user.picture" class="profile-img" src="{{user.picture}}?width=120&height=120">
+        </div>
+        <div class="col-10 py-4">
+          <h2>{{user.name}}</h2>
+          <span class="small-text text-muted">Joined {{user.created_at | date: 'dd of MMMM, yyyy'}}</span>
+        </div>
+      </div>
     </div>
   </div>
-  <div *ngIf=!isMe class="container">
-    <h2 class="m-y-0">
-      <svg class="icon icon-message"><use xlink:href="assets/icons.svg#icon-message"></use></svg>
-      SEND MESSAGE
-    </h2>
+
+  <div class="container my-3">
+    <tabset>
+      <tab [heading]="Personal" [active]="true">
+        <template tabHeading>
+          Personal
+        </template>
+        <div class="row">
+          <div class="col-8">
+            <app-personal-info [user]=user></app-personal-info>
+          </div>
+          <div class="col-4">
+            <app-skills-component [user]=user></app-skills-component>
+          </div>
+        </div>
+      </tab>
+      <tab [heading]="Badges">
+        <template tabHeading>
+          Badges
+        </template>
+        <app-badges></app-badges>
+      </tab>
+    </tabset>
   </div>
-  <app-personal-info *ngIf="isPersonalActive" [user]=user></app-personal-info>
-  <app-badges *ngIf="isBadgesActive"></app-badges>
 </div>

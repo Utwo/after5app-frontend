@@ -7,7 +7,6 @@ import {ResponseHandlerService} from '../../shared/response-handler.service';
 @Component({
   selector: 'app-personal-info',
   templateUrl: './personal-info.component.html',
-  providers: [ProfileService]
 })
 export class PersonalInfoComponent implements OnInit {
   @Input() user;

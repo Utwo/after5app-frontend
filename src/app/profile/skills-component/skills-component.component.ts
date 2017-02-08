@@ -7,8 +7,6 @@ import {ResponseHandlerService} from '../../shared/response-handler.service';
 @Component({
   selector: 'app-skills-component',
   templateUrl: './skills-component.component.html',
-  providers: [ProfileService],
-  styles: []
 })
 
 export class SkillsComponentComponent implements OnInit {
@@ -19,7 +17,8 @@ export class SkillsComponentComponent implements OnInit {
   private newSkills = [];
   private isMe = false;
 
-  constructor(private route: ActivatedRoute, private profileService: ProfileService, private state: StateService,
+  constructor(private profileService: ProfileService,
+              private state: StateService,
               private responseHandler: ResponseHandlerService) {
   }
 
