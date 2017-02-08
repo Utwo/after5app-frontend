@@ -32,20 +32,29 @@
       </div>
     </div>
   </div>
+</div>
+  <!--project list-->
+  <h3 *ngIf="isProjectsActive"> Created Projects </h3>
   <div *ngIf="projects && projects.length > 0" class="container container-small">
-    <!--project list-->
-    <ul class="project-list list-unstyled">
+    <ul  class="project-list list-unstyled">
       <li *ngFor="let project of projects">
         <app-project-card [project]=project></app-project-card>
       </li>
     </ul>
   </div>
+  <h3 *ngIf="isProjectsActive"> Joined Projects </h3>
+    <div *ngIf="isProjectsActive && joinedProjects && joinedProjects.length > 0">
+      <ul class="project-list list-unstyled">
+        <li *ngFor="let project of joinedProjects">
+          <app-project-card [project]=project></app-project-card>
+        </li>
+      </ul>
+    </div>
 
   <div *ngIf="projects && projects.length === 0"
        class="container container-small text-center my-3">
     <span class="text-primary display-3">&#9785;</span>
     <h5 class="text-muted text-uppercase">No projects were found</h5>
   </div>
-</div>
 
 

@@ -15,6 +15,8 @@ export class ProjectsOverviewComponent implements OnInit {
   private isFollowingActive: boolean = false;
   private isAppliedForActive: boolean = false;
   private projects = null;
+  maxDescriptionLength = 210;
+  private joinedProjects = null;
 
   constructor(private profileService: ProfileService, private state: StateService, private responseHandler: ResponseHandlerService) { }
 
@@ -28,7 +30,7 @@ export class ProjectsOverviewComponent implements OnInit {
     this.isAppliedForActive = false;
     this.profileService.getMyProjects()
       .subscribe(
-        data => this.projects = data,
+        data => this.extractData(data),
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
@@ -38,7 +40,7 @@ export class ProjectsOverviewComponent implements OnInit {
     this.isAppliedForActive = false;
     this.profileService.getFavoriteProjects()
       .subscribe(
-        data => {this.projects = data.favorite;},
+        data => this.extractData(data.favorite),
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
@@ -48,7 +50,16 @@ export class ProjectsOverviewComponent implements OnInit {
     this.isAppliedForActive = true;
     this.profileService.getMyApplications()
       .subscribe(
-        data => this.projects = data,
+        data => this.extractData(data),
         error => this.responseHandler.errorMessage('An error occured!', error));
+  }
+
+  extractData(projects) {
+    this.projects = projects;
+    for (let project of this.projects) {
+      if (project.description.length > this.maxDescriptionLength) {
+        project.description = project.description.substring(0, this.maxDescriptionLength) + '...';
+      }
+    }
   }
 }
