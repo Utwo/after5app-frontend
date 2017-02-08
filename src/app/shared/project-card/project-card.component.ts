@@ -24,12 +24,20 @@ export class ProjectCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.footerStatement = "The project has currently  " + this.project.favorite_count + " followers and 0 members";
     if (this.state.isLoggedIn()) {
       this.verifyIfMyProject();
       this.verifyIfFavorite();
     }
+    this.footerStatement = "The project has currently  " + this.project.favorite_count + " followers and 0 members";
   }
+
+  // getProjectDetails() {
+  //   this.projectService.getProjectById(this.projectId)
+  //     .subscribe(
+  //       data =>  this.project = data.data[0],
+  //       error => this.responseHandler.errorMessage('An error occured!', error),
+  //     )
+  // }
 
   verifyIfMyProject() {
     this.myProject = this.state.getUser().id == this.project.user_id;

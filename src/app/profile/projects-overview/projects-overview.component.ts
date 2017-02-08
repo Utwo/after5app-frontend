@@ -14,9 +14,7 @@ export class ProjectsOverviewComponent implements OnInit {
   private isProjectsActive: boolean = true;
   private isFollowingActive: boolean = false;
   private isAppliedForActive: boolean = false;
-  private myProjects: any[];
-  private followingProjects: any[];
-  private appliedForProjects: any[];
+  private projects = null;
 
   constructor(private profileService: ProfileService, private state: StateService, private responseHandler: ResponseHandlerService) { }
 
@@ -30,15 +28,27 @@ export class ProjectsOverviewComponent implements OnInit {
     this.isAppliedForActive = false;
     this.profileService.getMyProjects()
       .subscribe(
-        data => this.myProjects = data,
+        data => this.projects = data,
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   getFollowingProjects() {
-
+    this.isProjectsActive = false;
+    this.isFollowingActive = true;
+    this.isAppliedForActive = false;
+    this.profileService.getFavoriteProjects()
+      .subscribe(
+        data => {this.projects = data.favorite;},
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   getAppliedForProjects() {
+    this.isProjectsActive = false;
+    this.isFollowingActive = false;
+    this.isAppliedForActive = true;
+    this.profileService.getMyApplications()
+      .subscribe(
+        data => this.projects = data,
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
-
 }

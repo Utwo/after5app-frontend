@@ -58,6 +58,18 @@ export class ProfileService {
       .catch(this.handleError);
   }
 
+  public getFavoriteProjects() {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.state.getToken()
+    });
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'user/'+ this.state.getUser().id + '?with[]=favorite', options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body || {};

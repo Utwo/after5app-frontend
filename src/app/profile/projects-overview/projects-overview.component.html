@@ -9,14 +9,14 @@
       <div class="col-lg-6 text-lg-right text-center">
         <a id="my-projects"
            href="javascript:;"
-           (click)="getMyProjects(); autocomplete.resetValue();"
+           (click)="getMyProjects();"
            class="btn font-weight-bold ml-1  filter-link"
            [class.btn-link-info]="isProjectsActive">
           PROJECTS
         </a>
         <a id="following-projects"
            href="javascript:;"
-           (click)="getFollowingProjects(); autocomplete.resetValue();"
+           (click)="getFollowingProjects()"
            class="btn font-weight-bold ml-1 filter-link"
            [class.btn-link-info]="isFollowingActive">
           FOLLOWING
@@ -24,13 +24,27 @@
         <a
           id="appliedFor-projects"
           href="javascript:;"
-          (click)="getAppliedForProjects(modal); autocomplete.resetValue();"
+          (click)="getAppliedForProjects();"
           class="btn font-weight-bold ml-1 filter-link"
           [class.btn-link-info]="isAppliedForActive">
           APPLIED FOR
         </a>
       </div>
     </div>
+  </div>
+  <div *ngIf="projects && projects.length > 0" class="container container-small">
+    <!--project list-->
+    <ul class="project-list list-unstyled">
+      <li *ngFor="let project of projects">
+        <app-project-card [project]=project></app-project-card>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="projects && projects.length === 0"
+       class="container container-small text-center my-3">
+    <span class="text-primary display-3">&#9785;</span>
+    <h5 class="text-muted text-uppercase">No projects were found</h5>
   </div>
 </div>
 
