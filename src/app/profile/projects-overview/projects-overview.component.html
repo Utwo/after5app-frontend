@@ -6,55 +6,29 @@
 <!--filter options-->
   <div class="container container-medium">
     <div class="row mt-5">
-      <div class="col-lg-6 text-lg-right text-center">
-        <a id="my-projects"
-           href="javascript:;"
-           (click)="getMyProjects();"
-           class="btn font-weight-bold ml-1  filter-link"
-           [class.btn-link-info]="isProjectsActive">
-          PROJECTS
-        </a>
-        <a id="following-projects"
-           href="javascript:;"
-           (click)="getFollowingProjects()"
-           class="btn font-weight-bold ml-1 filter-link"
-           [class.btn-link-info]="isFollowingActive">
-          FOLLOWING
-        </a>
-        <a
-          id="appliedFor-projects"
-          href="javascript:;"
-          (click)="getAppliedForProjects();"
-          class="btn font-weight-bold ml-1 filter-link"
-          [class.btn-link-info]="isAppliedForActive">
-          APPLIED FOR
-        </a>
+        <tabset class="col-lg-8 col-md-7">
+          <tab [heading]='Projects' [active]="true">
+            <template tabHeading>
+              PROJECTS
+            </template>
+            <app-projects-list-overview [projects]="projects" [joinedProjects]="joinedProjects"></app-projects-list-overview>
+          </tab>
+          <tab [heading]='Following'>
+            <template tabHeading>
+              FOLLOWING
+            </template>
+            <app-projects-list-overview [projects]="followingProjects"></app-projects-list-overview>
+          </tab>
+          <tab [heading]='AppliedFor' >
+            <template tabHeading>
+              APPLIED FOR
+            </template>
+            <app-projects-list-overview [projects]="appliedProjects"></app-projects-list-overview>
+          </tab>
+        </tabset>
       </div>
     </div>
   </div>
-</div>
   <!--project list-->
-  <h3 *ngIf="isProjectsActive"> Created Projects </h3>
-  <div *ngIf="projects && projects.length > 0" class="container container-small">
-    <ul  class="project-list list-unstyled">
-      <li *ngFor="let project of projects">
-        <app-project-card [project]=project></app-project-card>
-      </li>
-    </ul>
-  </div>
-  <h3 *ngIf="isProjectsActive"> Joined Projects </h3>
-    <div *ngIf="isProjectsActive && joinedProjects && joinedProjects.length > 0">
-      <ul class="project-list list-unstyled">
-        <li *ngFor="let project of joinedProjects">
-          <app-project-card [project]=project></app-project-card>
-        </li>
-      </ul>
-    </div>
-
-  <div *ngIf="projects && projects.length === 0"
-       class="container container-small text-center my-3">
-    <span class="text-primary display-3">&#9785;</span>
-    <h5 class="text-muted text-uppercase">No projects were found</h5>
-  </div>
 
 

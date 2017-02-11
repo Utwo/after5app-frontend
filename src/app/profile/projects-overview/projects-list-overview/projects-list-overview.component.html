@@ -1,0 +1,23 @@
+<h3 *ngIf="showJoinedProjects"> Created Projects </h3>
+<div *ngIf="projects && projects.length > 0" class="container container-small">
+  <ul  class="project-list list-unstyled">
+    <li *ngFor="let project of projects">
+      <app-project-card [project]=project></app-project-card>
+    </li>
+  </ul>
+</div>
+<h3 *ngIf="showJoinedProjects"> Joined Projects </h3>
+<div *ngIf="showJoinedProjects && joinedProjects && joinedProjects.length > 0">
+  <ul class="project-list list-unstyled">
+    <li *ngFor="let project of joinedProjects">
+      <app-project-card [project]=project></app-project-card>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="projects && projects.length === 0"
+     class="container container-small text-center my-3">
+  <span class="text-primary display-3">&#9785;</span>
+  <h5 class="text-muted text-uppercase">No projects were found</h5>
+</div>
+

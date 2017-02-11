@@ -46,6 +46,7 @@ import { FebeeInfoComponent } from './shared/febee-info/febee-info.component';
 import { HomeCardComponent } from './home/home-card/home-card.component';
 import { HomeSectionComponent } from './home/home-section/home-section.component';
 import { HomeParagraphComponent } from './home/home-section/home-paragraph/home-paragraph.component';
+import { ProjectsListOverviewComponent } from './profile/projects-overview/projects-list-overview/projects-list-overview.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { HomeParagraphComponent } from './home/home-section/home-paragraph/home-
     HomeSectionComponent,
     HomeParagraphComponent,
     ProjectsOverviewComponent,
-    FebeeInfoComponent
+    FebeeInfoComponent,
+    ProjectsListOverviewComponent
   ],
   imports: [
     routing,
