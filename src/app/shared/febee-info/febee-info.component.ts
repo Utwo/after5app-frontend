@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-febee-info',
@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class FebeeInfoComponent implements OnInit {
+  @Input() startedProjects;
+  @Input() followingProjects;
+  @Input() appliedForProjects;
+  @Input() joinedProject;
+  @Input() noProject;
 
   constructor() { }
 

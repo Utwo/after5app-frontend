@@ -47,6 +47,7 @@ import { HomeCardComponent } from './home/home-card/home-card.component';
 import { HomeSectionComponent } from './home/home-section/home-section.component';
 import { HomeParagraphComponent } from './home/home-section/home-paragraph/home-paragraph.component';
 import { ProjectsListOverviewComponent } from './profile/projects-overview/projects-list-overview/projects-list-overview.component';
+import { FocusDirective } from './shared/focus.directive';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { ProjectsListOverviewComponent } from './profile/projects-overview/proje
     HomeParagraphComponent,
     ProjectsOverviewComponent,
     FebeeInfoComponent,
-    ProjectsListOverviewComponent
+    ProjectsListOverviewComponent,
+    FocusDirective
   ],
   imports: [
     routing,
