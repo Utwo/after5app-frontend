@@ -2,17 +2,14 @@
   <div> <p> Feebe</p></div>
   <div>
     <h3>Hi! I thought you would like to know that...</h3>
-    <p>You currently
-      <span *ngIf="startedProjects != null"> have {{startedProjects.length}} started projects </span>
+    <p>You are currently
+      <span *ngIf="startedProjects != null"> having {{startedProjects.length}} started projects </span>
       <span *ngIf="followingProjects != null"> following {{followingProjects.length}} projects </span>
-      <span *ngIf="appliedForProjects != null"> applied for {{appliedForProjects.length}} projects </span>
+      <span *ngIf="appliedForProjects != null"> having {{appliedForProjects.length}} projects you applied for</span>
     </p>
   </div>
   <div *ngIf="joinedProject != null">
     <h3>Hi! Great news! You just joined a new project</h3>
     <p>You have just joined {{project.name}}, the project has todo active members, todo followers and todo applicants.</p>
-  </div>
-  <div *ngIf="noProject != null">
-    <p>{{noProject}}</p>
   </div>
 </div>

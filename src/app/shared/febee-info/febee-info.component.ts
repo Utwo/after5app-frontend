@@ -10,11 +10,11 @@ export class FebeeInfoComponent implements OnInit {
   @Input() followingProjects;
   @Input() appliedForProjects;
   @Input() joinedProject;
-  @Input() noProject;
 
   constructor() { }
 
   ngOnInit() {
+    console.log("feebeComponent", this.joinedProject, this.startedProjects, this.followingProjects, this.appliedForProjects)
   }
 
 }
