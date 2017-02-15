@@ -22,37 +22,55 @@ export class ProjectsOverviewComponent implements OnInit {
   ngOnInit() {
     this.getMyProjects();
     this.getFollowingProjects();
-    this.getAppliedForProjects();
+   // this.getAppliedForProjects();
     this.getJoinedProjects();
+    console.log(this.state.getToken())
   }
 
   getMyProjects() {
     this.profileService.getMyProjects()
       .subscribe(
-        data => this.extractData(data,this.projects),
+        data => {console.log(data.data); this.extractData(data.data,"projects")},
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   getFollowingProjects() {
     this.profileService.getFavoriteProjects()
       .subscribe(
-        data => this.extractData(data.favorite,this.followingProjects),
+        data => this.extractData(data.data,"followingProjects"),
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   getAppliedForProjects() {
     this.profileService.getMyApplications()
       .subscribe(
-        data => this.extractData(data,this.appliedProjects),
+        data => this.extractData(data,"appliedProjects"),
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   getJoinedProjects() {
-
+    this.profileService.getJoinedProjects()
+      .subscribe(
+        data => this.extractData(data,"joinedProjects"),
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   extractData(projects, list) {
-    list = projects;
+    switch (list) {
+      case "projects":
+        this.projects = projects;
+        break;
+      case "followingProjects":
+        this.followingProjects = projects;
+        break;
+      case "appliedProjects":
+        this.appliedProjects = projects;
+        break;
+      case "joinedProjects":
+        this.joinedProjects = projects;
+        console.log(projects,"Joined");
+        break;
+    }
     for (let project of list) {
       if (project.description.length > this.maxDescriptionLength) {
         project.description = project.description.substring(0, this.maxDescriptionLength) + '...';

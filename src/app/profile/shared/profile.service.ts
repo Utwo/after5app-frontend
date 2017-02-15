@@ -53,7 +53,7 @@ export class ProfileService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'user/'+ this.state.getUser().id + '?with[]=project', options)
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'project?with[]=favorite&with[]=position.skill&with[]=user&user:user_id=' + this.state.getUser().id, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -65,7 +65,19 @@ export class ProfileService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'user/'+ this.state.getUser().id + '?with[]=favorite', options)
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'project?with[]=favorite&with[]=position.skill&with[]=user&favorite:user_id=' + this.state.getUser().id, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  public getJoinedProjects() {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.state.getToken()
+    });
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'project?&with[]=user&with[]=position.member&position.member:user_id=' + this.state.getUser().id, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
