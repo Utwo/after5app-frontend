@@ -1,14 +1,23 @@
-<div class="card m-3">
+<div class="card profile-card my-3">
   <div class="card-block">
-    <h4 class="title-border title-border--green p-b-1">
-      PERSONAL INFO
-      <a *ngIf="isMe" (click)="toggleEditing()" class="pull-xs-right">
-        <svg *ngIf='!editing' class="icon icon-message">
-          <use xlink:href="assets/icons.svg#icon-write"></use>
-        </svg>
-        <a *ngIf='editing' (click)="saveChanges()" class="btn btn-info btn-lg">APPLY CHANGES</a>
-      </a>
-    </h4>
+    <div class="row">
+      <div class="col-6">
+        <h5 class="title-border title-border--green p-b-1">
+          PERSONAL INFO
+        </h5>
+      </div>
+      <div class="col-6 text-right">
+        <a *ngIf="isMe" (click)="toggleEditing()" class="pull-xs-right">
+          <svg *ngIf='!editing' class="icon icon-md icon-message">
+            <use xlink:href="assets/icons.svg#icon-write"></use>
+          </svg>
+          <button *ngIf='editing' (click)="saveChanges()" class="btn btn-success text-white">
+            <small>APPLY CHANGES</small>
+          </button>
+        </a>
+      </div>
+    </div>
+    <hr>
     <p> About me: </p>
     <p *ngIf="!editing"> {{user.description}} </p>
     <textarea *ngIf="editing" type="text" [(ngModel)]="description"

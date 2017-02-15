@@ -17,20 +17,20 @@
     <tabset>
       <tab [heading]="Personal" [active]="true">
         <template tabHeading>
-          Personal
+          PERSONAL
         </template>
         <div class="row">
-          <div class="col-8">
+          <div class="col-7">
             <app-personal-info [user]=user></app-personal-info>
           </div>
-          <div class="col-4">
+          <div class="col-5">
             <app-skills-component [user]=user></app-skills-component>
           </div>
         </div>
       </tab>
       <tab [heading]="Badges">
         <template tabHeading>
-          Badges
+          BADGES
         </template>
         <app-badges></app-badges>
       </tab>

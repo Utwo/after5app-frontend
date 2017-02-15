@@ -1,10 +1,10 @@
-.is-settings {
-  background: url(/assets/charging-spaceship.svg) no-repeat 100% 100%;
-  background-size: 17rem;
-}
-
 @media (max-width: map-get($grid-breakpoints, md)) {
   .is-settings {
     background-size: 3rem;
   }
+}
+
+.profile__skills-list{
+  list-style: none;
+  padding-left: 0;
 }
