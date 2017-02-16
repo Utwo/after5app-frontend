@@ -58,12 +58,18 @@ ul.dropdown-menu > li {
 .dropdown__content {
   display: none;
   top: 4em;
-  left: -105px;
-  width: 200px;
-  font-size: $font-size-sm;
+  left: -100px;
   padding: .4em;
-  color: #fff;
-  font-weight: bold;
+  color: $gray;
+}
+
+.dropdown__content.dropdown-user{
+  width: 200px;
+}
+
+.dropdown__content.dropdown-notifications{
+  left: -200px;
+  width: 400px;
 }
 
 .dropdown__content a {

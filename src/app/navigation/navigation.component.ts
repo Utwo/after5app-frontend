@@ -20,13 +20,6 @@ export class NavigationComponent {
     return this.state.isLoggedIn();
   }
 
-  openLoginModal() {
-  }
-
-  closeLoginModal() {
-    console.log('close');
-  }
-
   toggleNavigation() {
     this.showNavigation = !this.showNavigation;
   }

@@ -36,7 +36,7 @@
   position: absolute;
   top: -.6rem;
   left: -.9rem;
-  background: darken($brand-primary, 5%);
+  background: $brand-danger;
   border-radius: 50%;
   width: 1.2rem;
   height: 1.2rem;
@@ -56,6 +56,7 @@
   border-bottom: 2px solid rgba(255, 255, 255, .2);
   margin: .4em .2em;
   padding: .4em 0;
+  color: $gray;
 }
 
 li:last-child .notification__item {

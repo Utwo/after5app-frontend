@@ -12,7 +12,8 @@ export class UserNavComponent implements OnInit {
   @Input() user;
   @ViewChild('container') container;
 
-  isDropdownActiv = false;
+  isDropdownUserActiv = false;
+  isDropdownNotifActiv = false;
   notificationCount = 0;
   notifications = null;
   notificationTypes = {
@@ -34,7 +35,8 @@ export class UserNavComponent implements OnInit {
 
   onClickOutside(event) {
     if (!this.container.nativeElement.contains(event.target)) {
-      this.isDropdownActiv = false;
+      this.isDropdownUserActiv = false;
+      this.isDropdownNotifActiv = false;
     }
   }
 
@@ -55,9 +57,15 @@ export class UserNavComponent implements OnInit {
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
-  dropdown() {
-    this.isDropdownActiv = !this.isDropdownActiv;
-    if (this.isDropdownActiv && this.notifications === null) {
+  dropdownUser() {
+    this.isDropdownUserActiv = !this.isDropdownUserActiv;
+    this.isDropdownNotifActiv = false;
+  }
+
+  dropdownNotification() {
+    this.isDropdownUserActiv = false;
+    this.isDropdownNotifActiv = !this.isDropdownNotifActiv;
+    if (this.isDropdownNotifActiv && this.notifications === null) {
       this.getNotifications();
     }
   }
