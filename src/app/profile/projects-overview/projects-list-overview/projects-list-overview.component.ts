@@ -12,10 +12,8 @@ export class ProjectsListOverviewComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("list overview",this.projects, this.joinedProjects)
     if(this.joinedProjects !== undefined ) {
       this.showJoinedProjects = true;
-      console.log("show")
     }
   }
 

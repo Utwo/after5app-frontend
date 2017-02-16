@@ -1,5 +1,4 @@
 <h3 *ngIf="showJoinedProjects"> Created Projects </h3>
-<app-febee-info *ngIf="followingProjects != null || appliedForProjects != null || projects != null " [followingProjects]="followingProjects" [appliedForProjects]="appliedProjects"></app-febee-info>
 <div *ngIf="projects && projects.length > 0" class="container container-small">
   <ul  class="project-list list-unstyled">
     <li *ngFor="let project of projects">
@@ -14,7 +13,6 @@
 </div>
 
 <h3 *ngIf="showJoinedProjects"> Joined Projects </h3>
-<app-febee-info *ngIf="showJoinedProjects && joinedProjects !== null" [joinedProject]="joinedProjects"></app-febee-info>
 <div *ngIf="showJoinedProjects && joinedProjects && joinedProjects.length > 0">
   <ul class="project-list list-unstyled">
     <li *ngFor="let project of joinedProjects">

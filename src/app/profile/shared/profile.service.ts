@@ -41,7 +41,7 @@ export class ProfileService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'user/'+ this.state.getUser().id + '?with[]=position.project', options)
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'project?with[]=user&with[]=favorite&with[]=position.member&with[]=position.skill&application:user_id='+this.state.getUser().id + '&application:accepted=0', options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -77,7 +77,7 @@ export class ProfileService {
     });
     let options = new RequestOptions({headers: headers});
 
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'project?&with[]=user&with[]=position.member&position.member:user_id=' + this.state.getUser().id, options)
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'project?with[]=favorite&with[]=user&with[]=position.member&with[]=position.skill&application:user_id='+this.state.getUser().id +'&application:accepted=1', options)
       .map(this.extractData)
       .catch(this.handleError);
   }
