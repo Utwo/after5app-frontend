@@ -7,15 +7,15 @@
         <button type="button" class="modal__close btn" (click)="closeLoginModal()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title text-xs-center">Join our community</h4>
+        <h4 class="modal-title text-center">Join our community</h4>
       </div>
       <div class="modal-body">
         <div class="container-fluid">
-          <div class="row flex-items-xs-center m-y-2">
+          <div class="row flex-items-xs-center my-2">
             <div class="col-lg-3 col-md-6">
               <button class="btn btn-block btn-facebook btn-lg" (click)="facebookLogin()">
                 <svg class="icon icon-lg">
-                  <use xlink:href="assets/icons.svg#icon-facebook2"></use>
+                  <use xlink:href="assets/svg/icons.svg#icon-facebook2"></use>
                 </svg>
                 Login with Facebook
               </button>
@@ -23,14 +23,14 @@
             <div class="col-lg-3 col-md-6">
               <button class="btn btn-block btn-github btn-lg" (click)="gitHubLogin()">
                 <svg class="icon icon-lg">
-                  <use xlink:href="assets/icons.svg#icon-github"></use>
+                  <use xlink:href="assets/svg/icons.svg#icon-github"></use>
                 </svg>
                 Login with GitHub
               </button>
             </div>
           </div>
           <hr>
-          <div class="form-inline text-xs-center m-y-2">
+          <div class="form-inline text-center my-2">
             <div *ngIf="showEmailInput" class="form-group">
               <input class="form-control form-control-lg" title="email" type="email" placeholder="Login with email"
                      [(ngModel)]="email" (keyup.enter)="loginByEmail()">

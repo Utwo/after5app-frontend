@@ -21,7 +21,7 @@ export class LoginService {
   }
 
   authEmail(token) {
-    this.http.post(environment.URL_API + 'auth/email-authenticate/' + token, '')
+    this.http.post(environment.URL_API + 'api/auth/email-authenticate/' + token, '')
       .map(res => res.json())
       .subscribe(
         (data) => this.state.storeState(data['token'], data['user']),
@@ -31,7 +31,7 @@ export class LoginService {
   }
 
   authFacebook(code) {
-    this.http.post(environment.URL_API + 'auth/facebook/callback?code=' + code, '')
+    this.http.post(environment.URL_API + 'api/auth/facebook/callback?code=' + code, '')
       .map(res => res.json())
       .subscribe(
         (data) => this.state.storeState(data['token'], data['user']),
@@ -41,7 +41,7 @@ export class LoginService {
   }
 
   authGitHub(code) {
-    this.http.post(environment.URL_API + 'auth/github/callback?code=' + code, '')
+    this.http.post(environment.URL_API + 'api/auth/github/callback?code=' + code, '')
       .map(res => res.json())
       .subscribe(
         (data) => this.state.storeState(data['token'], data['user']),

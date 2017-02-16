@@ -10,16 +10,16 @@ import {ResponseHandlerService} from '../response-handler.service';
 })
 
 export class AutocompleteComponent {
-  @Input('wrap_class') wrap_class;
-  @Input('label_message') label_message;
-  @Input('label_show') label_show;
   @Input('type') type;
+  @Input('label_message') label_message;
   @Output() onSelect = new EventEmitter<Object>();
+  public label_class;
+  public input_class;
 
   public dataSource: Observable<any>;
-  public asyncSelected: string = '';
-  public typeaheadLoading: boolean = false;
-  public typeaheadNoResults: boolean = false;
+  public asyncSelected = '';
+  public typeaheadLoading = false;
+  public typeaheadNoResults = false;
 
   constructor(private projectService: ProjectService,
               private responseHandler: ResponseHandlerService) {
@@ -27,9 +27,15 @@ export class AutocompleteComponent {
       observer.next(this.asyncSelected);
     }).mergeMap((token: string) => this.getSkillsAsObservable(token));
 
-    this.wrap_class = this.wrap_class || 'form-group btn btn-primary btn-sm';
-    this.label_message = this.label_message || 'Filter by skill ';
-    this.label_show = this.label_show || false;
+    switch (this.type) {
+      case('filter-list'):
+        this.label_class = 'input-group-addon label-white';
+        this.input_class = 'form-control input-gray';
+        break;
+      default:
+        this.label_class = 'input-group-addon label-white';
+        this.input_class = 'form-control input-basic input-gray';
+    }
   }
 
   public getSkillsAsObservable(token: string): Observable<any> {
@@ -49,7 +55,7 @@ export class AutocompleteComponent {
 
   public changeTypeaheadNoResults(e: boolean): void {
     this.typeaheadNoResults = e;
-    if (this.type === 'list') {
+    if (this.type === 'filter-list') {
       return;
     }
     this.onSelect.emit({id: 0, name: this.asyncSelected});

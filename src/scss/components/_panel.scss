@@ -1,7 +1,7 @@
 .panel {
   word-wrap: break-word;
   background: #fff;
-  border: 1px solid $gray-lighter;
+  box-shadow: 0 1px 3px 1px #e7e7e7;
   border-radius: $border-radius-lg;
 }
 
@@ -17,12 +17,7 @@
 
 .panel__item {
   padding: .4rem;
-  background: rgba(0, 0, 0, .08);
   margin: .4rem 0;
   border-radius: $border-radius;
   transition: .3s all ease-in-out
-}
-
-.panel__item:hover {
-  background: #8ee3ce;
 }

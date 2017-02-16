@@ -8,7 +8,54 @@
   vertical-align: middle;
 }
 
+.icon-md {
+  width: 1.5em;
+  height: 1.5em;
+}
+
 .icon-lg {
-  width: 1.2em;
-  height: 1.2em;
+  width: 2em;
+  height: 2em;
+}
+
+.icon-xl {
+  width: 3em;
+  height: 3em;
+}
+
+.icon-picture-faded {
+  width: 13em;
+  height: 13em;
+  opacity: .5;
+}
+
+.icon-shadow {
+  height: 3em;
+  width: 3em;
+  background: $brand-info;
+  border-radius: 50%;
+}
+
+.icon-circle {
+  background: $purple;
+  border-radius: 35px;
+  color: $gray-lightest;
+  width: 3em;
+  height: 3em;
+}
+
+.logo {
+  height: 2em;
+  width: 9em;
+  vertical-align: middle;
+}
+
+.icon.icon-star {
+  font-size: 1.5em;
+  stroke: $gray-lighter;
+}
+
+.icon.icon-star.full {
+  stroke: $yellow;
+  fill: $yellow;
 }

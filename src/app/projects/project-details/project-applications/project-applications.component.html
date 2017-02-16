@@ -1,0 +1,24 @@
+<section class="col-md-12 mt-2">
+  <ul *ngIf="applications && applications.length > 0" class="list-unstyled">
+    <li *ngFor="let application of applications" class="mt-1 mb-3 panel panel--top--bottom w-100">
+      <h4 class="p-1 bg-primary"><strong>{{application.user.name}}</strong> for <strong>{{application.position.skill.name}}</strong>
+        position</h4>
+      <div class="p-1">
+        <ol>
+          <li *ngFor="let answer of application.answers; let i = index">
+            <p>{{questions[i]}}</p>
+            <p>{{answer}}</p>
+          </li>
+        </ol>
+        <hr *ngIf="application.message">
+        <p *ngIf="application.message">{{application.message}}</p>
+        <hr>
+        <div class="text-right">
+          <button (click)="acceptApplication(application.id, i)" class="btn btn-primary">Accept</button>
+          <button (click)="declineApplication(application.id, i)" class="btn btn-danger">Decline</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <i *ngIf="!applications || applications.length === 0" class="text-muted">No new applications for this project.</i>
+</section>

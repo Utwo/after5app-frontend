@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<section class="container container-small m-x-auto m-y-3">
+<section class="container container-small mx-auto my-3">
   <form #updateForm="ngForm" (ngSubmit)="storeProject()">
     <div class="form-group">
       <label for="title">Title <span class="text-danger font-weight-bold">*</span></label>
@@ -33,22 +33,22 @@
       </div>
     </div>
 
-    <fieldset class="form-group p-a-1">
-      <legend class="text-xs-center">Positions <span class="text-danger font-weight-bold">*</span></legend>
+    <fieldset class="form-group p-1">
+      <legend class="text-center">Positions <span class="text-danger font-weight-bold">*</span></legend>
       <app-autocomplete #autocomplete (onSelect)="onSelect($event)" wrap_class="form-group" label_message="Required skill"
                         label_show="true"></app-autocomplete>
       <div class="form-group">
-        <textarea class="form-control m-t-1" type="text" id="position-desc" placeholder="Position description" #position
+        <textarea class="form-control mt-1" type="text" id="position-desc" placeholder="Position description" #position
                   rows="4"></textarea>
         <i [hidden]="!positionError" class="form-text text-danger">{{positionError}}</i>
       </div>
-      <div class="text-xs-right">
+      <div class="text-right">
         <button class="btn btn-info" type="button" (click)="addPosition(position, autocomplete)">Add Position</button>
       </div>
     </fieldset>
 
     <ul class="list-unstyled">
-      <li *ngFor="let position of project.position; let i = index" class="panel m-b-1 p-a-1">
+      <li *ngFor="let position of project.position; let i = index" class="panel mb-1 p-1">
         <h5>{{position.name}}
           <button class="btn btn-outline-danger btn-sm pull-xs-right btn-circle-sm font-weight-bold" type="button"
                   (click)="removePosition(i)">&times;</button>
@@ -60,11 +60,11 @@
     <div class="form-group">
       <label for="question">Questions</label>
       <div class="row">
-        <div class="col-md-10 col-xs-9">
+        <div class="col-md-10 col-9">
           <input class="form-control" id="question" type="text" #question
                  placeholder="How much time can you spend on this project?">
         </div>
-        <div class="col-md-2 col-xs-3">
+        <div class="col-md-2 col-3">
           <button class="btn btn-info" type="button" (click)="addQuestion(question)">Add</button>
         </div>
         <i [hidden]="!questionError" class="form-text text-danger">{{questionError}}</i>
@@ -77,7 +77,7 @@
       </li>
     </ol>
     <hr>
-    <div class="text-xs-center">
+    <div class="text-center">
       <button class="btn btn-primary" type="submit" [disabled]="!updateForm.form.valid || project.position.length < 1">
         Add project
       </button>

@@ -12,7 +12,7 @@ export class ProjectService {
 
   getProjects(page) {
     return this.http.get(environment.URL_API + environment.API_VERSION +
-      'project?sort[]=created_at,desc&with[]=user&with[]=position.skill&page=' + page)
+      'project?sort[]=created_at,desc&with[]=user&with[]=favorite&with[]=position.skill&page=' + page)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -26,7 +26,7 @@ export class ProjectService {
 
   getPopularProjects() {
     return this.http.get(environment.URL_API + environment.API_VERSION +
-      'project?sort[]=favorite_count,desc&sort[]=created_at,desc&with[]=user&with[]=position.skill')
+      'project?sort[]=favorite_count,desc&sort[]=created_at,desc&with[]=user&with[]=favorite&with[]=position.skill')
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -40,6 +40,22 @@ export class ProjectService {
 
     return this.http.get(environment.URL_API + environment.API_VERSION +
       'project?recommended&with[]=user&with[]=position.skill&user_id=!' + this.state.getUser().id, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  public searchByName(name) {
+    return this.http.get(environment.URL_API + environment.API_VERSION +
+      'project?title=%' + name + '%&with[]=user&with[]=position.skill')
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  public filterBySkill(skill, id = null) {
+    let project_id = id ? '&id=!' + id : '';
+    const user_id = this.state.isLoggedIn() ? this.state.getUser().id : '';
+    return this.http.get(environment.URL_API + environment.API_VERSION +
+      `project?position:skill_id=${skill}&user_id=!${user_id}&with[]=user&with[]=position.skill${project_id}`)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -81,50 +97,9 @@ export class ProjectService {
       .catch(this.handleError);
   }
 
-  public searchByName(name) {
-    return this.http.get(environment.URL_API + environment.API_VERSION +
-      'project?title=%' + name + '%&with[]=user&with[]=position.skill')
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-  public filterBySkill(skill, id = null) {
-    let project_id = id ? '&id=!' + id : '';
-    const user_id = this.state.isLoggedIn() ? this.state.getUser().id : '';
-    return this.http.get(environment.URL_API + environment.API_VERSION +
-      `project?position:skill_id=${skill}&user_id=!${user_id}&with[]=user&with[]=position.skill${project_id}`)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
   public getSkills() {
     return this.http.get(environment.URL_API + environment.API_VERSION + 'skill')
       .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-  public getProjectMessages(project_id, page) {
-    let headers = new Headers({
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.get(environment.URL_API + environment.API_VERSION +
-      'project/' + project_id + '/messenger?sort[]=created_at,desc&page=' + page, options)
-      .map(res => res.json().messenger)
-      .catch(this.handleError);
-  }
-
-  public addMessage(project_id, message) {
-    let body = JSON.stringify({text: message, project_id: project_id});
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.post(environment.URL_API + environment.API_VERSION + 'messenger', body, options)
-      .map(res => res.json().messenger)
       .catch(this.handleError);
   }
 
@@ -141,57 +116,8 @@ export class ProjectService {
       .catch(this.handleError);
   }
 
-  public getApplications(project_id) {
-    let headers = new Headers({
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'project/' + project_id +
-      '/application?with[]=user&with[]=position.skill', {headers: headers})
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
   public getMembers(project_id) {
     return this.http.get(environment.URL_API + environment.API_VERSION + 'project/' + project_id + '/members')
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-  applyForProject(application) {
-    let body = JSON.stringify(application);
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.post(environment.URL_API + environment.API_VERSION + 'application', body, options)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-  public acceptApplication(application_id) {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.put(environment.URL_API + environment.API_VERSION +
-      'application/' + application_id, {}, options)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-  public declineApplication(application_id) {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.delete(environment.URL_API + environment.API_VERSION +
-      'application/' + application_id, options)
       .map(this.extractData)
       .catch(this.handleError);
   }

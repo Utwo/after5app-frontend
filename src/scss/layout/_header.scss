@@ -3,9 +3,10 @@
 // -----------------------------------------------------------------------------
 
 .header-site {
-  background: $brand-primary;
+  background: $dark-iris;
   padding: 1.4em 0;
   color: #fff;
+  z-index: 100;
 }
 
 .header-site a {
@@ -17,19 +18,21 @@
   line-height: 1.4;
   margin: 0;
   padding: .2em;
+  z-index: map-get($zindex, highest);;
+  position: relative;
 }
 
-.header-logo:after {
-  content: '';
-  display: inline;
-  position: absolute;
-  background: rgba(255, 255, 255, .4);
-  height: 100%;
-  width: 3px;
-  top: 0;
-  right: 0;
-  border-radius: $border-radius-sm;
-}
+//.header-logo:after {
+//  content: '';
+//  display: inline;
+//  position: absolute;
+//  background: rgba(255, 255, 255, .4);
+//  height: 100%;
+//  width: 3px;
+//  top: 0;
+//  right: 0;
+//  border-radius: $border-radius-sm;
+//}
 
 .header__search-form {
   border-radius: 12px;

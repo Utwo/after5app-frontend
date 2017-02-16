@@ -1,0 +1,29 @@
+<section *ngIf="project" class="modal-body">
+  <div class="text-center">
+    <div class="form-inline mb-2 btn btn-primary">
+      <label class="col-form-label" for="position">For</label>
+      <select class="form-control mx-1" id="position" #positionSelect>
+        <option *ngFor="let position of project.position" [disabled]="!position.status" [selected]="position.status"
+                value={{position.id}}>{{position.skill.name}}
+        </option>
+      </select>
+      <label class="col-form-label" for="position">position</label>
+    </div>
+  </div>
+
+  <ol class="mb-2">
+    <li *ngFor="let question of project.application_questions; let i = index" class="form-group">
+      <label for="question">{{question}}</label>
+      <input class="form-control" id="question" type="text" [(ngModel)]="application.answers[i]"
+             placeholder="Answer {{i+1}}">
+    </li>
+  </ol>
+  <hr>
+  <div class="form-group">
+    <label for="message">Optional message</label>
+    <textarea class="form-control" rows="6" id="message" [(ngModel)]="application.message"></textarea>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" (click)="sendApplication(positionSelect.value)">Apply</button>
+  </div>
+</section>

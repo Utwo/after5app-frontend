@@ -3,36 +3,51 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule, JsonpModule} from '@angular/http';
 import {routing, appRoutingProviders} from './app.routing';
+// external modules
+import {ToastyModule} from 'ng2-toasty';
+import {ModalModule, TypeaheadModule, TabsModule} from 'ng2-bootstrap';
+// services
+import {AuthGuard} from './core/auth-guard.service';
+import {ResponseHandlerService} from './shared/response-handler.service';
+import {StateService} from './shared/state.service';
+import {LoginService} from './core/login.service';
+import {ProjectService} from './projects/shared/project.service';
+import {MessageService} from './projects/shared/message.service';
+import {ApplicationService} from './projects/shared/application.service';
+import {NotificationsService} from './navigation/user-nav/shared/notifications.service';
+// components
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {NotFoundComponent} from './core/not-found/not-found.component';
 import {ProjectListComponent} from './projects/project-list/project-list.component';
-import {ProjectComponent} from './projects/project/project.component';
+import {ProjectComponent} from './projects/project-details/project.component';
 import {AboutComponent} from './about/about.component';
 import {ProfileComponent} from './profile/profile.component';
-import {CommentsComponent} from './projects/project/comments/comments.component';
+import {CommentsComponent} from './projects/project-details/comments/comments.component';
 import {SettingsComponent} from './profile/settings/settings.component';
-import {ApplicationComponent} from './projects/project/application/application.component';
-import {AutocompleteComponent} from './shared/autocomplete/autocomplete.component';
-import {TimeAgoPipe} from './time-ago.pipe';
+import {AddApplicationComponent} from './projects/project-details/add-application/add-application.component';
 import {AddProjectComponent} from './projects/add-project/add-project.component';
 import {FooterComponent} from './footer/footer.component';
-import {StateService} from './shared/state.service';
-import {LoginService} from './core/login.service';
-import {ProjectService} from './projects/shared/project.service';
 import {NavigationComponent} from './navigation/navigation.component';
 import {SearchComponent} from './navigation/search/search.component';
 import {UserNavComponent} from './navigation/user-nav/user-nav.component';
-import {NotificationsService} from './navigation/user-nav/shared/notifications.service';
-import {EditProjectComponent} from './projects/project/edit-project/edit-project.component';
-import {ModalModule, TypeaheadModule, TabsModule} from 'ng2-bootstrap';
-import {UserApplicationsComponent} from './projects/project/user-applications/user-applications.component';
+import {EditProjectComponent} from './projects/project-details/edit-project/edit-project.component';
+import {ProjectApplicationsComponent} from './projects/project-details/project-applications/project-applications.component';
 import {LoginComponent} from './login/login.component';
-import {MessagesComponent} from './projects/project/messages/messages.component';
-import {AuthGuard} from './core/auth-guard.service';
-import {ResponseHandlerService} from './shared/response-handler.service';
-import {ToastyModule} from 'ng2-toasty';
+import {MessagesComponent} from './projects/project-details/messages/messages.component';
+import {AutocompleteComponent} from './shared/autocomplete/autocomplete.component';
+import {SectionHeaderComponent} from './shared/components/section-header.component';
 import {LoginModalComponent} from './shared/login-modal/login-modal.component';
+import {PersonalInfoComponent} from './profile/personal-info/personal-info.component';
+import {ProjectCardComponent} from './shared/project-card/project-card.component';
+import {SkillsComponentComponent} from './profile/skills-component/skills-component.component';
+import {BadgesComponent} from './profile/badges/badges.component';
+import {HomeCardComponent} from './home/home-card/home-card.component';
+import {HomeSectionComponent} from './home/home-section/home-section.component';
+import {HomeParagraphComponent} from './home/home-section/home-paragraph/home-paragraph.component';
+
+// pipes
+import {TimeAgoPipe} from './time-ago.pipe';
 
 @NgModule({
   declarations: [
@@ -46,7 +61,7 @@ import {LoginModalComponent} from './shared/login-modal/login-modal.component';
     NavigationComponent,
     CommentsComponent,
     SettingsComponent,
-    ApplicationComponent,
+    AddApplicationComponent,
     AutocompleteComponent,
     TimeAgoPipe,
     AddProjectComponent,
@@ -54,10 +69,18 @@ import {LoginModalComponent} from './shared/login-modal/login-modal.component';
     FooterComponent,
     UserNavComponent,
     EditProjectComponent,
-    UserApplicationsComponent,
+    ProjectApplicationsComponent,
     LoginComponent,
     MessagesComponent,
     LoginModalComponent,
+    ProjectCardComponent,
+    SectionHeaderComponent,
+    HomeCardComponent,
+    HomeSectionComponent,
+    HomeParagraphComponent,
+    BadgesComponent,
+    SkillsComponentComponent,
+    PersonalInfoComponent
   ],
   imports: [
     routing,
@@ -68,13 +91,15 @@ import {LoginModalComponent} from './shared/login-modal/login-modal.component';
     ModalModule.forRoot(),
     TypeaheadModule.forRoot(),
     TabsModule.forRoot(),
-    ToastyModule.forRoot()
+    ToastyModule.forRoot(),
   ],
   providers: [
     appRoutingProviders,
     StateService,
     LoginService,
     ProjectService,
+    MessageService,
+    ApplicationService,
     NotificationsService,
     ResponseHandlerService,
     AuthGuard
