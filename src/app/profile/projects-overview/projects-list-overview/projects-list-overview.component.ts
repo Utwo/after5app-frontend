@@ -8,6 +8,9 @@ import {Component, OnInit, Input} from '@angular/core';
 export class ProjectsListOverviewComponent implements OnInit {
   @Input() projects;
   @Input() joinedProjects;
+  @Input() feebeTitle;
+  @Input() feebeDescription;
+
   private showJoinedProjects = false;
   constructor() { }
 

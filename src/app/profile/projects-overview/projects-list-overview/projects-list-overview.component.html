@@ -1,4 +1,5 @@
 <h3 *ngIf="showJoinedProjects"> Created Projects </h3>
+<app-febee-info *ngIf= 'feebeTitle && feebeDescription' [title]="feebeTitle" [description]="feebeDescription"></app-febee-info>
 <div *ngIf="projects && projects.length > 0" class="container container-small">
   <ul  class="project-list list-unstyled">
     <li *ngFor="let project of projects">

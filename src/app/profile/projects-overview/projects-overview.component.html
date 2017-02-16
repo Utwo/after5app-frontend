@@ -7,19 +7,19 @@
   <div class="container container-medium">
     <div class="row mt-5">
         <tabset class="col-lg-8 col-md-7">
-          <tab [heading]='Projects' [active]="true">
+          <tab [active]="true">
             <template tabHeading>
               PROJECTS
             </template>
-            <app-projects-list-overview [projects]="projects" [joinedProjects]="joinedProjects"></app-projects-list-overview>
+            <app-projects-list-overview [feebeTitle]="feebeTitle" [feebeDescription]="feebeDescription" [projects]="projects" [joinedProjects]="joinedProjects"></app-projects-list-overview>
           </tab>
-          <tab [heading]='Following'>
+          <tab >
             <template tabHeading>
               FOLLOWING
             </template>
             <app-projects-list-overview [projects]="followingProjects"></app-projects-list-overview>
           </tab>
-          <tab [heading]='AppliedFor' >
+          <tab >
             <template tabHeading>
               APPLIED FOR
             </template>

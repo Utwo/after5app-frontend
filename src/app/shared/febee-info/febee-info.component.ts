@@ -6,15 +6,12 @@ import {Component, OnInit, Input} from '@angular/core';
   styles: []
 })
 export class FebeeInfoComponent implements OnInit {
-  @Input() startedProjects;
-  @Input() followingProjects;
-  @Input() appliedForProjects;
-  @Input() joinedProject;
+  @Input() title;
+  @Input() description;
 
   constructor() { }
 
   ngOnInit() {
-    console.log("feebeComponent", this.joinedProject, this.startedProjects, this.followingProjects, this.appliedForProjects)
   }
 
 }
