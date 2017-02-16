@@ -7,14 +7,11 @@ import {ResponseHandlerService} from '../../../shared/response-handler.service';
   selector: 'app-comments',
   templateUrl: './comments.component.html',
 })
-export class CommentsComponent implements OnInit {
+export class CommentsComponent {
   @Input('project_id') project_id;
   @Input('comments') comments;
 
   constructor(private projectService: ProjectService, private state: StateService, private responseHandler: ResponseHandlerService) {
-  }
-
-  ngOnInit() {
   }
 
   addComment(text) {
