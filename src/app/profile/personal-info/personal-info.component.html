@@ -1,0 +1,70 @@
+<div class="card profile-card my-3">
+  <div class="card-block">
+    <div class="row">
+      <div class="col-6">
+        <h5 class="title-border title-border--green p-b-1">
+          PERSONAL INFO
+        </h5>
+      </div>
+      <div class="col-6 text-right">
+        <a *ngIf="isMe" (click)="toggleEditing()" class="pull-xs-right">
+          <svg *ngIf='!editing' class="icon icon-md icon-message">
+            <use xlink:href="assets/icons.svg#icon-write"></use>
+          </svg>
+          <button *ngIf='editing' (click)="saveChanges()" class="btn btn-success text-white">
+            <small>APPLY CHANGES</small>
+          </button>
+        </a>
+      </div>
+    </div>
+    <hr>
+    <p> About me: </p>
+    <p *ngIf="!editing"> {{user.description}} </p>
+    <textarea *ngIf="editing" type="text" [(ngModel)]="description"
+              title="description"> {{description}} </textarea>
+    <div>
+      <p> Name:
+        <span *ngIf="!editing"> {{user.name}} </span>
+        <input *ngIf="editing" type="text" [(ngModel)]="name" title="name"/>
+      </p>
+      <p> City:
+        <span *ngIf="!editing"> {{user.city}} </span>
+        <input *ngIf="editing" type="text" [(ngModel)]="city" title="city"/>
+      </p>
+      <p> Workplace:
+        <span *ngIf="!editing"> {{user.workplace}} </span>
+        <input *ngIf="editing" type="text" [(ngModel)]="workplace" title="workplace"/>
+      </p>
+      <div> Hobbies:
+        <input *ngIf="editing" placeholder="Add Hobby" type="text" [(ngModel)]="hobby" title="hobby"/>
+        <a *ngIf="editing" (click)="addHobby()">
+          <svg class="icon icon-plus">
+            <use xlink:href="./assets/icons.svg#icon-plus"></use>
+          </svg>
+        </a>
+        <ul class="project-list list-unstyled">
+          <li *ngFor="let hobby of hobbies">
+            <a *ngIf="editing" (click)="removeHobby(hobby)"> x </a> {{hobby}}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      Social:
+      <select *ngIf="editing" [(ngModel)]="socialInput" title="social"> // value is a string or number
+        <option *ngFor="let obj of socialOptions">{{obj}}</option>
+      </select>
+      <input *ngIf="socialInput != null && editing" type="text" placeholder="Add Link" title="link"
+             [(ngModel)]="link">
+      <a *ngIf="editing" (click)="addSocial()">
+        <svg class="icon icon-plus">
+          <use xlink:href="./assets/icons.svg#icon-plus"></use>
+        </svg>
+      </a>
+      <a *ngIf='user.facebook_id != null' href='http://facebook.com/{{user.facebook_id}}'><p> Facebook </p></a>
+      <a *ngIf='user.twitter != null' href='https://twitter.com/{{user.twitter}}'><p> Twitter </p></a>
+      <a *ngIf='user.github_id != null' href='http://gihub/{{user.github_id}}'><p> Github </p></a>
+      <a *ngIf='user.website != null' href='{{user.website}}'><p> Website </p></a>
+    </div>
+  </div>
+</div>

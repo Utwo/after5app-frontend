@@ -38,12 +38,16 @@ import {MessagesComponent} from './projects/project-details/messages/messages.co
 import {AutocompleteComponent} from './shared/autocomplete/autocomplete.component';
 import {SectionHeaderComponent} from './shared/components/section-header.component';
 import {LoginModalComponent} from './shared/login-modal/login-modal.component';
-// pipes
-import {TimeAgoPipe} from './time-ago.pipe';
+import {PersonalInfoComponent } from './profile/personal-info/personal-info.component';
 import {ProjectCardComponent} from './shared/project-card/project-card.component';
+import { SkillsComponentComponent } from './profile/skills-component/skills-component.component';
+import { BadgesComponent } from './profile/badges/badges.component';
 import { HomeCardComponent } from './home/home-card/home-card.component';
 import { HomeSectionComponent } from './home/home-section/home-section.component';
 import { HomeParagraphComponent } from './home/home-section/home-paragraph/home-paragraph.component';
+
+// pipes
+import {TimeAgoPipe} from './time-ago.pipe';
 
 @NgModule({
   declarations: [
@@ -73,7 +77,10 @@ import { HomeParagraphComponent } from './home/home-section/home-paragraph/home-
     SectionHeaderComponent,
     HomeCardComponent,
     HomeSectionComponent,
-    HomeParagraphComponent
+    HomeParagraphComponent,
+    BadgesComponent,
+    SkillsComponentComponent,
+    PersonalInfoComponent,
   ],
   imports: [
     routing,
@@ -84,7 +91,7 @@ import { HomeParagraphComponent } from './home/home-section/home-paragraph/home-
     ModalModule.forRoot(),
     TypeaheadModule.forRoot(),
     TabsModule.forRoot(),
-    ToastyModule.forRoot()
+    ToastyModule.forRoot(),
   ],
   providers: [
     appRoutingProviders,

@@ -10,6 +10,7 @@ import {SettingsComponent} from './profile/settings/settings.component';
 import {NotFoundComponent} from './core/not-found/not-found.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './core/auth-guard.service';
+import {PersonalInfoComponent} from './profile/personal-info/personal-info.component';
 
 
 const appRoutes: Routes = [

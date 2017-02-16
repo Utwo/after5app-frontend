@@ -22,6 +22,10 @@ legend {
   font-size: 1.3rem;
 }
 
+a:hover{
+  text-decoration: none;
+}
+
 // Small devices (landscape phones, 544px and up)
 @media (max-width: map-get($grid-breakpoints, sm)) {
   html {

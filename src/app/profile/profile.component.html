@@ -1,129 +1,39 @@
 <div *ngIf="user">
-  <div class="jumbotron-fluid">
+  <div class="jumbotron-white">
     <div class="container">
-      <h2 class="my-0"><img *ngIf="user.picture" class="profile-img" src="{{user.picture}}?s=70&width=70&height=70">
-        {{user.name}}</h2>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-7">
-        <section class="my-3">
-          <h3 *ngIf="!isMe" class="title-border title-border--green pb-1">{{user.name}}'s projects</h3>
-          <h3 *ngIf="isMe" class="title-border title-border--green pb-1">My projects</h3>
-          <div *ngIf="user.project.length === 0">
-            <p *ngIf="isMe">You don't have any projects.
-              <a routerLink="/start-project">Start a project!</a>
-            </p>
-            <p *ngIf="!isMe">{{user.name}} didn't start any projects.</p>
-          </div>
-          <ul class="row list-unstyled">
-            <li *ngFor="let project of user.project" class="panel p-1 col-12 mb-1">
-              <div class="row">
-                <div class="col-md-8">
-                  <h4 class="project__title title-border title-border--green mb-1 pb-1">
-                    <a routerLink="/project/{{project.id}}">
-                      {{project.title}}
-                    </a>
-                  </h4>
-                </div>
-                <div class="col-md-4 text-md-right">
-                  <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
-                </div>
-              </div>
-              <p>{{project.description | slice:0:80 }}</p>
-            </li>
-          </ul>
-        </section>
-
-        <section class="my-3">
-          <h3 class="title-border title-border--green pb-1">Favorite projects</h3>
-          <div *ngIf="user.favorite.length === 0">
-            <p *ngIf="!isMe">{{user.name}} has no favorite projects
-              <svg
-                class="icon text-danger">
-                <use xlink:href="assets/svg/icons.svg#icon-heart-o"></use>
-              </svg>
-            </p>
-            <p *ngIf="isMe">You have no favorite projects
-              <svg
-                class="icon text-danger">
-                <use xlink:href="assets/svg/icons.svg#icon-heart-o"></use>
-              </svg>
-            </p>
-          </div>
-          <ul class="row list-unstyled">
-            <li *ngFor="let project of user.favorite" class="col-md-4">
-              <div class="panel p-1">
-                <h4 class="project__title"><a routerLink="/project/{{project.id}}">
-                  {{project.title}}
-                </a></h4>
-                <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
-                <p>{{project.description | slice:0:40 }}</p>
-              </div>
-            </li>
-          </ul>
-        </section>
-      </div>
-
-      <div class="col-lg-4 col-md-5">
-        <div class="sidebar p-1 mb-3">
-          <section>
-            <h3 class="title-border pb-1">About
-              <a *ngIf="isMe" routerLink="/settings" class="btn btn-primary btn-sm pull-xs-right">
-                <svg class="icon">
-                  <use xlink:href="assets/svg/icons.svg#icon-pencil"></use>
-                </svg>
-              </a>
-            </h3>
-            <p *ngIf="user && !user.website && !user.twitter && !user.workplace">No info was added.</p>
-            <ol class="list-unstyled font-weight-bold">
-              <li *ngIf="user.website" class="panel__item">
-                <a href={{user.website}} target="_blank" class="d-block">{{user.website}}</a>
-              </li>
-              <li *ngIf="user.twitter" class="panel__item">
-                <a href="https://twitter.com/{{user.twitter}}" target="_blank" class="d-block">@{{user.twitter}}</a>
-              </li>
-              <li *ngIf="user.workplace" class="panel__item">
-                <span class="font-weight-normal">Workplace: </span>{{user.workplace}}
-              </li>
-            </ol>
-            <h3 class="title-border pb-1 mt-2">Skills</h3>
-            <p *ngIf="user.skill && user.skill.length < 1">No skills were added.</p>
-            <ul class="list-inline" *ngIf="user.skill.length > 0">
-              <li *ngFor="let skill of user.skill" class="list-inline-item btn btn-sm btn-gradient-primary">
-                <strong>{{skill.name}}</strong>
-              </li>
-            </ul>
-          </section>
-
-          <section *ngIf="isMe && applications && applications.length > 0" class="mt-2">
-            <h3 class="title-border pb-1">Applied projects</h3>
-            <ul *ngIf="applications" class="list-unstyled text-primary">
-              <li *ngFor="let application of applications">
-                <div *ngIf="application.accepted == 1" class="panel mb-1 py-1">
-                <span>&nbsp;<svg class="icon icon-lg">
-                  <use xlink:href="assets/svg/icons.svg#icon-checkmark"></use>
-                </svg><a routerLink="/project/{{application.position.project.id}}" class="text-primary">
-                  {{application.position.project.title}}</a> - <i>accepted</i>
-                </span>
-                </div>
-                <div *ngIf="application.accepted == 0" class="panel__item mb-1">
-                <span>&nbsp;<svg class="icon icon-lg">
-                  <use xlink:href="assets/svg/icons.svg#icon-clock"></use>
-                </svg>
-                <a routerLink="/project/{{application.position.project.id}}" class="text-primary">
-                  {{application.position.project.title}}</a> - <i>pending</i>
-                </span>
-                </div>
-              </li>
-            </ul>
-            <p *ngIf="!applications">No application yet. After you help a project, your applications will appear
-              here.</p>
-          </section>
+      <div class="row">
+        <div class="col-2">
+          <img *ngIf="user.picture" class="profile-img" src="{{user.picture}}?width=120&height=120">
+        </div>
+        <div class="col-10 py-4">
+          <h2>{{user.name}}</h2>
+          <span class="small-text text-muted">Joined {{user.created_at | date: 'dd of MMMM, yyyy'}}</span>
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="container my-3">
+    <tabset>
+      <tab [heading]="Personal" [active]="true">
+        <template tabHeading>
+          PERSONAL
+        </template>
+        <div class="row">
+          <div class="col-7">
+            <app-personal-info [user]=user></app-personal-info>
+          </div>
+          <div class="col-5">
+            <app-skills-component [user]=user></app-skills-component>
+          </div>
+        </div>
+      </tab>
+      <tab [heading]="Badges">
+        <template tabHeading>
+          BADGES
+        </template>
+        <app-badges></app-badges>
+      </tab>
+    </tabset>
   </div>
 </div>
