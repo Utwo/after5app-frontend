@@ -2,7 +2,7 @@
   <!--comment-->
   <div *ngSwitchCase="notificationTypes.comment"
        class="notification__item row">
-    <div class="col-4">
+    <div class="col-2">
       <a routerLink="/profile/{{notification.data.user.id}}">
         <img class="profile-img"
              src="{{notification.data.user.picture}}"
@@ -10,7 +10,7 @@
         />
       </a>
     </div>
-    <div class="col-8">
+    <div class="col-10">
       <div>{{notification.data.user.name}} left a comment for your project
         <a routerLink="/project/{{notification.data.project.id}}">
           <strong>{{notification.data.project.title}}</strong>
@@ -44,9 +44,9 @@
   <div *ngSwitchCase="notificationTypes.accept"
        class="notification__item row">
     <div class="col-2">
-      <svg class="icon icon-xl">
-        <use xlink:href="assets/svg/icons.svg#icon-feebe-head"></use>
-      </svg>
+      <div class="feebe-head">
+        <div class="febee-eyes"></div>
+      </div>
     </div>
     <div class="col-10">
       <div>Your application for <a routerLink="/project/{{notification.data.project.id}}">
@@ -60,9 +60,9 @@
   <div *ngSwitchCase="notificationTypes.decline"
        class="notification__item row">
     <div class="col-2">
-      <svg class="icon icon-xl">
-        <use xlink:href="assets/svg/icons.svg#icon-feebe-head"></use>
-      </svg>
+      <div class="feebe-head">
+        <div class="febee-eyes"></div>
+      </div>
     </div>
     <div class="col-10">
       <div>Your application for <a

@@ -59,7 +59,6 @@ ul.dropdown-menu > li {
   top: 3.5em;
   left: -80px;
   padding: .4em;
-  color: $gray;
 }
 
 .dropdown__content:before {
@@ -79,14 +78,6 @@ ul.dropdown-menu > li {
 .dropdown__content.dropdown-notifications {
   left: -350px;
   width: 400px;
-}
-
-.dropdown-menu.dropdown-notifications, .dropdown-menu.dropdown-user {
-  overflow: visible;
-}
-
-.dropdown__content a {
-  color: $gray;
 }
 
 .dropdown--activ .dropdown__content {
