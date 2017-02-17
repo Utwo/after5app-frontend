@@ -24,7 +24,7 @@ export class ProjectsOverviewComponent implements OnInit {
   constructor(private profileService: ProfileService, private state: StateService, private responseHandler: ResponseHandlerService) { }
 
   ngOnInit() {
-     this.getAllInfo();
+    this.getAllInfo();
   }
 
   getAllInfo() {
@@ -32,8 +32,10 @@ export class ProjectsOverviewComponent implements OnInit {
     this.getFollowingProjects();
     this.getAppliedForProjects();
     this.getJoinedProjects();
-    this.getFeebeTitle();
-    this.getFeebeDescription();
+    if (!this.checkNoProjects()) {
+      this.getFeebeTitles();
+      this.getFeebeDescription();
+    }
   }
 
   getMyProjects() {
@@ -67,6 +69,10 @@ export class ProjectsOverviewComponent implements OnInit {
   getFeebeTitles() {
     this.feebeTitle = 'Hi! I thought you would like to know that...';
     this.feebeTitleJoined = 'Hi. Great news! You\'ve joined a project';
+  }
+
+  checkNoProjects() {
+    return this.projects.length > 0 && this.joinedProjects.length > 0 && this.appliedProjects.length > 0 && this.followingProjects.length > 0 ;
   }
 
   getFeebeDescription() {

@@ -42,7 +42,7 @@ import {LoginModalComponent} from './shared/login-modal/login-modal.component';
 import {TimeAgoPipe} from './time-ago.pipe';
 import {ProjectCardComponent} from './shared/project-card/project-card.component';
 import { ProjectsOverviewComponent } from './profile/projects-overview/projects-overview.component';
-import { FebeeInfoComponent } from './shared/febee-info/febee-info.component';
+import { FeebeInfoComponent } from './shared/feebe-info/feebe-info.component';
 import { HomeCardComponent } from './home/home-card/home-card.component';
 import { HomeSectionComponent } from './home/home-section/home-section.component';
 import { HomeParagraphComponent } from './home/home-section/home-paragraph/home-paragraph.component';
@@ -79,7 +79,7 @@ import { FocusDirective } from './shared/focus.directive';
     HomeSectionComponent,
     HomeParagraphComponent,
     ProjectsOverviewComponent,
-    FebeeInfoComponent,
+    FeebeInfoComponent,
     ProjectsListOverviewComponent,
     FocusDirective
   ],

@@ -14,6 +14,7 @@
 </div>
 
 <h3 *ngIf="showJoinedProjects"> Joined Projects </h3>
+<app-febee-info *ngIf= 'feebeTitleJoined && feebeDescriptionJoined' [title]="feebeTitleJoined" [description]="feebeDescriptionJoined"></app-febee-info>
 <div *ngIf="showJoinedProjects && joinedProjects && joinedProjects.length > 0">
   <ul class="project-list list-unstyled">
     <li *ngFor="let project of joinedProjects">
