@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-notification',
-  templateUrl: 'notification.component.html',
-  styles: []
+  templateUrl: 'notification.component.html'
 })
-export class NotificationComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class NotificationComponent {
+  @Input() notification;
+  notificationTypes = {
+    comment: 'App\\Notifications\\AddCommentNotification',
+    message: 'App\\Notifications\\NewMessageNotification',
+    application: 'App\\Notifications\\AddApplicationNotification',
+    accept: 'App\\Notifications\\AcceptApplicationNotification',
+    decline: 'App\\Notifications\\DeclineApplicationNotification'
+  };
 }

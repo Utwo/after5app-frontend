@@ -28,7 +28,6 @@
 
 .dropdown-menu a {
   color: $gray-dark;
-  display: block;
 }
 
 ul.dropdown-menu > li {
@@ -57,10 +56,20 @@ ul.dropdown-menu > li {
 //User link dropdown
 .dropdown__content {
   display: none;
-  top: 4em;
+  top: 3.5em;
   left: -100px;
   padding: .4em;
   color: $gray;
+}
+
+.dropdown__content:before {
+  content:" ";
+  position: absolute;
+  top:0;
+  right: 10px;
+  border-style: solid;
+  border-width: 0 15px 20px 15px;
+  border-color: transparent transparent #204a80 transparent;
 }
 
 .dropdown__content.dropdown-user{
@@ -68,7 +77,7 @@ ul.dropdown-menu > li {
 }
 
 .dropdown__content.dropdown-notifications{
-  left: -200px;
+  left: -300px;
   width: 400px;
 }
 

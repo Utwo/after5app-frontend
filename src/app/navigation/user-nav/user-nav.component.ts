@@ -16,13 +16,6 @@ export class UserNavComponent implements OnInit {
   isDropdownNotifActiv = false;
   notificationCount = 0;
   notifications = null;
-  notificationTypes = {
-    comment: 'App\\Notifications\\AddCommentNotification',
-    message: 'App\\Notifications\\NewMessageNotification',
-    application: 'App\\Notifications\\AddApplicationNotification',
-    accept: 'App\\Notifications\\AcceptApplicationNotification',
-    decline: 'App\\Notifications\\DeclineApplicationNotification'
-  };
 
   constructor(private notificationsService: NotificationsService, private loginService: LoginService,
               private router: Router, private responseHandler: ResponseHandlerService) {
