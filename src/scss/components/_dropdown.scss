@@ -57,28 +57,32 @@ ul.dropdown-menu > li {
 .dropdown__content {
   display: none;
   top: 3.5em;
-  left: -100px;
+  left: -80px;
   padding: .4em;
   color: $gray;
 }
 
 .dropdown__content:before {
-  content:" ";
+  content: " ";
   position: absolute;
-  top:0;
-  right: 10px;
+  top: -14px;
+  right: 25px;
   border-style: solid;
-  border-width: 0 15px 20px 15px;
-  border-color: transparent transparent #204a80 transparent;
+  border-width: 0 15px 15px 15px;
+  border-color: transparent transparent #fff transparent;
 }
 
-.dropdown__content.dropdown-user{
+.dropdown__content.dropdown-user {
   width: 200px;
 }
 
-.dropdown__content.dropdown-notifications{
-  left: -300px;
+.dropdown__content.dropdown-notifications {
+  left: -350px;
   width: 400px;
+}
+
+.dropdown-menu.dropdown-notifications, .dropdown-menu.dropdown-user {
+  overflow: visible;
 }
 
 .dropdown__content a {

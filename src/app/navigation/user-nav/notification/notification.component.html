@@ -6,14 +6,16 @@
       <a routerLink="/profile/{{notification.data.user.id}}">
         <img class="profile-img"
              src="{{notification.data.user.picture}}"
-             width="35" height="35" />
+             width="35" height="35"
+        />
       </a>
     </div>
     <div class="col-8">
-      <p>{{notification.data.user.name}} left a comment for your project <a
-        routerLink="/project/{{notification.data.project.id}}">
-        <strong>{{notification.data.project.title}}</strong></a>
-      </p>
+      <div>{{notification.data.user.name}} left a comment for your project
+        <a routerLink="/project/{{notification.data.project.id}}">
+          <strong>{{notification.data.project.title}}</strong>
+        </a>
+      </div>
       <small class="text-muted">{{notification.created_at | timeAgo}}</small>
     </div>
   </div>
@@ -25,15 +27,15 @@
       <a routerLink="/profile/{{notification.data.user.id}}">
         <img class="profile-img"
              src="{{notification.data.user.picture}}"
-             width="35" height="35" />
+             width="35" height="35"/>
       </a>
     </div>
     <div class="col-10">
-      <p>{{notification.data.user.name}} left a message for the members of <a
+      <div>{{notification.data.user.name}} left a message for the members of <a
         routerLink="/project/{{notification.data.project.id}}">
         <strong>{{notification.data.project.title}}</strong>
       </a>
-      </p>
+      </div>
       <small class="text-muted">{{notification.created_at | timeAgo}}</small>
     </div>
   </div>
@@ -42,14 +44,14 @@
   <div *ngSwitchCase="notificationTypes.accept"
        class="notification__item row">
     <div class="col-2">
-      <svg class="icon icon-lg">
+      <svg class="icon icon-xl">
         <use xlink:href="assets/svg/icons.svg#icon-feebe-head"></use>
       </svg>
     </div>
     <div class="col-10">
-      <p>Your application for <a routerLink="/project/{{notification.data.project.id}}">
-          <strong>{{notification.data.project.title}}</strong>
-        </a> was accepted! </p>
+      <div>Your application for <a routerLink="/project/{{notification.data.project.id}}">
+        <strong>{{notification.data.project.title}}</strong>
+      </a> was accepted! </div>
       <small class="text-muted">{{notification.created_at | timeAgo}}</small>
     </div>
   </div>
@@ -58,15 +60,15 @@
   <div *ngSwitchCase="notificationTypes.decline"
        class="notification__item row">
     <div class="col-2">
-      <svg class="icon icon-lg">
+      <svg class="icon icon-xl">
         <use xlink:href="assets/svg/icons.svg#icon-feebe-head"></use>
       </svg>
     </div>
     <div class="col-10">
-      <p>Your application for <a
+      <div>Your application for <a
         routerLink="/project/{{notification.data.project.id}}">
         <strong>{{notification.data.project.title}}</strong>
-      </a> was declined</p>
+      </a> was declined</div>
       <small class="text-muted">{{notification.created_at | timeAgo}}</small>
     </div>
   </div>
@@ -76,16 +78,16 @@
        class="notification__item row">
     <div class="col-2">
       <a routerLink="/profile/{{notification.data.user.id}}">
-      <img class="profile-img"
-           src="{{notification.data.user.picture}}"
-           width="35" height="35" />
+        <img class="profile-img"
+             src="{{notification.data.user.picture}}"
+             width="35" height="35"/>
       </a>
     </div>
     <div class="col-10">
-      <p>{{notification.data.user.name}} applied for your project <a
+      <div>{{notification.data.user.name}} applied for your project <a
         routerLink="/project/{{notification.data.project.id}}">
         <strong>{{notification.data.project.title}}</strong></a>
-      </p>
+      </div>
       <small class="text-muted">{{notification.created_at | timeAgo}}</small>
     </div>
   </div>

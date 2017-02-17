@@ -48,7 +48,7 @@
       </div>
 
       <ol *ngIf="notifications && notifications.length > 0"
-          class="list-unstyled">
+          class="list-unstyled my-3">
         <li *ngFor="let notification of notifications">
           <app-notification [notification]="notification"></app-notification>
         </li>
