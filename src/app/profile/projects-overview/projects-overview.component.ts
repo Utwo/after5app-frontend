@@ -11,18 +11,20 @@ import {ProfileService} from "../shared/profile.service"
 })
 export class ProjectsOverviewComponent implements OnInit {
 
-  private projects = null;
-  private followingProjects = null;
-  private appliedProjects = null;
+  private projects = [];
+  private followingProjects = [];
+  private appliedProjects = [];
   maxDescriptionLength = 210;
-  private joinedProjects = null;
+  private joinedProjects = [];
   private feebeTitle = null;
   private feebeDescription = null;
+  private feebeTitleJoined = null;
+  private feebeDescriptionJoined = null;
 
   constructor(private profileService: ProfileService, private state: StateService, private responseHandler: ResponseHandlerService) { }
 
   ngOnInit() {
-    this.getAllInfo();
+     this.getAllInfo();
   }
 
   getAllInfo() {
@@ -30,8 +32,8 @@ export class ProjectsOverviewComponent implements OnInit {
     this.getFollowingProjects();
     this.getAppliedForProjects();
     this.getJoinedProjects();
-    //this.getFeebeTitle();
-   // this.getFeebeDescription();
+    this.getFeebeTitle();
+    this.getFeebeDescription();
   }
 
   getMyProjects() {
@@ -62,20 +64,27 @@ export class ProjectsOverviewComponent implements OnInit {
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
-  getFeebeTitle() {
+  getFeebeTitles() {
     this.feebeTitle = 'Hi! I thought you would like to know that...';
+    this.feebeTitleJoined = 'Hi. Great news! You\'ve joined a project';
   }
 
   getFeebeDescription() {
       this.feebeDescription = 'You currently have ';
-      this.projects.length > 0 ? this.feebeDescription += this.projects.length + ' created projects and are following'
-        : this.feebeDescription += 'no created projects and are following';
+      this.projects.length > 0 ? this.feebeDescription += this.projects.length + ' created projects and are following '
+        : this.feebeDescription += 'no created projects and are following ';
       this.followingProjects.length > 0 ? this.feebeDescription += this.followingProjects.length + ' projects, also you have applied for'
         : this.feebeDescription += 'no project, also you have applied for ';
       this.appliedProjects.length > 0 ? this.feebeDescription += this.appliedProjects.length + ' projects and have '
         : this.feebeDescription += '0 projects and have';
       this.joinedProjects.length > 0 ? this.feebeDescription += this.joinedProjects.length + ' projects ongoing'
-        : this.feebeDescription += ' no project ongoing';
+        : this.feebeDescription += ' 0 projects ongoing';
+      if (this.joinedProjects.length > 0) {
+        this.joinedProjects.map(elem => {
+          this.feebeDescriptionJoined += 'You joined ' + elem.name +
+            ', the project has x active members, x pending members and x followers.';
+        });
+      }
   }
 
   extractData(projects, list) {
