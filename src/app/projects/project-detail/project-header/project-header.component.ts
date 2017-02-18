@@ -1,10 +1,9 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ProfileService} from '../../../profile/shared/profile.service';
 import {StateService} from '../../../shared/state.service';
 import {ResponseHandlerService} from '../../../shared/response-handler.service';
 import {ProjectService} from '../../shared/project.service';
-import {ApplicationService} from '../../shared/application.service';
+import {environment} from '../../../../environments/environment';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-project-header',
@@ -18,6 +17,8 @@ export class ProjectHeaderComponent implements OnInit {
   private project = null;
   private myProject = false;
   private isFollowed = false;
+  public environment = environment;
+  public href = encodeURIComponent(window.location.href);
 
   constructor(
               private projectService: ProjectService,
