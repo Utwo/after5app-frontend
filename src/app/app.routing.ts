@@ -11,13 +11,14 @@ import {NotFoundComponent} from './core/not-found/not-found.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './core/auth-guard.service';
 import {PersonalInfoComponent} from './profile/personal-info/personal-info.component';
+import {ProjectDetailComponent} from './projects/project-detail/project-detail.component';
 
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
   {path: 'about', component: AboutComponent},
   {path: 'projects', component: ProjectListComponent},
-  {path: 'project/:id', component: ProjectComponent},
+  {path: 'project/:id', component: ProjectDetailComponent},
   {path: 'start-project', component: AddProjectComponent},
   {path: 'profile/:id', component: ProfileComponent},
   {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},

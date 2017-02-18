@@ -48,6 +48,14 @@ import {HomeParagraphComponent} from './home/home-section/home-paragraph/home-pa
 
 // pipes
 import {TimeAgoPipe} from './time-ago.pipe';
+import { ProjectHeaderComponent } from './projects/project-detail/project-header/project-header.component';
+import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
+import { ProjectBriefComponent } from './projects/project-detail/project-brief/project-brief.component';
+import { ProjectAssetsComponent } from './projects/project-detail/project-assets/project-assets.component';
+import { ProjectMemberComponent } from './projects/project-detail/project-brief/project-member/project-member.component';
+import { ProjectDescriptionComponent } from './projects/project-detail/project-brief/project-description/project-description.component';
+import { PositionCardComponent } from './projects/project-detail/project-brief/position-card/position-card.component';
+import { ApplicationsCardComponent } from './projects/project-detail/project-brief/applications-card/applications-card.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +88,16 @@ import {TimeAgoPipe} from './time-ago.pipe';
     HomeParagraphComponent,
     BadgesComponent,
     SkillsComponentComponent,
-    PersonalInfoComponent
+    PersonalInfoComponent,
+    ProjectDetailComponent,
+    ProjectHeaderComponent,
+    ProjectDetailComponent,
+    ProjectBriefComponent,
+    ProjectAssetsComponent,
+    ProjectMemberComponent,
+    ProjectDescriptionComponent,
+    PositionCardComponent,
+    ApplicationsCardComponent
   ],
   imports: [
     routing,

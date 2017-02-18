@@ -19,7 +19,7 @@ export class ProjectService {
 
   getProjectById(id) {
     return this.http.get(environment.URL_API + environment.API_VERSION +
-      'project?with[]=user&with[]=favorite&with[]=position.skill&with[]=comment.user&id=' + id)
+      'project?with[]=user&with[]=favorite&with[]=position.skill&with[]=position.member&id=' + id)
       .map(this.extractData)
       .catch(this.handleError);
   }
