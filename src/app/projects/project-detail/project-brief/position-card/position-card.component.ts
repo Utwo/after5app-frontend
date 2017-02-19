@@ -7,11 +7,15 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class PositionCardComponent implements OnInit {
   @Input() position;
+  @Input() myProject;
+  private member = null;
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.position, "position received")
+    if(this.position.status == false ) {
+      this.member = this.position.member[0]
+    }
   }
 
 }

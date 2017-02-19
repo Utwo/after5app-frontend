@@ -1,3 +1,17 @@
-<p>
-  applications-card works!
-</p>
+
+<div *ngIf="applications">
+  <h3 *ngIf="applications.length > 0"> {{applications.length}} Applicants</h3>
+  <ul *ngIf="applications.length > 0" >
+      <li *ngFor="let application of applications">
+        <div class="row">
+          <h4 class="p-1"><strong>{{application.user.name}}</strong> for <strong>{{application.position.skill.name}}</strong>
+            position</h4>
+          <div class="text-right">
+            <button *ngIf="!application.accepted" (click)="acceptApplication(application.id, i)" class="btn btn-primary">Recruit</button>
+            <button *ngIf="application.accepted" (click)="declineApplication(application.id, i)" class="btn btn-primary">Remove</button>
+          </div>
+        </div>
+      </li>
+  </ul>
+  <p *ngIf="applications.length === 0"> No applicants yet</p>
+</div>

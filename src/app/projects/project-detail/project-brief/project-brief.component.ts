@@ -36,7 +36,6 @@ export class ProjectBriefComponent implements OnInit {
             return;
           }
           this.project = project.data[0];
-          console.log(this.project, "getProjectBrief");
           if (this.state.isLoggedIn()) {
             this.verifyIfMyProject();
             // this.verifyIfFavorite();
@@ -54,6 +53,10 @@ export class ProjectBriefComponent implements OnInit {
     } else {
       this.myProject = false;
     }
+  }
+
+  addPosition() {
+
   }
 
 }

@@ -1,3 +1,18 @@
-<p>
-  position-card works!
-</p>
+<div *ngIf="position" class="container-fluid">
+  <h3>{{position.skill.name}}</h3>
+  <p>{{position.description}}</p>
+  <div *ngIf="myProject == false">
+    <span *ngIf="position.status == true"> APPLY FOR POSITION </span>
+    <span *ngIf="position.status == false"> POSITION FILLED </span>
+  </div>
+</div>
+<div *ngIf="position.status == false">
+  <div class="row">
+    <div class="col-2">
+      <img *ngIf="member.picture" class="profile-img" src="{{member.picture}}?width=30&height=30">
+    </div>
+    <div >
+      <p>{{member.name}} has joined the {{position.skill.name}} skill</p>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 <div *ngIf="project">
 <div class="row">
-  <app-applications-card *ngIf="myProject"></app-applications-card>
+  <app-applications-card *ngIf="myProject" [project_id]="project_id"></app-applications-card>
   <div>
     <p> I want to create: </p>
     <p> {{project.description}}</p>
@@ -14,8 +14,16 @@
       if you think you can help the project in any other way </p>
     </div>
     <div>
+      <div *ngIf="myProject == true">
+        <span> Add new position
+          <a  (click)="addPosition()">
+          <svg class="icon icon-plus">
+            <use xlink:href="./assets/icons.svg#icon-plus"></use>
+          </svg>
+        </a> </span>
+      </div>
       <div *ngFor="let position of project.position">
-        <app-position-card [position]=position></app-position-card>
+        <app-position-card [myProject]=myProject [position]=position></app-position-card>
       </div>
     </div>
   </div>
