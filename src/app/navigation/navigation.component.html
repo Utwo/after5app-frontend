@@ -23,7 +23,10 @@
           </a>
           <div class="nav-item mx-md-3 mx-1">
             <app-user-nav [user]="user" *ngIf="loggedIn"></app-user-nav>
-            <span *ngIf="!loggedIn" (click)="modal.open()" class="btn btn-link-info btn-sm">Login</span>
+            <a *ngIf="!loggedIn" (click)="modal.open()"
+               class="nav-item mx-md-3 mx-1" href="javascript:;">
+              Login
+            </a>
           </div>
           <div class="nav-item mx-md-3 mx-1">
             <svg class="icon icon-elipsis">

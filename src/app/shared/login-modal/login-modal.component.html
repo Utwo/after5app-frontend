@@ -1,44 +1,73 @@
-<div bsModal #loginModal="bs-modal" class="modal grow" tabindex="-1" role="dialog"
+<div bsModal #loginModal="bs-modal" class="modal grow"
+     tabindex="-1" role="dialog"
      aria-labelledby="Login"
      aria-hidden="true">
   <div class="modal-dialog modal-fluid">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="modal__close btn" (click)="closeLoginModal()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title text-center">Join our community</h4>
-      </div>
-      <div class="modal-body">
-        <div class="container-fluid">
+      <div class="modal-body jumbotron-fluid">
+        <a class="float-right text-white mr-4"
+           href="javascript:;"
+           (click)="closeLoginModal()"
+           aria-label="Close"
+        >
+          <span aria-hidden="true">&#10006;</span>
+        </a>
+        <h3 class="modal-title text-center mb-5">First thing's first Spacer!</h3>
+        <div class="container-fluid container-small">
+          <app-feebe-message
+            [message]="'We have to get you processed through. Lets see your Docking Pass...'">
+          </app-feebe-message>
           <div class="row flex-items-xs-center my-2">
-            <div class="col-lg-3 col-md-6">
-              <button class="btn btn-block btn-facebook btn-lg" (click)="facebookLogin()">
-                <svg class="icon icon-lg">
-                  <use xlink:href="assets/svg/icons.svg#icon-facebook2"></use>
-                </svg>
-                Login with Facebook
-              </button>
+            <div class="col-3">
+              <div class="docking-pass">
+                <div class="pass-header">
+                  FACEBOOK ID
+                </div>
+                <div class="pass-body">
+                  <button class="btn btn-block btn-facebook" (click)="facebookLogin()">
+                    <svg class="icon icon-lg">
+                      <use xlink:href="assets/svg/icons.svg#icon-facebook2"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-              <button class="btn btn-block btn-github btn-lg" (click)="gitHubLogin()">
-                <svg class="icon icon-lg">
-                  <use xlink:href="assets/svg/icons.svg#icon-github"></use>
-                </svg>
-                Login with GitHub
-              </button>
+            <div class="col-3">
+              <div class="docking-pass">
+                <div class="pass-header">
+                  GITHUB ID
+                </div>
+                <div class="pass-body">
+                  <button class="btn btn-block btn-github btn-lg" (click)="gitHubLogin()">
+                    <svg class="icon icon-lg">
+                      <use xlink:href="assets/svg/icons.svg#icon-github"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-          <hr>
-          <div class="form-inline text-center my-2">
-            <div *ngIf="showEmailInput" class="form-group">
-              <input class="form-control form-control-lg" title="email" type="email" placeholder="Login with email"
-                     [(ngModel)]="email" (keyup.enter)="loginByEmail()">
-              <button [disabled]="email.length===0" class="btn btn-info btn-lg" (click)="loginByEmail()">
-                Send
-              </button>
+            <div class="col-6">
+              <div class="docking-pass">
+                <div class="pass-header">
+                  LONEWOLF ID
+                </div>
+                <div class="pass-body">
+                  <div *ngIf="showEmailInput" class="form-group">
+                    <input class="form-control input-basic" title="email" type="email"
+                           placeholder="E-mail ID"
+                           [(ngModel)]="email" (keyup.enter)="loginByEmail()"
+                    >
+                    <button [disabled]="email.length===0"
+                            class="btn btn-success text-white w-100 my-2"
+                            (click)="loginByEmail()"
+                    >
+                      <small>SEND LOGIN LINK</small>
+                    </button>
+                    <p class="text-info text-center">{{emailMessage}}</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p>{{emailMessage}}</p>
           </div>
         </div>
       </div>

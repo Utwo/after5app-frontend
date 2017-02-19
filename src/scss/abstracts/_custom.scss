@@ -80,11 +80,10 @@ $container-max-widths: (
 
 // Components
 
-$border-radius: 6px;
+$border-radius: 5px;
 
 //Modal
-$modal-backdrop-bg: linear-gradient(to top, $brand-primary, $brand-info);
-$modal-backdrop-opacity: .7;
+$modal-backdrop-bg: rgba(0, 0, 0, .8);
 $modal-dialog-sm-up-margin-y: 100px;
 
 //Form
