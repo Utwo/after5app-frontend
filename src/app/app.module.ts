@@ -45,6 +45,7 @@ import {BadgesComponent} from './profile/badges/badges.component';
 import {HomeCardComponent} from './home/home-card/home-card.component';
 import {HomeSectionComponent} from './home/home-section/home-section.component';
 import {HomeParagraphComponent} from './home/home-section/home-paragraph/home-paragraph.component';
+import { NotificationComponent } from './navigation/user-nav/notification/notification.component';
 
 // pipes
 import {TimeAgoPipe} from './time-ago.pipe';
@@ -94,6 +95,7 @@ import { ApplicationsCardComponent } from './projects/project-detail/project-bri
     ProjectAssetsComponent,
     PositionCardComponent,
     ApplicationsCardComponent
+    NotificationComponent
   ],
   imports: [
     routing,

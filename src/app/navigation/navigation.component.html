@@ -14,7 +14,7 @@
         </h1>
       </div>
       <div class="col-lg-10 col-md-10 col-sm-12 col-12 navigation-wrap hidden-sm-down">
-        <nav class="nav justify-content-end">
+        <nav class="nav justify-content-end align-items-center">
            <a class="nav-item mx-md-3 mx-1" routerLink="/start-project">
             <b class="text-success">Start a project</b>
           </a>
@@ -26,7 +26,7 @@
             <span *ngIf="!loggedIn" (click)="modal.open()" class="btn btn-link-info btn-sm">Login</span>
           </div>
           <div class="nav-item mx-md-3 mx-1">
-            <svg class="icon icon-circle">
+            <svg class="icon icon-elipsis">
               <use xlink:href="assets/svg/icons.svg#icon-search"></use>
             </svg>
           </div>
