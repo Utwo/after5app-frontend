@@ -6,6 +6,11 @@
     <p> {{project.description}}</p>
   </div>
 </div>
+  <div class="row">
+    {{project.favorite.length}} Followers
+    <span *ngFor="let follower of project.favorite"> {{follower.name}}</span>
+  </div>
+  <br>
   <div>
     <div>
       <h3> Open Positions</h3>

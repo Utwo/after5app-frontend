@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {StateService} from '../../../shared/state.service';
+import {ResponseHandlerService} from '../../../shared/response-handler.service';
 
 @Component({
   selector: 'app-project-assets',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectAssetsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+              private state: StateService,
+              private router: Router,
+              private responseHandler: ResponseHandlerService) {
+  }
 
   ngOnInit() {
   }

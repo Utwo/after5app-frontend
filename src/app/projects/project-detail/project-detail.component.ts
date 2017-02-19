@@ -35,6 +35,7 @@ export class ProjectDetailComponent implements OnInit {
         //  this.getProject();
         // }
       });
+    //console.log("projectId",this.id)
   }
 
   getProject() {
