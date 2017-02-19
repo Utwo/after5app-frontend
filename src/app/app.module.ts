@@ -94,8 +94,8 @@ import { ApplicationsCardComponent } from './projects/project-detail/project-bri
     ProjectBriefComponent,
     ProjectAssetsComponent,
     PositionCardComponent,
-    ApplicationsCardComponent
-    NotificationComponent
+    ApplicationsCardComponent,
+    NotificationComponent,
   ],
   imports: [
     routing,
