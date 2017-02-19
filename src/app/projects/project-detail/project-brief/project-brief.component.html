@@ -1,3 +1,22 @@
-<p>
-  project-brief works!
-</p>
+<div *ngIf="project">
+<div class="row">
+  <app-applications-card *ngIf="myProject"></app-applications-card>
+  <div>
+    <p> I want to create: </p>
+    <p> {{project.description}}</p>
+  </div>
+</div>
+  <div>
+    <div>
+      <h3> Open Positions</h3>
+      <p> Make sure you apply on the position that best fits your skills, later on you will receive badges based on the skills
+      you've finished projects with and that will help define your profile status. You could also ask {{project.user.name}} to add new Skills
+      if you think you can help the project in any other way </p>
+    </div>
+    <div>
+      <div *ngFor="let position of project.position">
+        <app-position-card [position]=position></app-position-card>
+      </div>
+    </div>
+  </div>
+</div>

@@ -16,7 +16,7 @@
     <span> {{user.name}}</span>
     <span> <a href="https://www.facebook.com/dialog/share?app_id={{environment.FACEBOOK_ID}}&display=popup&href={{href}}&redirect_uri={{href}}&quote=Check%20out%20this%20project%20and%20help%20it%20become%20a%20reality" target="_blank">
       <svg class="icon icon-mail-forward"><use xlink:href="assets/icons.svg#icon-mail-forward"></use></svg> </a> SHARE PROJECT </span>
-    <span> <svg class="icon icon-write"><use xlink:href="assets/icons.svg#icon-write"></use></svg> EDIT PROJECT </span>
+    <span *ngIf="myProject"> <svg class="icon icon-write"><use xlink:href="assets/icons.svg#icon-write"></use></svg> EDIT PROJECT </span>
     <span *ngIf="!isFollowed && !myProject" class="mr-1" title="follow">
         <a (click)="follow(modal)">
           <svg class="icon icon-star"><use xlink:href="assets/svg/icons.svg#icon-star"></use></svg>

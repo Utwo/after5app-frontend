@@ -1,2 +1,18 @@
 <app-project-header [project_id]="id"></app-project-header>
 
+<div class="container my-3">
+  <tabset>
+    <tab [active]="true">
+      <template tabHeading>
+        BRIEF
+      </template>
+      <app-project-brief [project_id]="id"></app-project-brief>
+    </tab>
+    <tab>
+      <template tabHeading>
+        ASSETS
+      </template>
+      <app-project-assets></app-project-assets>
+    </tab>
+  </tabset>
+</div>
