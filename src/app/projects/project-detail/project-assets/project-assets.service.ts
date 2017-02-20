@@ -40,20 +40,6 @@ export class ProjectAssetsService {
       .catch(this.handleError);
   }
 
-  downloadAsset(id) {
-    const headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-
-    const options = new RequestOptions({headers: headers});
-
-    return this.http.get(environment.URL_API + environment.API_VERSION +
-      'assets/' + id + '/download',options)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
   getAll(project_id) {
     const headers = new Headers({
       'Content-Type': 'application/json',

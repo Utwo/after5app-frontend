@@ -1,22 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {StateService} from '../../../shared/state.service';
 import {ResponseHandlerService} from '../../../shared/response-handler.service';
+import {ProjectAssetsService} from './project-assets.service';
+import {environment} from '../../../../environments/environment.dev';
 
 @Component({
   selector: 'app-project-assets',
   templateUrl: './project-assets.component.html',
-  styles: []
+  providers: [ProjectAssetsService]
 })
+
 export class ProjectAssetsComponent implements OnInit {
+  private files = [];
+  @Input() project_id;
+  private environment = environment;
 
   constructor(private route: ActivatedRoute,
               private state: StateService,
               private router: Router,
+              private assets: ProjectAssetsService,
               private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
+    this.getAllAssets();
   }
 
+  getAllAssets() {
+    this.assets.getAll(this.project_id)
+      .subscribe(
+        data => this.files = data,
+        error => this.responseHandler.errorMessage('An error occured!', error));
+  }
 }

@@ -1,5 +1,4 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {IProject} from '../../projects/shared/project';
 import {ProjectService} from '../../projects/shared/project.service';
 import {ActivatedRoute} from '@angular/router';
 import {StateService} from '../state.service';
