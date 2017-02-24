@@ -6,7 +6,7 @@ import {Component, Input} from '@angular/core';
     <div class="row">
       <div class="col-md-1 col-2">
         <div class="feebe-head">
-          <div class="febee-eyes"></div>
+          <span class="febee-eyes"></span>
         </div>
       </div>
       <div class="col-md-11 col-10">

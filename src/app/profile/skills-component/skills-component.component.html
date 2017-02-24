@@ -6,11 +6,16 @@
         <h5 class="title-border title-border--green p-b-1">CRAFTS & SKILLS</h5>
       </div>
       <div class="col-6 text-right">
-        <a *ngIf="isMe" (click)="toggleEditing()" class="pull-xs-right">
+        <a *ngIf="isMe"
+           (click)="toggleEditing()"
+           class="pull-xs-right"
+           href="javascript:;"
+        >
           <svg *ngIf="!editing" class="icon icon-md icon-message text-muted">
             <use xlink:href="assets/icons.svg#icon-write"></use>
           </svg>
-          <button *ngIf="editing" (click)="saveChanges()" class="btn btn-success text-white">
+          <button *ngIf="editing" (click)="saveChanges()"
+                  class="btn btn-success text-white">
             <small>APPLY CHANGES</small>
           </button>
         </a>
@@ -21,8 +26,10 @@
     <div>
       <div class="row" *ngIf="editing">
         <div class="col-9">
-          <input class="form-control input-basic" placeholder="Add Skill" title="newSkill" [(ngModel)]="newSkill">
-          <input class="form-control input-basic mt-1" type="text" placeholder="Skill Level" title="newSkillLevel"
+          <input class="form-control input-basic" placeholder="Add Skill"
+                 title="newSkill" [(ngModel)]="newSkill">
+          <input class="form-control input-basic mt-1" type="text"
+                 placeholder="Skill Level" title="newSkillLevel"
                  [(ngModel)]="newSkillLevel">
         </div>
         <div class="col-3 text-right">
@@ -36,13 +43,17 @@
       <ul class="profile__skills-list">
         <li *ngFor="let skill of newSkills" class="my-4">
           {{skill.name}}
-          <a *ngIf="editing" (click)="removeSkill(skill)" class="float-right">
+          <a *ngIf="editing" (click)="removeSkill(skill)"
+             class="float-right"
+             href="javascript:;"
+          >
             <svg class="icon icon-delete_forever text-muted">
               <use xlink:href="assets/icons.svg#icon-delete_forever"></use>
             </svg>
           </a>
           <div class="progress mt-2">
-            <div class="progress-bar bg-info" role="progressbar" [style.width]="skill.skill_level + '%'"
+            <div class="progress-bar bg-info" role="progressbar"
+                 [style.width]="skill.skill_level + '%'"
                  aria-valuemin="0" aria-valuemax="100">
             </div>
           </div>

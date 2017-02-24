@@ -5,6 +5,8 @@
   <div class="modal-dialog modal-fluid">
     <div class="modal-content">
       <div class="modal-body jumbotron-fluid">
+        <div class="sprite sprite-login-planet hidden-sm-down"></div>
+        <div class="sprite sprite-satelite hidden-sm-down"></div>
         <a class="float-right text-white mr-4"
            href="javascript:;"
            (click)="closeLoginModal()"
@@ -12,11 +14,23 @@
         >
           <span aria-hidden="true">&#10006;</span>
         </a>
-        <h3 class="modal-title text-center mb-5">First thing's first Spacer!</h3>
+        <h3 class="modal-title text-center mb-5">First thing's first
+          Spacer!</h3>
         <div class="container-fluid container-small">
-          <app-feebe-message
-            [message]="'We have to get you processed through. Lets see your Docking Pass...'">
-          </app-feebe-message>
+          <!--TODO change with febee-message component-->
+          <div class="row">
+            <div class="col-md-1 col-2">
+              <div class="feebe-head">
+                <span class="febee-eyes"></span>
+              </div>
+            </div>
+            <div class="col-md-11 col-10">
+              <p class="info-message">
+                We have to get you processed through. Lets see your Docking
+                Pass...
+              </p>
+            </div>
+          </div>
           <div class="row flex-items-xs-center my-3">
             <div class="col-md-3 col-6">
               <div class="docking-pass">
@@ -24,10 +38,9 @@
                   FACEBOOK ID
                 </div>
                 <div class="pass-body">
-                  <button class="btn btn-block btn-facebook" (click)="facebookLogin()">
-                    <svg class="icon icon-lg">
-                      <use xlink:href="assets/svg/icons.svg#icon-facebook2"></use>
-                    </svg>
+                  <button class="btn btn-login"
+                          (click)="facebookLogin()">
+                    <span class="sprite sprite-facebook-login"></span>
                   </button>
                 </div>
               </div>
@@ -38,10 +51,9 @@
                   GITHUB ID
                 </div>
                 <div class="pass-body">
-                  <button class="btn btn-block btn-github btn-lg" (click)="gitHubLogin()">
-                    <svg class="icon icon-lg">
-                      <use xlink:href="assets/svg/icons.svg#icon-github"></use>
-                    </svg>
+                  <button class="btn btn-login"
+                          (click)="gitHubLogin()">
+                    <span class="sprite sprite-github-login"></span>
                   </button>
                 </div>
               </div>
@@ -53,7 +65,8 @@
                 </div>
                 <div class="pass-body">
                   <div *ngIf="showEmailInput" class="form-group">
-                    <input class="form-control input-basic" title="email" type="email"
+                    <input class="form-control input-basic" title="email"
+                           type="email"
                            placeholder="E-mail ID"
                            [(ngModel)]="email" (keyup.enter)="loginByEmail()"
                     >
@@ -63,7 +76,8 @@
                     >
                       <small>SEND LOGIN LINK</small>
                     </button>
-                    <p class="text-info text-center small-text">{{emailMessage}}</p>
+                    <p class="text-info text-center small-text">
+                      {{emailMessage}}</p>
                   </div>
                 </div>
               </div>
