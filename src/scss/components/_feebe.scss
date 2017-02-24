@@ -21,7 +21,7 @@
 .febee-eyes:before, .febee-eyes:after {
   content: '';
   position: absolute;
-  width: .3em;
+  width: .35em;
   height: .45em;
   background: $turquoise;
   border-radius: 50%;
@@ -34,4 +34,22 @@
 
 .febee-eyes:after {
   right: .45em;
+}
+
+.info-message {
+  background: #fff;
+  padding: .5em 1em;
+  color: $gray;
+  position: relative;
+  border-radius: $border-radius;
+}
+
+.info-message:before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 10px;
+  border-style: solid;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #fff transparent transparent;
 }
