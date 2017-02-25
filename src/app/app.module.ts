@@ -37,6 +37,7 @@ import {LoginComponent} from './login/login.component';
 import {MessagesComponent} from './projects/project-details/messages/messages.component';
 import {AutocompleteComponent} from './shared/autocomplete/autocomplete.component';
 import {SectionHeaderComponent} from './shared/components/section-header.component';
+import {FeebeMessageComponent} from './shared/components/feebe-message.component';
 import {LoginModalComponent} from './shared/login-modal/login-modal.component';
 import {PersonalInfoComponent} from './profile/personal-info/personal-info.component';
 import {ProjectCardComponent} from './shared/project-card/project-card.component';
@@ -45,6 +46,7 @@ import {BadgesComponent} from './profile/badges/badges.component';
 import {HomeCardComponent} from './home/home-card/home-card.component';
 import {HomeSectionComponent} from './home/home-section/home-section.component';
 import {HomeParagraphComponent} from './home/home-section/home-paragraph/home-paragraph.component';
+import {NotificationComponent} from './navigation/user-nav/notification/notification.component';
 
 // pipes
 import {TimeAgoPipe} from './time-ago.pipe';
@@ -80,7 +82,9 @@ import {TimeAgoPipe} from './time-ago.pipe';
     HomeParagraphComponent,
     BadgesComponent,
     SkillsComponentComponent,
-    PersonalInfoComponent
+    PersonalInfoComponent,
+    NotificationComponent,
+    FeebeMessageComponent
   ],
   imports: [
     routing,

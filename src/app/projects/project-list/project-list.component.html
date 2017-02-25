@@ -73,13 +73,16 @@
   </div>
 </div>
 
-<div *ngIf="projects && projects.length === 0"
-     class="container container-small text-center my-3">
-  <span class="text-primary display-3">&#9785;</span>
-  <h5 class="text-muted text-uppercase">No projects were found</h5>
-  <hr>
-  <a routerLink="/start-project" class="btn btn-primary">Be the first to start a
-    project</a>
+<!--loading-->
+<div class="text-center py-5 my-5" *ngIf="!projects">
+  <span class="spinner icon-xl">
+    <span class="double-bounce1"></span>
+    <span class="double-bounce2"></span>
+  </span>
 </div>
 
-<app-login-modal #modal></app-login-modal>
+<!--no projects-->
+<div *ngIf="projects && projects.length === 0"
+     class="container container-small text-center my-3">
+  <h5 class="text-muted text-uppercase">The projects you are looking for are not here</h5>
+</div>

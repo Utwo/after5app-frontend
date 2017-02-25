@@ -1,7 +1,7 @@
 <header class="header-site" [class.show-navigation]="showNavigation">
   <div class="container-fluid px-5">
     <div class="row">
-      <div class="col-lg-2 col-md-2 col-sm-6 col-8">
+      <div class="col-md-2 col-12">
         <h1 class="header-logo">
           <a href="javascript:;" (click)="toggleNavigation()"
              class="hidden-md-up toggle-burger btn btn-sm btn-circle-sm mr-2">&#x2261;
@@ -13,20 +13,23 @@
           </a>
         </h1>
       </div>
-      <div class="col-lg-10 col-md-10 col-sm-12 col-12 navigation-wrap hidden-sm-down">
-        <nav class="nav justify-content-end">
-           <a class="nav-item mx-md-3 mx-1" routerLink="/start-project">
+      <div class="col-md-10 col-12 navigation-wrap hidden-sm-down">
+        <nav class="nav justify-content-md-end justify-content-around align-items-center">
+          <a class="nav-item mx-md-3" routerLink="/start-project">
             <b class="text-success">Start a project</b>
           </a>
-          <a class="nav-item mx-md-3 mx-1" routerLink="/projects" routerLinkActive="active">
+          <a class="nav-item mx-md-3" routerLink="/projects" routerLinkActive="active">
             <b>Browse Projects</b>
           </a>
-          <div class="nav-item mx-md-3 mx-1">
+          <div class="nav-item mx-md-3">
             <app-user-nav [user]="user" *ngIf="loggedIn"></app-user-nav>
-            <span *ngIf="!loggedIn" (click)="modal.open()" class="btn btn-link-info btn-sm">Login</span>
+            <a *ngIf="!loggedIn" (click)="modal.open()"
+               class="nav-item mx-md-3" href="javascript:;">
+              Login
+            </a>
           </div>
-          <div class="nav-item mx-md-3 mx-1">
-            <svg class="icon icon-circle">
+          <div class="nav-item mx-md-3">
+            <svg class="icon icon-elipsis">
               <use xlink:href="assets/svg/icons.svg#icon-search"></use>
             </svg>
           </div>

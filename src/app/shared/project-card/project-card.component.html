@@ -15,13 +15,13 @@
       <span class="text-muted project__date small-text"> Posted {{ project.created_at | timeAgo}}</span>
     </div>
     <div class="col-4 text-right">
-    <span *ngIf="!isFollowed && !myProject" class="mr-1 text-muted" title="follow"> Follow Project?
-        <a (click)="follow(modal)">
-          <svg class="icon icon-star"><use xlink:href="assets/svg/icons.svg#icon-star"></use></svg>
-        </a>
-    </span>
-      <span *ngIf="isFollowed && !myProject" class="mr-1 text-muted" title="follow"> Following!
-        <a (click)="follow(modal)">
+      <span *ngIf="!isFollowed && !myProject" class="mr-1 text-muted" title="follow"> Follow Project?
+          <a href="javascript:;" (click)="follow(modal)">
+            <svg class="icon icon-star"><use xlink:href="assets/svg/icons.svg#icon-star"></use></svg>
+          </a>
+      </span>
+      <span *ngIf="isFollowed && !myProject" class="mr-1 text-muted" title="following"> Following!
+        <a href="javascript:;" (click)="follow(modal)">
           <svg class="icon icon-star full"><use xlink:href="assets/svg/icons.svg#icon-star-full"></use></svg>
         </a>
     </span>
