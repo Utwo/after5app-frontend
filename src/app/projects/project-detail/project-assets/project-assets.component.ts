@@ -14,6 +14,7 @@ import {environment} from '../../../../environments/environment.dev';
 export class ProjectAssetsComponent implements OnInit {
   private files = [];
   @Input() project_id;
+  private user_token = null;
   private environment = environment;
 
   constructor(private route: ActivatedRoute,
@@ -24,6 +25,7 @@ export class ProjectAssetsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user_token = this.state.getToken();
     this.getAllAssets();
   }
 
