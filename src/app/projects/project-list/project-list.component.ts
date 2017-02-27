@@ -49,7 +49,7 @@ export class ProjectListComponent implements OnInit {
       this.isRecommendedActive = true;
       this.projectService.getRecommendedProjects()
         .subscribe(
-          projects => this.extractData(projects),
+          projects => {console.log(projects); this.extractData(projects)},
           error => this.responseHandler.errorMessage('An error occured!', error));
     } else {
       modal.open();
@@ -61,7 +61,7 @@ export class ProjectListComponent implements OnInit {
     this.isPopularActive = true;
     this.projectService.getPopularProjects()
       .subscribe(
-        projects => this.extractData(projects),
+        projects => {console.log(projects, "populaaar");this.extractData(projects)},
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 

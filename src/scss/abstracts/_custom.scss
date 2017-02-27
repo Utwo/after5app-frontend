@@ -27,7 +27,7 @@ $gray-light: #c8c8c8;
 $gray-lighter: #e7e7e7;
 $gray-lightest: #f0f0f0;
 
-$text-muted: $gray-light;
+$text-muted: $gray;
 
 $btn-secondary-border: $perrywinkle;
 // Options
@@ -55,7 +55,7 @@ $font-size-h6: 1rem;
 // Settings for the `<body>` element.
 $font-size-base: 1rem;
 $line-height-base: 1.6;
-$font-size-sm:   .8rem;
+$font-size-sm: .8rem;
 
 $body-bg: $gray-lightest;
 $body-color: $gray-darkest;
@@ -80,15 +80,14 @@ $container-max-widths: (
 
 // Components
 
-$border-radius: 6px;
+$border-radius: 5px;
 
 //Modal
-$modal-backdrop-bg: linear-gradient(to top, $brand-primary, $brand-info);
-$modal-backdrop-opacity: .7;
+$modal-backdrop-bg: rgba(0, 0, 0, .8);
 $modal-dialog-sm-up-margin-y: 100px;
 
 //Form
 $input-border-color: $brand-primary;
 
-//Tabs
-$nav-tabs-border-color: $brand-info;
+//Progress
+$progress-height: .5rem;

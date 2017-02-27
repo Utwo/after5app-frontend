@@ -15,6 +15,10 @@ import {ProjectService} from './projects/shared/project.service';
 import {MessageService} from './projects/shared/message.service';
 import {ApplicationService} from './projects/shared/application.service';
 import {NotificationsService} from './navigation/user-nav/shared/notifications.service';
+// pipes
+import {TimeAgoPipe} from './time-ago.pipe';
+//directives
+import { FocusDirective } from './shared/focus.directive';
 // components
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
@@ -24,7 +28,6 @@ import {ProjectComponent} from './projects/project-details/project.component';
 import {AboutComponent} from './about/about.component';
 import {ProfileComponent} from './profile/profile.component';
 import {CommentsComponent} from './projects/project-details/comments/comments.component';
-import {SettingsComponent} from './profile/settings/settings.component';
 import {AddApplicationComponent} from './projects/project-details/add-application/add-application.component';
 import {AddProjectComponent} from './projects/add-project/add-project.component';
 import {FooterComponent} from './footer/footer.component';
@@ -37,17 +40,19 @@ import {LoginComponent} from './login/login.component';
 import {MessagesComponent} from './projects/project-details/messages/messages.component';
 import {AutocompleteComponent} from './shared/autocomplete/autocomplete.component';
 import {SectionHeaderComponent} from './shared/components/section-header.component';
+import {FeebeMessageComponent} from './shared/components/feebe-message.component';
 import {LoginModalComponent} from './shared/login-modal/login-modal.component';
-// pipes
-import {TimeAgoPipe} from './time-ago.pipe';
+import {PersonalInfoComponent} from './profile/personal-info/personal-info.component';
+import {SkillsComponentComponent} from './profile/skills-component/skills-component.component';
+import {BadgesComponent} from './profile/badges/badges.component';
+import {NotificationComponent} from './navigation/user-nav/notification/notification.component';
 import {ProjectCardComponent} from './shared/project-card/project-card.component';
 import { ProjectsOverviewComponent } from './profile/projects-overview/projects-overview.component';
-import { FeebeInfoComponent } from './shared/feebe-info/feebe-info.component';
+import { FeebeInfoComponent } from './shared/components/feebe-info.component';
 import { HomeCardComponent } from './home/home-card/home-card.component';
 import { HomeSectionComponent } from './home/home-section/home-section.component';
 import { HomeParagraphComponent } from './home/home-section/home-paragraph/home-paragraph.component';
 import { ProjectsListOverviewComponent } from './profile/projects-overview/projects-list-overview/projects-list-overview.component';
-import { FocusDirective } from './shared/focus.directive';
 
 @NgModule({
   declarations: [
@@ -60,7 +65,6 @@ import { FocusDirective } from './shared/focus.directive';
     ProfileComponent,
     NavigationComponent,
     CommentsComponent,
-    SettingsComponent,
     AddApplicationComponent,
     AutocompleteComponent,
     TimeAgoPipe,
@@ -81,7 +85,12 @@ import { FocusDirective } from './shared/focus.directive';
     ProjectsOverviewComponent,
     FeebeInfoComponent,
     ProjectsListOverviewComponent,
-    FocusDirective
+    FocusDirective,
+    BadgesComponent,
+    SkillsComponentComponent,
+    PersonalInfoComponent,
+    NotificationComponent,
+    FeebeMessageComponent
   ],
   imports: [
     routing,
@@ -92,7 +101,7 @@ import { FocusDirective } from './shared/focus.directive';
     ModalModule.forRoot(),
     TypeaheadModule.forRoot(),
     TabsModule.forRoot(),
-    ToastyModule.forRoot()
+    ToastyModule.forRoot(),
   ],
   providers: [
     appRoutingProviders,

@@ -17,12 +17,7 @@
 
 .panel__item {
   padding: .4rem;
-  background: rgba(0, 0, 0, .08);
   margin: .4rem 0;
   border-radius: $border-radius;
   transition: .3s all ease-in-out
-}
-
-.panel__item:hover {
-  background: #8ee3ce;
 }

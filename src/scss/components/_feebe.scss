@@ -1,0 +1,55 @@
+.feebe-head {
+  position: relative;
+  width: 3em;
+  height: 3em;
+  background: #fff;
+  border: 2px solid $turquoise;
+  border-radius: 50%;
+}
+
+.feebe-head .febee-eyes {
+  position: absolute;
+  width: 2em;
+  height: 1em;
+  background: #1b212d;
+  border-radius: 10px;
+  top: .9em;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.febee-eyes:before, .febee-eyes:after {
+  content: '';
+  position: absolute;
+  width: .35em;
+  height: .45em;
+  background: $turquoise;
+  border-radius: 50%;
+  top: .3em;
+}
+
+.febee-eyes:before {
+  left: .45em;
+}
+
+.febee-eyes:after {
+  right: .45em;
+}
+
+.info-message {
+  background: #fff;
+  padding: .5em 1em;
+  color: $gray;
+  position: relative;
+  border-radius: $border-radius;
+}
+
+.info-message:before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 10px;
+  border-style: solid;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #fff transparent transparent;
+}

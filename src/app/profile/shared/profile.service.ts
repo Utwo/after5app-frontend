@@ -34,6 +34,19 @@ export class ProfileService {
       .catch(this.handleError);
   }
 
+  public updateUserSkills(user) {
+    let body = JSON.stringify(user);
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.state.getToken()
+    });
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.put(environment.URL_API + environment.API_VERSION + 'user/skill', body, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   public getMyApplications() {
     let headers = new Headers({
       'Content-Type': 'application/json',

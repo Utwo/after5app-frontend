@@ -16,7 +16,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public isMe = false;
   public applications = [];
 
-  constructor(private route: ActivatedRoute, private profileService: ProfileService, private state: StateService,
+  constructor(private route: ActivatedRoute,
+              private profileService: ProfileService,
+              private state: StateService,
               private responseHandler: ResponseHandlerService) {
   }
 

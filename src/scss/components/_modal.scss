@@ -1,16 +1,14 @@
-.modal-backdrop {
+.modal-open .modal {
   background: $modal-backdrop-bg;
 }
 
 .modal-fluid {
   max-width: 100%;
-  margin-top: 18%;
 }
 
 .modal-content {
   border-radius: $border-radius-lg;
-  border: 20px solid lighten($brand-primary, 5);
-  box-shadow: 0 0 20px 3px transparentize($brand-primary, .5);
+  border-color: transparent;
 }
 
 .modal-fluid .modal-content {
@@ -23,19 +21,8 @@
   right: 0;
 }
 
-.modal__close {
-  position: absolute;
-  top: -2.2rem;
-  right: -2rem;
-  border-radius: 50%;
-  font-size: 1.4rem;
-  background: $brand-info;
-  color: #fff;
-  box-shadow: -1px 1px 1px 0 rgba(0, 0, 0, .6);
-}
-
 //Transition between open and close state
-.modal.grow .modal-dialog {
+.modal.grow .commodal-dialog {
   transition: transform .3s ease-out, opacity .2s ease-in;
   opacity: .2;
   transform: scale(1.2) translate3d(0, 5rem, 0);

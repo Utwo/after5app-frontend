@@ -34,7 +34,7 @@ export class AutocompleteComponent {
         break;
       default:
         this.label_class = 'input-group-addon label-white';
-        this.input_class = 'form-control input-gray';
+        this.input_class = 'form-control input-basic input-gray';
     }
   }
 
