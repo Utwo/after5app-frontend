@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {StateService} from "../../shared/state.service"
 import {ResponseHandlerService} from "../../shared/response-handler.service"
 import {ProfileService} from "../shared/profile.service"
@@ -21,7 +21,9 @@ export class ProjectsOverviewComponent implements OnInit {
   private feebeTitleJoined = null;
   private feebeDescriptionJoined = null;
 
-  constructor(private profileService: ProfileService, private state: StateService, private responseHandler: ResponseHandlerService) { }
+  constructor(private profileService: ProfileService,
+              private responseHandler: ResponseHandlerService) {
+  }
 
   ngOnInit() {
     this.getAllInfo();
@@ -41,7 +43,7 @@ export class ProjectsOverviewComponent implements OnInit {
   getMyProjects() {
     this.profileService.getMyProjects()
       .subscribe(
-        data  => this.extractData(data.data, 'projects'),
+        data => this.extractData(data.data, 'projects'),
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
@@ -55,7 +57,7 @@ export class ProjectsOverviewComponent implements OnInit {
   getAppliedForProjects() {
     this.profileService.getMyApplications()
       .subscribe(
-        data =>  this.extractData(data.data, 'appliedProjects'),
+        data => this.extractData(data.data, 'appliedProjects'),
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
@@ -72,25 +74,25 @@ export class ProjectsOverviewComponent implements OnInit {
   }
 
   checkNoProjects() {
-    return this.projects.length > 0 && this.joinedProjects.length > 0 && this.appliedProjects.length > 0 && this.followingProjects.length > 0 ;
+    return this.projects.length > 0 && this.joinedProjects.length > 0 && this.appliedProjects.length > 0 && this.followingProjects.length > 0;
   }
 
   getFeebeDescription() {
-      this.feebeDescription = 'You currently have ';
-      this.projects.length > 0 ? this.feebeDescription += this.projects.length + ' created projects and are following '
-        : this.feebeDescription += 'no created projects and are following ';
-      this.followingProjects.length > 0 ? this.feebeDescription += this.followingProjects.length + ' projects, also you have applied for'
-        : this.feebeDescription += 'no project, also you have applied for ';
-      this.appliedProjects.length > 0 ? this.feebeDescription += this.appliedProjects.length + ' projects and have '
-        : this.feebeDescription += '0 projects and have';
-      this.joinedProjects.length > 0 ? this.feebeDescription += this.joinedProjects.length + ' projects ongoing'
-        : this.feebeDescription += ' 0 projects ongoing';
-      if (this.joinedProjects.length > 0) {
-        this.joinedProjects.map(elem => {
-          this.feebeDescriptionJoined += 'You joined ' + elem.name +
-            ', the project has x active members, x pending members and x followers.';
-        });
-      }
+    this.feebeDescription = 'You currently have ';
+    this.projects.length > 0 ? this.feebeDescription += this.projects.length + ' created projects and are following '
+      : this.feebeDescription += 'no created projects and are following ';
+    this.followingProjects.length > 0 ? this.feebeDescription += this.followingProjects.length + ' projects, also you have applied for'
+      : this.feebeDescription += 'no project, also you have applied for ';
+    this.appliedProjects.length > 0 ? this.feebeDescription += this.appliedProjects.length + ' projects and have '
+      : this.feebeDescription += '0 projects and have';
+    this.joinedProjects.length > 0 ? this.feebeDescription += this.joinedProjects.length + ' projects ongoing'
+      : this.feebeDescription += ' 0 projects ongoing';
+    if (this.joinedProjects.length > 0) {
+      this.joinedProjects.map(elem => {
+        this.feebeDescriptionJoined += 'You joined ' + elem.name +
+          ', the project has x active members, x pending members and x followers.';
+      });
+    }
   }
 
   extractData(projects, list) {

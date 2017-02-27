@@ -1,33 +1,31 @@
-<h3 *ngIf="showJoinedProjects"> Created Projects </h3>
-<app-febee-info *ngIf= 'feebeTitle && feebeDescription' [title]="feebeTitle" [description]="feebeDescription"></app-febee-info>
-<div *ngIf="projects && projects.length > 0" class="container container-small">
-  <ul  class="project-list list-unstyled">
-    <li *ngFor="let project of projects">
-      <app-project-card [project]=project></app-project-card>
-    </li>
-  </ul>
-</div>
-<div *ngIf="projects == null || projects.length === 0"
-     class="container container-small text-center my-3">
-  <span class="text-primary display-3">&#9785;</span>
-  <h5 class="text-muted text-uppercase">No projects were found</h5>
-</div>
+<div class="my-5 container container-small">
+  <h3> {{header}} </h3>
 
-<h3 *ngIf="showJoinedProjects"> Joined Projects </h3>
-<app-febee-info *ngIf= 'feebeTitleJoined && feebeDescriptionJoined' [title]="feebeTitleJoined" [description]="feebeDescriptionJoined"></app-febee-info>
-<div *ngIf="showJoinedProjects && joinedProjects && joinedProjects.length > 0">
-  <ul class="project-list list-unstyled">
-    <li *ngFor="let project of joinedProjects">
-      <app-project-card [project]=project></app-project-card>
-    </li>
-  </ul>
+  <app-febee-info
+    *ngIf="feebeTitle && feebeDescription"
+    [title]="feebeTitle"
+    [description]="feebeDescription">
+  </app-febee-info>
+
+  <div *ngIf="projects && projects.length > 0">
+    <ul class="project-list list-unstyled">
+      <li *ngFor="let project of projects">
+        <app-project-card [project]=project></app-project-card>
+      </li>
+    </ul>
+  </div>
+
+  <!--loading-->
+  <div class="text-center py-5 my-5" *ngIf="!projects">
+  <span class="spinner icon-xl">
+    <span class="double-bounce1"></span>
+    <span class="double-bounce2"></span>
+  </span>
+  </div>
+
+  <!--no projects-->
+  <div *ngIf="projects && projects.length === 0"
+       class="container container-small text-center my-3">
+    <p class="text-muted">The projects you are looking for are not here...</p>
+  </div>
 </div>
-<div *ngIf="showJoinedProjects && joinedProjects == null"
-     class="container container-small text-center my-3">
-  <span class="text-primary display-3">&#9785;</span>
-  <h5 class="text-muted text-uppercase">No projects were found</h5>
-  <hr>
-</div>
-
-
-
