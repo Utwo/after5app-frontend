@@ -35,15 +35,14 @@
   display: flex;
   position: absolute;
   top: -.6rem;
-  left: -.9rem;
-  background: darken($brand-primary, 5%);
+  left: 1.6rem;
+  background: $brand-danger;
   border-radius: 50%;
   width: 1.2rem;
   height: 1.2rem;
   justify-content: center;
   align-items: center;
   font-size: $font-size-sm;
-  box-shadow: 0 1px 0 1px rgba(0, 0, 0, .4);
   z-index: map-get($zindex, higher);
 }
 

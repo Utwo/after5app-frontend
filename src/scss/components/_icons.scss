@@ -36,12 +36,12 @@
   border-radius: 50%;
 }
 
-.icon-circle {
+.icon-elipsis {
   background: $purple;
   border-radius: 35px;
   color: $gray-lightest;
   width: 3em;
-  height: 3em;
+  height: 2em;
 }
 
 .logo {
@@ -52,7 +52,8 @@
 
 .icon.icon-star {
   font-size: 1.5em;
-  stroke: $gray-lighter;
+  color: $gray-light;
+  vertical-align: bottom;
 }
 
 .icon.icon-star.full {

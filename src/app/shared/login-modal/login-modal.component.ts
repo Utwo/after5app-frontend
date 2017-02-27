@@ -30,7 +30,7 @@ export class LoginModalComponent {
         this.emailMessage = 'We sent an email to ' + this.email + '. Please check your email and follow the link.';
         this.showEmailInput = false;
       },
-      error => this.emailMessage = 'A problem occured while sending the email. We are sorry for the inconvenience. Try...',
+      error => this.emailMessage = "We're sorry. A problem occured while sending the email.",
       () => this.email = '');
   }
 

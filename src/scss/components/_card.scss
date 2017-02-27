@@ -1,14 +1,14 @@
-.home-card{
+.home-card {
   max-width: 350px;
   background: #fff;
   z-index: map-get($zindex, higher);
 }
 
-.home-card__title{
+.home-card__title {
   color: $gray;
 }
 
-.profile-card{
+.profile-card {
   box-shadow: 0 1px 3px 1px $gray-lighter;
   border: none;
 }
