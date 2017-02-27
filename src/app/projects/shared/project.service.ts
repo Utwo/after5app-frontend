@@ -39,7 +39,7 @@ export class ProjectService {
     let options = new RequestOptions({headers: headers});
 
     return this.http.get(environment.URL_API + environment.API_VERSION +
-      'project?recommended&with[]=user&with[]=position.skill&user_id=!' + this.state.getUser().id, options)
+      'project?recommended&with[]=user&with[]=favorite&with[]=position.skill&user_id=!' + this.state.getUser().id, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
