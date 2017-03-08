@@ -1,12 +1,12 @@
 <div *ngIf="position" class="container-fluid">
   <h3>{{position.skill.name}}</h3>
   <p>{{position.description}}</p>
-  <div *ngIf="myProject == false">
-    <span *ngIf="position.status == true"> APPLY FOR POSITION </span>
-    <span *ngIf="position.status == false"> POSITION FILLED </span>
+  <div *ngIf="myProject === false">
+    <a *ngIf="!hasMember" (click)="modal.open()"> APPLY FOR POSITION </a>
+    <a *ngIf="hasMember"> POSITION FILLED </a>
   </div>
 </div>
-<div *ngIf="position.status == false">
+<div *ngIf="hasMember">
   <div class="row">
     <div class="col-2">
       <img *ngIf="member.picture" class="profile-img" src="{{member.picture}}?width=30&height=30">
@@ -16,3 +16,5 @@
     </div>
   </div>
 </div>
+<app-apply-modal #modal (onApply)="applicationSent($event)" [position]="position.skill.name" [project]="project"></app-apply-modal>
+
