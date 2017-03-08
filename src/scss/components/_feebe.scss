@@ -56,14 +56,15 @@
 
 .feebe-info__image {
   text-align: center;
-  padding: 10px;
-  color: #fff;
+  color: $white;
   background: $brand-info;
   border-radius: $border-radius 0 0 $border-radius;
+  height: 100%;
+  padding: 10px;
 }
 
 .feebe-info__message {
-  background: #fff;
+  background: $white;
   border-radius: 0 $border-radius $border-radius 0;
   padding: 10px 30px;
 }

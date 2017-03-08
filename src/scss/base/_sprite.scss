@@ -44,6 +44,7 @@
 .sprite-home-planet-1 {
   position: absolute;
   left: 0;
+  top: 25%;
   z-index: map-get($zindex, high);
   width: 143px;
   height: 218px;

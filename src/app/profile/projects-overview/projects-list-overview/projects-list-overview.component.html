@@ -7,13 +7,12 @@
     [description]="feebeDescription">
   </app-febee-info>
 
-  <div *ngIf="projects && projects.length > 0">
-    <ul class="project-list list-unstyled">
-      <li *ngFor="let project of projects">
-        <app-project-card [project]=project></app-project-card>
-      </li>
-    </ul>
-  </div>
+  <ul class="project-list list-unstyled"
+      *ngIf="projects && projects.length > 0">
+    <li *ngFor="let project of projects">
+      <app-project-card [project]=project></app-project-card>
+    </li>
+  </ul>
 
   <!--loading-->
   <div class="text-center py-5 my-5" *ngIf="!projects">
