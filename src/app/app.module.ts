@@ -12,6 +12,7 @@ import {ResponseHandlerService} from './shared/response-handler.service';
 import {StateService} from './shared/state.service';
 import {LoginService} from './core/login.service';
 import {ProjectService} from './projects/shared/project.service';
+import {ProfileService} from './profile/shared/profile.service';
 import {MessageService} from './projects/shared/message.service';
 import {ApplicationService} from './projects/shared/application.service';
 import {NotificationsService} from './navigation/user-nav/shared/notifications.service';
@@ -41,6 +42,7 @@ import {MessagesComponent} from './projects/project-details/messages/messages.co
 import {AutocompleteComponent} from './shared/autocomplete/autocomplete.component';
 import {SectionHeaderComponent} from './shared/components/section-header.component';
 import {FeebeMessageComponent} from './shared/components/feebe-message.component';
+import {LoaderComponent} from './shared/components/loader.component';
 import {LoginModalComponent} from './shared/login-modal/login-modal.component';
 import {PersonalInfoComponent} from './profile/personal-info/personal-info.component';
 import {SkillsComponentComponent} from './profile/skills-component/skills-component.component';
@@ -90,7 +92,8 @@ import { ProjectsListOverviewComponent } from './profile/projects-overview/proje
     SkillsComponentComponent,
     PersonalInfoComponent,
     NotificationComponent,
-    FeebeMessageComponent
+    FeebeMessageComponent,
+    LoaderComponent
   ],
   imports: [
     routing,
@@ -108,6 +111,7 @@ import { ProjectsListOverviewComponent } from './profile/projects-overview/proje
     StateService,
     LoginService,
     ProjectService,
+    ProfileService,
     MessageService,
     ApplicationService,
     NotificationsService,

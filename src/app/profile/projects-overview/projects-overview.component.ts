@@ -6,38 +6,23 @@ import {ProfileService} from "../shared/profile.service"
 @Component({
   selector: 'app-projects-overview',
   templateUrl: './projects-overview.component.html',
-  providers: [ProfileService],
-  styles: []
 })
 export class ProjectsOverviewComponent implements OnInit {
-
-  private projects = [];
-  private followingProjects = [];
-  private appliedProjects = [];
-  maxDescriptionLength = 210;
-  private joinedProjects = [];
-  private feebeTitle = null;
+  private projects = null;
+  private followingProjects = null;
+  private appliedProjects = null;
+  private joinedProjects = null;
   private feebeDescription = null;
-  private feebeTitleJoined = null;
-  private feebeDescriptionJoined = null;
 
   constructor(private profileService: ProfileService,
+              private state: StateService,
               private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
-    this.getAllInfo();
-  }
-
-  getAllInfo() {
     this.getMyProjects();
     this.getFollowingProjects();
     this.getAppliedForProjects();
-    this.getJoinedProjects();
-    if (!this.checkNoProjects()) {
-      this.getFeebeTitles();
-      this.getFeebeDescription();
-    }
   }
 
   getMyProjects() {
@@ -55,66 +40,42 @@ export class ProjectsOverviewComponent implements OnInit {
   }
 
   getAppliedForProjects() {
-    this.profileService.getMyApplications()
+    this.profileService.getAppliedProjects()
       .subscribe(
-        data => this.extractData(data.data, 'appliedProjects'),
+        data => {
+          this.extractData(this.memberOfProjects(data.data, true), 'joinedProjects');
+          this.extractData(this.memberOfProjects(data.data, false), 'appliedProjects');
+        },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
-  getJoinedProjects() {
-    this.profileService.getJoinedProjects()
-      .subscribe(
-        data => this.extractData(data.data, 'joinedProjects'),
-        error => this.responseHandler.errorMessage('An error occured!', error));
-  }
-
-  getFeebeTitles() {
-    this.feebeTitle = 'Hi! I thought you would like to know that...';
-    this.feebeTitleJoined = 'Hi. Great news! You\'ve joined a project';
-  }
-
-  checkNoProjects() {
-    return this.projects.length > 0 && this.joinedProjects.length > 0 && this.appliedProjects.length > 0 && this.followingProjects.length > 0;
-  }
-
-  getFeebeDescription() {
-    this.feebeDescription = 'You currently have ';
-    this.projects.length > 0 ? this.feebeDescription += this.projects.length + ' created projects and are following '
-      : this.feebeDescription += 'no created projects and are following ';
-    this.followingProjects.length > 0 ? this.feebeDescription += this.followingProjects.length + ' projects, also you have applied for'
-      : this.feebeDescription += 'no project, also you have applied for ';
-    this.appliedProjects.length > 0 ? this.feebeDescription += this.appliedProjects.length + ' projects and have '
-      : this.feebeDescription += '0 projects and have';
-    this.joinedProjects.length > 0 ? this.feebeDescription += this.joinedProjects.length + ' projects ongoing'
-      : this.feebeDescription += ' 0 projects ongoing';
-    if (this.joinedProjects.length > 0) {
-      this.joinedProjects.map(elem => {
-        this.feebeDescriptionJoined += 'You joined ' + elem.name +
-          ', the project has x active members, x pending members and x followers.';
+  memberOfProjects(projects, ok) {
+    return projects.filter((project) => {
+      let isMember = false;
+      project.position.map((position) => {
+        isMember = !!position.member.find((member) => member.id === this.state.getUser().id)
       });
-    }
+      return ok? isMember : !isMember;
+    });
   }
 
   extractData(projects, list) {
-    for (let project of projects) {
-      if (project.description.length > this.maxDescriptionLength) {
-        project.description = project.description.substring(0, this.maxDescriptionLength) + '...';
-      }
-    }
-    switch (list) {
-      case 'projects':
-        this.projects = projects;
-        break;
-      case 'followingProjects':
-        this.followingProjects = projects;
-        break;
-      case 'appliedProjects':
-        this.appliedProjects = projects;
-        break;
-      case 'joinedProjects':
-        this.joinedProjects = projects;
+    this[list] = projects;
+    this.getFeebeDescription();
+  }
 
-        break;
+  getFeebeDescription() {
+    if (!this.projects || !this.joinedProjects || !this.appliedProjects || !this.joinedProjects) {
+      return;
     }
+
+    this.feebeDescription = `You currently have ${this.projects.length} created ${this.getProjectStr(this.projects.length)} 
+    and are following  ${this.followingProjects.length} ${this.getProjectStr(this.followingProjects.length)}, 
+    also you have applied for ${this.appliedProjects.length} ${this.getProjectStr(this.appliedProjects.length)} and have 
+    ${this.joinedProjects.length} ongoing ${this.getProjectStr(this.joinedProjects.length)}`;
+  }
+
+  getProjectStr(number) {
+    return number === 1 ? 'project' : 'projects';
   }
 }

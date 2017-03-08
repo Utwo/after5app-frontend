@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-febee-info',
@@ -21,14 +21,7 @@ import {Component, OnInit, Input} from '@angular/core';
     </div>
 `
 })
-export class FeebeInfoComponent implements OnInit {
+export class FeebeInfoComponent {
   @Input() title;
   @Input() description;
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
-
 }
