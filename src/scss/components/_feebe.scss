@@ -53,3 +53,18 @@
   border-width: 10px 10px 10px 0;
   border-color: transparent #fff transparent transparent;
 }
+
+.feebe-info__image {
+  text-align: center;
+  color: $white;
+  background: $brand-info;
+  border-radius: $border-radius 0 0 $border-radius;
+  height: 100%;
+  padding: 10px;
+}
+
+.feebe-info__message {
+  background: $white;
+  border-radius: 0 $border-radius $border-radius 0;
+  padding: 10px 30px;
+}
