@@ -1,0 +1,94 @@
+<div [ngSwitch]="notification.type">
+  <!--comment-->
+  <div *ngSwitchCase="notificationTypes.comment"
+       class="notification__item row">
+    <div class="col-2">
+      <a routerLink="/profile/{{notification.data.user.id}}">
+        <img class="profile-img"
+             src="{{notification.data.user.picture}}"
+             width="35" height="35"
+        />
+      </a>
+    </div>
+    <div class="col-10">
+      <div>{{notification.data.user.name}} left a comment for your project
+        <a routerLink="/project/{{notification.data.project.id}}">
+          <strong>{{notification.data.project.title}}</strong>
+        </a>
+      </div>
+      <small class="text-muted">{{notification.created_at | timeAgo}}</small>
+    </div>
+  </div>
+
+  <!--message-->
+  <div *ngSwitchCase="notificationTypes.message"
+       class="notification__item row">
+    <div class="col-2">
+      <a routerLink="/profile/{{notification.data.user.id}}">
+        <img class="profile-img"
+             src="{{notification.data.user.picture}}"
+             width="35" height="35"/>
+      </a>
+    </div>
+    <div class="col-10">
+      <div>{{notification.data.user.name}} left a message for the members of <a
+        routerLink="/project/{{notification.data.project.id}}">
+        <strong>{{notification.data.project.title}}</strong>
+      </a>
+      </div>
+      <small class="text-muted">{{notification.created_at | timeAgo}}</small>
+    </div>
+  </div>
+
+  <!--accept-->
+  <div *ngSwitchCase="notificationTypes.accept"
+       class="notification__item row">
+    <div class="col-2">
+      <div class="feebe-head">
+        <div class="febee-eyes"></div>
+      </div>
+    </div>
+    <div class="col-10">
+      <div>Your application for <a routerLink="/project/{{notification.data.project.id}}">
+        <strong>{{notification.data.project.title}}</strong>
+      </a> was accepted! </div>
+      <small class="text-muted">{{notification.created_at | timeAgo}}</small>
+    </div>
+  </div>
+
+  <!--decline-->
+  <div *ngSwitchCase="notificationTypes.decline"
+       class="notification__item row">
+    <div class="col-2">
+      <div class="feebe-head">
+        <div class="febee-eyes"></div>
+      </div>
+    </div>
+    <div class="col-10">
+      <div>Your application for <a
+        routerLink="/project/{{notification.data.project.id}}">
+        <strong>{{notification.data.project.title}}</strong>
+      </a> was declined</div>
+      <small class="text-muted">{{notification.created_at | timeAgo}}</small>
+    </div>
+  </div>
+
+  <!--new application-->
+  <div *ngSwitchCase="notificationTypes.application"
+       class="notification__item row">
+    <div class="col-2">
+      <a routerLink="/profile/{{notification.data.user.id}}">
+        <img class="profile-img"
+             src="{{notification.data.user.picture}}"
+             width="35" height="35"/>
+      </a>
+    </div>
+    <div class="col-10">
+      <div>{{notification.data.user.name}} applied for your project <a
+        routerLink="/project/{{notification.data.project.id}}">
+        <strong>{{notification.data.project.title}}</strong></a>
+      </div>
+      <small class="text-muted">{{notification.created_at | timeAgo}}</small>
+    </div>
+  </div>
+</div>

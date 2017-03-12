@@ -1,100 +1,62 @@
-<div class="dropdown" #container [class.dropdown--activ]="isDropdownActiv">
-  <div (click)="dropdown();" class="notification">
+<div class="dropdown" #container>
+  <div class="nav notification justify-content-around">
+    <div (click)="dropdownNotification();" class="nav-item mx-sm-3 mx-1">
+      <svg class="icon icon-lg">
+        <use xlink:href="assets/svg/icons.svg#icon-notification"></use>
+      </svg>
+      <span *ngIf="notificationCount != 0" class="notification__count">{{notificationCount}}</span>
+    </div>
 
-    <span class="ml-2">
-      <svg class="icon icon-lg"><use xlink:href="assets/svg/icons.svg#icon-notification"></use></svg>
-      <i *ngIf="notificationCount != 0" class="notification__count">{{notificationCount}}</i>
-    </span>
-    <img class="profile-img mx-1"
-         *ngIf="user.picture"
-         src="{{user.picture+'?s=35&width=35&height=35'}}">
+    <div (click)="dropdownUser();" class="nav-item mx-sm-3 mx-1">
+      <img class="profile-img"
+           src="{{user.picture+'?s=32&width=32&height=32'}}">
+    </div>
   </div>
-  <div class="dropdown-menu dropdown__content container-fluid text-left">
-    <ul class="list-unstyled text-center">
-      <li><a class="d-block panel__item" routerLink="/profile/{{user.id}}">PROFILE</a></li>
-      <li><a class="d-block panel__item" routerLink="/settings">SETTINGS</a></li>
-      <li><a class="d-block panel__item" href="javascript:;" (click)="logout()">SIGN OUT</a></li>
-    </ul>
-    <hr *ngIf="notifications && notifications.length > 0">
-    <ol class="list-unstyled">
-      <li *ngFor="let notification of notifications">
-        <div [ngSwitch]="notification.type">
-          <div *ngSwitchCase="notificationTypes.comment" class="notification__item row">
-            <div class="col-4">
-              <img class="profile-img" src="{{notification.data.user.picture}}"
-                   width="25" height="25"/></div>
-            <div class="col-8">
-              <p>
-                <a routerLink="/profile/{{notification.data.user.id}}">
-                  {{notification.data.user.name}}
-                </a>
-                left a comment for your project
-                <a routerLink="/project/{{notification.data.project.id}}">
-                  <strong>{{notification.data.project.title}}</strong></a>
-              </p>
-              <small>{{notification.created_at | timeAgo}}</small>
-            </div>
-          </div>
 
-          <div *ngSwitchCase="notificationTypes.message" class="notification__item row">
-            <div class="col-2"><img class="profile-img" src="{{notification.data.user.picture}}"
-                                    width="25" height="25"/></div>
-            <div class="col-10">
-              <p>
-                <a routerLink="/profile/{{notification.data.user.id}}">
-                  {{notification.data.user.name}}
-                </a>
-                left a message for the members of
-                <a routerLink="/project/{{notification.data.project.id}}">
-                  <strong>{{notification.data.project.title}}</strong></a>
-              </p>
-              <small>{{notification.created_at | timeAgo}}</small>
-            </div>
-          </div>
+  <div [class.dropdown--activ]="isDropdownUserActiv">
+    <div class="dropdown-user dropdown-wrapper">
+      <div class="dropdown-menu dropdown__content container-fluid">
+        <ul class="list-unstyled text-center">
+          <li>
+            <a class="d-block panel__item" routerLink="/profile/{{user.id}}">
+              <b>PROFILE</b>
+            </a>
+          </li>
+          <li>
+            <a class="d-block panel__item" routerLink="/settings"><b>SETTINGS</b></a>
+          </li>
+          <li>
+            <a class="d-block panel__item" href="javascript:;"
+               (click)="logout()"><b>SIGN OUT</b>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-          <div *ngSwitchCase="notificationTypes.accept" class="notification__item row">
-            <div class="col-md-10 offset-md-2 col-12">
-              <p>Your application for
-                <a routerLink="/project/{{notification.data.project.id}}">
-                  <strong>{{notification.data.project.title}}</strong></a>
-                was accepted! </p>
-              <small>{{notification.created_at | timeAgo}}</small>
-            </div>
-          </div>
-
-          <div *ngSwitchCase="notificationTypes.decline" class="notification__item row">
-            <div class="col-md-10 offset-md-2 col-12">
-              <p>Your application for
-                <a routerLink="/project/{{notification.data.project.id}}">
-                  <strong>{{notification.data.project.title}}</strong></a>
-                was declined</p>
-              <small>{{notification.created_at | timeAgo}}</small>
-            </div>
-          </div>
-
-          <div *ngSwitchCase="notificationTypes.application" class="notification__item row">
-            <div class="col-2"><img class="profile-img" src="{{notification.data.user.picture}}"
-                                    width="25" height="25"/></div>
-            <div class="col-10">
-              <p>
-                <a routerLink="/profile/{{notification.data.user.id}}">
-                  {{notification.data.user.name}}
-                </a>
-                applied for your project
-                <a routerLink="/project/{{notification.data.project.id}}">
-                  <strong>{{notification.data.project.title}}</strong></a>
-              </p>
-              <small>{{notification.created_at | timeAgo}}</small>
-            </div>
-          </div>
+  <div [class.dropdown--activ]="isDropdownNotifActiv">
+    <div class="dropdown-notifications dropdown-wrapper">
+      <div
+        class="dropdown-menu dropdown__content container-fluid">
+        <div class="text-center p-4" *ngIf="!notifications">
+          <span class="spinner">
+            <span class="double-bounce1"></span>
+            <span class="double-bounce2"></span>
+          </span>
         </div>
-      </li>
-    </ol>
-    <div *ngIf="!notifications" class="row flex-items-xs-center pb-3">
-            	<span class="spinner p-1 mb-1">
-							<span class="double-bounce1"></span>
-							<span class="double-bounce2"></span>
-						</span>
+        <div class="text-center p-4"
+             *ngIf="notifications && notifications.length < 1">
+          You have no notifications
+        </div>
+
+        <ol *ngIf="notifications && notifications.length > 0"
+            class="list-unstyled my-3">
+          <li *ngFor="let notification of notifications">
+            <app-notification [notification]="notification"></app-notification>
+          </li>
+        </ol>
+      </div>
     </div>
   </div>
 </div>
