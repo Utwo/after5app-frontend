@@ -7,7 +7,7 @@
         </div>
         <div class="col-10 py-4">
           <h2>{{user.name}}</h2>
-          <span class="small-text text-muted">Joined {{user.created_at | date: 'dd of MMMM, yyyy'}}</span>
+          <span class="small-text text-muted">Joined {{user.created_at | date: 'd MMMM yyyy'}}</span>
         </div>
       </div>
     </div>
@@ -15,23 +15,17 @@
 
   <div class="container my-3">
     <tabset>
-      <tab [heading]="Personal" [active]="true">
-        <template tabHeading>
-          PERSONAL
-        </template>
+      <tab [heading]="'PERSONAL'" [active]="true">
         <div class="row">
-          <div class="col-7">
+          <div class="col-md-7 col-12">
             <app-personal-info [user]=user></app-personal-info>
           </div>
-          <div class="col-5">
+          <div class="col-md-5 col-12">
             <app-skills-component [user]=user></app-skills-component>
           </div>
         </div>
       </tab>
-      <tab [heading]="Badges">
-        <template tabHeading>
-          BADGES
-        </template>
+      <tab [heading]="'BADGES'">
         <app-badges></app-badges>
       </tab>
     </tabset>
