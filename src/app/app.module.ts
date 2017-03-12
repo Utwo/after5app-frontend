@@ -64,7 +64,8 @@ import { PositionCardComponent } from './projects/project-detail/project-brief/p
 import { ApplicationsCardComponent } from './projects/project-detail/project-applicants/applications-card/applications-card.component';
 import { ProjectApplicantsComponent } from './projects/project-detail/project-applicants/project-applicants.component';
 import { ApplyModalComponent } from './projects/project-detail/project-brief/apply-modal/apply-modal.component';
-import {CommentsComponent} from "./projects/project-detail/comments/comments.component"
+import {CommentsComponent} from "./projects/project-detail/comments/comments.component";
+import { ShareModalComponent } from './projects/project-detail/project-brief/share-modal/share-modal.component'
 
 @NgModule({
   declarations: [
@@ -112,7 +113,8 @@ import {CommentsComponent} from "./projects/project-detail/comments/comments.com
     ProjectApplicantsComponent,
     ApplyModalComponent,
     FeebeMessageComponent,
-    LoaderComponent
+    LoaderComponent,
+    ShareModalComponent
   ],
   imports: [
     routing,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-project-applicants',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectApplicantsComponent implements OnInit {
 
+  @Input() project_id;
+
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

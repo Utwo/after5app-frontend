@@ -2,7 +2,6 @@ import {Component, OnInit, Input} from '@angular/core';
 import {StateService} from '../../../shared/state.service';
 import {ResponseHandlerService} from '../../../shared/response-handler.service';
 import {ProjectService} from '../../shared/project.service';
-import {environment} from '../../../../environments/environment';
 import {Router} from '@angular/router';
 
 @Component({
@@ -17,8 +16,6 @@ export class ProjectHeaderComponent implements OnInit {
   private project = null;
   private myProject = false;
   private isFollowed = false;
-  public environment = environment;
-  public href = encodeURIComponent(window.location.href);
 
   constructor(
               private projectService: ProjectService,
@@ -89,5 +86,14 @@ export class ProjectHeaderComponent implements OnInit {
       modal.open();
     }
   }
+
+  shared(error) {
+    if (error) {
+      this.responseHandler.errorMessage('An error occured!', error);
+    } else {
+      this.responseHandler.successMessage('Your project was shared!');
+    }
+  }
+
 
 }
