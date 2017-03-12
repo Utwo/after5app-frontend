@@ -17,20 +17,9 @@
         <h3 class="modal-title text-center mb-5">First thing's first
           Spacer!</h3>
         <div class="container-fluid container-small">
-          <!--TODO change with febee-message component-->
-          <div class="row">
-            <div class="col-md-1 col-2">
-              <div class="feebe-head">
-                <span class="febee-eyes"></span>
-              </div>
-            </div>
-            <div class="col-md-11 col-10">
-              <p class="info-message">
-                We have to get you processed through. Lets see your Docking
-                Pass...
-              </p>
-            </div>
-          </div>
+          <app-feebe-message
+            [message]="'We have to get you processed through. Lets see your Docking Pass...'">
+          </app-feebe-message>
           <div class="row flex-items-xs-center my-3">
             <div class="col-md-3 col-6">
               <div class="docking-pass">
