@@ -10,11 +10,11 @@
                 aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h1 class="modal-title text-center">You are about to apply for {{position}}</h1>
+        <h1 class="modal-title text-center">You are about to apply for {{position.skill.name}}</h1>
       </div>
-      <h3> If you are sure you want to help out with this skill, press Apply and x will be notified that you are interested.
+      <h3> If you are sure you want to help out with this skill, press Apply and {{project.user.name}} will be notified that you are interested.
         Don't worry if you don't hear immediately, some people are busy, hang in there</h3>
-      <h3>x also wants to know if...</h3>
+      <h3> {{project.user.name}} also wants to know if...</h3>
 
       <ol class="mb-2">
         <li *ngFor="let question of project.application_questions; let i = index" class="form-group">
@@ -29,7 +29,7 @@
         <textarea class="form-control" rows="6" id="message" [(ngModel)]="application.message"></textarea>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" (click)="sendApplication()">Apply for {{position}}</button>
+        <button class="btn btn-primary" (click)="sendApplication()">Apply for {{position.skill.name}}</button>
       </div>
     </div>
   </div>

@@ -22,8 +22,8 @@ export class ApplyModalComponent implements OnInit {
   ngOnInit() {
   }
 
-  sendApplication(position) {
-    this.application.position_id = position.id;
+  sendApplication() {
+    this.application.position_id = this.position.id;
     this.applicationService.applyForProject(this.application)
       .subscribe(
         () => {

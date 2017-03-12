@@ -15,6 +15,7 @@ export class PositionCardComponent implements OnInit {
   myProject = false;
   private member = null;
   hasMember = false;
+  showDetails = false;
 
   constructor(  private projectService: ProjectService,
                 private state: StateService,
@@ -42,5 +43,14 @@ export class PositionCardComponent implements OnInit {
     } else {
       this.responseHandler.successMessage('Your application was sent!');
     }
+  }
+
+  hover() {
+    this.showDetails = true;
+  }
+
+  out() {
+    this.showDetails = false;
+
   }
 }
