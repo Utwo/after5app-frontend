@@ -7,98 +7,148 @@
           PERSONAL INFO
         </h5>
       </div>
-      <div class="col-6 text-right">
-        <a *ngIf="isMe"
-           (click)="toggleEditing()"
-           class="pull-xs-right"
-           href="javascript:;"
+      <div class="col-6 text-right" *ngIf="isMe">
+        <div (click)="toggleEditing()"
+             class="pull-xs-right"
         >
-          <svg *ngIf="!editing" class="icon icon-md icon-message text-muted">
-            <use xlink:href="assets/icons.svg#icon-write"></use>
-          </svg>
+          <a href="javascript:;">
+            <svg *ngIf="!editing" class="icon icon-md icon-message text-muted">
+              <use xlink:href="assets/icons.svg#icon-write"></use>
+            </svg>
+          </a>
           <button *ngIf="editing" (click)="saveChanges()"
                   class="btn btn-success text-white">
             <small>APPLY CHANGES</small>
           </button>
-        </a>
+          <a *ngIf="editing" href="javascript:;" class="px-2">
+            <small>CANCEL</small>
+          </a>
+        </div>
       </div>
     </div>
     <hr>
     <!--personal info-->
-    <div class="row">
-      <div class="col-12">
-        <p> About me: </p>
+    <div class="row" *ngIf="editing || user.description">
+      <div class="col">
+        <label class="project__card-label">About me: </label>
         <p *ngIf="!editing"> {{user.description}} </p>
-        <textarea *ngIf="editing" type="text" [(ngModel)]="description"
-                  title="description"> {{description}} </textarea>
+        <textarea class="form-control"
+                  [(ngModel)]="description"
+                  *ngIf="editing"
+                  title="description">
+        </textarea>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-6">
-
-        <div class="row">
-          <div class="col-md-4 project__card-label">
-            Name:
-          </div>
+    <div class="row my-2">
+      <div class="col-lg-6 col-12">
+        <!--name-->
+        <div class="row my-2" *ngIf="editing || user.name">
+          <label class="col-md-4 project__card-label">Name:</label>
           <div class="col-8">
             <span *ngIf="!editing"> {{user.name}} </span>
-            <input *ngIf="editing" class="form-control input-basic" type="text" [(ngModel)]="name" title="name"/>
+            <input *ngIf="editing"
+                   [(ngModel)]="name"
+                   class="form-control input-basic"
+                   type="text"
+                   title="name"/>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-4 project__card-label">
-            City:
-          </div>
+        <!--city-->
+        <div class="row my-2" *ngIf="editing || user.city">
+          <label class="col-md-4 project__card-label">City:</label>
           <div class="col-8">
             <span *ngIf="!editing"> {{user.city}} </span>
-            <input *ngIf="editing" class="form-control input-basic" type="text" [(ngModel)]="city" title="city"/>
+            <input *ngIf="editing"
+                   [(ngModel)]="city"
+                   class="form-control input-basic"
+                   type="text"
+                   title="city"/>
           </div>
         </div>
-        <div class="row">
+        <!--workplace-->
+        <div class="row my-2" *ngIf="editing || user.workplace">
           <div class="col-md-4 project__card-label">
             Workplace:
           </div>
           <div class="col-8">
             <span *ngIf="!editing"> {{user.workplace}} </span>
-            <input *ngIf="editing" class="form-control input-basic" type="text" [(ngModel)]="workplace" title="workplace"/>
+            <input *ngIf="editing"
+                   [(ngModel)]="workplace"
+                   class="form-control input-basic"
+                   type="text"
+                   title="workplace"/>
           </div>
         </div>
-
-        <div> Hobbies:
-          <input *ngIf="editing" class="form-control input-basic" placeholder="Add Hobby" type="text" [(ngModel)]="hobby" title="hobby"/>
-          <a *ngIf="editing" class="btn btn-success text-white" (click)="addHobby()">
-            <svg class="icon icon-plus">
-              <use xlink:href="./assets/icons.svg#icon-plus"></use>
-            </svg>
-          </a>
-          <ul class="project-list list-unstyled">
-            <li *ngFor="let hobby of hobbies">
-              <a *ngIf="editing" (click)="removeHobby(hobby)"> x </a> {{hobby}}
-            </li>
-          </ul>
+        <!--hobbies-->
+        <div class="row my-2" *ngIf="editing || hobbies.length > 0">
+          <label class="col-md-4 project__card-label">Hobbies:</label>
+          <div class="col-md-8">
+            <input *ngIf="editing"
+                   class="form-control input-basic"
+                   placeholder="Add Hobby" type="text"
+                   [(ngModel)]="hobby"
+                   title="hobby"/>
+            <a *ngIf="editing"
+               (click)="addHobby()"
+               href="javascript:;"
+               class="btn btn-success text-white"
+            >
+              <svg class="icon icon-plus">
+                <use xlink:href="./assets/icons.svg#icon-plus"></use>
+              </svg>
+            </a>
+            <ul class="project-list list-unstyled">
+              <li *ngFor="let hobby of hobbies">
+                <a *ngIf="editing"
+                   href="javascript:;"
+                   (click)="removeHobby(hobby)"> x </a>
+                {{hobby}}
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-
-      <div class="col-6">
-        Social:
-        <select *ngIf="editing" [(ngModel)]="socialInput" title="social"> // value is a string or number
-          <option *ngFor="let obj of socialOptions">{{obj}}</option>
-        </select>
-        <input *ngIf="socialInput != null && editing" type="text" placeholder="Add Link" title="link"
-               [(ngModel)]="link">
-        <a *ngIf="editing" (click)="addSocial()">
-          <svg class="icon icon-plus">
-            <use xlink:href="./assets/icons.svg#icon-plus"></use>
-          </svg>
-        </a>
-        <a *ngIf='user.facebook_id != null' href='http://facebook.com/{{user.facebook_id}}'><p> Facebook </p></a>
-        <a *ngIf='user.twitter != null' href='https://twitter.com/{{user.twitter}}'><p> Twitter </p></a>
-        <a *ngIf='user.github_id != null' href='http://gihub/{{user.github_id}}'><p> Github </p></a>
-        <a *ngIf='user.website != null' href='{{user.website}}'><p> Website </p></a>
+      <!--social-->
+      <div class="col-lg-6 col-12">
+        <div class="row my-2">
+          <label class="col-md-4 project__card-label">Social:</label>
+          <div class="col-md-8">
+            <a *ngIf='user.facebook_id != null' href='http://facebook.com/{{user.facebook_id}}'><p> Facebook </p></a>
+            <a *ngIf='user.twitter != null' href='https://twitter.com/{{user.twitter}}'><p> Twitter </p></a>
+            <a *ngIf='user.github_id != null' href='http://gihub/{{user.github_id}}'><p> Github </p></a>
+            <a *ngIf='user.website != null' href='{{user.website}}'><p> Website </p></a>
+          </div>
+          <div class="col-12 my-2">
+            <select class="form-control"
+                    *ngIf="editing"
+                    [(ngModel)]="socialInput"
+                    placeholder="Choose a social website"
+                    title="social">
+              <option *ngFor="let obj of socialOptions">{{obj}}</option>
+            </select>
+          </div>
+          <div class="col-8">
+            <input *ngIf="socialInput != null && editing"
+                   [(ngModel)]="link"
+                   class="form-control input-basic"
+                   placeholder="Add Link"
+                   type="text"
+                   title="link">
+          </div>
+          <div class="col-4 text-right">
+            <a *ngIf="socialInput != null && editing"
+               (click)="addSocial()"
+               href="javascript:;"
+               class="btn btn-success text-white"
+            >
+              <svg class="icon icon-plus">
+                <use xlink:href="./assets/icons.svg#icon-plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
-
-    <!--</div>-->
     </div>
   </div>
 </div>

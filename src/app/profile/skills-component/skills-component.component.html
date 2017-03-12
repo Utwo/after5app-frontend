@@ -5,20 +5,23 @@
       <div class="col-6">
         <h5 class="title-border title-border--green p-b-1">CRAFTS & SKILLS</h5>
       </div>
-      <div class="col-6 text-right">
-        <a *ngIf="isMe"
-           (click)="toggleEditing()"
-           class="pull-xs-right"
-           href="javascript:;"
+      <div class="col-6 text-right" *ngIf="isMe">
+        <div (click)="toggleEditing()"
+             class="pull-xs-right"
         >
-          <svg *ngIf="!editing" class="icon icon-md icon-message text-muted">
-            <use xlink:href="assets/icons.svg#icon-write"></use>
-          </svg>
+          <a href="javascript:;">
+            <svg *ngIf="!editing" class="icon icon-md icon-message text-muted">
+              <use xlink:href="assets/icons.svg#icon-write"></use>
+            </svg>
+          </a>
           <button *ngIf="editing" (click)="saveChanges()"
                   class="btn btn-success text-white">
             <small>APPLY CHANGES</small>
           </button>
-        </a>
+          <a *ngIf="editing" href="javascript:;" class="px-2">
+            <small>CANCEL</small>
+          </a>
+        </div>
       </div>
     </div>
     <hr>

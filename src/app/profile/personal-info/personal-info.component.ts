@@ -32,7 +32,7 @@ export class PersonalInfoComponent implements OnChanges {
     this.city = this.user.city;
     this.workplace = this.user.workplace;
     this.description = this.user.description;
-    this.hobbies = this.user.hobbies;
+    this.hobbies = this.user.hobbies || [];
   }
 
   verifyIfMe(id) {
