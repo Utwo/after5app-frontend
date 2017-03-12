@@ -14,10 +14,10 @@ export class ProjectBriefComponent implements OnInit {
   @Input() project_id;
   project = null;
   private myProject = false;
+  public related = null;
 
   constructor(
               private projectService: ProjectService,
-              private applicationService: ApplicationService,
               private state: StateService,
               private router: Router,
               private responseHandler: ResponseHandlerService) {
@@ -38,10 +38,8 @@ export class ProjectBriefComponent implements OnInit {
           this.project = project.data[0];
           if (this.state.isLoggedIn()) {
             this.verifyIfMyProject();
-            // this.verifyIfFavorite();
           }
-          // this.getRelatedProjects();
-          // this.getMembers();
+           this.getRelatedProjects();
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
@@ -59,4 +57,18 @@ export class ProjectBriefComponent implements OnInit {
 
   }
 
+  getRelatedProjects() {
+    let skills = [];
+    this.project.position.map(item => {
+      skills.push(item.skill.id);
+    });
+    this.projectService.filterBySkill(skills.join(','), this.project.id)
+      .subscribe(
+        project => {
+          this.related = project.data.sort(() => {
+            return 0.5 - Math.random();
+          }).splice(0, 3);
+        },
+        error => this.responseHandler.errorMessage('An error occured!', error));
+  }
 }

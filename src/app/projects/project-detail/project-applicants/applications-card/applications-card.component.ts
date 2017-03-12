@@ -4,7 +4,7 @@ import {ResponseHandlerService} from '../../../../shared/response-handler.servic
 
 @Component({
   selector: 'app-applications-card',
-  templateUrl: './applications-card.component.html'
+  templateUrl: 'applications-card.component.html'
 })
 export class ApplicationsCardComponent implements OnInit {
   @Input('project_id') project_id;

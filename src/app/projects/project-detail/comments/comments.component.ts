@@ -14,6 +14,10 @@ export class CommentsComponent {
   constructor(private projectService: ProjectService, private state: StateService, private responseHandler: ResponseHandlerService) {
   }
 
+  ngOnInit(){
+    console.log(this.comments, "comments")
+  }
+
   addComment(text) {
     if (!text.value || !this.state.isLoggedIn()) {
       return;

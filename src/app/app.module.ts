@@ -27,7 +27,6 @@ import {ProjectListComponent} from './projects/project-list/project-list.compone
 import {ProjectComponent} from './projects/project-details/project.component';
 import {AboutComponent} from './about/about.component';
 import {ProfileComponent} from './profile/profile.component';
-import {CommentsComponent} from './projects/project-details/comments/comments.component';
 import {AddApplicationComponent} from './projects/project-details/add-application/add-application.component';
 import {AddProjectComponent} from './projects/add-project/add-project.component';
 import {FooterComponent} from './footer/footer.component';
@@ -62,9 +61,10 @@ import { ProjectDetailComponent } from './projects/project-detail/project-detail
 import { ProjectBriefComponent } from './projects/project-detail/project-brief/project-brief.component';
 import { ProjectAssetsComponent } from './projects/project-detail/project-assets/project-assets.component';
 import { PositionCardComponent } from './projects/project-detail/project-brief/position-card/position-card.component';
-import { ApplicationsCardComponent } from './projects/project-detail/project-brief/applications-card/applications-card.component';
+import { ApplicationsCardComponent } from './projects/project-detail/project-applicants/applications-card/applications-card.component';
 import { ProjectApplicantsComponent } from './projects/project-detail/project-applicants/project-applicants.component';
 import { ApplyModalComponent } from './projects/project-detail/project-brief/apply-modal/apply-modal.component';
+import {CommentsComponent} from "./projects/project-detail/comments/comments.component"
 
 @NgModule({
   declarations: [
