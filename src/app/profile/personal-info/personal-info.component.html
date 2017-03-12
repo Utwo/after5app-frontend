@@ -28,27 +28,38 @@
                   title="description"> {{description}} </textarea>
       </div>
     </div>
+
     <div class="row">
       <div class="col-6">
-        <label for="example-text-input" class="col-2 col-form-label">Name:</label>
-        <div class="col-10">
-          <span *ngIf="!editing"> {{user.name}} </span>
-          <input *ngIf="editing" class="form-control" type="text" value="Artisanal kale" id="example-text-input">
+
+        <div class="row">
+          <div class="col-md-4 project__card-label">
+            Name:
+          </div>
+          <div class="col-8">
+            <span *ngIf="!editing"> {{user.name}} </span>
+            <input *ngIf="editing" class="form-control input-basic" type="text" [(ngModel)]="name" title="name"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 project__card-label">
+            City:
+          </div>
+          <div class="col-8">
+            <span *ngIf="!editing"> {{user.city}} </span>
+            <input *ngIf="editing" class="form-control input-basic" type="text" [(ngModel)]="city" title="city"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 project__card-label">
+            Workplace:
+          </div>
+          <div class="col-8">
+            <span *ngIf="!editing"> {{user.workplace}} </span>
+            <input *ngIf="editing" class="form-control input-basic" type="text" [(ngModel)]="workplace" title="workplace"/>
+          </div>
         </div>
 
-
-        <p> Name:
-          <span *ngIf="!editing"> {{user.name}} </span>
-          <input *ngIf="editing" class="form-control input-basic" type="text" [(ngModel)]="name" title="name"/>
-        </p>
-        <p> City:
-          <span *ngIf="!editing"> {{user.city}} </span>
-          <input *ngIf="editing" class="form-control input-basic" type="text" [(ngModel)]="city" title="city"/>
-        </p>
-        <p> Workplace:
-          <span *ngIf="!editing"> {{user.workplace}} </span>
-          <input *ngIf="editing" class="form-control input-basic" type="text" [(ngModel)]="workplace" title="workplace"/>
-        </p>
         <div> Hobbies:
           <input *ngIf="editing" class="form-control input-basic" placeholder="Add Hobby" type="text" [(ngModel)]="hobby" title="hobby"/>
           <a *ngIf="editing" class="btn btn-success text-white" (click)="addHobby()">
