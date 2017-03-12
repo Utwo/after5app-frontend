@@ -1,0 +1,25 @@
+<div class="my-5 container container-small">
+  <h3> {{header}} </h3>
+
+  <app-febee-info
+    *ngIf="feebeTitle && feebeDescription"
+    [title]="feebeTitle"
+    [description]="feebeDescription">
+  </app-febee-info>
+
+  <ul class="project-list list-unstyled"
+      *ngIf="projects && projects.length > 0">
+    <li *ngFor="let project of projects">
+      <app-project-card [project]=project></app-project-card>
+    </li>
+  </ul>
+
+  <!--loading-->
+  <app-loader *ngIf="!projects"></app-loader>
+
+  <!--no projects-->
+  <div *ngIf="projects && projects.length === 0"
+       class="container container-small text-center my-3">
+    <p class="text-muted">The projects you are looking for are not here...</p>
+  </div>
+</div>

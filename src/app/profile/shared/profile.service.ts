@@ -6,8 +6,14 @@ import {environment} from '../../../environments/environment';
 
 @Injectable()
 export class ProfileService {
+  options = null;
 
   constructor(private state: StateService, private http: Http) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.state.getToken()
+    });
+    this.options = new RequestOptions({headers: headers});
   }
 
   public getUser(id) {
@@ -16,46 +22,34 @@ export class ProfileService {
       .catch(this.handleError);
   }
 
-  public getLoggedInUser() {
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'user/' + this.state.getUser().id + '?with[]=skill')
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
   public updateUser(user) {
     let body = JSON.stringify(user);
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.put(environment.URL_API + environment.API_VERSION + 'user', body, options)
+    return this.http.put(environment.URL_API + environment.API_VERSION + 'user', body, this.options)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   public updateUserSkills(user) {
     let body = JSON.stringify(user);
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.put(environment.URL_API + environment.API_VERSION + 'user/skill', body, options)
+    return this.http.put(environment.URL_API + environment.API_VERSION + 'user/skill', body, this.options)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
-  public getMyApplications() {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    let options = new RequestOptions({headers: headers});
+  public getAppliedProjects() {
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'project?with[]=user&with[]=favorite&with[]=position.member&with[]=position.skill&application:user_id='+this.state.getUser().id, this.options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
 
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'application/user?with[]=position.project', options)
+  public getMyProjects() {
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'project?with[]=favorite&with[]=position.skill&with[]=user&user:user_id=' + this.state.getUser().id, this.options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  public getFavoriteProjects() {
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'project?with[]=favorite&with[]=position.skill&with[]=user&favorite:user_id=' + this.state.getUser().id, this.options)
       .map(this.extractData)
       .catch(this.handleError);
   }

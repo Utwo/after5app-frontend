@@ -1,0 +1,47 @@
+<div class="jumbotron-white">
+  <div class="container">
+    <h2> Projects <b> Overview </b></h2>
+  </div>
+</div>
+<!--filter options-->
+<div class="container my-3">
+  <tabset>
+    <tab [active]="true">
+      <template tabHeading>
+        PROJECTS
+      </template>
+      <!--created-->
+      <app-projects-list-overview
+        [header]="'Created Projects'"
+        [projects]="projects"
+        [feebeTitle]="'Hi! I thought you would like to know that...'"
+        [feebeDescription]="feebeDescription">
+      </app-projects-list-overview>
+      <!--joined-->
+      <app-projects-list-overview
+        [header]="'Joined Projects'"
+        [projects]="joinedProjects">
+      </app-projects-list-overview>
+
+    </tab>
+    <tab>
+      <template tabHeading>
+        FOLLOWING
+      </template>
+      <app-projects-list-overview
+        [projects]="followingProjects">
+      </app-projects-list-overview>
+    </tab>
+    <tab>
+      <template tabHeading>
+        APPLIED FOR
+      </template>
+      <app-projects-list-overview
+        [projects]="appliedProjects"
+        [feebeTitle]="'Hang on!'"
+        [feebeDescription]="'Your applications are being considered...'">
+      </app-projects-list-overview>
+    </tab>
+  </tabset>
+</div>
+

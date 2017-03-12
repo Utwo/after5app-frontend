@@ -74,12 +74,7 @@
 </div>
 
 <!--loading-->
-<div class="text-center py-5 my-5" *ngIf="!projects">
-  <span class="spinner icon-xl">
-    <span class="double-bounce1"></span>
-    <span class="double-bounce2"></span>
-  </span>
-</div>
+<app-loader *ngIf="!projects"></app-loader>
 
 <!--no projects-->
 <div *ngIf="projects && projects.length === 0"

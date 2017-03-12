@@ -6,8 +6,14 @@ import {environment} from '../../../environments/environment';
 
 @Injectable()
 export class ProjectService {
+  options = null;
 
   constructor(private state: StateService, private http: Http) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.state.getToken()
+    });
+    this.options = new RequestOptions({headers: headers});
   }
 
   getProjects(page) {
@@ -19,7 +25,7 @@ export class ProjectService {
 
   getProjectById(id) {
     return this.http.get(environment.URL_API + environment.API_VERSION +
-      'project?with[]=user&with[]=favorite&with[]=position.skill&with[]=comment.user&id=' + id)
+      'project?with[]=user&with[]=favorite&with[]=position.skill&id=' + id)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -32,14 +38,8 @@ export class ProjectService {
   }
 
   getRecommendedProjects() {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    let options = new RequestOptions({headers: headers});
-
     return this.http.get(environment.URL_API + environment.API_VERSION +
-      'project?recommended&with[]=user&with[]=favorite&with[]=position.skill&user_id=!' + this.state.getUser().id, options)
+      'project?recommended&with[]=user&with[]=favorite&with[]=position.skill&user_id=!' + this.state.getUser().id, this.options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -62,37 +62,20 @@ export class ProjectService {
 
   addProject(project) {
     let body = JSON.stringify(project);
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.post(environment.URL_API + environment.API_VERSION + 'project', body, options)
+    return this.http.post(environment.URL_API + environment.API_VERSION + 'project', body, this.options)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   updateProject(project) {
     let body = JSON.stringify(project);
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.put(environment.URL_API + environment.API_VERSION + 'project/' + project.id, body, options)
+    return this.http.put(environment.URL_API + environment.API_VERSION + 'project/' + project.id, body, this.options)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   deleteProject(id) {
-    let headers = new Headers({
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.delete(environment.URL_API + environment.API_VERSION + 'project/' + id, options)
+    return this.http.delete(environment.URL_API + environment.API_VERSION + 'project/' + id, this.options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -105,13 +88,7 @@ export class ProjectService {
 
   public addComment(comment) {
     let body = JSON.stringify(comment);
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.post(environment.URL_API + environment.API_VERSION + 'comment', body, options)
+    return this.http.post(environment.URL_API + environment.API_VERSION + 'comment', body, this.options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -123,40 +100,21 @@ export class ProjectService {
   }
 
   public addFavorite(project_id) {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    let options = new RequestOptions({headers: headers});
-
     return this.http.post(environment.URL_API + environment.API_VERSION +
-      'project/' + project_id + '/favorite', '', options)
+      'project/' + project_id + '/favorite', '', this.options)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   public addPosition(position) {
     let body = JSON.stringify(position);
-
-    const headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    const options = new RequestOptions({headers: headers});
-
-    return this.http.post(environment.URL_API + environment.API_VERSION + 'position', body, options)
+    return this.http.post(environment.URL_API + environment.API_VERSION + 'position', body, this.options)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   public deletePosition(position_id) {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.state.getToken()
-    });
-    let options = new RequestOptions({headers: headers});
-
-    return this.http.delete(environment.URL_API + environment.API_VERSION + 'position/' + position_id, options)
+    return this.http.delete(environment.URL_API + environment.API_VERSION + 'position/' + position_id, this.options)
       .map(this.extractData)
       .catch(this.handleError);
   }
