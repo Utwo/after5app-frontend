@@ -22,18 +22,6 @@
   position: relative;
 }
 
-//.header-logo:after {
-//  content: '';
-//  display: inline;
-//  position: absolute;
-//  background: rgba(255, 255, 255, .4);
-//  height: 100%;
-//  width: 3px;
-//  top: 0;
-//  right: 0;
-//  border-radius: $border-radius-sm;
-//}
-
 .header__search-form {
   border-radius: 12px;
   background: darken($brand-primary, 6%);
@@ -45,12 +33,11 @@
 }
 
 @media (max-width: map-get($grid-breakpoints, md)) {
-  .header-site .dropdown {
-    vertical-align: sub;
+  .header-site .dropdown-wrapper:before {
+    display: none;
   }
-
-  .header-site .dropdown__content {
-    left: -195px;
+  .header-site .dropdown-notifications .dropdown__content {
+    width: 350px;
   }
 
   .header-logo:after {

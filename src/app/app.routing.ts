@@ -6,13 +6,12 @@ import {ProfileComponent} from './profile/profile.component';
 import {ProjectListComponent} from './projects/project-list/project-list.component';
 import {ProjectComponent} from './projects/project-details/project.component';
 import {AddProjectComponent} from './projects/add-project/add-project.component';
-import {SettingsComponent} from './profile/settings/settings.component';
 import {NotFoundComponent} from './core/not-found/not-found.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './core/auth-guard.service';
 import {PersonalInfoComponent} from './profile/personal-info/personal-info.component';
 import {ProjectDetailComponent} from './projects/project-detail/project-detail.component';
-
+import {ProjectsOverviewComponent} from "./profile/projects-overview/projects-overview.component"
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
@@ -21,7 +20,7 @@ const appRoutes: Routes = [
   {path: 'project/:id', component: ProjectDetailComponent},
   {path: 'start-project', component: AddProjectComponent},
   {path: 'profile/:id', component: ProfileComponent},
-  {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
+  {path: 'projects-overview', component: ProjectsOverviewComponent, canActivate: [AuthGuard]},
   {path: 'auth/:type/callback', component: LoginComponent},
   {path: '**', component: NotFoundComponent}
 ];

@@ -2,7 +2,7 @@
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
 
-.btn:hover{
+.btn:hover {
   cursor: pointer;
 }
 
@@ -53,19 +53,11 @@
 }
 
 //Social buttons
-.btn-facebook .icon, .btn-twitter .icon, .btn-github .icon {
-  vertical-align: text-top;
-}
-
-.btn-facebook {
-  color: #fff;
-  background: #3b5998;
-  border: rgba(0, 0, 0, .2);
-}
-
-.btn-facebook:focus, .btn-facebook:hover, .btn-facebook:hover {
-  background: #2d4373;
-  color: #fff;
+.btn-login {
+  padding: 0;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
 }
 
 .btn-twitter {
@@ -76,16 +68,5 @@
 
 .btn-twitter:focus, .btn-twitter:hover, .btn-twitter:hover {
   background: #2795e9;
-  color: #fff;
-}
-
-.btn-github {
-  color: #fff;
-  background: #444;
-  border: rgba(0, 0, 0, 0.2);
-}
-
-.btn-github:focus, .btn-github:hover, .btn-github:hover {
-  background: #2b2b2b;
   color: #fff;
 }

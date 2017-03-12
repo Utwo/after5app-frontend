@@ -3,6 +3,18 @@
   display: block;
 }
 
+.sprite-astronaut {
+  width: 344px;
+  height: 320px;
+  background-position: -5px -5px;
+}
+
+.sprite-facebook-login {
+  width: 74px;
+  height: 94px;
+  background-position: -359px -5px;
+}
+
 .sprite-footer-planet_1 {
   position: absolute;
   bottom: 0;
@@ -10,7 +22,7 @@
   z-index: map-get($zindex, high);
   width: 304px;
   height: 85px;
-  background-position: -5px -5px;
+  background-position: -359px -109px;
 }
 
 .sprite-footer-planet_2 {
@@ -20,17 +32,23 @@
   z-index: map-get($zindex, high);
   width: 173px;
   height: 87px;
-  background-position: -319px -5px;
+  background-position: -443px -5px;
+}
+
+.sprite-github-login {
+  width: 74px;
+  height: 94px;
+  background-position: -359px -208px;
 }
 
 .sprite-home-planet-1 {
   position: absolute;
   left: 0;
+  top: 25%;
   z-index: map-get($zindex, high);
-
   width: 143px;
   height: 218px;
-  background-position: -319px -102px;
+  background-position: -443px -208px;
 }
 
 .sprite-home-planet-2 {
@@ -38,10 +56,9 @@
   right: 0;
   bottom: 5%;
   z-index: map-get($zindex, high);
-
   width: 168px;
   height: 400px;
-  background-position: -502px -5px;
+  background-position: -673px -5px;
 }
 
 .sprite-list-planet-1 {
@@ -60,17 +77,34 @@
   z-index: map-get($zindex, high);
   width: 296px;
   height: 77px;
-  background-position: -213px -415px;
+  background-position: -213px -436px;
+}
+
+.sprite-login-planet {
+  position: absolute;
+  bottom: 10%;
+  width: 155px;
+  height: 238px;
+  background-position: -596px -415px;
+}
+
+.sprite-satelite {
+  position: absolute;
+  right: 0;
+  top: 30%;
+  width: 174px;
+  height: 90px;
+  background-position: -5px -663px;
 }
 
 .sprite-space_wanderer {
   width: 169px;
   height: 131px;
-  background-position: -213px -502px;
+  background-position: -189px -663px;
 }
 
 .sprite-terraformer {
   width: 131px;
   height: 131px;
-  background-position: -519px -415px;
+  background-position: -368px -663px;
 }

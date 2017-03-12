@@ -1,6 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {ProjectService} from '../../projects/shared/project.service';
-import {ActivatedRoute} from '@angular/router';
 import {StateService} from '../state.service';
 import {ResponseHandlerService} from '../response-handler.service';
 
@@ -16,18 +15,17 @@ export class ProjectCardComponent implements OnInit {
   public myProject = false;
 
 
-  constructor(private route: ActivatedRoute,
-              private projectService: ProjectService,
+  constructor(private projectService: ProjectService,
               private state: StateService,
               private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
-    this.footerStatement = "The project has currently  " + this.project.favorite_count + " followers and 0 members";
     if (this.state.isLoggedIn()) {
       this.verifyIfMyProject();
       this.verifyIfFavorite();
     }
+    this.footerStatement = "The project has currently  " + this.project.favorite_count + " followers and 0 members";
   }
 
   verifyIfMyProject() {
@@ -60,9 +58,5 @@ export class ProjectCardComponent implements OnInit {
     else {
       modal.open();
     }
-  }
-
-  unfollow() {
-
   }
 }
