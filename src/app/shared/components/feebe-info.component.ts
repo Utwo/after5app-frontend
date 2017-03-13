@@ -12,7 +12,7 @@ import {Component, Input} from '@angular/core';
         Feebe
       </div>
       </div>
-      <div class="col-md-11 col-10">
+      <div class="col-md-11 col-10 text-muted">
         <div class="feebe-info__message">
           <p><b>{{title}}</b></p>
           <p> {{description}}</p>

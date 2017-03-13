@@ -15,8 +15,9 @@ export class ProjectListComponent implements OnInit {
   public isPopularActive = false;
   public isRecommendedActive = false;
 
-  constructor(private projectService: ProjectService, private state: StateService, private responseHandler: ResponseHandlerService) {
-
+  constructor(private projectService: ProjectService,
+              private state: StateService,
+              private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
@@ -66,6 +67,7 @@ export class ProjectListComponent implements OnInit {
   }
 
   extractData(projects) {
+    console.log(projects);
     this.projects = projects.data;
     this.page = {
       current_page: projects.current_page,

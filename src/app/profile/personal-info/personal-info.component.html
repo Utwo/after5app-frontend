@@ -41,10 +41,10 @@
     </div>
 
     <div class="row my-2">
-      <div class="col-lg-6 col-12">
+      <div class="col-lg-7 col-12">
         <!--name-->
         <div class="row my-2" *ngIf="editing || user.name">
-          <label class="col-md-4 project__card-label">Name:</label>
+          <label class="col-4 project__card-label">Name:</label>
           <div class="col-8">
             <span *ngIf="!editing"> {{user.name}} </span>
             <input *ngIf="editing"
@@ -56,7 +56,7 @@
         </div>
         <!--city-->
         <div class="row my-2" *ngIf="editing || user.city">
-          <label class="col-md-4 project__card-label">City:</label>
+          <label class="col-4 project__card-label">City:</label>
           <div class="col-8">
             <span *ngIf="!editing"> {{user.city}} </span>
             <input *ngIf="editing"
@@ -68,7 +68,7 @@
         </div>
         <!--workplace-->
         <div class="row my-2" *ngIf="editing || user.workplace">
-          <div class="col-md-4 project__card-label">
+          <div class="col-4 project__card-label">
             Workplace:
           </div>
           <div class="col-8">
@@ -82,13 +82,26 @@
         </div>
         <!--hobbies-->
         <div class="row my-2" *ngIf="editing || hobbies.length > 0">
-          <label class="col-md-4 project__card-label">Hobbies:</label>
+          <label class="col-4 project__card-label">Hobbies:</label>
           <div class="col-md-8">
+            <ul class="project-list list-unstyled">
+              <li *ngFor="let hobby of hobbies">
+                <a *ngIf="editing"
+                   href="javascript:;"
+                   (click)="removeHobby(hobby)"> x
+                </a>
+                {{hobby}}
+              </li>
+            </ul>
+          </div>
+          <div class="col-9 mt-2">
             <input *ngIf="editing"
                    class="form-control input-basic"
                    placeholder="Add Hobby" type="text"
                    [(ngModel)]="hobby"
                    title="hobby"/>
+          </div>
+          <div class="col-3 text-right mt-2">
             <a *ngIf="editing"
                (click)="addHobby()"
                href="javascript:;"
@@ -98,33 +111,34 @@
                 <use xlink:href="./assets/icons.svg#icon-plus"></use>
               </svg>
             </a>
-            <ul class="project-list list-unstyled">
-              <li *ngFor="let hobby of hobbies">
-                <a *ngIf="editing"
-                   href="javascript:;"
-                   (click)="removeHobby(hobby)"> x </a>
-                {{hobby}}
-              </li>
-            </ul>
           </div>
         </div>
       </div>
       <!--social-->
-      <div class="col-lg-6 col-12">
+      <div class="col-lg-5 col-12">
         <div class="row my-2">
-          <label class="col-md-4 project__card-label">Social:</label>
+          <label class="col-4 project__card-label">Social:</label>
           <div class="col-md-8">
-            <a *ngIf='user.facebook_id != null' href='http://facebook.com/{{user.facebook_id}}'><p> Facebook </p></a>
-            <a *ngIf='user.twitter != null' href='https://twitter.com/{{user.twitter}}'><p> Twitter </p></a>
-            <a *ngIf='user.github_id != null' href='http://gihub/{{user.github_id}}'><p> Github </p></a>
-            <a *ngIf='user.website != null' href='{{user.website}}'><p> Website </p></a>
-          </div>
-          <div class="col-12 my-2">
-            <select class="form-control"
+            <p *ngIf='user.facebook_id'>
+              <a *ngIf="editing" href="javascript:;"> x </a>
+              <a href='http://facebook.com/{{user.facebook_id}}'> Facebook </a>
+            </p>
+            <p *ngIf='user.twitter'>
+              <a *ngIf="editing" href="javascript:;"> x </a>
+              <a href='https://twitter.com/{{user.twitter}}'> Twitter </a>
+            </p>
+            <p *ngIf='user.github_id'>
+              <a *ngIf="editing" href="javascript:;"> x </a>
+              <a href='http://gihub/{{user.github_id}}'> Github </a>
+            </p>
+            <p *ngIf='user.website'>
+              <a *ngIf="editing" href="javascript:;"> x </a>
+              <a href='{{user.website}}'> Website </a>
+            </p>
+            <select class="form-control mb-2"
                     *ngIf="editing"
                     [(ngModel)]="socialInput"
-                    placeholder="Choose a social website"
-                    title="social">
+                    title="Choose a website">
               <option *ngFor="let obj of socialOptions">{{obj}}</option>
             </select>
           </div>
