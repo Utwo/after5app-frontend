@@ -55,7 +55,7 @@ export class ProjectService {
     let project_id = id ? '&id=!' + id : '';
     const user_id = this.state.isLoggedIn() ? this.state.getUser().id : '';
     return this.http.get(environment.URL_API + environment.API_VERSION +
-      `project?position:skill_id=${skill}&user_id=!${user_id}&with[]=user&with[]=position.skill${project_id}`)
+      `project?position:skill_id=${skill}&user_id=!${user_id}&with[]=user&with[]=favorite&with[]=position.skill${project_id}`)
       .map(this.extractData)
       .catch(this.handleError);
   }

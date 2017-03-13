@@ -38,29 +38,11 @@
   </div>
   <aside *ngIf="related && related.length > 0" class="py-3 jumbotron-fluid">
     <div class="container">
-      <h3 class="pb-1 text-center">Related projects</h3>
+      <h1 class="pb-1 text-center">Related projects</h1>
+      <h3>A few other projects in the same category that you might like, or just <a routerLink="/projects"><b> browse </b></a> for yourself</h3>
       <ul class="row list-unstyled flex-items-xs-center">
         <li *ngFor="let project of related" class="col-md-4">
-          <div class="panel p-1">
-            <h4 class="project__title"><a routerLink="/project/{{project.id}}">
-              {{project.title}}
-            </a></h4>
-            <i class="text-muted project__date"> {{ project.created_at | timeAgo}} </i>
-            <p>{{project.description | slice:0:40 }}</p>
-            <ul class="list-inline text-center" *ngIf="project.position.length > 0">
-              <li class="list-inline-item btn btn-sm btn-gradient-primary project__skill-item"
-                  *ngFor="let position of project.position">
-                {{position.skill.name}}
-              </li>
-            </ul>
-            <br>
-            <div class="project__subinfo">
-              <img class="profile-img" *ngIf="project.user.picture"
-                   src="{{project.user.picture+'?s=20&width=20&height=20'}}"><a
-              routerLink="/profile/{{project.user_id}}">
-              {{project.user.name}}</a>
-            </div>
-          </div>
+          <app-project-card [project]=project></app-project-card>
         </li>
       </ul>
     </div>
