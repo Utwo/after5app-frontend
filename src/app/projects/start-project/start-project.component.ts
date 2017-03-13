@@ -4,10 +4,10 @@ import {ProjectService} from '../shared/project.service';
 import {ResponseHandlerService} from '../../shared/response-handler.service';
 
 @Component({
-  selector: 'app-add-project',
-  templateUrl: './add-project.component.html',
+  selector: 'app-start-project',
+  templateUrl: 'start-project.component.html',
 })
-export class AddProjectComponent implements OnInit {
+export class StartProjectComponent implements OnInit {
   project = {title: '', descripton: '', application_questions: [], position: []};
   selectedSkill = '';
   questionError = null;

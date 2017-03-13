@@ -30,7 +30,7 @@ import {AboutComponent} from './about/about.component';
 import {ProfileComponent} from './profile/profile.component';
 import {CommentsComponent} from './projects/project-details/comments/comments.component';
 import {AddApplicationComponent} from './projects/project-details/add-application/add-application.component';
-import {AddProjectComponent} from './projects/add-project/add-project.component';
+import {StartProjectComponent} from './projects/start-project/start-project.component';
 import {FooterComponent} from './footer/footer.component';
 import {NavigationComponent} from './navigation/navigation.component';
 import {SearchComponent} from './navigation/search/search.component';
@@ -70,7 +70,7 @@ import { ProjectsListOverviewComponent } from './profile/projects-overview/proje
     AddApplicationComponent,
     AutocompleteComponent,
     TimeAgoPipe,
-    AddProjectComponent,
+    StartProjectComponent,
     SearchComponent,
     FooterComponent,
     UserNavComponent,
