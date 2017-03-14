@@ -1,5 +1,6 @@
 
 <div *ngIf="applications">
+
   <h3 *ngIf="applications.length > 0"> {{applications.length}} Applicants</h3>
   <ul *ngIf="applications.length > 0" >
       <li *ngFor="let application of applications">

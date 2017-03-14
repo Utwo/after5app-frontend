@@ -1,3 +1,15 @@
-<p>
-  project-applicants works!
-</p>
+<div *ngIf="applications">
+  <h3> Joined the project </h3>
+  <ul class="row list-unstyled flex-items-xs-center">
+    <li *ngFor="let member of members" class="col-md-4">
+      <app-applications-card [user]=member></app-applications-card>
+    </li>
+  </ul>
+  <h3> Applying for the project </h3>
+  <ul class="row list-unstyled flex-items-xs-center">
+    <li *ngFor="let user of applying" class="col-md-4">
+      <app-applications-card [user]=user></app-applications-card>
+    </li>
+  </ul>
+</div>
+
