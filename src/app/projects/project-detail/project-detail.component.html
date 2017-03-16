@@ -14,7 +14,7 @@
       </template>
       <app-project-assets [project_id]="id"></app-project-assets>
     </tab>
-    <tab>
+    <tab *ngIf="myProject">
       <template tabHeading>
         APPLICANTS
       </template>

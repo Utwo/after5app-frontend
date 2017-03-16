@@ -7,7 +7,7 @@ import {ResponseHandlerService} from '../../../../shared/response-handler.servic
   templateUrl: 'applications-card.component.html'
 })
 export class ApplicationsCardComponent implements OnInit {
-  @Input() user;
+  @Input() application;
   @Output() onResponse = new EventEmitter<number>();
 
   constructor(private applicationService: ApplicationService,
@@ -18,14 +18,13 @@ export class ApplicationsCardComponent implements OnInit {
   }
 
 
-  acceptApplication(application_id, index) {
-    // this.applicationService.acceptApplication(application_id)
-    //   .subscribe(
-    //     () => {
-    //       this.applications.splice(index, 1);
-    //       this.onResponse.emit(application_id);
-    //     },
-    //     error => this.responseHandler.errorMessage('An error occured!', error));
+  acceptApplication(application_id) {
+    this.applicationService.acceptApplication(application_id)
+      .subscribe(
+        () => {
+          this.onResponse.emit(application_id);
+        },
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   declineApplication(application_id, index) {

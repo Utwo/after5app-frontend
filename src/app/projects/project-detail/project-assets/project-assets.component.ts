@@ -19,7 +19,6 @@ export class ProjectAssetsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private state: StateService,
-              private router: Router,
               private assets: ProjectAssetsService,
               private responseHandler: ResponseHandlerService) {
   }

@@ -17,7 +17,6 @@ export class ProjectDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private projectService: ProjectService,
-              private applicationService: ApplicationService,
               private state: StateService,
               private router: Router,
               private responseHandler: ResponseHandlerService) {
@@ -28,14 +27,10 @@ export class ProjectDetailComponent implements OnInit {
     this.route.params
       .map(params => params['id'])
       .subscribe((id) => {
-       // if (this.id !== id) {
-          // this.myProject = false;
-          // this.isMember = false;
           this.id = id;
-        //  this.getProject();
+          this.getProject();
         // }
       });
-    //console.log("projectId",this.id)
   }
 
   getProject() {
@@ -47,13 +42,9 @@ export class ProjectDetailComponent implements OnInit {
             return;
           }
           this.project = project.data[0];
-
           if (this.state.isLoggedIn()) {
             this.verifyIfMyProject();
-           // this.verifyIfFavorite();
           }
-         // this.getRelatedProjects();
-         // this.getMembers();
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
@@ -61,12 +52,8 @@ export class ProjectDetailComponent implements OnInit {
   verifyIfMyProject() {
     if (this.state.getUser().id === this.project.user_id) {
       this.myProject = true;
-      // this.getApplications();
     } else {
       this.myProject = false;
     }
   }
-
-
-
 }

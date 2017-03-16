@@ -1,15 +1,20 @@
-<div *ngIf="applications">
-  <h3> Joined the project </h3>
-  <ul class="row list-unstyled flex-items-xs-center">
-    <li *ngFor="let member of members" class="col-md-4">
-      <app-applications-card [user]=member></app-applications-card>
-    </li>
-  </ul>
+<div *ngIf="project_id">
+  <div *ngIf="members">
+    <h3> Joined the project </h3>
+    <ul class="row list-unstyled flex-items-xs-center">
+      <li *ngFor="let member of members" class="col-md-4">
+        <app-applications-card [application]=member></app-applications-card>
+      </li>
+    </ul>
+    <p *ngIf='members.length === 0'> No one has joined your project yet</p>
+  </div>
   <h3> Applying for the project </h3>
-  <ul class="row list-unstyled flex-items-xs-center">
-    <li *ngFor="let user of applying" class="col-md-4">
-      <app-applications-card [user]=user></app-applications-card>
-    </li>
-  </ul>
+  <div *ngIf="applying">
+    <ul class="row list-unstyled flex-items-xs-center">
+      <li *ngFor="let user of applying" class="col-md-4">
+        <app-applications-card [application]=user></app-applications-card>
+      </li>
+    </ul>
+  </div>
+  <p *ngIf='applying.length === 0'> No applicants so far...</p>
 </div>
-
