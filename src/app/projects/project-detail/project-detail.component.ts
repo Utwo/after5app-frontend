@@ -29,7 +29,6 @@ export class ProjectDetailComponent implements OnInit {
       .subscribe((id) => {
           this.id = id;
           this.getProject();
-        // }
       });
   }
 
@@ -42,6 +41,7 @@ export class ProjectDetailComponent implements OnInit {
             return;
           }
           this.project = project.data[0];
+          console.log(this.project)
           if (this.state.isLoggedIn()) {
             this.verifyIfMyProject();
           }

@@ -1,8 +1,17 @@
 <div *ngIf="project">
 <div class="row">
-  <div>
-    <p> I want to create: </p>
-    <p> {{project.description}}</p>
+  <div class="row">
+    <p> I want to create: {{project.description}}</p>
+    <div>
+      <p> Open Positions! </p>
+      <ul >
+        <li *ngFor='let position of project.position'>
+          <span (click)='scollDown()'> {{position.skill.name}} </span>
+          <span *ngIf='position.member.length === 0'> OPEN </span>
+          <span *ngIf='position.member.length  > 0'> FILLED </span>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
   <div class="row">
@@ -27,7 +36,7 @@
           </svg>
         </a> </span>
       </div>
-      <div *ngFor="let position of project.position">
+      <div id='positionsInfo' *ngFor="let position of project.position">
         <app-position-card [project]=project [position]=position></app-position-card>
       </div>
     </div>

@@ -53,8 +53,9 @@ export class ProjectBriefComponent implements OnInit {
     }
   }
 
-  addPosition() {
-
+  scrollDown() {
+    // $location.hash('positionsInfo');
+    // $anchorScroll();
   }
 
   getRelatedProjects() {
