@@ -1,7 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProjectService} from '../shared/project.service';
-import {ApplicationService} from '../shared/application.service';
 import {StateService} from '../../shared/state.service';
 import {ResponseHandlerService} from '../../shared/response-handler.service';
 
@@ -10,10 +9,12 @@ import {ResponseHandlerService} from '../../shared/response-handler.service';
   templateUrl: './project-detail.component.html',
   styles: []
 })
+
 export class ProjectDetailComponent implements OnInit {
   @Input() id;
-  private project = null;
+  public project = null;
   private myProject = false;
+  private isMember = false;
 
   constructor(private route: ActivatedRoute,
               private projectService: ProjectService,
@@ -21,7 +22,6 @@ export class ProjectDetailComponent implements OnInit {
               private router: Router,
               private responseHandler: ResponseHandlerService) {
   }
-
 
   ngOnInit() {
     this.route.params
@@ -44,9 +44,21 @@ export class ProjectDetailComponent implements OnInit {
           console.log(this.project)
           if (this.state.isLoggedIn()) {
             this.verifyIfMyProject();
+            this.verifyIfMember();
           }
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
+  }
+
+  verifyIfMember() {
+    let self = this;
+    this.project.position.map (position => {
+      position.member.map (member => {
+        if (member.id === this.state.getUser().id) {
+          self.isMember = true;
+        }
+      });
+    });
   }
 
   verifyIfMyProject() {

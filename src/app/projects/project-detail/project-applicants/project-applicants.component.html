@@ -2,9 +2,11 @@
   <div *ngIf="members">
     <h3> Joined the project </h3>
     <ul class="row list-unstyled flex-items-xs-center">
-      <li *ngFor="let member of members" class="col-md-4">
-        <app-applications-card [application]=member></app-applications-card>
-      </li>
+      <ng-container *ngFor="let member of applications">
+        <li *ngIf="member.accepted" class="col-md-4">
+          <app-applications-card [application]=member></app-applications-card>
+        </li>
+      </ng-container>
     </ul>
     <p *ngIf='members.length === 0'> No one has joined your project yet</p>
   </div>

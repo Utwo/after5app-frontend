@@ -12,43 +12,26 @@ import {Router} from '@angular/router';
 
 export class ProjectHeaderComponent implements OnInit {
   private user = null;
-  @Input() project_id;
-  private project = null;
-  private myProject = false;
+  @Input() project;
+  myProject = false;
   private isFollowed = false;
 
   constructor(
               private projectService: ProjectService,
               private state: StateService,
-              private router: Router,
               private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
-    this.getProject();
-  }
-
-  getProject() {
-    this.projectService.getProjectById(this.project_id)
-      .subscribe(
-        project => {
-          if (project.data.length === 0) {
-            this.router.navigate(['/not-found']);
-            return;
-          }
-          this.project = project.data[0];
-          this.loadData();
-          if (this.state.isLoggedIn()) {
-            this.verifyIfMyProject();
-          }
-        },
-        error => this.responseHandler.errorMessage('An error occured!', error));
+    this.user = this.project.user;
+    this.loadData();
   }
 
   loadData() {
-    this.user = this.project.user;
-    this.verifyIfFavorite();
-    this.verifyIfMyProject();
+    if (this.state.isLoggedIn()) {
+      this.verifyIfFavorite();
+      this.verifyIfMyProject();
+    }
   }
 
   verifyIfFavorite() {
@@ -69,7 +52,7 @@ export class ProjectHeaderComponent implements OnInit {
   }
 
   follow(modal) {
-    if(this.state.isLoggedIn()) {
+    if (this.state.isLoggedIn()) {
       this.projectService.addFavorite(this.project.id)
         .subscribe(
           () => {
@@ -81,8 +64,7 @@ export class ProjectHeaderComponent implements OnInit {
             }
           },
           error => this.responseHandler.errorMessage('An error occured!', error));
-    }
-    else {
+    } else {
       modal.open();
     }
   }

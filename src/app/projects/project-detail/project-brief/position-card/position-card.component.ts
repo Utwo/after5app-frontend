@@ -17,16 +17,17 @@ export class PositionCardComponent implements OnInit {
   hasMember = false;
   showDetails = false;
 
-  constructor(  private projectService: ProjectService,
-                private state: StateService,
+  constructor( private state: StateService,
                 private responseHandler: ResponseHandlerService) { }
 
   ngOnInit() {
-    if(this.position.member.length > 0 ) {
+    if (this.position.member.length > 0 ) {
       this.hasMember = true;
       this.member = this.position.member[0];
     }
-    this.verifyIfMyProject();
+    if (this.state.isLoggedIn()) {
+      this.verifyIfMyProject();
+    }
   }
 
   verifyIfMyProject() {

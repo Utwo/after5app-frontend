@@ -11,8 +11,7 @@ import {ResponseHandlerService} from '../../../shared/response-handler.service';
   styles: []
 })
 export class ProjectBriefComponent implements OnInit {
-  @Input() project_id;
-  project = null;
+  @Input() project;
   private myProject = false;
   public related = null;
 
@@ -24,24 +23,10 @@ export class ProjectBriefComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getProject();
-  }
-
-  getProject() {
-    this.projectService.getProjectById(this.project_id)
-      .subscribe(
-        project => {
-          if (project.data.length === 0) {
-            this.router.navigate(['/not-found']);
-            return;
-          }
-          this.project = project.data[0];
-          if (this.state.isLoggedIn()) {
-            this.verifyIfMyProject();
-          }
-           this.getRelatedProjects();
-        },
-        error => this.responseHandler.errorMessage('An error occured!', error));
+    if (this.state.isLoggedIn()) {
+      this.verifyIfMyProject();
+    }
+    this.getRelatedProjects();
   }
 
   verifyIfMyProject() {

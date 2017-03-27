@@ -1,24 +1,24 @@
-<app-project-header [project_id]="id"></app-project-header>
+<app-project-header *ngIf='project' [project]="project"></app-project-header>
 
-<div class="container my-3">
+<div *ngIf='project' class="container my-3">
   <tabset>
     <tab [active]="true">
       <template tabHeading>
         BRIEF
       </template>
-      <app-project-brief [project_id]="id"></app-project-brief>
+      <app-project-brief [project]="project"></app-project-brief>
     </tab>
-    <tab>
+    <tab *ngIf="isMember || myProject">
       <template tabHeading>
         ASSETS
       </template>
-      <app-project-assets [project_id]="id"></app-project-assets>
+      <app-project-assets [project_id]="project.id"></app-project-assets>
     </tab>
     <tab *ngIf="myProject">
       <template tabHeading>
         APPLICANTS
       </template>
-      <app-project-applicants [project_id]="id"></app-project-applicants>
+      <app-project-applicants [project_id]="project.id" [user]="project.user"></app-project-applicants>
     </tab>
   </tabset>
 </div>
