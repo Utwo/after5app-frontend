@@ -1,10 +1,10 @@
 {
-  "name": "startupper-frontend",
+  "name": "after5app",
   "version": "0.0.1",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "ng serve --hmr --e=dev",
+    "start": "ng serve --hmr --e=dev --aot",
     "prod": "ng build --prod --aot",
     "stage": "ng build --prod --env=stage --aot",
     "lint": "tslint \"src/**/*.ts\"",
@@ -14,14 +14,16 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "^2.4.5",
-    "@angular/compiler": "^2.4.5",
-    "@angular/core": "^2.4.5",
-    "@angular/forms": "^2.4.5",
-    "@angular/http": "^2.4.5",
-    "@angular/platform-browser": "^2.4.5",
-    "@angular/platform-browser-dynamic": "^2.4.5",
-    "@angular/router": "3.4.5",
+    "@angular/common": "^4.0.0",
+    "@angular/compiler": "^4.0.0",
+    "@angular/compiler-cli": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/forms": "^4.0.0",
+    "@angular/http": "^4.0.0",
+    "@angular/platform-browser": "^4.0.0",
+    "@angular/platform-browser-dynamic": "^4.0.0",
+    "@angular/platform-server": "^4.0.0",
+    "@angular/router": "^4.0.0",
     "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
     "mo-js": "^0.288.1",
@@ -29,14 +31,14 @@
     "ng2-toasty": "^2.3.0",
     "rxjs": "5.0.0",
     "ts-helpers": "^1.1.1",
+    "typescript": "^2.2.1",
     "zone.js": "0.7.2"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "2.4.5",
+    "@angular/cli": "^1.0.0",
     "@angularclass/hmr": "^1.2.2",
     "@types/jasmine": "2.5.38",
     "@types/node": "^6.0.42",
-    "angular-cli": "1.0.0-beta.26",
     "codelyzer": "~2.0.0-beta.1",
     "extract-text-webpack-plugin": "^2.0.0-rc.0",
     "gulp": "^3.9.1",
@@ -55,7 +57,6 @@
     "karma-remap-istanbul": "^0.2.1",
     "protractor": "~4.0.13",
     "ts-node": "1.2.1",
-    "tslint": "^4.0.2",
-    "typescript": "~2.0.3"
+    "tslint": "^4.0.2"
   }
 }
