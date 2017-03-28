@@ -7,16 +7,13 @@ import {ResponseHandlerService} from '../../shared/response-handler.service';
   selector: 'app-add-project',
   templateUrl: './add-project.component.html',
 })
-export class AddProjectComponent implements OnInit {
-  project = {title: '', descripton: '', application_questions: [], position: []};
+export class AddProjectComponent {
+  public project: any = {title: '', descripton: '', application_questions: [], position: []};
   selectedSkill = '';
   questionError = null;
   positionError = null;
 
   constructor(private projectService: ProjectService, private router: Router, private responseHandler: ResponseHandlerService) {
-  }
-
-  ngOnInit() {
   }
 
   storeProject() {

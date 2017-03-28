@@ -1,5 +1,4 @@
-import {Component, OnInit, Output, Input} from '@angular/core';
-import {EventEmitter} from '@angular/common/src/facade/async';
+import {Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
 import {ApplicationService} from '../../shared/application.service';
 
 @Component({

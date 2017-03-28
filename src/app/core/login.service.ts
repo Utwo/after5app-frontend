@@ -31,6 +31,7 @@ export class LoginService {
   }
 
   authFacebook(code) {
+    console.log(code);
     this.http.post(environment.URL_API + 'api/auth/facebook/callback?code=' + code, '')
       .map(res => res.json())
       .subscribe(
@@ -57,7 +58,6 @@ export class LoginService {
   private handleError(error: any) {
     let errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    console.error(errMsg);
     return Observable.throw(errMsg);
   }
 }
