@@ -1,16 +1,14 @@
 {
-  "name": "after5app",
+  "name": "startupper-frontend",
   "version": "0.0.1",
   "license": "MIT",
-  "angular-cli": {},
   "scripts": {
     "start": "ng serve --hmr --e=dev",
     "prod": "ng build --prod --aot",
     "stage": "ng build --prod --env=stage --aot",
-    "lint": "tslint \"src/**/*.ts\"",
-    "test": "ng test --single-run --lint --watch=false",
-    "pree2e": "webdriver-manager update --standalone false --gecko false",
-    "e2e": "protractor"
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -29,18 +27,15 @@
     "ng2-bootstrap": "^1.4.2",
     "ng2-toasty": "^2.5.0",
     "rxjs": "^5.2.0",
-    "ts-helpers": "^1.1.1",
-    "typescript": "^2.2.1",
     "zone.js": "^0.8.5"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "^4.0.0",
     "@angular/cli": "^1.0.0",
+    "@angular/compiler-cli": "^4.0.0",
     "@angularclass/hmr": "^1.2.2",
     "@types/jasmine": "2.5.38",
-    "@types/node": "^7.0.11",
+    "@types/node": "^7.0.12",
     "codelyzer": "~2.0.0-beta.1",
-    "extract-text-webpack-plugin": "^2.0.0-rc.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-clean-css": "^2.0.12",
@@ -55,8 +50,9 @@
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "karma-remap-istanbul": "^0.2.1",
-    "protractor": "~4.0.13",
-    "ts-node": "1.2.1",
-    "tslint": "^4.0.2"
+    "protractor": "~5.1.0",
+    "ts-node": "^2.0.0",
+    "tslint": "^4.5.0",
+    "typescript": "^2.2.2"
   }
 }
