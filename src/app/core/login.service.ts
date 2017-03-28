@@ -31,6 +31,7 @@ export class LoginService {
   }
 
   authFacebook(code) {
+    console.log(code);
     this.http.post(environment.URL_API + 'api/auth/facebook/callback?code=' + code, '')
       .map(res => res.json())
       .subscribe(

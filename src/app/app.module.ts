@@ -18,7 +18,7 @@ import {ApplicationService} from './projects/shared/application.service';
 import {NotificationsService} from './navigation/user-nav/shared/notifications.service';
 // pipes
 import {TimeAgoPipe} from './time-ago.pipe';
-//directives
+// directives
 import { FocusDirective } from './shared/focus.directive';
 // components
 import {AppComponent} from './app.component';
@@ -45,7 +45,7 @@ import {FeebeMessageComponent} from './shared/components/feebe-message.component
 import {LoaderComponent} from './shared/components/loader.component';
 import {LoginModalComponent} from './shared/login-modal/login-modal.component';
 import {PersonalInfoComponent} from './profile/personal-info/personal-info.component';
-import {SkillsComponentComponent} from './profile/skills-component/skills-component.component';
+import {SkillsComponent} from './profile/skills/skills.component';
 import {BadgesComponent} from './profile/badges/badges.component';
 import {NotificationComponent} from './navigation/user-nav/notification/notification.component';
 import {ProjectCardComponent} from './shared/project-card/project-card.component';
@@ -89,7 +89,7 @@ import { ProjectsListOverviewComponent } from './profile/projects-overview/proje
     ProjectsListOverviewComponent,
     FocusDirective,
     BadgesComponent,
-    SkillsComponentComponent,
+    SkillsComponent,
     PersonalInfoComponent,
     NotificationComponent,
     FeebeMessageComponent,

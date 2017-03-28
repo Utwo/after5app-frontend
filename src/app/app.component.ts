@@ -20,7 +20,7 @@ export class AppComponent {
     this.toastyConfig.theme = 'bootstrap';
 
     this.router.events.subscribe((event) => {
-      if (event.url !== this.url && event instanceof NavigationEnd) {
+      if (event !== this.url && event instanceof NavigationEnd) {
         this.url = event.url;
         ga('send', 'pageview', {page: event.url});
       }

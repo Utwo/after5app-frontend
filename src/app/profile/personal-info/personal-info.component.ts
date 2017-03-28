@@ -9,14 +9,14 @@ import {ResponseHandlerService} from '../../shared/response-handler.service';
 })
 export class PersonalInfoComponent implements OnChanges {
   @Input() user;
-  private isMe = false;
-  private editing = false;
-  private name: String = '';
-  private city: String = '';
-  private workplace: String = '';
-  private description: String = '';
-  private hobby: String = '';
-  private hobbies: String[] = [];
+  public isMe = false;
+  public editing = false;
+  public name: String = '';
+  public city: String = '';
+  public workplace: String = '';
+  public description: String = '';
+  public hobby: String = '';
+  public hobbies: String[] = [];
   public socialInput: String = null;
   public socialOptions: String[] = ['Facebook', 'LinkedIn', 'Twitter', 'GitHub', 'Medium'];
   public link: String = '';
