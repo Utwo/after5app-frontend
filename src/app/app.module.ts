@@ -18,8 +18,8 @@ import {ApplicationService} from './projects/shared/application.service';
 import {NotificationsService} from './navigation/user-nav/shared/notifications.service';
 // pipes
 import {TimeAgoPipe} from './time-ago.pipe';
-//directives
-import { FocusDirective } from './shared/focus.directive';
+// directives
+import {FocusDirective} from './shared/focus.directive';
 // components
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
@@ -31,6 +31,12 @@ import {ProfileComponent} from './profile/profile.component';
 import {CommentsComponent} from './projects/project-details/comments/comments.component';
 import {AddApplicationComponent} from './projects/project-details/add-application/add-application.component';
 import {StartProjectComponent} from './projects/start-project/start-project.component';
+import {TitleFormComponent} from './projects/start-project/forms/title-form';
+import {SkillsFormComponent} from './projects/start-project/forms/skills-form';
+import {DescriptionFormComponent} from './projects/start-project/forms/description-form';
+import {QuestionsFormComponent} from './projects/start-project/forms/questions-form';
+import {AssetsFormComponent} from './projects/start-project/forms/assets-form';
+import {ProjectOverviewComponent} from './projects/start-project/forms/project-overview';
 import {FooterComponent} from './footer/footer.component';
 import {NavigationComponent} from './navigation/navigation.component';
 import {SearchComponent} from './navigation/search/search.component';
@@ -49,12 +55,12 @@ import {SkillsComponentComponent} from './profile/skills-component/skills-compon
 import {BadgesComponent} from './profile/badges/badges.component';
 import {NotificationComponent} from './navigation/user-nav/notification/notification.component';
 import {ProjectCardComponent} from './shared/project-card/project-card.component';
-import { ProjectsOverviewComponent } from './profile/projects-overview/projects-overview.component';
-import { FeebeInfoComponent } from './shared/components/feebe-info.component';
-import { HomeCardComponent } from './home/home-card/home-card.component';
-import { HomeSectionComponent } from './home/home-section/home-section.component';
-import { HomeParagraphComponent } from './home/home-section/home-paragraph/home-paragraph.component';
-import { ProjectsListOverviewComponent } from './profile/projects-overview/projects-list-overview/projects-list-overview.component';
+import {ProjectsOverviewComponent} from './profile/projects-overview/projects-overview.component';
+import {FeebeInfoComponent} from './shared/components/feebe-info.component';
+import {HomeCardComponent} from './home/home-card/home-card.component';
+import {HomeSectionComponent} from './home/home-section/home-section.component';
+import {HomeParagraphComponent} from './home/home-section/home-paragraph/home-paragraph.component';
+import {ProjectsListOverviewComponent} from './profile/projects-overview/projects-list-overview/projects-list-overview.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +99,13 @@ import { ProjectsListOverviewComponent } from './profile/projects-overview/proje
     PersonalInfoComponent,
     NotificationComponent,
     FeebeMessageComponent,
-    LoaderComponent
+    LoaderComponent,
+    TitleFormComponent,
+    DescriptionFormComponent,
+    SkillsFormComponent,
+    AssetsFormComponent,
+    QuestionsFormComponent,
+    ProjectOverviewComponent
   ],
   imports: [
     routing,
