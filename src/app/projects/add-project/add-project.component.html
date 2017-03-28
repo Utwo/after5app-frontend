@@ -14,8 +14,8 @@
       <i *ngIf="project.title.length >= 20" class="form-text text-danger">
         Title cannot be more than 20 characters long.</i>
       <div *ngIf="title.errors && (title.dirty || title.touched)">
-        <i [hidden]="!title.errors.required" class="form-text text-danger">Title is required</i>
-        <i [hidden]="!title.errors.minlength" class="form-text text-danger">Title must be at least 4 characters
+        <i [hidden]="!title.errors.hasError.required" class="form-text text-danger">Title is required</i>
+        <i [hidden]="!title.errors.hasError.minlength" class="form-text text-danger">Title must be at least 4 characters
           long.</i>
       </div>
     </div>

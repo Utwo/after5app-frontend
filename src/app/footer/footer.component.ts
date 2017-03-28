@@ -7,7 +7,7 @@ import {StateService} from '../shared/state.service';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(private state: StateService) {
+  constructor(public state: StateService) {
   }
 
   ngOnInit() {

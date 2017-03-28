@@ -7,6 +7,6 @@ import {StateService} from '../shared/state.service';
 })
 export class HomeComponent {
 
-  constructor(private state: StateService) {
+  constructor(public state: StateService) {
   }
 }

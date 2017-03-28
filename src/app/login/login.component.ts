@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import 'rxjs/add/operator/map';
 import {LoginService} from '../core/login.service';
 
 @Component({
@@ -12,16 +11,15 @@ export class LoginComponent implements OnInit {
   private code;
 
   constructor(private route: ActivatedRoute, private loginService: LoginService) {
-    this.route.params.subscribe(params => {
-      this.type = params['type'];
-    });
-
-    this.route.queryParams.subscribe(params => {
-      this.code = params['code'];
-    });
   }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.code = params['code'];
+    });
+    this.route.params.subscribe(params => {
+      this.type = params['type'];
+    });
     if (this.type === 'email') {
       this.loginService.authEmail(this.code);
     } else if (this.type === 'facebook') {
