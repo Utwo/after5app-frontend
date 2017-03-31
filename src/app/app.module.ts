@@ -49,6 +49,7 @@ import {AutocompleteComponent} from './shared/autocomplete/autocomplete.componen
 import {SectionHeaderComponent} from './shared/components/section-header.component';
 import {FeebeMessageComponent} from './shared/components/feebe-message.component';
 import {LoaderComponent} from './shared/components/loader.component';
+import {StepsComponent} from './shared/components/steps.component';
 import {LoginModalComponent} from './shared/login-modal/login-modal.component';
 import {PersonalInfoComponent} from './profile/personal-info/personal-info.component';
 import {SkillsComponent} from './profile/skills/skills.component';
@@ -105,7 +106,8 @@ import {ProjectsListOverviewComponent} from './profile/projects-overview/project
     SkillsFormComponent,
     AssetsFormComponent,
     QuestionsFormComponent,
-    ProjectOverviewComponent
+    ProjectOverviewComponent,
+    StepsComponent
   ],
   imports: [
     routing,

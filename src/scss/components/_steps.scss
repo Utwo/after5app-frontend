@@ -1,0 +1,13 @@
+.step-button {
+  background: $brand-info;
+  content: '';
+  width: 4em;
+  height: .5em;
+  margin: 0 7px;
+  border-radius: $border-radius;
+  display: inline-block;
+}
+
+.step-button.active {
+  background: $brand-success;
+}
