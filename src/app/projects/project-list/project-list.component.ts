@@ -14,8 +14,9 @@ export class ProjectListComponent implements OnInit {
   public isRecentActive = true;
   public isPopularActive = false;
   public isRecommendedActive = false;
+  public modal;
 
-  constructor(private projectService: ProjectService, private state: StateService, private responseHandler: ResponseHandlerService) {
+  constructor(private projectService: ProjectService, public state: StateService, private responseHandler: ResponseHandlerService) {
 
   }
 

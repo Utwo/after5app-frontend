@@ -1,6 +1,6 @@
 {
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "version": "1.0.0-beta.22-1",
     "name": "After5app"
   },
   "apps": [
@@ -8,39 +8,50 @@
       "root": "src",
       "outDir": "dist",
       "assets": [
-		  "assets",
-		  "favicon.ico",
-		  "favicon-16x16.png",
-		  "favicon-32x32.png",
-		  "favicon-96x96.png",
-		  "favicon-300x300.png",
-		  ".htaccess"
-	   ],
+        "assets",
+        "favicon.ico",
+        "favicon-16x16.png",
+        "favicon-32x32.png",
+        "favicon-96x96.png",
+        "favicon-300x300.png",
+        ".htaccess"
+      ],
       "index": "index.html",
       "main": "main.ts",
+      "polyfills": "polyfills.ts",
       "test": "test.ts",
-      "tsconfig": "tsconfig.json",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "mobile": false,
       "styles": [
         "main.css"
       ],
       "scripts": [],
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "source": "environments/environment.ts",
         "prod": "environments/environment.prod.ts",
         "dev": "environments/environment.dev.ts",
         "stage": "environments/environment.stage.ts"
       }
     }
   ],
-  "addons": [],
-  "packages": [],
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
     }
   },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json"
+    },
+    {
+      "project": "src/tsconfig.spec.json"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json"
+    }
+  ],
   "test": {
     "karma": {
       "config": "./karma.conf.js"
@@ -52,14 +63,6 @@
     "inline": {
       "style": true,
       "template": false
-    },
-    "spec": {
-      "class": false,
-      "component": true,
-      "directive": true,
-      "module": false,
-      "pipe": true,
-      "service": true
     }
   }
 }

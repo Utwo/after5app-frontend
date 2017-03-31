@@ -4,17 +4,17 @@ import {StateService} from '../../shared/state.service';
 import {ResponseHandlerService} from '../../shared/response-handler.service';
 
 @Component({
-  selector: 'app-skills-component',
-  templateUrl: './skills-component.component.html',
+  selector: 'app-skills',
+  templateUrl: './skills.component.html',
 })
 
-export class SkillsComponentComponent implements OnChanges {
+export class SkillsComponent implements OnChanges {
   @Input() user;
-  private editing = false;
+  public editing = false;
   private newSkill;
   private newSkillLevel;
-  private newSkills = [];
-  private isMe = false;
+  public newSkills = [];
+  public isMe = false;
 
   constructor(private profileService: ProfileService,
               private state: StateService,

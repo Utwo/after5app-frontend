@@ -5,12 +5,8 @@ import {StateService} from '../shared/state.service';
   selector: 'app-footer',
   templateUrl: './footer.component.html'
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
 
-  constructor(private state: StateService) {
-  }
-
-  ngOnInit() {
-  }
+  constructor(private state: StateService) {}
 
 }
