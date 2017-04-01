@@ -1,6 +1,5 @@
-import {Component, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ProjectService} from '../../shared/project.service';
-import {EventEmitter} from '@angular/common/src/facade/async';
 import {ResponseHandlerService} from '../../../shared/response-handler.service';
 
 @Component({

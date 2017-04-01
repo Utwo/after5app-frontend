@@ -1,18 +1,18 @@
 import {Component, OnInit} from '@angular/core';
-import {StateService} from "../../shared/state.service"
-import {ResponseHandlerService} from "../../shared/response-handler.service"
-import {ProfileService} from "../shared/profile.service"
+import {StateService} from '../../shared/state.service';
+import {ResponseHandlerService} from '../../shared/response-handler.service';
+import {ProfileService} from '../shared/profile.service';
 
 @Component({
   selector: 'app-projects-overview',
   templateUrl: './projects-overview.component.html',
 })
 export class ProjectsOverviewComponent implements OnInit {
-  private projects = null;
-  private followingProjects = null;
-  private appliedProjects = null;
-  private joinedProjects = null;
-  private feebeDescription = null;
+  public projects = null;
+  public followingProjects = null;
+  public appliedProjects = null;
+  public joinedProjects = null;
+  public feebeDescription = null;
 
   constructor(private profileService: ProfileService,
               private state: StateService,
@@ -53,9 +53,9 @@ export class ProjectsOverviewComponent implements OnInit {
     return projects.filter((project) => {
       let isMember = false;
       project.position.map((position) => {
-        isMember = !!position.member.find((member) => member.id === this.state.getUser().id)
+        isMember = !!position.member.find((member) => member.id === this.state.getUser().id);
       });
-      return ok? isMember : !isMember;
+      return ok ? isMember : !isMember;
     });
   }
 

@@ -7,9 +7,9 @@
 <div class="container my-3">
   <tabset>
     <tab [active]="true">
-      <template tabHeading>
+      <ng-template tabHeading>
         PROJECTS
-      </template>
+      </ng-template>
       <!--created-->
       <app-projects-list-overview
         [header]="'Created Projects'"
@@ -25,19 +25,21 @@
 
     </tab>
     <tab>
-      <template tabHeading>
+      <ng-template tabHeading>
         FOLLOWING
-      </template>
+      </ng-template>
       <app-projects-list-overview
         [projects]="followingProjects">
       </app-projects-list-overview>
     </tab>
     <tab>
-      <template tabHeading>
+      <ng-template tabHeading>
         APPLIED FOR
-      </template>
+      </ng-template>
       <app-projects-list-overview
-        [projects]="appliedProjects">
+        [projects]="appliedProjects"
+        [feebeTitle]="'Hang on!'"
+        [feebeDescription]="'Your applications are being considered...'">
       </app-projects-list-overview>
     </tab>
   </tabset>

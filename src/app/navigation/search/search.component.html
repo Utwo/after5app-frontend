@@ -20,7 +20,7 @@
   <i>No Results Found</i>
 </div>
 
-<template #projectItemTemplate let-project="item" let-index="index">
+<ng-template #projectItemTemplate let-project="item" let-index="index">
   <h5 class="text-primary">{{project.title}}</h5>
   <p class="text-truncate text-muted">{{project.description}}</p>
   <ul class="list-inline text-center" *ngIf="project.position.length > 0">
@@ -29,4 +29,4 @@
       {{position.skill.name}}
     </li>
   </ul>
-</template>
+</ng-template>
