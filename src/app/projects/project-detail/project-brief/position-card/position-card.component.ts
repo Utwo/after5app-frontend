@@ -12,13 +12,16 @@ import {ResponseHandlerService} from '../../../../shared/response-handler.servic
 export class PositionCardComponent implements OnInit {
   @Input() position;
   @Input() project;
+  @Input() myApplications;
+
   myProject = false;
   private member = null;
   hasMember = false;
   showDetails = false;
+  hasApplied = false;
 
-  constructor( private state: StateService,
-                private responseHandler: ResponseHandlerService) { }
+  constructor (private state: StateService,
+               private responseHandler: ResponseHandlerService) { }
 
   ngOnInit() {
     if (this.position.member.length > 0 ) {
@@ -27,6 +30,7 @@ export class PositionCardComponent implements OnInit {
     }
     if (this.state.isLoggedIn()) {
       this.verifyIfMyProject();
+      this.verifyIfApplied();
     }
   }
 
@@ -36,6 +40,10 @@ export class PositionCardComponent implements OnInit {
     } else {
       this.myProject = false;
     }
+  }
+
+  verifyIfApplied() {
+    console.log(this.myApplications)
   }
 
   applicationSent(error) {

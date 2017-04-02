@@ -37,7 +37,7 @@
         </a> </span>
       </div>
       <div id='positionsInfo' *ngFor="let position of project.position">
-        <app-position-card [project]=project [position]=position></app-position-card>
+        <app-position-card [myApplications]=myApplications [project]=project [position]=position></app-position-card>
       </div>
     </div>
     <app-comments [project_id]="project.id"

@@ -14,10 +14,12 @@ export class ProjectBriefComponent implements OnInit {
   @Input() project;
   private myProject = false;
   public related = null;
+  myApplications = [];
 
   constructor(
               private projectService: ProjectService,
               private state: StateService,
+              private applicationService: ApplicationService,
               private router: Router,
               private responseHandler: ResponseHandlerService) {
   }
@@ -25,6 +27,7 @@ export class ProjectBriefComponent implements OnInit {
   ngOnInit() {
     if (this.state.isLoggedIn()) {
       this.verifyIfMyProject();
+      this.getMyApplications();
     }
     this.getRelatedProjects();
   }
@@ -32,7 +35,6 @@ export class ProjectBriefComponent implements OnInit {
   verifyIfMyProject() {
     if (this.state.getUser().id === this.project.user_id) {
       this.myProject = true;
-      // this.getApplications();
     } else {
       this.myProject = false;
     }
@@ -41,6 +43,14 @@ export class ProjectBriefComponent implements OnInit {
   scrollDown() {
     // $location.hash('positionsInfo');
     // $anchorScroll();
+  }
+
+  getMyApplications() {
+    this.applicationService.getMyApplications(this.project.id)
+      .subscribe(
+        data => this.myApplications = data,
+        error => this.responseHandler.errorMessage('An error occured!', error)
+      )
   }
 
   getRelatedProjects() {
