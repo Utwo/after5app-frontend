@@ -16,8 +16,6 @@ import {ProfileService} from './profile/shared/profile.service';
 import {MessageService} from './projects/shared/message.service';
 import {ApplicationService} from './projects/shared/application.service';
 import {NotificationsService} from './navigation/user-nav/shared/notifications.service';
-// pipes
-import {TimeAgoPipe} from './time-ago.pipe';
 // directives
 import { FocusDirective } from './shared/focus.directive';
 // components

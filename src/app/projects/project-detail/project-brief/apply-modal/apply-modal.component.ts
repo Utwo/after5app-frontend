@@ -1,5 +1,7 @@
-import {Component, OnInit, Input, Output, ViewChild} from '@angular/core';
-import {EventEmitter} from '@angular/common/src/facade/async';
+import {
+  Component, OnInit, Input, Output, ViewChild,
+  EventEmitter,
+} from '@angular/core';
 import {ApplicationService} from '../../../shared/application.service';
 import {ModalDirective} from 'ng2-bootstrap';
 

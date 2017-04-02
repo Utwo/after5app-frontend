@@ -8,7 +8,8 @@ import {ResponseHandlerService} from '../../../../shared/response-handler.servic
 })
 export class ApplicationsCardComponent implements OnInit {
   @Input() application;
-  @Output() onResponse = new EventEmitter<number>();
+  @Output() onAccept = new EventEmitter<number>();
+  @Output() onReject = new EventEmitter<number>();
 
   constructor(private applicationService: ApplicationService,
               private responseHandler: ResponseHandlerService) {
@@ -22,18 +23,17 @@ export class ApplicationsCardComponent implements OnInit {
     this.applicationService.acceptApplication(application_id)
       .subscribe(
         () => {
-          this.onResponse.emit(application_id);
+          this.onAccept.emit(application_id);
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
-  declineApplication(application_id, index) {
-    // this.applicationService.declineApplication(application_id)
-    //   .subscribe(
-    //     () => {
-    //       this.applications.splice(index, 1);
-    //       this.onResponse.emit(application_id);
-    //     },
-    //     error => this.responseHandler.errorMessage('An error occured!', error));
+  declineApplication(application_id) {
+    this.applicationService.declineApplication(application_id)
+      .subscribe(
+        () => {
+          this.onReject.emit(application_id);
+        },
+        error => this.responseHandler.errorMessage('An error occured!', error));
    }
 }

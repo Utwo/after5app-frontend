@@ -13,8 +13,9 @@ export class ProjectApplicantsComponent implements OnInit {
   @Input() project_id;
   @Input() user;
   private myProject = false;
-  private members = [];
-  private applying = [];
+  private applications = [];
+  private nr_of_members = null;
+  private nr_of_applying = null;
 
   constructor(private applicationService: ApplicationService,
               private state: StateService,
@@ -25,20 +26,44 @@ export class ProjectApplicantsComponent implements OnInit {
     if (this.state.isLoggedIn()) {
       this.verifyIfMyProject();
     }
-      this.getApplications();
+    this.getApplications();
   }
 
   verifyIfMyProject() {
     this.myProject = this.state.getUser().id === this.user.id;
   }
 
+  acceptApplication(application_id) {
+    this.applications = this.applications.map(
+      obj => {
+        if (obj.id === application_id) {
+          obj.accepted = true;
+        }
+        return obj;
+      }
+    )
+  }
+
+  declineApplication(application_id) {
+    this.applications = this.applications.filter(
+      obj => obj.id !== application_id
+    );
+    if (this.applications.length === 0) {
+      this.nr_of_applying = 0;
+    }
+  }
+
+  getCount() {
+    this.nr_of_members = this.applications.filter(obj => obj.accepted).length;
+    this.nr_of_applying = this.applications.length - this.nr_of_members;
+  }
+
   getApplications() {
     this.applicationService.getApplications(this.project_id)
       .subscribe(
         data => {
-          data.map(object => {
-            object.accepted === true ? this.members.push(object) : this.applying.push(object);
-          });
+          this.applications = data;
+          this.getCount();
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
