@@ -3,10 +3,10 @@ import {Component, EventEmitter, Output} from '@angular/core';
 @Component({
   selector: 'app-title-form',
   template: `
-    <app-section-header
+    <app-form-header
       [header]="'Great! Let\\'s give your idea a name'"
       [subheader]="'What should it be?'">
-    </app-section-header>
+    </app-form-header>
     <form #titleForm="ngForm" (ngSubmit)="storeTitle()">
       <div class="form-group mx-5 my-5">
         <div class="input-group">
@@ -25,7 +25,9 @@ import {Component, EventEmitter, Output} from '@angular/core';
             id="titleBtnGroup"
             class="input-group-addon btn btn-success"
             type="submit">
-            >>
+            <svg class="icon icon-md">
+              <use xlink:href="assets/svg/icons.svg#icon-next-arrows"></use>
+            </svg>
           </button>
         </div>
 

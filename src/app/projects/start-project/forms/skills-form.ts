@@ -3,40 +3,53 @@ import {Component, EventEmitter, Output} from '@angular/core';
 @Component({
   selector: 'app-skills-form',
   template: `
-    <app-section-header
-      [header]="'Let\\'s pick the right skills for the project'"
-      [subheader]="'This is important!'">
-    </app-section-header>
-    <p>
+    <app-form-header
+      [header]="'Let\\'s pick the right skills for the project'">
+    </app-form-header>
+    <p class="text-info">
       Add a <b>Skill</b> and then a description to it. Skills are open slot positions for your future team members.
       People who are interested will apply on specific skills so make sure you add exactly what you need
       for the project. Don’t worry, you can always add more later :)
     </p>
 
     <form #skillsForm="ngForm" (ngSubmit)="storeSkills()">
-      <div class="form-group p-1">
-        <app-autocomplete
-          #autocomplete (onSelect)="onSelect($event)" wrap_class="form-group"
-          label_message="Required skill"
-          label_show="true">          
-        </app-autocomplete>
-        <div class="form-group">
-          <textarea class="form-control mt-1" type="text"
-                id="position-desc" placeholder="Position description" #position
-                rows="4"></textarea>
-          <i [hidden]="!positionError" class="form-text text-danger">{{positionError}}</i>
-        </div>
-        <div class="text-right">
-          <button class="btn btn-info" type="button" (click)="addPosition(position, autocomplete)">Add Position
-          </button>
+      <div class="form-group mx-5 my-5">
+        <div class="row">
+          <div class="col-11">
+            <div class="input-group">
+              <app-autocomplete
+                #autocomplete (onSelect)="onSelect($event)" wrap_class="form-group"
+                label_message="Required skill"
+                label_show="true"
+                aria-describedby="skillBtnGroup">
+              </app-autocomplete>
+              <button
+                id="skillBtnGroup"
+                class="input-group-addon btn btn-success"
+                type="button" (click)="addPosition(position, autocomplete)">
+                Add skill
+              </button>
+            </div>
+            <textarea class="form-control mt-1" type="text"
+                      id="position-desc" placeholder="Position description" #position
+                      rows="4"></textarea>
+            <i [hidden]="!positionError" class="form-text text-danger">{{positionError}}</i>
+          </div>
+          <div class="col-1">
+            <button
+              class="btn btn-success"
+              type="submit">
+              <svg class="icon icon-md">
+                <use xlink:href="assets/svg/icons.svg#icon-next-arrows"></use>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
-      <button
-        class="input-group-addon btn btn-success"
-        type="submit">
-        >>
-      </button>
     </form>
+    <ul>
+      <li *ngFor="let pos of position">{{pos.name}}</li>
+    </ul>
   `,
 })
 export class SkillsFormComponent {
@@ -54,15 +67,16 @@ export class SkillsFormComponent {
   }
 
   addPosition(pos, autocomplete) {
-    const position = {description: pos.value, name: this.selectedSkill, status: 1};
+    const new_position = {description: pos.value, name: this.selectedSkill, status: 1};
 
-    if (this.validatePosition(position)) {
+    if (this.validatePosition(new_position)) {
       return;
     }
-    this.position.push(position);
+    this.position.push(new_position);
     autocomplete.resetValue();
     this.positionError = null;
     pos.value = '';
+    console.log(this.position);
   }
 
   validatePosition(position) {

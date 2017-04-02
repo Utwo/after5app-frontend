@@ -37,6 +37,7 @@ import {DescriptionFormComponent} from './projects/start-project/forms/descripti
 import {QuestionsFormComponent} from './projects/start-project/forms/questions-form';
 import {AssetsFormComponent} from './projects/start-project/forms/assets-form';
 import {ProjectOverviewComponent} from './projects/start-project/forms/project-overview';
+import {FormHeaderComponent} from './projects/start-project/shared/form-header.component';
 import {FooterComponent} from './footer/footer.component';
 import {NavigationComponent} from './navigation/navigation.component';
 import {SearchComponent} from './navigation/search/search.component';
@@ -107,7 +108,8 @@ import {ProjectsListOverviewComponent} from './profile/projects-overview/project
     AssetsFormComponent,
     QuestionsFormComponent,
     ProjectOverviewComponent,
-    StepsComponent
+    StepsComponent,
+    FormHeaderComponent
   ],
   imports: [
     routing,

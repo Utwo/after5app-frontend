@@ -3,10 +3,10 @@ import {Component, EventEmitter, Output} from '@angular/core';
 @Component({
   selector: 'app-questions-form',
   template: `
-    <app-section-header
+    <app-form-header
       [header]="'Have any questions for your potential team members?'"
       [subheader]="'They will see this when they apply to your project'">
-    </app-section-header>
+    </app-form-header>
     <form #questionsForm="ngForm" (ngSubmit)="storeQuestions()">
       <div class="form-group">
         <label for="question">Questions</label>
@@ -31,7 +31,9 @@ import {Component, EventEmitter, Output} from '@angular/core';
         id="descriptionBtnGroup"
         class="input-group-addon btn btn-success"
         type="submit">
-        >>
+        <svg class="icon icon-md">
+          <use xlink:href="assets/svg/icons.svg#icon-next-arrows"></use>
+        </svg>
       </button>
     </form>
   `,

@@ -1,5 +1,16 @@
 <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <defs>
+    <symbol id="icon-next-arrows" viewBox="0 0 16 13">
+      <title>next</title>
+      <g fill="none">
+        <path d="M-8-5h24v24H-8z"/>
+        <path fill="#FFF" d="M.59 11.34l4.58-4.59L.59 2.16 2 .75l6 6-6 6z"/>
+        <g>
+          <path d="M0-5h24v24H0z"/>
+          <path fill="#FFF" d="M8.59 11.34l4.58-4.59-4.58-4.59L10 .75l6 6-6 6z"/>
+        </g>
+      </g>
+    </symbol>
     <symbol id="icon-clock" viewBox="0 0 32 32">
       <title>clock2</title>
       <path class="path1" d="M20.586 23.414l-6.586-6.586v-8.828h4v7.172l5.414 5.414zM16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 28c-6.627 0-12-5.373-12-12s5.373-12 12-12c6.627 0 12 5.373 12 12s-5.373 12-12 12z"></path>
