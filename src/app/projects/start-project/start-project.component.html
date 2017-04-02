@@ -2,8 +2,17 @@
   <div class="sprite sprite-astronaut"></div>
   <div class="container">
     <section class="container container-small mx-auto my-5 text-center">
-      <app-title-form></app-title-form>
-      <app-steps [steps]="[1,2,3,4,5]" [activeStep]="1"></app-steps>
+
+      <div [ngSwitch]="activeStep">
+        <app-title-form *ngSwitchCase="'title'" (onNext)="onNext($event)"></app-title-form>
+        <app-description-form *ngSwitchCase="'description'" (onNext)="onNext($event)"></app-description-form>
+        <app-skills-form *ngSwitchCase="'skills'" (onNext)="onNext($event)"></app-skills-form>
+        <app-assets-form *ngSwitchCase="'assets'" (onNext)="onNext($event)"></app-assets-form>
+        <app-questions-form *ngSwitchCase="'questions'" (onNext)="onNext($event)"></app-questions-form>
+        <app-overview-form *ngSwitchCase="'overview'" (onNext)="onNext($event)"></app-overview-form>
+      </div>
+
+      <app-steps [steps]="steps" [activeStep]="activeStep" (onChangeStep)="changeStep($event)"></app-steps>
     </section>
   </div>
 </div>

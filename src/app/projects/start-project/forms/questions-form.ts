@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-questions-form',
@@ -7,30 +7,43 @@ import {Component} from '@angular/core';
       [header]="'Have any questions for your potential team members?'"
       [subheader]="'They will see this when they apply to your project'">
     </app-section-header>
-    <div class="form-group">
-      <label for="question">Questions</label>
-      <div class="row">
-        <div class="col-md-10 col-9">
-          <input class="form-control" id="question" type="text" #question
-                 placeholder="How much time can you spend on this project?">
+    <form #questionsForm="ngForm" (ngSubmit)="storeQuestions()">
+      <div class="form-group">
+        <label for="question">Questions</label>
+        <div class="row">
+          <div class="col-md-10 col-9">
+            <input class="form-control" id="question" type="text" #question
+                   placeholder="How much time can you spend on this project?">
+          </div>
+          <div class="col-md-2 col-3">
+            <button class="btn btn-info" type="button" (click)="addQuestion(question)">Add</button>
+          </div>
+          <i [hidden]="!questionError" class="form-text text-danger">{{questionError}}</i>
         </div>
-        <div class="col-md-2 col-3">
-          <button class="btn btn-info" type="button" (click)="addQuestion(question)">Add</button>
-        </div>
-        <i [hidden]="!questionError" class="form-text text-danger">{{questionError}}</i>
       </div>
-    </div>
-    <ol>
-      <li *ngFor="let question of application_questions; let i = index">
-        {{question}}
-        <button class="btn btn-sm btn-danger" type="button" (click)="removeQuestion(i)">&times;</button>
-      </li>
-    </ol>
+      <ol>
+        <li *ngFor="let question of application_questions; let i = index">
+          {{question}}
+          <button class="btn btn-sm btn-danger" type="button" (click)="removeQuestion(i)">&times;</button>
+        </li>
+      </ol>
+      <button
+        id="descriptionBtnGroup"
+        class="input-group-addon btn btn-success"
+        type="submit">
+        >>
+      </button>
+    </form>
   `,
 })
 export class QuestionsFormComponent {
   application_questions = [];
   questionError = null;
+  @Output() onNext = new EventEmitter();
+
+  storeQuestions() {
+    this.onNext.emit(this.application_questions);
+  }
 
   addQuestion(question) {
     if (question.value.length < 2) {

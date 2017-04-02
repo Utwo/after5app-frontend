@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-skills-form',
@@ -8,43 +8,46 @@ import {Component} from '@angular/core';
       [subheader]="'This is important!'">
     </app-section-header>
     <p>
-      Add a <b>Skill</b> and then a description to it. Skills are open slot positions for your future team members. 
-      People who are interested will apply on specific skills so make sure you add exactly what you need 
+      Add a <b>Skill</b> and then a description to it. Skills are open slot positions for your future team members.
+      People who are interested will apply on specific skills so make sure you add exactly what you need
       for the project. Don’t worry, you can always add more later :)
     </p>
-    <fieldset class="form-group p-1">
-      <app-autocomplete #autocomplete (onSelect)="onSelect($event)" wrap_class="form-group"
-                        label_message="Required skill"
-                        label_show="true"></app-autocomplete>
-      <div class="form-group">
-      <textarea class="form-control mt-1" type="text" id="position-desc" placeholder="Position description" #position
-                rows="4"></textarea>
-        <i [hidden]="!positionError" class="form-text text-danger">{{positionError}}</i>
-      </div>
-      <div class="text-right">
-        <button class="btn btn-info" type="button" (click)="addPosition(position, autocomplete)">Add Position
-        </button>
-      </div>
-    </fieldset>
 
-    <ul class="list-unstyled">
-      <li *ngFor="let pos of position; let i = index" class="panel mb-1 p-1">
-        <h5>{{pos.name}}
-          <button
-            class="btn btn-outline-danger btn-sm pull-xs-right btn-circle-sm font-weight-bold"
-            type="button"
-            (click)="removePosition(i)">&times;
+    <form #skillsForm="ngForm" (ngSubmit)="storeSkills()">
+      <div class="form-group p-1">
+        <app-autocomplete
+          #autocomplete (onSelect)="onSelect($event)" wrap_class="form-group"
+          label_message="Required skill"
+          label_show="true">          
+        </app-autocomplete>
+        <div class="form-group">
+          <textarea class="form-control mt-1" type="text"
+                id="position-desc" placeholder="Position description" #position
+                rows="4"></textarea>
+          <i [hidden]="!positionError" class="form-text text-danger">{{positionError}}</i>
+        </div>
+        <div class="text-right">
+          <button class="btn btn-info" type="button" (click)="addPosition(position, autocomplete)">Add Position
           </button>
-        </h5>
-        <p>{{pos.description}}</p>
-      </li>
-    </ul>
+        </div>
+      </div>
+      <button
+        class="input-group-addon btn btn-success"
+        type="submit">
+        >>
+      </button>
+    </form>
   `,
 })
 export class SkillsFormComponent {
   position = [];
   selectedSkill = '';
   positionError = null;
+  @Output() onNext = new EventEmitter();
+
+  storeSkills() {
+    this.onNext.emit(this.position);
+  }
 
   onSelect(skill) {
     this.selectedSkill = skill.name;
@@ -63,7 +66,7 @@ export class SkillsFormComponent {
   }
 
   validatePosition(position) {
-    for (let pos of this.position) {
+    for (const pos of this.position) {
       if (position.name === pos.name) {
         this.positionError = 'Please choose a new skill.';
         return true;

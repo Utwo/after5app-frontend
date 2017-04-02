@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-title-form',
@@ -7,7 +7,7 @@ import {Component} from '@angular/core';
       [header]="'Great! Let\\'s give your idea a name'"
       [subheader]="'What should it be?'">
     </app-section-header>
-    <form #titleForm="ngForm" (ngSubmit)="storeProject()">
+    <form #titleForm="ngForm" (ngSubmit)="storeTitle()">
       <div class="form-group mx-5 my-5">
         <div class="input-group">
           <input
@@ -28,7 +28,7 @@ import {Component} from '@angular/core';
             >>
           </button>
         </div>
-        
+
         <i *ngIf="title.length >= 20" class="form-text text-danger">
           Title cannot be more than 20 characters long.</i>
         <div *ngIf="title.errors && (title.dirty || title.touched)">
@@ -45,10 +45,11 @@ import {Component} from '@angular/core';
 })
 
 export class TitleFormComponent {
+  @Output() onNext = new EventEmitter<string>();
   project_title = '';
 
-  storeProject() {
-    console.log(this.project_title);
+  storeTitle() {
+    this.onNext.emit(this.project_title);
   }
 }
 
