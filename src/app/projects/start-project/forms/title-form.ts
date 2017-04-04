@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-title-form',
@@ -8,7 +8,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
       [subheader]="'What should it be?'">
     </app-form-header>
     <form #titleForm="ngForm" (ngSubmit)="storeTitle()">
-      <div class="form-group mx-5 my-5">
+      <div class="form-group mt-5">
         <div class="input-group">
           <input
             class="form-control"
@@ -48,7 +48,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 
 export class TitleFormComponent {
   @Output() onNext = new EventEmitter<string>();
-  project_title = '';
+  @Input() project_title = '';
 
   storeTitle() {
     this.onNext.emit(this.project_title);

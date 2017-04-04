@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-skills-form',
@@ -13,7 +13,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
     </p>
 
     <form #skillsForm="ngForm" (ngSubmit)="storeSkills()">
-      <div class="form-group mx-5 my-5">
+      <div class="form-group mt-5">
         <div class="row">
           <div class="col-11">
             <div class="input-group">
@@ -47,18 +47,19 @@ import {Component, EventEmitter, Output} from '@angular/core';
         </div>
       </div>
     </form>
-    <ul>
-      <li *ngFor="let pos of position">{{pos.name}}</li>
-    </ul>
   `,
 })
 export class SkillsFormComponent {
-  position = [];
+  @Input() position = [];
   selectedSkill = '';
   positionError = null;
   @Output() onNext = new EventEmitter();
 
   storeSkills() {
+    // if (this.project.position.length < 1) {
+    //   this.positionError = 'You have to add at least one position!';
+    //   return;
+    // }
     this.onNext.emit(this.position);
   }
 

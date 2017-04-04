@@ -9,7 +9,7 @@ import {ResponseHandlerService} from '../../shared/response-handler.service';
 })
 
 export class StartProjectComponent {
-  project = {};
+  project = {title: '', description: '', position: [], application_questions: [], assets: []};
   steps = ['title', 'description', 'skills', 'assets', 'questions', 'overview'];
   activeStep = 'title';
 
@@ -42,10 +42,6 @@ export class StartProjectComponent {
   }
 
   storeProject() {
-    // if (this.project.position.length < 1) {
-    //   this.positionError = 'You have to add at least one position!';
-    //   return;
-    // }
     this.projectService.addProject(this.project)
       .subscribe(
         data => {

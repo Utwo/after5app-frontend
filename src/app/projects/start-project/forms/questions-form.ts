@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-questions-form',
@@ -7,39 +7,47 @@ import {Component, EventEmitter, Output} from '@angular/core';
       [header]="'Have any questions for your potential team members?'"
       [subheader]="'They will see this when they apply to your project'">
     </app-form-header>
-    <form #questionsForm="ngForm" (ngSubmit)="storeQuestions()">
-      <div class="form-group">
-        <label for="question">Questions</label>
+    <form #questionsForm="ngForm" (ngSubmit)="addQuestion(question)">
+      <div class="form-group mt-5">
         <div class="row">
-          <div class="col-md-10 col-9">
-            <input class="form-control" id="question" type="text" #question
-                   placeholder="How much time can you spend on this project?">
+          <div class="col-1">
+            <button class="btn btn-success" type="submit">+</button>
           </div>
-          <div class="col-md-2 col-3">
-            <button class="btn btn-info" type="button" (click)="addQuestion(question)">Add</button>
+          <div class="col-11">
+            <input
+              class="form-control"
+              id="question"
+              type="text"
+              #question
+              placeholder="How much time can you invest?">
           </div>
-          <i [hidden]="!questionError" class="form-text text-danger">{{questionError}}</i>
+          <i [hidden]="!questionError" class="form-text text-info">{{questionError}}</i>
         </div>
       </div>
-      <ol>
-        <li *ngFor="let question of application_questions; let i = index">
-          {{question}}
-          <button class="btn btn-sm btn-danger" type="button" (click)="removeQuestion(i)">&times;</button>
-        </li>
-      </ol>
-      <button
-        id="descriptionBtnGroup"
-        class="input-group-addon btn btn-success"
-        type="submit">
-        <svg class="icon icon-md">
-          <use xlink:href="assets/svg/icons.svg#icon-next-arrows"></use>
-        </svg>
-      </button>
     </form>
+    <ul class="list-unstyled mb-5">
+      <li *ngFor="let question of application_questions; let i = index"
+          class="my-2"
+      >
+        <button class="btn btn-info btn-sm" type="button" (click)="removeQuestion(i)">
+          <small>REMOVE</small>
+        </button>
+        <span class="ml-2">{{question}}</span>
+      </li>
+    </ul>
+    <div class="text-center">
+      <button
+        (click)="storeQuestions()"
+        class="btn btn-success"
+        type="button">
+        <small>REVIEW AND POST</small>
+      </button>
+    </div>
+
   `,
 })
 export class QuestionsFormComponent {
-  application_questions = [];
+  @Input() application_questions = [];
   questionError = null;
   @Output() onNext = new EventEmitter();
 

@@ -3,7 +3,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
 @Component({
   selector: 'app-steps',
   template: `
-    <div>
+    <div class="text-center">
       <ul class="list-unstyled">
         <li *ngFor="let step of steps"
             class="step-button"

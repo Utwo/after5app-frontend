@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-description-form',
@@ -9,7 +9,7 @@ import {Component, Output, EventEmitter} from '@angular/core';
     </app-form-header>
 
     <form #descriptionForm="ngForm" (ngSubmit)="storeDescription()">
-      <div class="form-group mx-5 my-5">
+      <div class="form-group mt-5">
         <div class="row">
           <div class="col-11">
             <textarea
@@ -30,17 +30,17 @@ import {Component, Output, EventEmitter} from '@angular/core';
           </div>
         </div>
         <div *ngIf="description.errors && (description.dirty || description.touched)">
-        <i [hidden]="!description.errors.required" class="form-text text-danger">Description is required</i>
-        <i [hidden]="!description.errors.minlength" class="form-text text-danger">Description must be at least 4
-          characters long.</i>
-      </div>
+          <i [hidden]="!description.errors.required" class="form-text text-danger">Description is required</i>
+          <i [hidden]="!description.errors.minlength" class="form-text text-danger">Description must be at least 4
+            characters long.</i>
+        </div>
       </div>
     </form>
-   
+
   `,
 })
 export class DescriptionFormComponent {
-  project_description = '';
+  @Input() project_description = '';
   @Output() onNext = new EventEmitter<string>();
 
   storeDescription() {
