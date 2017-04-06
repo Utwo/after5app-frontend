@@ -5,7 +5,7 @@ import {HttpModule, JsonpModule} from '@angular/http';
 import {routing, appRoutingProviders} from './app.routing';
 // external modules
 import {ToastyModule} from 'ng2-toasty';
-import {ModalModule, TypeaheadModule, TabsModule} from 'ng2-bootstrap';
+import {ModalModule, TypeaheadModule, TabsModule} from 'ngx-bootstrap';
 // services
 import {AuthGuard} from './core/auth-guard.service';
 import {ResponseHandlerService} from './shared/response-handler.service';
