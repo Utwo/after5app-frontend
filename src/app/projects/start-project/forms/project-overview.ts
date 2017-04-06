@@ -5,53 +5,106 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   template: `
     <app-form-header
       [header]="'Review your project information'"
-      [subheader]="'If it\\'s all good post it'">      
+      [subheader]="'If it\\'s all good post it'">
     </app-form-header>
     <div class="mt-5">
-      <div class="row my-2">
+      <div class="row my-3">
+        <div class="col-2">
+          <button
+            class="btn btn-sm btn-info px-4"
+            (click)="editStep('title')"
+          >
+            EDIT
+          </button>
+        </div>
         <div class="col-2 font-weight-bold text-info">
           Name:
         </div>
-        <div class="col-10">
+        <div class="col-8">
           {{project.title}}
         </div>
       </div>
-      <div class="row my-2">
+      <div class="row my-3">
+        <div class="col-2">
+          <button
+            class="btn btn-sm btn-info px-4"
+            (click)="editStep('description')"
+          >
+            EDIT
+          </button>
+        </div>
         <div class="col-2 font-weight-bold text-info">
           About:
         </div>
-        <div class="col-10">
-          <p>{{project.description}}</p>
+        <div class="col-8">
+          <p class="description-paragraph">{{project.description}}</p>
         </div>
       </div>
-      <div class="row my-2">
+      <div class="row my-3">
+        <div class="col-2">
+          <button
+            class="btn btn-sm btn-info px-4"
+            (click)="editStep('skills')"
+          >
+            EDIT
+          </button>
+        </div>
         <div class="col-2 font-weight-bold text-info">
           Your team:
         </div>
-        <div class="col-10">
-          
+        <div class="col-8">
+          <ul class="skill_tray bg-primary">
+            <li class="skill_tray--item" *ngFor="let skill of project.position">
+              <div class="skill_tray--name">{{skill.name}}</div>
+              <div class="skill_tray--button" (click)="editStep('skills')">
+                <small>EDIT SKILL</small>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="row my-2">
+      <div class="row my-3">
+        <div class="col-2">
+          <button
+            class="btn btn-sm btn-info px-4"
+            (click)="editStep('assets')"
+          >
+            EDIT
+          </button>
+        </div>
         <div class="col-2 font-weight-bold text-info">
           Assets:
         </div>
-        <div class="col-10">
-          
+        <div class="col-8">
+          <p class="text-info" *ngIf="project.assets.length < 1">
+            You have no assets added.
+          </p>
         </div>
       </div>
-      <div class="row my-2">
+      <div class="row my-3">
+        <div class="col-2">
+          <button
+            class="btn btn-sm btn-info px-4"
+            (click)="editStep('questions')"
+          >
+            EDIT
+          </button>
+        </div>
         <div class="col-2 font-weight-bold text-info">
           Questions:
         </div>
-        <div class="col-10">
+        <div class="col-8">
+          <p class="text-info" *ngIf="project.application_questions.length < 1">
+            You have no questions added.
+          </p>
+
           <ul class="list-unstyled mb-5">
             <li *ngFor="let question of project.application_questions">
               {{question}}
             </li>
           </ul>
         </div>
-      </div>  
+      </div>
     </div>
     <div class="text-center">
       <button
@@ -66,9 +119,14 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class ProjectOverviewComponent {
   @Input() project = {};
   @Output() onStoreProject = new EventEmitter();
+  @Output() onEditStep = new EventEmitter();
 
   storeProject() {
     this.onStoreProject.emit();
+  }
+
+  editStep(step_name) {
+    this.onEditStep.emit(step_name);
   }
 }
 

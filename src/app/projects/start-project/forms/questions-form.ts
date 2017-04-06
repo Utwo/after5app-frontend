@@ -11,7 +11,11 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
       <div class="form-group mt-5">
         <div class="row">
           <div class="col-1">
-            <button class="btn btn-success" type="submit">+</button>
+            <button class="btn btn-success" type="submit">
+              <svg class="icon">
+                <use xlink:href="assets/svg/icons.svg#icon-plus"></use>
+              </svg>
+            </button>
           </div>
           <div class="col-11">
             <input

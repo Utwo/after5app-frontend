@@ -13,8 +13,9 @@ import {ResponseHandlerService} from '../response-handler.service';
 export class AutocompleteComponent {
   @Input('type') type;
   @Input('label_message') label_message;
+  @Input('placeholder') placeholder = 'Type a skill';
   @Input('label_class') label_class = 'input-group-addon label-white';
-  @Input('input_class') input_class= 'form-control input-basic input-gray';
+  @Input('input_class') input_class = 'form-control input-basic input-gray';
   @Output() onSelect = new EventEmitter<Object>();
 
   public dataSource: Observable<any>;

@@ -1,4 +1,5 @@
-import {Component,Input, EventEmitter, Output} from '@angular/core';
+import {Component, Input, EventEmitter, Output} from '@angular/core';
+import {StateService} from "../../../shared/state.service";
 
 @Component({
   selector: 'app-assets-form',
@@ -7,7 +8,11 @@ import {Component,Input, EventEmitter, Output} from '@angular/core';
       [header]="'Add assets from your computer to the project'"
       [subheader]="'(files like word, jpg, psd, ppt or others)'">
     </app-form-header>
-    <div class="text-center mb-5">
+
+    <div class="text-center my-5">
+      <p *ngIf="!state.isLoggedIn()">
+        You will be able to add assets to your project once you've logged in
+      </p>
       <button
         class="btn btn-success"
         (click)="storeAssets()">
@@ -21,6 +26,9 @@ import {Component,Input, EventEmitter, Output} from '@angular/core';
 export class AssetsFormComponent {
   @Input() assets = [];
   @Output() onNext = new EventEmitter<string[]>();
+
+  constructor(private state: StateService) {
+  }
 
   storeAssets() {
     this.onNext.emit(this.assets);

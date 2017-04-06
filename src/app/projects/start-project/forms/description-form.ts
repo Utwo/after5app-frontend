@@ -11,7 +11,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
     <form #descriptionForm="ngForm" (ngSubmit)="storeDescription()">
       <div class="form-group mt-5">
         <div class="row">
-          <div class="col-11">
+          <div class="col-10">
             <textarea
               class="form-control" id="description" name="description"
               required minlength="4"
@@ -19,9 +19,9 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
               [(ngModel)]="project_description" #description="ngModel" rows="6">              
             </textarea>
           </div>
-          <div class="col-1">
+          <div class="col-2">
             <button
-              class="btn btn-success"
+              class="btn btn-success float-right"
               type="submit">
               <svg class="icon icon-md">
                 <use xlink:href="assets/svg/icons.svg#icon-next-arrows"></use>

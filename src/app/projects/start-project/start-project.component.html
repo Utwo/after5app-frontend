@@ -13,7 +13,7 @@
           (onNext)="onNext($event)"></app-description-form>
         <app-skills-form
           *ngSwitchCase="'skills'"
-          [position]="project.position"
+          [project_positions]="project.position"
           (onNext)="onNext($event)"></app-skills-form>
         <app-assets-form
           *ngSwitchCase="'assets'"
@@ -26,7 +26,8 @@
         <app-overview-form
           *ngSwitchCase="'overview'"
           [project]="project"
-          (onStoreProject)="storeProject()"></app-overview-form>
+          (onStoreProject)="storeProject()"
+          (onEditStep)="goToStep($event)"></app-overview-form>
       </div>
 
       <app-steps [steps]="steps" [activeStep]="activeStep" (onChangeStep)="changeStep($event)"></app-steps>

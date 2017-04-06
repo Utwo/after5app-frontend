@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {ProjectService} from '../shared/project.service';
 import {ResponseHandlerService} from '../../shared/response-handler.service';
+import {StateService} from "../../shared/state.service";
 
 @Component({
   selector: 'app-start-project',
@@ -14,6 +15,7 @@ export class StartProjectComponent {
   activeStep = 'title';
 
   constructor(private projectService: ProjectService,
+              private state: StateService,
               private router: Router,
               private responseHandler: ResponseHandlerService) {
   }
@@ -39,6 +41,10 @@ export class StartProjectComponent {
     if (nextIndex < currentIndex) {
       this.activeStep = step;
     }
+  }
+
+  goToStep(step) {
+    this.activeStep = step;
   }
 
   storeProject() {
