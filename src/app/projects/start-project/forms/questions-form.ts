@@ -25,7 +25,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
               #question
               placeholder="How much time can you invest?">
           </div>
-          <i [hidden]="!questionError" class="form-text text-info">{{questionError}}</i>
+          <i [hidden]="!questionError" class="form-text text-danger">{{questionError}}</i>
         </div>
       </div>
     </form>
@@ -47,7 +47,6 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
         <small>REVIEW AND POST</small>
       </button>
     </div>
-
   `,
 })
 export class QuestionsFormComponent {
@@ -65,7 +64,7 @@ export class QuestionsFormComponent {
       return;
     }
     if (question.value.length > 250) {
-      this.questionError = 'A question can be maximum 250 characters long.';
+      this.questionError = 'A question cannot be more than 250 characters long.';
       return;
     }
     this.application_questions.push(question.value);

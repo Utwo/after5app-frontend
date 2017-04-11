@@ -25,18 +25,17 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
               </app-autocomplete>
               <button
                 class="btn btn-success"
-                type="button" (click)="addPosition(position, autocomplete)">
+                type="button" (click)="addPosition(description, autocomplete)">
                 Add skill
               </button>
             </div>
             <textarea
               class="form-control mt-1"
-              type="text"
-              id="position-desc"
+              rows="2"
               placeholder="... and then add a small description"
-              #position
-              rows="2"></textarea>
-            <i [hidden]="!positionError" class="form-text text-info">{{positionError}}</i>
+              #description></textarea>
+
+            <i [hidden]="!positionError" class="form-text text-danger">{{positionError}}</i>
           </div>
           <div class="col-2">
             <button
@@ -70,10 +69,10 @@ export class SkillsFormComponent {
   @Output() onNext = new EventEmitter();
 
   storeSkills() {
-    // if (this.project_positions.length < 1) {
-    //   this.positionError = 'You have to add at least one position!';
-    //   return;
-    // }
+    if (this.project_positions.length < 1) {
+      this.positionError = 'Please add at least one position.';
+      return;
+    }
     this.onNext.emit(this.project_positions);
   }
 
@@ -81,38 +80,45 @@ export class SkillsFormComponent {
     this.selectedSkill = skill.name;
   }
 
-  addPosition(pos, autocomplete) {
-    const new_position = {description: pos.value, name: this.selectedSkill, status: 1};
+  addPosition(description, autocomplete) {
+    const new_position = {
+      description: description.value,
+      name: this.selectedSkill,
+      status: 1
+    };
 
     if (this.validatePosition(new_position)) {
-      return;
+      this.project_positions.push(new_position);
+      autocomplete.resetValue();
+      this.positionError = null;
+      description.value = '';
     }
-    this.project_positions.push(new_position);
-    autocomplete.resetValue();
-    this.positionError = null;
-    pos.value = '';
   }
 
   validatePosition(position) {
-    for (const pos of this.project_positions) {
-      if (position.name === pos.name) {
-        this.positionError = 'Please choose a new skill.';
-        return true;
-      }
-    }
-    if (position.description.length < 4) {
-      this.positionError = 'The position description must be at least 4 characters long.';
-      return true;
-    }
     if (position.name.length < 1) {
       this.positionError = 'Please choose a skill.';
-      return true;
+      return false;
     }
     if (position.name.length > 15) {
-      this.positionError = 'The skill can be maximum 15 characters long.';
-      return true;
+      this.positionError = 'The skill cannot be more than 15 characters long.';
+      return false;
     }
-    return false;
+    if (position.description.length < 4) {
+      this.positionError = 'The description must be at least 4 characters.';
+      return false;
+    }
+    if (position.description.length > 250) {
+      this.positionError = 'The description cannot be more than 250 characters long.';
+      return false;
+    }
+    for (const pos of this.project_positions) {
+      if (position.name === pos.name) {
+        this.positionError = `You already chose the ${position.name} skill.`;
+        return false;
+      }
+    }
+    return true;
   }
 
   removePosition(index) {

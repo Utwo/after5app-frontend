@@ -8,13 +8,13 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
       [subheader]="'Try and describe it as best as you can. It helps!'">
     </app-form-header>
 
-    <form #descriptionForm="ngForm" (ngSubmit)="storeDescription()">
+    <form #descriptionForm="ngForm" (ngSubmit)="storeDescription(description)">
       <div class="form-group mt-5">
         <div class="row">
           <div class="col-10">
             <textarea
               class="form-control" id="description" name="description"
-              required minlength="4"
+              required minlength="4" maxlength="1000"
               placeholder="I want to create ... that will do the following ... Also I will be able to help with ..."
               [(ngModel)]="project_description" #description="ngModel" rows="6">              
             </textarea>
@@ -29,22 +29,27 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
             </button>
           </div>
         </div>
-        <div *ngIf="description.errors && (description.dirty || description.touched)">
+        <div *ngIf="formSubmitted && description.errors">
           <i [hidden]="!description.errors.required" class="form-text text-danger">Description is required</i>
-          <i [hidden]="!description.errors.minlength" class="form-text text-danger">Description must be at least 4
-            characters long.</i>
+          <i [hidden]="!description.errors.minlength" class="form-text text-danger">
+            Description must be at least 4 characters long.</i>
+          <i [hidden]="!description.errors.maxlength" class="form-text text-danger">
+            Description cannot be more than 1000 characters long.</i>
         </div>
       </div>
     </form>
-
   `,
 })
 export class DescriptionFormComponent {
   @Input() project_description = '';
   @Output() onNext = new EventEmitter<string>();
+  formSubmitted = false;
 
-  storeDescription() {
-    this.onNext.emit(this.project_description);
+  storeDescription(description) {
+    this.formSubmitted = true;
+    if (!description.errors) {
+      this.onNext.emit(this.project_description);
+    }
   }
 }
 

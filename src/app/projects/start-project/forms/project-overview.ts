@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {StateService} from '../../../shared/state.service';
 
 @Component({
   selector: 'app-overview-form',
@@ -77,7 +78,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
         </div>
         <div class="col-8">
           <p class="text-info" *ngIf="project.assets.length < 1">
-            You have no assets added.
+            You have no assets.
           </p>
         </div>
       </div>
@@ -95,7 +96,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
         </div>
         <div class="col-8">
           <p class="text-info" *ngIf="project.application_questions.length < 1">
-            You have no questions added.
+            You have no questions.
           </p>
 
           <ul class="list-unstyled mb-5">
@@ -107,19 +108,41 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
       </div>
     </div>
     <div class="text-center">
+      <div *ngIf="!state.isLoggedIn()">
+        <div className="mb-3">
+        <i>You can only post your project once you have logged in. 
+          Save your project, log in and come back here to share it with everyone!</i>
+        </div>
+        <button          
+          (click)="saveProject(modal)"
+          class="btn btn-success"
+          type="button">
+          <small>SAVE MY PROJECT!</small>
+        </button>
+      </div>
       <button
+        *ngIf="state.isLoggedIn()"
         (click)="storeProject()"
         class="btn btn-success"
         type="button">
         <small>ALL GOOD! POST IT!</small>
       </button>
     </div>
+    <app-login-modal #modal></app-login-modal>
   `,
 })
 export class ProjectOverviewComponent {
   @Input() project = {};
   @Output() onStoreProject = new EventEmitter();
   @Output() onEditStep = new EventEmitter();
+
+  constructor(private state: StateService) {
+  }
+
+  saveProject(modal) {
+    modal.open();
+    this.onStoreProject.emit();
+  }
 
   storeProject() {
     this.onStoreProject.emit();

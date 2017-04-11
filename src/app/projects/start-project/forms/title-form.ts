@@ -7,12 +7,13 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
       [header]="'Great! Let\\'s give your idea a name'"
       [subheader]="'What should it be?'">
     </app-form-header>
-    <form #titleForm="ngForm" (ngSubmit)="storeTitle()">
+    <form #titleForm="ngForm" (ngSubmit)="storeTitle(title)">
       <div class="form-group mt-5">
         <div class="input-group">
           <input
             class="form-control"
-            id="title" name="title"
+            id="title"
+            name="title"
             type="text"
             required minlength="4" maxlength="20"
             placeholder="Space Exploration Project"
@@ -30,15 +31,15 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
             </svg>
           </button>
         </div>
-
-        <i *ngIf="title.length >= 20" class="form-text text-danger">
-          Title cannot be more than 20 characters long.</i>
-        <div *ngIf="title.errors && (title.dirty || title.touched)">
+        <div *ngIf="formSubmitted && title.errors">
           <i [hidden]="!title.errors.required" class="form-text text-danger">
-            The title is required
+            The title is required.
+          </i>
+          <i [hidden]="!title.errors.maxlength" class="form-text text-danger">
+            Title cannot be more than 20 characters long.
           </i>
           <i [hidden]="!title.errors.minlength" class="form-text text-danger">
-            Title must be at least 4 characters long
+            Title must be at least 4 characters long.
           </i>
         </div>
       </div>
@@ -49,9 +50,13 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class TitleFormComponent {
   @Output() onNext = new EventEmitter<string>();
   @Input() project_title = '';
+  formSubmitted = false;
 
-  storeTitle() {
-    this.onNext.emit(this.project_title);
+  storeTitle(title) {
+    this.formSubmitted = true;
+    if (!title.errors) {
+      this.onNext.emit(this.project_title);
+    }
   }
 }
 
