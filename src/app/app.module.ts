@@ -5,7 +5,7 @@ import {HttpModule, JsonpModule} from '@angular/http';
 import {routing, appRoutingProviders} from './app.routing';
 // external modules
 import {ToastyModule} from 'ng2-toasty';
-import {ModalModule, TypeaheadModule, TabsModule} from 'ng2-bootstrap';
+import {ModalModule, TypeaheadModule, TabsModule} from 'ngx-bootstrap';
 // services
 import {AuthGuard} from './core/auth-guard.service';
 import {ResponseHandlerService} from './shared/response-handler.service';
@@ -19,7 +19,7 @@ import {NotificationsService} from './navigation/user-nav/shared/notifications.s
 // pipes
 import {TimeAgoPipe} from './time-ago.pipe';
 // directives
-import { FocusDirective } from './shared/focus.directive';
+import {FocusDirective} from './shared/focus.directive';
 // components
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
@@ -30,7 +30,14 @@ import {AboutComponent} from './about/about.component';
 import {ProfileComponent} from './profile/profile.component';
 import {CommentsComponent} from './projects/project-details/comments/comments.component';
 import {AddApplicationComponent} from './projects/project-details/add-application/add-application.component';
-import {AddProjectComponent} from './projects/add-project/add-project.component';
+import {StartProjectComponent} from './projects/start-project/start-project.component';
+import {TitleFormComponent} from './projects/start-project/forms/title-form';
+import {SkillsFormComponent} from './projects/start-project/forms/skills-form';
+import {DescriptionFormComponent} from './projects/start-project/forms/description-form';
+import {QuestionsFormComponent} from './projects/start-project/forms/questions-form';
+import {AssetsFormComponent} from './projects/start-project/forms/assets-form';
+import {ProjectOverviewComponent} from './projects/start-project/forms/project-overview';
+import {FormHeaderComponent} from './projects/start-project/shared/form-header.component';
 import {FooterComponent} from './footer/footer.component';
 import {NavigationComponent} from './navigation/navigation.component';
 import {SearchComponent} from './navigation/search/search.component';
@@ -43,18 +50,19 @@ import {AutocompleteComponent} from './shared/autocomplete/autocomplete.componen
 import {SectionHeaderComponent} from './shared/components/section-header.component';
 import {FeebeMessageComponent} from './shared/components/feebe-message.component';
 import {LoaderComponent} from './shared/components/loader.component';
+import {StepsComponent} from './shared/components/steps.component';
 import {LoginModalComponent} from './shared/login-modal/login-modal.component';
 import {PersonalInfoComponent} from './profile/personal-info/personal-info.component';
 import {SkillsComponent} from './profile/skills/skills.component';
 import {BadgesComponent} from './profile/badges/badges.component';
 import {NotificationComponent} from './navigation/user-nav/notification/notification.component';
 import {ProjectCardComponent} from './shared/project-card/project-card.component';
-import { ProjectsOverviewComponent } from './profile/projects-overview/projects-overview.component';
-import { FeebeInfoComponent } from './shared/components/feebe-info.component';
-import { HomeCardComponent } from './home/home-card/home-card.component';
-import { HomeSectionComponent } from './home/home-section/home-section.component';
-import { HomeParagraphComponent } from './home/home-section/home-paragraph/home-paragraph.component';
-import { ProjectsListOverviewComponent } from './profile/projects-overview/projects-list-overview/projects-list-overview.component';
+import {ProjectsOverviewComponent} from './profile/projects-overview/projects-overview.component';
+import {FeebeInfoComponent} from './shared/components/feebe-info.component';
+import {HomeCardComponent} from './home/home-card/home-card.component';
+import {HomeSectionComponent} from './home/home-section/home-section.component';
+import {HomeParagraphComponent} from './home/home-section/home-paragraph/home-paragraph.component';
+import {ProjectsListOverviewComponent} from './profile/projects-overview/projects-list-overview/projects-list-overview.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +78,7 @@ import { ProjectsListOverviewComponent } from './profile/projects-overview/proje
     AddApplicationComponent,
     AutocompleteComponent,
     TimeAgoPipe,
-    AddProjectComponent,
+    StartProjectComponent,
     SearchComponent,
     FooterComponent,
     UserNavComponent,
@@ -93,7 +101,15 @@ import { ProjectsListOverviewComponent } from './profile/projects-overview/proje
     PersonalInfoComponent,
     NotificationComponent,
     FeebeMessageComponent,
-    LoaderComponent
+    LoaderComponent,
+    TitleFormComponent,
+    DescriptionFormComponent,
+    SkillsFormComponent,
+    AssetsFormComponent,
+    QuestionsFormComponent,
+    ProjectOverviewComponent,
+    StepsComponent,
+    FormHeaderComponent
   ],
   imports: [
     routing,
