@@ -11,11 +11,14 @@ import {MessageService} from './shared/message.service';
 import {ProjectService} from './shared/project.service';
 import { ProjectComponent } from './project-details/project.component';
 import { SharedModule } from '../shared/shared.module';
+import { TabsModule, ModalModule } from 'ngx-bootstrap';
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    TabsModule.forRoot(),
+    ModalModule.forRoot(),
   ],
   declarations: [
     AddApplicationComponent,

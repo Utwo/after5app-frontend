@@ -9,11 +9,18 @@ import { QuestionsFormComponent } from './forms/questions-form';
 import { SkillsFormComponent } from './forms/skills-form';
 import { TitleFormComponent } from './forms/title-form';
 import { SharedModule } from '../shared/shared.module';
+import { RouterModule } from '@angular/router';
+
+export const routerConfig = [{
+  path: '',
+  component: StartProjectComponent
+}];
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterModule.forChild(routerConfig)
   ],
   declarations: [
     StartProjectComponent,

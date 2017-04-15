@@ -27,7 +27,7 @@ export class AssetsFormComponent {
   @Input() assets = [];
   @Output() onNext = new EventEmitter<string[]>();
 
-  constructor(private state: StateService) {
+  constructor(public state: StateService) {
   }
 
   storeAssets() {

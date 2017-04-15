@@ -5,13 +5,19 @@ import { HomeParagraphComponent } from './home-section/home-paragraph/home-parag
 import { HomeCardComponent } from './home-card/home-card.component';
 import { HomeComponent } from './home.component';
 import { SharedModule } from '../shared/shared.module';
+import { RouterModule } from '@angular/router';
+
+export const routerConfig = [{
+  path: '',
+  component: HomeComponent
+}];
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterModule.forChild(routerConfig)
   ],
   declarations: [HomeComponent, HomeSectionComponent, HomeParagraphComponent, HomeCardComponent]
 })
-export class HomeModule {
-}
+export class HomeModule {}

@@ -1,22 +1,16 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {routing, appRoutingProviders} from './app.routing';
-import {HttpModule, JsonpModule} from '@angular/http';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { routing, appRoutingProviders } from './app.routing';
+import { HttpModule } from '@angular/http';
 // external modules
-import {ToastyModule} from 'ng2-toasty';
-import {ModalModule, TypeaheadModule, TabsModule} from 'ngx-bootstrap';
+import { ToastyModule } from 'ng2-toasty';
 // components
-import {AppComponent} from './app.component';
+import { AppComponent } from './app.component';
 // modules
-import {SharedModule} from './shared/shared.module';
-import {CoreModule} from './core/core.module';
-import {AboutModule} from './about/about.module';
-import {HomeModule} from './home/home.module';
-import {LoginModule} from './login/login.module';
-import {NotFoundModule} from './not-found/not-found.module';
-import {ProfileModule} from './profile/profile.module';
-import {ProjectsModule} from './projects/projects.module';
-import {StartProjectModule} from './start-project/start-project.module';
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
+import { ProfileModule } from './profile/profile.module';
+import { ProjectsModule } from './projects/projects.module';
 
 @NgModule({
   declarations: [
@@ -25,17 +19,12 @@ import {StartProjectModule} from './start-project/start-project.module';
   imports: [
     routing,
     BrowserModule,
-    SharedModule,
-    CoreModule.forRoot(),
-    AboutModule,
-    HomeModule,
-    LoginModule,
-    NotFoundModule,
-    ProfileModule,
-    ProjectsModule,
-    StartProjectModule,
     HttpModule,
-    JsonpModule,
+    ToastyModule.forRoot(),
+    CoreModule.forRoot(),
+    SharedModule,
+    ProfileModule,
+    ProjectsModule
   ],
   providers: [
     appRoutingProviders,

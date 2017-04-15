@@ -11,8 +11,7 @@ import { SectionHeaderComponent } from './components/section-header.component';
 import { StepsComponent } from './components/steps.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
-import { ToastyModule } from 'ng2-toasty';
-import { ModalModule, TabsModule, TypeaheadModule } from 'ngx-bootstrap';
+import { ModalModule, TypeaheadModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -20,32 +19,10 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     FormsModule,
     RouterModule,
-    ModalModule.forRoot(),
     TypeaheadModule.forRoot(),
-    TabsModule.forRoot(),
-    ToastyModule.forRoot(),
+    ModalModule.forRoot(),
   ],
   declarations: [
-    TimeAgoPipe,
-    FocusDirective,
-    AutocompleteComponent,
-    FeebeInfoComponent,
-    FeebeMessageComponent,
-    LoaderComponent,
-    SectionHeaderComponent,
-    StepsComponent,
-    LoginModalComponent,
-    ProjectCardComponent
-  ],
-  exports: [
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    ModalModule,
-    TypeaheadModule,
-    TabsModule,
-    ToastyModule,
-    TimeAgoPipe,
     FocusDirective,
     AutocompleteComponent,
     FeebeInfoComponent,
@@ -55,6 +32,22 @@ import { RouterModule } from '@angular/router';
     StepsComponent,
     LoginModalComponent,
     ProjectCardComponent,
+    TimeAgoPipe,
+  ],
+  exports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    FocusDirective,
+    AutocompleteComponent,
+    FeebeInfoComponent,
+    FeebeMessageComponent,
+    LoaderComponent,
+    SectionHeaderComponent,
+    StepsComponent,
+    LoginModalComponent,
+    ProjectCardComponent,
+    TimeAgoPipe
   ]
 })
 export class SharedModule {

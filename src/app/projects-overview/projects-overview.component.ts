@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {StateService} from '../../core/state.service';
-import {ResponseHandlerService} from '../../core/response-handler.service';
-import {ProfileService} from '../shared/profile.service';
+import {StateService} from '../core/state.service';
+import {ResponseHandlerService} from '../core/response-handler.service';
+import {ProfileService} from '../profile/shared/profile.service';
 
 @Component({
   selector: 'app-projects-overview',
@@ -65,7 +65,7 @@ export class ProjectsOverviewComponent implements OnInit {
   }
 
   getFeebeDescription() {
-    if (!this.projects || !this.joinedProjects || !this.appliedProjects || !this.joinedProjects) {
+    if (!this.projects || !this.joinedProjects || !this.appliedProjects || this.followingProjects) {
       return;
     }
 
