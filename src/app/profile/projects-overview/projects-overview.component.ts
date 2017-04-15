@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {StateService} from '../../shared/state.service';
-import {ResponseHandlerService} from '../../shared/response-handler.service';
+import {StateService} from '../../core/state.service';
+import {ResponseHandlerService} from '../../core/response-handler.service';
 import {ProfileService} from '../shared/profile.service';
 
 @Component({

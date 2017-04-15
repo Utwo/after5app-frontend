@@ -2,7 +2,7 @@ import {Component, ViewContainerRef} from '@angular/core';
 import './rxjs-operators';
 import {Router, NavigationEnd} from '@angular/router';
 import {ToastyService, ToastyConfig, ToastOptions} from 'ng2-toasty';
-import {ResponseHandlerService} from './shared/response-handler.service';
+import {ResponseHandlerService} from './core/response-handler.service';
 import {environment} from '../environments/environment';
 declare var ga: Function;
 

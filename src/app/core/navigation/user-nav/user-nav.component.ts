@@ -1,8 +1,8 @@
 import {Component, OnInit, Input, ViewChild} from '@angular/core';
 import {NotificationsService} from './shared/notifications.service';
-import {LoginService} from '../../core/login.service';
+import {LoginService} from '../../login.service';
 import {Router} from '@angular/router';
-import {ResponseHandlerService} from '../../shared/response-handler.service';
+import {ResponseHandlerService} from '../../response-handler.service';
 
 @Component({
   selector: 'app-user-nav',

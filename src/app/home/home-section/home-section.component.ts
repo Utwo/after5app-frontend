@@ -1,11 +1,10 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-home-section',
-  templateUrl: 'home-section.component.html',
-  styles: []
+  templateUrl: './home-section.component.html',
 })
-export class HomeSectionComponent{
+export class HomeSectionComponent {
   @Input('main_text') main_text;
   @Input('secondary_text') secondary_text;
 

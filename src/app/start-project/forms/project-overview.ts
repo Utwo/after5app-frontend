@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {StateService} from '../../../shared/state.service';
+import {StateService} from '../../core/state.service';
 
 @Component({
   selector: 'app-overview-form',

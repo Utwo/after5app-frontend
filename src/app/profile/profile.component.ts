@@ -1,8 +1,8 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProfileService} from './shared/profile.service';
-import {StateService} from '../shared/state.service';
-import {ResponseHandlerService} from '../shared/response-handler.service';
+import {StateService} from '../core/state.service';
+import {ResponseHandlerService} from '../core/response-handler.service';
 
 @Component({
   selector: 'app-profile',
@@ -22,9 +22,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      let id = +params['id'];
+      const id = +params['id'];
       this.getUser(id);
-      console.log(this.state.getToken());
     });
   }
 

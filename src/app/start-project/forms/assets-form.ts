@@ -1,5 +1,5 @@
-import {Component, Input, EventEmitter, Output} from '@angular/core';
-import {StateService} from "../../../shared/state.service";
+import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { StateService } from '../../core/state.service';
 
 @Component({
   selector: 'app-assets-form',

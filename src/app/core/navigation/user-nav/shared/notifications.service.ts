@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Http, Response, Headers, RequestOptions} from '@angular/http';
-import {StateService} from '../../../shared/state.service';
-import {environment} from '../../../../environments/environment';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { StateService } from '../../../state.service';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable()
 export class NotificationsService {
@@ -11,10 +11,10 @@ export class NotificationsService {
   }
 
   public getNotificationsCount() {
-    let headers = new Headers({
+    const headers = new Headers({
       'Authorization': 'Bearer ' + this.state.getToken()
     });
-    let options = new RequestOptions({headers: headers});
+    const options = new RequestOptions({headers: headers});
 
     return this.http.get(environment.URL_API + environment.API_VERSION + 'notification/count', options)
       .map(this.extractData)
@@ -22,10 +22,10 @@ export class NotificationsService {
   }
 
   public getNotifications() {
-    let headers = new Headers({
+    const headers = new Headers({
       'Authorization': 'Bearer ' + this.state.getToken()
     });
-    let options = new RequestOptions({headers: headers});
+    const options = new RequestOptions({headers: headers});
 
     return this.http.get(environment.URL_API + environment.API_VERSION + 'notification', options)
       .map(this.extractData)
@@ -33,7 +33,7 @@ export class NotificationsService {
   }
 
   private extractData(res: Response) {
-    let body = res.json();
+    const body = res.json();
     return body || {};
   }
 
