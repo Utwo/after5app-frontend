@@ -1,47 +1,42 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {Component, OnChanges, Input} from '@angular/core';
 import {ProfileService} from '../shared/profile.service';
-import {StateService} from '../../shared/state.service';
-import {ResponseHandlerService} from '../../shared/response-handler.service';
+import {StateService} from '../../core/state.service';
+import {ResponseHandlerService} from '../../core/response-handler.service';
 
 @Component({
   selector: 'app-personal-info',
   templateUrl: './personal-info.component.html',
 })
-export class PersonalInfoComponent implements OnInit {
+export class PersonalInfoComponent implements OnChanges {
   @Input() user;
+  public isMe = false;
+  public editing = false;
+  public name: String = '';
+  public city: String = '';
+  public workplace: String = '';
+  public description: String = '';
+  public hobby: String = '';
+  public hobbies: String[] = [];
+  public socialInput: String = null;
+  public socialOptions: String[] = ['Facebook', 'LinkedIn', 'Twitter', 'GitHub', 'Medium'];
+  public link: String = '';
 
-  public applications = [];
-  private isMe = false;
-  private editing = false;
-  private name: String = "";
-  private city: String = "";
-  private workplace: String = "";
-  private description: String = "";
-  private hobby: String = "";
-  private hobbies: String[] = [];
-  private socialInput: String = null;
-  private socialOptions: String[] = ['Facebook', 'LinkedIn', 'Twitter', 'GitHub', 'Medium'];
-  private link: String = "";
-  private socialLinks: String[];
-
-  constructor(private route: ActivatedRoute, private profileService: ProfileService, private state: StateService,
+  constructor(private profileService: ProfileService,
+              private state: StateService,
               private responseHandler: ResponseHandlerService) {
   }
 
-  ngOnInit() {
+  ngOnChanges() {
     this.verifyIfMe(this.user.id);
     this.name = this.user.name;
     this.city = this.user.city;
     this.workplace = this.user.workplace;
     this.description = this.user.description;
-    this.hobbies = this.user.hobbies;
+    this.hobbies = this.user.hobbies || [];
   }
 
   verifyIfMe(id) {
-    if (this.state.isLoggedIn() && this.state.getUser().id === id) {
-      this.isMe = true;
-    }
+    this.isMe = this.state.isLoggedIn() && this.state.getUser().id === id;
   }
 
   toggleEditing() {
@@ -49,7 +44,7 @@ export class PersonalInfoComponent implements OnInit {
   }
 
   saveChanges() {
-    let body = {
+    const body = {
       name: this.name,
       city: this.city,
       description: this.description,
@@ -59,20 +54,24 @@ export class PersonalInfoComponent implements OnInit {
     this.profileService.updateUser(body)
       .subscribe(
         (data) => {
-          this.responseHandler.successMessage(`Changes have been saved`);
+          this.responseHandler.successMessage('Changes have been saved');
           this.state.setUser(data.user);
           this.user = data.user;
         },
-        error => {this.responseHandler.errorMessage('An error occured!', error); console.log("Error", error)});
+        error => {
+          this.responseHandler.errorMessage('An error occured!', error);
+          console.log('Error', error);
+        }
+      );
   }
 
   addHobby() {
     this.hobbies.push(this.hobby);
-    this.hobby = "";
+    this.hobby = '';
   }
 
   removeHobby(hobby) {
-    this.hobbies.splice(this.hobbies.findIndex(elem => elem == hobby),1);
+    this.hobbies.splice(this.hobbies.findIndex(elem => elem === hobby), 1);
   }
 
   addSocial() {

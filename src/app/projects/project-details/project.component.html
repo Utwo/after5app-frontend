@@ -125,9 +125,9 @@
     <div class="row">
       <tabset class="col-lg-8 col-md-7">
         <tab [heading]='Comments' [active]="true">
-          <template tabHeading>
+          <ng-template tabHeading>
             Comments
-          </template>
+          </ng-template>
           <app-comments [project_id]="project.id"
                         [comments]="project.comment"
                         class="row comment panel--left">
@@ -135,9 +135,9 @@
         </tab>
 
         <tab *ngIf="isMember || myProject" [heading]='Messages'>
-          <template tabHeading>
+          <ng-template tabHeading>
             <span title="only visible to project members">Messages</span>
-          </template>
+          </ng-template>
           <app-messages [owner_id]="project.user_id"
                         [project_id]="project.id"
                         class="row comment panel--left">
@@ -145,14 +145,14 @@
         </tab>
 
         <tab *ngIf="myProject" [heading]='Applications'>
-          <template tabHeading>
+          <ng-template tabHeading>
             <span>Applications
               <strong *ngIf="applications && pendingApplicationsCount() > 0"
                       class="btn btn-primary btn-sm btn-circle-sm">
                 {{pendingApplicationsCount()}}
               </strong>
             </span>
-          </template>
+          </ng-template>
           <app-project-applications [questions]="project.application_questions"
                                  [project_id]="project.id"
                                  (onResponse)="applicationResponse($event)">

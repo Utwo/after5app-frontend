@@ -1,5 +1,4 @@
 #toasty {
-  z-index: map-get($zindex, max);
   display: flex;
   overflow: hidden;
   width: auto;
@@ -14,6 +13,7 @@
   border-radius: $border-radius;
   overflow: hidden;
   animation: show-alert .4s alternate cubic-bezier(0.7, 1.49, 0.71, 1.57) forwards;
+  z-index: map-get($zindex, max);
 }
 
 .toast .toast-text {

@@ -6,9 +6,10 @@
            (typeaheadLoading)="changeTypeaheadLoading($event)"
            (typeaheadNoResults)="changeTypeaheadNoResults($event)"
            (typeaheadOnSelect)="typeaheadOnSelect($event)"
+           typeaheadOptionsLimit="10"
+           typeaheadOptionField="name"
            [typeaheadWaitMs]="200"
-           [typeaheadItemTemplate]="skillItemTemplate"
-           placeholder="javascript"
+           placeholder={{placeholder}}
            class={{input_class}}
            id="filter"
            autocomplete="off"
@@ -21,12 +22,11 @@
 				</span>
   </i>
 
-  <div *ngIf="typeaheadNoResults===true && type=='list'" class="dropdown-menu text-center">
+  <div *ngIf="typeaheadNoResults===true && type=='filter-list'" class="dropdown-menu text-center">
     <i class="text-muted">No Results Found</i>
   </div>
 
-  <template #skillItemTemplate let-skill="item" let-index="index">
+  <ng-template #skillItemTemplate let-skill="item" let-index="index">
     {{skill.name}}
-  </template>
+  </ng-template>
 </div>
-

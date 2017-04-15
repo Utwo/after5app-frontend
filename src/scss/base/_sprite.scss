@@ -4,6 +4,8 @@
 }
 
 .sprite-astronaut {
+  position: absolute;
+  left: 0;
   width: 344px;
   height: 320px;
   background-position: -5px -5px;
@@ -44,6 +46,7 @@
 .sprite-home-planet-1 {
   position: absolute;
   left: 0;
+  top: 25%;
   z-index: map-get($zindex, high);
   width: 143px;
   height: 218px;

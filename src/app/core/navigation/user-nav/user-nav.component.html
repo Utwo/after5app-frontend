@@ -1,0 +1,62 @@
+<div class="dropdown" #container>
+  <div class="nav notification justify-content-around">
+    <div (click)="dropdownNotification();" class="nav-item mx-sm-3 mx-1">
+      <svg class="icon icon-lg">
+        <use xlink:href="assets/svg/icons.svg#icon-notification"></use>
+      </svg>
+      <span *ngIf="notificationCount != 0" class="notification__count">{{notificationCount}}</span>
+    </div>
+
+    <div (click)="dropdownUser();" class="nav-item mx-sm-3 mx-1">
+      <img class="profile-img"
+           src="{{user.picture+'?s=32&width=32&height=32'}}">
+    </div>
+  </div>
+
+  <div [class.dropdown--activ]="isDropdownUserActiv">
+    <div class="dropdown-user dropdown-wrapper">
+      <div class="dropdown-menu dropdown__content container-fluid">
+        <ul class="list-unstyled text-center">
+          <li>
+            <a class="d-block panel__item" routerLink="/profile/{{user.id}}">
+              <b>PROFILE</b>
+            </a>
+          </li>
+          <li>
+            <a class="d-block panel__item" routerLink="/projects-overview"><b>PROJECTS</b></a>
+          </li>
+          <li>
+            <a class="d-block panel__item" href="javascript:;"
+               (click)="logout()"><b>SIGN OUT</b>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div [class.dropdown--activ]="isDropdownNotifActiv">
+    <div class="dropdown-notifications dropdown-wrapper">
+      <div
+        class="dropdown-menu dropdown__content container-fluid">
+        <div class="text-center p-4" *ngIf="!notifications">
+          <span class="spinner">
+            <span class="double-bounce1"></span>
+            <span class="double-bounce2"></span>
+          </span>
+        </div>
+        <div class="text-center p-4"
+             *ngIf="notifications && notifications.length < 1">
+          You have no notifications
+        </div>
+
+        <ol *ngIf="notifications && notifications.length > 0"
+            class="list-unstyled my-3">
+          <li *ngFor="let notification of notifications">
+            <app-notification [notification]="notification"></app-notification>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>

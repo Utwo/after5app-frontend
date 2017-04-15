@@ -1,8 +1,8 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProfileService} from './shared/profile.service';
-import {StateService} from '../shared/state.service';
-import {ResponseHandlerService} from '../shared/response-handler.service';
+import {StateService} from '../core/state.service';
+import {ResponseHandlerService} from '../core/response-handler.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,8 +13,6 @@ import {ResponseHandlerService} from '../shared/response-handler.service';
 export class ProfileComponent implements OnInit, OnDestroy {
   private sub;
   public user = null;
-  public isMe = false;
-  public applications = [];
 
   constructor(private route: ActivatedRoute,
               private profileService: ProfileService,
@@ -24,9 +22,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      let id = +params['id'];
+      const id = +params['id'];
       this.getUser(id);
-      this.verifyIfMe(id);
     });
   }
 
@@ -36,20 +33,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
         user => {
           this.user = user;
         },
-        error => this.responseHandler.errorMessage('An error occured!', error));
-  }
-
-  verifyIfMe(id) {
-    if (this.state.isLoggedIn() && this.state.getUser().id === id) {
-      this.isMe = true;
-      this.getMyApplications();
-    }
-  }
-
-  getMyApplications() {
-    this.profileService.getMyApplications()
-      .subscribe(
-        applications => this.applications = applications,
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 

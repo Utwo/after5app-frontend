@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
-import {ResponseHandlerService} from '../../../shared/response-handler.service';
+import {ResponseHandlerService} from '../../../core/response-handler.service';
 import {ApplicationService} from '../../shared/application.service';
 
 @Component({
