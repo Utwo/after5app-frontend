@@ -319,20 +319,13 @@ AddDefaultCharset utf-8
 
 <IfModule mod_rewrite.c>
 
-    # (1)
+    Options Indexes FollowSymLinks
     RewriteEngine On
-
-    # (2)
-    Options +FollowSymlinks
-
-    # (3)
-    # Options +SymLinksIfOwnerMatch
-
-    # (4)
-    # RewriteBase /
-
-    # (5)
-    # RewriteOptions <options>
+    RewriteBase /
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
 
     # (6)
     RewriteCond %{HTTPS} =on
