@@ -19,6 +19,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
           </div>
           <div class="col-11">
             <input
+              autocomplete="off"
               class="form-control"
               id="question"
               type="text"

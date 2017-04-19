@@ -3,7 +3,7 @@ import {Component, Input} from '@angular/core';
 @Component({
   selector: 'app-feebe-message',
   template: `
-    <div class="row">
+    <div class="febee-long__message row">
       <div class="col-md-1 col-2">
         <div class="feebe-head">
           <span class="febee-eyes"></span>

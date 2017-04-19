@@ -11,6 +11,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
       <div class="form-group mt-5">
         <div class="input-group">
           <input
+            appFocus
             class="form-control"
             id="title"
             name="title"

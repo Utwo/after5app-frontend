@@ -109,13 +109,13 @@ import { StateService } from '../../core/state.service';
     </div>
     <div class="text-center">
       <div *ngIf="!state.isLoggedIn()">
-        <div className="mb-3">
+        <div>
           <i>You can only post your project once you have logged in.
             Save your project, log in and come back here to share it with everyone!</i>
         </div>
         <button
           (click)="saveProject(modal)"
-          class="btn btn-success"
+          class="btn btn-success mt-3"
           type="button">
           <small>SAVE MY PROJECT!</small>
         </button>

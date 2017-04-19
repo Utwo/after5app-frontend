@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TimeAgoPipe } from 'time-ago-pipe';
+import { TimeAgoPipe } from './time-ago.pipe';
 import { FocusDirective } from './focus.directive';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { FeebeInfoComponent } from './components/feebe-info.component';

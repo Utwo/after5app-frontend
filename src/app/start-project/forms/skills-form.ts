@@ -30,6 +30,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
               </button>
             </div>
             <textarea
+              (keydown.enter)="addPosition(description, autocomplete);false"
               class="form-control mt-1"
               rows="2"
               placeholder="... and then add a small description"
@@ -58,7 +59,9 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
       </li>
     </ul>
     <div class="text-center text-info">
-      You have opened {{project_positions.length}} team slots.
+      You have opened {{project_positions.length}} team 
+      <span *ngIf="project_positions.length === 1">slot</span>
+      <span *ngIf="project_positions.length !== 1">slots</span>.
     </div>
   `,
 })
