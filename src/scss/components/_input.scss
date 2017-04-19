@@ -8,3 +8,16 @@
 .input-gray {
   background-color: $gray-lighter;
 }
+
+.search-input{
+  font-size: 1.2em;
+  color: #fff;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.form-control.search-input:focus{
+  background: transparent;
+  color: #fff;
+}

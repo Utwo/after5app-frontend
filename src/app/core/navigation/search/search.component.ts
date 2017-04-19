@@ -41,5 +41,4 @@ export class SearchComponent {
     this.asyncSelected = e.item.title;
     this.router.navigate(['/project/', e.item.id]);
   }
-
 }
