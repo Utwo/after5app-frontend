@@ -2,8 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ModalDirective} from 'ngx-bootstrap';
 import {ProjectService} from '../shared/project.service';
-import {StateService} from '../../shared/state.service';
-import {ResponseHandlerService} from '../../shared/response-handler.service';
+import {StateService} from '../../core/state.service';
+import {ResponseHandlerService} from '../../core/response-handler.service';
 import {environment} from '../../../environments/environment';
 import {ApplicationService} from '../shared/application.service';
 const mo = require('mo-js/build/mo.min.js');
@@ -137,8 +137,8 @@ export class ProjectComponent implements OnInit {
 
   removeMember(index) {
     let application_id;
-    let member = this.members[index];
-    for (let application of this.applications) {
+    const member = this.members[index];
+    for (const application of this.applications) {
       if (application.user_id === member.id) {
         application_id = application.id;
       }
@@ -304,7 +304,7 @@ export class ProjectComponent implements OnInit {
         },
         onUpdate: function (progress) {
           if (progress > 0.3) {
-            let elasticOutProgress = mo.easing.elastic.out(1.43 * progress - 0.43);
+            const elasticOutProgress = mo.easing.elastic.out(1.43 * progress - 0.43);
             elSpan.style.WebkitTransform = elSpan.style.transform = 'scale3d(' + elasticOutProgress + ',' + elasticOutProgress + ',1)';
           } else {
             elSpan.style.WebkitTransform = elSpan.style.transform = 'scale3d(0,0,1)';

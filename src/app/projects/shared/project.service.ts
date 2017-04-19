@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
-import {StateService} from '../../shared/state.service';
+import {StateService} from '../../core/state.service';
 import {environment} from '../../../environments/environment';
 
 @Injectable()

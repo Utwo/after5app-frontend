@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ProjectService} from '../../shared/project.service';
-import {ResponseHandlerService} from '../../../shared/response-handler.service';
+import {ResponseHandlerService} from '../../../core/response-handler.service';
 
 @Component({
   selector: 'app-edit-project',
@@ -71,7 +71,7 @@ export class EditProjectComponent {
   }
 
   validatePosition(position) {
-    for (let project_position of this.project.position) {
+    for (const project_position of this.project.position) {
       if (position.name === project_position.skill.name) {
         this.positionError = 'Please choose a new skill.';
         return true;

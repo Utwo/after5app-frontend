@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {ProjectService} from '../shared/project.service';
-import {ResponseHandlerService} from '../../shared/response-handler.service';
-import {StateService} from '../../shared/state.service';
+import {ProjectService} from './../projects/shared/project.service';
+import {ResponseHandlerService} from '../core/response-handler.service';
+import {StateService} from './../core/state.service';
 
 @Component({
   selector: 'app-start-project',
-  templateUrl: 'start-project.component.html',
+  templateUrl: './start-project.component.html',
 })
 
 export class StartProjectComponent {

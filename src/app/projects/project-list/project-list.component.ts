@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ProjectService} from '../shared/project.service';
-import {StateService} from '../../shared/state.service';
-import {ResponseHandlerService} from '../../shared/response-handler.service';
+import { Component, OnInit } from '@angular/core';
+import { ProjectService } from '../shared/project.service';
+import { StateService } from '../../core/state.service';
+import { ResponseHandlerService } from '../../core/response-handler.service';
 
 @Component({
   selector: 'app-project-list',
@@ -50,7 +50,9 @@ export class ProjectListComponent implements OnInit {
       this.isRecommendedActive = true;
       this.projectService.getRecommendedProjects()
         .subscribe(
-          projects => {console.log(projects); this.extractData(projects)},
+          projects => {
+            this.extractData(projects);
+          },
           error => this.responseHandler.errorMessage('An error occured!', error));
     } else {
       modal.open();
@@ -62,7 +64,9 @@ export class ProjectListComponent implements OnInit {
     this.isPopularActive = true;
     this.projectService.getPopularProjects()
       .subscribe(
-        projects => {console.log(projects, "populaaar");this.extractData(projects)},
+        projects => {
+          this.extractData(projects);
+        },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
@@ -73,7 +77,7 @@ export class ProjectListComponent implements OnInit {
       next: projects.next_page_url,
       prev: projects.prev_page_url
     };
-    for (let project of this.projects) {
+    for (const project of this.projects) {
       if (project.description.length > this.maxDescriptionLength) {
         project.description = project.description.substring(0, this.maxDescriptionLength) + '...';
       }

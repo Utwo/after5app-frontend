@@ -1,26 +1,25 @@
-import {Routes, RouterModule} from '@angular/router';
-import {HomeComponent} from './home/home.component';
-import {ModuleWithProviders} from '@angular/core';
-import {AboutComponent} from './about/about.component';
-import {ProfileComponent} from './profile/profile.component';
-import {ProjectListComponent} from './projects/project-list/project-list.component';
-import {ProjectComponent} from './projects/project-details/project.component';
-import {StartProjectComponent} from './projects/start-project/start-project.component';
-import {NotFoundComponent} from './core/not-found/not-found.component';
-import {LoginComponent} from './login/login.component';
-import {AuthGuard} from './core/auth-guard.service';
-import {ProjectsOverviewComponent} from './profile/projects-overview/projects-overview.component';
+import { Routes, RouterModule } from '@angular/router';
+import { ModuleWithProviders } from '@angular/core';
+import { ProfileComponent } from './profile/profile.component';
+import { ProjectListComponent } from './projects/project-list/project-list.component';
+import { ProjectComponent } from './projects/project-details/project.component';
+import { AuthGuard } from './core/auth-guard.service';
 
 const appRoutes: Routes = [
-  {path: '', component: HomeComponent, pathMatch: 'full'},
-  {path: 'about', component: AboutComponent},
+  {path: '', loadChildren: './home/home.module#HomeModule', pathMatch: 'full'},
   {path: 'projects', component: ProjectListComponent},
   {path: 'project/:id', component: ProjectComponent},
-  {path: 'start-project', component: StartProjectComponent},
   {path: 'profile/:id', component: ProfileComponent},
-  {path: 'projects-overview', component: ProjectsOverviewComponent, canActivate: [AuthGuard]},
-  {path: 'auth/:type/callback', component: LoginComponent},
-  {path: '**', component: NotFoundComponent}
+  {
+    path: 'projects-overview',
+    loadChildren: './projects-overview/projects-overview.module#ProjectsOverviewModule',
+    canActivate: [AuthGuard]
+  },
+  {path: 'about', loadChildren: './about/about.module#AboutModule'},
+  {path: 'start-project', loadChildren: './start-project/start-project.module#StartProjectModule'},
+  {path: 'auth/:type/callback', loadChildren: './login/login.module#LoginModule'},
+  {path: '404', loadChildren: './not-found/not-found.module#NotFoundModule'},
+  {path: '**', redirectTo: '404'}
 ];
 
 export const appRoutingProviders: any[] = [];

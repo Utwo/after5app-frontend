@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {StateService} from '../../../shared/state.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { StateService } from '../../core/state.service';
 
 @Component({
   selector: 'app-overview-form',
@@ -110,10 +110,10 @@ import {StateService} from '../../../shared/state.service';
     <div class="text-center">
       <div *ngIf="!state.isLoggedIn()">
         <div className="mb-3">
-        <i>You can only post your project once you have logged in. 
-          Save your project, log in and come back here to share it with everyone!</i>
+          <i>You can only post your project once you have logged in.
+            Save your project, log in and come back here to share it with everyone!</i>
         </div>
-        <button          
+        <button
           (click)="saveProject(modal)"
           class="btn btn-success"
           type="button">
@@ -132,11 +132,17 @@ import {StateService} from '../../../shared/state.service';
   `,
 })
 export class ProjectOverviewComponent {
-  @Input() project = {};
+  @Input() project: any = {
+    title: '',
+    description: '',
+    assets: [],
+    application_questions: [],
+    positions: [],
+  };
   @Output() onStoreProject = new EventEmitter();
   @Output() onEditStep = new EventEmitter();
 
-  constructor(private state: StateService) {
+  constructor(public state: StateService) {
   }
 
   saveProject(modal) {

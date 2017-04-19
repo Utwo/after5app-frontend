@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {ResponseHandlerService} from '../../../shared/response-handler.service';
+import {ResponseHandlerService} from '../../../core/response-handler.service';
 import {MessageService} from '../../shared/message.service';
 
 @Component({

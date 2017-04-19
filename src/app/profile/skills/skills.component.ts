@@ -1,7 +1,7 @@
 import {Component, OnChanges, Input} from '@angular/core';
 import {ProfileService} from '../shared/profile.service';
-import {StateService} from '../../shared/state.service';
-import {ResponseHandlerService} from '../../shared/response-handler.service';
+import {StateService} from '../../core/state.service';
+import {ResponseHandlerService} from '../../core/response-handler.service';
 
 @Component({
   selector: 'app-skills',

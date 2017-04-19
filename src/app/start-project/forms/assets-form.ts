@@ -1,5 +1,5 @@
-import {Component, Input, EventEmitter, Output} from '@angular/core';
-import {StateService} from "../../../shared/state.service";
+import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { StateService } from '../../core/state.service';
 
 @Component({
   selector: 'app-assets-form',
@@ -27,7 +27,7 @@ export class AssetsFormComponent {
   @Input() assets = [];
   @Output() onNext = new EventEmitter<string[]>();
 
-  constructor(private state: StateService) {
+  constructor(public state: StateService) {
   }
 
   storeAssets() {
