@@ -80,6 +80,18 @@ export class ProjectService {
       .catch(this.handleError);
   }
 
+  addAssets(formData) {
+    const headers = new Headers({
+      'Content-Type': 'multipart/form-data',
+      'Authorization': 'Bearer ' + this.state.getToken()
+    });
+    const options = new RequestOptions({headers: headers});
+
+    return this.http.post(environment.URL_API + environment.API_VERSION + 'assets', formData, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   public getSkills() {
     return this.http.get(environment.URL_API + environment.API_VERSION + 'skill')
       .map(this.extractData)

@@ -11,7 +11,8 @@ import {StateService} from './../core/state.service';
 })
 
 export class StartProjectComponent {
-  project = {title: '', description: '', position: [], application_questions: [], assets: []};
+  project = {title: '', description: '', position: [], application_questions: []};
+  assets = [];
   steps = ['title', 'description', 'skills', 'assets', 'questions', 'overview'];
   activeStep = 'title';
   infoMessage = {
@@ -78,10 +79,22 @@ export class StartProjectComponent {
     } else {
       this.projectService.addProject(this.project)
         .subscribe(
-          data => {
-            this.router.navigate(['/project', data.project.id]);
-          },
-          error => this.responseHandler.errorMessage('An error occured!', error));
+          data => this.storeAssets(data.project.id),
+          error => this.responseHandler.errorMessage('An error occured when saing the project!', error));
+    }
+  }
+
+  storeAssets(projectId) {
+    if (this.assets.length) {
+      const formData: FormData = new FormData();
+      for (const file of this.assets) {
+        formData.append('assets', file, file.name);
+      }
+      formData.append('project_id', projectId);
+      this.projectService.addAssets(formData)
+        .subscribe(
+          () => this.router.navigate(['/project', projectId]),
+          error => this.responseHandler.errorMessage('An error occured when saving the files!', error));
     }
   }
 }

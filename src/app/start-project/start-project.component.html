@@ -17,7 +17,7 @@
           (onNext)="onNext($event)"></app-skills-form>
         <app-assets-form
           *ngSwitchCase="'assets'"
-          [assets]="project.assets"
+          [assets]="assets"
           (onNext)="onNext($event)"></app-assets-form>
         <app-questions-form
           *ngSwitchCase="'questions'"
@@ -26,6 +26,7 @@
         <app-overview-form
           *ngSwitchCase="'overview'"
           [project]="project"
+          [assets]="assets"
           (onStoreProject)="storeProject()"
           (onEditStep)="goToStep($event)"></app-overview-form>
       </div>
