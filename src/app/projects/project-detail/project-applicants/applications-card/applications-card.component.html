@@ -1,0 +1,25 @@
+
+<div *ngIf="application">
+  <div class="row">
+    <div class="col-1">
+      <img class="profile-img"
+           *ngIf="application.user.picture"
+           src="{{application.user.picture+'?s=40&width=40&height=40'}}">
+    </div>
+    <div class="col-7">
+      <h3 *ngIf="application.accepted" >
+        has joined the project on <strong> {{application.position.skill.name}} </strong>
+      </h3>
+      <h3 *ngIf="!application.accepted">
+        has applied for <strong> {{application.position.skill.name}} </strong>
+      </h3>
+    </div>
+    <div>
+      <button *ngIf="application.accepted" class="btn btn-primary">Manage</button>
+      <div *ngIf="!application.accepted" class='row'>
+        <button (click)="declineApplication(application.id, i)" class="btn btn-primary">Remove</button>
+        <button (click)="acceptApplication(application.id, i)" class="btn btn-primary">Accept</button>
+      </div>
+    </div>
+  </div>
+</div>

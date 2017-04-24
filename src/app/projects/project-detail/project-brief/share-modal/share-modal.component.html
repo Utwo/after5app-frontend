@@ -1,0 +1,25 @@
+<div bsModal #shareModal="bs-modal" class="modal grow"
+     tabindex="-1" role="dialog"
+     aria-hidden="true">
+<div class="modal-dialog modal-fluid">
+  <div class="modal-content">
+    <div class="modal-body jumbotron-fluid">
+<h2> Let's share it someplace...</h2>
+  <a
+    href="https://www.facebook.com/dialog/share?app_id={{environment.FACEBOOK_ID}}&display=popup&href={{href}}&redirect_uri={{href}}&quote=Check%20out%20this%20project%20and%20help%20it%20become%20a%20reality"
+    class="btn btn-primary btn-facebook mr-1" target="_blank">
+    <svg class="icon icon-lg">
+      <use xlink:href="assets/svg/icons.svg#icon-facebook2"></use>
+    </svg>
+    Share</a>
+  <a
+    href="https://twitter.com/share?url={{href}}&hashtags=after5app&text=Check%20out%20this%20project%20and%20help%20it%20become%20a%20reality"
+    class="btn btn-info btn-twitter ml-1" target="_blank">
+    <svg class="icon icon-lg">
+      <use xlink:href="assets/svg/icons.svg#icon-twitter"></use>
+    </svg>
+    Tweet</a>
+    </div>
+  </div>
+</div>
+</div>

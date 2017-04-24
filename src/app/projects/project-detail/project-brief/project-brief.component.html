@@ -1,0 +1,59 @@
+<div *ngIf="project">
+<div class="row">
+  <div class="row">
+    <p> I want to create: {{project.description}}</p>
+    <div>
+      <p> Open Positions! </p>
+      <ul >
+        <li *ngFor='let position of project.position'>
+          <span (click)='scollDown()'> {{position.skill.name}} </span>
+          <span *ngIf='position.member.length === 0'> OPEN </span>
+          <span *ngIf='position.member.length  > 0'> FILLED </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+  <div class="row">
+    <span *ngIf="project.favorite.length === 0 "> Well looks like nobody is following this project. That means you can be the first! </span>
+    {{project.favorite.length}} Followers
+    <span *ngFor="let follower of project.favorite"> {{follower.name}}</span>
+  </div>
+  <br>
+  <div>
+    <div>
+      <h3> Open Positions</h3>
+      <p> Make sure you apply on the position that best fits your skills, later on you will receive badges based on the skills
+      you've finished projects with and that will help define your profile status. You could also ask {{project.user.name}} to add new Skills
+      if you think you can help the project in any other way </p>
+    </div>
+    <div>
+      <div *ngIf="myProject == true">
+        <span> Add new position
+          <a  (click)="addPosition()">
+          <svg class="icon icon-plus">
+            <use xlink:href="./assets/icons.svg#icon-plus"></use>
+          </svg>
+        </a> </span>
+      </div>
+      <div id='positionsInfo' *ngFor="let position of project.position">
+        <app-position-card [myApplications]=myApplications [project]=project [position]=position></app-position-card>
+      </div>
+    </div>
+    <app-comments [project_id]="project.id"
+                  [comments]="project.comment"
+                  class="row comment panel--left">
+    </app-comments>
+  </div>
+  <aside *ngIf="related && related.length > 0" class="py-3 jumbotron-fluid">
+    <div class="container">
+      <h1 class="pb-1 text-center">Related projects</h1>
+      <h3>A few other projects in the same category that you might like, or just <a routerLink="/projects"><b> browse </b></a> for yourself</h3>
+      <ul class="row list-unstyled flex-items-xs-center">
+        <li *ngFor="let project of related" class="col-md-4">
+          <app-project-card [project]=project></app-project-card>
+        </li>
+      </ul>
+    </div>
+  </aside>
+</div>

@@ -1,0 +1,35 @@
+<div *ngIf="user">
+  <div class="jumbotron-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <img *ngIf="user.picture" class="profile-img" src="{{user.picture}}?width=120&height=120">
+        </div>
+        <div class="col-10 py-4">
+          <h2>{{project.title}}</h2>
+          <span class="small-text text-muted">Posted on {{project.created_at | date: 'dd of MMMM, yyyy'}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <span> {{user.name}}</span>
+    <span> <a (click)="share_modal.open()"> <svg class="icon icon-mail-forward"><use xlink:href="assets/icons.svg#icon-mail-forward"></use></svg> </a> SHARE PROJECT </span>
+    <span *ngIf="myProject"> <svg class="icon icon-write"><use xlink:href="assets/icons.svg#icon-write"></use></svg> EDIT PROJECT </span>
+    <span *ngIf="!isFollowed && !myProject" class="mr-1" title="follow">
+        <a (click)="follow(modal)">
+          <svg class="icon icon-star"><use xlink:href="assets/svg/icons.svg#icon-star"></use></svg>
+        </a> FOLLOW PROJECT
+    </span>
+    <span *ngIf="isFollowed && !myProject" class="mr-1" title="follow">
+        <a (click)="follow(modal)">
+          <svg class="icon icon-star full"><use xlink:href="assets/svg/icons.svg#icon-star-full"></use></svg>
+        </a> FOLLOWING
+    </span>
+
+  </div>
+</div>
+
+<app-login-modal #modal></app-login-modal>
+<app-share-modal #share_modal (onShared)="shared($event)"></app-share-modal>
+
