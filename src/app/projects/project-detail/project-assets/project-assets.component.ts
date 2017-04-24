@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {StateService} from '../../../shared/state.service';
-import {ResponseHandlerService} from '../../../shared/response-handler.service';
+import {ActivatedRoute} from '@angular/router';
+import {StateService} from '../../../core/state.service';
+import {ResponseHandlerService} from '../../../core/response-handler.service';
 import {ProjectAssetsService} from './project-assets.service';
 import {environment} from '../../../../environments/environment.dev';
 

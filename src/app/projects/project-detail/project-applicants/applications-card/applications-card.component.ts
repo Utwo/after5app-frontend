@@ -1,6 +1,6 @@
 import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import {ApplicationService} from '../../../shared/application.service';
-import {ResponseHandlerService} from '../../../../shared/response-handler.service';
+import {ResponseHandlerService} from '../../../../core/response-handler.service';
 
 @Component({
   selector: 'app-applications-card',

@@ -1,8 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {StateService} from '../../../shared/state.service';
-import {ResponseHandlerService} from '../../../shared/response-handler.service';
+import {StateService} from '../../../core/state.service';
+import {ResponseHandlerService} from '../../../core/response-handler.service';
 import {ProjectService} from '../../shared/project.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-project-header',
