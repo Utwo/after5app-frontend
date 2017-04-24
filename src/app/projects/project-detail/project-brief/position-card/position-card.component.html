@@ -1,20 +1,29 @@
-<div *ngIf="position" (mouseenter)="showDetails = true" (mouseleave)="showDetails = false">
-  <div *ngIf="!hasMember || showDetails" class="container-fluid">
-    <h3>{{position.skill.name}}</h3>
-    <p>{{position.description}}</p>
-    <div *ngIf="myProject === false && !hasMember">
-      <a (click)="modal.open()"> APPLY FOR POSITION </a>
+<div
+  *ngIf="position"
+  class="card"
+  (mouseenter)="showDetails = true"
+  (mouseleave)="showDetails = false"
+>
+  <div class="card-block text-gray-dark text-center">
+    <div *ngIf="!hasMember || showDetails" class="container-fluid">
+      <h3>{{position.skill.name}}</h3>
+      <p>{{position.description}}</p>
+    </div>
+    <div *ngIf="hasMember && !showDetails">
+      <div class="row">
+        <div class="col-2">
+          <img *ngIf="member.picture" class="profile-img" src="{{member.picture}}?width=70&height=70&s=70">
+        </div>
+        <div>
+          <p>{{member.name}} has joined the {{position.skill.name}} skill</p>
+        </div>
+      </div>
     </div>
   </div>
-  <div *ngIf="hasMember && !showDetails">
-    <div class="row">
-      <div class="col-2">
-        <img  *ngIf="member.picture" class="profile-img" src="{{member.picture}}?width=30&height=30">
-      </div>
-      <div >
-        <p>{{member.name}} has joined the {{position.skill.name}} skill</p>
-      </div>
-    </div>
+  <div *ngIf="myProject === false && !hasMember">
+    <button class="btn btn-success" (click)="modal.open()">
+      <small>APPLY FOR POSITION</small>
+    </button>
   </div>
 </div>
 <app-apply-modal #modal (onApply)="applicationSent($event)" [position]="position" [project]="project"></app-apply-modal>

@@ -4,8 +4,7 @@ import {ResponseHandlerService} from '../../../../core/response-handler.service'
 
 @Component({
   selector: 'app-position-card',
-  templateUrl: './position-card.component.html',
-  styles: []
+  templateUrl: './position-card.component.html'
 })
 export class PositionCardComponent implements OnInit {
   @Input() position;

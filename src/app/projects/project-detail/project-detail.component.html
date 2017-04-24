@@ -1,6 +1,6 @@
 <app-project-header *ngIf='project' [project]="project"></app-project-header>
 
-<div *ngIf='project' class="container my-3">
+<div *ngIf='project'>
   <tabset>
     <tab [active]="true">
       <template tabHeading>
@@ -12,13 +12,17 @@
       <template tabHeading>
         ASSETS
       </template>
-      <app-project-assets [project_id]="project.id"></app-project-assets>
+      <div class="container my-3">
+        <app-project-assets [project_id]="project.id"></app-project-assets>
+      </div>
     </tab>
     <tab *ngIf="myProject">
       <template tabHeading>
         APPLICANTS
       </template>
-      <app-project-applicants [project_id]="project.id" [user]="project.user"></app-project-applicants>
+      <div class="container my-3">
+        <app-project-applicants [project_id]="project.id" [user]="project.user"></app-project-applicants>
+      </div>
     </tab>
   </tabset>
 </div>
