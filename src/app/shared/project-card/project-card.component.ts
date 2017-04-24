@@ -1,7 +1,7 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {ProjectService} from '../../projects/shared/project.service';
-import {StateService} from '../state.service';
-import {ResponseHandlerService} from '../response-handler.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { ProjectService } from '../../projects/shared/project.service';
+import { StateService } from '../../core/state.service';
+import { ResponseHandlerService } from '../../core/response-handler.service';
 
 @Component({
   selector: 'app-project-card',
@@ -25,15 +25,15 @@ export class ProjectCardComponent implements OnInit {
       this.verifyIfMyProject();
       this.verifyIfFavorite();
     }
-    this.footerStatement = "The project has currently  " + this.project.favorite_count + " followers and 0 members";
+    this.footerStatement = 'The project has currently  ' + this.project.favorite_count + ' followers and 0 members';
   }
 
   verifyIfMyProject() {
-    this.myProject = this.state.getUser().id == this.project.user_id;
+    this.myProject = this.state.getUser().id === this.project.user_id;
   }
 
   verifyIfFavorite() {
-    for (let user of this.project.favorite) {
+    for (const user of this.project.favorite) {
       if (user.id === this.state.getUser().id) {
         this.isFollowed = true;
         break;
@@ -42,7 +42,7 @@ export class ProjectCardComponent implements OnInit {
   }
 
   follow(modal) {
-    if(this.state.isLoggedIn()) {
+    if (this.state.isLoggedIn()) {
       this.projectService.addFavorite(this.project.id)
         .subscribe(
           () => {
@@ -54,8 +54,7 @@ export class ProjectCardComponent implements OnInit {
             }
           },
           error => this.responseHandler.errorMessage('An error occured!', error));
-    }
-    else {
+    } else {
       modal.open();
     }
   }

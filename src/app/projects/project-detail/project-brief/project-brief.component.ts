@@ -1,9 +1,9 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {ProjectService} from '../../shared/project.service';
 import {ApplicationService} from '../../shared/application.service';
-import {StateService} from '../../../shared/state.service';
-import {ResponseHandlerService} from '../../../shared/response-handler.service';
+import {StateService} from '../../../core/state.service';
+import {ResponseHandlerService} from '../../../core/response-handler.service';
 
 @Component({
   selector: 'app-project-brief',
@@ -50,11 +50,11 @@ export class ProjectBriefComponent implements OnInit {
       .subscribe(
         data => this.myApplications = data,
         error => this.responseHandler.errorMessage('An error occured!', error)
-      )
+      );
   }
 
   getRelatedProjects() {
-    let skills = [];
+    const skills = [];
     this.project.position.map(item => {
       skills.push(item.skill.id);
     });

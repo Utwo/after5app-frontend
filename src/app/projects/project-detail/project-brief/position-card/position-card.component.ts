@@ -1,8 +1,6 @@
-import {Component, OnInit, Input, ViewChild} from '@angular/core';
-import {ModalDirective} from 'ng2-bootstrap';
-import {ProjectService} from '../../../shared/project.service';
-import {StateService} from '../../../../shared/state.service';
-import {ResponseHandlerService} from '../../../../shared/response-handler.service';
+import {Component, OnInit, Input} from '@angular/core';
+import {StateService} from '../../../../core/state.service';
+import {ResponseHandlerService} from '../../../../core/response-handler.service';
 
 @Component({
   selector: 'app-position-card',

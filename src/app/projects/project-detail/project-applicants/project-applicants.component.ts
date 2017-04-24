@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {ApplicationService} from '../../shared/application.service';
-import {ResponseHandlerService} from '../../../shared/response-handler.service';
-import {StateService} from '../../../shared/state.service';
+import {ResponseHandlerService} from '../../../core/response-handler.service';
+import {StateService} from '../../../core/state.service';
 
 @Component({
   selector: 'app-project-applicants',
@@ -41,7 +41,7 @@ export class ProjectApplicantsComponent implements OnInit {
         }
         return obj;
       }
-    )
+    );
   }
 
   declineApplication(application_id) {

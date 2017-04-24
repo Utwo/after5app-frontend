@@ -1,0 +1,53 @@
+.tray {
+  list-style: none;
+  background: $purple;
+  border-radius: $border-radius;
+  padding: 0;
+}
+
+.scrollable_tray{
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+// skills tray
+.tray--skill {
+  margin: 1em;
+  width: 150px;
+  display: inline-block;
+  text-align: center;
+}
+
+.tray--name {
+  width: 100%;
+  padding: 1em;
+  background: #fff;
+  color: $brand-info;
+  border-radius: $border-radius $border-radius 0 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.tray--button {
+  width: 100%;
+  padding: .2em;
+  background: $brand-info;
+  border-radius: 0 0 $border-radius $border-radius;
+  cursor: pointer;
+}
+
+// asset tray
+.tray--asset {
+  margin: 1em;
+  width: 150px;
+  display: inline-block;
+  padding: 1em;
+  word-wrap: break-word;
+  vertical-align: top;
+  text-overflow: ellipsis;
+}
+
+.scrollable_tray .tray--asset{
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {ModalDirective} from 'ng2-bootstrap';
+import {ModalDirective} from 'ngx-bootstrap';
 import {LoginService} from '../../core/login.service';
 import {environment} from '../../../environments/environment';
 
@@ -18,7 +18,7 @@ export class LoginModalComponent {
   }
 
   loginByEmail(email) {
-    let regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!regEx.test(this.email)) {
       this.emailMessage = 'Please enter a valid email address.';
       return;

@@ -1,15 +1,15 @@
 import {Directive, Input, EventEmitter, Inject, ElementRef, Renderer} from '@angular/core';
 
 @Directive({
-  selector: '[focus]'
+  selector: '[appFocus]'
 })
 export class FocusDirective {
-  @Input('focus') focusEvent: EventEmitter<boolean>;
+  @Input() focusEvent: EventEmitter<boolean>;
 
   constructor(@Inject(ElementRef) private element: ElementRef, private renderer: Renderer) {
   }
 
-  ngOnInit() {
+  OnInit() {
     this.focusEvent.subscribe(event => {
       this.renderer.invokeElementMethod(this.element.nativeElement, 'focus', []);
     });

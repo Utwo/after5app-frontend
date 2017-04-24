@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
-import {StateService} from '../../shared/state.service';
+import {StateService} from '../../core/state.service';
 import {environment} from '../../../environments/environment';
 
 @Injectable()
@@ -9,7 +9,7 @@ export class ProjectService {
   options = null;
 
   constructor(private state: StateService, private http: Http) {
-    let headers = new Headers({
+    const headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.state.getToken()
     });
@@ -52,7 +52,7 @@ export class ProjectService {
   }
 
   public filterBySkill(skill, id = null) {
-    let project_id = id ? '&id=!' + id : '';
+    const project_id = id ? '&id=!' + id : '';
     const user_id = this.state.isLoggedIn() ? this.state.getUser().id : '';
     return this.http.get(environment.URL_API + environment.API_VERSION +
       `project?position:skill_id=${skill}&user_id=!${user_id}&with[]=user&with[]=favorite&with[]=position.skill${project_id}`)
@@ -61,14 +61,14 @@ export class ProjectService {
   }
 
   addProject(project) {
-    let body = JSON.stringify(project);
+    const body = JSON.stringify(project);
     return this.http.post(environment.URL_API + environment.API_VERSION + 'project', body, this.options)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   updateProject(project) {
-    let body = JSON.stringify(project);
+    const body = JSON.stringify(project);
     return this.http.put(environment.URL_API + environment.API_VERSION + 'project/' + project.id, body, this.options)
       .map(this.extractData)
       .catch(this.handleError);
@@ -80,6 +80,18 @@ export class ProjectService {
       .catch(this.handleError);
   }
 
+  addAssets(formData) {
+    const headers = new Headers({
+      'Content-Type': 'multipart/form-data',
+      'Authorization': 'Bearer ' + this.state.getToken()
+    });
+    const options = new RequestOptions({headers: headers});
+
+    return this.http.post(environment.URL_API + environment.API_VERSION + 'assets', formData, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   public getSkills() {
     return this.http.get(environment.URL_API + environment.API_VERSION + 'skill')
       .map(this.extractData)
@@ -87,7 +99,7 @@ export class ProjectService {
   }
 
   public addComment(comment) {
-    let body = JSON.stringify(comment);
+    const body = JSON.stringify(comment);
     return this.http.post(environment.URL_API + environment.API_VERSION + 'comment', body, this.options)
       .map(this.extractData)
       .catch(this.handleError);
@@ -107,7 +119,7 @@ export class ProjectService {
   }
 
   public addPosition(position) {
-    let body = JSON.stringify(position);
+    const body = JSON.stringify(position);
     return this.http.post(environment.URL_API + environment.API_VERSION + 'position', body, this.options)
       .map(this.extractData)
       .catch(this.handleError);
@@ -120,7 +132,7 @@ export class ProjectService {
   }
 
   private extractData(res: Response) {
-    let body = res.json();
+    const body = res.json();
     return body || {};
   }
 

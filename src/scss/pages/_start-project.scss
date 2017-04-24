@@ -1,21 +1,3 @@
-.is-start-project {
-  background: url(/assets/spaceship.svg) no-repeat 120% 150% fixed;
-  background-size: 23rem;
-  animation: slide-up-background 1.2s cubic-bezier(.23, 1, .32, 1) forwards;
-}
-
-@keyframes slide-up-background {
-  0% {
-    background-position: 120% 150%;
-  }
-  100% {
-    background-position: 100% 100%;
-  }
-}
-
-@media (max-width: map-get($grid-breakpoints, md)) {
-  .is-start-project {
-    background-size: 7rem;
-    background-attachment: scroll;
-  }
+.description-paragraph{
+  word-wrap: break-word;
 }

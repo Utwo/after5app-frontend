@@ -2,8 +2,8 @@ import {
   Component, OnInit, EventEmitter, Output, Input,
   ViewChild
 } from '@angular/core';
-import {ProjectService} from "../../../shared/project.service"
-import {ModalDirective} from "ng2-bootstrap"
+import {ProjectService} from '../../../shared/project.service';
+import {ModalDirective} from 'ngx-bootstrap';
 import {environment} from '../../../../../environments/environment';
 
 

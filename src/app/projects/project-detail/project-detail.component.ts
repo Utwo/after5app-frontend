@@ -1,13 +1,12 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProjectService} from '../shared/project.service';
-import {StateService} from '../../shared/state.service';
-import {ResponseHandlerService} from '../../shared/response-handler.service';
+import {StateService} from '../../core/state.service';
+import {ResponseHandlerService} from '../../core/response-handler.service';
 
 @Component({
   selector: 'app-project-detail',
-  templateUrl: './project-detail.component.html',
-  styles: []
+  templateUrl: './project-detail.component.html'
 })
 
 export class ProjectDetailComponent implements OnInit {
@@ -41,7 +40,7 @@ export class ProjectDetailComponent implements OnInit {
             return;
           }
           this.project = project.data[0];
-          console.log(this.project)
+          console.log(this.project);
           if (this.state.isLoggedIn()) {
             this.verifyIfMyProject();
             this.verifyIfMember();
@@ -51,7 +50,7 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   verifyIfMember() {
-    let self = this;
+    const self = this;
     this.project.position.map (position => {
       position.member.map (member => {
         if (member.id === this.state.getUser().id) {

@@ -2,8 +2,8 @@ import {Component, ViewContainerRef} from '@angular/core';
 import './rxjs-operators';
 import {Router, NavigationEnd} from '@angular/router';
 import {ToastyService, ToastyConfig, ToastOptions} from 'ng2-toasty';
-import {ResponseHandlerService} from './shared/response-handler.service';
-import {environment} from "../environments/environment";
+import {ResponseHandlerService} from './core/response-handler.service';
+import {environment} from '../environments/environment';
 declare var ga: Function;
 
 @Component({
@@ -19,14 +19,14 @@ export class AppComponent {
     // You need this small hack in order to catch application root view container ref
     this.viewContainerRef = viewContainerRef;
     this.toastyConfig.theme = 'bootstrap';
-    if (environment.production) {
-      this.router.events.subscribe((event) => {
-        if (event !== this.url && event instanceof NavigationEnd) {
-          this.url = event.url;
+    this.router.events.subscribe((event) => {
+      if (event !== this.url && event instanceof NavigationEnd) {
+        this.url = event.url;
+        if (environment.production) {
           ga('send', 'pageview', {page: event.url});
         }
-      });
-    }
+      }
+    });
 
     this.responseHandler.message.subscribe(message => {
       if (message) {
@@ -36,7 +36,7 @@ export class AppComponent {
   }
 
   addToast(mes) {
-    let toastOptions: ToastOptions = {
+    const toastOptions: ToastOptions = {
       title: '',
       msg: mes.message,
       showClose: true,

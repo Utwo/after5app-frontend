@@ -1,8 +1,9 @@
 import {Component, Output, EventEmitter, Input} from '@angular/core';
 import {ProjectService} from '../../projects/shared/project.service';
-import {Observable} from 'rxjs';
-import {TypeaheadMatch} from 'ng2-bootstrap';
-import {ResponseHandlerService} from '../response-handler.service';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import {TypeaheadMatch} from 'ngx-bootstrap/typeahead';
+import {ResponseHandlerService} from './../../core/response-handler.service';
 
 @Component({
   selector: 'app-autocomplete',
@@ -11,10 +12,12 @@ import {ResponseHandlerService} from '../response-handler.service';
 
 export class AutocompleteComponent {
   @Input('type') type;
+  @Input('tabindex') tabindex = 1;
   @Input('label_message') label_message;
+  @Input('placeholder') placeholder = 'Type a skill';
+  @Input('label_class') label_class = 'input-group-addon label-white';
+  @Input('input_class') input_class = 'form-control input-basic input-gray';
   @Output() onSelect = new EventEmitter<Object>();
-  public label_class;
-  public input_class;
 
   public dataSource: Observable<any>;
   public asyncSelected = '';
@@ -26,27 +29,18 @@ export class AutocompleteComponent {
     this.dataSource = Observable.create((observer: any) => {
       observer.next(this.asyncSelected);
     }).mergeMap((token: string) => this.getSkillsAsObservable(token));
-
-    switch (this.type) {
-      case('filter-list'):
-        this.label_class = 'input-group-addon label-white';
-        this.input_class = 'form-control input-gray';
-        break;
-      default:
-        this.label_class = 'input-group-addon label-white';
-        this.input_class = 'form-control input-basic input-gray';
-    }
   }
+
 
   public getSkillsAsObservable(token: string): Observable<any> {
     return this.projectService.getSkills()
       .map(
-        skills => {
+        (skills) => {
           return skills.filter(item => {
             return item.name.toLowerCase().indexOf(token.toLowerCase()) > -1;
           });
         },
-        error => this.responseHandler.errorMessage('An error occured!', error));
+        (error) => this.responseHandler.errorMessage('An error occured!', error));
   }
 
   public changeTypeaheadLoading(e: boolean): void {
