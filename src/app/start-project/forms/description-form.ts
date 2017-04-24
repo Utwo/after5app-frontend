@@ -13,6 +13,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
         <div class="row">
           <div class="col-10">
             <textarea
+              tabindex="1"
               class="form-control" id="description" name="description"
               required minlength="4" maxlength="1000"
               placeholder="I want to create ... that will do the following ... Also I will be able to help with ..."
@@ -21,6 +22,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
           </div>
           <div class="col-2">
             <button
+              tabindex="2"
               class="btn btn-success float-right"
               type="submit">
               <svg class="icon icon-md">

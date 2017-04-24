@@ -1,5 +1,11 @@
-<header class="header-site" [class.show-navigation]="showNavigation">
-  <div class="container-fluid px-5">
+<header
+  class="header-site"
+  [class.show-navigation]="showNavigation"
+  [class.pt-0]="showSearch"
+>
+  <app-search *ngIf="showSearch"></app-search>
+
+  <div class="container-fluid px-5" [class.jumbotron-fluid]="showSearch" [class.py-3]="showSearch">
     <div class="row">
       <div class="col-md-2 col-12">
         <h1 class="header-logo">
@@ -23,20 +29,21 @@
           </a>
           <div class="nav-item mx-md-3">
             <app-user-nav [user]="user" *ngIf="loggedIn"></app-user-nav>
-            <a *ngIf="!loggedIn" (click)="modal.open()"
+            <a *ngIf="!loggedIn" (click)="loginModal.open()"
                class="nav-item mx-md-3" href="javascript:;">
               Login
             </a>
           </div>
-          <div class="nav-item mx-md-3">
-            <svg class="icon icon-elipsis">
-              <use xlink:href="assets/svg/icons.svg#icon-search"></use>
-            </svg>
+          <div class="nav-item mx-md-3" (click)="toggleSearch()">
+            <a href="javascript:;">
+              <svg class="icon icon-elipsis">
+                <use xlink:href="assets/svg/icons.svg#icon-search"></use>
+              </svg>
+            </a>
           </div>
         </nav>
       </div>
     </div>
   </div>
 </header>
-<app-login-modal #modal></app-login-modal>
-
+<app-login-modal #loginModal></app-login-modal>

@@ -11,7 +11,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
       <div class="form-group mt-5">
         <div class="row">
           <div class="col-1">
-            <button class="btn btn-success" type="submit">
+            <button tabindex="2" class="btn btn-success" type="submit">
               <svg class="icon">
                 <use xlink:href="assets/svg/icons.svg#icon-plus"></use>
               </svg>
@@ -19,6 +19,8 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
           </div>
           <div class="col-11">
             <input
+              tabindex="1"
+              autocomplete="off"
               class="form-control"
               id="question"
               type="text"
@@ -33,7 +35,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
       <li *ngFor="let question of application_questions; let i = index"
           class="my-2"
       >
-        <button class="btn btn-info btn-sm" type="button" (click)="removeQuestion(i)">
+        <button tabindex="3" class="btn btn-info btn-sm" type="button" (click)="removeQuestion(i)">
           <small>REMOVE</small>
         </button>
         <span class="ml-2">{{question}}</span>

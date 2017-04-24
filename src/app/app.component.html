@@ -1,4 +1,4 @@
-<div class="site-content-wrap" [class.is-home]="url == '/'">
+<div class="site-content-wrap" [class.is-home]="url == '/'" [class.is-project]="url == '/project'">
   <app-navigation></app-navigation>
   <main>
     <router-outlet></router-outlet>

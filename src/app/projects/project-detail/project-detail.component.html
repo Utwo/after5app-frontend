@@ -1,0 +1,28 @@
+<app-project-header *ngIf='project' [project]="project"></app-project-header>
+
+<div *ngIf='project'>
+  <tabset>
+    <tab [active]="true">
+      <template tabHeading>
+        BRIEF
+      </template>
+      <app-project-brief [project]="project"></app-project-brief>
+    </tab>
+    <tab *ngIf="isMember || myProject">
+      <template tabHeading>
+        ASSETS
+      </template>
+      <div class="container my-3">
+        <app-project-assets [project_id]="project.id"></app-project-assets>
+      </div>
+    </tab>
+    <tab *ngIf="myProject">
+      <template tabHeading>
+        APPLICANTS
+      </template>
+      <div class="container my-3">
+        <app-project-applicants [project_id]="project.id" [user]="project.user"></app-project-applicants>
+      </div>
+    </tab>
+  </tabset>
+</div>

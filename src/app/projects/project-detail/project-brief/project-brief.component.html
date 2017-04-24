@@ -1,0 +1,105 @@
+<div *ngIf="project">
+  <!--description-->
+  <div class="container">
+    <div class="row my-5">
+      <div class="col-md-8 col-12 mb-md-0 mb-3">
+        <div class="card">
+          <div class="card-block">
+            <p class="text-muted">I want to create:</p>
+            <p>{{project.description}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-12">
+        <div class="card">
+          <div class="positions__card-title py-2 px-lg-5 px-3">
+            <div class="small-feebe mr-2">
+              <div class="feebe-head">
+                <div class="febee-eyes"></div>
+              </div>
+            </div>
+            Open Positions
+          </div>
+          <div class="card-block">
+            <ul class="list-unstyled mb-3">
+              <li *ngFor='let position of project.position' class="mt-3">
+                <a class="text-muted" (click)="scollDown()" href="javascript:;">
+                  {{position.skill.name}}
+                </a>
+                <span class="text-success font-weight-bold float-right"
+                      *ngIf='position.member.length === 0'>
+                OPEN
+              </span>
+                <span class="text-danger font-weight-bold float-right"
+                      *ngIf='position.member.length  > 0'>
+                FILLED
+              </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--followers-->
+  <div class="bg-primary text-info text-center m-0 py-2">
+    <span *ngIf="project.favorite.length === 0 ">
+      Well looks like nobody is following this project. That means you can be the first!
+    </span>
+    <span class="text-white">{{project.favorite.length}} followers</span>
+    <span class="ml-3" *ngFor="let follower of project.favorite">
+      {{follower.name}}
+    </span>
+  </div>
+
+  <!--posiions-->
+  <div class="jumbotron-dark py-3 px-5">
+    <div class="m-5 text-center">
+      <h3> Open Positions</h3>
+      <p class="text-info">
+        Make sure you apply on the position that best fits your skills, later on you will receive badges based on the
+        skills you've finished projects with and that will help define your profile status. You could also ask
+        {{project.user.name}} to add new <b>Skills</b> if you think you can help the project in any other way </p>
+    </div>
+    <div *ngIf="myProject == true">
+      <a (click)="addPosition()">Add new position
+        <svg class="icon icon-plus">
+          <use xlink:href="./assets/icons.svg#icon-plus"></use>
+        </svg>
+      </a>
+    </div>
+    <div class="row">
+      <div class="col-6 col-sm-4 col-md-3 my-2"
+           *ngFor="let position of project.position"
+           id="positionsInfo">
+        <app-position-card
+          [myApplications]=myApplications [project]=project [position]=position>
+        </app-position-card>
+      </div>
+    </div>
+  </div>
+
+  <!--comments-->
+  <div class="container my-5">
+    <app-comments
+      [project_id]="project.id"
+      [comments]="project.comment">
+    </app-comments>
+  </div>
+
+  <!--related projects-->
+  <div *ngIf="related && related.length > 0" class="container my-5">
+    <div class="text-center text-muted">
+      <h3 class="pb-1">Related projects</h3>
+      <p>
+        A few other projects in the same category that you might like, or just <a routerLink="/projects"><b>
+        browse </b></a> for yourself
+      </p>
+    </div>
+    <div class="row">
+      <div *ngFor="let project of related" class="col-12 col-md-4 my-2">
+        <app-small-project-card [project]=project></app-small-project-card>
+      </div>
+    </div>
+  </div>
+</div>

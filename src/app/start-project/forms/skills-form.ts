@@ -18,18 +18,22 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
           <div class="col-10">
             <div class="mb-3">
               <app-autocomplete
+                tabindex="1"
                 #autocomplete
                 placeholder="Type skill here"
                 input_class="form-control"
                 (onSelect)="onSelect($event)">
               </app-autocomplete>
               <button
+                tabindex="3"
                 class="btn btn-success"
                 type="button" (click)="addPosition(description, autocomplete)">
                 Add skill
               </button>
             </div>
             <textarea
+              tabindex="2"
+              (keydown.enter)="addPosition(description, autocomplete);false"
               class="form-control mt-1"
               rows="2"
               placeholder="... and then add a small description"
@@ -39,6 +43,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
           </div>
           <div class="col-2">
             <button
+              tabindex="4"
               class="btn btn-success float-right"
               type="submit">
               <svg class="icon icon-md">
@@ -49,16 +54,18 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
         </div>
       </div>
     </form>
-    <ul class="skill_tray mt-4 text-center">
-      <li class="skill_tray--item" *ngFor="let skill of project_positions; let i = index">
-        <div class="skill_tray--name">{{skill.name}}</div>
-        <div class="skill_tray--button" (click)="removePosition(i)">
+    <ul class="tray scrollable_tray mt-4 text-center">
+      <li class="tray--skill" *ngFor="let skill of project_positions; let i = index">
+        <div class="tray--name">{{skill.name}}</div>
+        <div class="tray--button" (click)="removePosition(i)">
           <small>REMOVE SKILL</small>
         </div>
       </li>
     </ul>
     <div class="text-center text-info">
-      You have opened {{project_positions.length}} team slots.
+      You have opened {{project_positions.length}} team 
+      <span *ngIf="project_positions.length === 1">slot</span>
+      <span *ngIf="project_positions.length !== 1">slots</span>.
     </div>
   `,
 })

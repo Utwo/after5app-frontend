@@ -2,11 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { routing, appRoutingProviders } from './app.routing';
 import { HttpModule } from '@angular/http';
-// external modules
 import { ToastyModule } from 'ng2-toasty';
-// components
 import { AppComponent } from './app.component';
-// modules
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { ProfileModule } from './profile/profile.module';

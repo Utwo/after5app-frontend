@@ -1,32 +1,47 @@
-<input [(ngModel)]="asyncSelected"
-       [typeahead]="dataSource"
-       (typeaheadLoading)="changeTypeaheadLoading($event)"
-       (typeaheadNoResults)="changeTypeaheadNoResults($event)"
-       (typeaheadOnSelect)="typeaheadOnSelect($event)"
-       [typeaheadWaitMs]="400"
-       [typeaheadItemTemplate]="projectItemTemplate"
-       placeholder="Search project"
-       typeaheadMinLength="3"
-       class="form-control form-control-sm header__search-form">
+<div class="search jumbotron-fluid">
+  <div class="row mx-5">
+    <div class="col-md-1 col-sm-2 col-3">
+      <div class="small-feebe">
+        <div class="feebe-head">
+          <span class="febee-eyes"></span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-3 col-9">
+      What are we looking for today?
+    </div>
+    <div class="col-md-7 col-sm-7 col-12">
+      <input [(ngModel)]="asyncSelected"
+             [typeahead]="dataSource"
+             (typeaheadLoading)="changeTypeaheadLoading($event)"
+             (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+             (typeaheadOnSelect)="typeaheadOnSelect($event)"
+             [typeaheadWaitMs]="400"
+             [typeaheadItemTemplate]="projectItemTemplate"
+             placeholder="Just type and hit enter"
+             typeaheadMinLength="3"
+             class="form-control search-input">
 
-<i *ngIf="typeaheadLoading===true" class="dropdown-loading">
-	<span class="spinner">
-		<span class="double-bounce1"></span>
-		<span class="double-bounce2"></span>
-	</span>
-</i>
+      <div *ngIf="typeaheadLoading===true" class="dropdown-loading">
+              <span class="spinner">
+                <span class="double-bounce1"></span>
+                <span class="double-bounce2"></span>
+              </span>
+      </div>
 
-<div *ngIf="typeaheadNoResults===true" class="dropdown-menu text-center">
-  <i>No Results Found</i>
+      <div *ngIf="typeaheadNoResults===true" class="text-info small-text">
+        <i>Looks like there's no project with that name</i>
+      </div>
+    </div>
+  </div>
+  <ng-template #projectItemTemplate let-project="item" let-index="index">
+    <h5 class="text-primary">{{project.title}}</h5>
+    <ul class="list-inline text-center" *ngIf="project.position.length > 0">
+      <li class="list-inline-item btn btn-sm btn-gradient-primary project__skill-item"
+          *ngFor="let position of project.position">
+        {{position.skill.name}}
+      </li>
+    </ul>
+  </ng-template>
 </div>
 
-<ng-template #projectItemTemplate let-project="item" let-index="index">
-  <h5 class="text-primary">{{project.title}}</h5>
-  <p class="text-truncate text-muted">{{project.description}}</p>
-  <ul class="list-inline text-center" *ngIf="project.position.length > 0">
-    <li class="list-inline-item btn btn-sm btn-gradient-primary project__skill-item"
-        *ngFor="let position of project.position">
-      {{position.skill.name}}
-    </li>
-  </ul>
-</ng-template>

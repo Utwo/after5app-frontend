@@ -8,6 +8,7 @@ import {StateService} from '../state.service';
 export class NavigationComponent {
   email = '';
   showNavigation = false;
+  showSearch = false;
 
   constructor(private state: StateService) {
   }
@@ -22,5 +23,9 @@ export class NavigationComponent {
 
   toggleNavigation() {
     this.showNavigation = !this.showNavigation;
+  }
+
+  toggleSearch() {
+    this.showSearch = !this.showSearch;
   }
 }

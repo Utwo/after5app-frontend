@@ -9,10 +9,12 @@
            typeaheadOptionsLimit="10"
            typeaheadOptionField="name"
            [typeaheadWaitMs]="200"
+           [typeaheadItemTemplate]="skillItemTemplate"
            placeholder={{placeholder}}
            class={{input_class}}
            id="filter"
            autocomplete="off"
+           tabindex={{tabindex}}
     >
   </div>
   <i *ngIf="typeaheadLoading===true" class="dropdown-loading">

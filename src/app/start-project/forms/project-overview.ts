@@ -54,10 +54,10 @@ import { StateService } from '../../core/state.service';
           Your team:
         </div>
         <div class="col-8">
-          <ul class="skill_tray bg-primary">
-            <li class="skill_tray--item" *ngFor="let skill of project.position">
-              <div class="skill_tray--name">{{skill.name}}</div>
-              <div class="skill_tray--button" (click)="editStep('skills')">
+          <ul class="tray scrollable_tray bg-primary">
+            <li class="tray--skill" *ngFor="let skill of project.position">
+              <div class="tray--name">{{skill.name}}</div>
+              <div class="tray--button" (click)="editStep('skills')">
                 <small>EDIT SKILL</small>
               </div>
             </li>
@@ -77,7 +77,12 @@ import { StateService } from '../../core/state.service';
           Assets:
         </div>
         <div class="col-8">
-          <p class="text-info" *ngIf="project.assets.length < 1">
+          <ul *ngIf="assets.length > 0" class="tray scrollable_tray mt-4 text-center">
+            <li class="tray--asset" *ngFor="let file of assets">
+              {{file.name}}
+            </li>
+          </ul>
+          <p class="text-info" *ngIf="assets.length < 1">
             You have no assets.
           </p>
         </div>
@@ -109,13 +114,13 @@ import { StateService } from '../../core/state.service';
     </div>
     <div class="text-center">
       <div *ngIf="!state.isLoggedIn()">
-        <div className="mb-3">
+        <div>
           <i>You can only post your project once you have logged in.
             Save your project, log in and come back here to share it with everyone!</i>
         </div>
         <button
           (click)="saveProject(modal)"
-          class="btn btn-success"
+          class="btn btn-success mt-3"
           type="button">
           <small>SAVE MY PROJECT!</small>
         </button>
@@ -135,10 +140,10 @@ export class ProjectOverviewComponent {
   @Input() project: any = {
     title: '',
     description: '',
-    assets: [],
     application_questions: [],
     positions: [],
   };
+  @Input() assets = [];
   @Output() onStoreProject = new EventEmitter();
   @Output() onEditStep = new EventEmitter();
 

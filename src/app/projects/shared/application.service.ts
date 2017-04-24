@@ -59,6 +59,16 @@ export class ApplicationService {
       .catch(this.handleError);
   }
 
+  public getMyApplications(project_id) {
+    let headers = new Headers({
+      'Authorization': 'Bearer ' + this.state.getToken()
+    });
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'application/user?project_id=' + project_id,
+      {headers: headers})
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     const body = res.json();
     return body || {};

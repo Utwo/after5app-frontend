@@ -1,20 +1,24 @@
-.skill_tray {
+.tray {
   list-style: none;
   background: $purple;
-  overflow-x: auto;
-  white-space: nowrap;
   border-radius: $border-radius;
   padding: 0;
 }
 
-.skill_tray--item {
+.scrollable_tray{
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+// skills tray
+.tray--skill {
   margin: 1em;
   width: 150px;
   display: inline-block;
   text-align: center;
 }
 
-.skill_tray--name {
+.tray--name {
   width: 100%;
   padding: 1em;
   background: #fff;
@@ -24,10 +28,26 @@
   overflow: hidden;
 }
 
-.skill_tray--button {
+.tray--button {
   width: 100%;
   padding: .2em;
   background: $brand-info;
   border-radius: 0 0 $border-radius $border-radius;
   cursor: pointer;
+}
+
+// asset tray
+.tray--asset {
+  margin: 1em;
+  width: 150px;
+  display: inline-block;
+  padding: 1em;
+  word-wrap: break-word;
+  vertical-align: top;
+  text-overflow: ellipsis;
+}
+
+.scrollable_tray .tray--asset{
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

@@ -11,10 +11,10 @@ import { NotificationComponent } from './navigation/user-nav/notification/notifi
 import { NotificationsService } from './navigation/user-nav/shared/notifications.service';
 import { SharedModule } from '../shared/shared.module';
 import { ResponseHandlerService } from './response-handler.service';
-import { TypeaheadModule } from 'ngx-bootstrap';
+import { TypeaheadModule, ModalModule } from 'ngx-bootstrap';
 
 @NgModule({
-  imports: [CommonModule, SharedModule, TypeaheadModule.forRoot()],
+  imports: [CommonModule, SharedModule, TypeaheadModule.forRoot(), ModalModule.forRoot()],
   declarations: [FooterComponent, NavigationComponent, SearchComponent, UserNavComponent, NotificationComponent],
   exports: [FooterComponent, NavigationComponent, SearchComponent, UserNavComponent, NotificationComponent]
 })
