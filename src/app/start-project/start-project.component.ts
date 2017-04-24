@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {ProjectService} from './../projects/shared/project.service';
+import {ModalDirective} from 'ngx-bootstrap';
 import {ResponseHandlerService} from '../core/response-handler.service';
+import {ProjectService} from './../projects/shared/project.service';
 import {StateService} from './../core/state.service';
 
 @Component({
@@ -10,9 +11,17 @@ import {StateService} from './../core/state.service';
 })
 
 export class StartProjectComponent {
-  project = {title: '', description: '', position: [], application_questions: [], assets: []};
+  project = {title: '', description: '', position: [], application_questions: []};
+  assets = [];
   steps = ['title', 'description', 'skills', 'assets', 'questions', 'overview'];
   activeStep = 'title';
+  infoMessage = {
+    'title': 'Hit ENTER once you finish typing to go to the next step',
+    'description': 'You can always go back and edit your answer by clicking on the previous step',
+    'skills': 'Open some position slots so that other people can join your team',
+    'assets': 'Add files that help you present your idea',
+    'questions': 'Add question so that your future team better understands your needs',
+  };
 
   constructor(private projectService: ProjectService,
               private state: StateService,
@@ -70,10 +79,22 @@ export class StartProjectComponent {
     } else {
       this.projectService.addProject(this.project)
         .subscribe(
-          data => {
-            this.router.navigate(['/project', data.project.id]);
-          },
-          error => this.responseHandler.errorMessage('An error occured!', error));
+          data => this.storeAssets(data.project.id),
+          error => this.responseHandler.errorMessage('An error occured when saing the project!', error));
+    }
+  }
+
+  storeAssets(projectId) {
+    if (this.assets.length) {
+      const formData: FormData = new FormData();
+      for (const file of this.assets) {
+        formData.append('assets', file, file.name);
+      }
+      formData.append('project_id', projectId);
+      this.projectService.addAssets(formData)
+        .subscribe(
+          () => this.router.navigate(['/project', projectId]),
+          error => this.responseHandler.errorMessage('An error occured when saving the files!', error));
     }
   }
 }

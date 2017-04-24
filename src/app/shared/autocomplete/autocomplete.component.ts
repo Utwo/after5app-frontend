@@ -12,6 +12,7 @@ import {ResponseHandlerService} from './../../core/response-handler.service';
 
 export class AutocompleteComponent {
   @Input('type') type;
+  @Input('tabindex') tabindex = 1;
   @Input('label_message') label_message;
   @Input('placeholder') placeholder = 'Type a skill';
   @Input('label_class') label_class = 'input-group-addon label-white';

@@ -1,10 +1,22 @@
 .jumbotron-fluid {
-  background: $dark-iris;
+  background: $brand-primary;
   padding: 2em 0;
   color: #fff;
+  position: relative;
+}
+
+.jumbotron-fluid.search {
+  background: $purple;
+  padding: 1.5em 0;
+  font-size: 1.2em;
 }
 
 .jumbotron-white {
   background: #fff;
   padding: 1.5em 0;
+}
+
+.jumbotron-dark {
+  background: $purple;
+  color: #fff;
 }

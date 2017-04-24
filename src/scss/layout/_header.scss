@@ -18,18 +18,8 @@
   line-height: 1.4;
   margin: 0;
   padding: .2em;
-  z-index: map-get($zindex, highest);;
+  z-index: map-get($zindex, highest);
   position: relative;
-}
-
-.header__search-form {
-  border-radius: 12px;
-  background: darken($brand-primary, 6%);
-  color: #fff;
-}
-
-.header__search-form::placeholder {
-  color: #fff;
 }
 
 @media (max-width: map-get($grid-breakpoints, md)) {

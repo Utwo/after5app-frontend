@@ -1,17 +1,22 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {AddApplicationComponent} from './project-details/add-application/add-application.component';
-import {CommentsComponent} from './project-details/comments/comments.component';
-import {EditProjectComponent} from './project-details/edit-project/edit-project.component';
-import {MessagesComponent} from './project-details/messages/messages.component';
-import {ProjectApplicationsComponent} from './project-details/project-applications/project-applications.component';
+import {ProjectDetailComponent} from './project-detail/project-detail.component';
+import {ProjectApplicantsComponent} from './project-detail/project-applicants/project-applicants.component';
+import {ApplicationsCardComponent} from './project-detail/project-applicants/applications-card/applications-card.component';
+import {CommentsComponent} from './project-detail/comments/comments.component';
+import {ProjectAssetsComponent} from './project-detail/project-assets/project-assets.component';
+import {ProjectAssetsService} from './project-detail/project-assets/project-assets.service';
+import {ProjectBriefComponent} from './project-detail/project-brief/project-brief.component';
+import {ApplyModalComponent} from './project-detail/project-brief/apply-modal/apply-modal.component';
+import {PositionCardComponent} from './project-detail/project-brief/position-card/position-card.component';
+import {ShareModalComponent} from './project-detail/project-brief/share-modal/share-modal.component';
+import {ProjectHeaderComponent} from './project-detail/project-header/project-header.component';
 import {ProjectListComponent} from './project-list/project-list.component';
 import {ApplicationService} from './shared/application.service';
 import {MessageService} from './shared/message.service';
 import {ProjectService} from './shared/project.service';
-import { ProjectComponent } from './project-details/project.component';
-import { SharedModule } from '../shared/shared.module';
-import { TabsModule, ModalModule } from 'ngx-bootstrap';
+import {SharedModule} from '../shared/shared.module';
+import {TabsModule, ModalModule} from 'ngx-bootstrap';
 
 @NgModule({
   imports: [
@@ -21,18 +26,23 @@ import { TabsModule, ModalModule } from 'ngx-bootstrap';
     ModalModule.forRoot(),
   ],
   declarations: [
-    AddApplicationComponent,
     CommentsComponent,
-    EditProjectComponent,
-    MessagesComponent,
-    ProjectApplicationsComponent,
     ProjectListComponent,
-    ProjectComponent
+    ProjectDetailComponent,
+    ProjectApplicantsComponent,
+    ApplicationsCardComponent,
+    ProjectAssetsComponent,
+    ProjectBriefComponent,
+    ApplyModalComponent,
+    PositionCardComponent,
+    ShareModalComponent,
+    ProjectHeaderComponent,
   ],
   providers: [
     ApplicationService,
     MessageService,
-    ProjectService
+    ProjectService,
+    ProjectAssetsService,
   ]
 })
 export class ProjectsModule {

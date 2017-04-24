@@ -1,0 +1,41 @@
+<div>
+  <h3 class="text-center">
+    You might have questions, feel free to ask...
+  </h3>
+  <div class="jumbotron-white p-4">
+    <ul *ngIf="comments && comments.length > 0" class="list-unstyled">
+      <li *ngFor="let comment of comments" class="comment-item">
+        <div class="comment__left-side pr-2">
+          <a routerLink="/profile/{{comment.user_id}}">
+          <img *ngIf="comment.user.picture" class="profile-img"
+               src="{{comment.user.picture}}?s=30&width=30&height=30">
+          </a>
+        </div>
+
+        <div class="comment__content">
+          <p class="p-0">{{comment.text}}</p>
+          <div class="comment__author tiny-text">
+            <b><a routerLink="/profile/{{comment.user_id}}">{{comment.user.name}}</a></b>
+            <span class="text-muted"> {{ comment.created_at | timeAgo}} </span>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <p *ngIf="comments && comments.length == 0" class="text-muted">Add a comment to start a conversation</p>
+    <div *ngIf="state.isLoggedIn()" class="form-group row px-1">
+      <div class="input-group">
+        <input
+          class="form-control"
+          type="text" #text
+          placeholder="Type something then hit enter"
+          aria-describedby="btnGroup"
+          (keyup.enter)="addComment(text)">
+        <button (click)="addComment(text)" class="input-group-addon btn btn-success" id="btnGroup">
+          <small>SEND</small>
+        </button>
+      </div>
+    </div>
+    <i *ngIf="!state.isLoggedIn()" class="text-muted">Login in order to post comments.</i>
+  </div>
+</div>

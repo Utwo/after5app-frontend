@@ -17,7 +17,7 @@
           (onNext)="onNext($event)"></app-skills-form>
         <app-assets-form
           *ngSwitchCase="'assets'"
-          [assets]="project.assets"
+          [assets]="assets"
           (onNext)="onNext($event)"></app-assets-form>
         <app-questions-form
           *ngSwitchCase="'questions'"
@@ -26,11 +26,27 @@
         <app-overview-form
           *ngSwitchCase="'overview'"
           [project]="project"
+          [assets]="assets"
           (onStoreProject)="storeProject()"
           (onEditStep)="goToStep($event)"></app-overview-form>
       </div>
 
       <app-steps [steps]="steps" [activeStep]="activeStep" (onChangeStep)="changeStep($event)"></app-steps>
+
+      <div *ngIf="activeStep !== 'overview'" class="febee-small__message mt-5">
+        <div class="row">
+          <div class="col-md-11 col-10">
+            <p class="info-message">
+              {{infoMessage[activeStep]}}
+            </p>
+          </div>
+          <div class="col-md-1 col-2">
+            <div class="feebe-head">
+              <span class="febee-eyes"></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 </div>

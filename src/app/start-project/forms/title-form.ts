@@ -11,6 +11,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
       <div class="form-group mt-5">
         <div class="input-group">
           <input
+            tabindex="1"
             class="form-control"
             id="title"
             name="title"
@@ -23,6 +24,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
             aria-describedby="titleBtnGroup"
           />
           <button
+            tabindex="2"
             id="titleBtnGroup"
             class="input-group-addon btn btn-success"
             type="submit">

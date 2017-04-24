@@ -25,7 +25,7 @@ export class ProjectService {
 
   getProjectById(id) {
     return this.http.get(environment.URL_API + environment.API_VERSION +
-      'project?with[]=user&with[]=favorite&with[]=position.skill&id=' + id)
+      'project?with[]=user&with[]=favorite&with[]=position.skill&with[]=comment&with[]=comment.user&with[]=position.member&id=' + id)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -55,7 +55,7 @@ export class ProjectService {
     const project_id = id ? '&id=!' + id : '';
     const user_id = this.state.isLoggedIn() ? this.state.getUser().id : '';
     return this.http.get(environment.URL_API + environment.API_VERSION +
-      `project?position:skill_id=${skill}&user_id=!${user_id}&with[]=user&with[]=position.skill${project_id}`)
+      `project?position:skill_id=${skill}&user_id=!${user_id}&with[]=user&with[]=favorite&with[]=position.skill${project_id}`)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -76,6 +76,18 @@ export class ProjectService {
 
   deleteProject(id) {
     return this.http.delete(environment.URL_API + environment.API_VERSION + 'project/' + id, this.options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  addAssets(formData) {
+    const headers = new Headers({
+      'Content-Type': 'multipart/form-data',
+      'Authorization': 'Bearer ' + this.state.getToken()
+    });
+    const options = new RequestOptions({headers: headers});
+
+    return this.http.post(environment.URL_API + environment.API_VERSION + 'assets', formData, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
