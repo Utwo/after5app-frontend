@@ -15,8 +15,7 @@ export class ProjectHeaderComponent implements OnInit {
   myProject = false;
   private isFollowed = false;
 
-  constructor(
-              private projectService: ProjectService,
+  constructor(private projectService: ProjectService,
               private state: StateService,
               private responseHandler: ResponseHandlerService) {
   }

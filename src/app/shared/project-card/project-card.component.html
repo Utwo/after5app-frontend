@@ -1,12 +1,12 @@
 <div class="panel p-4 my-5">
   <!--card header-->
   <div class="row">
-    <div class="col-1">
+    <div class="col-md-1 col-sm-2 col-3">
       <img class="profile-img"
            *ngIf="project.user.picture"
            src="{{project.user.picture+'?s=40&width=40&height=40'}}">
     </div>
-    <div class="col-7">
+    <div class="col-md-7 col-sm-7 col-6">
       <h3 class="project__title mb-0">
         <a routerLink="/project/{{project.id}}">
           <strong>{{project.title}}</strong>
@@ -14,13 +14,15 @@
       </h3>
       <span class="text-muted project__date small-text"> Posted {{ project.created_at | timeAgo}}</span>
     </div>
-    <div class="col-4 text-right">
-      <span *ngIf="!isFollowed && !myProject" class="mr-1 text-muted" title="follow"> Follow Project?
+    <div class="col-md-4 col-sm-3 col-3 text-right">
+      <span *ngIf="!isFollowed && !myProject" class="mr-1 text-muted" title="follow">
+        <span class="hidden-xs-down">Follow Project?</span>
           <a href="javascript:;" (click)="follow(modal)">
             <svg class="icon icon-star"><use xlink:href="assets/svg/icons.svg#icon-star"></use></svg>
           </a>
       </span>
-      <span *ngIf="isFollowed && !myProject" class="mr-1 text-muted" title="following"> Following!
+      <span *ngIf="isFollowed && !myProject" class="mr-1 text-muted" title="following">
+        <span class="hidden-xs-down">Following!</span>
         <a href="javascript:;" (click)="follow(modal)">
           <svg class="icon icon-star full"><use xlink:href="assets/svg/icons.svg#icon-star-full"></use></svg>
         </a>
@@ -32,18 +34,18 @@
   <!--project details -->
   <div>
     <div class="row">
-      <div class="col-md-3 project__card-label">
+      <div class="col-sm-3 col-12 project__card-label">
         I want to create:
       </div>
-      <div class="col-md-9">
+      <div class="col-sm-9 col-12 text-gray-dark">
         {{project.description}}
       </div>
     </div>
     <div class="row mt-4">
-      <div class="col-md-3 project__card-label">
+      <div class="col-sm-3 col-12 project__card-label">
         Skills needed:
       </div>
-      <div class="col-md-9">
+      <div class="col-sm-9 col-12">
         <ul class="list-inline" *ngIf="project.position.length > 0">
           <li (click)="filterProjects(position.skill.id); autocomplete.setValue(position.skill.name)"
               class="list-inline-item btn btn-sm btn btn-outline-secondary project__skill-item mr-3 mb-1"
@@ -58,7 +60,7 @@
 
   <!--project info-->
   <div class="row text-muted">
-    <div class="col-md-3">
+    <div class="col-sm-3 col-12">
     <span class="small-text">
       Created by <br>
       <a routerLink="/profile/{{project.user_id}}">
@@ -66,7 +68,7 @@
       </a>
     </span>
     </div>
-    <div class="col-md-9 row project__subinfo">
+    <div class="col-sm-9 col-12 project__subinfo">
     <span class="small-text">
       <b *ngIf="project.favorite_count == 0 && !myProject"> Be the first to follow this project! </b>
       <span *ngIf="project.favorite_count > 0">

@@ -3,11 +3,14 @@
 }
 
 .comment__content {
-  background: #f5f5f5;
+  background: lighten( $brand-success, 30% );
   padding: .4rem .6rem;
   margin: .6rem 0;
   border-radius: $border-radius-lg;
-  box-shadow: 0 1px 1px 0px rgba(0, 0, 0, .15);
+}
+
+.comment__author{
+  display: block;
 }
 
 .comment-item__mine .comment__content {

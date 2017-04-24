@@ -11,6 +11,7 @@ import { SectionHeaderComponent } from './components/section-header.component';
 import { StepsComponent } from './components/steps.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
+import { SmallProjectCardComponent } from './small-project-card/small-project-card.component';
 import { ModalModule, TypeaheadModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 
@@ -32,6 +33,7 @@ import { RouterModule } from '@angular/router';
     StepsComponent,
     LoginModalComponent,
     ProjectCardComponent,
+    SmallProjectCardComponent,
     TimeAgoPipe,
   ],
   exports: [
@@ -47,6 +49,7 @@ import { RouterModule } from '@angular/router';
     StepsComponent,
     LoginModalComponent,
     ProjectCardComponent,
+    SmallProjectCardComponent,
     TimeAgoPipe
   ]
 })

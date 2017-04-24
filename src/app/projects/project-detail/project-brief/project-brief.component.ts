@@ -7,37 +7,26 @@ import {ResponseHandlerService} from '../../../core/response-handler.service';
 
 @Component({
   selector: 'app-project-brief',
-  templateUrl: './project-brief.component.html',
-  styles: []
+  templateUrl: './project-brief.component.html'
 })
 export class ProjectBriefComponent implements OnInit {
   @Input() project;
-  private myProject = false;
-  public related = null;
+  myProject = false;
+  related = null;
   myApplications = [];
 
-  constructor(
-              private projectService: ProjectService,
+  constructor(private projectService: ProjectService,
               private state: StateService,
               private applicationService: ApplicationService,
-              private router: Router,
               private responseHandler: ResponseHandlerService) {
   }
 
   ngOnInit() {
     if (this.state.isLoggedIn()) {
-      this.verifyIfMyProject();
+      this.myProject = this.state.getUser().id === this.project.user_id;
       this.getMyApplications();
     }
     this.getRelatedProjects();
-  }
-
-  verifyIfMyProject() {
-    if (this.state.getUser().id === this.project.user_id) {
-      this.myProject = true;
-    } else {
-      this.myProject = false;
-    }
   }
 
   scrollDown() {
