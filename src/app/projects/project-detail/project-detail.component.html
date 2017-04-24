@@ -3,23 +3,23 @@
 <div *ngIf='project'>
   <tabset>
     <tab [active]="true">
-      <template tabHeading>
+      <ng-template tabHeading>
         BRIEF
-      </template>
+      </ng-template>
       <app-project-brief [project]="project"></app-project-brief>
     </tab>
     <tab *ngIf="isMember || myProject">
-      <template tabHeading>
+      <ng-template tabHeading>
         ASSETS
-      </template>
+      </ng-template>
       <div class="container my-3">
         <app-project-assets [project_id]="project.id"></app-project-assets>
       </div>
     </tab>
     <tab *ngIf="myProject">
-      <template tabHeading>
+      <ng-template tabHeading>
         APPLICANTS
-      </template>
+      </ng-template>
       <div class="container my-3">
         <app-project-applicants [project_id]="project.id" [user]="project.user"></app-project-applicants>
       </div>
