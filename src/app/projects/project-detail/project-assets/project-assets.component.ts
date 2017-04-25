@@ -12,7 +12,7 @@ import {environment} from '../../../../environments/environment.dev';
 })
 
 export class ProjectAssetsComponent implements OnInit {
-  private files = [];
+  public files = [];
   @Input() project_id;
   private user_token = null;
   private environment = environment;

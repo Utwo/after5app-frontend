@@ -13,7 +13,7 @@ export class ProjectApplicantsComponent implements OnInit {
   @Input() project_id;
   @Input() user;
   private myProject = false;
-  private applications = [];
+  public applications = [];
   private nr_of_members = null;
   private nr_of_applying = null;
 

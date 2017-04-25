@@ -10,7 +10,7 @@ import {ProjectService} from '../../shared/project.service';
 })
 
 export class ProjectHeaderComponent implements OnInit {
-  private user = null;
+  public user = null;
   @Input() project;
   myProject = false;
   private isFollowed = false;
