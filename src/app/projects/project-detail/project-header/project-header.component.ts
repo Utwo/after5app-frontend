@@ -33,7 +33,7 @@ export class ProjectHeaderComponent implements OnInit {
   }
 
   verifyIfFavorite() {
-    for (let user of this.project.favorite) {
+    for (const user of this.project.favorite) {
       if (user.id === this.state.getUser().id) {
         this.isFollowed = true;
         break;
@@ -42,11 +42,7 @@ export class ProjectHeaderComponent implements OnInit {
   }
 
   verifyIfMyProject() {
-    if (this.state.getUser().id === this.project.user_id) {
-      this.myProject = true;
-    } else {
-      this.myProject = false;
-    }
+    this.myProject = this.state.getUser().id === this.project.user_id;
   }
 
   follow(modal) {

@@ -95,6 +95,8 @@ export class StartProjectComponent {
         .subscribe(
           () => this.router.navigate(['/project', projectId]),
           error => this.responseHandler.errorMessage('An error occured when saving the files!', error));
+    } else {
+      this.router.navigate(['/project', projectId]);
     }
   }
 }

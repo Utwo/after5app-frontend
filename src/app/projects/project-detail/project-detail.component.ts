@@ -50,21 +50,16 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   verifyIfMember() {
-    const self = this;
     this.project.position.map (position => {
       position.member.map (member => {
         if (member.id === this.state.getUser().id) {
-          self.isMember = true;
+          this.isMember = true;
         }
       });
     });
   }
 
   verifyIfMyProject() {
-    if (this.state.getUser().id === this.project.user_id) {
-      this.myProject = true;
-    } else {
-      this.myProject = false;
-    }
+    this.myProject = this.state.getUser().id === this.project.user_id;
   }
 }

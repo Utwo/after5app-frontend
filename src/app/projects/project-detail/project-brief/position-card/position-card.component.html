@@ -4,9 +4,9 @@
   (mouseenter)="showDetails = true"
   (mouseleave)="showDetails = false"
 >
-  <div class="card-block text-gray-dark text-center">
+  <div class="card-block text-gray-dark text-center py-3 px-2 px-md-3">
     <div *ngIf="!hasMember || showDetails" class="container-fluid">
-      <h3>{{position.skill.name}}</h3>
+      <h3 class="text-muted">{{position.skill.name}}</h3>
       <p>{{position.description}}</p>
     </div>
     <div *ngIf="hasMember && !showDetails">
@@ -20,11 +20,12 @@
       </div>
     </div>
   </div>
-  <div *ngIf="myProject === false && !hasMember">
-    <button class="btn btn-success" (click)="modal.open()">
-      <small>APPLY FOR POSITION</small>
-    </button>
-  </div>
+  <button
+    *ngIf="myProject === false && !hasMember"
+    class="btn btn-success w-100 py-3"
+    (click)="modal.open()">
+    <small>APPLY FOR POSITION</small>
+  </button>
 </div>
 <app-apply-modal #modal (onApply)="applicationSent($event)" [position]="position" [project]="project"></app-apply-modal>
 

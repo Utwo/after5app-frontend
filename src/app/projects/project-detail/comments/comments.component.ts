@@ -9,9 +9,12 @@ import {ResponseHandlerService} from '../../../core/response-handler.service';
 })
 export class CommentsComponent {
   @Input('project_id') project_id;
+  @Input('owner_id') owner_id;
   @Input('comments') comments;
 
-  constructor(private projectService: ProjectService, public state: StateService, private responseHandler: ResponseHandlerService) {
+  constructor(private projectService: ProjectService,
+              private state: StateService,
+              private responseHandler: ResponseHandlerService) {
   }
 
   addComment(text) {
