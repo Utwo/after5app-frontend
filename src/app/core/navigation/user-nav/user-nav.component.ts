@@ -65,6 +65,5 @@ export class UserNavComponent implements OnInit {
 
   logout() {
     this.loginService.logout();
-    this.router.navigate(['/']);
   }
 }

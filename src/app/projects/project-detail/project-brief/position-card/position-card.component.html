@@ -1,8 +1,9 @@
 <div
   *ngIf="position"
-  class="card"
+  class="card position__card"
   (mouseenter)="showDetails = true"
   (mouseleave)="showDetails = false"
+  [class.position__card-taken]="hasMember && !showDetails"
 >
   <div class="card-block text-gray-dark text-center py-3 px-2 px-md-3">
     <div *ngIf="!hasMember || showDetails" class="container-fluid">
@@ -10,13 +11,13 @@
       <p>{{position.description}}</p>
     </div>
     <div *ngIf="hasMember && !showDetails">
-      <div class="row">
-        <div class="col-2">
-          <img *ngIf="member.picture" class="profile-img" src="{{member.picture}}?width=70&height=70&s=70">
-        </div>
-        <div>
-          <p>{{member.name}} has joined the {{position.skill.name}} skill</p>
-        </div>
+      <div class="text-center my-3">
+        <img *ngIf="member.picture" class="profile-img" src="{{member.picture}}?width=70&height=70&s=70">
+      </div>
+      <div>
+        <p class="text-white">
+          <b class="text-success">{{member.name}}</b> has joined the <b>{{position.skill.name}}</b> skill
+        </p>
       </div>
     </div>
   </div>

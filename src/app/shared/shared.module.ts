@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TimeAgoPipe } from './time-ago.pipe';
+import { ShortText } from './short-text.pipe';
 import { FocusDirective } from './focus.directive';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { FeebeInfoComponent } from './components/feebe-info.component';
@@ -35,6 +36,7 @@ import { RouterModule } from '@angular/router';
     ProjectCardComponent,
     SmallProjectCardComponent,
     TimeAgoPipe,
+    ShortText,
   ],
   exports: [
     CommonModule,

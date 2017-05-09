@@ -34,7 +34,7 @@
   <div>
     <div class="row">
       <div class="col-12 text-gray-dark">
-        {{project.description}}
+        {{project.description | shortText:100}}
       </div>
       <div class="col-12 mt-4">
         <ul class="list-inline" *ngIf="project.position.length > 0">

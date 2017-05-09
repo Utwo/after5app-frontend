@@ -27,3 +27,24 @@
 .project__card-line{
   border-color: $gray-lightest;
 }
+
+
+// position card
+
+.position__card{
+  min-height: 210px;
+  box-shadow: 0 3px 5px 0 $dark-purple;
+}
+
+.position__card img{
+  border: 5px solid $brand-success;
+  border-radius: 50%;
+  animation-name: greenPulse;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  box-shadow: 0 0 30px $brand-success;
+}
+
+.position__card-taken{
+  background: lighten($brand-primary, 3%);
+}
