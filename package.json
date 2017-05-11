@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "start": "ng serve --hmr --e=dev",
-    "prod": "ng build --prod --aot",
-    "stage": "ng build --prod --env=stage --aot",
+    "start": "ng serve --dev --hmr",
+    "prod": "ng build --prod",
+    "stage": "ng build --prod --env=stage",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
