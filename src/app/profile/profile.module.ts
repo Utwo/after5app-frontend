@@ -7,12 +7,19 @@ import { ProfileService } from './shared/profile.service';
 import { SharedModule } from '../shared/shared.module';
 import { SkillsComponent } from './skills/skills.component';
 import { TabsModule } from 'ngx-bootstrap';
+import { RouterModule } from '@angular/router';
+
+export const routerConfig = [{
+  path: '',
+  component: ProfileComponent
+}];
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    RouterModule.forChild(routerConfig)
   ],
   declarations: [
     ProfileComponent,
