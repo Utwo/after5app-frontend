@@ -1,0 +1,58 @@
+{
+  "routing": {
+    "index": "/index.html",
+    "routes": {
+      "/": {
+        "match": "exact"
+      },
+      "/projects": {
+        "match": "exact"
+      },
+      "/project": {
+        "match": "prefix"
+      },
+      "/profile": {
+        "match": "prefix"
+      },
+      "/about": {
+        "match": "exact"
+      },
+      "/start-project": {
+        "match": "exact"
+      },
+      "/auth": {
+        "match": "prefix"
+      },
+      "settings": {
+        "match": "exact"
+      },
+      "/404": {
+        "match": "exact"
+      }
+    }
+  },
+  "dynamic": {
+    "group": [
+      {
+        "name": "api",
+        "urls": {
+          "http://api.after5app.co/api/v1/": {
+            "match": "prefix"
+          }
+        },
+        "cache": {
+          "optimizeFor": "freshness",
+          "maxAgeMs": 3600000,
+          "maxEntries": 2,
+          "strategy": "fifo",
+          "networkTimeoutMs": 1000
+        }
+      }
+    ]
+  },
+  "external": {
+    "urls": [{
+      "url": "https://fonts.gstatic.com/s/roboto/v15/CWB0XYA8bzo0kSThX0UTuA.woff2"
+    }]
+  }
+}

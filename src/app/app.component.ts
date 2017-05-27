@@ -19,15 +19,14 @@ export class AppComponent {
     // You need this small hack in order to catch application root view container ref
     this.viewContainerRef = viewContainerRef;
     this.toastyConfig.theme = 'bootstrap';
-
-    if(environment.production) {
-      this.router.events.subscribe((event) => {
-        if (this.router.url !== this.url && event instanceof NavigationEnd) {
-          this.url = event.url;
+    this.router.events.subscribe((event) => {
+      if (event !== this.url && event instanceof NavigationEnd) {
+        this.url = event.url;
+        if (environment.production) {
           ga('send', 'pageview', {page: event.url});
         }
-      });
-    }
+      }
+    });
 
     this.responseHandler.message.subscribe(message => {
       if (message) {

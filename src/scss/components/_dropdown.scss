@@ -4,6 +4,10 @@
   display: inline-block;
 }
 
+.dropdown.open {
+  width: 100%;
+}
+
 .dropdown--lg .dropdown-menu {
   width: 300%;
 }
