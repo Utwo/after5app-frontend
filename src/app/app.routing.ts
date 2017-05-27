@@ -1,6 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
-import { ProfileComponent } from './profile/profile.component';
 import { ProjectListComponent } from './projects/project-list/project-list.component';
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
 import { AuthGuard } from './core/auth-guard.service';
@@ -9,7 +8,7 @@ const appRoutes: Routes = [
   {path: '', loadChildren: './home/home.module#HomeModule', pathMatch: 'full'},
   {path: 'projects', component: ProjectListComponent},
   {path: 'project/:id', component: ProjectDetailComponent},
-  {path: 'profile/:id', component: ProfileComponent},
+  {path: 'profile/:id', loadChildren: './profile/profile.module#ProfileModule'},
   {
     path: 'projects-overview',
     loadChildren: './projects-overview/projects-overview.module#ProjectsOverviewModule',

@@ -14,7 +14,14 @@
         "favicon-32x32.png",
         "favicon-96x96.png",
         "favicon-300x300.png",
-        ".htaccess"
+        "android-chrome-192x192.png",
+        "android-chrome-512x512.png",
+        "apple-touch-icon.png",
+        "mstile-150x150.png",
+        "safari-pinned-tab.svg",
+        "browserconfig.xml",
+        ".htaccess",
+        "manifest.json"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -23,7 +30,7 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
-      "mobile": false,
+      "serviceWorker": true,
       "styles": [
         "main.css"
       ],
@@ -59,10 +66,9 @@
   },
   "defaults": {
     "styleExt": "css",
-    "prefixInterfaces": false,
-    "inline": {
-      "style": true,
-      "template": false
+    "component": {
+      "inlineStyle": true,
+      "inlineTemplate": false
     }
   }
 }
