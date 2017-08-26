@@ -2,8 +2,6 @@
 
 let gulp = require('gulp');
 let autoprefixer = require('gulp-autoprefixer');
-let concat = require('gulp-concat');
-let uglify = require('gulp-uglify');
 let sass = require('gulp-sass');
 let cleanCSS = require('gulp-clean-css');
 let sourcemaps = require('gulp-sourcemaps');
