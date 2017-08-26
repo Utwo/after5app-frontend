@@ -30,7 +30,6 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "serviceWorker": true,
-      "mobile": false,
       "styles": [
         "main.css"
       ],

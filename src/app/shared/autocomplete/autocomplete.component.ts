@@ -1,7 +1,7 @@
 import {Component, Output, EventEmitter, Input} from '@angular/core';
 import {ProjectService} from '../../projects/shared/project.service';
 import {Observable} from 'rxjs';
-import {TypeaheadMatch} from 'ng2-bootstrap';
+import {TypeaheadMatch} from 'ngx-bootstrap';
 import {ResponseHandlerService} from '../response-handler.service';
 
 @Component({

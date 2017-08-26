@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ModalDirective} from 'ng2-bootstrap';
+import {ModalDirective} from 'ngx-bootstrap';
 import {ProjectService} from '../shared/project.service';
 import {StateService} from '../../shared/state.service';
 import {ResponseHandlerService} from '../../shared/response-handler.service';

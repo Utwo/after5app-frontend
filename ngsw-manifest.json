@@ -36,16 +36,16 @@
       {
         "name": "api",
         "urls": {
-          "http://api.after5app.co/api/v1/": {
+          "https://api.after5app.co/api/": {
             "match": "prefix"
           }
         },
         "cache": {
-          "optimizeFor": "freshness",
+          "optimizeFor": "performance",
           "maxAgeMs": 3600000,
           "maxEntries": 2,
           "strategy": "fifo",
-          "networkTimeoutMs": 1000
+          "networkTimeoutMs": 2000
         }
       }
     ]

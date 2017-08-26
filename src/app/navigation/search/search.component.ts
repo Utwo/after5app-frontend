@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ProjectService} from '../../projects/shared/project.service';
-import {TypeaheadMatch} from 'ng2-bootstrap';
+import {TypeaheadMatch} from 'ngx-bootstrap';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {ResponseHandlerService} from '../../shared/response-handler.service';
