@@ -5,7 +5,7 @@
   "angular-cli": {},
   "scripts": {
     "start": "ng serve --hmr --e=dev --aot",
-    "prod": "ng build --prod --aot",
+    "prod": "ng build --prod --build-optimizer",
     "stage": "ng build --prod --env=stage --aot",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test --single-run --lint --watch=false",
