@@ -5,7 +5,7 @@
   "scripts": {
     "start": "ng serve --dev --hmr",
     "prod": "ng build --prod --build-optimizer",
-    "stage": "ng build --prod --env=stage",
+    "stage": "ng build --prod --env=stage --build-optimizer",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
