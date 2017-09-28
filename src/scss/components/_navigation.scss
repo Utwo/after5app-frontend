@@ -18,8 +18,9 @@
 }
 
 .show-navigation .navigation-wrap {
-  display: block !important;
-  animation: show-navigation .4s forwards ease-in-out;
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  visibility: visible;
 }
 
 @media (max-width: map-get($grid-breakpoints, md)) {
@@ -27,10 +28,16 @@
     position: absolute;
     top: 5.3rem;
     left: 0;
-    z-index: map-get($zindex, high);
+    z-index: -9;
+    z-index: map-get($zindex, highest);
     background: $brand-primary;
     box-shadow: 0 2px 2px 2px rgba(0, 0, 0, .2);
     padding-top: 1rem;
+    transform-origin: top center;
+    transform: translateY(-2em) scale(.8);
+    opacity: 0;
+    visibility: hidden;
+    transition: .4s ease-in-out, visibility 0s;
   }
 
   .navigation-item {
@@ -62,16 +69,5 @@
     padding: 1em;
     width: 100%;
     color: #fff;
-  }
-}
-
-@keyframes show-navigation {
-  0% {
-    transform: translateY(-2em);
-    opacity: .4;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
   }
 }
