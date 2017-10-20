@@ -5,13 +5,11 @@
 // 2. Vendors
 // Core variables and mixins
 @import "abstracts/custom";
+@import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";
 @import 'abstracts/variables';
 
 @import "../../node_modules/bootstrap/scss/mixins";
-
-// Reset and dependencies
-@import "../../node_modules/bootstrap/scss/normalize";
 
 // Core CSS
 @import "../../node_modules/bootstrap/scss/reboot";
