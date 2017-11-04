@@ -1,7 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {ProjectService} from '../../shared/project.service';
 import {ResponseHandlerService} from '../../../shared/response-handler.service';
-import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-messages',

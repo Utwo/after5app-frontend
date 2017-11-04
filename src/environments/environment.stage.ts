@@ -5,5 +5,4 @@ export const environment = {
   API_VERSION: 'api/v1/',
   FACEBOOK_ID: '1614652362188367',
   GITHUB_ID: 'fe2cc437add1417665e4',
-  hmr: false
 };

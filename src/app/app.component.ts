@@ -1,10 +1,9 @@
 import {Component, ViewContainerRef} from '@angular/core';
-import './rxjs-operators';
 import {Router, NavigationEnd} from '@angular/router';
 import {ToastyService, ToastyConfig, ToastOptions} from 'ng2-toasty';
 import {ResponseHandlerService} from './shared/response-handler.service';
-import {environment} from "../environments/environment";
-declare var ga: Function;
+import {environment} from '../environments/environment';
+declare const ga: Function;
 
 @Component({
   selector: 'app-root',
@@ -36,7 +35,7 @@ export class AppComponent {
   }
 
   addToast(mes) {
-    let toastOptions: ToastOptions = {
+    const toastOptions: ToastOptions = {
       title: '',
       msg: mes.message,
       showClose: true,

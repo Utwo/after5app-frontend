@@ -27,7 +27,7 @@ export class SettingsComponent implements OnInit {
     this.profileService.getLoggedInUser()
       .subscribe(
         user => {
-          for (let skill of user.skill) {
+          for (const skill of user.skill) {
             this.skills.push(skill.name);
           }
           delete user.skill;

@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {ProjectService} from '../../projects/shared/project.service';
 import {TypeaheadMatch} from 'ngx-bootstrap';
-import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {ResponseHandlerService} from '../../shared/response-handler.service';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-search',
@@ -11,9 +11,9 @@ import {ResponseHandlerService} from '../../shared/response-handler.service';
 })
 export class SearchComponent {
   public dataSource: Observable<any>;
-  public asyncSelected: string = '';
-  public typeaheadLoading: boolean = false;
-  public typeaheadNoResults: boolean = false;
+  public asyncSelected = '';
+  public typeaheadLoading = false;
+  public typeaheadNoResults = false;
 
   public constructor(private projectService: ProjectService, private router: Router, private responseHandler: ResponseHandlerService) {
     this.dataSource = Observable.create((observer: any) => {

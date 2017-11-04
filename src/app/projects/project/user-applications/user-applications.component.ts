@@ -1,7 +1,6 @@
 import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import {ProjectService} from '../../shared/project.service';
 import {ResponseHandlerService} from '../../../shared/response-handler.service';
-import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-user-applications',

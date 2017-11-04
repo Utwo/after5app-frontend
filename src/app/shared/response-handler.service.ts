@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {StateService} from './state.service';
 import {Router} from '@angular/router';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class ResponseHandlerService {

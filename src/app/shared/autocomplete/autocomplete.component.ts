@@ -1,6 +1,6 @@
 import {Component, Output, EventEmitter, Input} from '@angular/core';
 import {ProjectService} from '../../projects/shared/project.service';
-import {Observable} from 'rxjs';
+import {Observable} from 'rxjs/Observable';
 import {TypeaheadMatch} from 'ngx-bootstrap';
 import {ResponseHandlerService} from '../response-handler.service';
 
@@ -17,9 +17,9 @@ export class AutocompleteComponent {
   @Output() onSelect = new EventEmitter<Object>();
 
   public dataSource: Observable<any>;
-  public asyncSelected: string = '';
-  public typeaheadLoading: boolean = false;
-  public typeaheadNoResults: boolean = false;
+  public asyncSelected = '';
+  public typeaheadLoading = false;
+  public typeaheadNoResults = false;
 
   constructor(private projectService: ProjectService,
               private responseHandler: ResponseHandlerService) {

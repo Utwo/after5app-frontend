@@ -71,7 +71,7 @@ export class EditProjectComponent {
   }
 
   validatePosition(position) {
-    for (let project_position of this.project.position) {
+    for (const project_position of this.project.position) {
       if (position.name === project_position.skill.name) {
         this.positionError = 'Please choose a new skill.';
         return true;

@@ -68,7 +68,7 @@ export class ProjectListComponent implements OnInit {
       next: projects.next_page_url,
       prev: projects.prev_page_url
     };
-    for (let project of this.projects) {
+    for (const project of this.projects) {
       if (project.description.length > this.maxDescriptionLength) {
         project.description = project.description.substring(0, this.maxDescriptionLength) + '...';
       }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {ProjectService} from '../shared/project.service';
 import {ResponseHandlerService} from '../../shared/response-handler.service';
@@ -7,16 +7,13 @@ import {ResponseHandlerService} from '../../shared/response-handler.service';
   selector: 'app-add-project',
   templateUrl: './add-project.component.html',
 })
-export class AddProjectComponent implements OnInit {
-  public project: any = {title: '', descripton: '', application_questions: [], position: []};
+export class AddProjectComponent {
+  public project: any = {title: '', description: '', application_questions: [], position: []};
   selectedSkill = '';
   questionError = null;
   positionError = null;
 
   constructor(private projectService: ProjectService, private router: Router, private responseHandler: ResponseHandlerService) {
-  }
-
-  ngOnInit() {
   }
 
   storeProject() {
@@ -49,7 +46,7 @@ export class AddProjectComponent implements OnInit {
   }
 
   validatePosition(position) {
-    for (let project_position of this.project.position) {
+    for (const project_position of this.project.position) {
       if (position.name === project_position.name) {
         this.positionError = 'Please choose a new skill.';
         return true;

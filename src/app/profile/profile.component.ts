@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      let id = +params['id'];
+      const id = +params['id'];
       this.getUser(id);
       this.verifyIfMe(id);
     });

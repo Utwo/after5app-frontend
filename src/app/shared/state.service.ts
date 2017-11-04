@@ -3,9 +3,6 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class StateService {
 
-  constructor() {
-  }
-
   storeState(token, user) {
     localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(user));

@@ -5,7 +5,7 @@ import {ProjectService} from '../shared/project.service';
 import {StateService} from '../../shared/state.service';
 import {ResponseHandlerService} from '../../shared/response-handler.service';
 import {environment} from '../../../environments/environment';
-const mo = require('mo-js/build/mo.min.js');
+import mo from 'mo-js/build/mo.min.js';
 
 @Component({
   selector: 'app-project',
@@ -70,7 +70,7 @@ export class ProjectComponent implements OnInit {
   }
 
   verifyIfMyProject() {
-    if (this.state.getUser().id == this.project.user_id) {
+    if (this.state.getUser().id === this.project.user_id) {
       this.myProject = true;
       this.getApplications();
     } else {
@@ -79,7 +79,7 @@ export class ProjectComponent implements OnInit {
   }
 
   verifyIfFavorite() {
-    for (let user of this.project.favorite) {
+    for (const user of this.project.favorite) {
       if (user.id === this.state.getUser().id) {
         this.isFavorite = true;
         break;
@@ -103,7 +103,7 @@ export class ProjectComponent implements OnInit {
   }
 
   getRelatedProjects() {
-    let skills = [];
+    const skills = [];
     this.project.position.map(item => {
       skills.push(item.skill.id);
     });
@@ -123,7 +123,7 @@ export class ProjectComponent implements OnInit {
         members => {
           this.members = members;
           if (this.state.isLoggedIn()) {
-            for (let member of members) {
+            for (const member of members) {
               if (member.id === this.state.getUser().id) {
                 this.isMember = true;
               }
@@ -135,8 +135,8 @@ export class ProjectComponent implements OnInit {
 
   removeMember(index) {
     let application_id;
-    let member = this.members[index];
-    for (let application of this.applications) {
+    const member = this.members[index];
+    for (const application of this.applications) {
       if (application.user_id === member.id) {
         application_id = application.id;
       }
@@ -193,8 +193,8 @@ export class ProjectComponent implements OnInit {
   }
 
   showAnimation(el, elSpan) {
-    let timeline = new mo.Timeline();
-    let tweens = [
+    const timeline = new mo.Timeline();
+    const tweens = [
       // ring animation
       new mo.Shape({
         parent: el,
@@ -302,7 +302,7 @@ export class ProjectComponent implements OnInit {
         },
         onUpdate: function (progress) {
           if (progress > 0.3) {
-            let elasticOutProgress = mo.easing.elastic.out(1.43 * progress - 0.43);
+            const elasticOutProgress = mo.easing.elastic.out(1.43 * progress - 0.43);
             elSpan.style.WebkitTransform = elSpan.style.transform = 'scale3d(' + elasticOutProgress + ',' + elasticOutProgress + ',1)';
           } else {
             elSpan.style.WebkitTransform = elSpan.style.transform = 'scale3d(0,0,1)';

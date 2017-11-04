@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpModule, JsonpModule} from '@angular/http';
+import {HttpClientModule, HttpClientJsonpModule} from '@angular/common/http';
 import {routing, appRoutingProviders} from './app.routing';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
@@ -63,8 +63,8 @@ import {LoginModalComponent} from './shared/login-modal/login-modal.component';
     routing,
     BrowserModule,
     FormsModule,
-    HttpModule,
-    JsonpModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
     ModalModule.forRoot(),
     TypeaheadModule.forRoot(),
     TabsModule.forRoot(),

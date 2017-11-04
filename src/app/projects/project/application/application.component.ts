@@ -1,20 +1,17 @@
-import {Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
+import {Component, Output, Input, EventEmitter} from '@angular/core';
 import {ProjectService} from '../../shared/project.service';
 
 @Component({
   selector: 'app-application',
   templateUrl: './application.component.html',
 })
-export class ApplicationComponent implements OnInit {
+export class ApplicationComponent {
   @Input() project;
   @Output() onApply = new EventEmitter<number>();
   application = {message: '', position_id: null, answers: []};
   position = null;
 
   constructor(private projectService: ProjectService) {
-  }
-
-  ngOnInit() {
   }
 
   sendApplication(position) {
