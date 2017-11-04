@@ -40,7 +40,6 @@ export class ProjectDetailComponent implements OnInit {
             return;
           }
           this.project = project.data[0];
-          console.log(this.project);
           if (this.state.isLoggedIn()) {
             this.verifyIfMyProject();
             this.verifyIfMember();
@@ -61,10 +60,6 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   verifyIfMyProject() {
-    if (this.state.getUser().id === this.project.user_id) {
-      this.myProject = true;
-    } else {
-      this.myProject = false;
-    }
+    this.myProject = this.state.getUser().id === this.project.user_id;
   }
 }

@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {ApplicationService} from '../../../shared/application.service';
 import {ResponseHandlerService} from '../../../../core/response-handler.service';
 
@@ -6,7 +6,8 @@ import {ResponseHandlerService} from '../../../../core/response-handler.service'
   selector: 'app-applications-card',
   templateUrl: 'applications-card.component.html'
 })
-export class ApplicationsCardComponent implements OnInit {
+
+export class ApplicationsCardComponent {
   @Input() application;
   @Output() onAccept = new EventEmitter<number>();
   @Output() onReject = new EventEmitter<number>();
@@ -14,10 +15,6 @@ export class ApplicationsCardComponent implements OnInit {
   constructor(private applicationService: ApplicationService,
               private responseHandler: ResponseHandlerService) {
   }
-
-  ngOnInit() {
-  }
-
 
   acceptApplication(application_id) {
     this.applicationService.acceptApplication(application_id)

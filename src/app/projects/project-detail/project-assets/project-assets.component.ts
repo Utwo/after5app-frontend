@@ -1,9 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
 import {StateService} from '../../../core/state.service';
 import {ResponseHandlerService} from '../../../core/response-handler.service';
 import {ProjectAssetsService} from './project-assets.service';
-import {environment} from '../../../../environments/environment.dev';
 
 @Component({
   selector: 'app-project-assets',
@@ -15,10 +13,8 @@ export class ProjectAssetsComponent implements OnInit {
   public files = [];
   @Input() project_id;
   private user_token = null;
-  private environment = environment;
 
-  constructor(private route: ActivatedRoute,
-              private state: StateService,
+  constructor(private state: StateService,
               private assets: ProjectAssetsService,
               private responseHandler: ResponseHandlerService) {
   }

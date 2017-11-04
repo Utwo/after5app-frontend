@@ -7,16 +7,16 @@ export class TimeAgoPipe implements PipeTransform {
   transform(date: any): string {
     let result: string;
     // current time
-    let mydate = new Date(date);
-    let d = new Date();
-    let now = d.getTime();
+    const mydate = new Date(date);
+    const d = new Date();
+    const now = d.getTime();
     // time since message was sent in seconds
-    let delta = (now - mydate.getTime()) / 1000;
+    const delta = (now - mydate.getTime()) / 1000;
     // format string
     if (delta < 10) {
       result = 'Now';
     } else if (delta < 60) { // sent in last minute
-      let seconds = Math.floor(delta);
+      const seconds = Math.floor(delta);
       result = seconds > 1 ? seconds + ' seconds ago' : seconds + ' second ago';
     } else if (delta < 3600) { // sent in last hour
       const minutes = Math.floor(delta / 60);

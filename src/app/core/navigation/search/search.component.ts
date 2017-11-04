@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {ProjectService} from '../../../projects/shared/project.service';
 import {TypeaheadMatch} from 'ngx-bootstrap';
-import {Observable} from 'rxjs/Observable';
 import {Router} from '@angular/router';
 import {ResponseHandlerService} from '../../response-handler.service';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-search',

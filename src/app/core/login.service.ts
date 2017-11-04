@@ -1,28 +1,27 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {Http, Headers} from '@angular/http';
+import 'rxjs/add/operator/catch';
 import {environment} from '../../environments/environment';
 import {StateService} from './state.service';
 import {Router} from '@angular/router';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class LoginService {
 
-  constructor(private state: StateService, private http: Http, private router: Router) {
+  constructor(private state: StateService, private http: HttpClient, private router: Router) {
   }
 
   loginEmail(email) {
     const body = JSON.stringify({email: email});
-    const headers = new Headers({'Content-Type': 'application/json'});
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
 
     return this.http.post(environment.URL_API + 'auth/login', body, {headers: headers})
-      .map(res => res.json())
       .catch(this.handleError);
   }
 
   authEmail(token) {
     this.http.post(environment.URL_API + 'api/auth/email-authenticate/' + token, '')
-      .map(res => res.json())
       .subscribe(
         (data) => this.state.storeState(data['token'], data['user']),
         (error) => this.handleError(error),
@@ -31,9 +30,7 @@ export class LoginService {
   }
 
   authFacebook(code) {
-    console.log(code);
     this.http.post(environment.URL_API + 'api/auth/facebook/callback?code=' + code, '')
-      .map(res => res.json())
       .subscribe(
         (data) => this.state.storeState(data['token'], data['user']),
         (error) => this.handleError(error),
@@ -43,7 +40,6 @@ export class LoginService {
 
   authGitHub(code) {
     this.http.post(environment.URL_API + 'api/auth/github/callback?code=' + code, '')
-      .map(res => res.json())
       .subscribe(
         (data) => this.state.storeState(data['token'], data['user']),
         (error) => this.handleError(error),

@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ProjectService} from '../../shared/project.service';
 import {StateService} from '../../../core/state.service';
 import {ResponseHandlerService} from '../../../core/response-handler.service';

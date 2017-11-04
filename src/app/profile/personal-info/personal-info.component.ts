@@ -60,7 +60,6 @@ export class PersonalInfoComponent implements OnChanges {
         },
         error => {
           this.responseHandler.errorMessage('An error occured!', error);
-          console.log('Error', error);
         }
       );
   }

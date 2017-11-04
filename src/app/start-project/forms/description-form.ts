@@ -17,7 +17,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
               class="form-control" id="description" name="description"
               required minlength="4" maxlength="1000"
               placeholder="I want to create ... that will do the following ... Also I will be able to help with ..."
-              [(ngModel)]="project_description" #description="ngModel" rows="6">              
+              [(ngModel)]="project_description" #description="ngModel" rows="6">
             </textarea>
           </div>
           <div class="col-2">

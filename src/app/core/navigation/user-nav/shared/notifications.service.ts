@@ -1,40 +1,36 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { StateService } from '../../../state.service';
-import { environment } from '../../../../../environments/environment';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import {StateService} from '../../../state.service';
+import {environment} from '../../../../../environments/environment';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class NotificationsService {
 
-  constructor(private state: StateService, private http: Http) {
+  constructor(private state: StateService, private http: HttpClient) {
   }
 
   public getNotificationsCount() {
-    const headers = new Headers({
+    const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.state.getToken()
     });
-    const options = new RequestOptions({headers: headers});
 
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'notification/count', options)
-      .map(this.extractData)
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'notification/count', {
+      headers: headers
+    })
       .catch(this.handleError);
   }
 
   public getNotifications() {
-    const headers = new Headers({
+    const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.state.getToken()
     });
-    const options = new RequestOptions({headers: headers});
 
-    return this.http.get(environment.URL_API + environment.API_VERSION + 'notification', options)
-      .map(this.extractData)
+    return this.http.get(environment.URL_API + environment.API_VERSION + 'notification', {
+      headers: headers
+    })
       .catch(this.handleError);
-  }
-
-  private extractData(res: Response) {
-    const body = res.json();
-    return body || {};
   }
 
   private handleError(error: any) {

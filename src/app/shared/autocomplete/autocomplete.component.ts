@@ -1,9 +1,8 @@
 import {Component, Output, EventEmitter, Input} from '@angular/core';
 import {ProjectService} from '../../projects/shared/project.service';
 import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
 import {TypeaheadMatch} from 'ngx-bootstrap/typeahead';
-import {ResponseHandlerService} from './../../core/response-handler.service';
+import {ResponseHandlerService} from '../../core/response-handler.service';
 
 @Component({
   selector: 'app-autocomplete',
