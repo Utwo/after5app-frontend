@@ -15,13 +15,13 @@ export class PositionCardComponent implements OnInit {
   private member = null;
   hasMember = false;
   showDetails = false;
-  hasApplied = false;
 
-  constructor (private state: StateService,
-               private responseHandler: ResponseHandlerService) { }
+  constructor(private state: StateService,
+              private responseHandler: ResponseHandlerService) {
+  }
 
   ngOnInit() {
-    if (this.position.member.length > 0 ) {
+    if (this.position.member.length > 0) {
       this.hasMember = true;
       this.member = this.position.member[0];
     }
@@ -32,15 +32,10 @@ export class PositionCardComponent implements OnInit {
   }
 
   verifyIfMyProject() {
-    if (this.state.getUser().id === this.project.user_id) {
-      this.myProject = true;
-    } else {
-      this.myProject = false;
-    }
+    this.myProject = this.state.getUser().id === this.project.user_id;
   }
 
   verifyIfApplied() {
-    console.log(this.myApplications)
   }
 
   applicationSent(error) {
@@ -51,12 +46,7 @@ export class PositionCardComponent implements OnInit {
     }
   }
 
-  hover() {
-    this.showDetails = true;
-  }
-
   out() {
     this.showDetails = false;
-
   }
 }

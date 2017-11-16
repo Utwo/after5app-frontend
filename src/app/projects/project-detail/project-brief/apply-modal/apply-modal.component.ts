@@ -1,5 +1,5 @@
 import {
-  Component, OnInit, Input, Output, ViewChild,
+  Component, Input, Output, ViewChild,
   EventEmitter,
 } from '@angular/core';
 import {ApplicationService} from '../../../shared/application.service';
@@ -11,7 +11,7 @@ import {ModalDirective} from 'ngx-bootstrap';
   styles: []
 })
 
-export class ApplyModalComponent implements OnInit {
+export class ApplyModalComponent {
   @Input() project;
   @Input() position;
   @Output() onApply = new EventEmitter<number>();
@@ -19,9 +19,6 @@ export class ApplyModalComponent implements OnInit {
   @ViewChild('applyModal') public applyModal: ModalDirective;
 
   constructor(private applicationService: ApplicationService) {
-  }
-
-  ngOnInit() {
   }
 
   sendApplication() {

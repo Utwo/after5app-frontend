@@ -40,7 +40,6 @@ export class ProjectDetailComponent implements OnInit {
             return;
           }
           this.project = project.data[0];
-          console.log(this.project);
           if (this.state.isLoggedIn()) {
             this.verifyIfMyProject();
             this.verifyIfMember();

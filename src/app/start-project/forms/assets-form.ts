@@ -65,9 +65,7 @@ export class AssetsFormComponent {
 
   fileChange(event) {
     const fileList: FileList = event.target.files;
-    console.log(fileList);
     for (let i = 0; i < fileList.length; i++) {
-      console.log(fileList[i]);
       this.assets.push(fileList[i]);
     }
   }

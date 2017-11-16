@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {ModalDirective} from 'ngx-bootstrap';
 import {ResponseHandlerService} from '../core/response-handler.service';
-import {ProjectService} from './../projects/shared/project.service';
-import {StateService} from './../core/state.service';
+import {ProjectService} from '../projects/shared/project.service';
+import {StateService} from '../core/state.service';
 
 @Component({
   selector: 'app-start-project',
@@ -36,7 +35,6 @@ export class StartProjectComponent {
   onNext(data) {
     this.project[this.activeStep] = data;
     this.nextStep();
-    console.log(this.project);
   }
 
   nextStep() {

@@ -16,7 +16,6 @@ export class ProjectListComponent implements OnInit {
   public modal;
 
   constructor(private projectService: ProjectService, public state: StateService, private responseHandler: ResponseHandlerService) {
-
   }
 
   ngOnInit() {

@@ -5,8 +5,7 @@ import {ProjectService} from '../../shared/project.service';
 
 @Component({
   selector: 'app-project-header',
-  templateUrl: 'project-header.component.html',
-  styles: []
+  templateUrl: 'project-header.component.html'
 })
 
 export class ProjectHeaderComponent implements OnInit {
@@ -70,6 +69,4 @@ export class ProjectHeaderComponent implements OnInit {
       this.responseHandler.successMessage('Your project was shared!');
     }
   }
-
-
 }

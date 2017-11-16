@@ -5,9 +5,9 @@ import {StateService} from '../../../core/state.service';
 
 @Component({
   selector: 'app-project-applicants',
-  templateUrl: './project-applicants.component.html',
-  styles: []
+  templateUrl: './project-applicants.component.html'
 })
+
 export class ProjectApplicantsComponent implements OnInit {
 
   @Input() project_id;

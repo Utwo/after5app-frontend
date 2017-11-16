@@ -1,7 +1,6 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProfileService} from './shared/profile.service';
-import {StateService} from '../core/state.service';
 import {ResponseHandlerService} from '../core/response-handler.service';
 
 @Component({

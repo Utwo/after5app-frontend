@@ -69,9 +69,9 @@ export class ProjectsOverviewComponent implements OnInit {
       return;
     }
 
-    this.feebeDescription = `You currently have ${this.projects.length} created ${this.getProjectStr(this.projects.length)} 
-    and are following  ${this.followingProjects.length} ${this.getProjectStr(this.followingProjects.length)}, 
-    also you have applied for ${this.appliedProjects.length} ${this.getProjectStr(this.appliedProjects.length)} and have 
+    this.feebeDescription = `You currently have ${this.projects.length} created ${this.getProjectStr(this.projects.length)}
+    and are following  ${this.followingProjects.length} ${this.getProjectStr(this.followingProjects.length)},
+    also you have applied for ${this.appliedProjects.length} ${this.getProjectStr(this.appliedProjects.length)} and have
     ${this.joinedProjects.length} ongoing ${this.getProjectStr(this.joinedProjects.length)}`;
   }
 

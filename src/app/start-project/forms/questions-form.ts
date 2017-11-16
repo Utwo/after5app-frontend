@@ -51,6 +51,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
     </div>
   `,
 })
+
 export class QuestionsFormComponent {
   @Input() application_questions = [];
   questionError = null;

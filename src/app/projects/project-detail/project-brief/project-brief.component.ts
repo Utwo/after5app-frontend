@@ -1,5 +1,4 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Router} from '@angular/router';
 import {ProjectService} from '../../shared/project.service';
 import {ApplicationService} from '../../shared/application.service';
 import {StateService} from '../../../core/state.service';
