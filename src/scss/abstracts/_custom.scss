@@ -12,13 +12,15 @@ $iris: #706ec2;
 $perrywinkle: #8c8add;
 $light-periwinkle: #bfbeff;
 $turquoise: #50e3c2;
-$yellow: #ffed4b;
+$yellow: #f6be24;
+$red: #e96a5e;
 
-$brand-primary: $dark-iris;
-$brand-success: $turquoise;
-$brand-info: $perrywinkle;
-$brand-warning: $yellow;
-$brand-danger: #e96a5e;
+$primary: $dark-iris;
+$secondary: $perrywinkle;
+$success: $turquoise;
+$info: $perrywinkle;
+$warning: $yellow;
+$danger: $red;
 
 $gray-darkest: #484848;
 $gray-dark: #55595c;
@@ -29,7 +31,6 @@ $gray-lightest: #f0f0f0;
 
 $text-muted: $gray;
 
-$btn-secondary-border: $perrywinkle;
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.

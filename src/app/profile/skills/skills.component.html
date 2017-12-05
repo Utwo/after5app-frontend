@@ -1,21 +1,18 @@
 <div class="card profile-card my-3">
-  <div class="card-block">
+  <div class="card-body">
     <!--header-->
     <div class="row">
       <div class="col-6">
         <h5 class="title-border title-border--green p-b-1">CRAFTS & SKILLS</h5>
       </div>
       <div class="col-6 text-right" *ngIf="isMe">
-        <div (click)="toggleEditing()"
-             class="pull-xs-right"
-        >
+        <div (click)="toggleEditing()" class="pull-xs-right">
           <a href="javascript:;">
-            <svg *ngIf="!editing" class="icon icon-md icon-message text-muted">
-              <use xlink:href="assets/icons.svg#icon-write"></use>
+            <svg *ngIf="!editing" class="icon icon-md text-muted">
+              <use xlink:href="assets/svg/icons.svg#icon-write"></use>
             </svg>
           </a>
-          <button *ngIf="editing" (click)="saveChanges()"
-                  class="btn btn-success text-white">
+          <button *ngIf="editing" (click)="saveChanges()" class="btn btn-success text-white">
             <small>APPLY CHANGES</small>
           </button>
           <a *ngIf="editing" href="javascript:;" class="px-2">
@@ -38,7 +35,7 @@
         <div class="col-3 text-right">
           <button (click)="addNewSkill()" class="btn btn-success text-white">
             <svg class="icon icon-plus">
-              <use xlink:href="./assets/icons.svg#icon-plus"></use>
+              <use xlink:href="./assets/svg/icons.svg#icon-plus"></use>
             </svg>
           </button>
         </div>
@@ -51,7 +48,7 @@
              href="javascript:;"
           >
             <svg class="icon icon-delete_forever text-muted">
-              <use xlink:href="assets/icons.svg#icon-delete_forever"></use>
+              <use xlink:href="assets/svg/icons.svg#icon-delete_forever"></use>
             </svg>
           </a>
           <div class="progress mt-2">
@@ -62,6 +59,9 @@
           </div>
         </li>
       </ul>
+      <div *ngIf="!newSkills.length">
+        <span *ngIf="isMe">You</span><span *ngIf="!isMe">{{user.name}}</span> didn't add any skills yet
+      </div>
     </div>
   </div>
 </div>

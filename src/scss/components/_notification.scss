@@ -11,7 +11,7 @@
   font-size: $font-size-lg;
   background: #8ee3ce;
   padding: .4rem;
-  box-shadow: -1px 1px 1px 1px darken($brand-primary, 5%);
+  box-shadow: -1px 1px 1px 1px darken($primary, 5%);
   position: relative;
   z-index: map-get($zindex, high);
 }
@@ -20,7 +20,7 @@
   content: '';
   position: absolute;
   animation: 10s pulse infinite 2s ease-in-out forwards;
-  background: $brand_info;
+  background: $info;
   display: block;
   border-radius: 50%;
   top: 50%;
@@ -36,7 +36,7 @@
   position: absolute;
   top: -.6rem;
   left: 1.6rem;
-  background: $brand-danger;
+  background: $danger;
   border-radius: 50%;
   width: 1.2rem;
   height: 1.2rem;

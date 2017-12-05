@@ -3,7 +3,7 @@
 }
 
 .comment__content {
-  background: lighten( $brand-success, 30% );
+  background: lighten( $success, 30% );
   padding: .4rem .6rem;
   margin: .6rem 0;
   border-radius: $border-radius-lg;
@@ -14,7 +14,7 @@
 }
 
 .comment-item__mine .comment__content {
-  background: $brand-info;
+  background: $info;
 }
 
 .comment__left-side {

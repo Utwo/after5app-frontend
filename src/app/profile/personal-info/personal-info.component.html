@@ -1,5 +1,5 @@
 <div class="card profile-card my-3">
-  <div class="card-block">
+  <div class="card-body">
     <!--header-->
     <div class="row">
       <div class="col-6">
@@ -12,8 +12,8 @@
              class="pull-xs-right"
         >
           <a href="javascript:;">
-            <svg *ngIf="!editing" class="icon icon-md icon-message text-muted">
-              <use xlink:href="assets/icons.svg#icon-write"></use>
+            <svg *ngIf="!editing" class="icon icon-md text-muted">
+              <use xlink:href="assets/svg/icons.svg#icon-write"></use>
             </svg>
           </a>
           <button *ngIf="editing" (click)="saveChanges()"
@@ -95,7 +95,7 @@
                class="btn btn-success text-white"
             >
               <svg class="icon icon-plus">
-                <use xlink:href="./assets/icons.svg#icon-plus"></use>
+                <use xlink:href="./assets/svg/icons.svg#icon-plus"></use>
               </svg>
             </a>
             <ul class="project-list list-unstyled">
@@ -143,7 +143,7 @@
                class="btn btn-success text-white"
             >
               <svg class="icon icon-plus">
-                <use xlink:href="./assets/icons.svg#icon-plus"></use>
+                <use xlink:href="./assets/svg/icons.svg#icon-plus"></use>
               </svg>
             </a>
           </div>

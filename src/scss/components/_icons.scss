@@ -8,6 +8,11 @@
   vertical-align: middle;
 }
 
+.icon-xs {
+  width: .8em;
+  height: .8em;
+}
+
 .icon-md {
   width: 1.5em;
   height: 1.5em;
@@ -37,7 +42,7 @@
 .icon-shadow {
   height: 3em;
   width: 3em;
-  background: $brand-info;
+  background: $info;
   border-radius: 50%;
 }
 

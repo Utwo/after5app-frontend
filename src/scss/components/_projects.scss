@@ -37,14 +37,14 @@
 }
 
 .position__card img{
-  border: 5px solid $brand-success;
+  border: 5px solid $success;
   border-radius: 50%;
   animation-name: greenPulse;
   animation-duration: 2s;
   animation-iteration-count: 1;
-  box-shadow: 0 0 30px $brand-success;
+  box-shadow: 0 0 30px $success;
 }
 
 .position__card-taken{
-  background: lighten($brand-primary, 3%);
+  background: lighten($primary, 3%);
 }

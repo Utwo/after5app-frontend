@@ -16,13 +16,13 @@
     </div>
     <div class="col-md-4 col-sm-3 col-3 text-right">
       <span *ngIf="!isFollowed && !myProject" class="mr-1 text-muted" title="follow">
-        <span class="hidden-xs-down">Follow Project?</span>
+        <span class="d-none d-sm-block">Follow Project?</span>
           <a href="javascript:;" (click)="follow(modal)">
             <svg class="icon icon-star"><use xlink:href="assets/svg/icons.svg#icon-star"></use></svg>
           </a>
       </span>
       <span *ngIf="isFollowed && !myProject" class="mr-1 text-muted" title="following">
-        <span class="hidden-xs-down">Following!</span>
+        <span class="d-none d-sm-block">Following!</span>
         <a href="javascript:;" (click)="follow(modal)">
           <svg class="icon icon-star full"><use xlink:href="assets/svg/icons.svg#icon-star-full"></use></svg>
         </a>
@@ -37,7 +37,7 @@
       <div class="col-sm-3 col-12 project__card-label">
         I want to create:
       </div>
-      <div class="col-sm-9 col-12 text-gray-dark">
+      <div class="col-sm-9 col-12 text-dark">
         {{project.description | shortText: 210}}
       </div>
     </div>

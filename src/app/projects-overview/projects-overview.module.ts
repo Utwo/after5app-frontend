@@ -5,6 +5,7 @@ import { ProjectsListOverviewComponent } from './projects-list-overview/projects
 import { RouterModule } from '@angular/router';
 import { TabsModule } from 'ngx-bootstrap';
 import { SharedModule } from '../shared/shared.module';
+
 export const routerConfig = [{
   path: '',
   component: ProjectsOverviewComponent

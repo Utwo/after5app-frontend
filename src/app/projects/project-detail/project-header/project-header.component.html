@@ -19,25 +19,25 @@
           <a routerLink="/profile/{{user.id}}">{{user.name}}</a>
         </div>
         <div class="col-md-10 col-sm-9 col-8">
-          <a (click)="share_modal.open()" class="mr-3 text-gray-dark" href="javascript:;">
+          <a (click)="share_modal.open()" class="mr-3 text-dark" href="javascript:;">
             <svg class="icon icon-mail-forward">
-              <use xlink:href="assets/icons.svg#icon-mail-forward"></use>
+              <use xlink:href="assets/svg/icons.svg#icon-mail-forward"></use>
             </svg>
             <small>SHARE PROJECT</small>
           </a>
-          <a *ngIf="myProject" class="mr-3 text-gray-dark" href="javascript:;">
+          <a *ngIf="myProject" class="mr-3 text-dark" href="javascript:;">
             <svg class="icon icon-write">
-              <use xlink:href="assets/icons.svg#icon-write"></use>
+              <use xlink:href="assets/svg/icons.svg#icon-write"></use>
             </svg>
             <small>EDIT PROJECT</small>
           </a>
-          <a *ngIf="!isFollowed && !myProject" (click)="follow(modal)" class="mr-3 text-gray-dark" href="javascript:;">
+          <a *ngIf="!isFollowed && !myProject" (click)="follow(modal)" class="mr-3 text-dark" href="javascript:;">
             <svg class="icon icon-star">
               <use xlink:href="assets/svg/icons.svg#icon-star"></use>
             </svg>
             <small>FOLLOW PROJECT</small>
           </a>
-          <a *ngIf="isFollowed && !myProject" (click)="follow(modal)" class="mr-3 text-gray-dark" href="javascript:;">
+          <a *ngIf="isFollowed && !myProject" (click)="follow(modal)" class="mr-3 text-dark" href="javascript:;">
             <svg class="icon icon-star full">
               <use xlink:href="assets/svg/icons.svg#icon-star-full"></use>
             </svg>

@@ -27,5 +27,8 @@ export class NavigationComponent {
 
   toggleSearch() {
     this.showSearch = !this.showSearch;
+    if (this.showSearch) {
+      this.showNavigation = false;
+    }
   }
 }

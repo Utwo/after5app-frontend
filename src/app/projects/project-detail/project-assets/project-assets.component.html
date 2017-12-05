@@ -1,10 +1,10 @@
 <div class="row">
   <div *ngFor="let asset of files">
-    <svg  *ngIf="asset.extension === 'txt'" class="icon icon-file-text-o"><use xlink:href="assets/icons.svg#icon-file-text-o"></use></svg>
-    <svg  *ngIf="asset.extension === 'jpg' || asset.extension === 'png' || asset.extension === 'jpeg'" class="icon icon-file-image-o"><use xlink:href="assets/icons.svg#icon-file-image-o"></use></svg>
-    <svg  *ngIf="asset.extension === 'doc'" class="icon icon-file-word-o"><use xlink:href="assets/icons.svg#icon-file-word-o"></use></svg>
-    <svg  *ngIf="asset.extension === 'pdf'" class="icon icon-file-pdf-o"><use xlink:href="assets/icons.svg#icon-file-pdf-o"></use></svg>
-    <svg  *ngIf="asset.extension === 'ppt'" class="icon icon-file-powerpoint-o"><use xlink:href="assets/icons.svg#icon-file-powerpoint-o"></use></svg>
+    <svg  *ngIf="asset.extension === 'txt'" class="icon icon-file-text-o"><use xlink:href="assets/svg/icons.svg#icon-file-text-o"></use></svg>
+    <svg  *ngIf="asset.extension === 'jpg' || asset.extension === 'png' || asset.extension === 'jpeg'" class="icon icon-file-image-o"><use xlink:href="assets/svg/icons.svg#icon-file-image-o"></use></svg>
+    <svg  *ngIf="asset.extension === 'doc'" class="icon icon-file-word-o"><use xlink:href="assets/svg/icons.svg#icon-file-word-o"></use></svg>
+    <svg  *ngIf="asset.extension === 'pdf'" class="icon icon-file-pdf-o"><use xlink:href="assets/svg/icons.svg#icon-file-pdf-o"></use></svg>
+    <svg  *ngIf="asset.extension === 'ppt'" class="icon icon-file-powerpoint-o"><use xlink:href="assets/svg/icons.svg#icon-file-powerpoint-o"></use></svg>
     <p> {{asset.name}} </p>
     <a [href]="environment.URL_API + environment.API_VERSION + 'assets/' + asset.id +'/download?token=' + user_token" target="_blank">
       DOWNLOAD </a>
