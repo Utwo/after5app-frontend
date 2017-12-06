@@ -1,36 +1,56 @@
 <div bsModal #applyModal="bs-modal" class="modal grow"
      tabindex="-1" role="dialog"
      aria-hidden="true">
-  <div *ngIf="position" class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button"
-                class="modal__close btn"
-                (click)="applyModal.hide()"
-                aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h1 class="modal-title text-center">You are about to apply for {{position.skill.name}}</h1>
-      </div>
-      <h3> If you are sure you want to help out with this skill, press Apply and {{project.user.name}} will be notified that you are interested.
-        Don't worry if you don't hear immediately, some people are busy, hang in there</h3>
-      <h3> {{project.user.name}} also wants to know if...</h3>
+  <div *ngIf="position" class="modal-dialog modal-fluid">
+    <div class="modal-content jumbotron-fluid">
+      <div class="sprite sprite-login-planet d-none d-md-block"></div>
+      <div class="sprite sprite-satelite d-none d-md-block"></div>
 
-      <ol class="mb-2">
-        <li *ngFor="let question of project.application_questions; let i = index" class="form-group">
-          <label for="question">{{question}}</label>
-          <input class="form-control" id="question" type="text" [(ngModel)]="application.answers[i]"
-                 placeholder="Answer {{i+1}}">
-        </li>
-      </ol>
-      <hr>
-      <div class="form-group">
-        <label for="message">Optional message</label>
-        <textarea class="form-control" rows="6" id="message" [(ngModel)]="application.message"></textarea>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" (click)="sendApplication()">Apply for {{position.skill.name}}</button>
+      <div class="modal-body">
+        <a class="float-right text-white mr-4"
+           href="javascript:;"
+           (click)="applyModal.hide()"
+           aria-label="Close"
+        >
+          <span aria-hidden="true">&#10006;</span>
+        </a>
+        <div class="d-flex flex-column container-fluid justify-content-center align-items-center">
+          <div class="row mb-3">
+            <div class="small-feebe mr-2">
+              <div class="feebe-head">
+                <div class="febee-eyes"></div>
+              </div>
+            </div>
+            <h2> You are about to apply for <span class="text-secondary">{{position.skill.name}}</span></h2>
+          </div>
+          <div class="row mb-5 text-secondary text-center">
+            <h5> If you are sure you want to help out with this skill, press <b>Apply</b> and
+              <span class="text-success">{{project.user.name}}</span> will <br>
+              be notified that you are interested. Don't worry if you don't hear <i>immediately</i>, <br>
+              some people are busy, hang in there!</h5>
+          </div>
+          <div class="row mb-3">
+            <h5 class="text-secondary mt-3"><span class="text-success">{{project.user.name}}</span> also wants to
+              know ...</h5>
+          </div>
+          <div class="row mb-3">
+            <ul class="mb-2 list-unstyled">
+              <li *ngFor="let question of project.application_questions; let i = index" class="form-group">
+                <label class="text-secondary" for="question">{{question}}</label>
+                <input class="form-control" id="question" type="text"
+                       [(ngModel)]="application.answers[i]"
+                       placeholder="Type your reply here">
+              </li>
+            </ul>
+          </div>
+          <div class="row mb-3">
+            <button class="btn btn-success btn-lg text-white px-5" (click)="sendApplication(modal)">
+              <small>APPLY FOR {{position.skill.name.toUpperCase()}}</small>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<app-login-modal #modal></app-login-modal>

@@ -3,14 +3,14 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import {StateService} from '../../core/state.service';
 import {environment} from '../../../environments/environment';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class ProfileService {
   options = null;
 
   constructor(private state: StateService, private http: HttpClient) {
-    const headers = new Headers({
+    const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.state.getToken()
     });

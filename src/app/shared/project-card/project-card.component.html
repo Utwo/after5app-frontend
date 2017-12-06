@@ -16,13 +16,13 @@
     </div>
     <div class="col-md-4 col-sm-3 col-3 text-right">
       <span *ngIf="!isFollowed && !myProject" class="mr-1 text-muted" title="follow">
-        <span class="d-none d-sm-block">Follow Project?</span>
+        <span class="d-none d-sm-inline-block">Follow Project?</span>
           <a href="javascript:;" (click)="follow(modal)">
             <svg class="icon icon-star"><use xlink:href="assets/svg/icons.svg#icon-star"></use></svg>
           </a>
       </span>
       <span *ngIf="isFollowed && !myProject" class="mr-1 text-muted" title="following">
-        <span class="d-none d-sm-block">Following!</span>
+        <span class="d-none d-sm-inline-block">Following!</span>
         <a href="javascript:;" (click)="follow(modal)">
           <svg class="icon icon-star full"><use xlink:href="assets/svg/icons.svg#icon-star-full"></use></svg>
         </a>
