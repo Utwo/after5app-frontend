@@ -33,6 +33,12 @@
   height: 15em;
 }
 
+.icon-close{
+  position: absolute;
+  left: 43px;
+  top: 4px;
+}
+
 @media (max-width: map-get($grid-breakpoints, sm)) {
   .icon-social {
     width: 10em;

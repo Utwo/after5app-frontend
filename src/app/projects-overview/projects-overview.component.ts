@@ -9,11 +9,11 @@ import {ProfileService} from '../profile/shared/profile.service';
   providers: [ProfileService],
 })
 export class ProjectsOverviewComponent implements OnInit {
-  public projects = null;
-  public followingProjects = null;
-  public appliedProjects = null;
-  public joinedProjects = null;
-  public feebeDescription = null;
+  public projects = [];
+  public followingProjects = [];
+  public appliedProjects = [];
+  public joinedProjects = [];
+  public feebeDescription = '';
 
   constructor(private profileService: ProfileService,
               private state: StateService,
@@ -61,15 +61,11 @@ export class ProjectsOverviewComponent implements OnInit {
   }
 
   extractData(projects, list) {
-    this[list] = projects;
+    this[list] = projects || [];
     this.getFeebeDescription();
   }
 
   getFeebeDescription() {
-    if (!this.projects || !this.joinedProjects || !this.appliedProjects || this.followingProjects) {
-      return;
-    }
-
     this.feebeDescription = `You currently have ${this.projects.length} created ${this.getProjectStr(this.projects.length)}
     and are following  ${this.followingProjects.length} ${this.getProjectStr(this.followingProjects.length)},
     also you have applied for ${this.appliedProjects.length} ${this.getProjectStr(this.appliedProjects.length)} and have

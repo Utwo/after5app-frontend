@@ -11,10 +11,10 @@
 .dropdown-menu {
   left: 0;
   background: #fff;
-  width: 100%;
   font-size: $font-size-base;
   list-style-type: none;
   padding: 0;
+  width: 100%;
   color: $gray-dark;
   position: absolute;
   z-index: map-get($zindex, max);
@@ -23,6 +23,14 @@
   max-height: 400px;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.dropdown-item{
+  border: none;
+  display: block;
+  background: transparent;
+  width: 100%;
+  padding: 5px 10px;
 }
 
 .dropdown-menu a {
