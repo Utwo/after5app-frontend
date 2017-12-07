@@ -17,6 +17,10 @@ export class CommentsComponent {
               private responseHandler: ResponseHandlerService) {
   }
 
+  isMe(id) {
+    return this.state.isLoggedIn() && this.state.getUser().id === id;
+  }
+
   addComment(text) {
     if (!text.value || !this.state.isLoggedIn()) {
       return;

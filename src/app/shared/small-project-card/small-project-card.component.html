@@ -1,14 +1,14 @@
 <div class="panel py-4 px-3">
   <!--card header-->
   <div class="row">
-    <div class="col-3">
+    <div class="col-3 col-lg-2">
       <a routerLink="/profile/{{project.user.id}}">
-      <img class="profile-img"
-           *ngIf="project.user.picture"
-           src="{{project.user.picture+'?s=40&width=40&height=40'}}">
+        <img class="profile-img"
+             *ngIf="project.user.picture"
+             src="{{project.user.picture+'?s=40&width=40&height=40'}}">
       </a>
     </div>
-    <div class="col-7">
+    <div class="col-7 col-lg-8">
       <div class="project__title mb-0">
         <a routerLink="/project/{{project.id}}">
           <strong>{{project.title}}</strong>
@@ -31,20 +31,18 @@
   </div>
 
   <!--project details -->
-  <div>
-    <div class="row">
-      <div class="col-12 text-dark">
-        {{project.description | shortText:100}}
-      </div>
-      <div class="col-12 mt-4">
-        <ul class="list-inline" *ngIf="project.position.length > 0">
-          <li (click)="filterProjects(position.skill.id); autocomplete.setValue(position.skill.name)"
-              class="list-inline-item btn btn-sm btn btn-outline-secondary project__skill-item mr-3 mb-1"
-              *ngFor="let position of project.position">
-            {{position.skill.name}}
-          </li>
-        </ul>
-      </div>
+  <div class="row mt-3">
+    <div class="col-12 text-dark">
+      {{project.description | shortText:100}}
+    </div>
+    <div class="col-12 mt-3">
+      <ul class="list-inline text-center mb-0" *ngIf="project.position.length > 0">
+        <li (click)="filterProjects(position.skill.id); autocomplete.setValue(position.skill.name)"
+            class="list-inline-item btn btn-sm btn btn-outline-secondary project__skill-item mr-3 mb-1"
+            *ngFor="let position of project.position">
+          {{position.skill.name}}
+        </li>
+      </ul>
     </div>
   </div>
 </div>

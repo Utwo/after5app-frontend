@@ -29,8 +29,15 @@
 }
 
 .icon-social {
-  width: 5em;
-  height: 5em;
+  width: 15em;
+  height: 15em;
+}
+
+@media (max-width: map-get($grid-breakpoints, sm)) {
+  .icon-social {
+    width: 10em;
+    height: 10em;
+  }
 }
 
 .icon-picture-faded {

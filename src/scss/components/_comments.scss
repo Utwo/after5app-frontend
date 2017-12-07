@@ -21,6 +21,6 @@
   align-self: center;
 }
 
-.comment__right-side {
-  align-self: right;
+.comment__right-side .comment__content{
+  background: $success;
 }

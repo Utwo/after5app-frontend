@@ -6,8 +6,9 @@ import {Component, Input} from '@angular/core';
 })
 
 export class ProjectsListOverviewComponent {
-  @Input() header;
-  @Input() projects;
-  @Input() feebeTitle;
-  @Input() feebeDescription;
+  @Input() header = '';
+  @Input() projects = [];
+  @Input() feebeTitle = '';
+  @Input() feebeDescription = '';
+  @Input() noProjectMessage = '';
 }
