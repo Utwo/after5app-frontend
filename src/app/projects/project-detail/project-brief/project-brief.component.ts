@@ -23,23 +23,18 @@ export class ProjectBriefComponent implements OnInit {
   ngOnInit() {
     if (this.state.isLoggedIn()) {
       this.myProject = this.state.getUser().id === this.project.user_id;
-      this.getMyApplications();
+      // this.getMyApplications();
     }
     this.getRelatedProjects();
   }
 
-  scrollDown() {
-    // $location.hash('positionsInfo');
-    // $anchorScroll();
-  }
-
-  getMyApplications() {
-    this.applicationService.getMyApplications(this.project.id)
-      .subscribe(
-        data => this.myApplications = data,
-        error => this.responseHandler.errorMessage('An error occured!', error)
-      );
-  }
+  // getMyApplications() {
+  //   this.applicationService.getMyApplications(this.project.id)
+  //     .subscribe(
+  //       data => this.myApplications = data,
+  //       error => this.responseHandler.errorMessage('An error occured!', error)
+  //     );
+  // }
 
   getRelatedProjects() {
     const skills = [];

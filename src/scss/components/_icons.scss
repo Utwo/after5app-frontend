@@ -8,6 +8,11 @@
   vertical-align: middle;
 }
 
+.icon-xs {
+  width: .8em;
+  height: .8em;
+}
+
 .icon-md {
   width: 1.5em;
   height: 1.5em;
@@ -23,6 +28,18 @@
   height: 3em;
 }
 
+.icon-social {
+  width: 15em;
+  height: 15em;
+}
+
+@media (max-width: map-get($grid-breakpoints, sm)) {
+  .icon-social {
+    width: 10em;
+    height: 10em;
+  }
+}
+
 .icon-picture-faded {
   width: 13em;
   height: 13em;
@@ -32,7 +49,7 @@
 .icon-shadow {
   height: 3em;
   width: 3em;
-  background: $brand-info;
+  background: $info;
   border-radius: 50%;
 }
 

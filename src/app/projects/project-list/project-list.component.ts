@@ -10,7 +10,6 @@ import { ResponseHandlerService } from '../../core/response-handler.service';
 export class ProjectListComponent implements OnInit {
   projects = null;
   page = {current_page: null, prev: null, next: null};
-  maxDescriptionLength = 210;
   public isRecentActive = true;
   public isPopularActive = false;
   public isRecommendedActive = false;
@@ -76,11 +75,6 @@ export class ProjectListComponent implements OnInit {
       next: projects.next_page_url,
       prev: projects.prev_page_url
     };
-    for (const project of this.projects) {
-      if (project.description.length > this.maxDescriptionLength) {
-        project.description = project.description.substring(0, this.maxDescriptionLength) + '...';
-      }
-    }
   }
 
   onSelect(skill) {

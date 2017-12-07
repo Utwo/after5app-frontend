@@ -6,13 +6,13 @@
 }
 
 .panel--top--bottom {
-  box-shadow: 0 -5px 0 0 $brand-info, 0 5px 0 0 $brand-primary;
-  border-top-color: $brand-info;
-  border-bottom-color: $brand-primary;
+  box-shadow: 0 -5px 0 0 $info, 0 5px 0 0 $primary;
+  border-top-color: $info;
+  border-bottom-color: $primary;
 }
 
 .panel--left {
-  box-shadow: -5px 0 0 0 $brand-info, -10px 0 0 0 $brand-primary;
+  box-shadow: -5px 0 0 0 $info, -10px 0 0 0 $primary;
 }
 
 .panel__item {

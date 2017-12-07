@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 import {ApplicationService} from '../../../shared/application.service';
 import {ModalDirective} from 'ngx-bootstrap';
+import {StateService} from '../../../../core/state.service';
 
 @Component({
   selector: 'app-apply-modal',
@@ -18,10 +19,14 @@ export class ApplyModalComponent {
   application = {message: '', position_id: null, answers: []};
   @ViewChild('applyModal') public applyModal: ModalDirective;
 
-  constructor(private applicationService: ApplicationService) {
+  constructor(private applicationService: ApplicationService, private state: StateService,) {
   }
 
-  sendApplication() {
+  sendApplication(modal) {
+    if (!this.state.isLoggedIn()) {
+      modal.open();
+      return;
+    }
     this.application.position_id = this.position.id;
     this.applicationService.applyForProject(this.application)
       .subscribe(

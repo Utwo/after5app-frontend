@@ -6,6 +6,7 @@ import {ProfileService} from '../profile/shared/profile.service';
 @Component({
   selector: 'app-projects-overview',
   templateUrl: './projects-overview.component.html',
+  providers: [ProfileService],
 })
 export class ProjectsOverviewComponent implements OnInit {
   public projects = null;

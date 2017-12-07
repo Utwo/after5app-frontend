@@ -6,12 +6,17 @@
   <app-search *ngIf="showSearch"></app-search>
 
   <div class="container-fluid px-5" [class.jumbotron-fluid]="showSearch" [class.py-3]="showSearch">
-    <div class="row">
+    <div class="row align-items-center">
       <div class="col-md-2 col-12">
         <h1 class="header-logo">
-          <a href="javascript:;" (click)="toggleNavigation()"
-             class="hidden-md-up toggle-burger btn btn-sm btn-circle-sm mr-2">&#x2261;
-          </a>
+          <span class="d-inline d-md-none">
+            <a href="javascript:;" (click)="toggleNavigation()"
+               class="toggle-burger btn btn-sm btn-circle-sm mr-2">
+              <svg class="icon-xs">
+                <use xlink:href="assets/svg/icons.svg#icon-menu"></use>
+              </svg>
+            </a>
+          </span>
           <a routerLink="/">
             <svg class="logo">
               <use xlink:href="assets/svg/logo.svg#logo"></use>
@@ -19,7 +24,7 @@
           </a>
         </h1>
       </div>
-      <div class="col-md-10 col-12 navigation-wrap hidden-sm-down">
+      <div class="col-md-10 col-12 navigation-wrap d-none d-sm-block">
         <nav class="nav justify-content-md-end justify-content-around align-items-center">
           <a class="nav-item mx-md-3" routerLink="/start-project">
             <b class="text-success">Start a project</b>

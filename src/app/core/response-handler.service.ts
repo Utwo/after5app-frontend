@@ -24,8 +24,6 @@ export class ResponseHandlerService {
       this.router.navigate(['/']);
       return;
     }
-    message = (error === 0) ? message : message + ' (' + error.statusText + ')';
-
     this.response = {type: 'error', message: message};
   }
 }

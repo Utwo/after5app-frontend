@@ -1,6 +1,11 @@
+.card{
+  border: none;
+}
+
 .home-card {
-  max-width: 350px;
+  max-width: 370px;
   background: #fff;
+  padding: 20px;
   z-index: map-get($zindex, higher);
 }
 

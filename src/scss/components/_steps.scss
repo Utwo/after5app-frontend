@@ -1,5 +1,5 @@
 .step-button {
-  background: $brand-info;
+  background: $info;
   width: 4em;
   height: .5em;
   margin: 0 7px;
@@ -9,5 +9,5 @@
 }
 
 .step-button.active {
-  background: $brand-success;
+  background: $success;
 }

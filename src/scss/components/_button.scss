@@ -7,17 +7,17 @@
 }
 
 .form-control {
-  box-shadow: inset 0 0 0 1px transparentize($brand-primary, .8);
+  box-shadow: inset 0 0 0 1px transparentize($primary, .8);
 }
 
 .btn-gradient-primary {
-  background: linear-gradient(135deg, darken($brand-primary, 5) 0%, darken($brand-primary, 5) 53%, lighten($brand-primary, 2) 56%, lighten($brand-primary, 2) 100%);
+  background: linear-gradient(135deg, darken($primary, 5) 0%, darken($primary, 5) 53%, lighten($primary, 2) 56%, lighten($primary, 2) 100%);
   border: #333;
   color: #fff;
 }
 
 .btn-link-primary {
-  border-bottom: 3px solid $brand-primary;
+  border-bottom: 3px solid $primary;
 }
 
 .btn-link-info {
@@ -29,13 +29,13 @@
   content: '';
   position: absolute;
   width: 50%;
-  border-bottom: 3px solid $brand-info;
+  border-bottom: 3px solid $info;
   bottom: 0;
   left: 25%;
 }
 
 .btn-danger {
-  box-shadow: 1px 2px 1px 0 $brand-danger, inset 1px 1px 2px 0 rgba(255, 255, 255, .68);
+  box-shadow: 1px 2px 1px 0 $danger, inset 1px 1px 2px 0 rgba(255, 255, 255, .68);
 }
 
 .btn-circle {

@@ -4,9 +4,9 @@
     <div class="row my-5">
       <div class="col-md-8 col-12 mb-md-0 mb-3">
         <div class="card">
-          <div class="card-block">
+          <div class="card-body">
             <p class="text-muted">I want to create:</p>
-            <p>{{project.description}}</p>
+            <p class="project-description">{{project.description}}</p>
           </div>
         </div>
       </div>
@@ -20,7 +20,7 @@
             </div>
             Open Positions
           </div>
-          <div class="card-block">
+          <div class="card-body py-1">
             <ul class="list-unstyled mb-3">
               <li *ngFor='let position of project.position' class="mt-3">
                 <a class="text-muted" (click)="scollDown()" href="javascript:;">
@@ -43,10 +43,15 @@
   </div>
   <!--followers-->
   <div class="bg-primary text-info text-center m-0 py-2">
-    <span *ngIf="project.favorite.length === 0 ">
-      Well looks like nobody is following this project. That means you can be the first!
+    <span *ngIf="!project.favorite.length">
+      Well looks like nobody is following this project.
     </span>
-    <span class="text-white">{{project.favorite.length}} followers</span>
+    <span *ngIf="!project.favorite.length && !myProject">
+      That means you can be the first!
+    </span>
+    <span *ngIf="project.favorite.length" class="text-white">
+      {{project.favorite.length}} followers
+    </span>
     <span class="ml-3" *ngFor="let follower of project.favorite">
       {{follower.name}}
     </span>
@@ -54,22 +59,23 @@
 
   <!--posiions-->
   <div class="jumbotron-dark py-3 px-5">
-    <div class="m-5 text-center">
+    <div class="m-4 text-center">
       <h3> Open Positions</h3>
-      <p class="text-info">
+      <p class="text-info" *ngIf="!myProject">
         Make sure you apply on the position that best fits your skills, later on you will receive badges based on the
         skills you've finished projects with and that will help define your profile status. You could also ask
-        {{project.user.name}} to add new <b>Skills</b> if you think you can help the project in any other way </p>
+        {{project.user.name}} to add new <b>Skills</b> if you think you can help the project in any other way
+      </p>
+      <div class="text-center mt-4" *ngIf="myProject">
+        <button class="btn btn-info" (click)="addPosition()">
+          <svg class="icon icon-plus">
+            <use xlink:href="./assets/svg/icons.svg#icon-plus"></use>
+          </svg> <small>ADD NEW POSITION</small>
+        </button>
+      </div>
     </div>
-    <div *ngIf="myProject == true">
-      <a (click)="addPosition()">Add new position
-        <svg class="icon icon-plus">
-          <use xlink:href="./assets/icons.svg#icon-plus"></use>
-        </svg>
-      </a>
-    </div>
-    <div class="row">
-      <div class="col-6 col-sm-4 col-md-3 my-2"
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 my-2"
            *ngFor="let position of project.position"
            id="positionsInfo">
         <app-position-card
@@ -83,6 +89,7 @@
   <div class="container my-5">
     <app-comments
       [project_id]="project.id"
+      [owner_id]="project.user.id"
       [comments]="project.comment">
     </app-comments>
   </div>
@@ -96,7 +103,7 @@
         browse </b></a> for yourself
       </p>
     </div>
-    <div class="row">
+    <div class="row justify-content-md-center">
       <div *ngFor="let project of related" class="col-12 col-md-4 my-2">
         <app-small-project-card [project]=project></app-small-project-card>
       </div>

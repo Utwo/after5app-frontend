@@ -24,7 +24,6 @@ npm-debug.log.*
 npm-debug.log
 testem.log
 /typings
-/src/main.css
 
 # e2e
 /e2e/*.js
