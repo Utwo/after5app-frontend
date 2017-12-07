@@ -1,0 +1,28 @@
+.stars {
+  background: url("./assets/png/stars.png") repeat;
+}
+
+.about-background{
+  background: linear-gradient(to right, #514fa0, #241d5c);
+  color: #fff;
+}
+
+.about-text{
+  border: 3px solid $perrywinkle;
+  border-radius: 8px;
+}
+
+.team {
+  background: url("./assets/png/team.png") no-repeat;
+  display: inline-block;
+  width: 546px;
+  height: 545px;
+}
+
+@media (max-width: map-get($grid-breakpoints, sm)) {
+  .team {
+    background: url("./assets/png/small-team.png") no-repeat;
+    width: 307px;
+    height: 307px;
+  }
+}
