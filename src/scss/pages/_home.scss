@@ -18,10 +18,13 @@
 // Home main section
 
 .home-main {
-  background: radial-gradient(at 60% bottom, #706ec2, #433a8e, #433a8e);
   flex-direction: column;
   height: 100vh;
   min-height: 750px;
+}
+
+.home-backgroud {
+  background: radial-gradient(at 60% bottom, #706ec2, #433a8e, #433a8e);
 }
 
 //Section 2

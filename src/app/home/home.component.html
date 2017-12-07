@@ -1,39 +1,38 @@
-<section
-  class="d-flex container-fluid justify-content-center align-items-center mx-auto home-main pt-5">
-  <div class="row my-5">
-    <div class="col my-sm-4 text-white">
-      <app-section-header
-        [header]="'Got an idea for a project?'"
-        [subheader]="'You are not alone'">
-      </app-section-header>
+<section class="home-backgroud">
+  <div class="d-flex container-fluid justify-content-center align-items-center mx-auto home-main pt-5 stars">
+    <div class="row my-5">
+      <div class="col my-sm-4 text-white">
+        <app-section-header
+          [header]="'Got an idea for a project?'"
+          [subheader]="'You are not alone'">
+        </app-section-header>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <app-home-card
+          [main_text]="'The Path of the Terraformer'"
+          [secondary_text]="'The Settlers. The Craftsmen. The Artists. The ones who want to change the world'"
+          [image_name]="'terraformer'"
+          [button_text]="'START YOUR OWN PROJECT'"
+          [link]="'/start-project'"
+        ></app-home-card>
+      </div>
+      <div class="col-sm-6">
+        <app-home-card
+          [main_text]="'The Path of the Space Wanderer'"
+          [secondary_text]="'The Rebels. The Misfits. The Pirates. The ones who find a way in the impossible.'"
+          [image_name]="'space_wanderer'"
+          [button_text]="'BROWSE EXISTING PROJECTS'"
+          [link]="'/projects'"
+        ></app-home-card>
+      </div>
+    </div>
+    <div class="sprite sprite-home-planet-1"></div>
+    <div class="sprite sprite-home-planet-2"></div>
+    <div class="moon-sprite sprite-moon-above"></div>
   </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <app-home-card
-        [main_text]="'The Path of the Terraformer'"
-        [secondary_text]="'The Settlers. The Craftsmen. The Artists. The ones who want to change the world'"
-        [image_name]="'terraformer'"
-        [button_text]="'START YOUR OWN PROJECT'"
-        [link]="'/start-project'"
-      ></app-home-card>
-    </div>
-    <div class="col-sm-6">
-      <app-home-card
-        [main_text]="'The Path of the Space Wanderer'"
-        [secondary_text]="'The Rebels. The Misfits. The Pirates. The ones who find a way in the impossible.'"
-        [image_name]="'space_wanderer'"
-        [button_text]="'BROWSE EXISTING PROJECTS'"
-        [link]="'/projects'"
-      ></app-home-card>
-    </div>
-  </div>
-  <div class="sprite sprite-home-planet-1"></div>
-  <div class="sprite sprite-home-planet-2"></div>
-  <div class="moon-sprite sprite-moon-above"></div>
-
 </section>
-
 <!--section 1-->
 <app-home-section
   [main_text]="'Start a Project or Join One'"
