@@ -1,12 +1,12 @@
 <div class="my-5 container container-small">
   <h3> {{header}} </h3>
 
-  <app-febee-info
-    *ngIf="projects.length && feebeTitle && feebeDescription"
-    [title]="feebeTitle"
-    [description]="feebeDescription">
-  </app-febee-info>
-
+  <div *ngIf="projects && projects.length && feebeTitle && feebeDescription">
+    <app-febee-info
+      [title]="feebeTitle"
+      [description]="feebeDescription">
+    </app-febee-info>
+  </div>
   <ul class="project-list list-unstyled"
       *ngIf="projects && projects.length">
     <li *ngFor="let project of projects">

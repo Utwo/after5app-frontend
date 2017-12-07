@@ -35,7 +35,7 @@ export class AutocompleteComponent {
     return this.projectService.getSkills()
       .map(
         (skills) => {
-          return skills.filter(item => {
+          return skills.data.filter(item => {
             return item.name.toLowerCase().indexOf(token.toLowerCase()) > -1;
           });
         },

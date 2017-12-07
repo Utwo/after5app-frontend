@@ -26,7 +26,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
           <button
             tabindex="2"
             id="titleBtnGroup"
-            class="input-group-addon btn btn-success"
+            class="input-group-addon btn btn-success text-white"
             type="submit">
             <svg class="icon icon-md">
               <use xlink:href="assets/svg/icons.svg#icon-next-arrows"></use>

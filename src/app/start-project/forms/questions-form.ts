@@ -11,7 +11,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
       <div class="form-group mt-5">
         <div class="row">
           <div class="col-1">
-            <button tabindex="2" class="btn btn-success" type="submit">
+            <button tabindex="2" class="btn btn-success text-white" type="submit">
               <svg class="icon">
                 <use xlink:href="assets/svg/icons.svg#icon-plus"></use>
               </svg>
@@ -44,7 +44,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
     <div class="text-center">
       <button
         (click)="storeQuestions()"
-        class="btn btn-success"
+        class="btn btn-success text-white"
         type="button">
         <small>REVIEW AND POST</small>
       </button>

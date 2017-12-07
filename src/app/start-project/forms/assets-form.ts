@@ -13,7 +13,7 @@ import {StateService} from '../../core/state.service';
       <div *ngIf="state.isLoggedIn()">
         <div class="row">
           <div class="col-7 text-right">
-            <label class="btn btn-success btn-file px-3">
+            <label class="btn btn-success text-white btn-file px-3">
               <small class="px-5">ADD FILES</small>
               <input type="file" multiple (change)="fileChange($event)">
             </label>
@@ -30,9 +30,17 @@ import {StateService} from '../../core/state.service';
             </button>
           </div>
         </div>
-        <ul class="tray mt-4 text-center">
+        <ul class="tray scrollable_tray mt-4 text-center">
           <li class="tray--asset" *ngFor="let file of assets; let i=index">
-            {{file.name}} <a href="javascript:;" (click)="removeFile(i)">x</a>
+            <a href="javascript:;" (click)="removeFile(i)">
+              <svg class="icon icon-md icon-close text-secondary">
+                <use xlink:href="assets/svg/icons.svg#icon-cancel"></use>
+              </svg>
+            </a>
+            <svg class="icon icon-lg text-white">
+              <use xlink:href="assets/svg/icons.svg#icon-file"></use>
+            </svg>
+            <div>{{file.name}}</div>
           </li>
         </ul>
       </div>

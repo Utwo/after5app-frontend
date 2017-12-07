@@ -55,7 +55,7 @@ import { StateService } from '../../core/state.service';
         </div>
         <div class="col-8">
           <ul class="tray scrollable_tray bg-primary">
-            <li class="tray--skill" *ngFor="let skill of project.position">
+            <li class="tray--skill mt-0" *ngFor="let skill of project.position">
               <div class="tray--name">{{skill.name}}</div>
               <div class="tray--button" (click)="editStep('skills')">
                 <small>EDIT SKILL</small>
@@ -77,9 +77,12 @@ import { StateService } from '../../core/state.service';
           Assets:
         </div>
         <div class="col-8">
-          <ul *ngIf="assets.length > 0" class="tray scrollable_tray mt-4 text-center">
-            <li class="tray--asset" *ngFor="let file of assets">
-              {{file.name}}
+          <ul *ngIf="assets.length > 0" class="tray scrollable_tray bg-primary">
+            <li class="tray--asset mt-0 py-0" *ngFor="let file of assets">
+              <svg class="icon icon-lg text-white">
+                <use xlink:href="assets/svg/icons.svg#icon-file"></use>
+              </svg>
+              <div>{{file.name}}</div>
             </li>
           </ul>
           <p class="text-info" *ngIf="assets.length < 1">
@@ -120,7 +123,7 @@ import { StateService } from '../../core/state.service';
         </div>
         <button
           (click)="saveProject(modal)"
-          class="btn btn-success mt-3"
+          class="btn btn-success mt-3 text-white"
           type="button">
           <small>SAVE MY PROJECT!</small>
         </button>
@@ -128,7 +131,7 @@ import { StateService } from '../../core/state.service';
       <button
         *ngIf="state.isLoggedIn()"
         (click)="storeProject()"
-        class="btn btn-success"
+        class="btn btn-success text-white"
         type="button">
         <small>ALL GOOD! POST IT!</small>
       </button>

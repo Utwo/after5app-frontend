@@ -26,7 +26,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
               </app-autocomplete>
               <button
                 tabindex="3"
-                class="btn btn-success"
+                class="btn btn-success text-white"
                 type="button" (click)="addPosition(description, autocomplete)">
                 Add skill
               </button>

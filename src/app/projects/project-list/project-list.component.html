@@ -57,14 +57,13 @@
     </li>
   </ul>
   <!--pagination-->
-  <div class="row mb-3">
+  <div class="row mb-3" *ngIf="page.prev || page.next">
     <div class="col">
       <button (click)="prevPage()" [disabled]="!page.prev" class="btn btn-info">
         &#10096;</button>
     </div>
     <div class="col text-center">
-      <span *ngIf="page.prev || page.next"
-            class="btn">{{page.current_page}}</span>
+      <span class="btn">{{page.current_page}}</span>
     </div>
     <div class="col text-right">
       <button (click)="nextPage()" [disabled]="!page.next" class="btn btn-info">

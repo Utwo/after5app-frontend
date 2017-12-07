@@ -23,7 +23,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
           <div class="col-2">
             <button
               tabindex="2"
-              class="btn btn-success float-right"
+              class="btn btn-success text-white float-right"
               type="submit">
               <svg class="icon icon-md">
                 <use xlink:href="assets/svg/icons.svg#icon-next-arrows"></use>
