@@ -13,7 +13,7 @@ export class CommentsComponent {
   @Input('comments') comments;
 
   constructor(private projectService: ProjectService,
-              private state: StateService,
+              public state: StateService,
               private responseHandler: ResponseHandlerService) {
   }
 
