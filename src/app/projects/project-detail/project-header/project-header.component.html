@@ -26,10 +26,16 @@
             <small>SHARE PROJECT</small>
           </a>
           <a *ngIf="myProject" class="mr-3 text-dark" href="javascript:;">
-            <svg class="icon icon-write">
+            <svg class="icon">
               <use xlink:href="assets/svg/icons.svg#icon-write"></use>
             </svg>
             <small>EDIT PROJECT</small>
+          </a>
+          <a *ngIf="myProject" class="mr-3 text-dark" href="javascript:;" (click)="deleteProject()">
+            <svg class="icon">
+              <use xlink:href="assets/svg/icons.svg#icon-delete_forever"></use>
+            </svg>
+            <small>DELETE PROJECT</small>
           </a>
           <a *ngIf="!isFollowed && !myProject" (click)="follow(modal)" class="mr-3 text-dark" href="javascript:;">
             <svg class="icon icon-star">

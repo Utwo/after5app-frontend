@@ -17,6 +17,7 @@ export class AutocompleteComponent {
   @Input('label_class') label_class = 'input-group-addon label-white';
   @Input('input_class') input_class = 'form-control input-basic input-gray';
   @Output() onSelect = new EventEmitter<Object>();
+  @Output() onClear = new EventEmitter<any>();
 
   public dataSource: Observable<any>;
   public asyncSelected = '';
@@ -65,5 +66,6 @@ export class AutocompleteComponent {
 
   public resetValue() {
     this.asyncSelected = '';
+    this.onClear.emit();
   }
 }

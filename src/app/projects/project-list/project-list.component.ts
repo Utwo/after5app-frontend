@@ -32,7 +32,7 @@ export class ProjectListComponent implements OnInit {
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
-  filterProjects(skill) {
+  public filterProjects(skill) {
     this.isPopularActive = false;
     this.isRecommendedActive = false;
     this.isRecentActive = false;

@@ -64,7 +64,6 @@ export class ProjectApplicantsComponent implements OnInit {
         data => {
           this.applications = data;
           this.getCount();
-          console.log(data);
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }

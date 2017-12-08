@@ -87,6 +87,18 @@ ul.dropdown-menu > li {
   z-index: map-get($zindex, higher);
 }
 
+.dropdown-close{
+  position: absolute;
+  top: .5em;
+  right: 1.3rem;
+  color: $gray;
+  z-index: map-get($zindex, highest);
+  cursor: pointer;
+}
+.dropdown-close:hover{
+  color: $gray-dark;
+}
+
 //@keyframes show-dropdown {
 //  0% {
 //    transform: translateY(-2em);

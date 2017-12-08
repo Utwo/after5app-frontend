@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import { ProjectService } from '../../projects/shared/project.service';
 import { StateService } from '../../core/state.service';
 import { ResponseHandlerService } from '../../core/response-handler.service';
@@ -10,10 +10,11 @@ import { ResponseHandlerService } from '../../core/response-handler.service';
 })
 export class ProjectCardComponent implements OnInit {
   @Input() project;
+  @Input() autocomplete;
+  @Output() onFilter = new EventEmitter<number>();
   footerStatement: string;
   public isFollowed = false;
   public myProject = false;
-
 
   constructor(private projectService: ProjectService,
               private state: StateService,
@@ -57,5 +58,9 @@ export class ProjectCardComponent implements OnInit {
     } else {
       modal.open();
     }
+  }
+
+  filterProjects(skill_id){
+    this.onFilter.emit(skill_id);
   }
 }

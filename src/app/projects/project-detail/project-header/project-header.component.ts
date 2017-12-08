@@ -2,6 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {StateService} from '../../../core/state.service';
 import {ResponseHandlerService} from '../../../core/response-handler.service';
 import {ProjectService} from '../../shared/project.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-project-header',
@@ -16,6 +17,7 @@ export class ProjectHeaderComponent implements OnInit {
 
   constructor(private projectService: ProjectService,
               private state: StateService,
+              private router: Router,
               private responseHandler: ResponseHandlerService) {
   }
 
@@ -68,5 +70,15 @@ export class ProjectHeaderComponent implements OnInit {
     } else {
       this.responseHandler.successMessage('Your project was shared!');
     }
+  }
+
+  deleteProject() {
+    this.projectService.deleteProject(this.project.id)
+      .subscribe(
+        () => {
+          this.router.navigate(['/projects']);
+          this.responseHandler.successMessage('Your project was deleted!');
+        },
+        error => this.responseHandler.errorMessage('An error occured!', error));
   }
 }
