@@ -45,9 +45,10 @@ export class SkillsComponent implements OnChanges {
   }
 
   addNewSkill() {
-    if (this.newSkill !== '') {
+    if (this.newSkill && this.newSkillLevel) {
       this.newSkills.push({name: this.newSkill, skill_level: this.newSkillLevel});
       this.newSkill = null;
+      this.newSkillLevel = null;
     }
   }
 

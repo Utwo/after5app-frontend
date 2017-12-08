@@ -1,6 +1,8 @@
 <div class="card profile-card my-3">
   <div class="card-body">
     <!--header-->
+    <input title="skillLevel" type="range" min="1" max="100" value="50" class="slider" id="myRange">
+
     <div class="row">
       <div class="col-6">
         <h5 class="title-border title-border--green p-b-1">CRAFTS & SKILLS</h5>
@@ -29,7 +31,7 @@
           <input class="form-control input-basic" placeholder="Add Skill"
                  title="newSkill" [(ngModel)]="newSkill">
           <input class="form-control input-basic mt-1" type="text"
-                 placeholder="Skill Level" title="newSkillLevel"
+                 placeholder="Skill Level (1-100)" title="newSkillLevel"
                  [(ngModel)]="newSkillLevel">
         </div>
         <div class="col-3 text-right">

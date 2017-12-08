@@ -1,6 +1,6 @@
-<div *ngIf="applications && user" class="container">
+<div *ngIf="applications && user" class="container my-5">
   <section>
-    <h3><b>Joined</b> the project</h3>
+    <h3 class="text-muted"><b>Joined</b> the project</h3>
     <div class="row mt-3">
       <div class="col-4">
         <app-applications-card [application]="user" [owner]="true"></app-applications-card>
@@ -14,7 +14,7 @@
   </section>
 
   <section class="mt-5">
-    <h3><b>Applying</b> for the project </h3>
+    <h3 class="text-muted"><b>Applying</b> for the project </h3>
     <div class="row mt-3">
       <ng-template ngFor let-user [ngForOf]="applications">
         <div *ngIf="!user.accepted" class="col-md-4">
