@@ -9,6 +9,7 @@ import {ResponseHandlerService} from '../../../../core/response-handler.service'
 
 export class ApplicationsCardComponent {
   @Input() application;
+  @Input() owner = false;
   @Output() onAccept = new EventEmitter<number>();
   @Output() onReject = new EventEmitter<number>();
 

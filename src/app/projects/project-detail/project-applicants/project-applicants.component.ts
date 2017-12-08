@@ -13,7 +13,7 @@ export class ProjectApplicantsComponent implements OnInit {
   @Input() project_id;
   @Input() user;
   private myProject = false;
-  public applications = [];
+  public applications = null;
   private nr_of_members = null;
   private nr_of_applying = null;
 
@@ -64,6 +64,7 @@ export class ProjectApplicantsComponent implements OnInit {
         data => {
           this.applications = data;
           this.getCount();
+          console.log(data);
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }

@@ -13,7 +13,7 @@
     <div class="col-10">
       <div>{{notification.data.user.name}} left a comment for your project
         <a routerLink="/project/{{notification.data.project.id}}">
-          <strong>{{notification.data.project.title}}</strong>
+          <strong class="text-success">{{notification.data.project.title}}</strong>
         </a>
       </div>
       <small class="text-muted">{{notification.created_at | timeAgo}}</small>
@@ -33,7 +33,7 @@
     <div class="col-10">
       <div>{{notification.data.user.name}} left a message for the members of <a
         routerLink="/project/{{notification.data.project.id}}">
-        <strong>{{notification.data.project.title}}</strong>
+        <strong class="text-success">{{notification.data.project.title}}</strong>
       </a>
       </div>
       <small class="text-muted">{{notification.created_at | timeAgo}}</small>
@@ -50,7 +50,7 @@
     </div>
     <div class="col-10">
       <div>Your application for <a routerLink="/project/{{notification.data.project.id}}">
-        <strong>{{notification.data.project.title}}</strong>
+        <strong class="text-success">{{notification.data.project.title}}</strong>
       </a> was accepted! </div>
       <small class="text-muted">{{notification.created_at | timeAgo}}</small>
     </div>
@@ -67,7 +67,7 @@
     <div class="col-10">
       <div>Your application for <a
         routerLink="/project/{{notification.data.project.id}}">
-        <strong>{{notification.data.project.title}}</strong>
+        <strong class="text-success">{{notification.data.project.title}}</strong>
       </a> was declined</div>
       <small class="text-muted">{{notification.created_at | timeAgo}}</small>
     </div>
@@ -86,7 +86,7 @@
     <div class="col-10">
       <div>{{notification.data.user.name}} applied for your project <a
         routerLink="/project/{{notification.data.project.id}}">
-        <strong>{{notification.data.project.title}}</strong></a>
+        <strong class="text-success">{{notification.data.project.title}}</strong></a>
       </div>
       <small class="text-muted">{{notification.created_at | timeAgo}}</small>
     </div>

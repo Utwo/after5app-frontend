@@ -15,7 +15,11 @@ import {StateService} from '../../core/state.service';
           <div class="col-7 text-right">
             <label class="btn btn-success text-white btn-file px-3">
               <small class="px-5">ADD FILES</small>
-              <input type="file" multiple (change)="fileChange($event)">
+              <input
+                type="file" multiple
+                (change)="fileChange($event)"
+                accept=".txt,.jpg,.png,.jpeg,.doc,.pdf,.ppt,.psd"
+              >
             </label>
             <small class="form-text text-info">Maximum size of 20 mb.</small>
           </div>
