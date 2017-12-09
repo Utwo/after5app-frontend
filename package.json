@@ -22,7 +22,7 @@
     "core-js": "^2.5.1",
     "mo-js": "^0.288.2",
     "ng2-toasty": "^4.0.3",
-    "ngx-bootstrap": "^2.0.0-beta.10",
+    "ngx-bootstrap": "^2.0.0-beta.11",
     "rxjs": "^5.5.5",
     "time-ago-pipe": "^1.2.1",
     "zone.js": "^0.8.18"
