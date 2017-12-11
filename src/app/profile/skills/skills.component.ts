@@ -12,7 +12,6 @@ export class SkillsComponent implements OnChanges {
   @Input() user;
   public editing = false;
   private newSkill;
-  private newSkillLevel;
   public newSkills = [];
   public isMe = false;
 
@@ -44,11 +43,20 @@ export class SkillsComponent implements OnChanges {
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
+  valueChange(skill, level){
+    console.log(skill, level, this.newSkills);
+    this.newSkills = this.newSkills.map((s) =>(s.name === skill ? {...s, skill_level: level} : s))
+    console.log(this.newSkills);
+  }
+
   addNewSkill() {
-    if (this.newSkill && this.newSkillLevel) {
-      this.newSkills.push({name: this.newSkill, skill_level: this.newSkillLevel});
+    if (this.newSkill) {
+      if(this.newSkills.find((s) => s.name === this.newSkill)){
+        this.newSkill = null;
+        return;
+      }
+      this.newSkills.push({name: this.newSkill, skill_level: 1});
       this.newSkill = null;
-      this.newSkillLevel = null;
     }
   }
 

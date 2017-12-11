@@ -60,7 +60,10 @@ export class ProjectCardComponent implements OnInit {
     }
   }
 
-  filterProjects(skill_id){
-    this.onFilter.emit(skill_id);
+  clickSkill(skill){
+    this.onFilter.emit(skill.id);
+    if(this.autocomplete){
+      this.autocomplete.setValue(skill.name)
+    }
   }
 }

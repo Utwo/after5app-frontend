@@ -52,6 +52,9 @@
               [(ngModel)]="application.message">
             </textarea>
           </div>
+          <div *ngIf="error" class="row text-danger">
+            <p>{{error}}</p>
+          </div>
           <div class="row">
             <button class="btn btn-success btn-lg text-white px-5" (click)="sendApplication(modal)">
               <small>APPLY FOR {{position.skill.name.toUpperCase()}}</small>

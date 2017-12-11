@@ -41,7 +41,7 @@
     </div>
 
     <div class="row my-2">
-      <div class="col-lg-6 col-12">
+      <div class="col-lg-7 col-12">
         <!--name-->
         <div class="row my-2" *ngIf="editing || user.name">
           <label class="col-md-4 project__card-label">Name:</label>
@@ -84,20 +84,26 @@
         <div class="row my-2" *ngIf="editing || hobbies.length > 0">
           <label class="col-md-4 project__card-label">Hobbies:</label>
           <div class="col-md-8">
-            <input *ngIf="editing"
+            <div class="row" *ngIf="editing">
+            <div class="col-9">
+            <input
                    class="form-control input-basic"
                    placeholder="Add Hobby" type="text"
                    [(ngModel)]="hobby"
                    title="hobby"/>
-            <a *ngIf="editing"
-               (click)="addHobby()"
-               href="javascript:;"
-               class="btn btn-success text-white"
-            >
-              <svg class="icon icon-plus">
-                <use xlink:href="./assets/svg/icons.svg#icon-plus"></use>
-              </svg>
-            </a>
+            </div>
+            <div class="col-3 text-right">
+              <a
+                 (click)="addHobby()"
+                 href="javascript:;"
+                 class="btn btn-success text-white"
+              >
+                <svg class="icon icon-plus">
+                  <use xlink:href="./assets/svg/icons.svg#icon-plus"></use>
+                </svg>
+              </a>
+          </div>
+        </div>
             <ul class="project-list list-unstyled">
               <li *ngFor="let hobby of hobbies">
                 <a *ngIf="editing"
@@ -110,7 +116,7 @@
         </div>
       </div>
       <!--social-->
-      <div class="col-lg-6 col-12">
+      <div class="col-lg-5 col-12">
         <div class="row my-2">
           <label class="col-md-4 project__card-label">Social:</label>
           <div class="col-md-8">
@@ -119,7 +125,7 @@
             <a *ngIf='user.github_id != null' href='http://gihub/{{user.github_id}}'><p> Github </p></a>
             <a *ngIf='user.website != null' href='{{user.website}}'><p> Website </p></a>
           </div>
-          <div class="col-12 my-2">
+          <div class="col-12 my-3">
             <select class="form-control"
                     *ngIf="editing"
                     [(ngModel)]="socialInput"
@@ -128,7 +134,7 @@
               <option *ngFor="let obj of socialOptions">{{obj}}</option>
             </select>
           </div>
-          <div class="col-8">
+          <div class="col-9">
             <input *ngIf="socialInput != null && editing"
                    [(ngModel)]="link"
                    class="form-control input-basic"
@@ -136,7 +142,7 @@
                    type="text"
                    title="link">
           </div>
-          <div class="col-4 text-right">
+          <div class="col-2 text-right">
             <a *ngIf="socialInput != null && editing"
                (click)="addSocial()"
                href="javascript:;"

@@ -73,7 +73,7 @@ export class PersonalInfoComponent implements OnChanges {
     this.hobbies.splice(this.hobbies.findIndex(elem => elem === hobby), 1);
   }
 
-  addSocial() {
+  addSocial(link) {
 
   }
 }

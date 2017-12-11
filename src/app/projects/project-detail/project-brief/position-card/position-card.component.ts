@@ -12,6 +12,7 @@ export class PositionCardComponent implements OnInit {
   @Input() myApplications;
 
   myProject = false;
+  iAppied = false;
   private member = null;
   hasMember = false;
   showDetails = false;
