@@ -12,7 +12,7 @@ export class ProjectBriefComponent implements OnInit {
   @Input() project;
   myProject = false;
   related = null;
-  myApplications = [];
+  public myApplications = [];
 
   constructor(private projectService: ProjectService,
               private state: StateService,
@@ -23,18 +23,20 @@ export class ProjectBriefComponent implements OnInit {
   ngOnInit() {
     if (this.state.isLoggedIn()) {
       this.myProject = this.state.getUser().id === this.project.user_id;
-      // this.getMyApplications();
+      if(!this.myProject){
+        // this.getMyApplications();
+      }
     }
     this.getRelatedProjects();
   }
 
-  // getMyApplications() {
-  //   this.applicationService.getMyApplications(this.project.id)
-  //     .subscribe(
-  //       data => this.myApplications = data,
-  //       error => this.responseHandler.errorMessage('An error occured!', error)
-  //     );
-  // }
+  getMyApplications() {
+    this.applicationService.getMyApplications(this.project.id)
+      .subscribe(
+        data => this.myApplications = data,
+        error => this.responseHandler.errorMessage('An error occured!', error)
+      );
+  }
 
   getRelatedProjects() {
     const skills = [];

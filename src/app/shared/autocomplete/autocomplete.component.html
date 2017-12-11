@@ -17,6 +17,7 @@
            tabindex={{tabindex}}
     >
   </div>
+  <span *ngIf="asyncSelected" (click)="resetValue()" class="dropdown-close">&#10006;</span>
   <i *ngIf="typeaheadLoading===true" class="dropdown-loading">
 				<span class="spinner">
 					<span class="double-bounce1"></span>

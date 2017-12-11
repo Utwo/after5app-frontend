@@ -1,12 +1,48 @@
-<div class="row">
-  <div *ngFor="let asset of files">
-    <svg  *ngIf="asset.extension === 'txt'" class="icon icon-file-text-o"><use xlink:href="assets/svg/icons.svg#icon-file-text-o"></use></svg>
-    <svg  *ngIf="asset.extension === 'jpg' || asset.extension === 'png' || asset.extension === 'jpeg'" class="icon icon-file-image-o"><use xlink:href="assets/svg/icons.svg#icon-file-image-o"></use></svg>
-    <svg  *ngIf="asset.extension === 'doc'" class="icon icon-file-word-o"><use xlink:href="assets/svg/icons.svg#icon-file-word-o"></use></svg>
-    <svg  *ngIf="asset.extension === 'pdf'" class="icon icon-file-pdf-o"><use xlink:href="assets/svg/icons.svg#icon-file-pdf-o"></use></svg>
-    <svg  *ngIf="asset.extension === 'ppt'" class="icon icon-file-powerpoint-o"><use xlink:href="assets/svg/icons.svg#icon-file-powerpoint-o"></use></svg>
-    <p> {{asset.name}} </p>
-    <a [href]="environment.URL_API + environment.API_VERSION + 'assets/' + asset.id +'/download?token=' + user_token" target="_blank">
-      DOWNLOAD </a>
+<section class="my-5">
+  <app-febee-info
+    [title]="'Here you\'ll find project assets and other useful goodies.'"
+    [description]="'Click on one to download. Read up, and look over them before you start working'"
+    [btn_href]="environment.URL_API + environment.API_VERSION + 'project/' + project_id +'/assets/download?token=' + user_token"
+    [btn_text]="'DOWNLOAD ALL'"
+    [show_btn]="files && files.length">
+  </app-febee-info>
+
+  <div class="container" *ngIf="files && files.length">
+    <div class="row">
+      <div class="col">
+        <ul class="tray scrollable_tray mt-4 text-center text-muted w-100 bg-white">
+          <li class="tray--asset" *ngFor="let asset of files">
+            <svg *ngIf="asset.extension === 'txt'" class="icon icon-file">
+              <use xlink:href="assets/svg/icons.svg#icon-file-text"></use>
+            </svg>
+            <svg *ngIf="asset.extension === 'jpg' || asset.extension === 'png' || asset.extension === 'jpeg'"
+                 class="icon icon-file">
+              <use xlink:href="assets/svg/icons.svg#icon-file-image"></use>
+            </svg>
+            <svg *ngIf="asset.extension === 'doc'" class="icon icon-file">
+              <use xlink:href="assets/svg/icons.svg#icon-file-word"></use>
+            </svg>
+            <svg *ngIf="asset.extension === 'psd'" class="icon icon-file">
+              <use xlink:href="assets/svg/icons.svg#icon-file-psd"></use>
+            </svg>
+            <svg *ngIf="asset.extension === 'pdf'" class="icon icon-file">
+              <use xlink:href="assets/svg/icons.svg#icon-file-pdf"></use>
+            </svg>
+            <svg *ngIf="asset.extension === 'ppt'" class="icon icon-file">
+              <use xlink:href="assets/svg/icons.svg#icon-file-powerpoint"></use>
+            </svg>
+            <svg class="icon icon-lg">
+              <use xlink:href="assets/svg/icons.svg#icon-file"></use>
+            </svg>
+            <div class="text-dark">{{asset.name}}</div>
+            <a
+              [href]="environment.URL_API + environment.API_VERSION + 'assets/' + asset.id +'/download?token=' + user_token"
+              target="_blank" class="btn btn-success text-white mt-3">
+              <small>DOWNLOAD</small>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-</div>
+</section>

@@ -33,7 +33,7 @@
             <h5 class="text-secondary mt-3"><span class="text-success">{{project.user.name}}</span> also wants to
               know ...</h5>
           </div>
-          <div class="row mb-3">
+          <div class="row">
             <ul class="mb-2 list-unstyled">
               <li *ngFor="let question of project.application_questions; let i = index" class="form-group">
                 <label class="text-secondary" for="question">{{question}}</label>
@@ -44,6 +44,18 @@
             </ul>
           </div>
           <div class="row mb-3">
+            <label for="message" class="text-secondary">Reason for applying:</label>
+            <textarea
+              class="form-control"
+              rows="6" id="message"
+              placeholder="Tell {{project.user.name}} why you think your are the right person for this position"
+              [(ngModel)]="application.message">
+            </textarea>
+          </div>
+          <div *ngIf="error" class="row text-danger">
+            <p>{{error}}</p>
+          </div>
+          <div class="row">
             <button class="btn btn-success btn-lg text-white px-5" (click)="sendApplication(modal)">
               <small>APPLY FOR {{position.skill.name.toUpperCase()}}</small>
             </button>

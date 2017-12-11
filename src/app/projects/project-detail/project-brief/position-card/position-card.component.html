@@ -22,10 +22,15 @@
     </div>
   </div>
   <button
-    *ngIf="myProject === false && !hasMember"
-    class="btn btn-success w-100 py-3 text-white"
+    *ngIf="myProject === false && !hasMember && !iAppied"
+    class="btn btn-success w-100 py-3 text-white card-btn"
     (click)="modal.open()">
     <small>APPLY FOR POSITION</small>
+  </button>
+  <button
+    *ngIf="iAppied"
+    class="btn btn-success w-100 py-3 text-white card-btn">
+    <small>YOU APPLIED FOR THIS POSITION</small>
   </button>
 </div>
 <app-apply-modal #modal (onApply)="applicationSent($event)" [position]="position" [project]="project"></app-apply-modal>

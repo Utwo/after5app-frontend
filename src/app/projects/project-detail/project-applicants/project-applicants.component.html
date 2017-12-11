@@ -1,20 +1,32 @@
-<div *ngIf="applications">
-    <h3> Joined the project </h3>
-    <ul class="row list-unstyled flex-items-xs-center">
+<div *ngIf="applications && user" class="container my-5">
+  <section>
+    <h3 class="text-muted"><b>Joined</b> the project</h3>
+    <div class="row mt-3">
+      <div class="col-4">
+        <app-applications-card [application]="user" [owner]="true"></app-applications-card>
+      </div>
       <ng-template ngFor let-member [ngForOf]="applications">
-        <li *ngIf="member.accepted" class="col-md-4">
-          <app-applications-card [application]=member></app-applications-card>
-        </li>
+        <div *ngIf="member.accepted" class="col-4">
+          <app-applications-card [application]="member"></app-applications-card>
+        </div>
       </ng-template>
-    </ul>
-    <p *ngIf='nr_of_members === 0'> No one has joined your project yet</p>
-  <h3> Applying for the project </h3>
-    <ul class="row list-unstyled flex-items-xs-center">
+    </div>
+  </section>
+
+  <section class="mt-5">
+    <h3 class="text-muted"><b>Applying</b> for the project </h3>
+    <div class="row mt-3">
       <ng-template ngFor let-user [ngForOf]="applications">
-        <li *ngIf="!user.accepted" class="col-md-4">
-          <app-applications-card [application]=user (onAccept)='acceptApplication($event)' (onReject)='declineApplication($event)'></app-applications-card>
-        </li>
+        <div *ngIf="!user.accepted" class="col-md-4">
+          <app-applications-card
+            [application]=user
+            (onAccept)='acceptApplication($event)'
+            (onReject)='declineApplication($event)'>
+
+          </app-applications-card>
+        </div>
       </ng-template>
-    </ul>
-  <p *ngIf='nr_of_applying === 0'> No applicants so far...</p>
+    </div>
+    <p *ngIf='nr_of_applying === 0'> No applicants so far...</p>
+  </section>
 </div>

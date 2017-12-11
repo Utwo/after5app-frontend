@@ -1,24 +1,55 @@
-
-<div *ngIf="application">
-  <div class="row">
-    <div class="col-1">
-      <img class="profile-img"
-           *ngIf="application.user.picture"
-           src="{{application.user.picture+'?s=40&width=40&height=40'}}">
+<div *ngIf="application" class="card">
+  <div class="card-body container p-0">
+    <div class="row p-4 application-card">
+      <div *ngIf="!owner" class="col-4">
+        <img class="profile-img"
+             *ngIf="application.user.picture"
+             src="{{application.user.picture+'?width=80&height=80&s=80'}}">
+      </div>
+      <div *ngIf="owner" class="col-4">
+        <img class="profile-img"
+             *ngIf="application.picture"
+             src="{{application.picture+'?width=80&height=80&s=80'}}">
+      </div>
+      <div *ngIf="!owner" class="col-8">
+        <div class="text-success">{{application.user.name}}</div>
+        <p *ngIf="application.accepted">
+          has joined the project on the <b class="text-success">{{application.position.skill.name}}</b> position
+        </p>
+        <p *ngIf="!application.accepted">
+          has applied for <b class="text-success">{{application.position.skill.name}}</b> {{ application.created_at | timeAgo}}
+        </p>
+      </div>
+      <div *ngIf="owner" class="col-8">
+        <div class="text-success">{{application.name}}</div>
+        <p> created the project</p>
+      </div>
     </div>
-    <div class="col-7">
-      <h3 *ngIf="application.accepted" >
-        has joined the project on <strong> {{application.position.skill.name}} </strong>
-      </h3>
-      <h3 *ngIf="!application.accepted">
-        has applied for <strong> {{application.position.skill.name}} </strong>
-      </h3>
-    </div>
-    <div>
-      <button *ngIf="application.accepted" class="btn btn-primary">Manage</button>
-      <div *ngIf="!application.accepted" class='row'>
-        <button (click)="declineApplication(application.id, i)" class="btn btn-primary">Remove</button>
-        <button (click)="acceptApplication(application.id, i)" class="btn btn-primary">Accept</button>
+    <div class="row">
+      <div class="col-12">
+        <div *ngIf="!owner">
+          <button
+            *ngIf="application.accepted"
+            class="btn btn-primary w-100 py-3 text-white card-btn">Manage
+          </button>
+          <div *ngIf="!application.accepted" class="row m-0">
+            <div class="col-6 p-0">
+              <button
+                (click)="acceptApplication(application.id, i)"
+                class="btn btn-primary w-100 py-3 text-white application-btn-1">Accept
+              </button>
+            </div>
+            <div class="col-6 p-0">
+              <button
+                (click)="declineApplication(application.id, i)"
+                class="btn btn-primary w-100 py-3 text-secondary application-btn-2">Remove
+              </button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="owner">
+          <button class="btn btn-success w-100 py-3 text-white card-btn">Owner</button>
+        </div>
       </div>
     </div>
   </div>

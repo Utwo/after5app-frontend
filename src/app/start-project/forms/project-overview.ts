@@ -21,7 +21,7 @@ import { StateService } from '../../core/state.service';
         <div class="col-2 font-weight-bold text-info">
           Name:
         </div>
-        <div class="col-8">
+        <div class="col-8 text-success">
           {{project.title}}
         </div>
       </div>
@@ -55,7 +55,7 @@ import { StateService } from '../../core/state.service';
         </div>
         <div class="col-8">
           <ul class="tray scrollable_tray bg-primary">
-            <li class="tray--skill mt-0" *ngFor="let skill of project.position">
+            <li class="tray--skill mt-0 ml-0" *ngFor="let skill of project.position">
               <div class="tray--name">{{skill.name}}</div>
               <div class="tray--button" (click)="editStep('skills')">
                 <small>EDIT SKILL</small>

@@ -19,6 +19,7 @@
         [type]="'filter-list'"
         [label_message]="'FILTER BY SKILL'"
         (onSelect)="onSelect($event)"
+        (onClear)="getProjects()"
       >
       </app-autocomplete>
     </div>
@@ -26,7 +27,7 @@
       <a id="all-projects"
          href="javascript:;"
          (click)="getProjects(1); autocomplete.resetValue();"
-         class="btn font-weight-bold ml-1  filter-link"
+         class="btn font-weight-bold ml-1 filter-link"
          [class.btn-link-info]="isRecentActive">
         RECENT
       </a>
@@ -53,7 +54,11 @@
   <!--project list-->
   <ul class="project-list list-unstyled">
     <li *ngFor="let project of projects">
-      <app-project-card [project]=project></app-project-card>
+      <app-project-card
+        [project]=project
+        [autocomplete]="autocomplete"
+        (onFilter)='filterProjects($event)'
+      ></app-project-card>
     </li>
   </ul>
   <!--pagination-->

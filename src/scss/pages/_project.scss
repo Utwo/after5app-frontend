@@ -8,3 +8,15 @@
   background: $primary;
   color: #fff;
 }
+
+.application-card{
+  min-height: 150px;
+}
+
+.application-btn-1{
+  border-radius: 0 0 0 $border-radius;
+}
+
+.application-btn-2{
+  border-radius: 0 0 $border-radius 0;
+}

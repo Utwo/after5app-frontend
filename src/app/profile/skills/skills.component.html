@@ -1,6 +1,7 @@
 <div class="card profile-card my-3">
   <div class="card-body">
     <!--header-->
+
     <div class="row">
       <div class="col-6">
         <h5 class="title-border title-border--green p-b-1">CRAFTS & SKILLS</h5>
@@ -28,12 +29,9 @@
         <div class="col-9">
           <input class="form-control input-basic" placeholder="Add Skill"
                  title="newSkill" [(ngModel)]="newSkill">
-          <input class="form-control input-basic mt-1" type="text"
-                 placeholder="Skill Level" title="newSkillLevel"
-                 [(ngModel)]="newSkillLevel">
         </div>
         <div class="col-3 text-right">
-          <button (click)="addNewSkill()" class="btn btn-success text-white">
+          <button (click)="addNewSkill(slider)" class="btn btn-success text-white">
             <svg class="icon icon-plus">
               <use xlink:href="./assets/svg/icons.svg#icon-plus"></use>
             </svg>
@@ -43,15 +41,19 @@
       <ul class="profile__skills-list">
         <li *ngFor="let skill of newSkills" class="my-4">
           {{skill.name}}
-          <a *ngIf="editing" (click)="removeSkill(skill)"
-             class="float-right"
-             href="javascript:;"
-          >
-            <svg class="icon icon-delete_forever text-muted">
-              <use xlink:href="assets/svg/icons.svg#icon-delete_forever"></use>
-            </svg>
-          </a>
-          <div class="progress mt-2">
+            <a *ngIf="editing" (click)="removeSkill(skill)"
+               class="float-right"
+               href="javascript:;"
+            >
+              <svg class="icon icon-delete_forever text-muted">
+                <use xlink:href="assets/svg/icons.svg#icon-delete_forever"></use>
+              </svg>
+            </a>
+            <input *ngIf="editing" 
+                    #skillLevel title="skillLevel" type="range" min="1" max="100" 
+                    [value]="skill.skill_level" 
+                    class="slider" (change)="valueChange( skill.name, skillLevel.value)">
+          <div *ngIf="!editing" class="progress mt-2">
             <div class="progress-bar bg-info" role="progressbar"
                  [style.width]="skill.skill_level + '%'"
                  aria-valuemin="0" aria-valuemax="100">

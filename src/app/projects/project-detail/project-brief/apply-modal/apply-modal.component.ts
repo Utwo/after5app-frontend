@@ -18,6 +18,7 @@ export class ApplyModalComponent {
   @Output() onApply = new EventEmitter<number>();
   application = {message: '', position_id: null, answers: []};
   @ViewChild('applyModal') public applyModal: ModalDirective;
+  public error = '';
 
   constructor(private applicationService: ApplicationService, private state: StateService,) {
   }
@@ -27,11 +28,16 @@ export class ApplyModalComponent {
       modal.open();
       return;
     }
+    if(!this.application.message){
+      this.error="Please fill out the reason you want to join";
+      return;
+    }
     this.application.position_id = this.position.id;
     this.applicationService.applyForProject(this.application)
       .subscribe(
         () => {
           this.application = {message: '', position_id: null, answers: []};
+          this.error='';
           this.onApply.emit(0);
         },
         error => {

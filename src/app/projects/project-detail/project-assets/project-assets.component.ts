@@ -2,6 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {StateService} from '../../../core/state.service';
 import {ResponseHandlerService} from '../../../core/response-handler.service';
 import {ProjectAssetsService} from './project-assets.service';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-project-assets',
@@ -13,6 +14,7 @@ export class ProjectAssetsComponent implements OnInit {
   public files = [];
   @Input() project_id;
   private user_token = null;
+  public environment = environment;
 
   constructor(private state: StateService,
               private assets: ProjectAssetsService,
