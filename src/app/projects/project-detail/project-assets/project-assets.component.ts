@@ -13,7 +13,7 @@ import {environment} from '../../../../environments/environment';
 export class ProjectAssetsComponent implements OnInit {
   public files = [];
   @Input() project_id;
-  private user_token = null;
+  public user_token = null;
   public environment = environment;
 
   constructor(private state: StateService,
