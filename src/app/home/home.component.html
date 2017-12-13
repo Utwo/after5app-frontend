@@ -44,10 +44,11 @@
   [second_text]="'After5App is a platform where People meet People that are of like-mind, to create, to discuss, to expand and - preferably - to meet! Post your own projects to attract attention or browse and approach others who have already done this. We think you have potential.'"
   [second_image]="'brain'"
   [read_more]="true"
+  [target]="section2"
 >
 </app-home-section>
 
-<div class="container">
+<div class="container" #section2>
   <hr>
 </div>
 <!--section 2-->
@@ -61,10 +62,11 @@
   [second_text]="'You’re an artsy one? That means you could be a designer or a Social Media Specialist, doesn’t matter, you can find a talented coder to back your projects up and together you could be the next Facebook or Google, doesn’t that sound exciting? Just try it out!'"
   [second_image]="'paint-brush'"
   [read_more]="true"
+  [target]="section3"
 >
 </app-home-section>
 
-<div class="container">
+<div class="container" #section3>
   <hr>
 </div>
 <!--section 3-->
@@ -78,6 +80,8 @@
   [second_text]="'We’ve set Feebe and Buggy up so you can talk to them and tell us what else you would like implemented around here. Click on them and leave some feedback. It helps us a bunch! (and maybe we’ll even give you cookies)'"
   [second_image]="'feebe-buggy'"
   [read_more]="false"
+  [target]="'Test'"
 >
+
 </app-home-section>
 

@@ -30,7 +30,8 @@
 //Section 2
 
 .home-section {
-  margin: 6rem auto;
+  padding: 6rem 0;
+  height: 100vh;
 }
 
 .home-section__container {
@@ -40,6 +41,10 @@
 
 @media (max-width: map-get($grid-breakpoints, sm)) {
   .home-main {
+    height: 100%;
+  }
+
+  .home-section{
     height: 100%;
   }
 

@@ -4,6 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-home-section',
   templateUrl: './home-section.component.html',
 })
+
 export class HomeSectionComponent {
   @Input('main_text') main_text;
   @Input('secondary_text') secondary_text;
@@ -17,4 +18,14 @@ export class HomeSectionComponent {
   @Input('second_image') second_image;
 
   @Input('read_more') read_more;
+
+  @Input('target') target;
+
+  goToNextSection(){
+    this.target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  getStarted(){
+    window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
+  }
 }
