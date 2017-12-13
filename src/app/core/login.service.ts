@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
+import "rxjs/add/observable/throw";
 import {environment} from '../../environments/environment';
 import {StateService} from './state.service';
 import {Router} from '@angular/router';

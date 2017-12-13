@@ -3,6 +3,7 @@ import {StateService} from '../../../core/state.service';
 import {environment} from '../../../../environments/environment';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
+import "rxjs/add/observable/throw";
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()

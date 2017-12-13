@@ -19,7 +19,7 @@ export class ResponseHandlerService {
   }
 
   errorMessage(message, error) {
-    if (error.status === 401 && JSON.parse(error._body).error === 'token_expired') {
+    if (error.status === 401 && error.error && error.error.error === 'Unauthenticated.') {
       this.state.logout();
       this.router.navigate(['/']);
       return;
