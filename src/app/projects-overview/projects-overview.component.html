@@ -5,48 +5,49 @@
 </div>
 
 <!--filter options-->
-<tabset>
-  <tab [active]="true">
-    <ng-template tabHeading>
-      PROJECTS
-    </ng-template>
-    <!--created-->
-    <app-projects-list-overview
-      [header]="'Created Projects'"
-      [projects]="projects"
-      [feebeTitle]="'Hi! I thought you would like to know that...'"
-      [feebeDescription]="feebeDescription"
-      [noProjectMessage]="'You have no projects of your own. Go to \'Start a project\' and share your idea with the world!'">
-    </app-projects-list-overview>
-    <!--joined-->
-    <app-projects-list-overview
-      [header]="'Joined Projects'"
-      [projects]="joinedProjects"
-      [noProjectMessage]="'You didn\'t join any project yet. Go to \'Browse Projects\'and help to build a new idea!'">
-    </app-projects-list-overview>
+<div class="my-tabs">
+  <tabset>
+    <tab [active]="true">
+      <ng-template tabHeading>
+        PROJECTS
+      </ng-template>
+      <!--created-->
+      <app-projects-list-overview
+        [header]="'Created Projects'"
+        [projects]="projects"
+        [feebeTitle]="'Hi! I thought you would like to know that...'"
+        [feebeDescription]="feebeDescription"
+        [noProjectMessage]="'You have no projects of your own. Go to \'Start a project\' and share your idea with the world!'">
+      </app-projects-list-overview>
+      <!--joined-->
+      <app-projects-list-overview
+        [header]="'Joined Projects'"
+        [projects]="joinedProjects"
+        [noProjectMessage]="'You didn\'t join any project yet. Go to \'Browse Projects\'and help to build a new idea!'">
+      </app-projects-list-overview>
 
-  </tab>
-  <tab>
-    <ng-template tabHeading>
-      FOLLOWING
-    </ng-template>
-    <app-projects-list-overview
-      [header]="'Projects you are following'"
-      [projects]="followingProjects"
-      [noProjectMessage]="'There are no favorites in your list. Browse some projects and encourage the owners by giving them a &#9733;!'">
-    </app-projects-list-overview>
-  </tab>
-  <tab>
-    <ng-template tabHeading>
-      APPLIED FOR
-    </ng-template>
-    <app-projects-list-overview
-      [header]="'Projects you applied for'"
-      [projects]="appliedProjects"
-      [feebeTitle]="'Hang on!'"
-      [feebeDescription]="'Your applications are being considered...'"
-      [noProjectMessage]="'You have no applications yet. Find a project to be passionate about and don\'t hesitate to apply!'">
-    </app-projects-list-overview>
-  </tab>
-</tabset>
-
+    </tab>
+    <tab>
+      <ng-template tabHeading>
+        FOLLOWING
+      </ng-template>
+      <app-projects-list-overview
+        [header]="'Projects you are following'"
+        [projects]="followingProjects"
+        [noProjectMessage]="'There are no favorites in your list. Browse some projects and encourage the owners by giving them a &#9733;!'">
+      </app-projects-list-overview>
+    </tab>
+    <tab>
+      <ng-template tabHeading>
+        APPLIED FOR
+      </ng-template>
+      <app-projects-list-overview
+        [header]="'Projects you applied for'"
+        [projects]="appliedProjects"
+        [feebeTitle]="'Hang on!'"
+        [feebeDescription]="'Your applications are being considered...'"
+        [noProjectMessage]="'You have no applications yet. Find a project to be passionate about and don\'t hesitate to apply!'">
+      </app-projects-list-overview>
+    </tab>
+  </tabset>
+</div>

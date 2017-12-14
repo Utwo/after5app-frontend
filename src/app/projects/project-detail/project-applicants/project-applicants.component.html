@@ -2,11 +2,11 @@
   <section>
     <h3 class="text-muted"><b>Joined</b> the project</h3>
     <div class="row mt-3">
-      <div class="col-4">
+      <div class="col-md-4 mb-3">
         <app-applications-card [application]="user" [owner]="true"></app-applications-card>
       </div>
       <ng-template ngFor let-member [ngForOf]="applications">
-        <div *ngIf="member.accepted" class="col-4">
+        <div *ngIf="member.accepted" class="col-md-4 mb-3">
           <app-applications-card [application]="member"></app-applications-card>
         </div>
       </ng-template>
@@ -17,7 +17,7 @@
     <h3 class="text-muted"><b>Applying</b> for the project </h3>
     <div class="row mt-3">
       <ng-template ngFor let-user [ngForOf]="applications">
-        <div *ngIf="!user.accepted" class="col-md-4">
+        <div *ngIf="!user.accepted" class="col-md-4 mb-3">
           <app-applications-card
             [project]=project
             [application]=user
