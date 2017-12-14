@@ -10,9 +10,9 @@ import {Router} from '@angular/router';
 })
 
 export class ProjectHeaderComponent implements OnInit {
-  public user = null;
   @Input() project;
   myProject = false;
+  public user = null;
   private isFollowed = false;
 
   constructor(private projectService: ProjectService,

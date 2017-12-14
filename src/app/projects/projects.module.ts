@@ -17,6 +17,7 @@ import {MessageService} from './shared/message.service';
 import {ProjectService} from './shared/project.service';
 import {SharedModule} from '../shared/shared.module';
 import {TabsModule, ModalModule} from 'ngx-bootstrap';
+import {DeleteModalComponent} from './project-detail/project-brief/delete-modal/delete-modal.component';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import {TabsModule, ModalModule} from 'ngx-bootstrap';
     PositionCardComponent,
     ShareModalComponent,
     ProjectHeaderComponent,
+    DeleteModalComponent,
   ],
   providers: [
     ApplicationService,

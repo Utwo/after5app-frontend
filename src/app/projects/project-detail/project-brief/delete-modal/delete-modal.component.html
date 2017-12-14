@@ -1,0 +1,36 @@
+<div bsModal #deleteModal="bs-modal" class="modal grow"
+     tabindex="-1" role="dialog"
+     aria-hidden="true">
+  <div class="modal-dialog modal-fluid">
+    <div class="modal-content">
+      <div class="modal-body jumbotron-fluid">
+        <div class="modal-body">
+          <a class="float-right text-white mr-4"
+             href="javascript:;"
+             (click)="close()"
+             aria-label="Close"
+          >
+            <span aria-hidden="true">&#10006;</span>
+          </a>
+        <div class="container">
+          <div class="row mb-5 justify-content-center">
+            <h2 class="text-center">Are you sure you want to delete <b class="text-secondary">{{project.title}}</b>?</h2>
+          </div>
+          <div class="row text-center">
+            <div class="col">
+              <button
+                (click)="deleteProject()"
+                class="btn btn-danger btn-lg text-white mr-3">YES
+              </button>
+              <button
+                (click)="close()"
+                class="btn btn-success btn-lg text-white ml-3">NO
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

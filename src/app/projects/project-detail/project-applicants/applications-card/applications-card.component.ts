@@ -1,6 +1,7 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Component, Input, Output, EventEmitter, ViewChild} from '@angular/core';
 import {ApplicationService} from '../../../shared/application.service';
 import {ResponseHandlerService} from '../../../../core/response-handler.service';
+import {ModalDirective} from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-applications-card',
@@ -8,6 +9,8 @@ import {ResponseHandlerService} from '../../../../core/response-handler.service'
 })
 
 export class ApplicationsCardComponent {
+  @ViewChild('viewApplicationModal') public viewApplicationModal: ModalDirective;
+  @Input() project;
   @Input() application;
   @Input() owner = false;
   @Output() onAccept = new EventEmitter<number>();
@@ -17,21 +20,32 @@ export class ApplicationsCardComponent {
               private responseHandler: ResponseHandlerService) {
   }
 
-  acceptApplication(application_id) {
-    this.applicationService.acceptApplication(application_id)
+  viewApplication() {
+    this.viewApplicationModal.show();
+  }
+
+  closeModal() {
+    this.viewApplicationModal.hide();
+  }
+
+  acceptApplication() {
+    this.applicationService.acceptApplication(this.application.id)
       .subscribe(
         () => {
-          this.onAccept.emit(application_id);
+          this.viewApplicationModal.hide();
+          this.onAccept.emit(this.application.id);
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
 
-  declineApplication(application_id) {
-    this.applicationService.declineApplication(application_id)
+
+  declineApplication() {
+    this.applicationService.declineApplication(this.application.id)
       .subscribe(
         () => {
-          this.onReject.emit(application_id);
+          this.viewApplicationModal.hide();
+          this.onReject.emit(this.application.id);
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
-   }
+  }
 }

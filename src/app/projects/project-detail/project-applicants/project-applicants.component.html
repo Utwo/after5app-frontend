@@ -19,6 +19,7 @@
       <ng-template ngFor let-user [ngForOf]="applications">
         <div *ngIf="!user.accepted" class="col-md-4">
           <app-applications-card
+            [project]=project
             [application]=user
             (onAccept)='acceptApplication($event)'
             (onReject)='declineApplication($event)'>
@@ -27,6 +28,6 @@
         </div>
       </ng-template>
     </div>
-    <p *ngIf='nr_of_applying === 0'> No applicants so far...</p>
+    <p *ngIf='nr_of_applying === 0'> There are no new applications.</p>
   </section>
 </div>

@@ -1,5 +1,5 @@
 <div class="my-5 container container-small">
-  <h3> {{header}} </h3>
+  <h3 class="mb-5 text-muted"> {{header}} </h3>
 
   <div *ngIf="projects && projects.length && feebeTitle && feebeDescription">
     <app-febee-info
@@ -7,8 +7,7 @@
       [description]="feebeDescription">
     </app-febee-info>
   </div>
-  <ul class="project-list list-unstyled"
-      *ngIf="projects && projects.length">
+  <ul class="project-list list-unstyled" *ngIf="projects && projects.length">
     <li *ngFor="let project of projects">
       <app-project-card [project]=project></app-project-card>
     </li>
@@ -18,8 +17,7 @@
   <app-loader *ngIf="!projects"></app-loader>
 
   <!--no projects-->
-  <div *ngIf="projects && projects.length === 0"
-       class="container container-small text-center my-3">
+  <div *ngIf="projects && projects.length === 0" class="mb-3">
     <p class="text-muted">{{noProjectMessage}}</p>
   </div>
 </div>

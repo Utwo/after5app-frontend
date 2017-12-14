@@ -9,8 +9,7 @@ import {StateService} from '../../../core/state.service';
 })
 
 export class ProjectApplicantsComponent implements OnInit {
-
-  @Input() project_id;
+  @Input() project;
   @Input() user;
   private myProject = false;
   public applications = null;
@@ -59,7 +58,7 @@ export class ProjectApplicantsComponent implements OnInit {
   }
 
   getApplications() {
-    this.applicationService.getApplications(this.project_id)
+    this.applicationService.getApplications(this.project.id)
       .subscribe(
         data => {
           this.applications = data;
