@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ProjectService } from '../shared/project.service';
-import { StateService } from '../../core/state.service';
-import { ResponseHandlerService } from '../../core/response-handler.service';
+import {Component, OnInit} from '@angular/core';
+import {ProjectService} from '../shared/project.service';
+import {StateService} from '../../core/state.service';
+import {ResponseHandlerService} from '../../core/response-handler.service';
 
 @Component({
   selector: 'app-project-list',
@@ -92,5 +92,4 @@ export class ProjectListComponent implements OnInit {
       this.getProjects(this.page.current_page + 1);
     }
   }
-
 }

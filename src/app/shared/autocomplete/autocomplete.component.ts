@@ -65,7 +65,10 @@ export class AutocompleteComponent {
   }
 
   public resetValue() {
-    this.asyncSelected = '';
-    this.onClear.emit();
+    if(this.asyncSelected) {
+      this.asyncSelected = '';
+      this.typeaheadNoResults = false;
+      this.onClear.emit();
+    }
   }
 }

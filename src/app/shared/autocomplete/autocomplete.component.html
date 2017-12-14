@@ -18,14 +18,14 @@
     >
   </div>
   <span *ngIf="asyncSelected" (click)="resetValue()" class="dropdown-close">&#10006;</span>
-  <i *ngIf="typeaheadLoading===true" class="dropdown-loading">
+  <i *ngIf="typeaheadLoading === true" class="dropdown-loading">
 				<span class="spinner">
 					<span class="double-bounce1"></span>
 					<span class="double-bounce2"></span>
 				</span>
   </i>
 
-  <div *ngIf="typeaheadNoResults===true && type=='filter-list'" class="dropdown-menu text-center">
+  <div *ngIf="typeaheadNoResults === true && type =='filter-list'" class="dropdown-menu text-center">
     <i class="text-muted">No Results Found</i>
   </div>
 

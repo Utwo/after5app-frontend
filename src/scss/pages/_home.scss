@@ -39,20 +39,16 @@
 }
 
 
-@media (max-width: map-get($grid-breakpoints, sm)) {
+@media (max-width: map-get($grid-breakpoints, md)) {
   .home-main {
     height: 100%;
+    padding-bottom: 10px;
   }
+}
 
+@media (max-width: map-get($grid-breakpoints, sm)) {
   .home-section{
     height: 100%;
   }
 
-  .home-main h1 {
-    font-size: 1.6rem;
-  }
-
-  .home-main h2 {
-    font-size: 1.3rem;
-  }
 }
