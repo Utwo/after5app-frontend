@@ -13,10 +13,10 @@
     </div>
   </div>
 
-  <div class="container-fluid my-3 px-5">
+  <div class="container-fluid mb-3 px-0">
     <tabset>
       <tab [heading]="'PERSONAL'" [active]="true">
-        <div class="row">
+        <div class="row mx-5">
           <div class="col-md-7 col-12">
             <app-personal-info [user]=user></app-personal-info>
           </div>
@@ -26,7 +26,9 @@
         </div>
       </tab>
       <tab [heading]="'BADGES'">
-        <app-badges></app-badges>
+        <div class="row mx-5">
+          <app-badges></app-badges>
+        </div>
       </tab>
     </tabset>
   </div>

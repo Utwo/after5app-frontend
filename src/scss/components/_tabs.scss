@@ -1,8 +1,29 @@
-.nav-tabs .nav-item {
-  margin-bottom: -3px;
+.nav.nav-tabs {
+  background: #fff;
+  justify-content: flex-end;
+  padding: 0 3rem;
+  border-bottom: none;
 }
 
-.nav-link.active{
+.nav.nav-tabs .nav-item {
+  margin-bottom: -3px;
+  font-weight: 600;
+}
+
+.nav-tabs .nav-link {
+  color: $gray-light;
+  padding: 1rem 1.3rem;
+  border: none;
+}
+
+.nav.nav-link.active {
   background: $gray-lightest;
-  color: $gray-darkest;
+  color: $gray;
+}
+
+@media (max-width: map-get($grid-breakpoints, sm)) {
+  .nav.nav-tabs {
+    padding: 0;
+    justify-content: center;
+  }
 }
