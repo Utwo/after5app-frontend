@@ -1,13 +1,13 @@
 <section class="my-5">
-  <app-febee-info
-    [title]="'Here you\'ll find project assets and other useful goodies.'"
-    [description]="'Click on one to download. Read up, and look over them before you start working'"
-    [btn_href]="environment.URL_API + environment.API_VERSION + 'project/' + project_id +'/assets/download?token=' + user_token"
-    [btn_text]="'DOWNLOAD ALL'"
-    [show_btn]="files && files.length">
-  </app-febee-info>
-
   <div class="container" *ngIf="files && files.length">
+    <app-febee-info
+      [title]="'Here you\'ll find project assets and other useful goodies.'"
+      [description]="'Click on one to download. Read up, and look over them before you start working'"
+      [btn_href]="environment.URL_API + environment.API_VERSION + 'project/' + project_id +'/assets/download?token=' + user_token"
+      [btn_text]="'DOWNLOAD ALL'"
+      [show_btn]="files && files.length">
+    </app-febee-info>
+
     <div class="row">
       <div class="col">
         <ul class="tray scrollable_tray mt-4 text-center text-muted w-100 bg-white">
@@ -44,5 +44,11 @@
         </ul>
       </div>
     </div>
+  </div>
+  <div *ngIf="!files || !files.length">
+    <app-febee-info
+      [title]="'Here you\'ll find project assets and other useful goodies.'"
+      [description]="'Sorry, this projects doesn\'t have assets yet.'">
+    </app-febee-info>
   </div>
 </section>

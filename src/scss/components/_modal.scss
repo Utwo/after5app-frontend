@@ -2,6 +2,11 @@
   background: $modal-backdrop-bg;
 }
 
+.modal {
+  top: 0;
+  bottom: 0;
+}
+
 .modal-fluid {
   max-width: 100%;
 }
@@ -22,24 +27,24 @@
 }
 
 //Transition between open and close state
-.modal.grow .commodal-dialog {
-  transition: transform .3s ease-out, opacity .2s ease-in;
-  opacity: .2;
-  transform: scale(1.2) translate3d(0, 5rem, 0);
-}
-
-.modal.grow .modal-body {
-  transition: transform .2s .25s ease-out, opacity .2s .25s ease-in;
-  opacity: .1;
-  transform: translate3d(0, 50px, 0);
-}
-
-.modal.in .modal-dialog {
-  transform: scale(1) translate3d(0, 0, 0);
-  opacity: 1;
-}
-
-.modal.in .modal-body {
-  transform: translate3d(0, 0, 0);
-  opacity: 1;
-}
+//.modal.grow .commodal-dialog {
+//  transition: transform .3s ease-out, opacity .2s ease-in;
+//  opacity: .2;
+//  transform: scale(1.2) translate3d(0, 5rem, 0);
+//}
+//
+//.modal.grow .modal-body {
+//  transition: transform .2s .25s ease-out, opacity .2s .25s ease-in;
+//  opacity: .1;
+//  transform: translate3d(0, 50px, 0);
+//}
+//
+//.modal.in .modal-dialog {
+//  transform: scale(1) translate3d(0, 0, 0);
+//  opacity: 1;
+//}
+//
+//.modal.in .modal-body {
+//  transform: translate3d(0, 0, 0);
+//  opacity: 1;
+//}

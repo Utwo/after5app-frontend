@@ -31,19 +31,19 @@
             </svg>
             <small>EDIT PROJECT</small>
           </a>
-          <a *ngIf="myProject" class="mr-3 text-dark" href="javascript:;" (click)="deleteProject()">
+          <a *ngIf="myProject" class="mr-3 text-dark" href="javascript:;" (click)="delete_modal.open()">
             <svg class="icon">
               <use xlink:href="assets/svg/icons.svg#icon-delete_forever"></use>
             </svg>
             <small>DELETE PROJECT</small>
           </a>
-          <a *ngIf="!isFollowed && !myProject" (click)="follow(modal)" class="mr-3 text-dark" href="javascript:;">
+          <a *ngIf="!isFollowed && !myProject" (click)="follow(login_modal)" class="mr-3 text-dark" href="javascript:;">
             <svg class="icon icon-star">
               <use xlink:href="assets/svg/icons.svg#icon-star"></use>
             </svg>
             <small>FOLLOW PROJECT</small>
           </a>
-          <a *ngIf="isFollowed && !myProject" (click)="follow(modal)" class="mr-3 text-dark" href="javascript:;">
+          <a *ngIf="isFollowed && !myProject" (click)="follow(login_modal)" class="mr-3 text-dark" href="javascript:;">
             <svg class="icon icon-star full">
               <use xlink:href="assets/svg/icons.svg#icon-star-full"></use>
             </svg>
@@ -55,6 +55,9 @@
   </div>
 </div>
 <div>
-  <app-login-modal #modal></app-login-modal>
+  <app-login-modal #login_modal></app-login-modal>
   <app-share-modal #share_modal (onShared)="shared($event)"></app-share-modal>
+  <app-delete-modal #delete_modal [project]="project" (onDelete)="deleteProject()"></app-delete-modal>
 </div>
+
+

@@ -17,7 +17,8 @@
           has joined the project on the <b class="text-success">{{application.position.skill.name}}</b> position
         </p>
         <p *ngIf="!application.accepted">
-          has applied for <b class="text-success">{{application.position.skill.name}}</b> {{ application.created_at | timeAgo}}
+          has applied for <b class="text-success">{{application.position.skill.name}}</b> {{ application.created_at |
+          timeAgo}}
         </p>
       </div>
       <div *ngIf="owner" class="col-8">
@@ -35,20 +36,81 @@
           <div *ngIf="!application.accepted" class="row m-0">
             <div class="col-6 p-0">
               <button
-                (click)="acceptApplication(application.id, i)"
-                class="btn btn-primary w-100 py-3 text-white application-btn-1">Accept
+                (click)="viewApplication()"
+                class="btn btn-primary w-100 py-3 text-white application-btn-1">View
               </button>
             </div>
             <div class="col-6 p-0">
               <button
-                (click)="declineApplication(application.id, i)"
-                class="btn btn-primary w-100 py-3 text-secondary application-btn-2">Remove
+                (click)="declineApplication()"
+                class="btn btn-primary w-100 py-3 text-secondary application-btn-2">Decline
               </button>
             </div>
           </div>
         </div>
         <div *ngIf="owner">
           <button class="btn btn-success w-100 py-3 text-white card-btn">Owner</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modal-->
+
+<div *ngIf="application && project" bsModal #viewApplicationModal="bs-modal" class="modal grow"
+     tabindex="-1" role="dialog"
+     aria-labelledby="ViewApplication"
+     aria-hidden="true">
+  <div class="modal-dialog modal-fluid">
+    <div class="modal-content">
+      <div class="modal-body jumbotron-fluid">
+        <div class="sprite sprite-login-planet d-none d-md-block"></div>
+        <div class="sprite sprite-satelite d-none d-md-block"></div>
+        <a class="float-right text-white mr-4"
+           href="javascript:;"
+           (click)="closeModal()"
+           aria-label="Close"
+        >
+          <span aria-hidden="true">&#10006;</span>
+        </a>
+        <h3 class="modal-title text-center mb-5">
+          <b class="text-success">{{application.user.name}}</b>'s application for the position
+          <b class="text-secondary">{{application.position.skill.name}}</b>
+        </h3>
+        <div class="container-fluid container-small">
+          <app-feebe-message
+            [message]="'We have to get you processed through. Lets see your Docking Pass...'">
+          </app-feebe-message>
+          <div class="row mt-3">
+            <div class="col">
+              <b>Reason for applying:</b>
+              <p class="mt-2">{{application.message}}</p>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <b>Answers to project questions:</b>
+              <ul class="project-list list-unstyled mt-2" *ngIf="project.application_questions">
+                <li *ngFor="let question of project.application_questions; let i = index">
+                  <span class="text-secondary">{{i+1}}. {{question}}</span>
+                  <p>{{application.answers[i]}}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col">
+              <button
+                (click)="acceptApplication()"
+                class="btn btn-success btn-lg text-white mr-3">Accept
+              </button>
+              <button
+                (click)="declineApplication()"
+                class="btn btn-danger btn-lg text-white ml-3">Decline
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

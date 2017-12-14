@@ -12,8 +12,6 @@ import {environment} from '../../../../../environments/environment';
   styles: []
 })
 export class ShareModalComponent {
-
-  @Input() project;
   @Output() onShared = new EventEmitter<number>();
   @ViewChild('shareModal') public shareModal: ModalDirective;
   public environment = environment;

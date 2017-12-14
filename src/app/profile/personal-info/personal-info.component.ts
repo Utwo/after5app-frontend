@@ -17,13 +17,22 @@ export class PersonalInfoComponent implements OnChanges {
   public description: String = '';
   public hobby: String = '';
   public hobbies: String[] = [];
-  public socialInput: String = null;
-  public socialOptions: String[] = ['Facebook', 'LinkedIn', 'Twitter', 'GitHub', 'Medium'];
+  public socialInput: String = '';
+  public socialOptions: String[] = ['LinkedIn', 'Twitter', 'Medium'];
   public link: String = '';
 
   constructor(private profileService: ProfileService,
               private state: StateService,
               private responseHandler: ResponseHandlerService) {
+  }
+
+  ngOnInit() {
+    if (!this.user.facebook_id) {
+      this.socialOptions.push('Facebook');
+    }
+    if (!this.user.github_id) {
+      this.socialOptions.push('Github');
+    }
   }
 
   ngOnChanges() {
@@ -73,7 +82,21 @@ export class PersonalInfoComponent implements OnChanges {
     this.hobbies.splice(this.hobbies.findIndex(elem => elem === hobby), 1);
   }
 
-  addSocial(link) {
+  addSocial() {
+    console.log(this.socialInput, this.link);
 
+    const social = this.user.social || [];
+    social.push(this.link);
+    this.profileService.updateUser({social})
+      .subscribe(
+        (data) => {
+          this.responseHandler.successMessage('Changes have been saved');
+          this.state.setUser(data.user);
+          this.user = data.user;
+        },
+        error => {
+          this.responseHandler.errorMessage('An error occured!', error);
+        }
+      );
   }
 }
