@@ -2,21 +2,30 @@
   white-space: pre-line;
 }
 
-
-.positions__card-title{
+.positions__card-title {
   border-radius: $border-radius $border-radius 0 0;
   background: $primary;
   color: #fff;
 }
 
-.application-card{
+.application-card {
   min-height: 150px;
 }
 
-.application-btn-1{
+.application-btn-1 {
   border-radius: 0 0 0 $border-radius;
 }
 
-.application-btn-2{
+.application-btn-2 {
   border-radius: 0 0 $border-radius 0;
+}
+
+.start-project__container {
+  height: 100vh;
+}
+
+@media (max-width: map-get($grid-breakpoints, sm)) {
+  .start-project__container {
+    height: 100%;
+  }
 }

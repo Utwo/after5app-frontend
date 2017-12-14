@@ -10,13 +10,6 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
     <form #questionsForm="ngForm" (ngSubmit)="addQuestion(question)">
       <div class="form-group mt-5">
         <div class="row">
-          <div class="col-1">
-            <button tabindex="2" class="btn btn-success text-white" type="submit">
-              <svg class="icon">
-                <use xlink:href="assets/svg/icons.svg#icon-plus"></use>
-              </svg>
-            </button>
-          </div>
           <div class="col-11">
             <input
               tabindex="1"
@@ -26,6 +19,13 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
               type="text"
               #question
               placeholder="How much time can you invest?">
+          </div>
+          <div class="col-1">
+            <button tabindex="2" class="btn btn-success text-white" type="submit">
+              <svg class="icon">
+                <use xlink:href="assets/svg/icons.svg#icon-plus"></use>
+              </svg>
+            </button>
           </div>
           <i [hidden]="!questionError" class="form-text text-danger">{{questionError}}</i>
         </div>

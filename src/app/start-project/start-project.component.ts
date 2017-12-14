@@ -52,13 +52,7 @@ export class StartProjectComponent {
     if (nextIndex < currentIndex) {
       this.activeStep = step;
     } else {
-      const title = step === 'title';
-      const description = step === 'description' && this.project.title;
-      const skills = step === 'skills' && this.project.title && this.project.description;
-      const others = (step === 'assets' || step === 'questions' || step === 'overview')
-        && this.project.position.length > 0 && this.project.title && this.project.description;
-
-      if (title || description || skills || others) {
+      if (canGoToNextStep(step, this.project)) {
         this.activeStep = step;
       }
     }
@@ -68,11 +62,27 @@ export class StartProjectComponent {
     this.activeStep = step;
   }
 
+  isStepEnabled(step, steps, project) {
+    const currentIndex = steps.indexOf(this.activeStep);
+    const stepIndex = steps.indexOf(step);
+    if (stepIndex === currentIndex) {
+      return false;
+    }
+    if (stepIndex < currentIndex) {
+      return true;
+    } else {
+      if (canGoToNextStep(step, project)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   storeProject() {
     if (!!localStorage['project']) {
       localStorage.removeItem('project');
     }
-      if (!this.state.isLoggedIn()) {
+    if (!this.state.isLoggedIn()) {
       localStorage.setItem('project', JSON.stringify(this.project));
     } else {
       this.projectService.addProject(this.project)
@@ -99,3 +109,11 @@ export class StartProjectComponent {
   }
 }
 
+function canGoToNextStep(step, project){
+  const title = step === 'title';
+  const description = step === 'description' && project.title;
+  const skills = step === 'skills' && project.title && project.description;
+  const others = (step === 'assets' || step === 'questions' || step === 'overview')
+    && project.position.length > 0 && project.title && project.description;
+  return title || description || skills || others
+}

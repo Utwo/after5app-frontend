@@ -1,48 +1,62 @@
 <div class="jumbotron-fluid">
   <div class="sprite sprite-astronaut"></div>
   <div class="container">
-    <section class="container container-small mx-auto my-5">
-      <div [ngSwitch]="activeStep" class="mx-5 my-5">
-        <app-title-form
-          *ngSwitchCase="'title'"
-          [project_title]="project.title"
-          (onNext)="onNext($event)"></app-title-form>
-        <app-description-form
-          *ngSwitchCase="'description'"
-          [project_description]="project.description"
-          (onNext)="onNext($event)"></app-description-form>
-        <app-skills-form
-          *ngSwitchCase="'skills'"
-          [project_positions]="project.position"
-          (onNext)="onNext($event)"></app-skills-form>
-        <app-assets-form
-          *ngSwitchCase="'assets'"
-          [assets]="assets"
-          (onNext)="onNext($event)"></app-assets-form>
-        <app-questions-form
-          *ngSwitchCase="'questions'"
-          [application_questions]="project.application_questions"
-          (onNext)="onNext($event)"></app-questions-form>
-        <app-overview-form
-          *ngSwitchCase="'overview'"
-          [project]="project"
-          [assets]="assets"
-          (onStoreProject)="storeProject()"
-          (onEditStep)="goToStep($event)"></app-overview-form>
+    <section class="container container-small mx-auto my-5 start-project__container">
+      <div [ngSwitch]="activeStep" class="row mx-5 my-5">
+        <div class="col">
+          <app-title-form
+            *ngSwitchCase="'title'"
+            [project_title]="project.title"
+            (onNext)="onNext($event)"></app-title-form>
+          <app-description-form
+            *ngSwitchCase="'description'"
+            [project_description]="project.description"
+            (onNext)="onNext($event)"></app-description-form>
+          <app-skills-form
+            *ngSwitchCase="'skills'"
+            [project_positions]="project.position"
+            (onNext)="onNext($event)"></app-skills-form>
+          <app-assets-form
+            *ngSwitchCase="'assets'"
+            [assets]="assets"
+            (onNext)="onNext($event)"></app-assets-form>
+          <app-questions-form
+            *ngSwitchCase="'questions'"
+            [application_questions]="project.application_questions"
+            (onNext)="onNext($event)"></app-questions-form>
+          <app-overview-form
+            *ngSwitchCase="'overview'"
+            [project]="project"
+            [assets]="assets"
+            (onStoreProject)="storeProject()"
+            (onEditStep)="goToStep($event)"></app-overview-form>
+        </div>
       </div>
-
-      <app-steps [steps]="steps" [activeStep]="activeStep" (onChangeStep)="changeStep($event)"></app-steps>
-
-      <div *ngIf="activeStep !== 'overview'" class="febee-small__message mt-5">
-        <div class="row">
-          <div class="col-md-11 col-10">
-            <p class="info-message">
-              {{infoMessage[activeStep]}}
-            </p>
-          </div>
-          <div class="col-md-1 col-2">
-            <div class="feebe-head">
-              <span class="febee-eyes"></span>
+      <div class="row">
+        <div class="col">
+          <app-steps
+            [project]="project"
+            [steps]="steps"
+            [activeStep]="activeStep"
+            [isStepEnabled]="isStepEnabled"
+            (onChangeStep)="changeStep($event)">
+          </app-steps>
+        </div>
+      </div>
+      <div class="row" *ngIf="activeStep !== 'overview'">
+        <div class="col">
+          <div class="febee-small__message mt-5">
+            <div class="row">
+              <div class="col-md-11 col-10">
+                <p class="info-message">
+                  {{infoMessage[activeStep]}}
+                </p>
+              </div>
+              <div class="col-md-1 col-2">
+                <div class="feebe-head">
+                  <span class="febee-eyes"></span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

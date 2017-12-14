@@ -1,13 +1,18 @@
 .step-button {
-  background: $info;
+  background: $iris;
   width: 4em;
   height: .5em;
   margin: 0 7px;
   border-radius: $border-radius;
   display: inline-block;
-  cursor: pointer;
 }
 
 .step-button.active {
   background: $success;
+  cursor: pointer;
+}
+
+.step-button.enabled {
+  background: $info;
+  cursor: pointer;
 }
