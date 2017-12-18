@@ -1,4 +1,4 @@
-<div *ngIf="application" class="card">
+<div *ngIf="application && project" class="card">
   <div class="card-body container p-0">
     <div class="row p-4 application-card">
       <div *ngIf="!owner" class="col-4">
@@ -23,7 +23,7 @@
       </div>
       <div *ngIf="owner" class="col-8">
         <div class="text-success">{{application.name}}</div>
-        <p> created the project</p>
+        <p> created the project {{ project.created_at | timeAgo}}</p>
       </div>
     </div>
     <div class="row">
@@ -31,7 +31,7 @@
         <div *ngIf="!owner">
           <button
             *ngIf="application.accepted"
-            class="btn btn-primary w-100 py-3 text-white card-btn">Manage
+            class="btn btn-primary w-100 py-3 text-white card-btn">Remove
           </button>
           <div *ngIf="!application.accepted" class="row m-0">
             <div class="col-6 p-0">
@@ -58,7 +58,7 @@
 
 <!--modal-->
 
-<div *ngIf="application && project" bsModal #viewApplicationModal="bs-modal" class="modal grow"
+<div *ngIf="application && project && !owner" bsModal #viewApplicationModal="bs-modal" class="modal grow"
      tabindex="-1" role="dialog"
      aria-labelledby="ViewApplication"
      aria-hidden="true">

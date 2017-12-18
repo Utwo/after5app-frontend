@@ -3,11 +3,11 @@
     <h3 class="text-muted"><b>Joined</b> the project</h3>
     <div class="row mt-3">
       <div class="col-md-4 mb-3">
-        <app-applications-card [application]="user" [owner]="true"></app-applications-card>
+        <app-applications-card [project]="project" [application]="user" [owner]="true"></app-applications-card>
       </div>
       <ng-template ngFor let-member [ngForOf]="applications">
         <div *ngIf="member.accepted" class="col-md-4 mb-3">
-          <app-applications-card [application]="member"></app-applications-card>
+          <app-applications-card [application]="member" [project]="project"></app-applications-card>
         </div>
       </ng-template>
     </div>
