@@ -6,15 +6,13 @@
   [class.position__card-taken]="hasMember && !showDetails"
 >
   <div class="card-body text-dark text-center py-3 px-2 px-md-3">
-    <div *ngIf="!hasMember || showDetails" class="container-fluid">
-      <h3 class="text-muted">{{position.skill.name}}</h3>
+    <div class="container-fluid">
+      <h3 [class.text-muted]="showDetails">{{position.skill.name}}</h3>
       <p>{{position.description}}</p>
     </div>
-    <div *ngIf="hasMember && !showDetails">
-      <div class="text-center my-3">
-        <img *ngIf="member.picture" class="profile-img" src="{{member.picture}}?width=70&height=70&s=70">
-      </div>
-      <div>
+    <div *ngIf="hasMember && !showDetails" class="position-member px-3 text-center">
+      <div class="text-center position-member__image">
+        <img *ngIf="member.picture" class="profile-img mb-3" src="{{member.picture}}?width=70&height=70&s=70">
         <p class="text-white">
           <b class="text-success">{{member.name}}</b> has joined the <b>{{position.skill.name}}</b> skill
         </p>

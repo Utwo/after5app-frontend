@@ -52,4 +52,8 @@ export class ProjectBriefComponent implements OnInit {
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
   }
+
+  scrollDown(target){
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }

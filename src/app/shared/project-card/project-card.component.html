@@ -47,10 +47,11 @@
       </div>
       <div class="col-sm-9 col-12">
         <ul class="list-inline" *ngIf="project.position.length > 0">
-          <li 
+          <li
               *ngFor="let position of project.position"
               (click)="clickSkill(position.skill)"
-              class="list-inline-item btn btn-sm btn btn-outline-secondary project__skill-item mr-3 mb-1">
+              class="list-inline-item btn btn-sm btn btn-outline-info project__skill-item mr-3 mb-1"
+              [class.project__skill-taken]="!position.status">
             {{position.skill.name}}
           </li>
         </ul>

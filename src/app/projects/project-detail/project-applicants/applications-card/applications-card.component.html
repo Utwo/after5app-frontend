@@ -80,7 +80,7 @@
         </h3>
         <div class="container-fluid container-small">
           <app-feebe-message
-            [message]="'We have to get you processed through. Lets see your Docking Pass...'">
+            [message]="'You have an applicat! Review their application and decide if they have a place in your team.'">
           </app-feebe-message>
           <div class="row mt-3">
             <div class="col">
@@ -88,7 +88,7 @@
               <p class="mt-2">{{application.message}}</p>
             </div>
           </div>
-          <div class="row mt-3">
+          <div *ngIf="project.application_questions.length" class="row mt-3">
             <div class="col">
               <b>Answers to project questions:</b>
               <ul class="project-list list-unstyled mt-2" *ngIf="project.application_questions">

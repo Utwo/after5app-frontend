@@ -21,9 +21,9 @@
             Open Positions
           </div>
           <div class="card-body py-1">
-            <ul class="list-unstyled mb-3">
+            <ul class="list-unstyled mb-3" (click)="scrollDown(positions)">
               <li *ngFor='let position of project.position' class="mt-3">
-                <a class="text-muted" (click)="scollDown()" href="javascript:;">
+                <a class="text-muted" href="javascript:;">
                   {{position.skill.name}}
                 </a>
                 <span class="text-success font-weight-bold float-right"
@@ -58,7 +58,7 @@
   </div>
 
   <!--posiions-->
-  <div class="jumbotron-dark py-3 px-5">
+  <div class="jumbotron-dark py-3 px-5" #positions>
     <div class="m-4 text-center">
       <h3> Open Positions</h3>
       <p class="text-info" *ngIf="!myProject">
@@ -66,13 +66,6 @@
         skills you've finished projects with and that will help define your profile status. <br> You could also ask
         <span class="text-success">{{project.user.name}}</span> to add new <b>Skills</b> if you think you can help the project in any other way.
       </p>
-      <div class="text-center mt-4" *ngIf="myProject">
-        <button class="btn btn-info" (click)="addPosition()">
-          <svg class="icon icon-plus">
-            <use xlink:href="./assets/svg/icons.svg#icon-plus"></use>
-          </svg> <small>ADD NEW POSITION</small>
-        </button>
-      </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 my-2"
