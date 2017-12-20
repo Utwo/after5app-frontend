@@ -39,6 +39,8 @@
 .position__card{
   min-height: 210px;
   box-shadow: 0 3px 5px 0 $dark-purple;
+  transition: .8s ease;
+  position: relative;
 }
 
 .position__card img{
@@ -53,3 +55,20 @@
 .position__card-taken{
   background: lighten($primary, 3%);
 }
+
+.position-member{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.position-member__image{
+  position: relative;
+  top: 45%;
+  transform: translateY(-50%);
+}
+
