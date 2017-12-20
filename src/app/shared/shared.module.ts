@@ -52,7 +52,7 @@ import { RouterModule } from '@angular/router';
     LoginModalComponent,
     ProjectCardComponent,
     SmallProjectCardComponent,
-    TimeAgoPipe
+    TimeAgoPipe,
   ]
 })
 export class SharedModule {
