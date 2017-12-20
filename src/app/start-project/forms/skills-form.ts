@@ -57,7 +57,10 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
     <ul class="tray scrollable_tray mt-4 text-center">
       <li class="tray--skill" *ngFor="let skill of project_positions; let i = index">
         <div class="tray--name">{{skill.name}}</div>
-        <div class="tray--button" (click)="removePosition(i)">
+        <div *ngIf="skill.status" class="tray--button" (click)="removePosition(i)">
+          <small>REMOVE SKILL</small>
+        </div>
+        <div *ngIf="!skill.status" class="tray--button disabled">
           <small>REMOVE SKILL</small>
         </div>
       </li>

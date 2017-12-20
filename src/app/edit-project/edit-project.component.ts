@@ -10,7 +10,7 @@ import {StateService} from '../core/state.service';
 })
 
 export class EditProjectComponent {
-  @Input() project;
+  public project;
   assets = [];
   steps = ['title', 'description', 'skills', 'assets', 'questions', 'overview'];
   activeStep = 'title';
@@ -30,17 +30,11 @@ export class EditProjectComponent {
   }
 
   ngOnInit() {
-    if (this.project) {
-      if (!this.verifyIfMyProject()) {
-        this.router.navigate(['/not-found']);
-      }
-    } else {
-      this.route.params
-        .map(params => params['id'])
-        .subscribe((id) => {
-          this.getProject(id);
-        });
-    }
+    this.route.params
+      .map(params => params['id'])
+      .subscribe((id) => {
+        this.getProject(id);
+      });
   }
 
   getProject(id) {
@@ -55,8 +49,14 @@ export class EditProjectComponent {
           if (!this.verifyIfMyProject()) {
             this.router.navigate(['/not-found']);
           }
+          this.formatProject();
         },
         error => this.responseHandler.errorMessage('An error occured!', error));
+  }
+
+  formatProject() {
+    this.project.position = this.project.position.map((pos) => ({description: pos.description, name: pos.skill.name, status: pos.status}));
+    console.log(this.project);
   }
 
   verifyIfMyProject() {
@@ -71,7 +71,7 @@ export class EditProjectComponent {
   nextStep() {
     const currentIndex = this.steps.indexOf(this.activeStep);
     if (currentIndex + 1 === this.steps.length) {
-      this.updatereProject();
+      this.updateProject();
     } else {
       this.activeStep = this.steps[currentIndex + 1];
     }
@@ -109,7 +109,7 @@ export class EditProjectComponent {
     return false;
   }
 
-  updatereProject() {
+  updateProject() {
     this.projectService.updateProject(this.project)
       .subscribe(
         data => this.storeAssets(data.project.id),
