@@ -1,32 +1,41 @@
-import {Component} from '@angular/core';
-import {ProjectService} from '../../../projects/shared/project.service';
-import {TypeaheadMatch} from 'ngx-bootstrap';
-import {Router} from '@angular/router';
-import {ResponseHandlerService} from '../../response-handler.service';
-import {Observable} from 'rxjs/Observable';
+import { Component } from "@angular/core";
+import { ProjectService } from "../../../projects/shared/project.service";
+import { TypeaheadMatch } from "ngx-bootstrap";
+import { Router } from "@angular/router";
+import { ResponseHandlerService } from "../../response-handler.service";
+import { Observable } from "rxjs";
+import { map, mergeMap } from "rxjs/operators";
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html'
+  selector: "app-search",
+  templateUrl: "./search.component.html"
 })
 export class SearchComponent {
   public dataSource: Observable<any>;
-  public asyncSelected = '';
+  public asyncSelected = "";
   public typeaheadLoading = false;
   public typeaheadNoResults = false;
 
-  public constructor(private projectService: ProjectService, private router: Router, private responseHandler: ResponseHandlerService) {
+  public constructor(
+    private projectService: ProjectService,
+    private router: Router,
+    private responseHandler: ResponseHandlerService
+  ) {
     this.dataSource = Observable.create((observer: any) => {
       // Runs on every search
       observer.next(this.asyncSelected);
-    }).mergeMap((token: string) => this.getProjectsAsObservable(token));
+    }).pipe(mergeMap((token: string) => this.getProjectsAsObservable(token)));
   }
 
   public getProjectsAsObservable(token: string): Observable<any> {
-    return this.projectService.searchByName(token)
-      .map(
-        projects => projects.data,
-        error => this.responseHandler.errorMessage('An error occured!', error));
+    return this.projectService
+      .searchByName(token)
+      .pipe(
+        map(
+          (projects: any) => projects.data,
+          error => this.responseHandler.errorMessage("An error occured!", error)
+        )
+      );
   }
 
   public changeTypeaheadLoading(e: boolean): void {
@@ -39,6 +48,6 @@ export class SearchComponent {
 
   public typeaheadOnSelect(e: TypeaheadMatch): void {
     this.asyncSelected = e.item.title;
-    this.router.navigate(['/project/', e.item.id]);
+    this.router.navigate(["/project/", e.item.id]);
   }
 }

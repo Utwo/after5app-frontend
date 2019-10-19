@@ -1,37 +1,38 @@
-import {Component, OnChanges, Input} from '@angular/core';
-import {ProfileService} from '../shared/profile.service';
-import {StateService} from '../../core/state.service';
-import {ResponseHandlerService} from '../../core/response-handler.service';
+import { Component, OnChanges, Input } from "@angular/core";
+import { ProfileService } from "../shared/profile.service";
+import { StateService } from "../../core/state.service";
+import { ResponseHandlerService } from "../../core/response-handler.service";
 
 @Component({
-  selector: 'app-personal-info',
-  templateUrl: './personal-info.component.html',
+  selector: "app-personal-info",
+  templateUrl: "./personal-info.component.html"
 })
 export class PersonalInfoComponent implements OnChanges {
   @Input() user;
   public isMe = false;
   public editing = false;
-  public name: String = '';
-  public city: String = '';
-  public workplace: String = '';
-  public description: String = '';
-  public hobby: String = '';
+  public name: String = "";
+  public city: String = "";
+  public workplace: String = "";
+  public description: String = "";
+  public hobby: String = "";
   public hobbies: String[] = [];
-  public socialInput: String = '';
-  public socialOptions: String[] = ['LinkedIn', 'Twitter', 'Medium'];
-  public link: String = '';
+  public socialInput: String = "";
+  public socialOptions: String[] = ["LinkedIn", "Twitter", "Medium"];
+  public link: String = "";
 
-  constructor(private profileService: ProfileService,
-              private state: StateService,
-              private responseHandler: ResponseHandlerService) {
-  }
+  constructor(
+    private profileService: ProfileService,
+    private state: StateService,
+    private responseHandler: ResponseHandlerService
+  ) {}
 
   ngOnInit() {
     if (!this.user.facebook_id) {
-      this.socialOptions.push('Facebook');
+      this.socialOptions.push("Facebook");
     }
     if (!this.user.github_id) {
-      this.socialOptions.push('Github');
+      this.socialOptions.push("Github");
     }
   }
 
@@ -60,22 +61,21 @@ export class PersonalInfoComponent implements OnChanges {
       workplace: this.workplace,
       hobbies: this.hobbies
     };
-    this.profileService.updateUser(body)
-      .subscribe(
-        (data) => {
-          this.responseHandler.successMessage('Changes have been saved');
-          this.state.setUser(data.user);
-          this.user = data.user;
-        },
-        error => {
-          this.responseHandler.errorMessage('An error occured!', error);
-        }
-      );
+    this.profileService.updateUser(body).subscribe({
+      next: (data: any) => {
+        this.responseHandler.successMessage("Changes have been saved");
+        this.state.setUser(data.user);
+        this.user = data.user;
+      },
+      error: error => {
+        this.responseHandler.errorMessage("An error occured!", error);
+      }
+    });
   }
 
   addHobby() {
     this.hobbies.push(this.hobby);
-    this.hobby = '';
+    this.hobby = "";
   }
 
   removeHobby(hobby) {
@@ -87,16 +87,15 @@ export class PersonalInfoComponent implements OnChanges {
 
     const social = this.user.social || [];
     social.push(this.link);
-    this.profileService.updateUser({social})
-      .subscribe(
-        (data) => {
-          this.responseHandler.successMessage('Changes have been saved');
-          this.state.setUser(data.user);
-          this.user = data.user;
-        },
-        error => {
-          this.responseHandler.errorMessage('An error occured!', error);
-        }
-      );
+    this.profileService.updateUser({ social }).subscribe({
+      next: (data: any) => {
+        this.responseHandler.successMessage("Changes have been saved");
+        this.state.setUser(data.user);
+        this.user = data.user;
+      },
+      error: error => {
+        this.responseHandler.errorMessage("An error occured!", error);
+      }
+    });
   }
 }

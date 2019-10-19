@@ -1,19 +1,22 @@
 import {
-  Component, EventEmitter, Output, Input,
+  Component,
+  EventEmitter,
+  Output,
+  Input,
   ViewChild
-} from '@angular/core';
-import {ModalDirective} from 'ngx-bootstrap';
-import {environment} from '../../../../../environments/environment';
-
+} from "@angular/core";
+import { ModalDirective } from "ngx-bootstrap";
+import { environment } from "../../../../../environments/environment";
 
 @Component({
-  selector: 'app-share-modal',
-  templateUrl: './share-modal.component.html',
+  selector: "app-share-modal",
+  templateUrl: "./share-modal.component.html",
   styles: []
 })
 export class ShareModalComponent {
   @Output() onShared = new EventEmitter<number>();
-  @ViewChild('shareModal') public shareModal: ModalDirective;
+  @ViewChild("shareModal", { static: false })
+  public shareModal: ModalDirective;
   public environment = environment;
   public href = encodeURIComponent(window.location.href);
 
