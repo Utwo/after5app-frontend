@@ -11,9 +11,9 @@ import { map } from "rxjs/operators";
 })
 export class ProjectDetailComponent implements OnInit {
   @Input() id;
-  public project = null;
-  private myProject = false;
-  private isMember = false;
+  project = null;
+  myProject = false;
+  isMember = false;
 
   constructor(
     private route: ActivatedRoute,

@@ -4,10 +4,10 @@
 // The build system defaults to the dev environment.
 
 export const environment = {
-  production: false,
-  URL: 'http://localhost:4200/',
-  URL_API: 'http://apistage.after5app.co/',
-  API_VERSION: 'api/v1/',
-  FACEBOOK_ID: '1614652362188367',
-  GITHUB_ID: 'fe2cc437add1417665e4',
+  production: true,
+  URL: "https://after5app.co/",
+  URL_API: "https://api.after5app.co/",
+  API_VERSION: "api/v1/",
+  FACEBOOK_ID: "1614649558855314",
+  GITHUB_ID: "4b122575498973d10891"
 };

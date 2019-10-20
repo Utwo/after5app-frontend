@@ -1,59 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>After5app</title>
-  <meta name="description" content="After5app is the place where big ideas come to life">
+  <head>
+    <meta charset="utf-8" />
+    <title>After5app</title>
+    <meta
+      name="description"
+      content="After5app is the place where big ideas come to life"
+    />
 
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#574fac">
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#574fac" />
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicons/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
-  <meta property="og:title" content="After5app"/>
-  <meta property="og:description" content="After5app is the place where big ideas come to life"/>
-  <meta property="og:image" content="http://after5app.co/asstes/faviconsfavicon-300x300.png"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="http://after5app.co"/>
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#1976d2">
-</head>
-<body>
-<noscript>
-  Sorry, for this awesome website you must enable Javascript.
-</noscript>
-<!-- Enable bootstrap 4 theme for nx-bootstrap -->
-<script>window.__theme = 'bs4';</script>
-<app-root class="site-wrap">
-  <div class="loading-screen flex-xs-middle">
-    <div class="row text-center">
-      <div class="col-12">
-						<span class="spinner">
-							<span class="double-bounce1"></span>
-							<span class="double-bounce2"></span>
-						</span>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicons/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/assets/favicons/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicons/favicon-32x32.png"
+    />
+    <meta property="og:title" content="After5app" />
+    <meta
+      property="og:description"
+      content="After5app is the place where big ideas come to life"
+    />
+    <meta
+      property="og:image"
+      content="http://after5app.co/asstes/faviconsfavicon-300x300.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://after5app.co" />
+    <link rel="manifest" href="manifest.webmanifest" />
+  </head>
+  <body>
+    <noscript>
+      Sorry, for this awesome website you must enable Javascript.
+    </noscript>
+    <!-- Enable bootstrap 4 theme for nx-bootstrap -->
+    <script>
+      window.__theme = "bs4";
+    </script>
+    <app-root class="site-wrap">
+      <div class="loading-screen flex-xs-middle">
+        <div class="row text-center">
+          <div class="col-12">
+            <span class="spinner">
+              <span class="double-bounce1"></span>
+              <span class="double-bounce2"></span>
+            </span>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</app-root>
+    </app-root>
 
-<script>
-  (function (i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date();
-    a = s.createElement(o),
-      m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-  ga('create', 'UA-86884233-1', 'auto');
-</script>
-
-</body>
+    <script>
+      (function(i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        (i[r] =
+          i[r] ||
+          function() {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        "script",
+        "https://www.google-analytics.com/analytics.js",
+        "ga"
+      );
+      ga("create", "UA-86884233-1", "auto");
+    </script>
+  </body>
 </html>

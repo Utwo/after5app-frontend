@@ -1,10 +1,10 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {StateService} from '../../../../core/state.service';
-import {ResponseHandlerService} from '../../../../core/response-handler.service';
+import { Component, OnInit, Input } from "@angular/core";
+import { StateService } from "../../../../core/state.service";
+import { ResponseHandlerService } from "../../../../core/response-handler.service";
 
 @Component({
-  selector: 'app-position-card',
-  templateUrl: './position-card.component.html'
+  selector: "app-position-card",
+  templateUrl: "./position-card.component.html"
 })
 export class PositionCardComponent implements OnInit {
   @Input() position;
@@ -13,13 +13,14 @@ export class PositionCardComponent implements OnInit {
 
   myProject = false;
   iAppied = false;
-  private member = null;
+  member = null;
   hasMember = false;
   showDetails = false;
 
-  constructor(private state: StateService,
-              private responseHandler: ResponseHandlerService) {
-  }
+  constructor(
+    private state: StateService,
+    private responseHandler: ResponseHandlerService
+  ) {}
 
   ngOnInit() {
     if (this.position.member.length > 0) {
@@ -36,14 +37,13 @@ export class PositionCardComponent implements OnInit {
     this.myProject = this.state.getUser().id === this.project.user_id;
   }
 
-  verifyIfApplied() {
-  }
+  verifyIfApplied() {}
 
   applicationSent(error) {
     if (error) {
-      this.responseHandler.errorMessage('An error occured!', error);
+      this.responseHandler.errorMessage("An error occured!", error);
     } else {
-      this.responseHandler.successMessage('Your application was sent!');
+      this.responseHandler.successMessage("Your application was sent!");
     }
   }
 
