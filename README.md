@@ -1,8 +1,11 @@
-# After5app frontend
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a60e294e-27e0-4d9e-9450-669c7001d63c/deploy-status)](https://app.netlify.com/sites/after5app/deploys)
-
 ## Run app
+
+Run `npm install` to get all dependencies.
+
+Live website: [https://after5app.netlify.com](https://after5app.netlify.com)  
+Old website: [https://5daccc34389e5c7fc4aa3a31--after5app.netlify.com](https://5daccc34389e5c7fc4aa3a31--after5app.netlify.com)
+
+Set up your environment variables in the environment files in `/src/app/environments`
 
 Run `npm i` to install all dependencies.
 
