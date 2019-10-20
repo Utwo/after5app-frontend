@@ -5,7 +5,8 @@
   "angular-cli": {},
   "scripts": {
     "start": "ng serve --e=dev",
-    "prod": "ng build --prod",
+    "build": "npm run build:css && ng build --prod",
+    "build:css": "gulp production",
     "stage": "ng build --prod --env=stage",
     "lint": "tslint \"src/**/*.ts\""
   },
@@ -34,11 +35,9 @@
     "codelyzer": "~3.2.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
-    "gulp-clean-css": "^3.9.0",
+    "gulp-clean-css": "^4.2.0",
     "gulp-concat": "^2.6.0",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^2.0.0",
+    "gulp-sass": "^4.0.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
     "typescript": "~2.4.2"
